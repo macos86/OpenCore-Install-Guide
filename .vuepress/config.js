@@ -3,7 +3,7 @@ const {
 } = require('../package')
 
 module.exports = {
-    title: 'OpenCore Install Guide',
+    title: 'Guida Installazione Opencore',
     head: [
         ['meta', {
             name: 'theme-color',
@@ -55,46 +55,46 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/dortania/OpenCore-Install-Guide',
+        repo: 'https://github.com/macos86/OpenCore-Install-Guide',
 		editLinks: true,
-		editLinkText: 'Help us improve this page!',
+		editLinkText: 'Aiutaci a tradurre questa pagina!',
         logo: 'homepage.png',
         nav: [{
-            text: 'Dortania Guides',
+            text: 'Guide Dortania',
             ariaLabel: 'Language Menu',
             items: [{
-                text: 'Home Site',
+                text: 'Home Site (EN)',
                 link: 'https://dortania.github.io/'
             },
             {
-                text: 'Getting Started With ACPI',
+                text: 'Getting Started With ACPI (EN)',
                 link: 'https://dortania.github.io/Getting-Started-With-ACPI/'
             },
             {
-                text: 'OpenCore Post-Install',
+                text: 'OpenCore Post-Install (EN)',
                 link: 'https://dortania.github.io/OpenCore-Post-Install/'
             },
             {
-                text: 'OpenCore Multiboot',
+                text: 'OpenCore Multiboot (EN)',
                 link: 'https://dortania.github.io/OpenCore-Multiboot/'
             },
             {
-                text: 'GPU Buyers Guide',
+                text: 'GPU Buyers Guide (EN)',
                 link: 'https://dortania.github.io/GPU-Buyers-Guide/'
             },
             {
-                text: 'Wireless Buyers Guide',
+                text: 'Wireless Buyers Guide (EN)',
                 link: 'https://dortania.github.io/Wireless-Buyers-Guide/'
             },
             {
-                text: 'Anti Buyers Guide',
+                text: 'Anti Buyers Guide (EN)',
                 link: 'https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/'
             },
             ]
         },
         ],
         sidebar: [{
-            title: 'Introduction',
+            title: 'Introduzione',
             collapsable: false,
             sidebarDepth: 1,
             children: [
@@ -107,11 +107,11 @@ module.exports = {
 
         },
         {
-            title: 'USB Creation',
+            title: 'Creazione della USB',
             collapsable: false,
             sidebarDepth: 2,
             children: [{
-                title: 'Creating the USB',
+                title: 'Creare la USB',
                 collapsable: true,
                 path: '/installer-guide/',
                 sidebarDepth: 1,
@@ -123,12 +123,12 @@ module.exports = {
             },
                 '/installer-guide/opencore-efi',
                 'ktext',
-            ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI'],
+            ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI (EN)'],
                 '/config.plist/',
             ]
         },
         {
-            title: 'Configs',
+            title: 'Configurazione OpenCore',
             collapsable: false,
             children: [{
                 title: 'Intel Desktop config.plist',
@@ -187,7 +187,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Installation',
+            title: 'Installazione',
             collapsable: false,
             children: [
                 '/installation/installation-process',
@@ -217,7 +217,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Post Install',
+            title: 'Post-Install (EN)',
             collapsable: false,
             children: [
                 ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
@@ -274,14 +274,14 @@ module.exports = {
             ]
         },
         {
-            title: 'Extras',
+            title: 'Extra',
             collapsable: false,
 			sidebarDepth: 2,
             children: [
                 '/extras/kaslr-fix',
                 '/extras/spoof',
                 '/extras/big-sur/',
-                ['https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion', 'Clover Conversion'],
+                ['https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion', 'Conversioni da Clover'],
                 '/extras/smbios-support.md',
             ]
         },
@@ -289,7 +289,7 @@ module.exports = {
             title: 'Misc',
             collapsable: false,
             children: [
-                'CONTRIBUTING',
+                'CONTRIBUTI',
                 '/misc/credit',
             ]
         },
