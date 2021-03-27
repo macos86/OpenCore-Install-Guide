@@ -1,34 +1,34 @@
-# Getting started with OpenCore
+# Iniziamo con OpenCore
 
-Before we can jump head first into making an OpenCore based system, we need to go over a few things.
+Prima di iniziare seriamente a impostare un sistema basato su OpenCore, dovremmo controllare un paio di cose.
 
-## Prerequisites
+## Prerequisiti
 
-1. <span style="color:red">_**[CRUCIAL]**_</span> Time and patience.
-   * Don't start working on this if you have deadlines or important work. Hackintoshes are not something you should be relying on as a work machine.
-2. <span style="color:red">_**[CRUCIAL]**_</span> **KNOW YOUR HARDWARE**
-   * Your CPU name and its generation
-   * Your GPUs
-   * Your storage devices (HDD/SSD, NVMe/AHCI/RAID/IDE configuration)
-   * Your laptop/desktop model if from an OEM
-   * Your **Ethernet chipset**
-   * Your WLAN/Bluetooth chipset
-3. <span style="color:red">_**[CRUCIAL]**_</span> **A BASIC KNOWLEDGE OF COMMAND LINES AND HOW TO USE A TERMINAL/COMMAND PROMPT**
-   * This is not just [CRUCIAL], this is the basis of this whole guide. We can't help you if you don't know how to `cd` to a directory or delete a file.
-4. <span style="color:red">_**[CRUCIAL]**_</span> A machine that is compatible as seen in the _**Compatibility**_ section.
-   * [Hardware Limitations page](macos-limits.md)
-5. <span style="color:red">_**[CRUCIAL]**_</span> A minimum of:
-   * 16GB USB if you're going to use macOS to create the USB
-   * 4GB USB if you're going to use Windows or Linux for USB creation
-6. <span style="color:red">_**[CRUCIAL]**_</span> An **Ethernet connection** (no WiFi dongles, Ethernet USB adapter may work depending on macOS support) and you must know your LAN card's model
-   * You must either have a physical Ethernet port, or a compatible macOS Ethernet dongle/adapter. In case you have a [compatible WiFi card](https://dortania.github.io/Wireless-Buyers-Guide/), you can also use that.
-     * Note the majority of WiFi cards are not supported by macOS
-   * For people who can't use ethernet but have an Android phone, you can connect your Android phone to WiFi and then tether it using USB with [HoRNDIS](https://joshuawise.com/horndis#available_versions).
-7. <span style="color:red">_**[CRUCIAL]**_</span> **Proper OS Installation:**
-   * Be it:
-     * macOS (a fairly recent one would be better)
-     * Windows (Windows 10, 1703 or newer)
-     * Linux (Clean and properly functioning, with Python 2.7 or later)
-   * For Windows or Linux users, **15GB** of free space on the drive you're working on. On Windows, your OS disk (C:) must have at least **15GB** of free space.
+1. <span style="color:red">_**[CRUCIALE]**_</span> Tempo e pazienza.
+   * Non iniziare a lavorare se hai scadenze o importanti lavori. Non puoi mettere la stessa fiducia negli Hackintosh rispetto alle macchine già funzionanti.
+2. <span style="color:red">_**[CRUCIALE]**_</span> **CONOSCERE IL TUO HARDWARE**
+   * Il nome della tua CPU e la sua generazione
+   * Le tue GPU
+   * I tuoi dispositivi di archiviazione (HDD/SSD, configurazione NVMe/AHCI/RAID/IDE)
+   * Il tuo modello di Desktop/Laptop se è un computer OEM non assemblato
+   * Il tuo **chipset Ethernet**
+   * I tuoi chipset WLAN/Bluetooth
+3. <span style="color:red">_**[CRUCIALE]**_</span> **UNA CONOSCENZA BASE SU COME USARE LE LINEE DI COMANDO E UN TERMINALE/PROMPT DEI COMANDI**
+   * Questo non è solo [CRUCIALE], è la base di tutta la guida. Non possiamo aiutarti se non conosci come `cd` a una directory o a cancellare un file.
+4. <span style="color:red">_**[CRUCIALE]**_</span> Una macchina compatibile come indicato nella sezione _**Compatibilità**_.
+   * [Limitazioni Hardware](macos-limits.md)
+5. <span style="color:red">_**[CRUCIALE]**_</span> Come minimo:
+   * USB di 16GB se userai macOS per creare la USB
+   * USB di 4GB se userai Windows o Linux per creare la USB
+6. <span style="color:red">_**[CRUCIALE]**_</span> Una **connessione Ethernet** (nessun WiFi dongle, gli adattatori Ethernet USB potrebbero funzionare in dipendenza al supporto macOS) e devi conoscere il tuo modello di scheda di rete
+   * Devi avere anche una porta Ethernet fisica, o un dongle/adattatore Ethernet compatibile con macOS. Se hai una [scheda WiFi compatibile](https://dortania.github.io/Wireless-Buyers-Guide/), puoi usare anche quella.
+     * Nota: la maggioranza delle schede WiFi non sono supportate da macOS
+   * Per chi non può usare l'Ethernet, ma ha un telefono Android, può connetterlo al WiFi e dopo collegarlo in thering con una USB con [HoRNDIS](https://joshuawise.com/horndis#available_versions).
+7. <span style="color:red">_**[CRUCIALE]**_</span> **Un sistema operativo degno di questo nome:**
+   * Può essere:
+     * macOS (uno recente sarebbe meglio)
+     * Windows (Windows 10, 1703 or più recente)
+     * Linux (Pulito e funzionante correttamente, con Python 2.7 or più recenti)
+   * Per utenti Windows e Linux, **15GB** di spazio sul disco. Su Windows, il disco di sistema (C:) deve avere almeno **15GB** di spazio libero ulteriore.
    * For macOS users, **30GB** of free space on the system's drive.
-   * Most tools used in this guide will also require [Python installed](https://www.python.org/downloads/)
+   * La maggior parte dei tool dovranno aver [installato Python](https://www.python.org/downloads/)
