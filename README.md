@@ -19,7 +19,7 @@ Questa guida si focalizza soprattutto su:
 * Installare macOS su un PC basato su X86
 * Insegnare come l'hack funziona
 
-Perciò, sarà necessario leggere,imparare e soprattutto usare Google. Non è un setup semplice del tipo "click e installa".
+Perciò, sarà necessario leggere, imparare e soprattutto usare Google. Non è un setup semplice del tipo "click e installa".
 
 Per favore ricorda che OpenCore è ancora nuovo e correntemente in beta. Tuttavia è abbastanza stabile, molto più di Clover da certi punti di vista, ed è molto frequentato, quindi le configurazioni potrebbero essere cambiate spesso (es. nuovi quirk che rimpiazzano quelli vecchi).
 
