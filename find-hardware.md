@@ -1,152 +1,152 @@
-# Finding your hardware
+# Trovare il tuo Hardware
 
-This section is mostly a mini-guide on how to find what hardware you're currently running; this is mainly relevant for laptop and prebuilt users as hardware specs are a bit more difficult to obtain. You can skip this page and head to [Creating the USB](./installer-guide/) if you already know what hardware you have.
+Questa sezione è una mini-guida che spiega come trovare il tuo hardware corrente; questo è rilevante per laptop e utenti prebuilt dato che l'hardware è un po' più difficile da comprendere. Puoi saltare questa sezione e andare a [Creare la USB](./installer-guide/) se conosci già l'hardware che possiedi.
 
-For this, we'll assume you have Windows or Linux installed:
+Perciò, assumeremo che hai Windows o Linux installato:
 
-* [Finding hardware using Windows](#finding-hardware-using-windows)
-* [Finding hardware using Linux](#finding-hardware-using-linux)
+* [Trovare hardware usando Windows](#trovare-hardware-usando-windows)
+* [Trovare hardware usando Linux](#trovare-hardware-usando-linux)
 
-## Finding Hardware using Windows
+## Trovare hardware usando Windows
 
-For this we mainly have 2 options:
+Per questo avremmo due opzioni:
 
-* Windows' built-in Device Manager
+* Il Gestione Dispositivi integrato di Windows
 * [AIDA64](https://www.aida64.com/downloads)
 
-Due to the easier to use GUI, we recommend downloading AIDA64 and running this as it's much easier to grab specs. However we'll show you both methods for obtaining hardware specs.
+A causa di un'interfaccia più semplice, raccomandiamo di scaricare AIDA64 e avviarlo per ottenere molto più facilmente le specifiche. Tuttavia mostreremo entrambi i metodi per ottenere le specifiche hardware.
 
-### CPU Model
+### Modello CPU
 
-| AIDA64 | Device Manager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/cpu-model-aida64.png) | ![](./images/finding-hardware-md/cpu-model-devicemanager.png) |
 
-### GPU Model
+### Modello GPU
 
-| AIDA64 | DeviceManager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/GPU-model-aida64.png) | ![](./images/finding-hardware-md/GPU-model-devicemanager.png) |
 
-### Chipset Model
+### Modello Chipset
 
-| AIDA64 | DeviceManager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/chipset-model-aida64.png) | ![](./images/finding-hardware-md/chipset-model-devicemanager.png) |
 
-* Note: Intel SOC based CPUs will have the chipset and other features already on the same die instead of being dedicated chips. This means trying to detect the exact chipset is a bit more difficult
+* Nota: CPU basate su Intel SOC avranno il loro chipset e altre funzionalità sullo stesso chip invece di avere chip dedicati. Questo rende più difficile trovare il tipo esatto di chipset.
 
-### Keyboard, Trackpad and Touchscreen Connection Type
+### Tastiera, Trackpad e Touchscreen per tipo di connettore
 
-| DeviceManager |
+| Gestione Dispositivi |
 | :--- |
 | ![](./images/finding-hardware-md/trackpad-model-devicemanager.png) |
 
-AIDA64 unfortunately doesn't provide any useful info regarding pointer devices, so we recommend using DeviceManager for this.
+AIDA64 sfortunatamente non fornisce informazioni utili riguardanti questi dispositivi, perciò vi raccomandiamo di usare Gestione Dispositivi per questo.
 
-* You can find these devices under the following:
-  * `Human Interface Devices`
-  * `Keyboards`
-  * `Mice and other Pointer Devices`
+* Puoi trovare i dispositivi in queste sezioni:
+  * `Human Interface Devices (HID)`
+  * `Tastiere`
+  * `Mouse e altri dispositivi di puntatamento`
 
-* To view the exact connection type of the device, select the pointer device then enter `View -> Device by Connection`. This will clarify whether it's over PS2, I2C, SMBus, USB, etc
+* Per vedere il tipo esatto di connettore, seleziona il tuo mouse e dopo `Visualizza -> Dispositivi per connettore`. Questo chiarirà se è un dispositivo PS2, I2C, SMBus, USB, etc
 
-Depending on the device, it may show up under multiple names and connections. The main ones to keep an eye on:
+In dipendenza dal dispositivo, potresti trovare molti nomi e connettori. Distingui i seguenti casi:
   
 ::: details SMBus
   
-These will show up as a straight PCI device such as `Synaptics SMBus Driver` or `ELAN SMBus Driver`
+Questi si mostreranno come dispositivo PCI come `Synaptics SMBus Driver` o `ELAN SMBus Driver`
 
-* Synaptics devices will show up under both PS2 under `Synaptics PS2 device`/`Synaptics Pointing Device` and PCI as `Synaptics SMBus Driver`
+* Dispositivi Synaptics si mostreranno sia in PS2 come `Synaptics PS2 device`/`Synaptics Pointing Device` e in PCI come `Synaptics SMBus Driver`
 
 ![](./images/finding-hardware-md/Windows-SMBus-Device.png)
 
-As you can see, we get 2 Synaptics devices in the left image, however if we take a closer look we'll see the top device is PS2, while the bottom one is SMBus. While you can use the trackpad in either mode, SMBus generally provides better gesture support and accuracy.
+Come vedi, abbiamo ottenuto due dispositivi Synaptics nell'immagine a sinistra, tuttavia se guardiamo meglio vediamo che il dispositivo più alto è il PS2, mentre quello più basso è il SMBus. Mentre puoi usare il trackpad nell'altro modo, SMBus generalmente provvede maggiore supporto nei gesti e più precisione.
 
 :::
 
 ::: details USB
 
-| Device by Type | Device by Connection |
+| Dispositivi per tipo | Dispositivi per connettore |
 | :--- | :--- |
 | ![](./images/finding-hardware-md/USB-trackpad-normal.png) | ![](./images/finding-hardware-md/USB-trackpad-by-connection.png)
 
-These will show up as a `PS2 Compliant Trackpad`, as well under USB when we switch our connection view to `Device by Connection`
+Questo si mostrerà come `PS2 Compliant Trackpad`, e sotto USB quando ci spostiamo in `Dispositivi per connettore`
 
 :::
 
 ::: details I2C
 
 ![](./images/finding-hardware-md/i2c-trackpad.png)
-These will almost always show up as a Microsoft HID device, though can appear as other trackpads as well. They will always show up under I2C though.
+Questi saranno quasi sempre mostrati come dispositivi Microsoft HID, anche se possono apparire anche come altri trackpad. Saranno sempre sotto I2C.
 
 :::
   
-### Audio Codec
+### Codec Audio
 
-| AIDA64 | DeviceManager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/audio-controller-aida64.png) | ![](./images/finding-hardware-md/audio-controller-aida64.png.png) |
 
-Due to how certain OEMs present device names, the most accurate info you can get with DeviceManager is via the PCI ID(ie. pci 14F1,50F4). This means you'll need to google the ID and figure out the exact device ID, however AIDA64 can present the name properly which is quite a bit easier on the end user.
+A causa degli OEM che mostrano nomi vaghi, l'informazione più dettagliata che puoi ottenere da Gestione Dispositivi è tramite il PCI ID (es. pci 14F1,50F4). Questo ti obbliga a cercare su Google l'ID per capire quale ti serve, tuttavia AIDA64 può presentarti il nome correttamente, facilitando la procedura all'utente finale.
 
-### Network Controller models
+### Modello del Controller di Rete
 
-| AIDA64 | Device Manager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/nic-model-aida64.png) | ![](./images/finding-hardware-md/nic-model-devicemanager.png) |
 
-Due to how certain OEMs present device names, the most accurate info you can get with Device Manager is via the PCI ID (ie. `PCI\VEN_14E4&DEV_43A0` corresponds to a vendor ID of `14E4` and a device ID of `43A0`). This means you'll need to Google the ID and figure out the exact device ID; however, AIDA64 can present the name properly which can be quite a bit easier.
+A causa degli OEM che mostrano nomi vaghi, l'informazione più dettagliata che puoi ottenere da Gestione Dispositivi è tramite il PCI ID (es. `PCI\VEN_14E4&DEV_43A0`, ossia un vendor ID uguale a `14E4` e un device ID uguale a `43A0`). Questo ti obbliga a cercare su Google l'ID per capire quale ti serve, tuttavia AIDA64 può presentarti il nome correttamente, facilitando la procedura all'utente finale.
 
-### Drive Model
+### Modello del disco
 
-| AIDA64 | Device Manager|
+| AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/disk-model-aida64.png) | ![](./images/finding-hardware-md/disk-model-devicemanager.png) |
 
-Due to OEMs not providing much details about the drive, you'll need to Google a bit which drive matches up with the displayed name.
+A causa degli OEM che presentano nomi vaghi, sarai costretto a cercare su Google il tuo modello.
 
-## Finding Hardware using Linux
+## Trovare hardware usando Linux
 
-For finding hardware using Linux, we'll be using a few tools:
+Per trovare gli hardware usando linux, useremo i seguenti strumenti:
 
 * `cat`
 * `pciutils`
 * `dmidecode`
 
-Below you'll find a list of commands to run in the terminal, thankfully most Linux distros will come with these tools already installed. If not, you will likely find them in your distro's package manager.
+Sotto troverai una lista di comandi da usare nel terminale (bisogna ringraziare il fatto che le distro Linux arrivano già pronte con i tool installati). Se no, dovrai cercarli nel gestore pacchetti della tua distro.
 
-### CPU Model
+### Modello CPU
 
 ```sh
 cat /proc/cpuinfo | grep 'model name'
 ```
 
-### GPU Model
+### Modello GPU
 
 ```sh
 lspci | grep -i --color 'vga\|3d\|2d'
 ```
 
-### Chipset Model
+### Modello Chipset
 
 ```sh
 dmidecode -t baseboard
 ```
 
-### Keyboard, Trackpad and  Touchscreen Connection Type
+### Tastiera, Trackpad e Touchscreen per tipo di connettore
 
 ```sh
 dmesg |grep -i 'input'
 ```
 
-### Audio Codec
+### Codec Audio
 
 ```sh
 aplay -l
 ```
 
-### Network Controller models
+### Modello del Controller di Rete
 
 Basic info:
 
@@ -160,7 +160,7 @@ More in-depth info:
 lshw -class network
 ```
 
-### Drive Model
+### Modello del disco
 
 ```sh
 lshw -class disk -class storage
