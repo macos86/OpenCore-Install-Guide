@@ -148,13 +148,13 @@ aplay -l
 
 ### Modello del Controller di Rete
 
-Basic info:
+Informazioni di base:
 
 ```sh
 lspci | grep -i 'network'
 ```
 
-More in-depth info:
+Informazioni dettagliate:
 
 ```sh
 lshw -class network
