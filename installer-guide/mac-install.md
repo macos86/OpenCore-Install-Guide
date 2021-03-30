@@ -109,7 +109,7 @@ sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstal
 
 Per sistemi che non supportano l'avvio UEFI, vedi sotto:
 
-::: details Setting up Legacy Boot
+::: details Impostare il boot Legacy
 
 Per iniziare, hai bisogno di questo:
 
