@@ -1,25 +1,25 @@
-# Making the installer in Windows
+# Creare l'Installer su Windows
 
-* Supported version: 0.6.7
+* Versione supportata: 0.6.7
 
-While you don't need a fresh install of macOS to use OpenCore, some users prefer having a fresh slate with their boot manager upgrades.
+Poiché non hai bisogno di macOS per usare OpenCore, alcuni utenti preferiscono avere un'aggiornamento su come aggiornare macOS.
 
-To start you'll need the following:
+Per iniziare avrai bisogno di:
 
-* 4GB USB Stick
+* USB da 4GB
 
-* For USB larger than 16 GB to format in FAT32 use [Rufus method](#rufus-method)
+* Per USB più grandi di 16 GB per formattarla in FAT32 usa il [metodo Rufus](#metodo-rufus)
 
 * [macrecovery.py](https://github.com/acidanthera/OpenCorePkg/releases)
-  * This will require [Python installed](https://www.python.org/downloads/)
+  * Richiederà [l'installazione di Python](https://www.python.org/downloads/)
 
-## Downloading macOS
+## Scaricare macOS
 
-To grab legacy installers is super easy, first grab a copy of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) and head to `/Utilities/macrecovery/`. Next copy the folder path for the macrecovery folder:
+Ottenere vecchi installer è superfacile, per prima cosa trascina una copia di [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) e vai in `/Utilities/macrecovery/`. Dopo copia il percorso della cartella:
 
 ![](../images/installer-guide/winblows-install-md/file-path.png)
 
-From here, you'll want to open up a Command Prompt and cd into the macrecovery folder that we copied earlier:
+Da qui, apri una finestra del Prompt dei Comandi e cd fino alla cartella macrecovery copiata prima:
 
 ```sh
 cd Paste_Folder_Path
@@ -27,7 +27,7 @@ cd Paste_Folder_Path
 
 ![](../images/installer-guide/winblows-install-md/command-prompt.png)
 
-Now run one of the following depending on what version of macOS you want(Note these scripts rely on [Python](https://www.python.org/downloads/) support, please install if you haven't already):
+Ora avvia uno dei seguenti comandi a seconda della versione di macOS che tu vuoi (NOTA che questo script si basa su [Python](https://www.python.org/downloads/), installalo se non l'hai fatto):
 
 ```sh
 # Lion(10.7):
@@ -64,11 +64,11 @@ python macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
 python macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 ```
 
-* **macOS 11, Big Sur Note**: As this OS is quite new, there's still some issues with certain systems to resolve. For more information, see here: [OpenCore and macOS 11: Big Sur](../extras/big-sur/README.md)
-  * For first time users, we recommend macOS 10.15, Catalina
-* **Nvidia GPU Note**: Reminder to verify whether your hardware support newer OSes, see [Hardware Limitations](../macos-limits.md)
+* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](../extras/big-sur/README.md)
+  * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
+* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](../macos-limits.md)
 
-This will take some time, however once you're finished you should get either BaseSystem or RecoveryImage files:
+Ci metterà un po' di tempo, tuttavia quando hai finito dovresti avere i file o BaseSystem o RecoveryImage:
 
 ![](../images/installer-guide/winblows-install-md/macrecovery-done.png)
 
@@ -76,77 +76,77 @@ This will take some time, however once you're finished you should get either Bas
 | :--- | :--- |
 |![](../images/installer-guide/winblows-install-md/basesystem-example.png) | ![](../images/installer-guide/winblows-install-md/macrecovery-after.jpg) |
 
-Now with our installer downloaded, we'll next want to format out USB.
+Ora con l'installer scaricato, dobbiamo formattare la USB.
 
-## Making the installer
+## Creare l'installer
 
-Here we'll be formatting our USB and adding macOS onto it, we have 2 options:
+Qui dobbiamo formattare la nostra USB e aggiungerci macOS, abbiamo 2 optioni:
 
-* [Disk Management method](#disk-management-method)
-  * GUI Based, simplest way
-  * Only UEFI systems are supported(ex. 2012+)
-* [Rufus method](#rufus-method)
-  * GUI Based, simplest way
-  * For larger USB drives(16GB+)
-* [diskpart method](#diskpart-method)
-  * Command line based, little more work
-  * Required for legacy systems(ie. non-UEFI, pre-2012)
+* [Metodo Gestione Disco](#metodo-gestione-disco)
+  * Basato su interfaccia grafica, metodo più semplice
+  * Solo sistemi UEFI supportati (2012+)
+* [Metodo Rufus](#metodo-rufus)
+  * Basato su interfaccia grafica, metodo più semplice
+  * Per USB più grandi (16GB+)
+* [Metodo diskpart](#metodo-diskpart)
+  * Basato su linea di comando, più lavoro da fare
+  * Richiesto per sistemi legacy (non-UEFI, prima del 2012)
 
-### Disk Management method
+### Metodo Gestione Disco
 
-Simply open up Disk Management, and format your USB as FAT32:
+Semplicemente apri Gestione Disco e formatta la USB come FAT32:
 
-1. Right click the Start Button on your task bar and select Disk Management.
-2. You should see all of your partitions and disks. On the bottom half, you'll see your devices. Find your USB.
-3. You'll want to format the USB to have a FAT32 partition.
+1. Click destro sul pulsante Start sulla barra delle applicazioni e seleziona Gestione Disco.
+2. Dovresti vedere tutte le tue partizioni e i dischi. Sulla metà bassa, ci sono i tuoi dispositivi. Trova la tua USB.
+3. Formattala in modo da avere una partizione in FAT32.
 
-* If you have multiple partitions on the USB, right click each partition and click Delete Volume for your USB (This will remove data, make sure you have backups and only remove partitions from your USB)
-  * Right click the unallocated space and create a new simple volume. Make sure it is FAT32 and at least a gigabyte or two big. Name it "EFI".
-* Otherwise, right click the partition on the USB and click Format and set it to FAT32.
+* Se hai più partizioni nella USB, fai un click destro su ogni partizione e seleziona Cancella Volume (Questo rimuoverà tutti i dati, assicurati di aver fatto un backup e di rimuovere solo le partizioni della tua USB)
+  * Fai un click destro sullo spazio non allocato e crea un volume semplice. Assicurati che sia formattata in FAT32 e falla grande almeno un gigabyte or due. Chiamala "EFI".
+* Se non è il caso, fai un click destro sulla partizione della USB e clicca su Formatta e impostala in FAT32.
 
 ![](../images/installer-guide/winblows-install-md/DiskManagement.jpg)
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-### Rufus method
+### Metodo Rufus
 
-1. Download [Rufus](https://rufus.ie/)
-2. Set the BOOT selection as not bootable
-3. Set File System as Large FAT32
-4. Click Start
-5. Delete all file autorun in USB Drive partition
+1. Scarica [Rufus](https://rufus.ie/it/)
+2. Seleziona la selezione boot come non avviabile
+3. Seleziona il File System come Large FAT32
+4. Seleziona Avvia
+5. Cancella tutti i file autorun nella partizione USB
 
 ![](../images/installer-guide/winblows-install-md/format-usb-rufus.png)
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-### diskpart method
+### Metodo diskpart
 
-::: details diskpart method
+::: details Metodo diskpart
 
-Press Windows + R and enter `diskpart`.
+Premi Windows + R e digita `diskpart`.
 
-Now run the following:
+Ora usa i seguenti comandi:
 
 ```sh
 # List available disks
@@ -169,48 +169,48 @@ format fs=fat32 quick
 ASSIGN LETTER=E
 ```
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-::: details Legacy Install Setup
+::: details Setup Installer Legacy
 
-If your firmware does not support UEFI, see below instructions:
+Se il tuo firmware non supporta UEFI, vedi la sezione qua sotto:
 
-To start, you'll need the following:
+Per iniziare, abbiamo bisogno di:
 
-* [7-Zip](https://www.7-zip.org)
+* [7-Zip](https://www.7-zip.org/)
 * [BOOTICE](https://www.majorgeeks.com/files/details/bootice_64_bit.html)
 * [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
 
-Next, open up BOOTICE and ensure you've selected the right drive.
+Dopo, apri BOOTICE e assicurati che sia selezionato il disco corretto.
 
 ![](../images/installer-guide/winblows-install-md/bootice.png)
 
-Next, enter "Process MBR" then select "Restore MBR" and select the **boot0** file from `Utilities/LegacyBoot/` in OpenCorePkg:
+Dopo, seleziona "Process MBR" e dopo "Restore MBR" e seleziona il file **boot0** da `Utilities/LegacyBoot/` nel OpenCorePkg:
 
-| Restore MBR | Restore boot0 file |
+| Ripristino MBR | Ripristino file boot0 |
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-mbr.png) | ![](../images/installer-guide/winblows-install-md/restore-mbr-file.png) |
 
-Then head back to the main screen and select "Process PBR" then "Restore PBR". From here, choose the **Boot1f32** file from `Utilities/LegacyBoot/` in OpenCorePkg:
+Dopo torna alla schermata principale e seleziona "Process PBR", dopo "Restore PBR". Da qui, scegli il file **Boot1f32** da `Utilities/LegacyBoot/` sempre nel OpenCorePkg:
 
-| Restore PBR | Restore boot1f32 file |
+| Ripristino PBR | Ripristino file boot1f32 |
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-pbr.png) | ![](../images/installer-guide/winblows-install-md/restore-pbr-file.png) |
 
-Once this is done, head back to your USB and do 1 final thing. Grab either the **bootx64**(64 Bit CPUs) or **bootia32**(32 Bit CPUs) file from `Utilities/LegacyBoot/` and place it on the root of your drive. **Rename this file to boot** to ensure DuetPkg can properly:
+Una volta finito, torna alla tua USB e fai un'ultima cosa. Trascina il file **bootx64**(CPU a 64 Bit) o **bootia32**(CPU a 32 Bit) da `Utilities/LegacyBoot/` e piazzalo nella radice della USB. **Rinominalo come boot** per assicurarti che DuetPkg funzioni correttamente:
 
 ![](../images/installer-guide/winblows-install-md/final-boot-file.png)
 
 :::
 
-## Now with all this done, head to [Setting up the EFI](./opencore-efi.md) to finish up your work
+## Ora che tutto questo è fatto, vai a [Configurare la EFI](./opencore-efi.md) per finire il tuo lavoro
