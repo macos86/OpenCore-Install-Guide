@@ -30,7 +30,7 @@ In dipendenza da che sistema operativo stai usando, guarda la tua specifica sezi
   * Supporto da OS X 10.7 alla versione attuale
   * Solo installer Online
   * Supporto sia per installazioni legacy e UEFI
-* [Utenti (UEFI) Linux ](../installer-guide/linux-install.md)
+* [Utenti (UEFI) Linux](../installer-guide/linux-install.md)
   * Supporto da OS X 10.7 alla versione attuale
   * Solo installer Online
   * Fatto per macchine che supportano l'avvio UEFI
