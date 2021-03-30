@@ -1,36 +1,36 @@
-# Creating the USB
+# Creare la USB
 
-* Supported version: 0.6.7
+* Versione supportata: 0.6.7
 
-Requirements:
+Requisiti:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), highly recommend running the debug version to show more info
-* [ProperTree](https://github.com/corpnewt/ProperTree) to edit .plist files (OpenCore Configurator is another tool but is heavily outdated and the Mackie version is known for corruption. **Please avoid these kinds of tools at all costs!**).
-* You must remove Clover from your system entirely if you wish to use OpenCore as your main boot-loader. Keep a backup of your Clover based EFI. See here on what needs to be cleaned: [Clover Conversion](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), altamente raccomandato l'uso della versione di debug per avere più informazioni
+* [ProperTree](https://github.com/corpnewt/ProperTree) per modificare i file .plist (OpenCore Configurator è un altro strumento, ma è veramente poco aggiornato e le versioni di Mackie sono famose per corrompersi. **Evita questo tipo di strumenti ad ogni costo!**).
+* Devi rimuovere Clover interamente dal tuo sistema se vuoi usare OpenCore come bootloader principale. Mantieni un backup della tua EFI di Clover. Guarda qui cosa serve che sia pulito: [Clover Conversion (EN)](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
 
-### Online vs Offline Installer
+### Installer Online vs Offline
 
-Offline installers have a complete copy of macOS, while online installers are only a recovery image (~500MB) which then download macOS from Apple servers once booted.
+Gli installer Offline hanno una copia completa di macOS, mentre gli installer Online contengono solo un'immagine di recovery (~500MB) che scarica dai server Apple il resto dell'immagine una volta avviato.
 
 * Offline
-  * Can only be made in macOS
-  * Windows/Linux do not have the APFS/HFS drivers needed to assemble a full installer
+  * Possibile farli solo in macOS
+  * Windows/Linux non hanno i driver APFS/HFS necessari per assemblare un'installer completo
 * Online
-  * Can be made in macOS/Linux/Windows
-  * Requires a working internet connection via a macOS supported network adapter on the target machine
+  * Possibile farlo da macOS/Linux/Windows
+  * Richiede una connessione internet tramite un adattatore di rete supportato da macOS sull'Hackintosh
 
-### Making the Installer
+### Creare l'installer
 
-Depending on which OS you're on, see your specific section on making the USB:
+In dipendenza da che sistema operativo stai usando, guarda la tua specifica sezione per costruire la USB:
 
-* [macOS users](../installer-guide/mac-install.md)
-  * Supports OS X 10.4 to current
-  * Supports both legacy and UEFI installs
-* [Windows users](../installer-guide/winblows-install.md)
-  * Supports OS X 10.7 to current
-  * Online installer only
-  * Supports both legacy and UEFI installs
-* [Linux users(UEFI)](../installer-guide/linux-install.md)
-  * Supports OS X 10.7 to current
-  * Online installer only
-  * Meant for machines supporting UEFI Boot
+* [Utenti macOS](../installer-guide/mac-install.md)
+  * Supporto da OS X 10.4 alla versione attuale
+  * Supporto sia per installazioni legacy e UEFI
+* [Utenti Windows](../installer-guide/winblows-install.md)
+  * Supporto da OS X 10.7 alla versione attuale
+  * Solo installer Online
+  * Supporto sia per installazioni legacy e UEFI
+* [Utenti (UEFI) Linux ](../installer-guide/linux-install.md)
+  * Supporto da OS X 10.7 alla versione attuale
+  * Solo installer Online
+  * Fatto per macchine che supportano l'avvio UEFI

@@ -1,12 +1,12 @@
-# Legacy macOS: Online method
+# Legacy macOS: metodo Online
 
-This method allows us to download legacy versions of macOS including 10.7 to current, however these are only recovery installers so require an internet connection inside the installer itself
+Questo metodo ci permette di scaricare vecchie versioni di macOS da 10.7 a quella attuale, tuttavia sono solo recovery installer che richiedono una connessione internet nell'installer stesso
 
-To start, you'll want to use macrecovery.py instead. This tool is actually already bundled in OpenCorePkg:
+Per iniziare, dovrai usare macrecovery.py. Questo tool è incluso con OpenCorePkg:
 
 ![](../images/installer-guide/legacy-mac-install-md/macrecovery.png)
 
-Instructions for running are quite simple, choose from one of the below commands depending on which OS you want to download:
+Le istruzioni per avviarlo sono abbastanza semplici, scegli quella corretta per il tuo sistema operativo da sotto:
 
 ```sh
 # Lion(10.7):
@@ -43,16 +43,16 @@ python ./macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
 python ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 ```
 
-From here, run one of those commands in terminal and once finished you'll get an output similar to this:
+Da qui, avvia uno di questi comandi nel terminale e una volta finito otterrai un output simile a questo:
 
 ![](../images/installer-guide/legacy-mac-install-md/download-done.png)
 
-Once this is done, format your USB as FAT32 with GUID Partition Scheme:
+Quando hai fatto, inizializza la tua USB con FAT32 e Mappa Partizioni GUID:
 
 ![](../images/installer-guide/legacy-mac-install-md/fat32-erase.png)
 
-And finally, create folder on the root of this drive called `com.apple.recovery.boot` and place the newly downloaded BaseSystem/RecoveryImage files in:
+Infine, crea una cartella nella root della tua chiavetta e chiamala `com.apple.recovery.boot`; mettici dentro i file scaricati BaseSystem/RecoveryImage:
 
 ![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
-### Once you're finished, you can head to [Setting up OpenCore's EFI environment](./mac-install.md#setting-up-opencore-s-efi-environment)
+### Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
