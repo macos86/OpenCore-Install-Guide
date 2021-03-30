@@ -1,47 +1,47 @@
-# Legacy macOS: Offline method
+# Legacy macOS: metodo Offline
 
-This method allows us to download full installers from Apple, however is limited to 10.10, Yosemite, so older OSes will need to be grabbed via the "Online Method" mentioned below.
+Questo metodo ci permetterà di scaricare l'immagine direttamente dai server Apple, tuttavia è limitato a 10.10, Yosemite, perciò per sistemi più vecchi dovrai usare il "Metodo Online" mezionato sotto.
 
-To start, go to the following link:
+Per iniziare, vai al link sottostante:
 
-* [How to get old versions of macOS](https://support.apple.com/en-us/HT211683)
+* [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
 
-Download your desired version and a .pkg file should be provided.
+Scarica la versione scelta e dovresti ottenere un file .pkg.
 
-Depending on what OS you're on, you can run this script and head to [Setting up the installer](#setting-up-the-installer) however if you receive this error:
+A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](./mac-install.md#configurare-l'installer), tuttavia potresti ricevere questo errore:
 
 ![](../images/installer-guide/legacy-mac-install-md/unsupported.png)
 
-This means we'll need to manually extract the installer.
+Questo significa che dovremmo estrarre manualmente l'installer.
 
-### Extracting the Installer
+### Estrarre l'Installer
 
-To start, grab the InstallMacOSX/InstallOS.dmg and mount it:
+Per iniziare, trascina il InstallMacOSX/InstallOS.dmg e montalo:
 
 ![](../images/installer-guide/legacy-mac-install-md/mount.png)
 
-Next, let's open up terminal window and make a folder on our desktop to break things. Run one at a time:
+Dopo, apriremo una finestra di terminale e creeremo una finestra sulla scrivania. Usa questo comando una volta:
 
 ```sh
 cd ~/Desktop
 mkdir MacInstall && cd MacInstall
 ```
 
-Now we get to the fun part, extracting the installer(Note this may take a few minutes):
+Ora inizia la parte divertente, estrarre l'installer (Nota che potrebbe metterci alcuni minuti):
 
-* For El Capitan(10.11) and older:
+* Per El Capitan (10.11) o più vecchi:
 
 ```sh
 xar -xf /Volumes/Install\ OS\ X/InstallMacOSX.pkg
 ```
 
-* For Sierra(10.12):
+* Per Sierra (10.12):
 
 ```sh
 xar -xf /Volumes/Install\ macOS/InstallOS.pkg
 ```
 
-Next, run the following(one at a time):
+Dopo, usa i seguenti comandi(uno alla volta):
 
 * Yosemite:
 
@@ -70,4 +70,4 @@ mv InstallESD.dmg Install\ macOS\ Sierra.app/Contents/SharedSupport/
 mv Install\ macOS\ Sierra.app /Applications
 ```
 
-### Once you're finished, you can head to [Setting up the installer](./mac-install.md#setting-up-the-installer)
+### Quando hai finito, puoi passare a [Configurare l'installer](#configurare-l'installer)

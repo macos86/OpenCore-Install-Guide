@@ -1,10 +1,10 @@
-# Legacy macOS: Disk Images
+# Legacy macOS: Immagine Disco
 
-This method instead relies on hosted images either from Apple or Acidanthera, and restoring onto your drive.
+Questo metodo usa immagini tenute da Apple o da Acidanthera, e che vengono ripristinate sul tuo disco.
 
-#### Acidanthera Images
+#### Immagini Acidanthera
 
-The below installers were pulled from genuine Mac restore disks with their SMBIOS lock removed, contents of OS X itself have not been modified in any way.
+Gli installer qua sotto sono stati caricati da recovery con Mac genuini e senza SMBIOS, i contenuti di OS X non sono stati modificati in nessuna maniera.
 
 * [OS X 10.4.10(8R4088)](https://archive.org/details/10.4.10-8-r-4088-acdt)[MEGA Mirror](https://mega.nz/folder/D3ASzLzA#7sjYXE2X09f6aGjol_C7dg)
 
@@ -12,58 +12,58 @@ The below installers were pulled from genuine Mac restore disks with their SMBIO
 
 * [OS X 10.6.7(10J4139)](https://archive.org/details/10.6.7-10j3250-disk-images)[MEGA Mirror](https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug/file/ioQkTagI)
 
-#### Apple Images
+#### Immagini Apple
 
-Note that these images require you to have an Apple Developer account to access.
+Nota che queste immagini richiedono che tu abbia accesso ad un account Apple Developer.
 
 * [OS X 10.5.0 Golden Master(9a581)](https://download.developer.apple.com/Mac_OS_X/mac_os_x_v10.5_leopard_9a581/leopard_9a581_userdvd.dmg)
 
 * [OS X 10.6.0 Golden Master(10a432)](https://download.developer.apple.com/Mac_OS_X/mac_os_x_version_10.6_snow_leopard_build_10a432/mac_os_x_v10.6_build_10a432_user_dvd.dmg)
 
-### Restoring the drive
+### Applicarle su un disco
 
-Now comes the fun part, you'll first want to open the dmg you just downloaded and have it mounted. Now open Disk Utility and format your drive as macOS Extended(HFS+) with a GUID partition map:
+Ora arriva la parte divertente, per prima cosa dovrai aprire il dmg scaricato e averlo montato. Ora apri Utility Disco e formatta il disco come macOS Esteso (HFS+) con una mappa partizioni GUID:
 
-![Formatting the USB](../images/installer-guide/mac-install-md/format-usb.png)
+![Formattare la USB](../images/installer-guide/mac-install-md/format-usb.png)
 
-Next we have 2 options to follow:
+Ora hai due opzioni per procedere:
 
 * [ASR Restore](#asr)(Apple Software Restore)
-  * Terminal based, works with SIP enabled
-* [Disk Utility Restore](#disk-utility)
-  * May require SIP disabled in newer OSes
+  * Basato su terminale, funziona col SIP abilitato
+* [Ripristino Disk Utility](#disk-utility)
+  * Potrebbe richiedere di disabilitare il SIP in sistemi recenti
   
 #### ASR
 
-Here you'll simply want to open terminal and run the following:
+Qui semplicemente copia e incolla il comando in una finestra di terminale:
 
 ```sh
 sudo asr restore -source /Volumes/Mac\ OS\ X\ Install\ DVD  -target /Volumes/MyVolume -erase -noverify
 ```
 
-* **Note**: This may not align with your setup, please change accordingly:
-  * Change `/Volumes/Mac\ OS\ X\ Install\ DVD` to what your mounted Disk Image is called
-  * Change `/Volumes/MyVolume` to what your USB is called
+* **Note**: Questo non è il tuo setup, per favore cambia le impostazioni in maniera simile:
+  * Cambia `/Volumes/Mac\ OS\ X\ Install\ DVD` a come il dmg montato si chiamerà
+  * Cambia `/Volumes/MyVolume` a come la USB si chiamerà
 
-### Once you're finished, you can head to [Setting up OpenCore's EFI environment](./mac-install.md#setting-up-opencore-s-efi-environment)
+### Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
   
 #### Disk Utility
 
-Due to some pesky issues with Disk Utility, many restores can fail if SIP is enabled. If you have issues we recommend either using the [ASR Method](#asr) or disable SIP.
+A causa di alcuni problemi stranissimi con Utility Disco, alcuni ripristini possono fallire se il SIP è abilitato. Se hai problemi ti consigliamo di usare il [Metodo ASR](#asr) oppure disabilitare il SIP.
 
-To start, open Disk Utility and you should see both your USB drive and the Disk Image in the sidebar. From here, select restore
+Per iniziare, apri Utility Disco e dovresti vedere sia la tua USB e l'Immagine Disco sulla barra laterale. Da qui, seleziona Ripristina
 
 ![](../images/installer-guide/legacy-mac-install-md/pre-restore.png)
 ![](../images/installer-guide/legacy-mac-install-md/restore.png)
 
-::: details Troubleshooting
+::: details Risoluzione dei problemi
 
-If you get an error such as this one during restore:
+Se ottieni questo tipo di errore durante il ripristino:
 
 ![](../images/installer-guide/legacy-mac-install-md/sip-fail.png)
 
-This likely means SIP needs to be disabled, however we recommend using [ASR Method](#asr) instead.
+Questo significa che il SIP deve essere disabilitato, invece raccomandiamo l'uso del [Metodo ASR](#asr).
 
 :::
 
-### Once you're finished, you can head to [Setting up OpenCore's EFI environment](./mac-install.md#setting-up-opencore-s-efi-environment)
+### Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
