@@ -25,4 +25,5 @@ Per favore ricorda che OpenCore è ancora nuovo e correntemente in beta. Tuttavi
 
 Infine, se hai problemi puoi sempre visitare [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) e [r/Hackintosh Discord](https://discord.gg/u8V7N5C) per ulteriore aiuto.
 
-## Ricordiamo che questa è una traduzione non UFFICIALE!!! Se vuoi vedere l'originale, visita [Dortania](dortania.github.io). Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina.
+## Ricordiamo che questa è una traduzione non UFFICIALE!!!
+Se vuoi vedere l'originale, visita [Dortania](https://dortania.github.io). Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina o visita la pagina su [GitHub](https://github.com/macos86/OpenCore-Install-Guide).
