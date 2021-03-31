@@ -1,110 +1,110 @@
-# config.plist Setup
+# Setup del config.plist
 
-Now that we've got all our Kexts(.kext), SSDTs(.aml) and firmware drivers(.efi), your USB should start to look something like this:
+Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (.efi), la tua USB potrebbe apparire qualcosa come questo:
 
-![Populated EFI folder](../images/installer-guide/opencore-efi-md/populated-efi.png)
+![Cartella EFI popolata](../images/installer-guide/opencore-efi-md/populated-efi.png)
 
-* **Note**: Your USB **will look different**, everyone's system will have different requirements.
+* **Nota**: La tua USB **sarà diversa**, ogni sistema ha requisiti differenti.
 
-## Creating your config.plist
+## Creare il tuo config.plist
 
-First we'll want to grab the sample.plist from the [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), this will be located under the `Docs` folder:
+Per prima cosa prenderemo il sample.plist da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), sarà allocato nella cartella `Docs`:
 
 ![](../images/config/config-universal/sample-location.png)
 
-Next lets move it onto our USB's EFI partition(will be called BOOT on Windows) under `EFI/OC/`, and rename it to config.plist:
+Ora muoviamolo nella partizione EFI della USB (si chiamerà BOOT in Windows) dentro `EFI/OC/`, e rinominalo come config.plist:
 
 ![](../images/config/config-universal/renamed.png)
 
-## Adding your SSDTs, Kexts and Firmware Drivers
+## Aggiungere i tuoi SSDT, Kext e Driver del Firmware
 
-For the rest of this guide, you're gonna need some form of plist editing. And for our guide, we'll be using ProperTree and GenSMBIOS to help automate some of the tedious work:
+Per il resto della guida, avrai bisogno di qualche forma di plist editing. Per questa guida, useremo ProperTree e GenSMBIOS per automatizzare un po' di compiti tediosi:
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
-  * Universal plist editor
+  * Plist editor universale
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-  * For generating our SMBIOS data
+  * Per generare le nostre specifiche di SMBIOS
 
-Next, let's open ProperTree and edit our config.plist:
+Ora, apriamo ProperTree e modifichiamo il nostro config.plist:
 
 * `ProperTree.command`
-  * For macOS
-  * Pro tip: there's a `buildapp.command` utility in the `Scripts` folder that lets you turn ProperTree into a dedicated app in macOS
+  * Per macOS
+  * Suggerimento: c'è una utility chiamata `buildapp.command` nella cartella `Scripts` che ti permette di trasformare ProperTree in un'app dedicata per macOS
 * `ProperTree.bat`
-  * For Windows
+  * Per Windows
 
-Once ProperTree is running, open your config.plist by pressing **Cmd/Ctrl + O** and selecting the `config.plist` file on your USB.
+Una volta che ProperTree è avviato, apri il tuo config.plist premendo **Cmd/Ctrl + O** e selezionando il file `config.plist` sulla tua USB.
 
-After the config is opened, press **Cmd/Ctrl + Shift + R** and point it at your EFI/OC folder to perform a "Clean Snapshot":
+Dopo che hai aperto il config, premi **Cmd/Ctrl + Shift + R** e seleziona la tua cartella EFI/OC per applicare un "Clean Snapshot":
 
-* This will remove all the entries from the config.plist and then adds all your SSDTs, Kexts and Firmware drivers to the config
-* **Cmd/Ctrl + R** is another option that will add all your files as well but will leave entries disabled if they were set like that before, useful for when you're troubleshooting but for us not needed right now
+* Questo rimuoverà tutte le sezioni inutili dal tuo config.plist e successivamente aggiungerà SSDT, Kext e Driver Firmware al config.
+* **Cmd/Ctrl + R** è un'altra opzione che ti aggiungerà i file, ma lascerà le sezioni inutili disabilitate come erano prima, utile quando hai bisogno di risolvere problemi, ma non usato da noi ora
 
 ![](../images/config/config-universal/before-snapshot.png)
 
-Once done, you'll see your SSDTs, Kexts and firmware drivers populated in the config.plist:
+Quando hai fatto, vedrai i tuoi SSDT, Kext e driver firmware applicati nel tuo config.plist:
 
 ![](../images/config/config-universal/after-snapshot.png)
 
-* **Note:** If you get a pop up "Disable the following kexts with Duplicate CFBundleIdentifiers?", press "Yes". This is to ensure you don't have duplicate kexts being injected, as some kexts may have some of the same plugins(ie. VoodooInput is in both VoodooPS2 and VoodooI2C's plugin folder)
+* **Nota:** Se ottieni un pop up "Disable the following kexts with Duplicate CFBundleIdentifiers?", seleziona "Yes". Questo assicura che tu non abbia kext duplicati, dato che a volte i kext hanno lo stesso plugin (VoodooInput sia nei plugin di VoodooPS2 che di VoodooI2C)
 
 ![](../images/config/config-universal/duplicate.png)
 
-If you wish to clean up the file a bit, you can remove the `#WARNING` entries. Though they cause no issues staying there, so up to personal preference.
+Se vuoi continuare la pulizia del file, puoi rimuovere la sezioni `#WARNING`. Attraverso quelle non creerai nessun problema, sono solo per preferenza personale.
 
-## Selecting your platform
+## Scegliere la tua piattaforma
 
-Now comes the important part, selecting the configuration path. Each platform has their own unique quirks that you need to account for so knowing your hardware is super important. See below for what to follow:
+Ora arriva la parte importante, selezionare la tua configurazione. Ogni piattaforma ha caratteristiche uniche per cui sapere il tuo hardware è super importante. Vedi sotto per seguire:
 
-### Intel Desktop
+### Desktop Intel
 
-* Note: Intel's NUC series are considered mobile hardware, for these situations we recommend following the [Intel Laptop Section](#intel-laptop)
+* Nota: I NUC della Intel sono considerati dispositivi portatili, per queste situazioni devi seguire la [Sezione Laptop Intel](#intel-laptop)
 
-| Code Name | Series | Release |
+| Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Yonah, Conroe and Penryn](../config.plist/penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
-| [Lynnfield and Clarkdale](../config.plist/clarkdale.md) | 5XX-8XX | 2010 era |
-| [Sandy Bridge](../config.plist/sandy-bridge.md) | 2XXX | 2011 era |
-| [Ivy Bridge](../config.plist/ivy-bridge.md) | 3XXX | 2012 era |
-| [Haswell](../config.plist/haswell.md) | 4XXX | 2013-2014 era |
-| [Skylake](../config.plist/skylake.md) | 6XXX | 2015-2016 era |
-| [Kaby Lake](../config.plist/kaby-lake.md) | 7XXX | 2017 era |
-| [Coffee Lake](../config.plist/coffee-lake.md) | 8XXX-9XXX | 2017-2019 era |
-| [Comet Lake](../config.plist/comet-lake.md) | 10XXX | 2020 era |
+| [Yonah, Conroe e Penryn](../config.plist/penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
+| [Lynnfield and Clarkdale](../config.plist/clarkdale.md) | 5XX-8XX | era 2010 |
+| [Sandy Bridge](../config.plist/sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](../config.plist/ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](../config.plist/haswell.md) | 4XXX | era 2013-2014 |
+| [Skylake](../config.plist/skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake](../config.plist/kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake](../config.plist/coffee-lake.md) | 8XXX-9XXX | era 2017-2019 |
+| [Comet Lake](../config.plist/comet-lake.md) | 10XXX | era 2020 |
 
-### Intel Laptop
+### Laptop Intel
 
-| Code Name | Series | Release |
+| Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Clarksfield and Arrandale](../config-laptop.plist/arrandale.md) | 3XX-9XX | 2010 era |
-| [Sandy Bridge](../config-laptop.plist/sandy-bridge.md) | 2XXX | 2011 era |
-| [Ivy Bridge](../config-laptop.plist/ivy-bridge.md) | 3XXX | 2012 era |
-| [Haswell](../config-laptop.plist/haswell.md) | 4XXX | 2013-2014 era |
-| [Broadwell](../config-laptop.plist/broadwell.md) | 5XXX | 2014-2015 era |
-| [Skylake](../config-laptop.plist/skylake.md) | 6XXX | 2015-2016 era |
-| [Kaby Lake and Amber Lake](../config-laptop.plist/kaby-lake.md) | 7XXX | 2017 era |
-| [Coffee Lake and Whiskey Lake](../config-laptop.plist/coffee-lake.md) | 8XXX | 2017-2018 era |
-| [Coffee Lake Plus and Comet Lake](../config-laptop.plist/coffee-lake-plus.md) | 9XXX-10XXX | 2019-2020 era |
-| [Ice Lake](../config-laptop.plist/icelake.md) | 10XXX | 2019-2020 era |
+| [Clarksfield e Arrandale](../config-laptop.plist/arrandale.md) | 3XX-9XX | era 2010 |
+| [Sandy Bridge](../config-laptop.plist/sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](../config-laptop.plist/ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](../config-laptop.plist/haswell.md) | 4XXX | era 2013-2014 |
+| [Broadwell](../config-laptop.plist/broadwell.md) | 5XXX | era 2014-2015 |
+| [Skylake](../config-laptop.plist/skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake e Amber Lake](../config-laptop.plist/kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake e Whiskey Lake](../config-laptop.plist/coffee-lake.md) | 8XXX | era 2017-2018 |
+| [Coffee Lake Plus e Comet Lake](../config-laptop.plist/coffee-lake-plus.md) | 9XXX-10XXX | era 2019-2020 |
+| [Ice Lake](../config-laptop.plist/icelake.md) | 10XXX | era 2019-2020 |
 
-### Intel HEDT
+### HEDT Intel
 
-This section includes both enthusiast and server based hardware.
+Questa sezione include sia enthusiast computer e server.
 
-| Code Name | Series | Release |
+| Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Nehalem and Westmere](../config-HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | 2008-2010 era |
-| [Sandy/Ivy Bridge-E](../config-HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | 2011-2013 era |
-| [Haswell-E](../config-HEDT/haswell-e.md) | 5XXX | 2014 era |
-| [Broadwell-E](../config-HEDT/broadwell-e.md) | 6XXX | 2016 era |
-| [Skylake/Cascade Lake-X/W](../config-HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | 2017-2019 era |
+| [Nehalem and Westmere](../config-HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | era 2008-2010 |
+| [Sandy/Ivy Bridge-E](../config-HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | era 2011-2013 |
+| [Haswell-E](../config-HEDT/haswell-e.md) | 5XXX | era 2014 |
+| [Broadwell-E](../config-HEDT/broadwell-e.md) | 6XXX | era 2016 |
+| [Skylake/Cascade Lake-X/W](../config-HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | era 2017-2019 |
 
 ### AMD
 
-| Code Name | Series | Release |
+| Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Bulldozer/Jaguar](../AMD/fx.md) | [It's weird](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD was really bad with naming back then](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
-| [Zen](../AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | 2017-2020 era |
+| [Bulldozer/Jaguar](../AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
+| [Zen](../AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
 
-* Note: ~~Threadripper 3rd gen(39XX) are not supported, 1st and 2nd gen however are supported~~
-  * Latest BIOS and OpenCore version has resolved this issue, all Threadripper platforms are now supported
+* Note: ~~3° generazione (39XX), chiamate Threadripper, non sono supportate, la 1° e 2° generazione tuttavia sono supportate~~
+  * L'ultima versione del BIOS e di OpenCore ha risolto il problema, tutte le piattaforme Threadripper sono supportate
