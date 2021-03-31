@@ -140,7 +140,7 @@ Nel terminale:
 4. Scrivi `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<identificatore partizione da 200MB>` per formattare la partizione da 200MB come FAT32 e nominarla OPENCORE
 5. Dopo `cd` alla cartella `/OpenCore/Utilities/macrecovery/` e dovresti trovarci un file `.dmg` e uno `.chunklist`
    1. Monta la partizione della USB con `udisksctl` (`udisksctl mount -b /dev/<identificatore della USB>`, non serve sudo in molti casi) o con `mount` (`sudo mount /dev/<identificatore della USB> /where/your/mount/stuff`, sudo richiesto)
-   2.  `cd` nella tua USB e `mkdir com.apple.recovery.boot` nella radice della tua partizione formattata come FAT32
+   2. `cd` nella tua USB e `mkdir com.apple.recovery.boot` nella radice della tua partizione formattata come FAT32
    3. Scarica `dmg2img` (disponibile in quasi tutte le distro)
    4. Scrivi `dmg2img -l BaseSystem.dmg` e determina quale partizione ha la proprietà `disk image`
       ![](../images/installer-guide/linux-install-md/unknown-20.png)
