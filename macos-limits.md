@@ -72,7 +72,13 @@ Kernel Requirements:
 * OS X 10.8 e più recenti richiedono i kext a 64-bit dato che supportano solo un kernel a 64-bit
   * Digita `lipo -archs` per sapere quale architettura il tuo kext supporta (ricordati di eseguirlo sul binario, non sul bundle .kext)
 
-Note speciali:
+Core/Thread Count Limits:
+
+* OS X 10.10 and below may not boot with more than 24 threads (evident by a `mp_cpus_call_wait() timeout` panic)
+* OS X 10.11 and newer have a 64 thread limit
+* `cpus=` boot argument can be used as a workaround, or disabling hyperthreading
+
+Special Notes:
 
 * Lilu e plugin richiedono 10.8 o più recenti per operare
   * Raccomandiamo di usare FakeSMC per vecchie versioni di OS X
@@ -239,11 +245,14 @@ Per la maggior parte, tutti i dischi basati su SATA e la maggior parte di quelli
 
 Teoricamente tutti gli adattatori ethernet hanno qualche forma di supporto in macOS, ci sono driver ufficiali e quelli fatti dalla community. Le maggiori eccezioni:
 
-* Reti Intel's 2.5GBe i225
-  * Trovata in schede madri desktop Comet Lake di alto livello
-  * Le soluzioni sono possibili: [Fonte (DE)](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) and [Esempio](../config.plist/comet-lake.md#deviceproperties)
-* server NIC della Intel
-  * Le soluzioni sono possibili per i [chipset X520 e X540 (EN)](https://www.tonymacx86.com/threads/how-to-build-your-own-imac-pro-successful-build-extended-guide.229353/)
+* Intel I225 2.5Gb NIC
+  * Found on high-end Desktop Comet Lake boards
+  * Workarounds are possible: [Source](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) and [Example](config.plist/comet-lake.md#deviceproperties)
+* Intel I350 1Gb server NIC
+  * Normally found on Intel and Supermicro server boards of various generations
+  * [Workaround](config-HEDT/ivy-bridge-e.md#deviceproperties)
+* Intel 10Gb server NICs
+  * Workarounds are possible for [X520 and X540 chipsets](https://www.tonymacx86.com/threads/how-to-build-your-own-imac-pro-successful-build-extended-guide.229353/)
 * Mellanox and Qlogic server NICs
 
 ## Connessione Wireless
