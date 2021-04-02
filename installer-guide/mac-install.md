@@ -8,7 +8,7 @@ Per iniziare avremo bisogno di un installer di macOS. Puoi saltare questa sezion
 
 ## Scaricare macOS: Sistemi Moderni
 
-* Questo metodo ti permette di scaricare macOS 10.13 e più recenti, per 10.12 o meno recenti vedi [Scaricare macOS: Sistemi più vecchi](#scaricare-macos:-sistemi-più-vecchi)
+* Questo metodo ti permette di scaricare macOS 10.13 e più recenti, per 10.12 o meno recenti vedi [Scaricare macOS: Sistemi più vecchi](#scaricare-macos-sistemi-più-vecchi)
 
 Da una macchina macOS che supera i requisiti del sistema operativo che vuoi installare, vai direttamente nell'App Store e scarica il sistema operativo desiderato e continua alla sezione [**Configurare l'installer**](#configurare-l'installer).
 
