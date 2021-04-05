@@ -1,6 +1,6 @@
 # Creazione dell'installer in macOS
 
-* Versione supportata: 0.6.7
+* Versione supportata: 0.6.8
 
 Siccome spesso hai bisogno di un'installazione pulita, anche senza OpenCore, alcuni utenti preferirebbero un'aggiornamento su come scaricare gli aggiornamenti di macOS.
 

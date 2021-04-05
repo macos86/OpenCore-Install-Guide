@@ -7,7 +7,7 @@ actionLink: prerequisites.md
 
 meta:
 - name: description
-  content: Versione attualmente supportata 0.6.7
+  content: Versione attualmente supportata 0.6.8
 ---
 
 # Cos'è OpenCore e per chi è stata scritta questa guida
