@@ -1,6 +1,6 @@
 # Aggiungere i file di base
 
-* Versione supportata: 0.6.7
+* Versione supportata: 0.6.8
 
 Per impostare la struttura di OpenCore, dovrai prendere la EFI trovata nei [rilasci di OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/). Nota che saranno nelle cartelle IA32 o X64, rispettivamente per i Firmware a 32-bit e a 64-bit:
 

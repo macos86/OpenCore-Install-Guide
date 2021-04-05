@@ -1,6 +1,6 @@
 # Creare la USB
 
-* Versione supportata: 0.6.7
+* Versione supportata: 0.6.8
 
 Requisiti:
 
