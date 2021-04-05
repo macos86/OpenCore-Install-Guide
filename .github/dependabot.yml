@@ -5,11 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
- - package-ecosystem: "github-actions"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
