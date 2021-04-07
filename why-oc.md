@@ -1,154 +1,154 @@
-# Why OpenCore over Clover and others
+# Perché OpenCore invece di Clover e di altri
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-This section contains a brief rundown as to why the community has been transitioning over to OpenCore, and aims to dispel a few common myths in the community. Those who just want a macOS machine can skip this page.
+Questa sezione contiene un briefing riguardo al perché la comunità si sta trasferendo su OpenCore, e di smentire alcuni miti comuni nella comunità. Quelli che vogliono solo una macchina con macOS, possono saltare questa pagina.
 
-* [Why OpenCore over Clover and others](#why-opencore-over-clover-and-others)
-  * OpenCore features
-  * Software support
-  * Kext injection
-* [OpenCore's shortcomings](#opencore-s-shortcomings)
-* [Common Myths](#common-myths)
-  * Is OpenCore unstable as it's a beta?
-  * Does OpenCore always inject SMBIOS and ACPI data into other OSes?
-  * Does OpenCore require a fresh install?
-  * Does OpenCore only support limited versions of macOS?
+* [Perché OpenCore invece di Clover e di altri](#perche-opencore-invece-di-clover-e-di-altri)
+  * Funzionalità di OpenCore
+  * Supporto di programmi
+  * Iniezione dei Kext
+* [Brevi obiettivi di OpenCore](#brevi-obiettivi-di-opencore)
+* [Miti comuni](#miti-comuni)
+  * OpenCore non è stabile perché è una beta
+  * OpenCore inietta sempre il SMBIOS e i dati ACPI negli altri sistemi
+  * OpenCore richiede un'installazione pulita
+  * OpenCore supporta solo alcune versioni di macOS
 
-## OpenCore features
+## Funzionalità di OpenCore
 
-* More OS Support!
-  * OpenCore now supports more versions of OS X and macOS natively without painful hacks Clover and Chameleon had to implement
-  * This includes OSes as far back as 10.4, Tiger, and even the latest builds of 11, Big Sur!
-* On average, OpenCore systems boot faster than those using Clover as less unnecessary patching is done
-* Better overall stability as patches can be much more precise:
-  * [macOS 10.15.4 update](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
-  * AMD OSX patches not needing to update with every minor security update
-* Better overall security in many forms:
-  * No need to disable System Integrity Protection (SIP)
-  * Built-in FileVault 2 support
-  * [Vaulting](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault) allowing to create EFI snapshots preventing unwanted modifications
-  * True secure-boot support
-    * Both UEFI and Apple's variant
-* BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
-* Supports boot hotkey via `boot.efi` - hold `Option` or `ESC` at startup to choose a boot device, `Cmd+R` to enter Recovery or `Cmd+Opt+P+R` to reset NVRAM.
+* Supporto di più sistemi!
+  * OpenCore ora supporta nativamente più versioni di OS X e macOS senza penosi hack alla Clover o alla Chameleon da implementare
+  * Questo include sistemi fino alla 10.4, Tiger, e fino all'ultima compilazione della 11, Big Sur!
+* Nella media, i sistemi con OpenCore avviano più veloci rispetto a Clover, dato che vengono fatte meno patch
+* In generale più stabilità dato che le patch sono più precise:
+  * [macOS 10.15.4 update (EN)](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
+  * Le patch AMD OSX non hanno bisogno di aggiornarsi nei piccoli aggiornamenti di sicurezza
+* Più sicurezza in molte forme:
+  * Non necessario di disabilitare il System Integrity Protection (SIP)
+  * Il supporto per FileVault 2 integrato
+  * [Vault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault), che permette di creare delle immagini della EFI per evitare modifiche non volute
+  * Vero supporto al secure-boot
+    * Sia UEFI che Apple
+* Cambio dal BootCamp e selezione del dispositivo da una lettura delle variabili NVRAM impostate dal Disco di Avvio, come un vero Mac.
+* Supporto delle combinazioni di avvio del `boot.efi` - tenere `Option` o `ESC` all'avvio per scegliere il dispositivo di avvio, `Cmd+R` per entrare in Recovery o `Cmd+Opt+P+R` per fare un reset NVRAM.
 
-## Software Support
+## Supporto dei programmi
 
-The biggest reason someone may want to switch from other boot loaders is actually software support:
+La più grande ragione è che qualcuno che sta confrontando OpenCore con altri, è il supporto di molti programmi:
 
-* Kexts no longer testing for Clover:
-  * Got a bug with a kext? Many developers including the organization [Acidanthera](https://github.com/acidanthera) (maker of most of your favorite kexts) won't provide support unless on OpenCore
-* Many firmware drivers being merged into OpenCore:
-  * [APFS Support](https://github.com/acidanthera/AppleSupportPkg)
-  * [FileVault support](https://github.com/acidanthera/AppleSupportPkg)
-  * [Firmware patches](https://github.com/acidanthera/AptioFixPkg)
-* [AMD OSX patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
-  * Have AMD-based hardware? The kernel patches required to boot macOS no longer support Clover – they now only support OpenCore.
+* I kext non più testati su Clover:
+  * Hai un bug con un kext? Molti sviluppatori inclusa l'organizzazione [Acidanthera](https://github.com/acidanthera) (fautrice di tutti i tuoi kext preferiti) non provvederà supporto se non usi OpenCore
+* Molti driver del firmware sono stati integrati in OpenCore:
+  * [Supporto APFS](https://github.com/acidanthera/AppleSupportPkg)
+  * [Supporto FileVault](https://github.com/acidanthera/AppleSupportPkg)
+  * [Patch del Firmware](https://github.com/acidanthera/AptioFixPkg)
+* [Patch di AMD OSX](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
+  * Hai l'hardware basato su AMD? Le patch del kernel sono necessarie per avviare macOS e non supportano più Clover – ora supportano solo OpenCore.
 
-## Kext Injection
+## Iniezione dei Kext
 
-To better understand OpenCore's kext injection system, we should first look at how Clover works:
+Per capire il metodo di iniezione dei kext di OpenCore, dobbiamo vedere come lavora Clover:
 
-1. Patches SIP open
-2. Patches to enable XNU's zombie code for kext injection
-3. Patches race condition with kext injection
-4. Injects kexts
-5. Patches SIP back in
+1. Modifica il SIP per disabilitarlo
+2. Abilita il "XNU's zombie code" per iniettare i kext
+3. Modifica le condizioni per cui i kext sono iniettati
+4. Iniezione dei kext
+5. Riattivazione del SIP
 
-Things to note with Clover's method:
+Cose da ricordare col metodo Clover:
 
-* Calling XNU's zombie code that hasn't been used since 10.7, it's seriously impressive Apple hasn't removed this code yet
-  * OS updates commonly break this patch, like recently with 10.14.4 and 10.15
-* Disables SIP and attempts to re-enable it, don't think much needs to be said
-* Likely to break with macOS 11.0 (Big Sur)
-* Supports OS X all the way back to 10.5
+* Notiamo che il "XNU's zombie code" non viene usato ufficialmente dalla versione 10.7, è impressionante notare che Apple non ha ancora rimosso il codice
+  * Gli aggiornamenti del sistema di solito rompono questa patch, come recentemente 10.14.4 e 10.15
+* Disabilita SIP poi tenta di riabilitarlo, non so che cosa serva aggiungere
+* Sembra che disattivi gli aggiornamenti con macOS 11.0 (Big Sur)
+* Supporta gli OS X fino al 10.5
 
-Now let's take a look at OpenCore's method:
+Ora osserivamo il metodo OpenCore:
 
-1. Takes existing prelinked kernel and kexts ready to inject
-2. Rebuilds the cache in the EFI environment with the new kexts
-3. Adds this new cache in
+1. Prende il kernel collegato pre-esistente e i kext pronti ad essere iniettati
+2. Ricostruisce la cache della EFI con i nuovi kext
+3. Aggiunge questa nuova cache dentro il sistema
 
-Things to note with OpenCore's method:
+Cose da ricordare col metodo OpenCore:
 
-* OS agnostic as the prelinked kernel format has stayed the same since 10.6 (v2), far harder to break support.
-  * OpenCore also supports prelinked kernel (v1, found in 10.4 and 10.5), cacheless, Mkext and KernelCollections, meaning it also has proper support for all Intel versions of OS X/macOS
-* Far better stability as there is far less patching involved
+* Questo sistema è comodo dato che il kernel collegato pre-esistente è lo stesso dalla 10.6 (v2), diventa difficile toglierne il supporto.
+  * OpenCore tuttavia supporta anche lui un kernel pre-collegato (v1, trovato nella 10.4 e 10.5), cacheless, Mkext e KernelCollections, significa che supporta ogni versione con architettura intel di OS X/macOS
+* Migliore stabilità dato che ci sono meno patch da fare
 
-# OpenCore's shortcomings
+# Brevi obiettivi di OpenCore
 
-The majority of Clover's functionality is actually supported in OpenCore in the form of some quirk, however when transitioning you should pay close attention to OpenCore's missing features as this may or may not affect yourself:
+La maggior parte delle funzionalità di Clover attualmente sono supportate in OpenCore in qualche tipo di quirk, tuttavia mentre transizioni dovresti stare attento alle funzionalità che sono mancanti da OpenCore o che vorresti avere:
 
-* Does not support booting MBR-based operating systems
-  * Work around is to chain-load rEFInd once in OpenCore
-* Does not support UEFI-based VBIOS patching
-  * This can be done in macOS however
-* Does not support automatic DeviceProperty injection for legacy GPUs
-  * ie. InjectIntel, InjectNvidia and InjectAti
-  * This can be done manually however: [GPU patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
-* Does not support IRQ conflict patching
-  * Can be resolved with [SSDTTime](https://github.com/corpnewt/SSDTTime)
-* Does not support P and C state generation for older CPUs
-* Does not support Target Bridge ACPI patching
-* Does not support Hardware UUID Injection
-* Does not support auto-detection for many Linux bootloader
-  * Can be resolved by adding an entry in `BlessOverride`
-* Does not support many of Clover's XCPM patches
-  * ie. Ivy Bridge XCPM patches
-* Does not support hiding specific drives
-* Does not support changing settings within OpenCore's menu
-* Does not patch PCIRoot UID value
-* Does not support macOS-only ACPI injection and patching
+* Non supporta l'avvio dei sistemi basati su MBR
+  * Per aggirare è entrare in rEFInd da OpenCore
+* Non supporta i patch dei VBIOS basati su UEFI
+  * Questo tuttavia è supportato su macOS
+* Non supporta l'iniezione automatica dei DeviceProperty per le GPU vecchie
+  * come InjectIntel, InjectNvidia o InjectAti
+  * Tuttavia può essere fatto manualmente: [GPU patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* Non supporta il patch dei conflitti IRQ
+  * Risolvibile con [SSDTTime](https://github.com/corpnewt/SSDTTime)
+* Non supporta gli attributi P e C nelle CPU più vecchie
+* Non supporta le patch ACPI del Target Bridge
+* Non supporta l'iniezione dell'Hardware UUID
+* Non supporta il riconoscimento automatico per molti bootloader Linux
+  * Risolvibile aggiungendo un `BlessOverride`
+* Non supporta molte patch XCPM di Clover
+  * per esempio le patch XCPM per Ivy Bridge
+* Non supporta il nascondere specifici dischi
+* Non supporta cambiare le impostazioni dal menù di OpenCore
+* Non supporta le patch del valore PCIRoot UID
+* Non supporta iniezione/patch degli ACPI solo per macOS
 
-# Common Myths
+# Miti comuni
 
-## Is OpenCore unstable as it's a beta
+## OpenCore non è stabile perché è una beta
 
-Short Answer: No
+Risposta breve: No
 
-Long Answer: No
+Risposta lunga: No
 
-OpenCore's version number does not represent the quality of the project. Instead, it's more of a way to see the stepping stones of the project. Acidanthera still has much they'd like to do with the project including overall refinement and more feature support.
+Il numero che accompagna OpenCore non rappresenta la qualità del progetto. Infatti, è più difficile visualizzare i punti chiave del progetto. Acidanthera continua, come piace a noi, ad aggiungere rifinimenti e nuove funzionalità.
 
-For example, OpenCore goes through proper security audits to ensure it complies with UEFI Secure Boot, and is the only Hackintosh bootloader to undergo these rigorous reviews and have such support.
+Ad esempio, OpenCore passa attraverso adeguati controlli di sicurezza per assicurarsi che sia conforme a UEFI Secure Boot ed è l'unico bootloader di Hackintosh a sottoporsi a queste rigorose revisioni e ad avere tale supporto.
 
-Version 0.6.1 was originally designed to be the official release of OpenCore as it would have proper UEFI/Apple Secure Boot, and would be the 1 year anniversary of OpenCore's release as a public tool. However, due to circumstances around macOS Big Sur and the rewriting of OpenCore's prelinker to support it, it was decided to push off 1.0.0 for another year.
+La versione 0.6.1 è stata originariamente pensata per essere la prima versione ufficiale di OpenCore dato che ha proprio aggiunto UEFI/Apple Secure Boot, e sarebbe stato l'anno in cui OpenCore avrebbe festeggiato il primo rilascio come tool pubblico. Tuttavia, a causa di alcune circostanze legate a macOS Big Sur e la riscrittura del prelinker di OpenCore per supportarlo, è stato deciso di attendere un'altro anno per applicare la 1.0.0.
 
-Current road map:
+Il piano corrente:
 
-* 2019: Year of Beta
-* 2020: Year of Secure Boot
-* 2021: Year of Refinement
+* 2019: Anno della Beta
+* 2020: Anno del Secure Boot
+* 2021: Anno dei ritocchi Refinement
 
-So please do not see the version number as a hindrance, instead as something to look forward to.
+Quindi, per favore, non vedere il numero di versione come un ostacolo, piuttosto come qualcosa su cui riflettere.
 
-## Does OpenCore always inject SMBIOS and ACPI data into other OSes
+## OpenCore inietta sempre il SMBIOS e i dati ACPI negli altri sistemi
 
-By default, OpenCore will assume that all OSes should be treated equally in regards to ACPI and SMBIOS information. The reason for this thinking consists of three parts:
+Di default, OpenCore assumerà che tutti i sistemi dovrebbero essere trattati in maniera uniforme rispetto agli ACPI e alle informazioni SMBIOS. La ragione per questo pensiero consiste in tre parti:
 
-* This allows for proper multiboot support, like with [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
-* Avoids poorly made DSDTs and encourages proper ACPI practices
-* Avoids edge cases where info is injected several times, commonly seen with Clover
-  * i.e. How would you handle SMBIOS and ACPI data injection once you booted boot.efi, but then get kicked out? The changes are already in memory and so trying to undo them can be quite dangerous. This is why Clover's method is frowned upon.
+* Questo permette per un corretto supporto al multiboot, come con [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* Evitare i DSDT scarsi e incoraggiare le pratiche ACPI corrette
+* Evitare casi limite quando le informazioni sono iniettate diverse volte, comunemente successo con Clover
+  * Per esempio, come inietteresti i dati SMBIOS e ACPI una volta avviato boot.efi, ma dopo rischidando di essere buttato fuori? Le modifiche sono già nella memoria, rimuoverle può essere pericoloso. Questo è perché Clover è sconsigliato.
 
-However, there are quirks in OpenCore that allow for SMBIOS injection to be macOS-limited by patching where macOS reads SMBIOS info from. The `CustomSMIOSGuid` quirk with `CustomSMBIOSMode` set to `Custom` can break in the future and so we only recommend this option in the event of certain software breaking in other OSes. For best stability, please disable these quirks.
+Tuttavia, ci sono quirk in OpenCore che permettono di inettare il SMBIOS solo per macOS modificando da dove macOS legge le informazioni SMBIOS. Il quirk `CustomSMIOSGuid` con `CustomSMBIOSMode` impostato su `Custom` può causare break a lungo andare e perciò raccomandiamo questa opzione solo nel caso che certi sistemi non supportino il SMBIOS di macOS. Per maggiore stabilità, disabilita quei quirk.
 
-## Does OpenCore require a fresh install
+## OpenCore richiede un'installazione pulita
 
-Not at all in the event you have a "Vanilla" installation – what this refers to is whether the OS has tampered in any way, such as installing 3rd party kexts into the system volume or other unsupported modifications by Apple. When your system has been heavily tampered with, either by you or 3rd party utilities like Hackintool, we recommend a fresh install to avoid any potential issues.
+Nel caso in cui tu non abbia una installazione "Vanilla" – che si riferisce al lasciare il sistema immutato, senza installare strumenti/kext di terze parti nel volume di sistema o altre modifiche non supportate da Apple. Quando il tuo sistema viene pesantemente modificato, anche con utility di terze parti come Hackintool, raccomandiamo una installazione pulita per evitare potenziali errori.
 
-Special note for Clover users: please reset your NVRAM when installing with OpenCore. Many of Clover variables can conflict with OpenCore and macOS.
+Nota speciale per gli utenti Clover: per favore esegui un reset NVRAM quando installi OpenCore. Molte variabili di Clover possono entrare in conflitto con OpenCore o macOS.
 
-* Note: Thinkpad laptops are known to be semi-bricked after an NVRAM reset in OpenCore, we recommend resetting NVRAM by updating the BIOS on these machines.
+* Nota: I laptop Thinkpad sono famosi per essere semi-bricked dopo un reset NVRAM da OpenCore, raccomandiamo di aggiornare il BIOS in queste macchine, che prevede nel mezzo anche un NVRAM reset.
 
-## Does OpenCore only support limited versions of macOS
+## OpenCore supporta solo alcune versioni di macOS
 
-As of OpenCore 0.6.2, you can now boot every Intel version of macOS going all the way back to OS X 10.4! Proper support however will depend on your hardware, so please verify yourself: [Hardware Limitations](macos-limits.md)
+Da OpenCore 0.6.2, puoi avviare ogni versione Intel di macOS tornando indietro fino a OS X 10.4! Un supporto completo dipende dal tuo hardware, perciò verificalo da solo: [Limitazioni Hardware](macos-limits.md)
 
-::: details macOS Install Gallery
+::: details Galleria Installazioni macOS
 
-Acidanthera has tested many versions, and I myself have run many versions of OS X on my old HP DC 7900 (Core2 Quad Q8300). Here's just a small gallery of what I've tested:
+Acidanthera ha provato molte versione, e io stesso ho avviato molte versioni di OS X nel mio vecchio HP DC 7900 (Core2 Quad Q8300). Qua c'è una piccola galleria di cosa ho testato:
 
 ![](./images/installer-guide/legacy-mac-install-md/dumpster/10.4-Tiger.png)
 
@@ -174,32 +174,32 @@ Acidanthera has tested many versions, and I myself have run many versions of OS 
 
 :::
 
-## Does OpenCore support older hardware
+## OpenCore supporta hardware più vecchi
 
-As of right now, the majority of Intel hardware is supported so long as the OS itself does! However please refer to the [Hardware Limitations page](macos-limits.md) for more info on what hardware is supported in what versions of OS X/macOS.
+Ora come ora, la maggior parte degli hardware Intel è supportata dato che il sistema operativo stesso li supporta! Tuttavia per favore guarda la sezione [Limitazioni Hardware](macos-limits.md) per maggiori informazioni su quale hardware è supportato in quale versione di OS X/macOS.
 
-Currently, Intel's Yonah and newer series CPUs have been tested properly with OpenCore.
+Correntemente, le serie Intel Yonah o più recenti sono stati testati correttamente con OpenCore.
 
-## Does OpenCore support Windows/Linux booting
+## OpenCore supporta l'avvio di Linux/Windows
 
-OpenCore works in the same fashion as any other boot loader, so it respects other OSes the same way. For any OSes where their bootloader has an irregular path or name, you can simply add it to the BlessOverride section.
+OpenCore funziona alla stessa maniera di ogni altro boot loader, perciò rispetta anche gli altri sistemi. Per ogni sistema con bootloader con nomi o percorsi irregolari, puoi semplicemente aggiungerlo nella sezione BlessOverride.
 
-## Legality of Hackintoshing
+## Legalità dell'Hackintoshing
 
-Where hackintoshing sits is in a legal grey area, mainly that while this is not illegal we are in fact breaking the EULA. The reason this is not illegal:
+Mentre l'argomento hackintoshing respira aria grigia dal punto di vista legale, molti notano che questo allo stesso tempo non è illegale perché non stiamo infrangendo l'EULA. Le ragioni per cui non è illegale:
 
-* We are downloading macOS from [Apple's servers directly](https://github.com/acidanthera/OpenCorePkg/blob/0.6.8/Utilities/macrecovery/macrecovery.py#L125)
-* We are doing this as a non-profit origination for teaching and personal use
-  * People who plan to use their Hackintosh for work or want to resell them should refer to the [Psystar case](https://en.wikipedia.org/wiki/Psystar_Corporation) and their regional laws
+* Scarichiamo macOS dai [server Apple direttamente](https://github.com/acidanthera/OpenCorePkg/blob/0.6.8/Utilities/macrecovery/macrecovery.py#L125)
+* Lo facciamo in qualità di organizzazione non-profit per uso personale e informativo
+  * Chi pianifica di usare il proprio Hackintosh per lavoro o vuole rivenderli dovrebbero riferirsi al [caso Psystar](https://en.wikipedia.org/wiki/Psystar_Corporation) e alle loro leggi regionali
 
-While the EULA states that macOS should only be installed on real Macs([section 2B-i](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)) or virtual machines running on genuine Macs([section 2B-iii](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)), there is no enforceable law that outright bans this. However, sites that repackage and modify macOS installers do potentially risk the issue of [DMCA takedowns](https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) and such.
+Mentre l'EULA dichiara che macOS dovrebbe essere installato solo in Mac reali ([section 2B-i](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)) o macchine virtuali usate su veri Mac ([section 2B-iii](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)), non ci sono leggi che bandiscono questo. Tuttavia, i siti che reimpacchettano o modificano gli installer di macOS potrebbero potenzialmente rischiare di [DMCA takedowns](https://it.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) and such.
 
-* **Note**: We are not official legal advisors, so please make the proper assessments yourself and discuss with your lawyers if you have any concerns.
+* **Nota**: Non siamo consulenti legali, perciò fai le tue considerazioni da solo e discutendo col tuo avvocato se hai qualsiasi dubbio.
 
-## Does macOS support Nvidia GPUs
+## macOS supporta le GPU Nvdia
 
-Due to issues revolving around Nvidia support in newer versions of macOS, many users have somehow come to the conclusion that macOS never supported Nvidia GPUs and don't at this point. However, Apple actually still maintains and supports Macs with Nvidia GPUs in their latest OS, like the 2013 MacBook Pro models with Kepler GPUs.
+A causa di un problema riguardo al supporto Nvidia nelle nuove versioni di macOS, molti utenti hanno preso la notizia come se macOS non supporta e non supporterà mai le GPU Nvidia. Tuttavia, Apple attualmente mantiene e supporta alcuni Mac con GPU Nvidia nel loro sistema più vecchio, come i MacBook Pro del 2013 che hanno una GPU Kepler.
 
-The main issue has to do with any newer Nvidia GPUs, as Apple stopped shipping machines with them and thus they never had official OS support from Apple. Instead, users had to rely on Nvidia for 3rd party drivers. Due to issues with Apple's newly introduced Secure Boot, they could no longer support the Web Drivers and thus Nvidia couldn't publish them for newer platforms limiting them to mac OS 10.13, High Sierra.
+Questo problema è con ogni GPU Nvidia più nuova, dato che Apple ha smesso di vendere macchine con queste GPU e non avranno presto nessun supporto ufficiale da Apple. Invece, gli utenti hanno bisogno di affidarsi a driver di terze parti di Nvidia. A causa del Secure Boot introdotto da poco, non potevano più supportare questi Web Drivers e Nvidia non poteva più pubblicarli per piattaforme più nuove, limitandosi a macOS 10.13, High Sierra.
 
-For more info on OS support, see here: [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/)
+Per maggiori informazioni riguardo al supporto del sistema operativo, vedi qui: [GPU Buyers Guide (EN)](https://dortania.github.io/GPU-Buyers-Guide/)
