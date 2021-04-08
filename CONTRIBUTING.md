@@ -1,92 +1,92 @@
-# Supporting the guides
+# Supportare la guida
 
-**Note**: This is a community run guide which is not officially endorsed by Acidanthera. Please do not bug Acidanthera with issues about this guide.
+**Nota**: Questa comunità usa una guida non ufficialmente gestita da Acidanthera. Per favore non segnalare issue riguardo a questa guida ad Acidanthera.
 
-Want to help support the guide? Well there's some ways you can help!
+Vuoi aiutare supportando la guida? Bene ci sono molte modi in cui puoi aiutare!
 
-* [Contributing via Issues](#contributing-via-issues)
-* [Contributing via PRs](#contributing-via-prs)
-* [Contributing via Translations](#contributing-via-translations)
+* [Contribuire via Issue](#contribuire-via-issue)
+* [Contribuire via PR](#contribuire-via-pr)
+* [Contribuire via Traduzioni](#contribuire-via-traduzioni)
 
-Note: For those wanting to contribute financially, we seriously appreciate it but we're a non-profit organization. We do this to teach, not to make money. If you have some money left over we highly recommend donating it to a charity. [Crohn's and Colitis Canada](https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=en-CA&G=159&F=1097&T=GENER) is one we recommend if you have none on mind.
+Nota: Per chi vuole contribuire economicamente, veramente lo apprezziamo ma siamo un'organizzazione non-profit. Lo facciamo per insegnare, non per fare soldi. Se hai alcuni soldi rimasti, ti raccomandiamo altamente di donarli in carità. [Crohn's and Colitis Canada](https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=en-CA&G=159&F=1097&T=GENER) è ciò che raccomandiamo se non ne hai nessuno in mente.
 
-## Contributing via Issues
+## Contribuire via Issue
 
- Contributing via Issues is pretty simple but there are some rules:
+Contribuire via Issue è piuttosto semplice ma qui ecco alcune regole:
 
-* Keep issues tab dedicated to guides issues only, **no personal hackintosh issues**. It is not a place to discuss installation issues.
-* If for a typo or better clarification, please indicate what page it was on. Would appreciate not going for a scavenger hunt on where these issues are.
+* La zona issue è dedicata solo ai problemi della guida, **nessun issue del proprio hackintosh**. Non è un posto dove discutere i problemi di installazione.
+* Se è per un errore di trascrizione oppure un chiarimento, per favore indica in quale pagina sia. Lo apprezzeremmo per non andare noi a esplorare in quale pagina possa essere.
 
-You can find the bugtracker here: [Bugtracker](https://github.com/dortania/bugtracker)
+Puoi trovare il bugtracker qui: [Bugtracker](https://github.com/dortania/bugtracker)
 
-## Contributing via PRs
+## Contribuire via PR
 
-Some guidelines when contributing via PRs:
+Alcune linee guida quando contribuisci tramite PR:
 
-* Use your brain (please).
-* Proofread your submissions.
-* Pull Requests can be denied if we feel it does not fit or has inaccurate information. We will generally tell you why it is rejected though or ask for revisions.
-  * We would also appreciate sources for any bigger commits to make it easier on us to verify the info you provide is valid
-* Images must be hosted locally in the repo under the `../images/` folder
-* Your PR must be run through a markdown lint and have all issues fixed.
-* In general, try to avoid using "non-Acidanthera" tools when possible. Generally we want to avoid use of third-party tools  - though if it's impossible otherwise, then you can link it.
-  * Tools explicitly banned:
-    * UniBeast, MultiBeast and KextBeast
-      * More info can be found here: [Tonymacx86-stance](https://github.com/khronokernel/Tonymcx86-stance)
+* Usa il tuo cervello (per favore).
+* Dimostra le tue affermazioni.
+* Le Pull Request possono essere rifiutate se non corrispondono o hanno informazioni inaccurate. Generalmente motiveremo perché viene rifiutata o perché viene richiesta una revisione.
+  * Apprezziamo le fonti per qualsiasi grande proposta, per rendere più semplice la verifica della attendibilità delle tue affermazioni
+* Le immagini devono essere scaricate localmente nella repository dentro la cartella `../images/`
+* La tua PR deve aver superato un markdown lint e aver sistemato tutti i problemi.
+* In generale, evitare quando possibile di usare strumenti "non-Acidanthera". Generalmente vogliamo evitare di usare qualsiasi strumento di terze parti - tranne quando è impossibile, quindi aggiungi il link a questo.
+  * Tool esplicitamente banditi:
+    * UniBeast, MultiBeast e KextBeast
+      * Più informazioni possono essere trovate qui: [Tonymacx86-stance (EN)](https://github.com/khronokernel/Tonymcx86-stance)
     * TransMac
-      * Know for creating borked USB drives
-    * Niresh Installers
-      * We'd like to avoid piracy with the guides
+      * Famoso per creare dischi USB rotti
+    * Installer Niresh
+      * Vorremmo evitare la pirateria in queste guide
 
-### How to Contribute
+### Come contribuire
 
-Best way to test your commits and make sure they are formatted correctly is by downloading Node.js then running `npm install` to install dependencies. When you run `npm run dev`, it will set up a local webserver which you can connect to view the changes you made. `npm test` will throw any errors at you about formatting and spellchecking as well. If you want `markdownlint` to automatically attempt to fix linting, run `npm run fix-lint`.
+Il miglior modo di testare i tuoi commit ed essere sicuro che siano formattati correttamente è di scaricare Node.js dopo usare il comando `npm install` per installare le dipendenze. Quando scrivi `npm run dev`, imposterà un server web locale in cui puoi connetterti per vedere le modifiche fatte. `npm test` troverà ogni errore riguardo alla formattazione e anche nello spellcheck. Se vuoi fare il `markdownlint` per sistemare automaticamente gli errori di lint, usa `npm run fix-lint`.
 
-Simple step-by-steps:
+Semplici step:
 
-* [Fork this repo](https://github.com/dortania/OpenCore-Install-Guide/fork/)
-* Install the required tools:
+* [Esegui un fork della repo](https://github.com/dortania/OpenCore-Install-Guide/fork/)
+* Installa i tool richiesti:
   * [Node.js](https://nodejs.org/)
-* Make your changes.
-* Build the site:
-  * `npm install` (To install all the required plugins)
-  * `npm run dev` (Preview the site)
-    * Can be found at `http://localhost:8080`
-* Check linting and spellcheck:
+* Esegui le tue modifiche.
+* Compila il sito:
+  * `npm install` (Per installare tutti i plugin richiesti)
+  * `npm run dev` (Crea un'anteprima del sito)
+    * La puoi trovare su `http://localhost:8080`
+* Controlla il lint e lo spellcheck:
   * `npm test`
-  * `npm run lint` and `npm run spellcheck` (to run the tests individually)
-  * `npm run fix-lint` (To fix any potential issues)
-  * For words not supported by the default spellcheck, please add them to the [dictionary.txt](./dictionary/dictionary.txt) and run `npm run sort-dict`
+  * `npm run lint` and `npm run spellcheck` (per avviare i test individualmente)
+  * `npm run fix-lint` (Per risolvere ogni tipo di errore)
+  * Per sistemare parole non riconosciute dallo spellcheck di default, per favore aggiungile al [dictionary.txt](./dictionary/dictionary.txt) e avvia `npm run sort-dict`
 
-### Tips
+### Suggerimenti
 
-Some tools that make contributing a bit easier:
+Alcuni tool per fare in modo che contribuire sia più facile:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [Typora](https://typora.io) for real time markdown rendering.
-* [TextMate](https://macromates.com) for easy and powerful mass find/replace.
-* [Github Desktop](https://desktop.github.com) for more user friendly GUI.
+* [Typora](https://typora.io) per avere le modifiche al markdown in tempo reale.
+* [TextMate](https://macromates.com) per fare facilmente un massivo find/replace.
+* [Github Desktop](https://desktop.github.com) per avere una GUI più user friendly.
 
-## Contributing via Translations
+## Contribuire via Traduzioni
 
-While Dortania's guide are primarily English based, we know there's plenty of other languages in the world and that not everyone is fluent in English. If you want to help translate our guides into different languages, we're more than happy to support you.
+Mentre le guide Dortania sono basate sull'Inglese in maniera primaria, sappiamo che ci sono altri miliardi di lingue nel mondo (come l'Italiano) e che non tutti sono bravi con l'Inglese. Se vuoi aiutare traducendo la guida in lingue differenti, saremo molto felici di aiutarti.
 
-Main things to keep in mind:
+Le cose da ricordare:
 
-* Translations must be a dedicated fork and won't be merged into Dortania's guide
-* Forks must indicate they're translations of Dortania and are not official
-* Forks must also comply with our [License](LICENSE.md)
+* Traduzioni devono essere un fork dedicato e non diventeranno un merge delle guide Dortania
+* I fork devono indicare che sono traduzioni di Dortania e che non sono ufficiali
+* I fork devono contenere la nostra licenza [License](LICENSE.md)
 
-If the above are met, you're free to host your translation without issue! Dortania's sites are built with [VuePress](https://vuepress.vuejs.org) using [Travis-CI](https://travis-ci.org) and finally hosted on [Github Pages](https://pages.github.com), so there is no cost to hosting your own translation.
+Se riconosci tutti i requisiti, sei libero di pubblicare liberamente la tua traduzione senza esitazioni! I siti Dortania sono compilati con [VuePress](https://vuepress.vuejs.org) usando [Travis-CI](https://travis-ci.org) e infine hostati su [Github Pages](https://pages.github.com), perciò non c'è nessun costo per la tua traduzione personale.
 
-If you have any questions or concerns with either translations or hosting, feel free to reach out on our [Bugtracker](https://github.com/dortania/bugtracker).
+Se hai domande o dubbi riguardo le traduzioni o l'hosting, sii libero di raggiungere il nostro [Bugtracker](https://github.com/dortania/bugtracker).
 
-Current known translations:
+Traduzioni correntemente conosciute:
 
-* [InyextcionES](https://github.com/InyextcionES/OpenCore-Install-Guide)(Spanish)
-* [macOS86](https://macos86.gitbook.io/guida-opencore/)(Italian, no longer maintained)
-* [Technopat](https://www.technopat.net/sosyal/konu/opencore-ile-macos-kurulum-rehberi.963661/)(Turkish)
-* [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide)(Chinese)
-* [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide)(Russian)
+* [InyextcionES](https://github.com/InyextcionES/OpenCore-Install-Guide)(Spagnolo)
+* [macOS86](https://macos86.github.io/OpenCore-Install-Guide/)(Italiano!!! da poco riabilitata, cerchiamo aiuto per tradurla)
+* [Technopat](https://www.technopat.net/sosyal/konu/opencore-ile-macos-kurulum-rehberi.963661/)(Turco)
+* [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide)(Cinese)
+* [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide)(Russo)
 
-And note that these translations are subject to authors preferences, translation changes and human errors. Please keep this in mind when reading as they're no longer official Dortania guides.
+E nota che queste traduzioni sono soggette alle preferenze degli autori, ai cambiamenti delle traduzioni e agli errori umani. Per favore ricordatene quando le leggi e ricordati che non sono ufficiali, al contrario delle guide Dortania.
