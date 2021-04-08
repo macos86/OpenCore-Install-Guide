@@ -1,22 +1,22 @@
 # Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-Note: This is a human-readable version, to find the full license see here: [Legal Code](LICENSE-FULL.txt)
+Nota: Questa è una versione leggibile da essere umano, per trovare la licenza completa guarda qui: [Legal Code (EN)](LICENSE-FULL.txt)
 
-**You are free to:**
+**Sei libero di:**
 
-* Share — copy and redistribute the material in any medium or format
-* Adapt — remix, transform, and build upon the material
+* Condividerlo — copiare e ridistribuire i materiali attraverso ogni mezzo o formato
+* Adattarlo — mescolare, trasformare e compilare dai materiali base
 
-The licensor cannot revoke these freedoms as long as you follow the license terms.
+Chi esegue la licenza non può revocare queste libertà fino a che segui questi termini.
 
-**Under the following terms:**
+**Sotto i seguenti termini:**
 
-* Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-* NonCommercial — You may not use the material for commercial purposes.
-* ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
-* No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+* Attribuzione — Se dai i crediti appropriati, fornendo un collegamento alla licenza, e indicando le modifiche fatte. Se lo fai in una maniera ragionabile, puoi farlo, a meno che chi ha eseguito la licenza ne sconsigli l'uso.
+* Non Commerciale — Non puoi usare questi materiali per scopo commerciale.
+* ShareAlike — Se mescoli, trasformi o compili i materiali base, devi distribuire i tuoi contributi con la stessa licenza dell'originale.
+* Nessuna restrizione aggiuntiva — Non puoi applicare termini legali o misure tecnologiche che restringano dal punto di vista legale gli altri nel fare qualcosa che questa licenza permetta.
 
-**Notices:**
+**Note:**
 
-* You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
-* No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+* Non applicare la licenza per elementi di pubblico dominio oppure usarli dove ci sia un'applicabile eccezione o limitazione.
+* Non viene concessa nessuna garanzia. La licenza potrebbe non dare tutte le abilità necessarie ad un uso corretto del prodotto. Per esempio, altri diritti come pubblicazione, privacy, o diritti morali possono limitare l'uso di questo materiale.
