@@ -1,22 +1,23 @@
-# General Troubleshooting
+# Risoluzione dei problemi
 
-* Supported version: 0.6.8
+* Versione Supportata: 0.6.8
 
-This section is for those having issues booting either OpenCore, macOS or having issues inside macOS. If you're confused as to where exactly in the macOS boot process you're stuck, reading the [macOS Boot Process](../troubleshooting/boot.md) page can help clarify things.
+Questa sezione è per coloro che hanno problemi con l'avvio di OpenCore, macOS o che hanno problemi all'interno di macOS. Se sei confuso su dove esattamente sei bloccato nel processo di avvio di macOS, leggere la pagina
+ [Processo di avvio di macOS](../troubleshooting/boot.md) può aiutare a chiarire le cose.
 
-**And if your issue is not covered, please read the official OpenCore documentation: [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)**. This document goes into much more technical detail around how OpenCore works and has much more detailed info on all supported quirks.
+**Se il tuo problema non è compreso, leggi la documentazione ufficiale di OpenCore: [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)**. Questo documento entra in dettagli molto più tecnici su come funziona OpenCore e contiene informazioni molto più dettagliate su tutti i Quirks supportati.
 
-## Table of Contents
+## Sommario
 
-If you're unsure where you're currently stuck, please see here: [Understanding the macOS Boot Process](../troubleshooting/boot.md)
+Se non sei sicuro di dove sei attualmente bloccato, guarda qui: [Comprendere il processo di avvio di macOS](../troubleshooting/boot.md)
 
-* [OpenCore Boot Issues](./extended/opencore-issues.md)
-  * This section refers to booting the actual USB and getting to OpenCore's picker. Anything after the picker, like booting macOS, should see below
-* [Kernelspace Issues](./extended/kernel-issues.md)
-  * Covering everything that many occur in early boot from the moment you select macOS in the OpenCore menu, till the point right before the Apple logo and the installer GUI loads
-* [Userspace Issues](./extended/userspace-issues.md)
-  * Covering the process from loading macOS's GUI to installing macOS on the drive
-* [Post-Install Issues](./extended/post-issues.md)
-  * Covering issues once macOS has been installed and is fully booted
-* [Miscellaneous Issues](./extended/misc-issues.md)
-  * Covering issues after macOS's installation or with other OSes
+* [Problemi di avvio di OpenCore](./extended/opencore-issues.md)
+  * Questa sezione si riferisce all'avvio dell'USB e all'accesso al selettore di OpenCore. Qualunque cosa dopo il selettore, come l'avvio di macOS, dovrebbe essere visualizzata di seguito
+* [Problemi di Kernelspace](./extended/kernel-issues.md)
+  * Coprendo tutto ciò che si verifica nel preavvio dal momento in cui si seleziona macOS nel menu OpenCore, fino al punto immediatamente prima del caricamento del logo Apple e della GUI del programma di installazione
+* [Problemi nello spazio utente](./extended/userspace-issues.md)
+  * Copre il processo dal caricamento della GUI di macOS all'installazione di macOS sul disco
+* [Problemi di post-installazione](./extended/post-issues.md)
+  * Copre i problemi una volta che macOS è stato installato e completamente avviato
+* [Problemi vari](./extended/misc-issues.md)
+  * Copertura dei problemi dopo l'installazione di macOS o con altri sistemi operativi
