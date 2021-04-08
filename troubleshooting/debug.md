@@ -1,77 +1,75 @@
 # OpenCore Debugging
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-Needing to figure out why you're getting issues or stalling? Well, you've come to the right place:
+Hai bisogno di capire perché stai riscontrando problemi o ti stai bloccando? Bene, sei nel posto giusto:
 
-* [File Swap](#file-swaps)
-* [Config Changes](#config-changes)
-* [Disabling all logging](#disabling-all-logging)
+* [Scambio di file](#file-swaps)
+* [Modifiche al Config](#config-changes)
+* [Disabilitazione di tutte le registrazioni](#disabling-all-logging)
 
-## File Swaps
+## Scambio di file
 
-To start, make sure you're using either the `DEBUG` or `NOOPT` versions of OpenCore. This will provide much more info than the `RELEASE` version, the specific files that need to be swapped:
+Per iniziare, assicurati di utilizzare le versioni "DEBUG" o "NOOPT" di OpenCore. Questo fornirà molte più informazioni rispetto alla versione `RELEASE`; i file specifici che devono essere scambiati sono:
 
 * EFI/BOOT/
   * `BOOTx64.efi`
-* EFI/OC/Bootstrap/
-  * `Bootstrap.efi`
 * EFI/OC/Drivers/
   * `OpenRuntime.efi`
-  * `OpenCanopy.efi`(if you're using it)
+  * `OpenCanopy.efi`(se lo stai usando)
 * EFI/OC/
   * `OpenCore.efi`
 
 ![](../images/troubleshooting/debug-md/replace.png)
 
-* **Note**: Generally best to debug systems without OpenCanopy, if required make sure this file is from DEBUG else there will be virtually no debug information.
+* **Nota**: Generalmente è meglio eseguire il debug di sistemi senza OpenCanopy, se necessario assicurati che questo file provenga da DEBUG altrimenti non ci saranno praticamente informazioni di debug.
 
-## Config Changes
+## Modifiche al Config
 
-Next, head to your config.plist and locate the `Misc` section, we have a couple entries we'll want to play with here:
+Successivamente, vai al tuo config.plist e individua la sezione `Misc`, abbiamo un paio di voci da configurare:
 
 ### Misc
 
-Here we'll want to enable the following:
+Qui abiliteremo quanto segue:
 
 * **AppleDebug**: YES
-  * Provides much more debugging information, specifically relating to boot.efi and will also store the log to disk.
+  * Fornisce molte più informazioni di debug, in particolare riguardo a boot.efi e memorizzerà anche il log su disco.
 
 * **ApplePanic**: YES
-  * This will allow kernel panics to be stored to disk, highly recommend keeping `keepsyms=1` in boot-args to preserve as much info as possible.
+  * Questo consentirà di archiviare su disco i kernel panic, consigliamo vivamente di mantenere `keepyms = 1` nelle boot-args per preservare quante più informazioni possibili.
 
 * **DisableWatchdog**: YES
-  * Disables the UEFI watchdog, used for when OpenCore is stalling on something non-critical.
+  * Disabilita UEFI watchdog, usato per quando OpenCore si blocca su qualcosa di non critico.
 
-* **Target**: `67`(or calculate one below)
-  * Used for enabling different levels of debugging
+* **Target**: `67`(o calcolarne uno usando i parametri qui di seguito)
+  * Utilizzato per abilitare diversi livelli di debug
 
-| Value | Comment |
+| Valore | Commento |
 | :--- | :--- |
-| `0x01` | Enable Logging |
-| `0x02` | Enable Onscreen debug |
-| `0x04` | Enable logging to Data Hub. |
-| `0x08` | Enable serial port logging. |
-| `0x10` | Enable UEFI variable logging. |
-| `0x20` | Enable non-volatile UEFI variable logging. |
-| `0x40` | Enable logging to file. |
+| `0x01` | Abilita Registrazione |
+| `0x02` | Abilita il debug su schermo |
+| `0x04` | Abilita la registrazione per Data Hub. |
+| `0x08` | Abilita la registrazione per porta seriale. |
+| `0x10` | Abilita la registrazione per variabili. |
+| `0x20` | Abilita la registrazione per variabili UEFI non-volatili. |
+| `0x40` | Abilita la registrazione con scrittura su file. |
 
-To calculate the target, we can use a HEX calculator and then convert it to decimal. For us we want to have our values on stored onto a .txt file for later viewing:
+Per calcolare il Target, possiamo utilizzare un calcolatore HEX e quindi convertirlo in decimale. Poi vogliamo che i nostri valori vengano memorizzati su un file .txt per una visualizzazione successiva:
 
-* `0x01` — Enable Logging
-* `0x02` — Enable Onscreen debug
-  * Note this can heavily increase boot times on firmwares with poor GOP implementations
-* `0x10` — Enable UEFI variable logging.
-* `0x40` — Enable logging to file.
+* `0x01` — Abilita registrazione
+* `0x02` — Abilita il debug su schermo
+  * Si noti che questo può aumentare notevolmente i tempi di avvio sui firmware con implementazioni GOP scadenti
+* `0x10` — Abilita la registrazione delle variabili UEFI.
+* `0x40` — Abilita la registrazione su file.
 
 `0x01` + `0x02` + `0x10` + `0x40` = `0x53`
 
-`0x53` converted to decimal becomes `83`
+`0x53` convertito in decimale diventa `83`
 
-So we can set `Misc` -> `Debug` -> `Target` -> `83`
+Quindi possiamo impostare `Misc` -> `Debug` -> `Target` -> `83`
 
-* **DisplayLevel**: `2147483714`(or calculate one below)
-  * Used for setting what is logged
+* **DisplayLevel**: `2147483714`(o calcolarne uno usando i parametri qui di seguito)
+  * Utilizzato per impostare ciò che viene registrato
 
 | Value | Comment |
 | :--- | :--- |
@@ -80,27 +78,27 @@ So we can set `Misc` -> `Debug` -> `Target` -> `83`
 | `0x00400000` | DEBUG_VERBOSE in custom builds. |
 | `0x80000000` | DEBUG_ERROR in DEBUG, NOOPT, RELEASE. |
 
-  A full list can be found in [DebugLib.h](https://github.com/tianocore/edk2/blob/UDK2018/MdePkg/Include/Library/DebugLib.h).
+  Un elenco completo può essere trovato in [DebugLib.h](https://github.com/tianocore/edk2/blob/UDK2018/MdePkg/Include/Library/DebugLib.h).
 
-For us we just want the following:
+A noi interessa solo quanto segue:
 
 * `0x00000002` — DEBUG_WARN in DEBUG, NOOPT, RELEASE.
 * `0x00000040` — DEBUG_INFO in DEBUG, NOOPT.
 * `0x80000000` — DEBUG_ERROR in DEBUG, NOOPT, RELEASE.
 
-Just like with `Target`, we use a HEX calculator then convert to decimal:
+Proprio come con `Target`, usiamo una calcolatrice HEX quindi convertiamo in decimale:
 
-`0x80000042` Converted to decimal `Misc` -> `Debug` -> `DisplayLevel` -> `2147483714`
+`0x80000042` convertito in decimale diventa `Misc` -> `Debug` -> `DisplayLevel` -> `2147483714`
 
-Once done, your config.plist should look like this:
+Una volta fatto, il tuo config.plist dovrebbe assomigliare a questo:
 
 ![](../images/troubleshooting/debug-md/debug.png)
 
-## Disabling all logging
+## Disabilitazione di tutte le registrazioni
 
-To remove all file logging, and debug messages, simply swap out all your OpenCore files for those in RELEASE like we did before in [File Swap](#file-swap) section.
+Per rimuovere completamente la registrazione dei file e eseguire il debug dei messaggi, è sufficiente sostituire tutti i file OpenCore con quelli in RELEASE come abbiamo fatto prima nella sezione [Cambio dei File](#file-swap).
 
-Lastly, to remove writing to disk set the following:
+Infine, per rimuovere la scrittura su disco, impostare quanto segue:
 
 * AppleDebug = `NO`
 * ApplePanic = `NO`
