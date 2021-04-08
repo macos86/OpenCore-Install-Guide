@@ -2,7 +2,7 @@
 
 * Versione supportata: 0.6.8
 
-Quindi, con la risoluzione dei problemi di un hackintosh, può essere un po 'difficile capire veramente * dove * ti trovi bloccato poiché la parola chiave esatta che stai cercando di trovare potrebbe non corrispondere a nulla su Google. Anche se questa pagina non risolverà tutti i tuoi problemi, dovrebbe almeno aiutare a capire meglio dove ti trovi bloccato nel processo di avvio di macOS e, si spera, dare alcune idee sul motivo per cui sei bloccato.
+Quindi, con la risoluzione dei problemi di un hackintosh, può essere un po 'difficile capire veramente *dove* ti trovi bloccato poiché la parola chiave esatta che stai cercando di trovare potrebbe non corrispondere a nulla su Google. Anche se questa pagina non risolverà tutti i tuoi problemi, dovrebbe almeno aiutare a capire meglio dove ti trovi bloccato nel processo di avvio di macOS e, si spera, dare alcune idee sul motivo per cui sei bloccato.
 
 ## Avvio di OpenCore
 
