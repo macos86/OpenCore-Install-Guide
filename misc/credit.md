@@ -1,32 +1,32 @@
 # Credits
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-No good guide is made by one man, here's credit to those who've helped out:
+Nessuna buona guida è stata creata da un solo uomo, ecco i credits di coloro che hanno aiutato:
 
 * [vit9696](https://github.com/vit9696)
-  * One of many developers of OpenCore
-  * Corrections to the original guide
-  * Corrections to this guide...(seriously this man deserves a medal)
+  * Uno dei tanti sviluppatori di OpenCore
+  * Correzioni alla guida originale
+  * Correzioni a questa guida ... (seriamente quest'uomo merita una medaglia)
 * [CorpNewt](https://github.com/corpnewt)
-  * Heavily inspiring this guide(if not a rip off) and helping overall with questions and advice
-  * Spoof SSDT source
+  * Ha pesantemente influito a questa guida e aiuta in generale con domande e consigli
+  * Sorgente SSDT
 * [Midi](https://github.com/midi1996)
-  * Corrections and recommendations for the guide
+  * Correzioni e raccomandazioni per la guida
 * [AlGrey#9303](https://amd-osx.com/forum/memberlist.php?mode=viewprofile&u=10918&sid=e0feb8a14a97be482d2fd68dbc268f97)
   * AMD Kernel patches
 * [NoOne/IOIIIO](https://github.com/IOIIIO)
-  * For the original AMD Vanilla Guide
-  * Corrections to AMD portion of the guide
+  * Per l'originale Guida Vanilla AMD
+  * Correzioni alla parte AMD della guida
 * [DhinakG](https://github.com/dhinakg)
-  * Random guide related stuff
+  * Cose casuali relative alla guida
 * [Khronokernel](https://github.com/khronokernel)
-  * For both writing and maintaining the guide
-* [and the rest of the dortania team](https://github.com/dortania) for helping out
+  * Sia per scrivere che per mantenere la guida
+* [ed il resto del dortania team](https://github.com/dortania) per l'aiuto
   
-And to the rest who've helped out as well, thank you!
+E anche agli altri che hanno aiutato, grazie!
 
-**Developers of OpenCore**:
+**Sviluppatori di OpenCore**:
 
 * [al3xtjames](https://github.com/al3xtjames)
 * [Andrey1970AppleLife](https://github.com/Andrey1970AppleLife)
@@ -37,38 +37,38 @@ And to the rest who've helped out as well, thank you!
 * [savvamitrofanov](https://github.com/savvamitrofanov)
 * [vit9696](https://github.com/vit9696)
 
-Guides linked or those that inspired this guide:
+Guide collegate o che hanno ispirato questa guida:
 
-* [r/Hackintosh Vanilla Desktop Guide](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/)
-* [All-in-one Vanilla AMD Hackintosh Guide](https://github.com/doesprintfwork/All-in-one-Vanilla-AMD-Hackintosh-Guide)
-* [USB Map Guide](https://dortania.github.io/OpenCore-Post-Install/usb/)
+* [r/Guida Hackintosh Desktop Vanilla](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/)
+* [Guida All-in-one Vanilla Hackintosh AMD](https://github.com/doesprintfwork/All-in-one-Vanilla-AMD-Hackintosh-Guide)
+* [Guida mappatura USB](https://dortania.github.io/OpenCore-Post-Install/usb/)
 * [Intel Framebuffer Patching](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
-* [AppleALC Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs)
+* [Codecs Supportati da AppleALC](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs)
 * [gfxutil](https://github.com/acidanthera/gfxutil/releases)
 
-And for those who have recommendations or issues with this guide, you can find the GitHub repo for this site [here](https://github.com/dortania/OpenCore-Install-Guide).
+E per coloro che hanno consigli o problemi con questa guida, questo il repository GitHub per questo sito [qui](https://github.com/dortania/OpenCore-Install-Guide).
 
-**Sources**:
+**Fonti**:
 
-* [OpenCore Documentation](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs)
+* [Documentazione OpenCore](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs)
 * KASLR slide:
-  * [vit9696's Explainer](https://www.insanelymac.com/forum/topic/331381-aptiomemoryfix/?do=findComment&comment=2564269)
-  * [Apianti's explainer](https://www.reddit.com/r/hackintosh/comments/cfjyla/i_unleashed_a_plague_upon_you_guys_and_i_am_sorry/)
-  * [KASLR Explainer](https://lwn.net/Articles/569635/)
-  * [More KASLR Explainer](https://www.blackhat.com/docs/us-16/materials/us-16-Jang-Breaking-Kernel-Address-Space-Layout-Randomization-KASLR-With-Intel-TSX.pdf)
-* Cleaning RC scripts:
-  * [Clover Emulated NVRAM Uninstaller](https://www.tonymacx86.com/resources/clover-emulated-nvram-uninstaller.368/)
+  * [Spiegazione di vit9696](https://www.insanelymac.com/forum/topic/331381-aptiomemoryfix/?do=findComment&comment=2564269)
+  * [Spiegazione di Apianti](https://www.reddit.com/r/hackintosh/comments/cfjyla/i_unleashed_a_plague_upon_you_guys_and_i_am_sorry/)
+  * [Spiegazione KASLR](https://lwn.net/Articles/569635/)
+  * [Altre Spiegazioni KASLR](https://www.blackhat.com/docs/us-16/materials/us-16-Jang-Breaking-Kernel-Address-Space-Layout-Randomization-KASLR-With-Intel-TSX.pdf)
+* Rimuovere RC scripts:
+  * [Clover Disinstallazione NVRAM Emulata](https://www.tonymacx86.com/resources/clover-emulated-nvram-uninstaller.368/)
 * ACPI Dumping:
   * [acpica](https://github.com/acpica/acpica/tree/master/source/tools/acpidump)
-* iServices Guide:
+* Guida iServices:
   * [Как завести сервисы Apple - iMessage, FaceTime, iCloud](https://applelife.ru/threads/nastrojka-app-store-imessage-facetime-i-icloud.40790/page-219#post-727913)
-* iGPU and DRM configuration:
-  * [WhateverGreen's manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+* Configurazione IGPU e DRM:
+  * [Manuale WhateverGreen's](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
   * [WhateverGreen's DRM chart](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md)
   * [DRM Testing](https://applelife.ru/threads/proigryvanie-zaschischjonnogo-kontenta-na-raznom-oborudovanii.1349123/page-67#post-846582)
-* rEFInd Guide:
-  * [rEFInd Manual](https://www.rodsbooks.com/refind/index.html)
-* USB Mapping Guide:
-  * [XHCI Wake issues](https://osy.gitbook.io/hac-mini-guide/details/usb-fix)
-  * [CorpNewt's USB Map Guide](https://dortania.github.io/OpenCore-Post-Install/usb/)
-  * [AppleLife USB Map Guide](https://applelife.ru/threads/nastrojka-usb-v-10-11-10-15.627190/)
+* Guida rEFInd:
+  * [Manuale rEFInd](https://www.rodsbooks.com/refind/index.html)
+* Guida Mappatura USB:
+  * [Problemi di risveglio con XHCI](https://osy.gitbook.io/hac-mini-guide/details/usb-fix)
+  * [Guida mappatura USB di CorpNewt](https://dortania.github.io/OpenCore-Post-Install/usb/)
+  * [Guida mappatura USB di AppleLife](https://applelife.ru/threads/nastrojka-usb-v-10-11-10-15.627190/)
