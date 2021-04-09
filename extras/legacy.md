@@ -1,3 +1,3 @@
-# Legacy Install
+# Installazione Legacy
 
-Guide has been moved into respective install guides: [Installer Guides](../installer-guide/README.md)
+Questa guida è stata mossa nella guida di installazione: [Guida Installer](../installer-guide/README.md)
