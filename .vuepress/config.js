@@ -291,10 +291,10 @@ module.exports = {
                             collapsable: true,
                             sidebarDepth: 1,
                             children: [
-                                ['/clover-convertions/Clover-config', 'config.plist conversions'],
-                                ['/clover-convertions/clover-efi', 'Clover Kexts and Firmware driver conversion(.kext, .efi)'],
-                                ['/clover-convertions/Clover-boot-arg', 'Clover Boot Arg Conversion'],
-                                ['/clover-convertions/clover-patch', 'Converting common Kernel and Kext patches'],
+                                ['/clover-conversion/Clover-config', 'config.plist conversions'],
+                                ['/clover-conversion/clover-efi', 'Clover Kexts and Firmware driver conversion(.kext, .efi)'],
+                                ['/clover-conversion/Clover-boot-arg', 'Clover Boot Arg Conversion'],
+                                ['/clover-conversion/clover-patch', 'Converting common Kernel and Kext patches'],
                             ]
                         }
                     ]
