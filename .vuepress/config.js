@@ -292,8 +292,6 @@ module.exports = {
                         ['/clover-conversion/Clover-boot-arg', 'Conversione dei Boot Arg di Clover'],
                         ['/clover-conversion/clover-patch', 'Coversione dei patch comuni di Kernel e Kext'],
                     ]
-                        }
-                    ]
                 },
                 '/extras/smbios-support.md',
             ]
