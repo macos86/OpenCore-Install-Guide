@@ -287,10 +287,10 @@ module.exports = {
                     sidebarDepth: 1,
                     path: '/clover-conversion/',
                     children: [
-                        ['/clover-conversion/Clover-config', 'Conversioni del config.plist'],
-                        ['/clover-conversion/clover-efi', 'Conversione dei Kext e dei driver del Firmware di Clover (.kext, .efi)'],
-                        ['/clover-conversion/Clover-boot-arg', 'Conversione dei Boot Arg di Clover'],
-                        ['/clover-conversion/clover-patch', 'Coversione dei patch comuni di Kernel e Kext'],
+                        '/clover-conversion/Clover-config',
+                        '/clover-conversion/clover-efi',
+                        '/clover-conversion/Clover-boot-arg',
+                        '/clover-conversion/clover-patch',
                     ]
                 },
                 '/extras/smbios-support.md',
