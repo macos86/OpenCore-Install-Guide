@@ -1,9 +1,9 @@
-# Desktop Haswell and Broadwell
+# Desktop Haswell e Broadwell
 
 | Supporto | Versione |
 | :--- | :--- |
 | Versione di OpenCore supportata | 0.6.8 |
-| Initial macOS Support | OS X 10.8, Mountain Lion |
+| Supporto di macOS iniziale | OS X 10.8, Mountain Lion |
 
 ## Punto d'Inizio
 

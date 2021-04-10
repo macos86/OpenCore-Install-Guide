@@ -1,12 +1,12 @@
-# Desktop Yonah, Conroe and Penryn
+# Desktop Yonah, Conroe e Penryn
 
 | Supporto | Versione |
 | :--- | :--- |
 | Versione di OpenCore supportata | 0.6.8 |
-| Initial macOS Support: Penryn | OS X 10.4.10, Tiger |
-| Last Supported OS: Penryn | macOS 10.13.6 High Sierra |
-| Note | iGPU support will not be covered in this guide, see here: [GMA Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)|
-| Note 2 | SSE4 is required to boot macOS 10.12, Sierra and newer, so Conroe and older are unsupported |
+| Supporto di macOS iniziale: Penryn | OS X 10.4.10, Tiger |
+| Ultima versione supportata: Penryn | macOS 10.13.6 High Sierra |
+| Nota | Il supporto della iGPU non sarà inserito in questa guida, vedi qui: [GMA Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)|
+| Nota 2 | SSE4 è richiesto per avviare 10.12, Sierra e sucessivi, perciò Conroe o più vecchi non sono supportate |
 
 ## Punto d'Inizio
 
