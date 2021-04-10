@@ -7,24 +7,24 @@
 | Note 1 | Apple does not support desktop Iron Lake iGPUs |
 | Note 2 | Most Lynnfield and Clarkdale boards do not support UEFI |
 
-## Starting Point
+## Punto d'Inizio
 
-So making a config.plist may seem hard, it's not. It just takes some time but this guide will tell you how to configure everything, you won't be left in the cold. This also means if you have issues, review your config settings to make sure they're correct. Main things to note with OpenCore:
+Fare un config.plist potrebbe sembrare difficile, ma non lo è. Ci metterai solo un po' di tempo ma questa guida ti dice come configurare il tutto, non rimarrai a bocca asciutta. Questo significa anche che se hai problemi, rivedi come hai impostato il config per essere sicuro che siano corrette. Le cose principali da definire con OpenCore:
 
-* **All properties must be defined**, there are no default OpenCore will fall back on so **do not delete sections unless told explicitly so**. If the guide doesn't mention the option, leave it at default.
-* **The Sample.plist cannot be used As-Is**, you must configure it to your system
-* **DO NOT USE CONFIGURATORS**, these rarely respect OpenCore's configuration and even some like Mackie's will add Clover properties and corrupt plists!
+* **Tutte le proprietà devono essere definite**, non c'è un fallback di default, perciò **non cancellare sezioni a meno che non ti sia esplicitamente richiesto**. Se la guida non parla di quella sezione, lascia come il predefinito.
+* **Il Sample.plist non può essere usato così com'è**, devi configurarlo per il tuo sistema
+* **NON USARE CONFIGURATORI**, questi raramente rispettano la configurazione di OpenCore e alcuni di quelli come Mackie aggiungeranno proprietà di Clover o potrebbero corrompere il plist!
 
-Now with all that, a quick reminder of the tools we need
+Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
-  * Universal plist editor
+  * Plist editor universale
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-  * For generating our SMBIOS data
+  * Per geneare i dati del nostro SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * See previous section on how to obtain: [config.plist Setup](../config.plist/README.md)
+  * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](../config.plist/README.md)
 
-**And read this guide more than once before setting up OpenCore and make sure you have it set up correctly. Do note that images will not always be the most up-to-date so please read the text below them, if nothing's mentioned then leave as default.**
+**E leggi questa guida una volta prima di impostare OpenCore e sii sicuro di aver impostato tutto correttamente. Nota che le immagini non potranno essere sempre aggiornatissime, perciò leggi le didascalie sotto, se nulla viene menzionato, lascia com'è di default.**
 
 ## ACPI
 
