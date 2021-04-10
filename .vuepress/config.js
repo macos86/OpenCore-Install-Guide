@@ -285,16 +285,16 @@ module.exports = {
                     title: '',
                     collapsable: false,
                     children: [
-                        ['clover-conversion/', 'Clover Conversions'],
+                        ['clover-conversion/', 'Conversioni da Clover'],
                         {
-                            title: 'Converting from Clover to OpenCore',
+                            title: 'Conversioni da Clover a OpenCore',
                             collapsable: true,
                             sidebarDepth: 1,
                             children: [
-                                ['/clover-conversion/Clover-config', 'config.plist conversions'],
-                                ['/clover-conversion/clover-efi', 'Clover Kexts and Firmware driver conversion(.kext, .efi)'],
-                                ['/clover-conversion/Clover-boot-arg', 'Clover Boot Arg Conversion'],
-                                ['/clover-conversion/clover-patch', 'Converting common Kernel and Kext patches'],
+                                ['/clover-conversion/Clover-config', 'Conversioni del config.plist'],
+                                ['/clover-conversion/clover-efi', 'Conversione dei Kext e dei driver del Firmware di Clover (.kext, .efi)'],
+                                ['/clover-conversion/Clover-boot-arg', 'Conversione dei Boot Arg di Clover'],
+                                ['/clover-conversion/clover-patch', 'Coversione dei patch comuni di Kernel e Kext'],
                             ]
                         }
                     ]
