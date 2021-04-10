@@ -282,10 +282,10 @@ module.exports = {
                 '/extras/spoof',
                 '/extras/big-sur/',
                 {
-                    title: '',
+                    title: 'Conversioni da Clover',
                     collapsable: false,
+                    path: '/clover-conversion/',
                     children: [
-                        ['clover-conversion/', 'Conversioni da Clover'],
                         {
                             title: 'Conversioni da Clover a OpenCore',
                             collapsable: true,
