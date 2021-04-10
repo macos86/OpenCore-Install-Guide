@@ -3,7 +3,7 @@
 | Supporto | Versione |
 | :--- | :--- |
 | Versione di OpenCore supportata | 0.6.8 |
-| Initial macOS Support | OS X 10.7, Lion |
+| Supporto di macOS iniziale | OS X 10.7, Lion |
 
 ## Punto d'Inizio
 

@@ -1,10 +1,10 @@
-# Sandy and Ivy Bridge-E
+# Sandy e Ivy Bridge-E
 
 | Supporto | Versione |
 | :--- | :--- |
-| Initial macOS Support | OS X 10.9, Mavericks |
+| Supporto di macOS iniziale | OS X 10.9, Mavericks |
 | Versione di OpenCore supportata | 0.6.8 |
-| Notes | Sandy Bridge-E also applies |
+| Notes | Si applica anche alle Sandy Bridge-E |
 
 ## Starting Point
 

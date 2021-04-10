@@ -1,11 +1,11 @@
-# Laptop Clarksfield and Arrandale
+# Laptop Clarksfield e Arrandale
 
 | Supporto | Versione |
 | :--- | :--- |
-| Initial macOS Support | OS X 10.6.3, Snow Leopard |
+| Supporto di macOS iniziale | OS X 10.6.3, Snow Leopard |
 | Versione di OpenCore supportata | 0.6.8 |
-| Note 1 | Arrandale's iGPU is only officially supported up-to macOS 10.13 |
-| Note 2 | Most Clarksfield and Arrandale boards do not support UEFI |
+| Nota 1 | Le iGPU Arrandale sono ufficialmente supportate solo fino a macOS 10.13 |
+| Nota 2 | La maggior parte delle schede Clarksfield e Arrandale non supportano UEFI |
 
 ## Punto d'Inizio
 
