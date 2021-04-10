@@ -1,8 +1,8 @@
 # Laptop Ivy Bridge
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | OS X 10.7, Lion |
 
 ## Starting Point

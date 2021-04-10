@@ -1,8 +1,8 @@
 # Desktop Lynnfield and Clarkdale
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | OS X 10.6.3, Snow Leopard |
 | Note 1 | Apple does not support desktop Iron Lake iGPUs |
 | Note 2 | Most Lynnfield and Clarkdale boards do not support UEFI |

@@ -1,8 +1,8 @@
 # Desktop Skylake
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | OS X 10.11, El Capitan |
 
 ## Starting Point

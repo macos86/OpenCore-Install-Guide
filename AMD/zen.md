@@ -1,9 +1,9 @@
 # Ryzen and Threadripper(17h and 19h)
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
 | Initial macOS Support | macOS 10.13, High Sierra |
+| Versione di OpenCore supportata | 0.6.8 |
 
 ## Starting Point
 
