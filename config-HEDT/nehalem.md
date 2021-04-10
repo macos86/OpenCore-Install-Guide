@@ -1,8 +1,8 @@
 # Nehalem and Westmere
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | OS X 10.5.6, Leopard |
 
 ## Starting Point

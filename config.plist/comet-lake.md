@@ -1,9 +1,9 @@
 # Desktop Comet Lake
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
 | Initial macOS Support | macOS 10.15, Catalina |
+| Versione di OpenCore supportata | 0.6.8 |
 
 ## Starting Point
 

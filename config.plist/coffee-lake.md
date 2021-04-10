@@ -1,8 +1,8 @@
 # Desktop Coffee Lake
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | macOS 10.13, High Sierra |
 
 ## Starting Point

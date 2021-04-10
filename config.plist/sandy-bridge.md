@@ -1,8 +1,8 @@
 # Desktop Sandy Bridge
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
+| Versione di OpenCore supportata | 0.6.8 |
 | Initial macOS Support | OS X 10.6.7, Snow Leopard |
 | Note 1 | Sandy Bridge's iGPU is only officially supported up-to macOS 10.13 |
 | Note 2 | Most Sandy bridge boards do not support UEFI |

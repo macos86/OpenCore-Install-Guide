@@ -1,10 +1,10 @@
 # Laptop Coffee Lake Plus and Comet Lake
 
-| Support | Version |
+| Supporto | Versione |
 | :--- | :--- |
-| Supported OpenCore version | 0.6.8 |
 | Initial macOS Support([CFL](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
 | Initial macOS Support([CML](https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor))) | macOS 10.15, Catalina |
+| Versione di OpenCore supportata | 0.6.8 |
 
 ## Starting Point
 
