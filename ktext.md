@@ -386,7 +386,7 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 
 #### Misc
 
-Fare riferimento a [Kexts.md] (https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) per un elenco completo dei kext supportati
+Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) per un elenco completo dei kext supportati
 
 ## SSDT
 
