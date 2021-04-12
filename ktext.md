@@ -368,7 +368,7 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
   * Usato per il fix dei dispostitivi I2C, utile con alucni touchpad e touchreeen più particolari
   * Richiede macOS 10.11 o versioni successive per le funzioni MT2
-::: Plugin di VoodooI2C 
+::: details Plugin di VoodooI2C 
 | Tipo di connessione | Plugin | Note |
 | : --- | : --- | : --- |
 | Microsoft HID | VoodooI2CHID | Può essere utilizzato anche per supportare alcuni touchscreen USB |
