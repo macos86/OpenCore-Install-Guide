@@ -48,6 +48,7 @@ Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'
     * Nota: gli utenti OpenDuet(cioè senza UEFI) avranno gia questo driver integrato, non gli servirà
   * Non necessario per OS X 10.10, Yosemite e successivi
   
+
 Questi file andranno nella cartella "drivers" della tua EFI
 
 ::: details specifici per le cpu 32-Bit
@@ -83,6 +84,7 @@ Senza i due qua sotto nessun sistema è avviabile:
   * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
   * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
   
+
 ::: details "Must haves" dei kext per gli utenti legacy 
 
 Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
@@ -127,6 +129,7 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
   * I processori AMD 15°/16° potrebbero avere problemi con questo kext e i sistemi Ryzen/Threadripper raramente supportano il microfono
   * Necessita di OS X 10.8 o superiori
   
+
 ::: details Kext audio per i sistemi legacy
 
 Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile optare per questi kext:
@@ -279,6 +282,7 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 * Se non puoi abilitare SecureBootModel, puoi comunque forzare l'inserimento di IO80211Family (**Altamente sconsigliato**)
   * Imposta quanto segue in `Kernel -> Force` nel tuo config.plist (discusso più avanti in questa guida):
   
+
 ![](./images/ktext-md/force-io80211.png)
 
 :::
@@ -345,6 +349,7 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 * [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
   * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
+
 :::
 
 ### Specifici per laptop
@@ -370,7 +375,7 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
   * Richiede macOS 10.11 o versioni successive per le funzioni MT2
 ::: details Plugin di VoodooI2C 
 | Tipo di connessione | Plugin | Note |
-| : --- | : --- | : --- |
+| :--- | :--- | :--- |
 | Microsoft HID | VoodooI2CHID | Può essere utilizzato anche per supportare alcuni touchscreen USB |
 | Proprietà ELAN | VoodooI2CElan | ELAN1200+ richiede invece VoodooI2CHID |
 | Proprietà di Synaptics | VoodooI2CSynaptics | Il protocollo Synaptics F12 richiede invece VoodooI2CHID |
