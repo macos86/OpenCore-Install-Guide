@@ -1,193 +1,193 @@
-# Gathering files
+## Raccogliere i File
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-This section is for gathering miscellaneous files for booting macOS, we do expect you to know your hardware well before starting and hopefully made a Hackintosh before as we won't be deep diving in here.
+Questa pagina è una raccolta di vari file necessari per l'avvio di MacOs, ci aspettiamo che tu, prima di iniziare, conosca bene il tuo hardware e ci auguriamo che tu abbia fatto già un Hackintosh in passato, perchè non andremo così nel dettaglio in questa pagina.
 
-> What's the best way to figure out if my hardware is supported?
+> Qual'è il miglior modo per capire se il mio hardware è supportato?
 
-See the [**Hardware Limitations page**](macos-limits.md) for some better insight into what macOS requires to boot, hardware support between Clover and OpenCore are quite similar.
+Vedi la  [**Pagina delle limitazioni hardware**](macos-limits.md) per capire meglio ciò che MacOs richiede avviarsi, Clover e OpenCore hanno un supporto hardware abbastanza simile.
 
-> What are some ways to figure out what hardware I have?
+> Come posso capire che hardware ho?
 
-See the page before: [Finding your hardware](./find-hardware.md)
+Vedi la pagina precedente: [Scoprire il tuo hardware](./find-hardware.md)
 
-## Firmware Drivers
+## Driver del Firmware
 
-Firmware drivers are drivers used by OpenCore in the UEFI environment. They're mainly required to boot a machine, either by extending OpenCore's patching ability or showing you different types of drives in the OpenCore picker(ie. HFS drives).
+I Firmware drivers sono dei drivers utilizzati da OpenCore negli ambienti UEFI. Servono principalmente per avviare una computer, estendendo la capacità di patch di OpenCore oppure mostrandoti le diverse unità nel selettore(ovvero le unità HFS).
 
-* **Location Note**: These files **must** be placed under `EFI/OC/Drivers/`
+* **Nota sul posizionamento**: Questi file **devono** essere posizionati sotto `EFI/OC/Drivers/`
 
-### Universal
+### Universali
 
-::: tip Required Drivers
+::: details drivers richiesti
 
-For the majority of systems, you'll only need 2 `.efi` drivers to get up and running:
+Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 
 * [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)(<span style="color:red">Required</span>)
-  * Needed for seeing HFS volumes(ie. macOS Installers and Recovery partitions/images). **Do not mix other HFS drivers**
-  * For Sandy Bridge and older(as well as low end Ivy Bridge(i3 and Celerons), see the legacy section below
+  * Necessario per vedere i volumi HFS (es. Gli installer di MacOS e le partizioni/immagini recovery). **Non mischiare altri HFS drivers**
+  * Per i processori Sandy Bridge e più vecchi(come come gli Ivy Bridge di fascia bassa(i3 e Celerons), vedi la sezione legacy qui sotto
 * [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Required</span>)
-  * Replacement for [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), used as an extension for OpenCore to help with patching boot.efi for NVRAM fixes and better memory management.
-  * Reminder this was bundled in OpenCorePkg we downloaded earlier
+  * Sostituzione di [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), usato come estensione per Opencore come aiuto per la patch di boot.efi per correggere l'NVRAM e per una migliore gestione della batteria
+  * Ricorda che questo era incluso in Opencorepkg che abbiamo scaricato in precedenza
 
 :::
 
-### Legacy users
+### Utenti Legacy
 
-In addition to the above, if your hardware doesn't support UEFI(2011 and older era) then you'll need the following. Pay close attention to each entry as you may not need all 4:
+Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'UEFI (macchine del 2011 e meno recenti) avrai bisogno di quanto segue. Presta atenzione a tutte le voci qui sotto perchè potresti avere bisogno di tutte e 4
 
 * [OpenUsbKbDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Used for OpenCore picker on **legacy systems running DuetPkg**, [not recommended and even harmful on UEFI(Ivy Bridge and newer)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
+  * Utilizzato per il selettore Opencore su  **sistemi legacy che eseguono DuetPkg**, [non raccomandato ed addirittura dannoso su UEFI(Ivy Bridge e processori piú recenti)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
 * [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
-  * Legacy variant of HfsPlus, used for systems that lack RDRAND instruction support. This is generally seen on Sandy Bridge and older(as well as low end Ivy Bridge(i3 and Celerons))
-  * Don't mix this with HfsPlus.efi, choose one or the other depending on your hardware
+  * Variante legacy di HfsPlus, usato per sistemi che non hanno il supporto delle istruzioni RDRAND. Questo generalmente accade su processori Sandy Bridge e piu vecchi (ma anche su processori Ivy Bridge di fascia bassa (i3 e Celerons))
+  * Non usarlo con HfsPlus.efi, scegline quello corretto in base al tuo hardware
 * [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Required to boot recovery on OS X 10.7 through 10.9
-    * This file is bundled with OpenCorePkg under EFI/OC/Drivers
-    * Note: OpenDuet users(ie. without UEFI) will have this driver built-in, not requiring it
-  * Not required for OS X 10.10, Yosemite and newer
+  * Necessario per avviare la recovery da OS X 10.7 fino al 10.9
+    * Questo file è incluso con OpenCorePkg sotto EFI/OC/Drivers
+    * Nota: gli utenti OpenDuet(cioè senza UEFI) avranno gia questo driver integrato, non gli servirà
+  * Non necessario per OS X 10.10, Yosemite e successivi
+  
+Questi file andranno nella cartella "drivers" della tua EFI
 
-These files will go in your Drivers folder in your EFI
+::: details specifici per le cpu 32-Bit
 
-::: details 32-Bit specifics
-
-For those with 32-Bit CPUs, you'll want to grab these drivers as well
+Per coloro che hanno cpu a 32 bit, consigliamo di inserire anche questi drivers
 
 * [HfsPlus32](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus32.efi)
-  * Alternative to HfsPlusLegacy but for 32-bit CPUs, don't mix this with other HFS .efi drivers
+  * Alternativa a HfsPlusLegacy per le cpu a 32-bit, non mischiare questo con altri drivers HFS .efi.
 
 :::
 
 ## Kexts
 
-A kext is a **k**ernel **ext**ension, you can think of this as a driver for macOS, these files will go into the Kexts folder in your EFI.
+Un kext è un **k**ernel **ext**ension (estensione kernel), li possiammo immaginare come una sorta di drivers per MacOs, questi file andranno nella cartella kext della tua EFI.
 
-* **Windows and Linux note**: Kexts will look like normal folders in your OS, **double check** that the folder you are installing has a .kext extension visible(and do not add one manually if it's missing).
-  * If any kext also includes a `.dSYM` file, you can simply delete it. They're only for debugging purposes.
-* **Location Note**: These files **must** be placed under `EFI/OC/Kexts/`.
+* **Nota per Windows e Linux**: I kext saranno visti come normali cartelle dal vostro sistema, **controlla più volte** che la cartella che stai installando abbia un'estensione .kext visibile(e non aggiungere manulamente l'estensione se non è presente).
+  * Se qualche kext dovesse includere un file  `.dSYM`, lo puoi semplicemente cancellare. Sono utili solamente per il debug.
+* **Nota sul posizionamento**: Questi files **devono** essere posizionati sotto `EFI/OC/Kexts/`.
 
-All kext listed below can be found **pre-compiled** in the [Kext Repo](http://kexts.goldfish64.com/). Kexts here are compiled each time there's a new commit.
+Tutti i kext elencati in precedenza possono essere trovati **pre-compilati** nella [Kext Repo](http://kexts.goldfish64.com/). I kext qui indicati vengono compilati ogni volta che c'è un nuovo aggiornamento.
 
-### Must haves
+### Obbligatori
 
-::: tip Required Kexts
+::: tip Kext richiesti
 
-Without the below 2, no system is bootable:
+Senza i due qua sotto nessun sistema è avviabile:
 
 * [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Required</span>)
-  * Emulates the SMC chip found on real macs, without this macOS will not boot
-  * Alternative is FakeSMC which can have better or worse support, most commonly used on legacy hardware.
-  * Requires OS X 10.6 or newer
+  * Emula il chip SMC che si trova sui veri Mac, senza questo MacOs non si avvierà.
+  * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy 
+  * Necessita OS X 10.6 o superiori
 * [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Required</span>)
-  * A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work.
-  * Note that Lilu and plugins requires OS X 10.8 or newer to function
+  * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
+  * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
   
-::: details Legacy "Must haves" kexts
+::: details "Must haves" dei kext per gli utenti legacy 
 
-For those planning to boot OS X 10.7 and older on 32 bit hardware, you'll want to use the below instead of VirtualSMC:
+Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
 
 * [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/blob/master/32Bit-only/Zip/FakeSMC-32.kext.zip?raw=true)
 
-Reminder if you don't plan to boot these older OSes, you can ignore this kext.
+Ricorda che se non hai in programma di avviare vecchie versioni di MacOs puoi ignorare tranquillamente questo kext.
 
-* **OS X 10.4 and 10.5 note**: Even on 64-bit CPUs, OS X's kernel space is still 32-bit. So we recommend using FakeSMC-32 in tandem with VirtualSMC, specifically by setting FakeSMC-32's `Arch` entry to `i386` and VirtualSMC's to `x86_64`. This is discussed further on in the guide.
+* **Nota per OS X 10.4 e 10.5**:  Anche su CPU a 64 bit, lo spazio del kernel di OS X è ancora a 32 bit. Quindi consigliamo di utilizzare FakeSMC-32 in coppia con VirtualSMC, specificatamente impostando la voce `Arch` di FakeSMC-32 su  `i386`  e VirtualSMC su  `x86_64`. Questo è discusso più avanti nella guida.
 
 :::
 
-### VirtualSMC Plugins
+### Plugin di VirtualSMC
 
-The below plugins are not required to boot, and merely add extra functionality to the system like hardware monitoring(Note while VirtualSMC supports 10.6, plugins may require 10.8+):
+I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente funzionalità extra al sistema come il monitoraggio dell'hardware(Nota mentre VirtualSMC supporta 10.6, i plugins potrebbero richiedere 10.8+):
 
 * SMCProcessor.kext
-  * Used for monitoring CPU temperature, **doesn't work on AMD CPU based systems**
+  * Utilizzato per monitorare la temperatura della CPU, **non funziona su sistemi basati su CPU AMD**
 * SMCSuperIO.kext
-  * Used for monitoring fan speed, **doesn't work on AMD CPU based systems**
+  * Utilizzato per monitorare la velocità della ventola, **non funziona su sistemi basati su CPU AMD**
 * SMCLightSensor.kext
-  * Used for the ambient light sensor on laptops, **desktops can ignore**
-  * Do not use if you don't have an ambient light sensor, can cause issues otherwise
+  * Utilizzato per il sensore di luminosità sui laptop, **i desktop possono ignorare**
+  * Non utilizzare se non si ha un sensore di luminosità, può causare problemi in caso contrario
 * SMCBatteryManager.kext
-  * Used for measuring battery readouts on laptops, **desktops can ignore**
-  * Do not use until battery has been properly patched, can cause issues otherwise. So for initial setup, please omit this kext. After install you can follow this page for setup: [Fixing Battery Read-outs](https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery.html)
+  * Utilizzato per misurare la batteria sui laptop, **i desktop possono ignorare**
+  * Non utilizzare fino a quando la batteria non è stata adeguatamente patchata, può causare problemi in caso contrario. Quindi, per la configurazione iniziale, ometti questo kext. Dopo l'installazione puoi seguire questa pagina per la configurazione: [Fixing Battery Read-outs (EN)](https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery.html)
 * SMCDellSensors.kext
-  * Allows for finer monitoring and control of the fans on Dell machines supporting System Management Mode(SMM)
-  * **Do not use if you do not have a supported Dell machine**, mainly Dell laptops can benefit from this kext
+  * Consente un monitoraggio e un controllo più accurato delle ventole sulle macchine Dell che supportano il System Management Mode (SMM)
+  * **Non utilizzare se non si dispone di una macchina Dell supportata**, principalmente i laptop Dell possono trarre vantaggio da questo kext
 
-### Graphics
+### Grafica
 
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Required</span>)
-  * Used for graphics patching DRM, boardID, framebuffer fixes, etc, all GPUs benefit from this kext.
-  * Note the SSDT-PNLF.dsl file included is only required for laptops and AIOs, see [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) for more info
-  * Requires OS X 10.8 or newer
+  * Utilizzato per la patch grafica di DRM, boardID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
+  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori informazioni
+  * Necessita di OS X 10.8 o superiori
 
 ### Audio
 
 * [AppleALC](https://github.com/acidanthera/AppleALC/releases)
-  * Used for AppleHDA patching, allowing support for the majority of on-board sound controllers
-  * AMD 15h/16h may have issues with this and Ryzen/Threadripper systems rarely have mic support
-  * Requires OS X 10.8 or newer
+  * Utilizzato per patch di AppleHDA, consentendo il supporto per la maggior parte dei controller audio integrati
+  * I processori AMD 15°/16° potrebbero avere problemi con questo kext e i sistemi Ryzen/Threadripper raramente supportano il microfono
+  * Necessita di OS X 10.8 o superiori
   
-::: details Legacy Audio Kext
+::: details Kext audio per i sistemi legacy
 
-For those who plan to boot 10.7 and older may want to opt for these kexts instead:
+Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile optare per questi kext:
 
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
-  * Requires OS X 10.6 or newer
+  * Necessita OS X 10.6 o superiori
   
 * [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/blob/master/FAT/Zip/VoodooHDA.kext.zip)
-  * Similar to the above, however supports 32 and 64-Bit kernels so perfect for OS X 10.4-5 booting and 32-Bit CPUs
+  * Simile al kext sopra, tuttavia supporta i kernel a 32 e 64 bit, quindi perfetto per l'avvio di OS X 10.4-5 e CPU a 32 bit
 
 :::
 
 ### Ethernet
 
-Here we're going to assume you know what ethernet card your system has, reminder that product spec pages will most likely list the type of network card.
+Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda che le pagine delle specifiche del prodotto molto probabilmente elencheranno il tipo di scheda di rete.
 
 * [IntelMausi](https://github.com/acidanthera/IntelMausi/releases)
-  * Required for the majority of Intel NICs, chipsets that are based off of I211 will need the SmallTreeIntel82576 kext
-  * Intel's 82578, 82579, I217, I218 and I219 NICs are officially supported
-  * Requires OS X 10.9 or newer, 10.6-10.8 users can use the IntelSnowMausi instead for older OSes
+  * Necessario per la maggior parte delle schede di rete Intel, i chipset basati su I211 avranno bisogno di SmallTreeIntel82576 kext
+  * I NIC Intel 82578, 82579, I217, I218 e I219 sono ufficialmente supportati
+  * Necessita OS X 10.9 o successive, gli utenti 10.6-10.8 possono utilizzare IntelSnowMausi
 * [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)
-  * Required for I211 NICs, based off of the SmallTree kext but patched to support I211
-  * Required for most AMD boards running Intel NICs
-  * Requires OS X 10.9-12(v1.0.6), macOS 10.13-14(v1.2.5), macOS 10.15+(v1.3.0)
+  * Richiesto per i211 NIC, basato sul kext SmallTree ma patchato per supportare I211
+  * Richiesto per la maggior parte delle schede AMD che eseguono NIC Intel
+  * Richiede OS X 10.9-12 (v1.0.6), macOS 10.13-14 (v1.2.5), macOS 10.15+ (v1.3.0)
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
-  * Required for Atheros and Killer NICs
-  * Requires OS X 10.8 or newer
-  * Note: Atheros Killer E2500 models are actually Realtek based, for these systems please use [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) instead
+  * Richiesto per Atheros e i NIC Killer
+  * Richiede OS X 10.8 o successivo
+  * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) 
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
-  * For Realtek's Gigabit Ethernet
-  * Requires OS X 10.8-11(2.2.0), 10.12-13(v2.2.2), 10.14+(2.3.0)
-  * **NOTE: Sometimes Realtek's Gigabit Ethernet may not work correctly if you have RealtekRTL8111 v2.3.0. If you see this issue, try reverting to version 2.2.2**
+  * Per i Gigabit Ethernet di Realtek
+  * Richiede OS X 10.8-11 (2.2.0), 10.12-13 (v2.2.2), 10.14+ (2.3.0)
+  * **NOTA: a volte i Gigabit Ethernet di Realtek potrebbe non funzionare correttamente se si utilizza RealtekRTL8111 v2.3.0. Se hai questo problema, prova a usare la versione 2.2.2**
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
-  * For Realtek's 2.5Gb Ethernet
-  * Requires macOS 10.15 or newer
-* For Intel's I225-V NICs, patches are mentioned in the desktop [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties) section. No kext is required.
-  * Requires macOS 10.15 or newer
+  * Per i 2,5 Gb Ethernet di Realtek
+  * Richiede macOS 10.15 o successivo
+* Per i NIC I225-V di Intel, le patch sono menzionate nella sezione desktop [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties). Non è richiesto nessun kext.
+  * Richiede macOS 10.15 o successivo
 * For Intel's I350 NICs, patches are mentioned in the HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties) section. No kext is required.
   * Requires OS X 10.10 or newer
 
-::: details Legacy Ethernet Kexts
+::: details Kext Ethernet per sistemi Legacy
 
-Relevant for either legacy macOS installs or older PC hardware.
+Rilevante per le installazioni di macOS legacy o per vecchi computer.
 
 * [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases)
-  * Mainly relevant for 10/100MBe based Intel Ethernet controllers
-  * Requires 10.6 or newer
+  * Principalmente rilevante per i controller Ethernet Intel basati su 10/100MBe
+  * Richiede 10.6 o successive
 * [RealtekRTL8100](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/)
-  * Mainly relevant for 10/100MBe based Realtek Ethernet controllers
-  * Requires macOS 10.12 or newer with v2.0.0+
+  * Principalmente rilevante per i controller Ethernet Realtek Ethernet basati su 10/100MBe
+  * Richiede macOS 10.12 o versione successiva con v2.0.0 +
 * [BCM5722D](https://github.com/chris1111/BCM5722D/releases)
-  * Mainly relevant for BCM5722 based Broadcom Ethernet controllers
-  * Requires OS X 10.6 or newer
+  * Principalmente rilevante per i controller Broadcom Ethernet basati su BCM5722
+  * Richiede OS X 10.6 o successivi
 
 :::
 
-And also keep in mind certain NICs are actually natively supported in macOS:
+Inoltre, tieni presente che alcune schede NIC sono effettivamente supportate in modo nativo in macOS:
 
-::: details Native Ethernet Controllers
+::: details Controller Ethernet Nativamente Supportati
 
-#### Aquantia Series
+#### Serie Aquantia 
 
 ```md
 # AppleEthernetAquantiaAqtion.kext
@@ -204,9 +204,9 @@ pci1d6a,c0   = Aquantia AQC113
 pci1d6a,4c0  = Aquantia AQC113
 ```
 
-**Note**: Due to some outdated firmware shipped on many Aquantia NICs, you may need to update the firmware in Linux/Windows to ensure it's macOS-compatible.
+**Nota bene**: A causa di alcuni firmware obsoleti forniti su molti NIC Aquantia, potrebbe essere necessario aggiornare il firmware da Linux/Windows per assicurarsi che sia compatibile con macOS.
 
-#### Intel Series
+#### Serie Intel 
 
 ```md
 # AppleIntel8254XEthernet.kext
@@ -224,7 +224,7 @@ pci8086,10f6 = Intel 82574L
 
 ```
 
-#### Broadcom Series
+#### Serie Broadcom 
 
 ```md
 # AppleBCM5701Ethernet.kext
@@ -240,44 +240,44 @@ pci14e4,1686 = Broadcom BCM57766
 ### USB
 
 * [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
-  * Used for injecting Intel USB controllers on systems without defined USB ports in ACPI
-  * Shouldn't be needed on Desktop Skylake and newer
-    * AsRock is dumb and does need this
-    * Coffee Lake and older laptops are however recommended to use this kext
-  * Does not work on AMD CPUs **at all**
-  * Requires OS X 10.11 or newer
+  * Utilizzato per iniettare i contreller USB Intel su sistemi senza porte USB definite in ACPI
+  * Non dovrebbe essere necessario su Desktop Skylake e versioni successive
+    * Su AsRock questo kext è invece sempre necessario 
+    * Si consiglia tuttavia di utilizzare questo kext anche con processori Coffee Lake e laptop meno recenti
+  * Non funziona su **nessuna** CPU AMD
+  * Necessita di OS X 10.11 o superiori
 
 * [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All)
-  * Needed for non-native USB controllers
-  * AMD CPU based systems don't need this
-  * Common chipsets needing this:
+  * Necessario per i controller USB non nativi
+  * CPU basate su sistemi AMD non lo necessitano questo kext
+  * Schede madri che solitamente richiedono questo kext:
     * H370
     * B360
     * H310
-    * Z390(Not needed on Mojave and newer)
+    * Z390(Non necessario su Mojave e versioni successive)
     * X79
     * X99
-    * AsRock boards(On Intel motherboards specifically, B460/Z490+ boards do not need it however)
+    * Schede AsRock (Necessario sulle schede madri Intel, non necessario tuttavia sulle schede B460/Z490+)
 
-### WiFi and Bluetooth
+### WiFi e Bluetooth
 
 #### Intel
 
 * [AirportItlwm](https://github.com/OpenIntelWireless/itlwm/releases)
-  * Adds support for a large variety of Intel wireless cards and works natively in recovery thanks to IO80211Family integration
-  * Requires macOS 10.13 or newer and requires Apple's Secure Boot to function correctly
+  * Aggiunge il supporto per un'ampia varietà di schede wireless Intel e funziona in modo nativo nella recovery grazie all'integrazione della famiglia IO80211
+  * Richiede macOS 10.13 o più recente e Apple Secure Boot per funzionare correttamente
 * [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-  * Adds Bluetooth support to macOS when paired with an Intel wireless card
-  * Requires macOS 10.13 or newer
+  * Aggiunge il supporto Bluetooth a macOS se associato a una scheda wireless Intel
+  * Richiede MacOs 10.13 o successive
 
-::: details More info on enabling AirportItlwm
+::: details Ulteriori informazioni sull'attivazione di AirportItlwm
 
-To enable AirportItlwm support with OpenCore, you'll need to either:
+Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 
-* Enable `Misc -> Security -> SecureBootModel` by either setting it as `Default` or some other valid value
-  * This is discussed both later on in this guide and in the post-install guide: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
-* If you cannot enable SecureBootModel, you can still force inject IO80211Family(**Highly discouraged**)
-  * Set the following under `Kernel -> Force` in your config.plist(discussed later in this guide):
+* Abilita `Misc -> Security -> SecureBootModel` impostandolo come` Default` o qualche altro valore valido
+  * Questo è discusso successivamente più avanti in questa guida ma anche nella guida post-installazione: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
+* Se non puoi abilitare SecureBootModel, puoi comunque forzare l'inserimento di IO80211Family (**Altamente sconsigliato**)
+  * Imposta quanto segue in `Kernel -> Force` nel tuo config.plist (discusso più avanti in questa guida):
   
 ![](./images/ktext-md/force-io80211.png)
 
@@ -286,169 +286,169 @@ To enable AirportItlwm support with OpenCore, you'll need to either:
 #### Broadcom
 
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
-  * Used for patching non-Apple/non-Fenvi Broadcom cards, **will not work on Intel, Killer, Realtek, etc**
-  * Requires OS X 10.10 or newer
-  * For Big Sur see [Big Sur Known Issues](./extras/big-sur#known-issues) for extra steps regarding AirPortBrcm4360 drivers.
+  * Utilizzato per patchare schede Broadcom non Apple/non Fenvi, **Non funzionerà su schede Intel, Killer, Realtek, ecc**
+  * Richiede OS X 10.10 o versioni successive
+  * Per Big Sur vedi [Big Sur problemi conosciuti](./extras/big-sur#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
-  * Used for uploading firmware on Broadcom Bluetooth chipset, required for all non-Apple/non-Fenvi Airport cards.
-  * To be paired with BrcmFirmwareData.kext
-    * BrcmPatchRAM3 for 10.15+ (must be paired with BrcmBluetoothInjector)
-    * BrcmPatchRAM2 for 10.11-10.14
-    * BrcmPatchRAM for 10.8-10.10
+  * Utilizzato per caricare il firmware sul chipset Broadcom Bluetooth, richiesto per tutte le schede non Apple/non Fenvi Airport.
+  * Da associare a BrcmFirmwareData.kext
+    * BrcmPatchRAM3 per 10.15+ ( deve essere asscociato con BrcmBluetoothInjector)
+    * BrcmPatchRAM2 per 10.11-10.14
+    * BrcmPatchRAM per 10.8-10.10
 
-::: details BrcmPatchRAM Load order
+::: details BrcmPatchRAM ordine di caricamento
 
-The order in `Kernel -> Add` should be:
+L'ordine in `Kernel -> Add` dovrebbe essere:
 
 1. BrcmBluetoothInjector
 2. BrcmFirmwareData
 3. BrcmPatchRAM3
 
-However ProperTree will handle this for you, so you need not concern yourself
+ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 
 :::
 
-### AMD CPU Specific kexts
+### Kexts specifici per CPU AMD
 
 * [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * USB fix for AMD FX systems, not recommended for Ryzen
-  * Requires macOS 10.13 or newer
+  * Fix USB per sistemi AMD FX, non consigliata per Ryzen
+  * Richiede macOS 10.13 o versioni successive
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
-  * Audio for FX systems and front panel Mic+Audio support for Ryzen system, do not mix with AppleALC. Audio quality is noticeably worse than AppleALC on Zen CPUs
-  * Requires OS X 10.6 or newer
+  * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
+  * Richiede OS X 10.6 o successivo
 
-### Extras
+### Extra
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
-  * Useful starting with Catalina to disable the AppleMCEReporter kext which will cause kernel panics on AMD CPUs and dual-socket systems
-  * Affected SMBIOS:
+  * Utile a partire da Catalina per disabilitare il kext AppleMCEReporter che causerebbe kernel panic su CPU AMD e sistemi dual-socket
+  * SMBIOS interessati:
     * MacPro6,1
     * MacPro7,1
     * iMacPro1,1
-  * Requires macOS 10.15 or newer
+  * Richiede macOS 10.15 o versioni successive
 * [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases)
-  * Needed for syncing TSC on some of Intel's HEDT and server motherboards, without this macOS may be extremely slow or even unbootable.
-  * **Does not work on AMD CPUs**
-  * Requires OS X 10.8 or newer
+  * Necessario per la sincronizzazione del TSC su alcune schede madri Intel HEDT e server, senza questo macOS potrebbe essere estremamente lento o non avviabile.
+  * **Non funziona su CPU AMD**
+  * Richiede OS X 10.8 o versioni successive
 * [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)
-  * Used for fixing power management and initialization on non-Apple NVMe
-  * Requires macOS 10.14 or newer
+  * Utilizzato per correggere la gestione dell'alimentazione e l'inizializzazione di NVMe non Apple
+  * Richiede macOS 10.14 o versioni successive
 * [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
-  * Adds support for a large variety of SATA controllers, mainly relevant for laptops which have issues seeing the SATA drive in macOS. We recommend testing without this first.
-  * macOS Big Sur Note: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) will need to be used instead due to numerous controllers being dropped from the binary itself
-    * Catalina and older need not concern
+  * Aggiunge il supporto per un'ampia varietà di controller SATA, principalmente utile per i laptop che hanno problemi nel vedere l'unità SATA in macOS. Si consiglia prima di provare senza questo.
+  * Nota per MacOs Big Sur: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) dovrà essere utilizzato invece perché numerosi controller sono stati eliminati dal binario stesso
+    * Coloro che utilizzano Catalina e versioni precedenti non ne sono coinvolti
 
-::: details Legacy SATA Kexts
+::: details Kext SATA per sistemi Legacy
 
 * [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip)
-  * Legacy SATA/AHCI injector, mainly relevant for older machines of the Penryn era
+  * Iniettore Legacy  SATA/AHCI,  principalmente utile per le macchine più vecchie dell'era Penryn
 * [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
-  * Legacy ATA injector, mainly relevant for IDE and ATA devices(ie. when no AHCI option is present in the BIOS)
+  * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
 :::
 
-### Laptop Specifics
+### Specifici per laptop
 
-To figure out what kind of keyboard and trackpad you have, check Device Manager in Windows or `dmesg | grep input` in Linux
+Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi in Windows o `dmesg | grep input` in Linux
 
-#### Input drivers
+#### Driver di input
 
 * [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases)
-  * For systems with PS2 keyboards, mice, and trackpads
-  * Requires macOS 10.11 or newer for MT2 (Magic Trackpad 2) functions
-* [RehabMan's VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/)
-  * For older systems with PS2 keyboards, mice, and trackpads, or when you don't want to use VoodooInput
-  * Supports macOS 10.6+ support
+  * Per sistemi con tastiere, mouse e trackpad PS2
+  * Richiede macOS 10.11 o versioni successive per le funzioni MT2 (Magic Trackpad 2)
+* [RehabMan VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/)
+  * Per i sistemi meno recenti con tastiere, mouse e trackpad PS2 o quando non si vuole utilizzare VoodooInput
+  * Supporta macos 10.6 e successive
 * [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/)
-  * For systems with Synaptics SMBus-based devices, mainly for trackpads and trackpoints.
-  * Requires macOS 10.11 or newer for MT2 functions
+  * Per sistemi con dispositivi basati su Synaptics SMBus, principalmente per trackpad e puntataori.
+  * Richiede macOS 10.11 o successive per le funzioni MT2
 * [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases)
-  * For systems with ELAN SMBus-based devices, mainly for trackpads and trackpoints.
-  * Supports macOS 10.14 or newer currently
+  * Per sistemi con dispositivi basati su ELAN SMBus, principalmente per trackpad e trackpoint.
+  * Attualmente supporta macOS 10.14 o versioni successive
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
-  * Used for fixing I2C devices, found with some fancier touchpads and touchscreen machines
-  * Requires macOS 10.11 or newer for MT2 functions
-::: details VoodooI2C Plugins
-| Connection type | Plugin | Notes |
-| :--- | :--- | :--- |
-| Microsoft HID | VoodooI2CHID | Can be used to support some USB touchscreens as well |
-| ELAN Proprietary | VoodooI2CElan | ELAN1200+ require VoodooI2CHID instead |
-| Synaptics Proprietary | VoodooI2CSynaptics | Synaptics F12 protocol require VoodooI2CHID instead |
-| ^^ | VoodooRMI | Supports Synaptics protocols F12/F3A - These generally support Microsoft's HID standard so you should attempt using VoodooI2CHID first |
-| FTE1001 touchpad | VoodooI2CFTE | |
-| Atmel Multitouch Protocol | VoodooI2CAtmelMXT | |
+  * Usato per il fix dei dispostitivi I2C, utile con alucni touchpad e touchreeen più particolari
+  * Richiede macOS 10.11 o versioni successive per le funzioni MT2
+::: Plugin di VoodooI2C 
+| Tipo di connessione | Plugin | Note |
+| : --- | : --- | : --- |
+| Microsoft HID | VoodooI2CHID | Può essere utilizzato anche per supportare alcuni touchscreen USB |
+| Proprietà ELAN | VoodooI2CElan | ELAN1200+ richiede invece VoodooI2CHID |
+| Proprietà di Synaptics | VoodooI2CSynaptics | Il protocollo Synaptics F12 richiede invece VoodooI2CHID |
+| ^^ | VoodooRMI | Supporta i protocolli Synaptics F12/F3A - Questi generalmente supportano lo standard HID di Microsoft, quindi dovresti prima provare a utilizzare VoodooI2CHID |
+| Touchpad FTE1001 | VoodooI2CFTE | |
+| Protocollo Atmel Multitouch | VoodooI2CAtmelMXT | |
 :::
 
 #### Misc
 
-Please refer to [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) for a full list of supported kexts
+Fare riferimento a [Kexts.md] (https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) per un elenco completo dei kext supportati
 
-## SSDTs
+## SSDT
 
-So you see all those SSDTs in the AcpiSamples folder and wonder whether you need any of them. For us, we will be going over what SSDTs you need in **your specific ACPI section of the config.plist**, as the SSDTs you need are platform specific. With some even system specific where they need to be configured and you can easily get lost if I give you a list of SSDTs to choose from now.
+Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Per noi, esamineremo gli SSDT di cui hai bisogno nella **sezione ACPI del tuo config.plist**, poiché gli SSDT necessari sono specifici della piattaforma. Con alcuni casi specifici del sistema nei quali devono essere configurati, puoi facilmente perderti se ti do un elenco di SSDT tra cui scegliere da ora.
 
-[Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) has an extended section on SSDTs including compiling them on different platforms.
+[Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
 
-A quick TL;DR of needed SSDTs(This is source code, you will have to compile them into a .aml file):
+Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
 
 ### Desktop
 
-| Platforms | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
+| Piattaforme | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
 | :-------: | :-----: | :----: | :------: | :-------: | :-----: |
-| Penryn | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A | N/A |
+| Penryn | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | Nessuno | Nessuno | Nessuno |
 | Lynnfield and Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ |
+| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Da fare nel post-installazione) | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | ^^ | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
-| Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) |
-| AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
+| Comet Lake | ^^ | ^^ | ^^ | Nessuno | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) |
+| AMD (15/16h) | Nessuno | ^^ | Nessuno | ^^ | Nessuno |
 | AMD (17/19h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
-### High End Desktop
+### Desktop di fascia alta
 
-| Platforms | **CPU** | **EC** | **RTC** | **PCI** |
+| Piattaforme | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
-| Nehalem and Westmere | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A |
+| Nehalem and Westmere | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | Nessuno | Nessuno |
 | Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/unc0) |
 | Ivy Bridge-E | ^^ | ^^ | ^^ | ^^ |
 | Haswell-E | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-RTC0-RANGE](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ |
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
-| Skylake-X | ^^ | ^^ | ^^ | N/A |
+| Skylake-X | ^^ | ^^ | ^^ | Nessuno |
 
 ### Laptop
 
-| Platforms | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
+| Piattaforme | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
 | :-------: | :-----: | :----: | :-----------: | :--------------: | :------: | :-----: | :-----: |
-| Clarksfield and Arrandale | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | N/A | N/A | N/A | [IRQ SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
+| Clarksfield and Arrandale | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | Nessuno | Nessuno | Nessuno | [IRQ SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
+| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Da fare nel post-install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | [SSDT-GPI0](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html) | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Skylake | ^^ | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | ^^ | ^^ | ^^ | ^^ | N/A |
+| Skylake | ^^ | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | ^^ | ^^ | ^^ | ^^ | Nessuno |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | ^^ | [SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ | ^^ |
-| Coffee Lake (9th Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
+| Coffee Lake (9° Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) | ^^ |
 
-Continuing:
+Continuando:
 
-| Platforms | **NVRAM** | **IMEI** |
+| Piattaforme | **NVRAM** | **IMEI** |
 | :-------: | :-------: | :------: |
-|  Clarksfield and Arrandale | N/A | N/A |
+|  Clarksfield and Arrandale | Nessuno | Nessuno |
 | Sandy Bridge | ^^| [SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/Universal/imei.html) |
 | Ivy Bridge | ^^ | ^^ |
-| Haswell | ^^ | N/A |
+| Haswell | ^^ | Nessuno |
 | Broadwell | ^^ | ^^ |
 | Skylake | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ |
 | Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ |
 | Coffee Lake (9th Gen) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
-| Comet Lake | N/A | ^^ |
+| Comet Lake | Nessuno | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-# Now with all this done, head to [Getting Started With ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+# Ora, con tutto questo fatto, vai a [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
