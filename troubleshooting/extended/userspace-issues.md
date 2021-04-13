@@ -1,93 +1,93 @@
-# Userspace Issues
+# Problemi nello spazio utente
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-Issues regarding once you've booted the installer and the GUI has loaded.
+Problemi riguardanti una volta che hai avviato il programma di installazione e la GUI è stata caricata
 
-* [macOS installer in Russian](#macos-installer-in-russian)
-* [macOS Installer being damaged](#macos-installer-being-damaged)
-* [Stuck on or near `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
-* [Scrambled Screen on laptops](#scrambled-screen-on-laptops)
-* [Black screen after `IOConsoleUsers: gIOScreenLock...` on laptops and AIOs](#black-screen-after-ioconsoleusers-gioscreenlock-on-laptops-and-aios)
-* [Black screen after `IOConsoleUsers: gIOScreenLock...` on Navi](#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
-* [Frozen in the macOS installer after 30 seconds](#frozen-in-the-macos-installer-after-30-seconds)
-* [15h/16h CPU reboot after Data & Privacy screen](#_15h-16h-cpu-reboot-after-data-privacy-screen)
-* [macOS frozen right before login](#macos-frozen-right-before-login)
-* [MediaKit reports not enough space](#mediakit-reports-not-enough-space)
-* [DiskUtility failing to erase](#diskutility-failing-to-erase)
-* [SATA Drives Not Shown in Disk Utility](#sata-drives-not-shown-in-diskutility)
-* [Stuck at 2 minutes remaining](#stuck-at-2-minutes-remaining)
-* [The recovery server cannot get contacted](#the-recovery-server-cannot-get-contacted)
-* [Keyboard and Mouse broken in Big Sur](#keyboard-and-mouse-broken-in-big-sur)
-* [Stuck on `Your Mac needs a firmware update in order to install to this volume`](#stuck-on-your-mac-needs-a-firmware-update-in-order-to-install-to-this-volume)
+* [macOS installer in Russo](#macos-installer-in-russian)
+* [Il programma di installazione di macOS è danneggiato](#macos-installer-being-damaged)
+* [Bloccato su `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
+* [Schermo deformato su laptops](#scrambled-screen-on-laptops)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su laptops e AIO](#black-screen-after-ioconsoleusers-gioscreenlock-on-laptops-and-aios)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
+* [Congelato nel programma di installazione di macOS dopo 30 secondi](#frozen-in-the-macos-installer-after-30-seconds)
+* [15h/16h di riavvio della CPU dopo la schermata Data & Privacy](#_15h-16h-cpu-reboot-after-data-privacy-screen)
+* [MacOS bloccato subito prima dell'accesso](#macos-frozen-right-before-login)
+* [MediaKit segnala che lo spazio non è sufficiente](#mediakit-reports-not-enough-space)
+* [Cancellazione di Utility Disco fallita](#diskutility-failing-to-erase)
+* [SATA Drives Non Mostrati in Disk Utility](#sata-drives-not-shown-in-diskutility)
+* [Bloccato a 2 minuti rimanenti](#stuck-at-2-minutes-remaining)
+* [Il server di ripristino non può essere contattato](#the-recovery-server-cannot-get-contacted)
+* [Tastiera e mouse non funzionanti in Big Sur](#keyboard-and-mouse-broken-in-big-sur)
+* [Bloccato su `Il tuo Mac necessita di un aggiornamento del firmware per poter essere installato su questo volume`](#stuck-on-your-mac-needs-a-firmware-update-in-order-to-install-to-this-volume)
 
-## macOS installer in Russian
+## macOS installer in Russo
 
-Default sample config is in Russian because slavs rule the Hackintosh world, check your `prev-lang:kbd` value under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82`. Set to `656e2d55533a30` for American: en-US:0 and a full list can be found in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt). For those using with a simple text editor(ie. UEFI Shell, Notepad++, etc), `656e2d55533a30` will become `ZW4tVVM6MA==`
+La configurazione di esempio predefinita è in russo perché gli slavi governano il mondo di Hackintosh, controlla il tuo valore `prev-lang: kbd` in` NVRAM -> Aggiungi -> 7C436110-AB2A-4BBB-A880-FE41995C9F82`. Impostato su `656e2d55533a30` per American: en-US: 0 e un elenco completo può essere trovato in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt). Per coloro che utilizzano un semplice editor di testo (es. UEFI Shell, Notepad ++, ecc.), `656e2d55533a30` diventerà` ZW4tVVM6MA == `
 
-You may also need to reset NVRAM in the boot picker as well
+Potrebbe anche essere necessario reimpostare la NVRAM tramite l'apposito selettore di avvio
 
-* Note: Thinkpad laptops are known to be semi-bricked after an NVRAM reset in OpenCore, we recommend resetting NVRAM by updating the BIOS on these machines.
+* Nota: i laptop Thinkpad sono noti per essere semi-bloccati dopo un ripristino della NVRAM in OpenCore; su queste macchine si consiglia di ripristinare la NVRAM aggiornando il BIOS.
 
-Still didn't work? Well time for the big guns. We'll force remove that exact property and let OpenCore rebuild it:
+Ancora non ha funzionato? Bene, tempo di armi pesanti. Forzeremo la rimozione di quella proprietà esatta e lasceremo che OpenCore la ricostruisca:
 
-`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` then set it Type `String` and Value `prev-lang:kbd`
+`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo Digita `String` e Value` prev-lang: kbd`
 
 ![](../../images/troubleshooting/troubleshooting-md/lang.png)
 
-## macOS Installer being damaged
+## Il programma di installazione di macOS è danneggiato
 
-If you've download macOS before October 2019, you likely have an expired macOS Installer certificate, there's 2 ways to fix this:
+Se hai scaricato macOS prima di ottobre 2019, probabilmente hai un certificato di installazione macOS scaduto; ci sono 2 modi per risolvere questo problema:
 
-* Download newest copy of macOS
-* Change date in terminal to when the certificate was valid
+* Scarica la copia più recente di macOS
+* Modifica la data nel terminale in una in cui il certificato era valido
 
-For the latter:
+Per quest'ultimo:
 
-* Disconnect all networking devices(Ethernet, disable WiFi)
-* In the recovery terminal set to September 1st, 2019:
+* Disconnetti tutti i dispositivi di rete (Ethernet, disabilita WiFi)
+* Nel terminale della Recovery impostare al 1 ° settembre 2019:
 
 ```
 date 0901000019
 ```
 
-## Stuck on or near `IOConsoleUsers: gIOScreenLock...`/`gIOLockState (3...`
+## Bloccato su `IOConsoleUsers: gIOScreenLock...`
 
-This is right before the GPU is properly initialized, verify the following:
+Questo è giusto prima che la GPU venga inizializzata correttamente; verifica quanto segue:
 
-* GPU is UEFI capable(GTX 7XX/2013+)
-* CSM is off in the BIOS
-* Forcing PCIe 3.0 link speed
-* Double check that ig-platform-id and device-id are valid if running an iGPU.
-  * Desktop UHD 630's may need to use `00009B3E` instead
-* Trying various [WhateverGreen Fixes](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
-  * `-igfxmlr` boot argument. This can also manifest as a "Divide by Zero" error.
-* Coffee Lake iGPU users may also need `igfxonln=1` in 10.15.4 and newer
+* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* CSM è disattivato nel BIOS
+* Forzare la velocità di collegamento PCIe 3.0
+* Controlla che ig-platform-id e device-id siano validi se si usa una iGPU.
+   * Potrebbe essere necessario utilizzare "00009B3E" per desktop UHD 630
+* Provando varie [WhateverGreen Fixes] (https://github.com/acidanthera/W qualunqueGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+   * argomento di avvio `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
+* Gli utenti di Coffee Lake iGPU potrebbero anche aver bisogno di `igfxonln = 1` in 10.15.4 e versioni successive
 
-## Scrambled Screen on laptops
+## Schermo deformato su laptops
 
-Enable CSM in your UEFI settings. This may appear as "Boot legacy ROMs" or other legacy setting.
+Abilita CSM nelle impostazioni UEFI. Può apparire come "Boot legacy ROMs" o un'altra impostazione legacy.
 
-## Black screen after `IOConsoleUsers: gIOScreenLock...` on laptops and AIOs
+## Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su laptops e AIO
 
-Verify the following:
+Verifica quanto segue:
 
-* SSDT-PNLF is installed(ie. EFI/OC/ACPI as well as config.plist -> ACPI -> Add)
-* iGPU properties were setup correctly under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`
-* Coffee Lake and newer laptops, add `-igfxblr` to your boot-args
-  * Alternatively, add `enable-backlight-registers-fix | Data | 01000000` to `PciRoot(0x0)/Pci(0x2,0x0)`
+* SSDT-PNLF installato (es. EFI / OC / ACPI e dichiarato nel config.plist -> ACPI)
+* Le proprietà iGPU sono state impostate correttamente in `DeviceProperties -> PciRoot (0x0) / Pci (0x2,0x0)`
+* Coffee Lake e laptop più recenti, aggiungi `-igfxblr` ai tuoi argomenti di avvio
+   * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot (0x0) / Pci (0x2,0x0)"
 
-Additionally, verify issues mentioned in [Stuck on or near `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
+Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
 
-## Black screen after `IOConsoleUsers: gIOScreenLock...` on Navi
+## Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi
 
-* Add `agdpmod=pikera` to boot args
-* Switch between different display outputs
-* Try running MacPro7,1 SMBIOS with the boot-arg `agdpmod=ignore`
+* Aggiungi `agdpmod = pikera` agli argomenti di avvio
+* Prova le diverse uscite del display
+* Prova a eseguire SMBIOS MacPro7,1 con l'argomento di avvio `agdpmod = ignore`
 
-For MSI Navi users, you'll need to apply the patch mentioned here: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
+For MSI Navi users, you'll need to apply the patch mentioned here: [Il programma di installazione non funziona con 5700XT # 901](https://github.com/acidanthera/bugtracker/issues/901)
 
-Specifically, add the following entry under `Kernel -> Patch`:
+In particolare, aggiungi la seguente voce in `Kernel -> Patch`:
 
 ```
 Base:
@@ -105,91 +105,91 @@ ReplaceMask:
 Skip: 0
 ```
 
-## Frozen in the macOS installer after 30 seconds
+## Congelato nel programma di installazione di macOS dopo 30 secondi
 
-This is likely due to faulty or outright missing NullCPUPowerManagement, the one hosted on AMD OSX's Vanilla Guide is corrupted. Go yell at Shannee to fix it. To fix the issue, remove NullCPUPowerManagement from `Kernel -> Add` and `EFI/OC/Kexts` then enable `DummyPowerManagement` under `Kernel -> Emulate`
+Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI / OC / Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
 
-## 15h/16h CPU reboot after Data & Privacy screen
+## 15h/16h di riavvio della CPU dopo la schermata Data & Privacy
 
-Follow directions here after UPDATE 2: [Fix Data and Privacy reboot](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2658085)
+Segui le indicazioni qui dopo l'AGGIORNAMENTO 2: [Risolvere il "Data and Privacy reboot=](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2658085)
 
-## macOS frozen right before login
+## MacOS bloccato subito prima dell'accesso
 
-This is a common example of screwed up TSC, for most system add [CpuTscSync](https://github.com/lvs1974/CpuTscSync)
+Questo è un esempio comune di TSC incasinato; per la maggior parte dei sistemi aggiungi [CpuTscSync](https://github.com/lvs1974/CpuTscSync)
 
-For Skylake-X, many firmwares including Asus and EVGA won't write to all cores. So we'll need to reset the TSC on cold boot and wake with [TSCAdjustReset](https://github.com/interferenc/TSCAdjustReset). Compiled version can be found here: [TSCAdjustReset.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/TSCAdjustReset.kext.zip). Note that you **must** open up the kext(ShowPackageContents in finder, `Contents -> Info.plist`) and change the Info.plist -> `IOKitPersonalities -> IOPropertyMatch -> IOCPUNumber` to the number of CPU threads you have starting from `0`(i9 7980xe 18 core would be `35` as it has 36 threads total)
+Per Skylake-X, molti firmware inclusi Asus ed EVGA non scriveranno su tutti i core. Quindi dovremo ripristinare il TSC all'avvio a freddo e svegliarci con [TSCAdjustReset](https://github.com/interferenc/TSCAdjustReset). La versione compilata può essere trovata qui: [TSCAdjustReset.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/TSCAdjustReset.kext.zip). Nota che tu **devi** aprire il kext(Mostra contenuto pacchetto nel finder, `Contents -> Info.plist`) and change the Info.plist -> `IOKitPersonalities -> IOPropertyMatch -> IOCPUNumber` al numero di thread della CPU avere a partire da `0`(i9 7980xe 18 core sarà `35` visto che ha 36 threads totali)
 
-The most common way to see the TSC issue:
+Il modo più comune per vedere il problema TSC:
 
 Case 1    |  Case 2
 :-------------------------:|:-------------------------:
 ![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
-## MediaKit reports not enough space
+## MediaKit segnala che lo spazio non è sufficiente
 
-This error is due to a small EFI, by default Windows will create a 100MB EFI whereas macOS will expect 200MB. To get around this you have 2 way to go:
+Questo errore è dovuto a un piccolo EFI, per impostazione predefinita Windows creerà un EFI da 100 MB mentre macOS si aspetterà 200 MB. Per aggirare questo problema hai 2 modi per andare:
 
-* Expand the EFI of the drive to 200MB(See Google on how)
-* Format the entire drive instead of just the partition
-  * Note by default Disk Utility only shows partitions, press Cmd/Win+2 to show all devices(Alternatively you can press the view button)
+* Espandi l'EFI dell'unità a 200 MB (vedi Google per sapere come)
+* Formatta l'intera unità anziché solo la partizione
+   * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd / Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
 
 Default           |  Show All Devices(Cmd+2)
 :-------------------------:|:-------------------------:
 ![](../../images/troubleshooting/troubleshooting-md/Default.png)  |  ![](../../images/troubleshooting/troubleshooting-md/Showalldevices.png)
 
-## DiskUtility failing to erase
+## Cancellazione di Utility Disco fallita
 
-This is either 1(or more) of 5 issues:
+La causa sarà una (o più) delle 5 seguenti:
 
-* Formatting partition and not the drive, see [MediaKit reports not enough space](#mediakit-reports-not-enough-space)
-* DiskUtility has an odd bug where it will fail on first erase, try erasing again
-* SATA Hot-plug support in the BIOS is causing issues(try disabling this option)
-* Old firmware, make sure the drive is on the latest firmware
-* And finally, you may just have a bad drive
+* Formattazione della partizione e non dell'unità, vedere [MediaKit segnala lo spazio insufficiente](# mediakit-reports-not-enough-space)
+* DiskUtility ha uno strano bug in cui fallirà alla prima cancellazione; provare a cancellare di nuovo
+* Il supporto hot plug SATA nel BIOS sta causando problemi (prova a disabilitare questa opzione)
+* Vecchio firmware, assicurati che l'unità abbia il firmware più recente
+* E infine, potresti semplicemente avere un disco rotto/difettoso
 
-## SATA Drives Not Shown in DiskUtility
+## SATA Drives Non Mostrati in Disk Utility
 
-* Make sure SATA Mode is AHCI in bios
-* Certain SATA controllers may not be officially supported by macOS, for these cases you'll want to grab [CtlnaAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
-  * For very legacy SATA controllers, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) may be more suitable.
+* Assicurati che la modalità SATA sia AHCI nel BIOS
+* Alcuni controller SATA potrebbero non essere ufficialmente supportati da macOS, per questi casi ti consigliamo di scaricare [CtlnaAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files /CtlnaAHCIPort.kext.zip)
+   * Per controller SATA molto vecchi, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) potrebbe essere più adatto.
 
-## Stuck at 2 minutes remaining
+## Bloccato a 2 minuti rimanenti
 
 ![](../../images/troubleshooting/troubleshooting-md/2-min-remaining.jpeg)
 
-This error is directly related to the stage at which macOS will write certain NVRAM variables for your system to boot next, and so when there's issues revolving around NVRAM it'll stall here.
+Questo errore è direttamente correlato alla fase in cui macOS scriverà determinate variabili NVRAM affinché il tuo sistema si avvii successivamente, e quindi quando ci sono problemi che ruotano attorno alla NVRAM si bloccherà qui.
 
-To resolve, we have a few options:
+Per risolvere, abbiamo alcune opzioni:
 
-* 300 series Intel Fix(ie. Z390):
+* Serie 300 Intel Fix(ie. Z390):
   * [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/)
-* Others can set the following in their config.plist:
+* Altri possono impostare quanto segue nel loro config.plist:
   * LegacyEnable -> YES
   * LegacyOverwrite -> YES
   * WriteFlash -> YES
 
-## The recovery server cannot get contacted
+## Il server di ripristino non può essere contattato
 
-If you made your installer in Windows or Linux, then this means your USB installer is recovery based. What this means is that only a small portion of the macOS installer is on disk while the rest must be downloaded from Apple servers in the installer. And reason we do not include full installer guides is due to unstable HFS drivers and other utilities that commonly end up with data corruption.
+Se hai creato il tuo programma di installazione in Windows o Linux, significa che il tuo programma di installazione USB è basato sulla Recovery. Ciò significa che solo una piccola parte del programma di installazione di macOS è su disco mentre il resto deve essere scaricato dai server Apple nel programma di installazione. Il motivo per cui non includiamo guide complete per l'installazione è dovuto a driver HFS instabili e altre Utility che comunemente finiscono con il danneggiamento dei dati.
 
-To resolve the error, you have a few options:
+Per risolvere l'errore, hai alcune opzioni:
 
-* Ensure you have a working Ethernet or WiFi connection
-  * Open `Network Utility` under `Utilties` header in the installer and see if your Network Card shows up
-    * If you network card **doesn't** show up, it's likely you're missing the right Network kext
-      * Please refer here: [Ethernet Kexts](../../ktext.md#ethernet) and [Finding your hardware](../../find-hardware.md)
-    * If the network card **does** show up, next run `ping -c3 www.google.com` in the installer's terminal to ensure your network connection is working
-      * If nothing shows, either your network or kexts are acting up
-        * We recommend trying older variants of kexts in cases where newer builds have weird bugs with your hardware
-      * If it does return something, then the issue is on Apple's end. You'll simply need to try to install again another time unfortunately
+* Assicurati di avere una connessione Ethernet o WiFi funzionante
+  * Apri "Utility Rete" sotto il menù "Utility" nell'installer e verifica se la tua scheda di rete viene visualizzata
+    * Se la tua scheda di rete  **non** viene visualizzata, è probabile che ti manchi il kext di rete corretto
+      *  Fare riferimento qui: [Ethernet Kexts](../../ ktext.md # ethernet) e [Trovare il tuo hardware](../../ find-hardware.md)
+    * Se la scheda di rete **viene** visualizzata, eseguire quindi `ping -c3 www.google.com` nel terminale del programma di installazione per assicurarsi che la connessione di rete funzioni
+	  * Se non viene visualizzato nulla, la tua rete o kexts stanno agendo
+	      * Ti consigliamo di provare le versioni precedenti di kexts nei casi in cui le build più recenti abbiano strani bug con il tuo hardware
+	    * Se restituisce qualcosa, il problema riguarda Apple. Sfortunatamente, dovrai semplicemente provare a installarlo di nuovo un'altra volta
 
 | Check NIC | Ping |
 | :--- | :--- |
 | ![](../../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](../../images/troubleshooting/troubleshooting-md/ping.png) |
 
-## Keyboard and Mouse broken in Big Sur
+## Tastiera e mouse non funzionanti in Big Sur
 
-For certain legacy systems(ie. Core2 Duo/2010 and older), you may notice that while the USB ports work your HID-based devices such as the keyboard and mouse may be broken. To resolve this, add the following patch:
+Per alcuni sistemi legacy (es. Core2 Duo / 2010 e versioni precedenti), potresti notare che mentre le porte USB funzionano, i tuoi dispositivi basati su HID come la tastiera e il mouse potrebbero essere danneggiati. Per risolvere questo problema, aggiungi la seguente patch:
 
 ::: details IOHIDFamily Patch
 
@@ -214,15 +214,15 @@ config.plist -> Kernel -> Patch:
 
 :::
 
-## Stuck on `Your Mac needs a firmware update in order to install to this volume`
+## Bloccato su `Il tuo Mac necessita di un aggiornamento del firmware per poter essere installato su questo volume`
 
-If you're being prompted to update your firmware to install with an APFS volume, this likely indicates an outdated SMBIOS table. First, verify the following:
+Se ti viene chiesto di aggiornare il firmware per installare con un volume APFS, è probabile che sia una tabella SMBIOS obsoleta. Innanzitutto, verifica quanto segue:
 
-* You have `PlatformInfo -> Automatic` enabled
-* `UpdateSMBIOSMode` is set to `Create`
-  * For Dell and VIAO machines, ensure that `CustomSMBIOSGuid` is enabled and `UpdateSMBIOSMode` is set to `Custom` instead
-* Using a SMBIOS supported in this version of macOS
-  * ie. you're not using `-no_compat_check`
-* You're using the latest version of OpenCore
+* Hai `PlatformInfo -> Automatic` abilitato
+* `UpdateSMBIOSMode` è impostato su` Create`
+   * Per le macchine Dell e VIAO, assicurati che `CustomSMBIOSGuid` sia abilitato e che` UpdateSMBIOSMode` sia invece impostato su `Custom`
+* Utilizzo di un SMBIOS supportato in questa versione di macOS
+   * es. non stai usando `-no_compat_check`
+* Stai utilizzando l'ultima versione di OpenCore
 
-If you still receive this error, then there's likely some outdated SMBIOS info in OpenCore itself. We recommend changing to a similar SMBIOS and see if this is resolved. For a full list of SMBIOS, see here: [Choosing the right SMBIOS](../../extras/smbios-support.html)
+Se continui a ricevere questo errore, probabilmente ci sono alcune informazioni SMBIOS obsolete in OpenCore stesso. Si consiglia di passare a un SMBIOS simile e vedere se il problema è stato risolto. Per un elenco completo di SMBIOS, vedere qui: [Scegliere il giusto SMBIOS](../../extras/smbios-support.html)
