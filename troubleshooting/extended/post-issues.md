@@ -1,209 +1,209 @@
-# Post-Install Issues
+# Problemi Post.Installazione
 
-* Supported version: 0.6.8
+* Versione Supportata: 0.6.8
 
-Issues revolving around macOS once properly installed.
+Possibili problemi quando macOS è già installato.
 
-* [Broken iMessage and Siri](#broken-imessage-and-siri)
-* [No on-board audio](#no-on-board-audio)
-* [BIOS reset or sent into Safemode after reboot/shutdown?](#bios-reset-or-sent-into-safemode-after-reboot-shutdown)
-* [Synaptics PS2 based trackpad doesn't work](#synaptics-ps2-based-trackpad-doesn-t-work)
-* [Fix for Dell breakless PS2 keyboard keys](#fix-for-dell-breakless-ps2-keyboard-keys)
-* [macOS GPU acceleration missing on AMD X570](#macos-gpu-acceleration-missing-on-amd-x570)
-* [DRM Broken](#drm-broken)
-* ["Memory Modules Misconfigured" on MacPro7,1](#memory-modules-misconfigured-on-macpro7-1)
-* [Apps crashing on AMD](#apps-crashing-on-amd)
-* [AssetCache Content Caching unavailable in virtual machine](#assetcache-content-caching-unavailable-in-virtual-machine)
-* [Coffee Lake systems failing to wake](#coffee-lake-systems-failing-to-wake)
-* [No temperature/fan sensor output](#no-temperature-fan-sensor-output)
-* ["You can't change the startup disk to the selected disk" error](#you-can-t-change-the-startup-disk-to-the-selected-disk-error)
-* [macOS waking up with the wrong time](#macos-waking-up-with-the-wrong-time)
-* [No Volume/Brightness control on external monitors](#no-volume-brightness-control-on-external-monitors)
-* [Disabling SIP](#disabling-sip)
-* [Rolling back APFS Snapshots](#rolling-back-apfs-snapshots)
-* [Apple Watch Unlock Issues](#apple-watch-unlock-issues)
-* [4K iGPU output issues over HDMI](#4k-igpu-output-issues-over-hdmi)
+* [IMessage e Siri non funzionanti](#broken-imessage-and-siri)
+* [Nessun audio integrato](#no-on-board-audio)
+* [BIOS ripristinato o messo in modalità provvisoria dopo il riavvio / spegnimento?](#bios-reset-or-sent-into-safemode-after-reboot-shutdown)
+* [Il trackpad basato su PS2 Synaptics non funziona](#synaptics-ps2-based-trackpad-doesn-t-work)
+* [Soluzione al problema con i tasti della tastiera PS2 senza interruzioni di Dell](#fix-for-dell-breakless-ps2-keyboard-keys)
+* [Accelerazione GPU macOS mancante su AMD X570](#macos-gpu-acceleration-missing-on-amd-x570)
+* [Problemi con i DRM](#drm-broken)
+* ["Moduli di memoria configurati in modo errato" su MacPro7,1](#memory-modules-misconfigured-on-macpro7-1)
+* [App che si bloccano su AMD](#apps-crashing-on-amd)
+* [La cache dei contenuti di AssetCache non è disponibile nella macchina virtuale](#assetcache-content-caching-unavailable-in-virtual-machine)
+* [I sistemi di Coffee Lake non si risvegliano](#coffee-lake-systems-failing-to-wake)
+* [Nessun Output dai sensori di temperatura / ventola](#no-temperature-fan-sensor-output)
+* [Errore "Non è possibile modificare il disco di avvio con il disco selezionato"](#you-can-t-change-the-startup-disk-to-the-selected-disk-error)
+* [macOS si sveglia con l'ora sbagliata](#macos-waking-up-with-the-wrong-time)
+* [Nessun controllo del volume / luminosità sui monitor esterni](#no-volume-brightness-control-on-external-monitors)
+* [Disabilitare SIP](#disabling-sip)
+* [Rollback degli snapshot APFS](#rolling-back-apfs-snapshots)
+* [Problemi di sblocco di Apple Watch](#apple-watch-unlock-issues)
+* [Problemi iGPU di output 4K su HDMI](#4k-igpu-output-issues-over-hdmi)
 
-## Broken iMessage and Siri
+## IMessage e Siri non funzionanti
 
-Refer to [Fixing iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) section
+Fare riferimento alla sezione [Configurazione di iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 
-## No on-board audio
+## Nessun audio integrato
 
-Refer to [Fixing Audio with AppleALC](https://dortania.github.io/OpenCore-Post-Install/) section
+Fare riferimento alla sezione [Configurazione dell'Audio con AppleALC](https://dortania.github.io/OpenCore-Post-Install/)
 
-## BIOS reset or sent into Safemode after reboot/shutdown
+## BIOS ripristinato o messo in modalità provvisoria dopo il riavvio / spegnimento?
 
-Refer to [Fixing RTC/CMOS Resets](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html) section
+Fare riferimento alla sezione [Risovere i Resets RTC/CMOS](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
 
-## Synaptics PS2 based trackpad doesn't work
+## Il trackpad basato su PS2 Synaptics non funziona
 
-You can try to use [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl).
-First, you have to open Device Manager, and head to the following:
+Puoi provare a utilizzare [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl).
+Per prima cosa, devi aprire Gestione dispositivi e andare a quanto segue:
 
 ```
-Device Manager -> Mice and other pointing devices -> Double click on your trackpad -> Properties -> Details > BIOS device name
+Gestione dispositivi -> Mouse e altri dispositivi di puntamento -> Doppio clic sul trackpad -> Proprietà -> Dettagli> Nome del dispositivo nel BIOS
 ```
 
-Then grab [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl)
-By default, this uses PCI0.LPCB.PS2K for the pathing. you'll want to rename accordingly.
+Quindi prendi [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl)
+Per impostazione predefinita, utilizza PCI0.LPCB.PS2K per il percorso. Ti consigliamo di rinominare di conseguenza.
 
 ```c
-External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rename this
+External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
 
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package()  <- Rename this
+    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package()  <- Rinomina questo
 
 ```
 
-Then compile with MaciASL, copy to your OC/ACPI folder, and add it to your config, and you should be good to go.
+Quindi compila con MaciASL, copia nella tua cartella OC / ACPI, dichiaralo nel tuo config e dovresti essere a posto.
 
-* Note: Although this will work for most cases, the trackpad may be laggy and you may not be able to use the physical buttons ([more details](https://github.com/acidanthera/bugtracker/issues/890)). If you can live without the trackpad, this may be better:
+* Nota: sebbene questo funzioni nella maggior parte dei casi, il trackpad potrebbe essere lento e potresti non essere in grado di utilizzare i pulsanti fisici ([ulteriori dettagli](https://github.com/acidanthera/bugtracker/issues/890)). Se riesci a vivere senza il trackpad, potrebbe essere meglio:
 
-Find the ACPI path of your mouse (see above), then grab [SSDT-DisableTrackpadProbe.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-DisableTrackpadProbe.dsl). By default, this uses PCI0.LPCB.PS2K so you have to change that to your ACPI path if necessary:
+Trova il percorso ACPI del tuo mouse (vedi sopra), quindi prendi [SSDT-DisableTrackpadProbe.dsl] (https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-DisableTrackpadProbe.dsl). Per impostazione predefinita, questo utilizza PCI0.LPCB.PS2K quindi è necessario modificarlo nel percorso ACPI se necessario:
 
 ```c
-External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rename this
+External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
 
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package() <- Rename this
+    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package() <- Rinomina questo
 ```
 
-## Fix for Dell breakless PS2 keyboard keys
+## Soluzione al problema con i tasti della tastiera PS2 senza interruzioni di Dell
 
-For those with issues surrounding key presses not releasing(ie. pressing infinitely), you'll want to enable VoodooPS2's Dell profile.
+Per coloro con problemi relativi alla pressione dei tasti che non si rilascia (premuti all'infinito), ti consigliamo di abilitare il profilo Dell di VoodooPS2.
 
-First of all, you need to find the path to your ACPI keyboard object in the Device Manager:
+Prima di tutto, devi trovare il percorso del tuo oggetto tastiera ACPI in Gestione periferiche:
 
 ```
-Device Manager -> Keyboards -> Double click on your keyboard -> Properties -> Details > BIOS device name
+Gestione dispositivi -> Tastiere -> Doppio clic sulla tastiera -> Proprietà -> Dettagli> nome del dispositivo BIOS
 ```
 
-After this, grab [SSDT-KEY-DELL-WN09.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-KEY-DELL-WN09.dsl) and change the ACPI path to the one found above as needed:
+Successivamente, prendi [SSDT-KEY-DELL-WN09.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-KEY-DELL-WN09.dsl) e modifica, se necessario, il percorso ACPI con quello trovato sopra :
 
 ```c
-External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rename this
+External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
 
-    Method(_SB.PCI0.LPCB.PS2K._DSM, 4) <- Rename this
+    Method(_SB.PCI0.LPCB.PS2K._DSM, 4) <- Rinomina questo
 ```
 
-## macOS GPU acceleration missing on AMD X570
+## Accelerazione GPU macOS mancante su AMD X570
 
-Verify the following:
+Verifica quanto segue:
 
-* GPU is UEFI capable(GTX 7XX/2013+)
-* CSM is off in the BIOS
-* Forcing PCIe 3.0 link speed
+* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* CSM è disattivato nel BIOS
+* Forzare la velocità di collegamento PCIe 3.0
 
-## DRM Broken
+## Problemi con i DRM
 
-Refer to [Fixing DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html) section
+Fare riferimento alla sezione [Aggiustare i DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
 
-## "Memory Modules Misconfigured" on MacPro7,1
+## "Moduli di memoria configurati in modo errato" su MacPro7,1
 
-Follow guide listed here:
+Segui la guida elencata qui:
 
-* [Fixing MacPro7,1 Memory Errors](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
+* [Correzione degli errori di memoria di MacPro7,1](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
 
-For those who simply want to disable the notification(not the error itself) is more than enough. For these users, we recommend installing [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases)
+Per chi vuole semplicemente disabilitare la notifica (non l'errore in sé) è più che sufficiente. Per questi utenti, consigliamo di installare [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases)
 
-## Apps crashing on AMD
+## App che si bloccano su AMD
 
-~~Easy fix, buy Intel~~
+~~Soluzione facile, acquista Intel~~
 
-So with AMD, whenever Apple calls CPU specific functions the app will either not work or outright crash. Here are some apps and their "fixes":
+Quindi con AMD, ogni volta che Apple chiama funzioni specifiche della CPU, l'app non funzionerà o andrà in crash. Ecco alcune app e le loro "correzioni":
 
-* Adobe Products don't always work
-  * Some fixes can be found here: [Adobe Fixes](https://adobe.amd-osx.com/)
-  * Do note these fixes just disables functionality, they're not really fixes
-* Virtual Machine running off of AppleHV's framework will not work(ie: Parallels 15, VMware)
-  * VirtualBox works fine as it doesn't use AppleHV
-  * VMware 10 and older can work as well
-  * Parallels 13.1.0 and older are known to work as well
-* Docker broken
-  * Docker toolbox is the only solution as it's based off of VirtualBox, many features are unavailable with this version
-* IDA Pro won't install
-  * There's an Intel specific check in the installer, app itself is likely fine
-* 15/16h CPU web pages crashing
-  * Follow directions here after UPDATE 5: [Fix web pages](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2661857)
+* I prodotti Adobe non funzionano sempre
+   * Alcune correzioni sono disponibili qui: [Adobe Fixes](https://adobe.amd-osx.com/)
+   * Tieni presente che queste correzioni disabilitano solo la funzionalità, non sono davvero correzioni
+* La macchina virtuale in esecuzione al di fuori del framework di AppleHV non funzionerà (ad esempio: Parallels 15, VMware)
+   * VirtualBox funziona bene in quanto non utilizza AppleHV
+   * Anche VMware 10 e versioni precedenti possono funzionare
+   * È noto che anche Parallels 13.1.0 e versioni precedenti funzionano
+* Docker rotto
+   * Il toolbox Docker è l'unica soluzione in quanto si basa su VirtualBox, molte funzionalità non sono disponibili con questa versione
+* IDA Pro non si installa
+   * C'è un controllo specifico di Intel nel programma di installazione, l'app stessa probabilmente va bene
+* 15 / 16h pagine web della CPU in crash
+   * Segui le indicazioni qui dopo l'AGGIORNAMENTO 5: [Correggi pagine web](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2661857)
 
-## Sleep crashing on AMD
+## Sleep non funziona su AMD
 
-This is generally seen on AMD who use the chipset's USB controller, specifically for the Ryzen series and newer. The main way to tell if you're having issues with this is checking logs after either sleeping or waking:
+Questo generalmente accade su AMD che utilizza il controller USB del chipset, in particolare per la serie Ryzen e più recenti. Il modo principale per sapere se hai problemi con questo è controllare i registri dopo un ciclo di Sleep/Wake:
 
-* In terminal:
+* Nel Terminale:
   * `log show --last 1d | grep "Wake reason"` verify it
 
-Should result in something like this:
+Dovrebbe risultare in qualcosa di simile:
 
 ```
 Sleep transition timed out after 180 seconds while calling power state change callbacks. Suspected bundle: com.apple.iokit.IOUSBHostFamily.
 ```
 
-You can double check which controller is XHC0 via IOReg and checking the Vendor ID(1022 for AMD chipset). The fix for this sleep issue is either:
+Puoi ricontrollare quale controller è XHC0 tramite IOReg e controllare l'ID del fornitore (1022 per chipset AMD). La soluzione per questo problema è:
 
-* Avoid the chipset USB all together(ideally set `_STA = 0x0` to disable the controller outright with an SSDT)
-* Correct the USBX power properties to what the controller expects
+* Evita di avere i chipset USB tutti insieme (idealmente imposta `_STA = 0x0` per disabilitare completamente il controller con un SSDT)
+* Correggere le proprietà di alimentazione USBX in base alle aspettative del controller
 
-## AssetCache Content Caching unavailable in virtual machine
+## La cache dei contenuti di AssetCache non è disponibile nella macchina virtuale
 
-Errors such as:
+Errori come:
 
 ```bash
 $ sudo AssetCacheManagerUtil activate
 AssetCacheManagerUtil[] Failed to activate content caching: Error Domain=ACSMErrorDomain Code=5 "virtual machine"...
 ```
 
-arise due to `VMM` flag being exposed by sysctl.
+sorgono a causa del flag "VMM" esposto da sysctl.
 
-Apply [VmAssetCacheEnable](https://github.com/ofawx/VmAssetCacheEnable) kernel patch to disguise the flag and allow normal operation.
+Applicare la patch del kernel [VmAssetCacheEnable](https://github.com/ofawx/VmAssetCacheEnable) per mascherare il flag e consentire il normale funzionamento.
 
-## Coffee Lake systems failing to wake
+## I sistemi di Coffee Lake non si risvegliano
 
 In macOS 10.15.4, there were some changes made to AGPM that can cause wake issues on Coffee Lake systems. Specifically displays hooked up to the iGPU would fail to wake. To resolve this:
 
 * Add `igfxonln=1` to boot-args
 * Make sure you're using [WhateverGreen v1.3.8](https://github.com/acidanthera/WhateverGreen/releases) or newer
 
-## No temperature/fan sensor output
+## Nessun Output dai sensori di temperatura / ventola
 
-So couple things:
+Quindi un paio di cose:
 
-* iStat Menus doesn't yet support MacPro7,1 readouts
-* VirtualSMC's bundled sensors do not support AMD
+* iStat Menu non supporta ancora le letture di MacPro7,1
+* I sensori in bundle di VirtualSMC non supportano AMD
 
-For iStat, you'll have to wait for an update. For AMD users, you can use either:
+Per iStat, dovrai attendere un aggiornamento. Per gli utenti AMD, puoi utilizzare:
 
 * [SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor/releases)
-  * Still in early beta but great work has been done, note it's been mainly tested on Ryzen
+  * Ancora una beta iniziale, ma è stato fatto un ottimo lavoro; notare che è stato testato principalmente su Ryzen
 * [FakeSMC3_with_plugins](https://github.com/CloverHackyColor/FakeSMC3_with_plugins/releases)
 
-**Note for AMD with FakeSMC**:
+**Nota per AMD con FakeSMC**:
 
-* FileVault support requires more work with FakeSMC
-* Make sure no other SMC kexts are present, specifically those from [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)
+* Il supporto di FileVault richiede più lavoro con FakeSMC
+* Assicurati che non siano presenti altri kext SMC, in particolare quelli di [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)
 
-## "You can't change the startup disk to the selected disk" error
+## Errore "Non è possibile modificare il disco di avvio con il disco selezionato"
 
-This is commonly caused by irregular partition setup of the Windows drive, specifically that the EFI is not the first partition. To fix this, we need to enable this quirk:
+Ciò è comunemente causato dall'installazione irregolare della partizione dell'unità Windows, in particolare dal fatto che EFI non è la prima partizione. Per risolvere questo problema, dobbiamo abilitare questo Quirk:
 
 * `PlatformInfo -> Generic -> AdviseWindows -> True`
 
 ![](../../images/troubleshooting/troubleshooting-md/error.png)
 
-## Selecting Startup Disk doesn't apply correctly
+## La selezione del disco di avvio non si applica correttamente
 
-If you're having issues with Startup Disk correctly applying your new boot entry, this is most likely caused by a missing `DevicePathsSupported` in your I/O Registry. To resolve this, ensure you are using `PlatformInfo -> Automatic -> True`
+Se si verificano problemi con "Disco di avvio" che non applica correttamente la nuova voce, molto probabilmente è causato da un "DevicePathsSupported" mancante nel registro di I / O. Per risolvere questo problema, assicurati di utilizzare "PlatformInfo -> Automatic -> True"
 
-Example of missing `DevicePathsSupported`:
+Esempio di "DevicePathsSupported" mancante:
 
-* [Default DevicePath match failure due to different PciRoot #664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
+* [Errore di corrispondenza DevicePath predefinito a causa di un diverso PciRoot # 664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
 
-## macOS waking up with the wrong time
+## macOS si sveglia con l'ora sbagliata
 
-An odd quirk some people may notice is that from wake, macOS will have the incorrect time for a bit before self-correcting with network time check. The root cause of this issue is most likely due to your RTC not ticking, and can be resolved with a new CMOS battery(note that Z270 and newer are quite picky with voltage so choose carefully).
+Una cosa strana che alcune persone potrebbero notare è che, alla riattivazione, macOS avrà l'ora errata per un po 'prima di correggersi automaticamente con il controllo dell'ora di rete. La causa principale di questo problema è molto probabilmente dovuta al fatto che il tuo RTC non "ticchetta" correttamente e può essere risolta con una nuova batteria CMOS (nota che Z270 e più recenti sono piuttosto esigenti con il voltaggio, quindi scegli attentamente).
 
-To verify whether your RTC is working correctly:
+Per verificare se il tuo RTC funziona correttamente:
 
-* Download [VirtualSMC v1.1.5+](https://github.com/acidanthera/virtualsmc/releases) and run the smcread tool:
+* Download [VirtualSMC v1.1.5+](https://github.com/acidanthera/virtualsmc/releases) ed esegui lo strumento smcread:
 
 ```bash
 /path/to/smcread -s | grep CLKT
@@ -211,74 +211,73 @@ To verify whether your RTC is working correctly:
 
 ![](../../images/extras/big-sur/readme/rtc-1.png)
 
-This should provide you with a hexadecimal value, and once converted it should equal time elapsed from Midnight relative to Cupertino.
+Questo dovrebbe fornire un valore esadecimale e, una volta convertito, dovrebbe corrispondere al tempo trascorso dalla mezzanotte rispetto a Cupertino.
 
-So for this example, we'll grab our value(`00010D13`) then convert it to decimal and finally divide it by 3600. This should result in the approximate time elapsed(in seconds) since midnight relative to Cupertino
+Quindi, per questo esempio, prenderemo il nostro valore (`00010D13`), quindi lo convertiremo in decimale e infine lo divideremo per 3600. Ciò dovrebbe risultare nel tempo approssimativo trascorso (in secondi) dalla mezzanotte rispetto a Cupertino
 
 * 00010D13 (Convert to HEX)-> 68883 (Divided by 3600 so we get hours)-> 19.13h(so 19:07:48)
 
-Next you'll want to put your hack to sleep for a bit and wake it, then check the CLKT value once more to see whether it deviated more or if it has a set difference. If you find it didn't actually tick much of at all from the elapsed time, you'll need to look into buying a new battery(with proper voltage)
+Successivamente dovrai mettere il tuo hack in sospensione per un po 'e riattivarlo, quindi controllare ancora una volta il valore CLKT per vedere se ha deviato di più o se ha una differenza impostata. Se trovi che in realtà non ha funzionato molto dal tempo trascorso, dovrai cercare di acquistare una nuova batteria (con una tensione adeguata)
 
-## No Volume/Brightness control on external monitors
+## Nessun controllo del volume / luminosità sui monitor esterni
 
-Oddly enough, macOS has locked down digital audio from having control. To bring back some functionality, the app [MonitorControl](https://github.com/the0neyouseek/MonitorControl/releases) has done great work on improving support in macOS
+Stranamente, macOS ha impedito di avere il controllo dell'audio digitale. Per ripristinare alcune funzionalità, l'app [MonitorControl](https://github.com/the0neyouseek/MonitorControl/releases) ha svolto un ottimo lavoro per migliorare il supporto in macOS
 
-## Time inconsistency between macOS and Windows
+## Incoerenza temporale tra macOS e Windows
 
 This is due to macOS using Universal Time while Windows relies on Greenwhich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
-* [Install Bootcamp utilities](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
-* [Modify Windows' registry](https://superuser.com/q/494432)
+* [Installa le utilità Bootcamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Modifica registro di Windows](https://superuser.com/q/494432)
 
-## Disabling SIP
+## Disabilitare SIP
 
-SIP or more properly known as System Integrity Protection, is a security technology that attempts to prevent any malicious software and the end user from damaging the OS. First introduced with OS X El Capitan, SIP has grown over time to control more and more things in macOS, including limiting edits to restricted file locations and 3rd party kext loading with `kextload`(OpenCore is unaffected as kexts are injected at boot). To resolve this, Apple has provided numerous configuration options in the NVRAM variable `csr-active-config` which can either be set in the macOS recovery environment or with OpenCore's NVRAM section(The latter will be discussed below).
+SIP, acronimo System Integrity Protection, è una tecnologia di sicurezza che tenta di impedire a qualsiasi software dannoso e all'utente finale di danneggiare il sistema operativo. Introdotto per la prima volta con OS X El Capitan, SIP è cresciuto nel tempo per controllare sempre più cose in macOS, inclusa la limitazione delle modifiche a posizioni di file limitate e il caricamento di kext di terze parti con `kextload` (OpenCore non viene influenzato poiché i kext vengono iniettati all'avvio). Per risolvere questo problema, Apple ha fornito numerose opzioni di configurazione nella variabile NVRAM `csr-active-config` che può essere impostata nell'ambiente di ripristino macOS o con la sezione NVRAM di OpenCore (quest'ultima verrà discussa di seguito).
 
-* <span style="color:red">WARNING:</span> Disabling SIP can break OS functionality such as software updates in macOS 11, Big Sur and newer. Please be careful to only disable specific SIP values instead of disabling SIP outright to avoid these issues.
-  * Enabling `CSR_ALLOW_UNAUTHENTICATED_ROOT` and `CSR_ALLOW_APPLE_INTERNAL` are common options that can break OS updates for users
+* <span style="color:red">WARNING:</span> La disabilitazione di SIP può interrompere le funzionalità del sistema operativo come gli aggiornamenti software in macOS 11, Big Sur e versioni successive. Fai attenzione a disabilitare solo valori SIP specifici invece di disabilitare completamente SIP per evitare questi problemi.
+   * L'abilitazione di `CSR_ALLOW_UNAUTHENTICATED_ROOT` e` CSR_ALLOW_APPLE_INTERNAL` sono opzioni comuni che possono interrompere gli aggiornamenti del sistema operativo per gli utenti
+È possibile scegliere valori diversi per abilitare o disabilitare determinati flag di SIP. Alcuni strumenti utili per aiutarti con questi sono [CsrDecode](https://github.com/corpnewt/CsrDecode) e [csrstat](https://github.com/JayBrown/csrstat-NG). I valori comuni sono i seguenti (i byte vengono scambiati pre-esadecimale per te e nota che vanno in NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config):
 
-You can choose different values to enable or disable certain flags of SIP. Some useful tools to help you with these are [CsrDecode](https://github.com/corpnewt/CsrDecode) and [csrstat](https://github.com/JayBrown/csrstat-NG). Common values are as follows (bytes are pre-hex swapped for you, and note that they go under NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config):
+* `00000000` - SIP completamente abilitato (0x0).
+* `03000000` - Disabilita la firma di kext (0x1) e le protezioni del file system (0x2).
+* `FF030000` - Disabilita tutto [flag in macOS High Sierra](https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html) (0x3ff) .
+* `FF070000` - Disabilita tutto [flag in macOS Mojave](https://opensource.apple.com/source/xnu/xnu-4903.270.47/bsd/sys/csr.h.auto.html) e in [macOS Catalina](https://opensource.apple.com/source/xnu/xnu-6153.81.5/bsd/sys/csr.h.auto.html) (0x7ff) poiché Apple ha introdotto un valore per la politica eseguibile.
+* `FF0F0000` - Disabilita tutti i flag in macOS Big Sur (0xfff) che ha un altro nuovo [flag per root autenticato](https://eclecticlight.co/2020/06/25/big-surs-signed-system-volume- protezione-sicurezza-aggiunta /).
 
-* `00000000` - SIP completely enabled (0x0).
-* `03000000` - Disable kext signing (0x1) and filesystem protections (0x2).
-* `FF030000` - Disable all [flags in macOS High Sierra](https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html) (0x3ff).
-* `FF070000` - Disable all [flags in macOS Mojave](https://opensource.apple.com/source/xnu/xnu-4903.270.47/bsd/sys/csr.h.auto.html) and in [macOS Catalina](https://opensource.apple.com/source/xnu/xnu-6153.81.5/bsd/sys/csr.h.auto.html) (0x7ff) as Apple introduced a value for executable policy.
-* `FF0F0000` - Disable all flags in macOS Big Sur (0xfff) which has another new [flag for authenticated root](https://eclecticlight.co/2020/06/25/big-surs-signed-system-volume-added-security-protection/).
-
-**Note**: Disabling SIP with OpenCore is quite a bit different compared to Clover, specifically that NVRAM variables will not be overwritten unless explicitly told so under the `Delete` section. So if you've already set SIP once either via OpenCore or in macOS, you must override the variable:
+**Nota**: Disabilitare SIP con OpenCore è un po 'diverso rispetto a Clover, in particolare le variabili NVRAM che non verranno sovrascritte a meno che non sia esplicitamente indicato nella sezione `Delete`. Quindi, se hai già impostato SIP una volta tramite OpenCore o in macOS, devi sovrascrivere la variabile:
 
 * `NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`
   
 ![](../../images/troubleshooting/troubleshooting-md/sip.png)
 
-## Writing to the macOS system partition
+## Scrittura nella partizione di sistema macOS
 
-With macOS Catalina and newer, Apple split the OS and user data into 2 volumes where the system volume is read-only by default. To make these drives writable we'll need to do a few things:
+Con macOS Catalina e versioni successive, Apple ha suddiviso il sistema operativo e i dati utente in 2 volumi in cui il volume di sistema è di sola lettura per impostazione predefinita. Per rendere scrivibili queste unità dovremo fare alcune cose:
 
-* Note: Users of `SecureBootModel` may end up in a RecoveryOS boot loop if the system partition has been modified. To resolve this, Reset NVRAM and set `SecureBootModel` to `Disabled`
+* Nota: gli utenti di "SecureBootModel" potrebbero finire in un ciclo di avvio di RecoveryOS se la partizione di sistema è stata modificata. Per risolvere questo problema, reimpostare la NVRAM e impostare "SecureBootModel" su "Disabilitato"
 
 **macOS Catalina**
 
-1. [Disable SIP](#disabling-sip)
-2. Mount drive as writable (Run `sudo mount -uw /` in terminal)
+1. [Disabilitare SIP](#disabling-sip)
+2. Montare l'unità come scrivibile (eseguire `sudo mount -uw /` nel terminale)
 
 **macOS Big Sur**
 
-1. [Disable SIP](#disabling-sip)
-2. Mount drive as writable (See below link for command)
+1. [Disabilitare SIP](#disabling-sip)
+2. Montare l'unità come scrivibile (vedere sotto per il comando)
 
-* Note: Due to how OS updates work in macOS Big Sur and newer, changing the system volume can in fact break OS updates. Please edit with caution
+* Nota: a causa del funzionamento degli aggiornamenti del sistema operativo in macOS Big Sur e versioni successive, la modifica del volume di sistema può effettivamente interrompere gli aggiornamenti del sistema operativo. Si prega di modificare con cautela
 
-Commands based off of Apple's KDK documents:
+Comandi basati sui documenti KDK di Apple
 
 ```bash
-# First, create a mount point for your drive
+# Innanzitutto, crea un punto di montaggio per l'unità
 mkdir ~/livemount
 
-# Next, find your System volume
+# Quindi, trova il tuo volume di sistema
 diskutil list
 
-# From the below list, we can see our System volume is disk5s5
+# Dall'elenco sottostante, possiamo vedere che il nostro volume di sistema è disk5s5
 /dev/disk5 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      APFS Container Scheme -                      +255.7 GB   disk5
@@ -290,55 +289,55 @@ diskutil list
    5:                APFS Volume ⁨Big Sur HD⁩              16.2 GB    disk5s5
    6:              APFS Snapshot ⁨com.apple.os.update-...⁩ 16.2 GB    disk5s5s
 
-# Mount the drive(ie. disk5s5)
+# Montare l'unità (es. Disk5s5)
 sudo mount -o nobrowse -t apfs  /dev/disk5s5 ~/livemount
 
-# Now you can freely make any edits to the System volume
+# Ora puoi apportare liberamente qualsiasi modifica al volume di sistema
 
-# If you edited either the S*/L*/Kernel, S*/L*/Extensions or L*/Extensions,
-# you will need to rebuild the kernel cache
+# # Se hai modificato S*/L*/Kernel, S*/L*/Extensions or L*/Extensions,
+# dovrai ricostruire la cache del kernel
 sudo kmutil install --volume-root ~/livemount --update-all
 
-# Finally, once done editing the system volume we'll want to create a new snapshot
+# Infine, una volta terminata la modifica del volume di sistema, vorremo creare una nuovo snapshot
 sudo bless --folder ~/livemount/System/Library/CoreServices --bootefi --create-snapshot
 ```
 
-## Rolling back APFS Snapshots
+## Rollback degli snapshot APFS
 
-With macOS Big Sur, the system volume is now snapshotted allowing you to roll back in case of issues with system updates breaking due to a broken seal. Thanks to new snapshots being created with every OS update, we've got quite a bit to roll back too.
+Con macOS Big Sur, lo Snapshot del volume di sistema è ora istantaneo, consentendo di eseguire il rollback in caso di problemi con gli aggiornamenti di sistema che si interrompono a causa di un sigillo rotto. Grazie alle nuove istantanee create con ogni aggiornamento del sistema operativo, abbiamo anche un bel po 'da ripristinare.
 
-To roll back, you'll first need to reboot into Recovery partition then select "Restore From Time Machine Backup":
+Per eseguire il rollback, devi prima riavviare nella partizione di Recovery, quindi selezionare "Ripristina dal backup di Time Machine":
 
 ![](./../../images/troubleshooting/troubleshooting-md/snapshots.jpg)
 
-* [Credit to Lifewire for image](https://www.lifewire.com/roll-back-apfs-snapshots-4154969)
+* [Ringraziamo Lifewire per l'immagine](https://www.lifewire.com/roll-back-apfs-snapshots-4154969)
 
-## Apple Watch Unlock issues
+## Problemi di sblocco di Apple Watch
 
-For those with Apple Watch Unlock issues, verify the following:
+Per quelli con problemi di sblocco di Apple Watch, verifica quanto segue:
 
-* You have a supported Apple Wireless card with Bluetooth Low Energy(4.0+)
-* Your watch and Mac are signed in with the same account
-* iServices working correctly(ie. iMessage)
-* There's an option to Unlock with Apple Watch under Security and Privacy setting in System Preferences
+* Hai una scheda Apple Wireless supportata con Bluetooth Low Energy (4.0+)
+* L'orologio e il Mac hanno eseguito l'accesso con lo stesso account
+* iServices funzionano correttamente (es. iMessage)
+* C'è un'opzione per sbloccare con Apple Watch nelle impostazioni di sicurezza e privacy in Preferenze di Sistema
 
-![](../../images/troubleshooting/troubleshooting-md/watch-unlock.png)
+! [](../../ images / troubleshooting / troubleshooting-md / watch-unlock.png)
 
-If the above are met, and you still have unlock issues we recommend running through the below guide:
+Se quanto sopra viene soddisfatto e hai ancora problemi di sblocco, ti consigliamo di eseguire la guida di seguito:
 
-* [Fixing Auto Unlock](https://forums.macrumors.com/threads/watchos-7-beta-5-unlock-mac-doesnt-work.2250819/page-2?post=28904426#post-28904426)
+* [Correzione dello sblocco automatico](https://forums.macrumors.com/threads/watchos-7-beta-5-unlock-mac-doesnt-work.2250819/page-2?post=28904426#post-28904426)
 
-## 4K iGPU output issues over HDMI
+## Problemi iGPU di output 4K su HDMI
 
-For machines with HDMI 2.0 capable ports with resolutuion issues, verify the following:
+Per le macchine con porte compatibili con HDMI 2.0 con problemi di risoluzione, verificare quanto segue:
 
-* 4k output works correctly in Windows
-* Monitor is set explicitly to HDMI 2.0
-  * If using an HDMI to DisplayPort converter, ensure the monitor is set to DisplayPort 1.2 or higher
-* Ensure enough iGPU memory has been allocated
-  * For Broadwell and newer, 64MB is expected to be allocated
-  * Machines relying on WhateverGreen's `framebuffer-stolenmem` property should know this can cause 4k output issues. Please ensure you can set the iGPU's memory to 64MB allowing you to remove these properties
-* Laptops and many desktop users may need this boot-arg:
-  * `-cdfon`
+* L'output 4k funziona correttamente in Windows
+* Il monitor è impostato esplicitamente su HDMI 2.0
+   * Se si utilizza un convertitore da HDMI a DisplayPort, assicurarsi che il monitor sia impostato su DisplayPort 1.2 o superiore
+* Assicurati che sia stata allocata una quantità di memoria iGPU sufficiente
+   * Per Broadwell e versioni successive, si prevede di allocare 64 MB
+   * Le macchine che fanno affidamento sulla proprietà `framebuffer-stolenmem` di WhateverGreen dovrebbero sapere che questo può causare problemi di output 4k. Assicurati di poter impostare la memoria dell'iGPU su 64 MB per consentirti di rimuovere queste proprietà
+* I laptop e molti utenti desktop potrebbero aver bisogno di questo argomento di avvio:
+   * `-cdfon`
 
-For all other troubleshooting, please reference [WhateverGreen's Intel docs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+Per la risoluzione di tutti l'altri possibili problemi, fare riferimento a [Documenti Intel di WhateverGreen](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
