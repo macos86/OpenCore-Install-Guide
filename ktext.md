@@ -20,7 +20,7 @@ I Firmware drivers sono dei drivers utilizzati da OpenCore negli ambienti UEFI. 
 
 ### Universali
 
-::: details drivers richiesti
+::: tip drivers richiesti
 
 Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 
