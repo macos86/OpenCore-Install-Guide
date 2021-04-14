@@ -285,6 +285,7 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 1,
                     path: '/clover-conversion/',
+                    title: 'Conversioni da Clover',
                     children: [
                         '/clover-conversion/Clover-config',
                         '/clover-conversion/clover-efi',
