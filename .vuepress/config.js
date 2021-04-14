@@ -282,7 +282,6 @@ module.exports = {
                 '/extras/spoof',
                 '/extras/big-sur/',
                 {
-                    title: 'Conversioni da Clover',
                     collapsable: true,
                     sidebarDepth: 1,
                     path: '/clover-conversion/',
