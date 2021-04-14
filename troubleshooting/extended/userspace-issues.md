@@ -4,22 +4,22 @@
 
 Problemi riguardanti una volta che hai avviato il programma di installazione e la GUI è stata caricata
 
-* [macOS installer in Russo](#macos-installer-in-russian)
-* [Il programma di installazione di macOS è danneggiato](#macos-installer-being-damaged)
-* [Bloccato su `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
-* [Schermo deformato su laptops](#scrambled-screen-on-laptops)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su laptops e AIO](#black-screen-after-ioconsoleusers-gioscreenlock-on-laptops-and-aios)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
-* [Congelato nel programma di installazione di macOS dopo 30 secondi](#frozen-in-the-macos-installer-after-30-seconds)
-* [15h/16h di riavvio della CPU dopo la schermata Data & Privacy](#_15h-16h-cpu-reboot-after-data-privacy-screen)
-* [MacOS bloccato subito prima dell'accesso](#macos-frozen-right-before-login)
-* [MediaKit segnala che lo spazio non è sufficiente](#mediakit-reports-not-enough-space)
-* [Cancellazione di Utility Disco fallita](#diskutility-failing-to-erase)
-* [SATA Drives Non Mostrati in Disk Utility](#sata-drives-not-shown-in-diskutility)
-* [Bloccato a 2 minuti rimanenti](#stuck-at-2-minutes-remaining)
-* [Il server di ripristino non può essere contattato](#the-recovery-server-cannot-get-contacted)
-* [Tastiera e mouse non funzionanti in Big Sur](#keyboard-and-mouse-broken-in-big-sur)
-* [Bloccato su `Il tuo Mac necessita di un aggiornamento del firmware per poter essere installato su questo volume`](#stuck-on-your-mac-needs-a-firmware-update-in-order-to-install-to-this-volume)
+* [macOS installer in Russo](#macos-installer-in-russo)
+* [Il programma di installazione di macOS è danneggiato](#il-programma-di-installazione-di-macos-è-danneggiato)
+* [Bloccato su `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock-giolockstate)
+* [Schermo deformato su laptops](#schermo-deformato-su-laptops)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su laptops e AIO](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-laptops-e-aios)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-con-navi)
+* [Congelato nel programma di installazione di macOS dopo 30 secondi](#congelato-nel-programma-di-installazione-di-macOS-dopo-30-secondi)
+* [Riavvio della CPU 15h/16h dopo la schermata Data & Privacy](#riavvio-della-cpu-15h/16h-dopo-la-schermata-data-privacy)
+* [MacOS bloccato subito prima dell'accesso](#macos-bloccato-subito-prima-dell'accesso)
+* [MediaKit segnala che lo spazio non è sufficiente](#mediaKit-segnala-che-lo-spazio-non-è-sufficiente)
+* [Cancellazione di Utility Disco fallita](#cancellazione-di-utility-disco-fallita)
+* [SATA Drives Non Mostrati in Disk Utility](#sata-drives-non-mostrati-in-disk-utility)
+* [Bloccato a 2 minuti rimanenti](#bloccato-a-2-minuti-rimanenti)
+* [Il server di ripristino non può essere contattato](#il-server-di-ripristino-non-può-essere-contattato)
+* [Tastiera e mouse non funzionanti in Big Sur](#tastiera-e-mouse-non-funzionanti-in-big-sur)
+* [Bloccato su `Il tuo Mac necessita di un aggiornamento del firmware per poter essere installato su questo volume`](#bloccato-su-il-tuo-mac-necessita-di-un-aggiornamento-del-firmware-per-poter-essere-installato-su-questo-volume)
 
 ## macOS installer in Russo
 
@@ -60,7 +60,7 @@ Questo è giusto prima che la GPU venga inizializzata correttamente; verifica qu
 * Forzare la velocità di collegamento PCIe 3.0
 * Controlla che ig-platform-id e device-id siano validi se si usa una iGPU.
    * Potrebbe essere necessario utilizzare "00009B3E" per desktop UHD 630
-* Provando varie [WhateverGreen Fixes] (https://github.com/acidanthera/W qualunqueGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+* Provando varie [WhateverGreen Fixes](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
    * argomento di avvio `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
 * Gli utenti di Coffee Lake iGPU potrebbero anche aver bisogno di `igfxonln = 1` in 10.15.4 e versioni successive
 
@@ -109,9 +109,9 @@ Skip: 0
 
 Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI / OC / Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
 
-## 15h/16h di riavvio della CPU dopo la schermata Data & Privacy
+##  Riavvio della CPU 15h/16h dopo la schermata Data & Privacy
 
-Segui le indicazioni qui dopo l'AGGIORNAMENTO 2: [Risolvere il "Data and Privacy reboot=](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2658085)
+Segui le indicazioni qui dopo l'AGGIORNAMENTO 2: [Risolvere il "Data and Privacy reboot"](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2658085)
 
 ## MacOS bloccato subito prima dell'accesso
 
@@ -141,7 +141,7 @@ Default           |  Show All Devices(Cmd+2)
 
 La causa sarà una (o più) delle 5 seguenti:
 
-* Formattazione della partizione e non dell'unità, vedere [MediaKit segnala lo spazio insufficiente](# mediakit-reports-not-enough-space)
+* Formattazione della partizione e non dell'unità, vedere [MediaKit segnala lo spazio insufficiente](#mediaKit-segnala-che-lo-spazio-non-è-sufficiente)
 * DiskUtility ha uno strano bug in cui fallirà alla prima cancellazione; provare a cancellare di nuovo
 * Il supporto hot plug SATA nel BIOS sta causando problemi (prova a disabilitare questa opzione)
 * Vecchio firmware, assicurati che l'unità abbia il firmware più recente
@@ -150,8 +150,8 @@ La causa sarà una (o più) delle 5 seguenti:
 ## SATA Drives Non Mostrati in Disk Utility
 
 * Assicurati che la modalità SATA sia AHCI nel BIOS
-* Alcuni controller SATA potrebbero non essere ufficialmente supportati da macOS, per questi casi ti consigliamo di scaricare [CtlnaAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files /CtlnaAHCIPort.kext.zip)
-   * Per controller SATA molto vecchi, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) potrebbe essere più adatto.
+* Alcuni controller SATA potrebbero non essere ufficialmente supportati da macOS, per questi casi ti consigliamo di scaricare [CtlnaAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
+  * Per controller SATA molto vecchi, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) potrebbe essere più adatto.
 
 ## Bloccato a 2 minuti rimanenti
 
@@ -177,11 +177,11 @@ Per risolvere l'errore, hai alcune opzioni:
 * Assicurati di avere una connessione Ethernet o WiFi funzionante
   * Apri "Utility Rete" sotto il menù "Utility" nell'installer e verifica se la tua scheda di rete viene visualizzata
     * Se la tua scheda di rete  **non** viene visualizzata, è probabile che ti manchi il kext di rete corretto
-      *  Fare riferimento qui: [Ethernet Kexts](../../ ktext.md # ethernet) e [Trovare il tuo hardware](../../ find-hardware.md)
+      * Fare riferimento qui: [Ethernet Kexts](../../ktext.md#ethernet) e [Trovare il tuo hardware](../../find-hardware.md)
     * Se la scheda di rete **viene** visualizzata, eseguire quindi `ping -c3 www.google.com` nel terminale del programma di installazione per assicurarsi che la connessione di rete funzioni
-	  * Se non viene visualizzato nulla, la tua rete o kexts stanno agendo
-	      * Ti consigliamo di provare le versioni precedenti di kexts nei casi in cui le build più recenti abbiano strani bug con il tuo hardware
-	    * Se restituisce qualcosa, il problema riguarda Apple. Sfortunatamente, dovrai semplicemente provare a installarlo di nuovo un'altra volta
+      * Se non viene visualizzato nulla, molto probabilmente non hai i kext corretti per la Rete
+        * Ti consigliamo di provare le versioni precedenti di kexts nei casi in cui le build più recenti abbiano strani bug con il tuo hardware
+      * Se restituisce qualcosa, il problema riguarda Apple. Sfortunatamente, dovrai semplicemente provare a installarlo di nuovo un'altra volta
 
 | Check NIC | Ping |
 | :--- | :--- |
