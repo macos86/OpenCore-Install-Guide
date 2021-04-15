@@ -201,9 +201,8 @@ Nota: "1" significa che supporta MAT, mentre "0" significa che non lo supporta.
 
 Errore completo:
 
-`` `
 [EB | `LD: OFS] Err (0xE) @ OPEN (System \\ Library \\ PrelinkedKernels \\ prelinkedkernel)
-`` `
+```
 
 Ciò può accadere quando il volume di preavvio non è aggiornato correttamente, per risolvere questo problema è necessario avviare da Recovery e ripararlo:
 
@@ -362,19 +361,19 @@ I luoghi principali da verificare:
 
 * ** Manca la patch EC **:
   * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
-  * Se non ne hai uno, prendilo qui: [Guida introduttiva delle ACPI]()
+  * Se non ne hai uno, prendilo qui: [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
 * **Conflitto IRQ**:
   * * Più comune su portatili e pre-costrutti più anziani; lancia SSDTTime scegli l'opzione FixHPET e aggiungi il risultante SSDT-HPET.aml e lepatches  ACPI al tuo config (l'SSDT non funzionerà senza le patch ACPI)
 * **Problemi di allocazione PCI**:
   * **Aggiorna il tuo BIOS**, assicurati che sia il più recente. La maggior parte degli OEM ha un'allocazione PCI disastrosa su firmware meno recenti, in particolare AMD
   * Assicurarsi anche che Above4G sia abilitato nel BIOS, se non è disponibile alcuna opzione, aggiungere `npci=0x2000` nelle boot args.
-    * * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
+      * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
     * AMD CPU NOTA: ** Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, ancdranno in conflitto**
     * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
   * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
 * **Problemi NVMe or SATA**:
-  * * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
-    * * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
+    * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
+      * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
     * Samsung 970eVoPlus che abbia il firmware più recente (firmware più vecchi erano noti per instabilità e blocchi, [Vedi qui per maggiori informazioni](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
    * SATA Hot-Plug sia disabilitato nel BIOS (più comunemente può causare problemi sui sistemi basati sulla CPU AMD)
     * Assicurarsi che le unità NVME siano impostate come modalità NVME nel BIOS (alcuni BIOS hanno un bug in cui è possibile impostare unità NVME come SATA)
@@ -598,7 +597,7 @@ Per coloro che utilizzano schede madri Comet Lake con NIC I225-V, potrebbe verif
    * Per impostazione predefinita, questo è ciò che utilizzano le schede madri Asus e Gigabyte
 * PciRoot (0x0) / Pci (0x1C, 0x4) / Pci (0x0,0x0)
    * Alcuni OEM potrebbero usare questo
-  
+
 Per coloro che vogliono vedere PciRoot manualmente, ti consigliamo di installare macOS completamente ed eseguire quanto segue con [gfxutil](https://github.com/acidanthera/gfxutil/releases):
 
 ```
