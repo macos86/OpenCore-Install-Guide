@@ -6,7 +6,7 @@ Problemi relativi all'avvio iniziale del programma di installazione di macOS sub
 
 * [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
 * [Bloccato su EndRandomSeed](#bloccato-su-endrandomseed)
-* [Bloccato dopo aver selezionato la partizione macOS in OpenCore](#stuck-after-selecting-macos-partition-in-opencore)
+* [Bloccato dopo aver selezionato la partizione macOS in OpenCore](#bloccato-dopo-aver-selezionato-la-partizione-macos-in-opencore)
 * [Kernel Panic su `Invalid frame pointer`](#kernel-panic-su-invalid-frame-pointer)
 * [Bloccato su `[EB | LD: OFS] Err (0xE)` all'avvio del volume di preavvio](#bloccato-su-eb-ld-ofs-err-0xe-when-booting-preboot-volume)
 * [Bloccato su `OCB: LoadImage failed - Security Violation`](#bloccato-su-ocb-loadimage-failed-security-violation)
@@ -17,11 +17,11 @@ Problemi relativi all'avvio iniziale del programma di installazione di macOS sub
 * [Errori `Couldn't allocate runtime area`?](#errori-couldn-t-allocate-runtime-area)
 * [Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](#bloccato-su-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
 * [Bloccato su ACPI Table loading on B550](#bloccato-su-acpi-table-loading-on-b550)
-* ["Waiting for Root Device" o Prohibited Sign error](#waiting-for-root-device-or-prohibited-sign-error)
+* ["Waiting for Root Device" o Prohibited Sign error](#errore-waiting-for-root-device-or-prohibited-sign)
 * [Kernel panic con IOPCIFamily su X99](#kernel-panic-with-iopcifamily-on-x99)
 * [Bloccato su o vicino `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-o-vicino-ioconsoleusers-gioscreenlock-giolockstate-3)
 * [Schermo deformato su laptops](#scrambled-screen-on-laptops)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` on Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-on-navi)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-navi)
 * [Kernel Panic `Cannot perform kext summary`](#kernel-panic-cannot-perform-kext-summary)
 * [Kernel Panic `AppleIntelMCEReporter`](#kernel-panic-appleintelmcereporter)
 * [Kernel Panic `AppleIntelCPUPowerManagement`](#kernel-panic-appleintelcpupowermanagement)
@@ -37,10 +37,10 @@ Problemi relativi all'avvio iniziale del programma di installazione di macOS sub
 
 Questa sezione sarà divisa in 3 parti, quindi presta molta attenzione:
 
-* [Booter Issues](#booter-issues)
-* [Kernel Patch Issues](#kernel-patch-issues)
-* [UEFI Issues](#uefi-issues)
-* [Virtual Machine Issues](#virtual-machine-issues)
+* [Problemi Booter](#problemi-del-booter)
+* [Problemi Kernel Patch](#problemi-di-patch-del-kernel)
+* [Problemi UEFI](#problemi-uefi)
+* [Problemi macchina Virtuale](#problemi-della-macchina-virtuale)
 
 ### Problemi del Booter
 
@@ -152,11 +152,11 @@ Per fare ciò, aggiungi la seguente patch (sostituendo la 04 di B8 **04** 00 00 
 
 ## Bloccato su EndRandomSeed
 
-Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
 
 ## Bloccato dopo aver selezionato la partizione macOS in OpenCore
 
-Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
 
 * Note: Abilitare [DEBUG OpenCore](../debug.html) può anche aiutare a capire
 
