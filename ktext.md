@@ -1,4 +1,4 @@
-## Raccogliere i File
+# Raccogliere i File
 
 * Versione supportata: 0.6.8
 
