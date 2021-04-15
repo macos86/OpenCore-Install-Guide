@@ -1,71 +1,71 @@
-# Converting common properties from Clover to OpenCore
+# Convertire le proprietà comuni da Clover a OpenCore
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-So this little(well not so little as I reread this...) page is for users who are having issues migrating from Clover to OpenCore as some of their legacy quirks are required or the Configuration.pdf isn't well suited for laptop users.  
+Perciò questa piccola (beh, ora non più così piccola...) pagina è fatta per chi ha problemi a migrare da Clover a OpenCore dato che alcuni quirk per sistemi legacy sono richiesti oppure nel Configuration.pdf che non ha dettagli per i laptop.  
 
-# Kexts and Firmware drivers
+# Kext e Driver Firmware
 
-See [Kexts and Firmware drivers](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
+Vedi [Kext e Driver Firmware](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
 
 # Acpi
 
-**ACPI Renames**:
+**Rinominazione ACPI**:
 
-So with the transition from Clover to OpenCore we should start removing unneeded patches you may have carried along for some time:
+Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessarie che sono state utilizzate per lungo tempo:
 
-* EHCI Patches: Recommended to power off the controller with [SSDT-EHCx_OFF](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EHCx_OFF.dsl). Skylake and newer users do not have an EHCI controller so no need for this.
-  * change EHC1 to EH01
-  * change EHC2 to EH02
-* XHCI Patches: Not needed once an [Injector kext](https://github.com/corpnewt/USBMap) is made
-  * change XHCI to XHC
-  * change XHC1 to XHC
-* SATA patches: Purely cosmetic in macOS now
-  * change SAT0 to SATA
-  * change SAT1 to SATA
-* IMEI Patches: Handled by [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
-  * change HECI to IMEI
-  * change HEC1 to IMEI
-  * change MEI to IMEI
-  * change IDER to MEID
-* GFX patches: Handled by [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
-  * change GFX0 to IGPU
-  * change PEG0 to GFX0
-  * change PEGP to GFX0
-  * change SL01 to PEGP
-* EC Patches: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
-  * change EC0 to EC
-  * change H_EC to EC
-  * change ECDV to EC
-  * change PGEC to EC
-* Audio renames: Handled by [AppleALC](https://github.com/acidanthera/AppleALC)
-  * change HDAS to HDEF
-  * change CAVS to HDEF
-  * change AZAL to HDEF
-  * change ALZA to HDEF
-  * change B0D3 to HDAU
-* Z390 BIOS RTC bug fix: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)(SSDT-AWAC)
-  * change STAS to [Blank]
-  * Fix Z390 BIOS DSDT Device(RTC) bug
-  * Fix 300-series RTC Bug
-* NVMe patches: [NVMeFix](https://github.com/acidanthera/NVMeFix) fixes power management
-  * change PXSX to ANS1
-  * change PXSX to ANS2
-* Airport/WiFi Patches: [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
-  * change PXSX to ARPT
-* Other purely cosmetic patches:
-  * change LPC0 to LPCB(use [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl) for fixing SMBUS support)
-  * change PC00 to PCIO
-  * change FPU to MATH
-  * change TMR to TIMR
-  * change PIC to IPIC
-  * change GBE1 to ETH0
+* Patch di EHCI: Raccomandato lo spegnimento del controller con [SSDT-EHCx_OFF](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EHCx_OFF.dsl). Skylake e più recenti non lo avranno, perciò non è necessario.
+  * cambiare EHC1 a EH01
+  * cambiare EHC2 a EH02
+* Patch di XHCI: Non necessarie dato che è stato fatto un [kext che inietta le porte](https://github.com/corpnewt/USBMap)
+  * cambiare XHCI a XHC
+  * cambiare XHC1 a XHC
+* Patch di SATA: Puramente cosmetico in macOS in questo momento
+  * cambiare SAT0 a SATA
+  * change SAT1 a SATA
+* Patch di IMEI: Gestito da [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
+  * cambiare HECI a IMEI
+  * cambiare HEC1 a IMEI
+  * cambiare MEI a IMEI
+  * cambiare IDER a MEID
+* Patch di GFX: Gestito da [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
+  * cambiare GFX0 a IGPU
+  * cambiare PEG0 a GFX0
+  * cambiare PEGP a GFX0
+  * cambiare SL01 a PEGP
+* Patch di EC: Vedi per una soluzione migliore: [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
+  * cambiare EC0 a EC
+  * cambiare H_EC a EC
+  * cambiare ECDV a EC
+  * cambiare PGEC a EC
+* Audio renames: Gestito da [AppleALC](https://github.com/acidanthera/AppleALC)
+  * cambiare HDAS a HDEF
+  * cambiare CAVS a HDEF
+  * cambiare AZAL a HDEF
+  * cambiare ALZA a HDEF
+  * cambiare B0D3 a HDAU
+* Fix del bug nella Z390 legato al RTC del BIOS: Vedi qui per una soluzione migliore: [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) (SSDT-AWAC)
+  * cambiare STAS a [Blank]
+  * Fix del bug nella Z390 legato al RTC del BIOS
+  * Fix del bug nella serie 300 legato al RTC del BIOS
+* Patch del NVMe: [NVMeFix](https://github.com/acidanthera/NVMeFix) sistema il power management
+  * cambiare PXSX a ANS1
+  * cambiare PXSX a ANS2
+* Patch di Airport/WiFi: [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
+  * cambiare PXSX a ARPT
+* Altre patch puramente cosmetiche:
+  * cambiare LPC0 a LPCB(use [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl) per sistemare il supporto SMBUS)
+  * cambiare PC00 a PCIO
+  * cambiare FPU a MATH
+  * cambiare TMR a TIMR
+  * cambiare PIC a IPIC
+  * cambiare GBE1 a ETH0
 
 **Patches**
 
-* TgtBridge patches: No feature parity in OpenCore, see comments(TgtBridge was very buggy in Clover):
-  * [Vit's Comment](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2682158)
-  * [Andrey's Comment](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2678273)
+* Patch del TgtBridge: Nessun rimpiazzo in OpenCore, vedi commenti (TgtBridge era molto buggato in Clover):
+  * [Commento di Vit (EN)](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2682158)
+  * [Commento di Andrey (EN)](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2678273)
 
 * DisableASPM:
   * `DeviceProperties -> Add -> PciRoot... -> pci-aspm-default | Data | <00>`
@@ -78,7 +78,7 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 * **FixAirport**:
   * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
 * **FixIPIC**:
-  * CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime) to make the proper SSDT, `FixHPET - Patch out IRQ Conflicts`
+  * [SSDTTime](https://github.com/corpnewt/SSDTTime) di Corpnewt per creare un vero e proprio SSDT, `FixHPET - Patch out IRQ Conflicts`
 
 * **FixSBUS**:
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
@@ -86,44 +86,44 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 * **FixShutdown**:
   * [FixShutdown-USB-SSDT](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-USB-SSDT.dsl)
   * [`_PTS` to `ZPTS` Patch](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist)
-  * This will not harm Windows or Linux installs as this is just adding missing methods that should've been there to start with. *Blame the firmware writers*
+  * Ciò non danneggerà le installazioni Windows o Linux poiché si tratta solo di aggiungere metodi mancanti che avrebbero dovuto essere lì per iniziare. *Incolpare gli autori del firmware*
 
 * **FixDisplay**:
-  * Manual framebuffer patching, WhateverGreen does most of the work already
+  * Patch del framebuffer manuale, WhateverGreen fa già la maggior parte del lavoro
 
 * **FixHDA**:
-  * Handled by AppleALC
+  * Gestito da AppleALC
 * **FixHPET**:
-  * CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime) to make the proper SSDT, `FixHPET - Patch out IRQ Conflicts`
+  * [SSDTTime](https://github.com/corpnewt/SSDTTime) di Corpnewt per creare un vero e proprio SSDT, `FixHPET - Patch out IRQ Conflicts`
 * **FixSATA**:
   * `Kernel -> Quirks -> ExternalDiskIcons -> YES`
 
 * **FixADP1**:
-  * Renames device `AC0_` to `ADP1`, see [Rename-SSDT](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/Rename-SSDT.dsl) for an example
-  * Also injects `Name (_PRW, Package (0x02) {0x1C,0x03})` into the device if not present. [Source](https://github.com/CloverHackyColor/CloverBootloader/blob/81f2b91b1552a4387abaa2c48a210c63d5b6233c/rEFIt_UEFI/Platform/FixBiosDsdt.cpp#L1677-L1692)
+  * Rinomina `AC0_` a `ADP1`, vedi [Rename-SSDT](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/Rename-SSDT.dsl) per un esempio
+  * Inietta anche `Name (_PRW, Package (0x02) {0x1C,0x03})` nel dispositivo se non presente. [Fonte](https://github.com/CloverHackyColor/CloverBootloader/blob/81f2b91b1552a4387abaa2c48a210c63d5b6233c/rEFIt_UEFI/Platform/FixBiosDsdt.cpp#L1677-L1692)
 
 * **FixRTC**:
-  * CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime) to make the proper SSDT, `FixHPET - Patch out IRQ Conflicts`
+  * [SSDTTime](https://github.com/corpnewt/SSDTTime) di Corpnewt per creare un vero e proprio SSDT, `FixHPET - Patch out IRQ Conflicts`
 * **FixTMR**:
-  * CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime) to make the proper SSDT, `FixHPET - Patch out IRQ Conflicts`
+  * [SSDTTime](https://github.com/corpnewt/SSDTTime) di Corpnewt per creare un vero e proprio SSDT, `FixHPET - Patch out IRQ Conflicts`
 
 * **AddPNLF**:
-  * See [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html)
+  * Vedi [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html)
 * **AddMCHC**:
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
 * **AddIMEI**:
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
-  * WhateverGreen will also handle fixing IMEI naming
-  * For Sandy Bridge on Z77 or IvyBridge on Z67, the IMEI will need to be faked: [SSDT-IMEI](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl)
+  * WhateverGreen si occuperà di rinominare IMEI
+  * Per Sandy Bridge su Z77 o per IvyBridge su Z67, IMEI deve essere ricreato: [SSDT-IMEI](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl)
 * **FakeLPC**:
   * `DeviceProperties -> Add -> PciRoot... -> device-id`
-  * You'll want to spoof it to a supported LPC controller already in AppleLPC
+  * Dovrai ingannare macOS per supportare un controller LPC già presente in AppleLPC
 
 * **FixIntelGfx**:
-  * WhateverGreen handles this
+  * WhateverGreen se ne occupa
 
 * **AddHDMI**:
-  * WhateverGreen handles this
+  * WhateverGreen se ne occupa
 
 **DropTables**:
 
@@ -133,10 +133,10 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 
 * **PluginType**:
   * [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)
-  * See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) for more details
+  * Vedi [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) per più dettagli
 
-* **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh)(For Sandy Bridge and IvyBridge)
-* **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh)(For Sandy Bridge and IvyBridge)
+* **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
+* **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 
 # Boot
 
@@ -151,8 +151,8 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 **Default Boot Volume**:
 
 * `Misc -> Security -> AllowSetDefault -> True`
-  * Press Ctrl+Enter in the picker to set default device
-* Alternative is Startup Disk in macOS's System Preferences, just like on real Macs
+  * Premi Ctrl+Enter nel picker per impostare il dispositivo di avvio predefinito
+* L'alternativa è  Disco di Avvio nelle Preferenze di Sistema di macOS, come nei veri Mac
 
 # Boot Graphics
 
@@ -161,17 +161,17 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> DefaultBackgroundColor`
   * `00000000`: Syrah Black
   * `BFBFBF00`: Light Gray
-  * To calculate your own, convert an `RGB` value to `HEX`
+  * Per calcolare il tuo, converti un valore `RGB` in `HEX`
 
 **EFILoginHiDPI**:
 
-* Clover only flag, for OpenCore UI scaling see UIScale and `UEFI -> Output`
+* Flag presente solo su Clover, per lo scaling della UI di OpenCore vedi UIScale e `UEFI -> Output`
 
 **flagstate**:
 
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> flagstate | Data | <>`
-  * 0 -> `<00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000`(dumped from a mac)
-  * NVRAM location needs to be double checked for this one
+  * 0 -> `<00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000` (ricavato da un mac)
+  * La location della NVRAM deve essere controllata più volte per questa opzione
 
 **UIScale**:
 
@@ -184,13 +184,13 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 **Type**:
 
 * `PlatformInfo -> Generic -> ProcessorType`
-* See [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) for all supported values
+* Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per tutti i valori supportati
 
-**HWPEnable**: Better alternative is to properly manage `MSR 0x770` with [HWPEnable](https://github.com/headkaze/HWPEnable)
+**HWPEnable**: Migliore alternativa è modificare il `MSR 0x770` con [HWPEnable](https://github.com/headkaze/HWPEnable)
 
-**QEMU**: Proper VM/KVM support is implemented in OpenCore
+**QEMU**: Supporto per corrette VM/KVM è implementato in OpenCore
 
-**TurboDisable**: Better alternative is to control your frequencies with [CPUFriend](https://github.com/acidanthera/CPUFriend) or [ssdtPRGen](https://github.com/Piker-Alpha/ssdtPRGen.sh)
+**TurboDisable**: Migliore alternativa è controllare le frequenze con [CPUFriend](https://github.com/acidanthera/CPUFriend) o [ssdtPRGen](https://github.com/Piker-Alpha/ssdtPRGen.sh)
 
 # Devices
 
@@ -199,32 +199,32 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 * FixOwnership: `UEFI -> Quirk -> ReleaseUsbOwnership`
 * ClockID: `DeviceProperties -> Add -> PciRoot... -> AAPL,clock-id`
 * HighCurrent: `DeviceProperties -> Add -> PciRoot... -> AAPL, HighCurrent`
-  * Irrelevant for OS X 10.11 and newer
-  * Newer variant is either PowerProperties defined in `IOUSBHostFamily.kext -> AppleUSBHostPlatformProperties` or added with a USBX SSDT for Skylake SMBIOS and newer
+  * Irrilevante per OS X 10.11 o più recenti
+  * Una nuova variante può essere anche PowerProperties definita in `IOUSBHostFamily.kext -> AppleUSBHostPlatformProperties` o aggiunta con un SSDT USBX in SMBIOS Skylake e più recenti
 
 **Audio**:
 
-For the following, you will need to know your PciRoot for your audio controller and its name(commonly known as HDEF but also HDAS, HDAU and such), this can be found with [gfxutil](https://github.com/acidanthera/gfxutil/releases):
+Per questo, dovrai conoscere il PciRoot per il tuo audio controller e il suo nome (comunemente come HDEF, ma anche HDAS, HDAU e simili), lo puoi trovare con [gfxutil](https://github.com/acidanthera/gfxutil/releases):
 
 ```
 path/to/gfxutil -f HDEF
 ```
 
-* Inject: `DeviceProperties -> Add -> PciRoot... -> layout-id`
+* Inietta: `DeviceProperties -> Add -> PciRoot... -> layout-id`
 * AFGLowPowerState: `DeviceProperties -> Add -> PciRoot... -> AFGLowPowerState -> <01000000>`
 * ResetHDA: `UEFI -> Audio -> ResetTrafficClass`
-  * Optionally there's also AppleALC's `alctsel=1` boot-arg or [JackFix](https://github.com/fewtarius/jackfix)
+  * C'è anche il boot-arg di AppleALC `alctsel=1` oppure [JackFix](https://github.com/fewtarius/jackfix)
 
 **Add Properties**:
 
-* No equivalent, need to specify with a PciRoot path
+* Nessun equivalente, devi specificare la path PciRoot
 
 **Properties**:
 
 * `DeviceProperties -> Add`
 
 **FakeID**:
-For the following, you will need to know your PciRoot for your device and apply their properties with `DeviceProperties -> Add`, PciRoot can be found with [gfxutil](https://github.com/acidanthera/gfxutil/releases)
+Per i seguenti, devi conoscere la PciRoot per il tuo dispositivo e applicare le loro proprietà con `DeviceProperties -> Add`, PciRoot lo puoi trovare con  [gfxutil](https://github.com/acidanthera/gfxutil/releases)
 
 * **USB**
   * `device-id`
@@ -276,24 +276,24 @@ device_type: XHCI
 
 # Disable Drivers
 
-Just don't add your drivers to `UEFI -> Drivers`, alternatively add `#` in-front of the driver in your config.plist for OpenCore to skip it.
+Semplicemente non aggiungere i tuoi driver in `UEFI -> Drivers`, oppure aggiungi `#` davanti al nome del driver nel config.plist per farlo saltare a OpenCore.
 
 # Gui
 
 # Graphics
 
-* Note: PciRoot... should be replaced with
+* Nota: dovresti rimpiazzarlo con PciRoot...
 
 **InjectIntel**:
 
-* [GMA Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [GMA Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **InjectAti**:
 
 * `DeviceProperties -> Add -> PciRoot... -> device-id`
-  * ie: `<B0670000>` for the R9 390X
+  * `<B0670000>` per R9 390X
 * `DeviceProperties -> Add -> PciRoot... -> @0,connector-type`
-  * You may need to add additional Connectors (ie. @1,connector-type, @2,connector-type) for the amount of ports you have. See here for the list of connector types:
+  * Dovresti aggiungere i seguenti Connettori (ie. @1,connector-type, @2,connector-type) per il numero di porte che hai. Vedi qui per il numero corrispondente al connettore:
 
 ```
 LVDS                    <02 00 00 00>
@@ -308,31 +308,31 @@ DUMMY                   <01 00 00 00>
 
 **InjectNvidia**:
 
-* [Nvidia Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **FakeIntel**:
 
 * `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0) -> device-id`
-  * ie. `66010003` for the HD 4000
+  * `66010003` per HD 4000
 * `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0) -> vendor-id -> <86800000>`
 
 **FakeAti**:
 
 * `DeviceProperties -> Add -> PciRoot... -> device-id`
-  * ie: `<B0670000>` for the R9 390X
+  * `<B0670000>` per R9 390X
 * `DeviceProperties -> Add -> PciRoot... -> ATY,DeviceID`
-  * ie: `<B067>` for the R9 390X
+  * `<B067>` per R9 390X
 * `DeviceProperties -> Add -> PciRoot... -> @0,compatible`
-  * ie. `ATY,Elodea` for HD 6970M
+  * `ATY,Elodea` per HD 6970M
 * `DeviceProperties -> Add -> PciRoot... -> vendor-id-> <02100000>`
 * `DeviceProperties -> Add -> PciRoot... -> ATY,VendorID -> <0210>`
 
-**Note**: See here on making an SSDT for GPU Spoofing, DeviceProperties injection via OpenCore seems to fail sometimes when trying to spoof a GPU: [Renaming GPUs](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
-For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) in the WhateverGreen docs
+**Nota**: Vedi qui per fare un SSDT per fare lo Spoofing della GPU, la iniezione via DeviceProperties sembra fallire alcune volte quando tenti di usare lo spoof della GPU: [Renaming GPUs](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
+Per altri InjectAti, vedi il [Sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) nelle documentazioni di WhateverGreen
 
 **Custom EDID**
 
-* [WhateverGreen's EDID docs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md#edid)
+* [WhateverGreen's EDID docs (EN)](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md#edid)
 
 **Dual Link**:
 
@@ -342,29 +342,29 @@ For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/W
 
 **NVCAP**
 
-* [Nvidia Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **display-cfg**:
 
 * `DeviceProperties -> Add -> PciRoot... -> @0,display-cfg`
-* See fassl's post on the matter: [Nvidia injection](https://www.insanelymac.com/forum/topic/215236-nvidia-injection/)
+* Vedi il post di fassl riguardo a questo: [Nvidia injection (EN)](https://www.insanelymac.com/forum/topic/215236-nvidia-injection/)
 
 **LoadVBios**:
 
-* See [sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) for more info on custom VBIOS injection
+* Vedi [sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) per maggiori informazioni su una iniezione personalizzata del VBIOS
 
-**PatchVBios**: See LoadVBIOS
+**PatchVBios**: Vedi LoadVBIOS
 
 **NvidiaGeneric**:
 
 * `DeviceProperties -> Add -> PciRoot... -> model | string | Add the GPU name`
 
-**NvidiaSingle**: See [disabling unsupported GPUs](https://dortania.github.io/OpenCore-Post-Install/)
+**NvidiaSingle**: Vedi [disabling unsupported GPUs (EN)](https://dortania.github.io/OpenCore-Post-Install/)
 
 **NvidiaNoEFI**:
 
 * `DeviceProperties -> Add -> PciRoot... -> NVDA,noEFI | Boolean | True`
-* See FredWst' comment for more info: [GT 640 scramble](https://www.insanelymac.com/forum/topic/306156-clover-problems-and-solutions/?do=findComment&comment=2443062)
+* Vedi il commento di FredWst per maggiori informazioni: [GT 640 scramble (EN)](https://www.insanelymac.com/forum/topic/306156-clover-problems-and-solutions/?do=findComment&comment=2443062)
 
 **ig-platform-id**:
 
@@ -377,14 +377,14 @@ For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/W
 **RadeonDeInit**:
 
 * [Radeon-Denit-SSDT](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/Radeon-Deinit-SSDT.dsl)
-  * Do note that this is meant for GFX0, adjust for your system
+  * Viene usato di default per GFX0, sistemalo per il tuo sistema
 
 # Kernel and Kext Patches
 
 **KernelPm**:
 
 * `Kernel -> Quirks -> AppleXcpmCfgLock -> YES`
-* Note that Clover will auto-apply this patch without setting it if the MSR E2 was locked, so you may actually need AppleXcpmCfgLock even if Clover didn't
+* Nota che Clover applicherà questa patch automaticamente, senza controllare se MSR E2 era bloccato, perciò forse potresti non aver bisogno di questo quirk anche se Clover lo richiedeva
 
 **AppleIntelCPUPM**:
 
@@ -392,7 +392,7 @@ For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/W
 
 **DellSMBIOSPatch**:
 
-An odd quirk for Dell systems running APTIO V
+Una strana quirk per i sistemi Dell che usano APTIO V
 
 * `Kernel -> Quirks -> CustomSMBIOSGuid -> YES`
 * `PlatformInfo -> UpdateSMBIOSMode -> Custom`
@@ -400,12 +400,12 @@ An odd quirk for Dell systems running APTIO V
 **KextsToPatch**:
 
 * `Kernel -> Patch`
-* See [Common Kernel and Kext patch conversions](../clover-conversion/clover-patch.md) for common patch conversions
+* Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
 **KernelToPatch**:
 
 * `Kernel -> Patch`
-* See [Common Kernel and Kext patch conversions](../clover-conversion/clover-patch.md) for common patch conversions
+* Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
 **ForceKextsToLoad**:
 
@@ -419,7 +419,7 @@ An odd quirk for Dell systems running APTIO V
 
 * `Kernel -> Quirks -> AppleXcpmExtraMsrs -> YES`
 
-For an extensive list of patches, please compare [OpenCore's `CommonPatches.c`](https://github.com/acidanthera/OpenCorePkg/blob/master/Library/OcAppleKernelLib/CommonPatches.c) with [Clover's kernel_patcher.c](https://github.com/CloverHackyColor/CloverBootloader/blob/master/rEFIt_UEFI/Platform/kernel_patcher.cpp). Some patches are not transferred over so if you're having issues this is the section to check, example is converting the [`KernelIvyBridgeXCPM()`](https://github.com/CloverHackyColor/CloverBootloader/tree/1a02f530db91fdfa6880295b6a8b3f096c29e7cc/rEFIt_UEFI/Platform/kernel_patcher.cpp#L1617-L1719) to OpenCore:
+Per una lista completa di patch, per favore confronta [OpenCore's `CommonPatches.c`](https://github.com/acidanthera/OpenCorePkg/blob/master/Library/OcAppleKernelLib/CommonPatches.c) con [Clover's kernel_patcher.c](https://github.com/CloverHackyColor/CloverBootloader/blob/master/rEFIt_UEFI/Platform/kernel_patcher.cpp). Alcune patch non sono trasferite perciò se devi usarne una, puoi farlo liberamente. Nell'esempio convertiamo il [`KernelIvyBridgeXCPM()`](https://github.com/CloverHackyColor/CloverBootloader/tree/1a02f530db91fdfa6880295b6a8b3f096c29e7cc/rEFIt_UEFI/Platform/kernel_patcher.cpp#L1617-L1719) per OpenCore:
 
 ```
 Base: _xcpm_bootstrap
@@ -437,9 +437,9 @@ ReplaceMask: 0000FF0000
 Skip: 0
 ```
 
-[Source](https://github.com/khronokernel/OpenCore-Vanilla-Desktop-Guide/issues/32)
+[Fonte](https://github.com/khronokernel/OpenCore-Vanilla-Desktop-Guide/issues/32)
 
-For Low end Haswell+ like Celerons, please see here for recommended patches: [Bugtracker Issues 365](https://github.com/acidanthera/bugtracker/issues/365)
+Per Haswell+ Low end come Celeron, consulta qui per le patch raccomandate: [Bugtracker Issues 365 (EN)](https://github.com/acidanthera/bugtracker/issues/365)
 
 **USB Port Limit Patches**:
 
@@ -448,40 +448,40 @@ For Low end Haswell+ like Celerons, please see here for recommended patches: [Bu
 **External Icons Patch**:
 
 * `Kernel -> Quirks -> ExternalDiskIcons -> YES`
-* Used for when you internal disk are seen as external on macOS
+* Usato quando il tuo disco interno segnato come esterno su macOS
 
 **AppleRTC**
 
-Issue with AppleRTC, quite a simple fix:
+Problemi con AppleRTC, piccolo fix:
 
 * config.plist -> Kernel -> Quirks -> DisableRtcChecksum -> true
 
-**Note**: If you still have issues, you'll need to use [RTCMemoryFixup](https://github.com/acidanthera/RTCMemoryFixup/releases) and exclude ranges. See [here for more info](https://github.com/acidanthera/bugtracker/issues/788#issuecomment-604608329)
+**Nota**: Se continui ad avere problemi, devi usare [RTCMemoryFixup](https://github.com/acidanthera/RTCMemoryFixup/releases) ed escludere i casi limite. Vedi [qui per maggiori info (EN)](https://github.com/acidanthera/bugtracker/issues/788#issuecomment-604608329)
 
-The following boot-arg should handle 99% of cases(pair this with RTCMemoryFixup):
+I seguenti boot-arg dovrebbero risolvere il 99% dei casi (in coppia con RTCMemoryFixup):
 
 ```
 rtcfx_exclude=00-FF
 ```
 
-If this works, slowly shorten the excluded area until you find the part macOS is getting fussy on
+Se funziona, questo accorcia la ricerca delle aree da escludere, per trovare la parte di macOS che parte
 
 **FakeCPUID**:
 
 * `Kernel -> Emulate`:
   * `CpuidMask`: `<Clover_FCPUID_Extended_to_4_bytes_Swapped_Bytes> | 00 00 00 00 | 00 00 00 00 | 00 00 00 00`
-    * ex(`0x0306A9`): `A9060300 00000000 00000000 00000000`
-  * `CpuidData`(Swap `00` for `FF` if needing to swap with a longer value)
-    * ex: `FFFFFFFF 00000000 00000000 00000000`
+    * es: (`0x0306A9`): `A9060300 00000000 00000000 00000000`
+  * `CpuidData`(Scambia `00` con `FF` se devi scambiarlo con un valore lungo)
+    * es: `FFFFFFFF 00000000 00000000 00000000`
 
-Note: Finding CPUID's for Intel can be a bit harder than looking at Intel ARK, easiest way to find it is via Microsoft's [Intel microcode update notes](https://support.microsoft.com/en-ca/help/4093836/summary-of-intel-microcode-updates)
+Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare nell'Intel ARK, la via più veloce è di scoprirlo è cercarlo dal sito della Microsoft: [Riepilogo degli aggiornamenti di microcodice Intel](https://support.microsoft.com/it-it/topic/riepilogo-degli-aggiornamenti-di-microcodice-intel-08c99af2-075a-4e16-1ef1-5f6e4d8637c4)
 
 # Rt Variables
 
 **ROM**:
 
-* No direct translation for `UseMacAddr0` as you need to provide your hardware ROM, can be found in `System Preferences -> Network -> Advanced -> Hardware`
-* Also verify your En0 is still built-in when running OpenCore, this can break iMessage and iCloud when there's no `built-in` property.
+* Nessuna traduzione diretta di `UseMacAddr0` dato che devi provvedere un ROM hardware, lo puoi trovare in `Preferenze di Sistema -> Network -> Avanzate -> Hardware`
+* Verifica anche che En0 è ancora built-in quando avvii OpenCore, questo può rompere iMessage e iCloud quando non c'è la proprietà `built-in` property.
 
 **MLB**:
 
@@ -525,7 +525,7 @@ Note: Finding CPUID's for Intel can be a bit harder than looking at Intel ARK, e
 
 * `PlatformInfo -> CustomMemory -> True`
 * `PlatformInfo -> Memory`
-  * See [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) for more info
+  * Vedi [Configuration.pdf (EN)](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori informazioni
 
 **Slots AAPL Injection**:
 
@@ -535,40 +535,40 @@ Note: Finding CPUID's for Intel can be a bit harder than looking at Intel ARK, e
 
 **CustomUUID**:
 
-* Heavily deprecated and not recommended even on Clover, no equivalent on OpenCore
-* More info on why: [Hardware UUID injection for OpenCore #711](https://github.com/acidanthera/bugtracker/issues/711)
+* Deprecato da molto e non raccomandato neanche su Clover, nessun equivalente su OpenCore
+* Più info: [Hardware UUID injection for OpenCore #711](https://github.com/acidanthera/bugtracker/issues/711)
 
 **InjectSystemID**:
 
-* Also legacy as it's used for replicating Chameleon user's UUIDs
+* Anche questo legacy dato che viene usato per replicare l'UUID degli utenti Chameleon
 
 **BacklightLevel**:
 
-* Property set in NVRAM
+* Impostato correttemente in NVRAM
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> backlight-level | Data | <Insert value>`
   * 0x0101 -> `<0101>`
 
 **InjectKexts**:
 
-* No equivalent but you really have no excuse to keep FakeSMC inside macOS
+* Nessun equivalente ma non hai alcuna scusa per tenere FakeSMC dentro macOS
 
 **NoCaches**:
 
-* This only works up to 10.7 on Clover, and OpenCore requires an OS that supports a prelinked(10.7) so there can't be an equivalent
+* Questo funziona fino a 10.7 su Clover, e OpenCore richiede un sistema che supporta prelinked (10.7) perciò non ci può essere un equivalente
 
 **ExposeSysVariables**:
 
-* Just add your SMBIOS properties under `PlatformInfo`
-* Confusing quirk tbh, it's not even mentioned in more recent versions of the Clover docs on AppleLife
+* Aggiungi semplicemente le tue proprietà SMBIOS in `PlatformInfo`
+* Quirk confusionale, non viene nemmeno menzionata documentazioni delle versioni più recenti di Clover (AppleLife)
 
 **NvidiaWeb**:
 
-* What this does is apply ```sudo nvram nvda_drv=1``` on every boot. To get a similar effect you can find it under the following path:
+* Questo applica ```sudo nvram nvda_drv=1``` ad ogni boot. Per ottenere simili effetti devi aggiungere il seguente path:
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> nvda_drv: <31>`
 
 # Status
 
-**Section finished 100%**:
+**Sezione finite al 100%**:
 
 * Boot Graphics
 * Disable Drivers
@@ -577,13 +577,13 @@ Note: Finding CPUID's for Intel can be a bit harder than looking at Intel ARK, e
 * SMBIOS
 * SystemParameters
 
-**Section mostly finished**:
+**Sezioni finite per la maggior parte**:
 
 * Acpi
 * Boot
 * CPU
 * Device
 
-**Section missing**:
+**Sezioni mancanti**:
 
 * GUI

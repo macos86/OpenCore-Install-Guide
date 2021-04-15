@@ -1,29 +1,29 @@
-# Clover Kexts and Firmware driver conversion(.kext, .efi)
+# Conversione kext e driver Firmware (.kext, .efi)
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-Main thing to note is that you must specify your kexts and firmware drivers in your config.plist, or else they will not load. All kexts that are currently supported on Clover will work on OpenCore, however many have been deprecated with better variants being integrated into OpenCore. Firmware drivers are a bit different as they can in-fact break booting.
+Le cose principale è notare che devi specificare quali kext e driver del Firmware nel config.plist, o non verranno caricati. Tutti i kext che sono disponibili per Clover saranno supportati su OpenCore, tuttavia molti sono stati deprecati dato che ci sono varianti integrate in OpenCore. I driver del Firmware sono un po' differenti perché possono bloccare l'avvio.
 
-* [Kexts](#kexts)
-* [Firmware Drivers](#firmware-drivers)
+* [Kext](#kexts)
+* [Driver del Firmware](#firmware-drivers)
 
-## Kexts
+## Kext
 
-For the most part, all kexts are supported in OpenCore. However there are a few integrated
+Per la maggior parte, tutti i kext sono supportati in OpenCore. Alcuni tuttavia sono integrati
 
-**Integrated Kexts:**
+**Kext Integrati:**
 
 * NullCPUPowerManagement.kext
-  * Integrated into `DummyPowerManagement` under `Kernel -> Emulate`
+  * Integrato in `DummyPowerManagement` sotto `Kernel -> Emulate`
 * BT4LEContinuityFixup.kext
-  * Integrated into `ExtendBTFeatureFlags` under `Kernel -> Quirks`
+  * Integrato in `ExtendBTFeatureFlags` sotto `Kernel -> Quirks`
 
-## Firmware Drivers
+## Driver del Firmware
 
-**Supported ones:**
+**Quelli supportati:**
 
-* AudioDxe.efi(Make sure this is from [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg) and **not** Goldfish64's or Clover's repo)
-* CsmVideoDxe.efi(Note that [BiosVideo.efi](https://github.com/acidanthera/DuetPkg) may be preferred)
+* AudioDxe.efi (Sii sicuro che viene da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg) e **non** dalla repo di Goldfish64 o di Clover)
+* CsmVideoDxe.efi (Nota che [BiosVideo.efi](https://github.com/acidanthera/DuetPkg) potrebbe essere preferibile)
 * EnhancedFatDxe.efi
 * ExFatDxeLegacy.efi
 * ExFatDxe.efi
@@ -48,7 +48,7 @@ For the most part, all kexts are supported in OpenCore. However there are a few 
 * VBoxIso9600.efi
 * XhciDxe.efi
 
-**Drivers provided/merged into OpenCore and so are no longer needed:**
+**Driver integrati/provvisti dentro OpenCore e perciò non più necessari:**
 
 * APFS.efi
 * ApfsDriverLoader.efi
@@ -60,7 +60,7 @@ For the most part, all kexts are supported in OpenCore. However there are a few 
 * AppleUITheme.efi
 * AptioInputFix.efi
 * AptioMemoryFix.efi
-* AudioDxe.efi(well kinda, see AudioDxe shipped with [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg))
+* AudioDxe.efi (per questo, usa AudioDxe dato con [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg))
 * BootChimeDxe.efi
 * DataHubDxe.efi
 * EmuVariableUEFI.efi
@@ -71,19 +71,19 @@ For the most part, all kexts are supported in OpenCore. However there are a few 
 * OcQuirks.efi
 * VirtualSMC.efi
 
-**Explicitly unsupported drivers:**
+**Driver esplicitamente non supportati:**
 
-* AppleUsbKbDxe.efi(replaced with OpenUsbKbDxe.efi)
+* AppleUsbKbDxe.efi (sostituito con OpenUsbKbDxe.efi)
 * FSInject.efi
-* FwRuntimeServices.efi(replaced with OpenRuntime.efi)
+* FwRuntimeServices.efi (sostituito con OpenRuntime.efi)
 * osxaptiofix2drv-free2000.efi
 * osxaptiofix2drv.efi
 * osxaptiofix3drv.efi
 * osxaptiofixdrv.efi
 * OsxFatBinaryDrv.efi
 * OsxLowMemFixDrv.efi
-* UsbKbDxe.efi(replaced with OpenUsbKbDxe.efi)
+* UsbKbDxe.efi (sostituito con OpenUsbKbDxe.efi)
 
-### AptioMemoryFix Note
+### Nota su AptioMemoryFix
 
-Well before we actually get started on converting the Clover config, we must first talk about converting from AptioMemoryFix. The main thing to note is that it's inside of OpenCore with OpenRuntime being an extension, this means that AptioMemoryFix and that there's also a lot more settings to choose from. Please see the hardware specific sections of the OpenCore guide to know what Booter settings your system may require(HEDT like X99 and X299 should look to the closest CPU like Skylake-X should refer to Skylake guide and **read the comments** as they mention specifics for your system).
+Prima abbiamo iniziato a convertire il config di Clover, ma dobbiamo parlare di convertire AptioMemoryFix. La cosa da notare è che è dentro OpenCore con OpenRuntime come estensione, questo significa che c'è AptioMemoryFix e adirittura altre molte opzioni da scegliere. Per favore vedi la sezione specifica per il tuo hardware per capire quali impostazioni del Booter il tuo sistema richiede (HEDT come X99 o X299 dovrebbero studiare la CPU più vicina come gli Skylake-X si dovrebbero riferire alla guida Skylake e **leggere i commenti** dato che menzionano specifiche per il tuo sistema).
