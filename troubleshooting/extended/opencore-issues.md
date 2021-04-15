@@ -1,144 +1,143 @@
-# OpenCore Boot Issues
+# OpenCore Problemi di boot
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-Issues surrounding from initial booting the USB itself to right before you choose to boot the macOS installer
+Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avviare il programma di installazione di macOS
 
-* [Stuck on a black screen before picker or always restart](#stuck-on-a-black-screen-before-picker)
-* [Stuck on `no vault provided!`](#stuck-on-no-vault-provided)
-* [Stuck on `OC: Invalid Vault mode`](#stuck-on-oc-invalid-vault-mode)
-* [Stuck on `OCB: OcScanForBootEntries failure - Not Found`](#stuck-on-ocb-ocscanforbootentries-failure-not-found)
-* [Stuck on `OCB: failed to match a default boot option`](#stuck-on-ocb-failed-to-match-a-default-boot-option)
-* [Stuck on `OCB: System has no boot entries`](#stuck-on-ocb-system-has-no-boot-entries)
-* [Stuck on `OCS: No schema for DSDT, KernelAndKextPatch, RtVariable, SMBIOS, SystemParameters...`](#stuck-on-ocs-no-schema-for-dsdt-kernelandkextpatch-rtvariable-smbios-systemparameters)
-* [Stuck on `OC: Driver XXX.efi at 0 cannot be found`](#stuck-on-oc-driver-xxx-efi-at-0-cannot-be-found)
-* [Receiving `Failed to parse real field of type 1`](#receiving-failed-to-parse-real-field-of-type-1)
-* [Can't select anything in the picker](#can-t-select-anything-in-the-picker)
-* [SSDTs not being added](#ssdts-not-being-added)
-* [Booting OpenCore reboots to BIOS](#booting-opencore-reboots-to-bios)
+* [Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre](#bloccato-su-uno-schermo-nero-prima-del-selettore-oppure-si-riavvia-sempre)
+* [Bloccato su `no vault provided!`](#bloccato-su-no-vault-provided!)
+* [Bloccato su `OC: Invalid Vault mode`](#bloccato-su-oc-invalid-vault-mode)
+* [Bloccato su `OCB: OcScanForBootEntries failure - Not Found`](#bloccato-su-ocb-ocscanforbootentries-failure-not-found)
+* [Bloccato su `OCB: failed to match a default boot option`](#bloccato-su-ocb-failed-to-match-a-default-boot-option)
+* [Bloccato su `OCB: System has no boot entries`](#bloccato-su-ocb-system-has-no-boot-entries)
+* [Bloccato su `OCS: No schema for DSDT, KernelAndKextPatch, RtVariable, SMBIOS, SystemParameters...`](#bloccato-su-ocs-no-schema-for-dsdt-kernelandkextpatch-rtvariable-smbios-systemparameters)
+* [Bloccato su `OC: Driver XXX.efi at 0 cannot be found`](#bloccato-su-oc-driver-xxx-efi-at-0-cannot-be-found)
+* [Ricezione di `Failed to parse real field of type 1`](#ricezione-di-failed-to-parse-real-field-of-type-1)
+* [Non è possibile selezionare nulla nel selettore](#non-è-possibile-selezionare-nulla-nel-selettore)
+* [SSDT non vengono aggiunti](#ssdt-non-vengono-aggiunti)
+* [L'avvio di OpenCore riavvia nel BIOS](#l'avvio-di-OpenCore-riavvia-nel-BIOS])
 * [OCABC: Incompatible OpenRuntime r4, require r10](#ocabc-incompatible-openruntime-r4-require-r10)
-* [Failed to open OpenCore image - Access Denied](#failed-to-open-opencore-image-access-denied)
+* [Impossibile aprire l'immagine OpenCore Access Denied](#impossibile-aprire-l'immagine-OpenCore-Access-Denied)
 * [OC: Failed to find SB model disable halting on critical error](#oc-failed-to-find-sb-model-disable-halting-on-critical-error)
 
-## Stuck on a black screen before picker
+## Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre
 
-This is likely some error either on your firmware or OpenCore, specifically it's having troubles loading all the drivers and presenting the menu. The best way to diagnose it is via [OpenCore's DEBUG Build](./../debug.md) and checking the logs whether OpenCore actually loaded, and if so what is it getting stuck on.
+Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare sta avendo problemi a caricare tutti i driver e presentare il menu. Il modo migliore per diagnosticare è tramite [Versione DEBUG di OpenCore](./../ debug.md) e controllare i log se OpenCore è stato effettivamente caricato e, in tal caso, su cosa si è bloccato.
 
-**Situations where OpenCore did not load**:
+**Situazioni in cui OpenCore non veniva caricato**:
 
-* If there are no logs present even after setting up the DEBUG version of OpenCore with Target set to 67, there's likely an issue either with:
-  * Incorrect USB Folder Structure
-    * See [Booting OpenCore reboots to BIOS](#booting-opencore-reboots-to-bios) for more info
-  * Firmware does not support UEFI
-    * You'll need to setup DuetPkg, this is covered in both the [macOS](../../installer-guide/mac-install.md) and [Windows](../../installer-guide/winblows-install.md) install pages
+* Se non sono presenti log anche dopo aver impostato la versione DEBUG di OpenCore con Target impostato su 67, è probabile che si tratti di un problema di:
+   * Struttura della cartella USB errata
+     * Vedi [L'avvio di OpenCore si riavvia nel BIOS](# booting-opencore-reboots-to-bios) per maggiori informazioni
+   * Il firmware non supporta UEFI
+     * Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../ installer-guide / mac-install.md) che in [Windows](../../ installer-guide / winblows-install.md)
 
-**Situations where OpenCore did load**:
+**Situazioni in cui OpenCore è stato caricato**:
 
-* Check the last line printed in your logs, there will likely be either a .efi driver that's been loaded or some form of ASSERT
-  * For ASSERT's, you'll want to actually inform the developers about this issue here: [Acidanthera's Bugtracker](https://github.com/acidanthera/bugtracker)
-  * For .efi drivers getting stuck, check over the following:
-    * **HfsPlus.efi load issues:**
-      * Try using [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi) instead
-      * This is recommended for CPUs that do not support RDRAND, mainly relevant for 3rd gen Ivy bridge i3 and older
-      * [VBoxHfs.efi](https://github.com/acidanthera/AppleSupportPkg/releases/tag/2.1.7) is another option however is much slower than HfsPlus's version
-    * **HiiDatabase.efi load issues:**
-      * Likely your firmware already supports HiiDatabase, so the driver is conflicting. Simply remove the driver as you don't need it.
+* Controlla l'ultima riga stampata nei tuoi log, probabilmente ci sarà un driver .efi che è stato caricato o una qualche forma di ASSERT
+   * Per ASSERT, ti consigliamo di informare effettivamente gli sviluppatori di questo problema: [Bugtracker di Acidanthera](https://github.com/acidanthera/bugtracker)
+    * **Problemi di caricamento di HfsPlus.efi:**
+	  * Prova a utilizzare [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
+	  * Consigliato per CPU che non supportano RDRAND, principalmente rilevante per Ivy Bridge i3 di terza generazione e versioni precedenti
+	  * Un'altra opzione è [VBoxHfs.efi](https://github.com/acidanthera/AppleSupportPkg/releases/tag/2.1.7), tuttavia è molto più lenta della versione di HfsPlus
+    * **Problemi di caricamento di HiiDatabase.efi:**
+      * Probabilmente il tuo firmware supporta già HiiDatabase, quindi il driver è in conflitto. Rimuovi semplicemente il driver perché non ti serve.
 
-## Stuck on `no vault provided!`
+## Bloccato su `no vault provided!`
 
-Turn off Vaulting in your config.plist under `Misc -> Security -> Vault` by setting it to:
+Disattiva Vaulting nel tuo config.plist in `Misc -> Security -> Vault` impostandolo su:
 
 * `Optional`
 
-If you have already executed the `sign.command` you will need to restore the OpenCore.efi file as the 256 byte RSA-2048 signature has been shoved in. Can grab a new copy of OpenCore.efi here: [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
+Se hai già eseguito `sign.command` dovrai ripristinare il file OpenCore.efi poiché la firma RSA-2048 a 256 byte è stata inserita. Puoi prendere una nuova copia di OpenCore.efi qui: [OpenCorePkg](https : //github.com/acidanthera/OpenCorePkg/releases)
 
-**Note**: Vault and FileVault are 2 separate things, see [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) for more details
+**Nota**: Vault e FileVault sono 2 cose separate, vedi [Sicurezza e FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per maggiori dettagli
 
-## Stuck on `OC: Invalid Vault mode`
+## Bloccato su `OC: Invalid Vault mode`
 
-This is likely a spelling mistake, options in OpenCore are case-sensitive so make sure you check closely, **O**ptional is the correct way to enter it under `Misc -> Security -> Vault`
+Questo è probabilmente un errore di ortografia, le opzioni in OpenCore fanno distinzione tra maiuscole e minuscole quindi assicurati di controllare attentamente, **O**ptional è il modo corretto per inserirlo in `Misc -> Security -> Vault`
 
-## Can't see macOS partitions
+## Non riesco a vedere le partizioni macOS
 
-Main things to check:
+Cose principali da controllare:
 
-* ScanPolicy set to `0` to show all drives
-* Have the proper firmware drivers such as HfsPlus(Note ApfsDriverLoader shouldn't be used in 0.5.8)
-* Set UnblockFsConnect to True in config.plist -> UEFI -> Quirks. Needed for some HP systems
-* Set **SATA Mode**: `AHCI` in BIOS
-* Set `UEFI -> APFS` to see APFS based drives:
-  * **EnableJumpstart**: YES
-  * **HideVerbose**: NO
-  * If running older versions of High Sierra(ie. 10.13.5 or older), set the following:
-    * **MinDate**: `-1`
-    * **MinVersion**: `-1`
+* ScanPolicy impostato su "0" per mostrare tutte le unità
+* Avere i driver del firmware appropriati come HfsPlus (Nota che ApfsDriverLoader non dovrebbe essere usato nella 0.5.8)
+* Imposta UnblockFsConnect su True in config.plist -> UEFI -> Quirks. Necessario per alcuni sistemi HP
+* Imposta ** Modalità SATA **: `AHCI` nel BIOS
+* Imposta `UEFI -> APFS` per vedere le unità basate su APFS:
+   * ** EnableJumpstart **: YES
+   * ** HideVerbose **: NO
+   * Se si eseguono versioni precedenti di High Sierra (ad es. 10.13.5 o precedenti), impostare quanto segue:
+     * ** MinDate **: `-1`
+     * ** MinVersion **: `-1`
 
-## Stuck on `OCB: OcScanForBootEntries failure - Not Found`
+## Bloccato su `OCB: OcScanForBootEntries failure - Not Found`
 
-This is due to OpenCore being unable to find any drives with the current ScanPolicy, setting to `0` will allow all boot options to be shown
-
-* `Misc -> Security -> ScanPolicy -> 0`
-
-## Stuck on `OCB: failed to match a default boot option`
-
-Same fix as `OCB: OcScanForBootEntries failure - Not Found`, OpenCore is unable to find any drives with the current ScanPolicy, setting to `0` will allow all boot options to be shown
+Ciò è dovuto al fatto che OpenCore non è in grado di trovare alcuna unità con lo ScanPolicy corrente, l'impostazione su "0" consentirà di mostrare tutte le opzioni di avvio
 
 * `Misc -> Security -> ScanPolicy -> 0`
 
-## Stuck on `OCB: System has no boot entries`
+## Bloccato su `OCB: failed to match a default boot option`
 
-Same fix as the above 2:
+Stessa correzione con "OCB: `OCB: OcScanForBootEntries failure - Not Found`, OpenCore non è in grado di trovare alcuna unità con la ScanPolicy corrente, l'impostazione su "0" consentirà la visualizzazione di tutte le opzioni di avvio
 
 * `Misc -> Security -> ScanPolicy -> 0`
 
-## Stuck on `OCS: No schema for DSDT, KernelAndKextPatch, RtVariable, SMBIOS, SystemParameters...`
+## Bloccato su `OCB: System has no boot entries`
 
-This is due to either using a Clover config with OpenCore or using a configurator such as Mackie's Clover and OpenCore configurator. You'll need to start over and make a new config or figure out all the garbage you need to remove from your config. **This is why we don't support configurators, they are known for these issues**
+Stessa soluzione delle 2 precedenti:
 
-* Note: These same issues will also occur if you mix outdated configs with newer versions of OpenCore. Please update them accordingly
+* `Misc -> Security -> ScanPolicy -> 0`
 
-## Stuck on `OC: Driver XXX.efi at 0 cannot be found`
+## Bloccato su `OCS: No schema for DSDT, KernelAndKextPatch, RtVariable, SMBIOS, SystemParameters...`
 
-This is due to an entry being in your config.plist, however not present in your EFI. To resolve:
+Ciò è dovuto all'uso di un config di Clover in OpenCore o all'utilizzo di un configuratore come Clover di Mackie e/o il configuratore OpenCore. Dovrai ricominciare da capo e fare una nuova configurazione o capire tutta la spazzatura che devi rimuovere dalla tua configurazione. **Questo è il motivo per cui non supportiamo i configuratori, sono noti per questi problemi**
 
-* Ensure your EFI/OC/Drivers matches up with your config.plist -> UEFI -> Drivers
-  * If not, please run Cmd/Ctrl+R with OpenCore to re-snapshot your config.plist
+* Nota: questi stessi problemi si verificheranno anche se mescoli configurazioni obsolete con versioni più recenti di OpenCore. Si prega di aggiornarli di conseguenza
 
-Note that the entries are case-sensitive.
+## Bloccato su: Driver XXX.efi at 0 cannot be found`
 
-## Receiving "Failed to parse real field of type 1"
+Ciò è dovuto a una voce nel tuo config.plist, tuttavia non presente nel tuo EFI. Risolvere:
 
-This is due to a value set as `real` when it's not supposed to be, generally being that Xcode converted `HaltLevel` by accident:
+* Assicurati che il tuo EFI/OC/Drivers corrisponda al tuo config.plist -> UEFI->Drivers
+   * In caso contrario, eseguire Cmd/Ctrl+R con OpenCore per eseguire nuovamente l'istantanea del file config.plist
+
+Notare che le voci fanno distinzione tra maiuscole e minuscole.
+
+## Ricezione di "Failed to parse real field of type 1"
+
+Ciò è dovuto a un valore impostato come "real" quando non dovrebbe esserlo, generalmente dovuto a  Xcode che ha convertito "HaltLevel" per sbaglio:
 
 ```xml
 <key>HaltLevel</key>
  <real>2147483648</real>
 ```
 
-To fix, swap `real` for `integer`:
+Per risolvere, cambia `real` con `integer`:
 
 ```xml
 <key>HaltLevel</key>
  <integer>2147483648</integer>
 ```
 
-## Can't select anything in the picker
+##Non è possibile selezionare nulla nel selettore
 
-This is due to either a few things
+Ciò è dovuto ad alcune cose:
 
-* Incompatible keyboard driver:
-  * Disable `PollAppleHotKeys` and enable `KeySupport`, then remove [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) from your config.plist -> UEFI -> Drivers
-  * If the above doesn't work, reverse: disable `KeySupport`, then add [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) to your config.plist -> UEFI -> Drivers
+* Driver della tastiera incompatibile:
+   * Disabilita `PollAppleHotKeys` e abilita` KeySupport`, quindi rimuovi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) dal tuo config.plist->UEFI->Drivers
+   * Se quanto sopra non funziona, inverti: disabilita `KeySupport`, quindi aggiungi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) al tuo config.plist->UEFI->Driver
 
-* Missing PS2 keyboard driver(Ignore if using a USB keyboard):
-  * While most firmwares will include it by default, some laptops and older PCs may still need [Ps2KeyboardDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases) to function correctly. Remember to add this to your config.plist as well
+* Driver della tastiera PS2 mancante (ignorare se si utilizza una tastiera USB):
+   * Sebbene la maggior parte dei firmware lo includa per impostazione predefinita, alcuni laptop e PC meno recenti potrebbero comunque aver bisogno di [Ps2KeyboardDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases) per funzionare correttamente. Ricorda di aggiungere anche questo al tuo config.plist
 
-## SSDTs not being added
+## SSDT non vengono aggiunti
 
-So with OpenCore, there's some extra security checks added around ACPI files, specifically that table length header must equal to the file size. This is actually the fault of iASL when you compiled the file. Example of how to find it:
+Con OpenCore, sono stati aggiunti alcuni controlli di sicurezza aggiuntivi intorno ai file ACPI, in particolare che l'intestazione della lunghezza della tabella deve essere uguale alla dimensione del file. Questo è in realtà causa di iASL quando hai compilato il file. Esempio di come trovarlo:
 
-```c
-* Original Table Header:
+``` c
+* Intestazione tabella originale:
 *     Signature        "SSDT"
 *     Length           0x0000015D (349)
 *     Revision         0x02
@@ -150,32 +149,32 @@ So with OpenCore, there's some extra security checks added around ACPI files, sp
 *     Compiler Version 0x20190509 (538510601)
 ```
 
-The `Length` and `checksum` value is what we care about, so if our SSDT is actually 347 bytes then we want to change `Length` to `0x0000015B (347)`(the `015B` is in HEX)
+Il valore `Length` e` checksum` è ciò che ci interessa, quindi se il nostro SSDT è effettivamente 347 byte, allora vogliamo cambiare `Length` in` 0x0000015B (347) `(lo` 015B` è in HEX)
 
-Best way to actually fix this is to grab a newer copy of iASL or Acidanthera's copy of [MaciASL](https://github.com/acidanthera/MaciASL/releases) and remaking the SSDT
+Il modo migliore per risolvere effettivamente questo problema è prendere una copia più recente di iASL o la copia di Acidanthera di [MaciASL](https://github.com/acidanthera/MaciASL/releases) e rifare l'SSDT
 
-* Note: MaciASL distributed by Rehabman are prone to ACPI corruption, please avoid it as they no longer maintain their repos
+* Nota: i MaciASL distribuiti da Rehabman sono soggetti alla corruzione di ACPI, evitarlo poiché non mantengono più i loro repository
 
-## Booting OpenCore reboots to BIOS
+## L'avvio di OpenCore riavvia nel BIOS
 
-* Incorrect EFI folder structure, make sure all of your OC files are within an EFI folder located on your ESP(EFI system partition)
+* Struttura delle cartelle EFI errata, assicurati che tutti i tuoi file OC si trovino in una cartella EFI situata sulla tua ESP (partizione di sistema EFI)
 
-::: details Example of folder structure
+::: dettagli Esempio di struttura di cartelle
 
-![Directory Structure from OpenCore's DOC](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
+![Struttura delle directory dal DOC di OpenCore](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
 
 :::
 
 ## OCABC: Incompatible OpenRuntime r4, require r10
 
-Outdated OpenRuntime.efi, make sure BOOTx64.efi, OpenCore.efi and OpenRuntime are **all from the same exact build**. Anything mismatched will break booting
+OpenRuntime.efi obsoleto, assicurati che BOOTx64.efi, OpenCore.efi e OpenRuntime **siano tutti della stessa identica build**. Qualunque cosa non corrispondente interromperà l'avvio
 
-* **Note**: FwRuntimeServices has been renamed to OpenRuntime with 0.5.7 and newer
+* **Nota**: FwRuntimeServices è stato rinominato OpenRuntime con 0.5.7 e versioni successive
 
-## Failed to open OpenCore image - Access Denied
+## Impossibile aprire l'immagine OpenCore Access Denied
 
-On newer Microsoft Surface device firmwares, loading OpenCore will now result in a security violation even when Secure Boot is disabled. To resolve this, enable `UEFI -> Quirks -> DisableSecurityPolicy` in your config.plist. See here for more info: [Failed to open OpenCore image - Access Denied #1446](https://github.com/acidanthera/bugtracker/issues/1446)
+Sui firmware dei dispositivi Microsoft Surface più recenti, il caricamento di OpenCore ora comporterà una violazione della sicurezza anche quando l'avvio protetto è disabilitato. Per risolvere questo problema, abilita `UEFI -> Quirks -> DisableSecurityPolicy` nel tuo config.plist. Vedi qui per maggiori informazioni: [Impossibile aprire l'immagine OpenCore - Access Denied # 1446](https://github.com/acidanthera/bugtracker/issues/1446)
 
 ## OC: Failed to find SB model disable halting on critical error
 
-This is a typo, ensure that in your config.plist `Misc -> Secuirty -> SecureBootModel` is set to Disable**d**
+Questo è un errore di battitura, assicurati che nel tuo config.plist `Misc -> Secuirty -> SecureBootModel` sia impostato su Disable**d**
