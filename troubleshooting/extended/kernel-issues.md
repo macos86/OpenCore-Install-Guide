@@ -27,7 +27,7 @@ Problemi relativi all'avvio iniziale del programma di installazione di macOS sub
 * [Kernel Panic `AppleIntelCPUPowerManagement`](#kernel-panic-appleintelcpupowermanagement)
 * [Kernel Panic `AppleACPIPlatform` in 10.13](#kernel-panic-appleacpiplatform-in-10-13)
 * [La tastiera funziona ma il trackpad no](#la-tastiera-funziona-ma-il-trackpad-no)
-* [`kextd stall[0]: AppleACPICPU`](#kextd-stall-0-appleacpicpu)
+* [kextd stall 0: AppleACPICPU](#kextd-stall-0-appleacpicpu)
 * [Kernel Panic su AppleIntelI210Ethernet](#kernel-panic-su-appleinteli210ethernet)
 * [Kernel panic su "Wrong CD Clock Frequency" con laptop Icelake](#kernel-panic-su-wrong-cd-clock-frequency-with-icelake-laptop)
 * [Bloccato a `Forcing CS_RUNTIME for entitlement` in Big Sur](#bloccato-a-forcing-cs-runtime-for-entitlement-in-big-sur)
@@ -178,6 +178,7 @@ Questo è dovuto a qualche problema intorno al `Booter -> Quirks` che hai impost
       * AMD TRx40
       * VMs come QEMU
   
+
 Un altro problema potrebbe essere che macOS è in conflitto con la protezione da scrittura dal registro CR0, per risolvere questo abbiamo 2 opzioni:
 
 * Se il tuo firmware supporta MATs(2018+ firmwares):
@@ -256,7 +257,7 @@ Per risolvere questo è possibile eseguire una delle seguenti operazioni:
   
 Per fare questo tramite Terminal:
 
-```bash
+​```bash
 # Innanzitutto, trova il tuo volume del preboot
 diskutil list
 
@@ -368,15 +369,15 @@ I luoghi principali da verificare:
 * **Problemi di allocazione PCI**:
   * **Aggiorna il tuo BIOS**, assicurati che sia il più recente. La maggior parte degli OEM ha un'allocazione PCI disastrosa su firmware meno recenti, in particolare AMD
   * Assicurarsi anche che Above4G sia abilitato nel BIOS, se non è disponibile alcuna opzione, aggiungere `npci=0x2000` nelle boot args.
-      * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
+    * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
     * AMD CPU NOTA: **Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, andranno in conflitto**
     * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
   * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
 * **Problemi NVMe or SATA**:
-    * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
-      * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
+  * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
+    * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
     * Samsung 970eVoPlus che abbia il firmware più recente (firmware più vecchi erano noti per instabilità e blocchi, [Vedi qui per maggiori informazioni](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
-   * SATA Hot-Plug sia disabilitato nel BIOS (più comunemente può causare problemi sui sistemi basati sulla CPU AMD)
+  * SATA Hot-Plug sia disabilitato nel BIOS (più comunemente può causare problemi sui sistemi basati sulla CPU AMD)
     * Assicurarsi che le unità NVME siano impostate come modalità NVME nel BIOS (alcuni BIOS hanno un bug in cui è possibile impostare unità NVME come SATA)
 * **NVRAM non funziona**:
   * Problema comune nelle schede madri HEDT e serie 300, hai un paio di percorsi da seguire:
@@ -595,6 +596,7 @@ Ciò è dovuto a un emulatore SMC mancante o guasto; assicurati di quanto segue:
 Per coloro che utilizzano schede madri Comet Lake con NIC I225-V, potrebbe verificarsi un panico del kernel all'avvio a causa del kext I210. Per risolvere questo problema, assicurati di avere il PciRoot corretto per la tua Ethernet. Questo è comunemente:
 * PciRoot(0x0)/Pci(0x1C,0x1)/Pci(0x0,0x0)
   * Per impostazione predefinita, questo è ciò che utilizzano le schede madri Asus e Gigabyte
+
 * PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)
   * Alcuni OEM potrebbero usare questo
 
