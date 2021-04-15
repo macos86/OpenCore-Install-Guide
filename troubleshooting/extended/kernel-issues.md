@@ -201,6 +201,7 @@ Nota: "1" significa che supporta MAT, mentre "0" significa che non lo supporta.
 
 Errore completo:
 
+```
 [EB | `LD: OFS] Err (0xE) @ OPEN (System \\ Library \\ PrelinkedKernels \\ prelinkedkernel)
 ```
 
