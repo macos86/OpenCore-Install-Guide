@@ -1,129 +1,129 @@
 # Kernel Issues
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-Issues surrounding from initial booting the macOS installer to right before the install GUI pops up.
+Problemi relativi all'avvio iniziale del programma di installazione di macOS subito prima che venga visualizzata la GUI di installazione.
 
-* [Stuck on `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
-* [Stuck on EndRandomSeed](#stuck-on-endrandomseed)
-* [Stuck after selecting macOS partition in OpenCore](#stuck-after-selecting-macos-partition-in-opencore)
-* [Kernel Panic on `Invalid frame pointer`](#kernel-panic-on-invalid-frame-pointer)
-* [Stuck on [EB|LD:OFS] Err(0xE) when booting preboot volume](#stuck-on-eb-ld-ofs-err-0xe-when-booting-preboot-volume)
-* [Stuck on `OCB: LoadImage failed - Security Violation`](#stuck-on-ocb-loadimage-failed-security-violation)
-* [Stuck on `OCABC: Memory pool allocation failure - Not Found`](#stuck-on-ocabc-memory-pool-allocation-failure-not-found)
-* [Stuck on `Buffer Too Small`](#stuck-on-buffer-too-small)
-* [Stuck on `Plist only kext has CFBundleExecutable key`](#stuck-on-plist-only-kext-has-cfbundleexecutable-key)
-* [Stuck on `This version of Mac OS X is not supported: Reason Mac...`](#stuck-on-this-version-of-mac-os-x-is-not-supported-reason-mac)
-* [`Couldn't allocate runtime area` errors?](#couldn-t-allocate-runtime-area-errors)
-* [Stuck on `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](#stuck-on-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
-* [Stuck at ACPI Table loading on B550](#stuck-at-acpi-table-loading-on-b550)
-* ["Waiting for Root Device" or Prohibited Sign error](#waiting-for-root-device-or-prohibited-sign-error)
-* [Kernel panic with IOPCIFamily on X99](#kernel-panic-with-iopcifamily-on-x99)
-* [Stuck on or near `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
-* [Scrambled Screen on laptops](#scrambled-screen-on-laptops)
-* [Black screen after `IOConsoleUsers: gIOScreenLock...` on Navi](#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
+* [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
+* [Bloccato su EndRandomSeed](#bloccato-su-endrandomseed)
+* [Bloccato dopo aver selezionato la partizione macOS in OpenCore](#stuck-after-selecting-macos-partition-in-opencore)
+* [Kernel Panic su `Invalid frame pointer`](#kernel-panic-su-invalid-frame-pointer)
+* [Bloccato su `[EB | LD: OFS] Err (0xE)` all'avvio del volume di preavvio](#bloccato-su-eb-ld-ofs-err-0xe-when-booting-preboot-volume)
+* [Bloccato su `OCB: LoadImage failed - Security Violation`](#bloccato-su-ocb-loadimage-failed-security-violation)
+* [Bloccato su `OCABC: Memory pool allocation failure - Not Found`](#bloccato-su-ocabc-memory-pool-allocation-failure-not-found)
+* [Bloccato su `Buffer Too Small`](#bloccato-su-buffer-too-small)
+* [Bloccato su `Plist only kext has CFBundleExecutable key`](#bloccato-su-plist-only-kext-has-cfbundleexecutable-key)
+* [Bloccato su `This version of Mac OS X is not supported: Reason Mac...`](#bloccato-su-this-version-of-mac-os-x-is-not-supported-reason-mac)
+* [Errori `Couldn't allocate runtime area`?](#errori-couldn-t-allocate-runtime-area)
+* [Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](#bloccato-su-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
+* [Bloccato su ACPI Table loading on B550](#bloccato-su-acpi-table-loading-on-b550)
+* ["Waiting for Root Device" o Prohibited Sign error](#waiting-for-root-device-or-prohibited-sign-error)
+* [Kernel panic con IOPCIFamily su X99](#kernel-panic-with-iopcifamily-on-x99)
+* [Bloccato su o vicino `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-o-vicino-ioconsoleusers-gioscreenlock-giolockstate-3)
+* [Schermo deformato su laptops](#scrambled-screen-on-laptops)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` on Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-on-navi)
 * [Kernel Panic `Cannot perform kext summary`](#kernel-panic-cannot-perform-kext-summary)
 * [Kernel Panic `AppleIntelMCEReporter`](#kernel-panic-appleintelmcereporter)
 * [Kernel Panic `AppleIntelCPUPowerManagement`](#kernel-panic-appleintelcpupowermanagement)
 * [Kernel Panic `AppleACPIPlatform` in 10.13](#kernel-panic-appleacpiplatform-in-10-13)
-* [Keyboard works but trackpad does not](#keyboard-works-but-trackpad-does-not)
+* [La tastiera funziona ma il trackpad no](#la-tastiera-funziona-ma-il-trackpad-no)
 * [`kextd stall[0]: AppleACPICPU`](#kextd-stall-0-appleacpicpu)
-* [Kernel Panic on AppleIntelI210Ethernet](#kernel-panic-on-appleinteli210ethernet)
-* [Kernel panic on "Wrong CD Clock Frequency" with Icelake laptop](#kernel-panic-on-wrong-cd-clock-frequency-with-icelake-laptop)
-* [Stuck at `Forcing CS_RUNTIME for entitlement` in Big Sur](#stuck-at-forcing-cs-runtime-for-entitlement-in-big-sur)
-* [Stuck on `ramrod`(^^^^^^^^^^^^^)](#stuck-on-ramrod)
+* [Kernel Panic su AppleIntelI210Ethernet](#kernel-panic-su-appleinteli210ethernet)
+* [Kernel panic su "Wrong CD Clock Frequency" con laptop Icelake](#kernel-panic-su-wrong-cd-clock-frequency-with-icelake-laptop)
+* [Bloccato a `Forcing CS_RUNTIME for entitlement` in Big Sur](#bloccato-a-forcing-cs-runtime-for-entitlement-in-big-sur)
+* [Bloccato su `ramrod`(^^^^^^^^^^^^^)](#bloccato-su-ramrod)
 
-## Stuck on `[EB|#LOG:EXITBS:START]`
+## Bloccato su `[EB|#LOG:EXITBS:START]`
 
-This section will be split into 3 parts, so pay close attention:
+Questa sezione sarà divisa in 3 parti, quindi presta molta attenzione:
 
 * [Booter Issues](#booter-issues)
 * [Kernel Patch Issues](#kernel-patch-issues)
 * [UEFI Issues](#uefi-issues)
 * [Virtual Machine Issues](#virtual-machine-issues)
 
-### Booter Issues
+### Problemi del Booter
 
-The main culprits to watch for in the Booter section are:
+I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 
 * **DevirtualiseMmio**
-  * Certain MMIO spaces are still required to function correctly, so you'll need to either exclude these regions in Booter -> MmioWhitelist or disable this quirk outright. More info here: [Using DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
-  * For TRx40 users, enable this quirk
-  * For X99 users, disable this quirk as it breaks with some firmwares
+  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
+  * Per gli utenti TRx40, abilita quest0 quirk
+  * Per gli utenti X99, disabilitare questo Quirk poiché confligge con alcuni firmware
 
 * **SetupVirtualMap**
-  * This quirk is required for the majority of firmwares and without it it's very common to kernel panic here, so enable it if not already
-    * Mainly Z390 and older require this quirk enabled
-    * However, certain firmwares(mainly 2020+) do not work with this quirk and so may actually cause this kernel panic:
-      * Intel's Ice Lake series
-      * Intel's Comet Lake series(B460, H470, Z490, etc)
-      * AMD's B550 and A520(Latest BIOS on X570 are also included now)
-        * Many B450 and X470 boards with late 2020 BIOS updates are also included
-      * AMD's TRx40
-      * VMs like QEMU
-      * X299 2020+ BIOS updates(This applies to other X299 boards on the latest BIOS that released either in late 2019 or 2020+)
+  * Questo Quirk è richiesto per la maggior parte dei firmware e senza di esso è molto comune un kernel panic, quindi abilitarlo se non lo è già
+    * Principalmente Z390 e precedenti richiedono che questo Quirk sia abilitato
+    * Tuttavia, alcuni firmware (principalmente 2020+) non funzionano con questo quirk e quindi potrebbe effettivamente causare un Kernel Panic:
+	  * Serie Intel Ice Lake
+	  * Serie Comet Lake di Intel (B460, H470, Z490, ecc.)
+	  * B550 e A520 di AMD (ora è incluso anche il BIOS più recente su X570)
+	    * Sono incluse anche molte schede B450 e X470 con aggiornamenti del BIOS di fine 2020
+	  * TRx40 di AMD
+	  * VM come QEMU
+	  * Aggiornamenti BIOS X299 2020+ (questo vale per altre schede X299 sull'ultimo BIOS rilasciato alla fine del 2019 o 2020+)
 
 * **EnableWriteUnprotector**
 
-  * Another issue may be that macOS is conflicting with the write protection from CR0 register, to resolve this we have 2 options:
-    * If your firmware supports MATs(2018+ firmwares):
-      * EnableWriteUnprotector -> False
-      * RebuildAppleMemoryMap -> True
-      * SyncRuntimePermissions -> True
-    * For older firmwares:
-      * EnableWriteUnprotector -> True
-      * RebuildAppleMemoryMap -> False
-      * SyncRuntimePermissions -> False
-    * Note: Some laptops(ex. Dell Inspiron 5370) even with MATs support will halt on boot up, in these cases you'll have two options:
-      * Boot with the old firmware quirk combo(ie. With EnableWriteUnprotector and disable `RebuildAppleMemoryMap` + `SyncRuntimePermissions`)
-      * Enable `DevirtualiseMmio` and follow [MmioWhitelist guide](https://dortania.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
+  * Un altro problema potrebbe essere che macOS è in conflitto con la protezione da scrittura dal registro CR0, per risolvere questo abbiamo 2 opzioni:
+	* Se il tuo firmware supporta MAT (firmware 2018+):
+	  * EnableWriteUnprotector -> False
+	  * RebuildAppleMemoryMap -> True
+	  * SyncRuntimePermissions -> True
+	* Per firmware meno recenti:
+	  * EnableWriteUnprotector -> True
+	  * RebuildAppleMemoryMap -> False
+	  * SyncRuntimePermissions -> False
+	* Nota: alcuni laptop (es. Dell Inspiron 5370) anche con supporto MAT si interromperanno all'avvio, in questi casi avrai due opzioni:
+	  * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +` SyncRuntimePermissions`)
+	  * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
 
-Regarding MATs support, firmwares built against EDK 2018 will support this and many OEMs have even added support all the way back to Skylake laptops. Issue is it's not always obvious if an OEM has updated the firmware, you can check the OpenCore logs whether yours supports it([See here how to get a log](../debug.html)):
+Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](../ debug.html)):
 
 ```
-OCABC: MAT support is 1
+OCABC: MAT supportiss 1
 ```
 
-* Note: `1` means it supports MATs, while `0` means it does not.
+* Nota: "1" significa che supporta MAT, mentre "0" significa di no.
 
-### Kernel Patch Issues
+### Problemi di patch del kernel
 
-This section will be split between Intel and AMD users:
+Questa sezione sarà suddivisa tra utenti Intel e AMD:
 
-#### AMD Users
+#### Utenti AMD
 
-* Missing [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore)(only applies for AMD CPUs, make sure they're OpenCore patches and not Clover. Clover uses `MatchOS` while OpenCore has `MinKernel` and `Maxkernel`)
-  * Note outdated kernel patches will also have the same effect please ensure you're using the latest patches from AMD OS X
+* Mancanti [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore)(si applica solo alle CPU AMD, assicurati che siano patch OpenCore e non Clover. Clover usa `MatchOS` mentre OpenCore ha` MinKernel` e `Maxkernel`)
+  * Nota che anche patch del kernel obsolete avranno lo stesso effetto, assicurati di utilizzare le patch più recenti di AMD OS X.
 
-#### Intel Users
+#### Utenti Intel
 
 * **AppleXcpmCfgLock** and **AppleCpuPmCfgLock**
-  * Missing CFG or XCPM patches, please enable `AppleXcpmCfgLock` and `AppleCpuPmCfgLock`
-    * Haswell and newer only need AppleXcpmCfgLock
-    * Ivy Bridge and older only need AppleCpuPmCfgLock
-      * Broadwell and older need AppleCpuPmCfgLock if running 10.10 or older
-  * Alternatively you can properly disable CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
+  * Patch CFG o XCPM mancanti, abilitare `AppleXcpmCfgLock` e` AppleCpuPmCfgLock`
+	* Haswell e versioni successive richiedono solo AppleXcpmCfgLock
+	* Ivy Bridge e versioni precedenti richiedono solo AppleCpuPmCfgLock
+	* Broadwell e versioni precedenti richiedono AppleCpuPmCfgLock se si esegue 10.10 o versioni precedenti
+	* In alternativa puoi disabilitare correttamente CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
 * **AppleXcpmExtraMsrs**
-  * May also be required, this is generally meant for Pentiums, HEDT and other odd systems not natively supported in macOS.
+  * Può anche essere richiesto, questo è generalmente pensato per Pentium, HEDT e altri sistemi strani non supportati nativamente in macOS.
 
-#### Legacy Intel users
+#### Utenti Intel  Legacy
 
-For macOS Big Sur, many firmwares have issues determining the CPU core count and thus will kernel panic too early for screen printing. Via serial, you can see the following panic:
+Per macOS Big Sur, molti firmware hanno problemi a determinare il numero di core della CPU e quindi il kernel panic avviene troppo presto per lo screen printing. Tramite seriale, puoi vedere il seguente panic:
 
 ```
 max_cpus_from_firmware not yet initialized
 ```
 
-To resolve:
+Per risolvere
 
-* Enable `AvoidRuntimeDefrag` under Booter -> Quirks
-  * This should work for most firmwares
+* Abilita `AvoidRuntimeDefrag` in Booter -> Quirks
+   * Questo dovrebbe funzionare per la maggior parte dei firmware
 
-However on certain machines like the HP Compaq DC 7900, the firmware will still panic so we need to force a CPU core count value. Only use the below patch if AvoidRuntimeDefrag didn't work:
+Tuttavia, su alcune macchine come HP Compaq DC 7900, il firmware continuerà ad andare in panico, quindi dobbiamo forzare un valore di conteggio dei core della CPU. Usa la patch seguente solo se EvitareRuntimeDefrag non ha funzionato:
 
 ::: details Legacy CPU Core patch
 
-To do this, Add the following patch(replacing the 04 from B8 **04** 00 00 00 C3 with the amount of CPU threads your hardware supports):
+Per fare ciò, aggiungi la seguente patch (sostituendo la 04 di B8 **04** 00 00 00 C3 con la quantità di thread della CPU supportati dal tuo hardware):):
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -142,80 +142,80 @@ To do this, Add the following patch(replacing the 04 from B8 **04** 00 00 00 C3 
 
 :::
 
-### UEFI Issues
+### Problemi UEFI
 
 * **ProvideConsoleGop**
-  * Needed for transitioning to the next screen, this was originally part of AptioMemoryFix but is now within OpenCore as this quirk. Can be found under UEFI -> Output
-  * Note as of 0.5.6, this quirk is enabled by default in the sample.plist
+  * Necessario per passare alla schermata successiva, questo era originariamente parte di AptioMemoryFix ma ora è all'interno di OpenCore come Quirk. Lo trovate in UEFI -> Output
+  * Nota a partire dalla 0.5.6, questo Quirk è abilitato per impostazione predefinita nel sample.plist
 * **IgnoreInvalidFlexRatio**
-  * This is needed for Broadwell and older. **Not for AMD and Skylake or newer**
+  * Questo è necessario per Broadwell e precedenti **Non perr AMD e Skylake o successivi**
 
-## Stuck on EndRandomSeed
+## Bloccato su EndRandomSeed
 
-Same issues above, see here for more details: [Stuck on `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
 
-## Stuck after selecting macOS partition in OpenCore
+## Bloccato dopo aver selezionato la partizione macOS in OpenCore
 
-Same issues above, see here for more details: [Stuck on `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#stuck-on-eb-log-exitbs-start)
 
-* Note: Enabling [DEBUG OpenCore](../debug.html) can help shed some light as well
+* Note: Abilitare [DEBUG OpenCore](../debug.html) può anche aiutare a capire
 
-## Kernel Panic on `Invalid frame pointer`
+## Kernel Panic su `Invalid frame pointer`
 
-So this is due to some issue around the `Booter -> Quirks` you set, main things to check for:
+Questo è dovuto a qualche problema intorno al `Booter -> Quirks` che hai impostato, le cose principali da controllare:
 
 * `DevirtualiseMmio`
-  * Certain MMIO spaces are still required to function correctly, so you'll need to either exclude these regions in Booter -> MmioWhitelist or disable this quirk outright
-  * More info here: [Using DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
+  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk
+  * Maggiori informazioni qui: [Using DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
 
 * `SetupVirtualMap`
-  * This quirk is required for the majority of firmwares and without it it's very common to kernel panic here, so enable it if not already
-    * However, certain firmwares do not work with this quirk and so may actually cause this kernel panic:
-      * Intel's Ice Lake series
-      * Intel's Comet Lake series
-      * AMD's B550
-      * AMD's A520
-      * AMD's TRx40
-      * VMs like QEMU
+  * Questo Quirk è richiesto per la maggior parte dei firmware e senza di essa è molto comune un kernel panic, quindi abilitalo se non lo è già
+      * Tuttavia, alcuni firmware non funzionano con questo Quirk e quindi potrebbero effettivamente causare questo kernel panic:
+      * Serie Ice Lake Intel
+	  * Serie Comet Lake Intel
+      * AMD B550
+      * AMD A520
+      * AMD TRx40
+      * VMs come QEMU
   
-Another issue may be that macOS is conflicting with the write protection from CR0 register, to resolve this we have 2 options:
+Un altro problema potrebbe essere che macOS è in conflitto con la protezione da scrittura dal registro CR0, per risolvere questo abbiamo 2 opzioni:
 
-* If your firmware supports MATs(2018+ firmwares):
+* Se il tuo firmware supporta MATs(2018+ firmwares):
   * EnableWriteUnprotector -> False
   * RebuildAppleMemoryMap -> True
   * SyncRuntimePermissions -> True
-* For older firmwares:
+* Per firmware meno recenti:
   * EnableWriteUnprotector -> True
   * RebuildAppleMemoryMap -> False
   * SyncRuntimePermissions -> False
 
-Regarding MATs support, firmwares built against EDK 2018 will support this and many OEMs have even added support all the way back to Skylake laptops. Issue is it's not always obvious if an OEM has updated the firmware, you can check the OpenCore logs whether yours supports it:
+Per quanto riguarda il supporto MAT, i firmware costruiti su EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta:
 
 ```
 OCABC: MAT support is 1
 ```
 
-Note: `1` means it supports MATs, while `0` means it does not.
+Nota: "1" significa che supporta MAT, mentre "0" significa che non lo supporta.
 
-## Stuck on `[EB|LD:OFS] Err(0xE)` when booting preboot volume
+## Bloccato su `[EB | LD: OFS] Err (0xE)` all'avvio del volume di preavvio
 
-Full error:
+Errore completo:
 
-```
-[EB|`LD:OFS] Err(0xE) @ OPEN (System\\Library\\PrelinkedKernels\\prelinkedkernel)
-```
+`` `
+[EB | `LD: OFS] Err (0xE) @ OPEN (System \\ Library \\ PrelinkedKernels \\ prelinkedkernel)
+`` `
 
-This can happen when the preboot volume isn't properly updated, to fix this you'll need to boot into recovery and repair it:
+Ciò può accadere quando il volume di preavvio non è aggiornato correttamente, per risolvere questo problema è necessario avviare da Recovery e ripararlo:
 
-1. Enable JumpstartHotplug under UEFI -> APFS(Recovery may not boot on macOS Big Sur without this option)
-2. Boot into recovery
-3. Open the terminal, and run the following:
+1. Abilita JumpstartHotplug in UEFI -> APFS (la Recovery potrebbe non avviarsi su macOS Big Sur senza questa opzione)
+2. Avviare il ripristino
+3. Apri il terminale ed esegui quanto segue:
 
-```bash
-# First, find your Preboot volume
+`` bash
+# Innanzitutto, trova il volume di preavvio
 diskutil list
 
-# From the below list, we can see our Preboot volume is disk5s2
+# Dall'elenco sottostante, possiamo vedere che il nostro volume di preavvio è disk5s2
 /dev/disk5 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      APFS Container Scheme -                      +255.7 GB   disk5
@@ -227,40 +227,40 @@ diskutil list
    5:                APFS Volume ⁨Big Sur HD⁩              16.2 GB    disk5s5
    6:              APFS Snapshot ⁨com.apple.os.update-...⁩ 16.2 GB    disk5s5s
 
-# Now mount the Preboot volume
+# Ora monta il volume di preavvio
 diskutil mount disk5s2
 
-# Next run updatePreboot on the Preboot volume
+# Quindi eseguire updatePreboot sul volume di preavvio
 diskutil apfs updatePreboot /volume/disk5s2
 ```
 
-Then finally reboot
+Alla fine riavviare
 
-## Stuck on `OCB: LoadImage failed - Security Violation`
+## Bloccato su `OCB: LoadImage failed - Security Violation`
 
-```
-OCSB: No suitable signature - Security Violation
-OCB: Apple Secure Boot prohibits this boot entry, enforcing!
-OCB: LoadImage failed - Security Violation
-```
+`` ``..
+OCSB: nessuna firma adatta - violazione della sicurezza
+OCB: Apple Secure Boot vieta questa voce di avvio, Applicazione!
+OCB: LoadImage fallito - Violazione della sicurezza
+`` ``..
 
-This is due to missing outdated Apple Secure Boot manifests present on your preboot volume resulting is a failure to load if you have SecureBootModel set, reason for these files being missing is actually a bug in macOS.
+Ciò è dovuto ad un mancante/obsoleto Apple Secure Boot manifest presente sul tuo volume del preboot risultante nel mancato caricamento se abillitato SecurebootModel Set; il motivo per cui tali file mancano è in realtà un bug in MacOS.
 
-To resolve this you can do one of the following:
+Per risolvere questo è possibile eseguire una delle seguenti operazioni:
 
-* Disable SecureBootModel
-  * ie. set `Misc -> Secuirty -> SecureBootModel -> Disabled`
-* Reinstall macOS with the latest version
-* Or copy over the Secure Boot manifests from `/usr/standalone/i386` to `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
-  * Note you will most likely need to do this via terminal as the Preboot volume isn't easily editable via the Finder
+* Disabilita SecurebootModel.
+   * cioè. Set `misc -> secuirty -> SecurebootModel -> Disabilitato`
+* Reinstallare Macos con l'ultima versione
+* O copia sopra i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
+   * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
   
-To do this via terminal:
+Per fare questo tramite Terminal:
 
 ```bash
-# First, find your Preboot volume
+# Innanzitutto, trova il tuo volume del preboot
 diskutil list
 
-# From the below list, we can see our Preboot volume is disk5s2
+# Dall'elenco sottostanti, possiamo vedere che il nostro volume del preboot è Disk5S2
 /dev/disk5 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      APFS Container Scheme -                      +255.7 GB   disk5
@@ -272,56 +272,56 @@ diskutil list
    5:                APFS Volume ⁨Big Sur HD⁩              16.2 GB    disk5s5
    6:              APFS Snapshot ⁨com.apple.os.update-...⁩ 16.2 GB    disk5s5s
 
-# Now mount the Preboot volume
+# Ora monta il volume del preboot
 diskutil mount disk5s2
 
-# CD into your Preboot volume
-# Note the actual volume is under /System/Volumes/Preboot
+# CD nel tuo volume del preboot
+# Nota Il volume effettivo è sotto /System/Volumes/Preboot
 cd /System/Volumes/Preboot
 
-# Grab your UUID
+# Segnati il tuo uuid.
 ls
  46923F6E-968E-46E9-AC6D-9E6141DF52FD
  CD844C38-1A25-48D5-9388-5D62AA46CFB8
 
-# If multiple show up(ie. you dual boot multiple versions of macOS), you will
-# need to determine which UUID is correct.
-# Easiest way to determine is printing the value of .disk_label.contentDetails
-# of each volume.
+# # Se ne visualizzerai multipla (es. dual boot di più versioni di macos),  dovrai
+# determinare quale è l'UUID corretto.
+# Il modo più semplice  è la stampa del valore di .disk_label.contentDetails
+# di ogni volume.
 cat ./46923F6E-968E-46E9-AC6D-9E6141DF52FD/System/Library/CoreServices/.disk_label.contentDetails
  Big Sur HD%
 
 cat ./CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices/.disk_label.contentDetails
  Catalina HD%
 
-# Next lets copy over the secure boot files
-# Replace CD844C38-1A25-48D5-9388-5D62AA46CFB8 with your UUID value
+# Successivamente  copiare i file Secure Boot
+# Sostituire CD844C38-1A25-48D5-9388-5D62AA46CFB8 con il tuo UUID
 cd ~
 sudo cp -a /usr/standalone/i386/. /System/Volumes/Preboot/CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices
 ```
 
-## Stuck on `OCABC: Memory pool allocation failure - Not Found`
+## Bloccato su `OCABC: Memory pool allocation failure - Not Found`
 
-This is due to incorrect BIOS settings:
+Ciò è dovuto alle impostazioni del BIOS errate:
 
-* Above4GDecoding is Enabled
-* CSM is Disabled(Enabling Windows8.1/10 WHQL Mode can do the same on some boards)
-  * Note on some laptops, CSM must be enabled
-* BIOS is up-to-date(Z390 and HEDT are known for having poorly written firmwares)
+* Above4GDecoding è abilitato
+* CSM è disabilitato (abilitare la modalità Windows8.1 / 10 WHQL può fare lo stesso su alcune schede)
+  * Nota su alcuni laptop, il CSM deve essere abilitato
+* Il BIOS è da aggiornare (Z390 e HEDT sono noti per avere firmware scarsamente scritte)
 
-## Stuck on `Buffer Too Small`
+## Bloccato su `Buffer Too Small`
 
-* Enable Above4GDecoding in the BIOS
+* Abilita Above4GDecoding nel BIOS
 
-## Stuck on `Plist only kext has CFBundleExecutable key`
+## Bloccato su `Plist only kext has CFBundleExecutable key`
 
-Missing or incorrect `Executable path` in your config.plist, this should be resolved by re-running ProperTree's snapshot tool(Cmd/Ctrl+R).
+`Executable path` mancante o errato nel tuo config.plist, questo dovrebbe essere risolto con la ri-esecuzione di ProperTree's snapshot tool(Cmd/Ctrl+R).
 
-## Stuck on `This version of Mac OS X is not supported: Reason Mac...`
+## Bloccato su `This version of Mac OS X is not supported: Reason Mac...`
 
-This error happens when SMBIOS is one no longer supported by that version of macOS, make sure values are set in `PlatformInfo->Generic` with `Automatic` enabled. For a full list of supported SMBIOS and their OSes, see here: [Choosing the right SMBIOS](../../extras/smbios-support.md)
+Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con` Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../ Extras / SmBIOS-Support.md)
 
-::: details Supported SMBIOS in macOS 10.15, Catalina
+::: dettagli degli SmBIOS supportati in Macos 10.15, Catalina
 
 * iMac13,x+
 * iMacPro1,1
@@ -333,7 +333,7 @@ This error happens when SMBIOS is one no longer supported by that version of mac
 
 :::
 
-::: details Supported SMBIOS in macOS 11, Big Sur
+::: dettagli degli SmBIOS supportati in macOS 11, Big Sur
 
 * iMac14,4+
 * iMacPro1,1
@@ -345,154 +345,154 @@ This error happens when SMBIOS is one no longer supported by that version of mac
 
 :::
 
-## `Couldn't allocate runtime area` errors
+## Errori `Couldn't allocate runtime area`?
 
-See [Fixing KASLR slide values](../../extras/kaslr-fix.md)
+vedere [Fissareg i valori KASLR slide](../../extras/kaslr-fix.md)
 
-## Stuck on `RTC...`, `PCI Configuration Begins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`
+## Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`
 
-Well this general area is where a lot of PCI devices are first setup and configured, and is where most booting issues will happen. Other names include:
+Bene questa area generale è laddove un sacco di dispositivi PCI sono configurati, ed è dove si verificheranno la maggior parte dei problemi di avvio. Altri nomi includono:
 
 * `apfs_module_start...`,
 * `Waiting for Root device`,
 * `Waiting on...IOResources...`,
 * `previous shutdown cause...`
 
-The main places to check:
+I luoghi principali da verificare:
 
-* **Missing EC patch**:
-  * Make sure you have your EC SSDT both in EFI/OC/ACPI and ACPI -> Add, **double check it's enabled.**
-  * If you don't have one, grab it here: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
-* **IRQ conflict**:
-  * Most common on older laptops and pre-builts, run SSDTTime's FixHPET option and add the resulting SSDT-HPET.aml and ACPI patches to your config( the SSDT will not work without the ACPI patches)
-* **PCI allocation issue**:
-  * **UPDATE YOUR BIOS**, make sure it's on the latest. Most OEMs have very broken PCI allocation on older firmwares, especially AMD
-  * Make sure either Above4G is enabled in the BIOS, if no option available then add `npci=0x2000` to boot args.
-    * Some X99 and X299 boards(ie. GA-X299-UD4) may require both npci boot-arg and Above4G enabled
-    * AMD CPU Note: **Do not have both the Above4G setting enabled and npci in boot args, they will conflict**
-    * 2020+ BIOS Notes: When enabling Above4G, Resizable BAR Support may become an available. Please ensure this is **Disabled** instead of set to Auto.
-  * Other BIOS settings that are important: CSM disabled, Windows 8.1/10 UEFI Mode enabled
-* **NVMe or SATA issue**:
-  * Sometimes if either a bad SATA controller or an unsupported NVMe drive are used, you can commonly get stuck here. Things you can check:
-    * Not using either a Samsung PM981 or Micron 2200S NVMe SSD
-    * Samsung 970EvoPlus running the latest firmware(older firmwares were known for instability and stalls, [see here for more info](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
-    * SATA Hot-Plug is disabled in the BIOS(more commonly to cause issues on AMD CPU based systems)
-    * Ensure NVMe drives are set as NVMe mode in BIOS(some BIOS have a bug where you can set NVMe drives as SATA)
-* **NVRAM Failing**:
-  * Common issue HEDT and 300 series motherboards, you have a couple paths to go down:
-    * 300 Series Consumer Intel: See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on making SSDT-PMC.aml
-    * HEDT(ie. X99): See [Emulating NVRAM](https://dortania.github.io/OpenCore-Post-Install/misc/nvram.html) on how to stop NVRAM write, note that for install you do not need to run the script. Just setup the config.plist
+* ** Manca la patch EC **:
+  * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
+  * Se non ne hai uno, prendilo qui: [Guida introduttiva delle ACPI]()
+* **Conflitto IRQ**:
+  * * Più comune su portatili e pre-costrutti più anziani; lancia SSDTTime scegli l'opzione FixHPET e aggiungi il risultante SSDT-HPET.aml e lepatches  ACPI al tuo config (l'SSDT non funzionerà senza le patch ACPI)
+* **Problemi di allocazione PCI**:
+  * **Aggiorna il tuo BIOS**, assicurati che sia il più recente. La maggior parte degli OEM ha un'allocazione PCI disastrosa su firmware meno recenti, in particolare AMD
+  * Assicurarsi anche che Above4G sia abilitato nel BIOS, se non è disponibile alcuna opzione, aggiungere `npci=0x2000` nelle boot args.
+    * * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
+    * AMD CPU NOTA: ** Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, ancdranno in conflitto**
+    * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
+  * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
+* **Problemi NVMe or SATA**:
+  * * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
+    * * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
+    * Samsung 970eVoPlus che abbia il firmware più recente (firmware più vecchi erano noti per instabilità e blocchi, [Vedi qui per maggiori informazioni](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
+   * SATA Hot-Plug sia disabilitato nel BIOS (più comunemente può causare problemi sui sistemi basati sulla CPU AMD)
+    * Assicurarsi che le unità NVME siano impostate come modalità NVME nel BIOS (alcuni BIOS hanno un bug in cui è possibile impostare unità NVME come SATA)
+* **NVRAM non funziona**:
+  * Problema comune nelle schede madri HEDT e serie 300, hai un paio di percorsi da seguire:
+    * Serie 300 Consumer Intel: Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) come creare SSDT-PMC.aml
+    * HEDT(ie. X99): Guarda [Emulare la NVRAM](https://dortania.github.io/OpenCore-Post-Install/misc/nvram.html) su come disabilitare la scrittura della NVRAM; nota che per l'installazione non è necessario eseguire lo script. Basta configurare il config.plist
 
-* **RTC Missing**:
-  * Commonly found on Intel's 300+ series(ie. Z370, Z490), caused by the RTC clock being disabled by default. See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating an SSDT-AWAC.aml
-  * X99 and X299 have broken RTC devices, so will need to be fixed with SSDT-RTC0-RANGE. See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating said file
-  * Some drunk firmware writer at HP also disabled the RTC on the HP 250 G6 with no way to actually re-enable it
-    * Known affected models: `HP 15-DA0014dx`, `HP 250 G6`
-    * For users cursed with such hardware you'll need to create a fake RTC clock for macOS to play with. See getting started with ACPI for more details, as well as below image example:
+* **RTC Mancante**:
+  * Comunemente trovato su serie 300+ Intel(es. Z370, Z490), causata dall'orologio RTC disabilitato di default. Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) su come creare SSDT-AWAC.aml
+  * X99 and X299 hanno decies RTC non funzionanti, la soluzione è usare SSDT-RTC0-RANGE. Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) per la creazione di detto file
+  * Qualche compilatore ubriaco in HP ha disabilitato RTC su HP 250 G6 senza possibilità di riabilitarlo per ora.
+    * Modelli interessati noti: `HP 15-DA0014dx`, `HP 250 G6`
+    * Gli utenti con questa "maledizione" nell'hardware dovranno creare un orologio RTC falso per i macos con cui giocare. Vedere Guida introduttiva con ACPI per ulteriori dettagli, qui sotto una immagine ad esempio:
 
-Example of what a disabled RTC with no way to enable looks like(note that there is no value to re-enable it like `STAS`):
+Esempio di come appare un RTC disabilitato senza nessuna possibilità di essere abilitato (nota che non c'è valore per riattivarlo come `STAS»):
 
 ![](../../images/troubleshooting/troubleshooting-md/rtc.png)
 
-## Stuck at ACPI table loading on B550
+## Bloccato su ACPI table loading on B550
 
 ![](../../images/troubleshooting/troubleshooting-md/OC_catalina.jpg)
 
-If you're getting stuck at or near ACPI table loading with an AMD B550 or A520 motherboard, add the following SSDT:
+Se stai rimanendo bloccato su/o vicino a tabella ACPI caricando su una scheda madre AMD B550 o A520, aggiungi il seguente SSDT:
 
 * [SSDT-CPUR.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
 
-And please remember to add this SSDT to both EFI/OC/ACPI **and** your config.plist under ACPI -> Add(ProperTree's snapshot function can do this for you)
+si ricorda di aggiungere questo SSDT in EFI/OC/ACPI **and**  di abilitarlo nel config.plist in  ACPI -> Add (la funzione ProperTree's snapshot può farlo per te)
 
-## "Waiting for Root Device" or Prohibited Sign error
+## Errore "Waiting for Root Device" o Prohibited Sign
 
-* Other names: Stop Sign, Scrambled
+* Altri nomi: Stop Sign, Scrambled
 
-This is generally seen as a USB or SATA error, couple ways to fix:
+Questo è generalmente visto come un errore USB o SATA, di seguito un paio di modalità per correggere:
 
-### USB Issues
+### Problema USB
 
-This assumes you're only booting the installer USB and not macOS itself.
+Questo presuppone che tu stia solo avviando il programma di installazione da USB e non macos.
 
-* If you're hitting the 15 port limit, you can temporarily get around this with `XhciPortLimit` but for long term use, we recommend making a [USBmap](https://dortania.github.io/OpenCore-Post-Install/usb/)
+* Se stai superando il limite di 15 porte, puoi temporaneamente aggirarlo con `xhciportlimit`, ma per uso a lungo termine, consigliamo di fare una [Mappa USB](https://dortania.github.io/OpenCore-Post-Install/usb/)
   * `Kernel -> Quirks -> XhciPortLimit -> True`
 
-* Another issue can be that certain firmware won't pass USB ownership to macOS
+*Un altro problema può essere che un determinato firmware non passerà la proprietà USB a MacOS
   * `UEFI -> Quirks -> ReleaseUsbOwnership -> True`
-  * Enabling XHCI Handoff in the BIOS can fix this as well
+  * Anche abilitare XHCI Handoff nel BIOS può risolvere
 
-* Sometimes, if the USB is plugged into a 3.x port, plugging it into a 2.0 port can fix this error.
+* A volte, se l'USB è collegato a una porta 3.x, collegarlo a una porta 2.0 può correggere questo errore.
 
-* For AMD's 15h and 16h CPUs, you may need to add the following:
+* Per CPUs AMD's 15h and 16h , potresti aver bisogno di aggiungere:
   * [XLNCUSBFix.kext](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
 
-* If XLNCUSBFix still doesn't work, then try the following:
+* Se XLNCUSBFix non funziona ancora, prova quanto segue:
   * [AMD StopSign-fixv5](https://cdn.discordapp.com/attachments/249992304503291905/355235241645965312/StopSign-fixv5.zip)
 
-* X299 Users: Enable Above4G Decoding
-  * Odd firmware bug on X299 where USB breaks otherwise
+* Utenti X299: abilitare la decodifica di 4G
+   * Bug del firmware su x299 in cui il USB si interrompe
 
-* Missing USB ports in ACPI:
-  * For Intel's Coffee Lake and older, we recommend using [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
-  * For Intel's Ice Lake and Comet Lake, we recommend [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
-    * SSDTTime's `7. USB Reset` option can do the same
-  * For AMD, run SSDTTime's `7. USB Reset` option and add the provided SSDT-RHUB to your EFI and config.plist
+* Porte USB mancanti in ACPI:
+  * Per Intel Coffee Lake and precedenti, raccomandiamo di usare [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
+  * For Intel Ice Lake e Comet Lake, raccomandiamo [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
+    * L'opzione `7. USB Reset` di SSDTTime  può fare la stessa cosa
+  * Per AMD, lancia l'opzione `7. USB Reset` di SSDTTime e aggiungi l'SSDT-RHUB che ti viene fornito alla tua EFI  e dichiaralo nel config.plist
   
-### SATA Issues
+### Problemi SATA
 
-On rare occasions(mainly laptops), the SATA controller isn't officially supported by macOS. To resolve this, we'll want to do a few things:
+In rare occasioni (principalmente laptop), il controller SATA non è ufficialmente supportato da MacOS. Per risolvere questo, potremo fare alcune cose:
 
-* Set SATA to AHCI mode in the BIOS
-  * macOS doesn't support hardware RAID or IDE mode properly.
-  * Note drives already using Intel Rapid Storage Technology(RST, soft RAID for Windows and Linux) will not be accessible in macOS.
+* Configurare SATA come AHCI nel BIOS
+  * MacOS non supporta correttamente hardware raid o la modalità IDE.
+  * Nota Le unità che già utilizzano la tecnologia Intel Rapid Storage (RST, Raid Soft per Windows e Linux) non saranno accessibili in MacOS.
 * [SATA-unsupported.kext](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
-  * Adds support to obscure SATA controllers, commonly being laptops.
-  * For very legacy SATA controllers, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) may be more suitable.
+  * Aggiunge supporto per oscuri controller SATA, comunemente nei laptop.
+  * Per controller SATA legacy, [AHCIPortInjector.kext](https://www.insanelymac.com/forum/files/file/436-ahciportinjectorkext/) potrebbe essere più adatto.
 * [Catalina's patched AppleAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
-  * For users running macOS 11, Big Sur and having issues. This backports the known working Catalina kext, SATA-unsupported is not needed with this kext
+  *Per gli utenti che eseguono Macos 11, Big Sur e hanno problemi. This backports the known working Catalina kext, SATA-unsupported is not needed with this kext
 
-Note that you will only experience this issue after installing macOS onto the drive, booting the macOS installer will not error out due to SATA issues.
+Si noti che sperimenterai questo problema solo dopo aver installato MacOS sull'unità, l'avvio del programma di installazione di MacOS non si bloccherà a causa di problemi SATA.
 
-## Kernel panic with IOPCIFamily on X99
+## Kernel panic con IOPCIFamily su X99
 
-For those running the X99 platform from Intel, please go over the following:
+Per coloro che sono sulla piattaforma X99 di Intel, controllare quanto segue:
 
-* The following kernel patches are enabled:
+* LChe le seguenti patch del kernel siano abilitate:
   * AppleCpuPmCfgLock
   * AppleXcpmCfgLock
   * AppleXcpmExtraMsrs
-* You have the following SSDTs:
-  * SSDT-UNC(if not, see [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating said file)
+* Avere il seguente SSDT:
+  * SSDT-UNC(in caso contrario, vedere [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) sulla creazione di detto file)
 
-## Stuck on or near `IOConsoleUsers: gIOScreenLock...`/`gIOLockState (3...`
+## Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`/`gIOLockState (3...`
 
-This is right before the GPU is properly initialized, verify the following:
+Questo è giusto prima che la GPU venga inizializzata correttamente, verifica quanto segue:
 
-* GPU is UEFI capable(GTX 7XX/2013+)
-* CSM is off in the BIOS
-  * May need to be enabled on laptops
-* Forcing PCIe 3.0 link speed
-* Double check that ig-platform-id and device-id are valid if running an iGPU.
-  * Desktop UHD 630's may need to use `00009B3E` instead
-* Trying various [WhateverGreen Fixes](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
-  * `-igfxmlr` boot argument. This can also manifest as a "Divide by Zero" error.
-* Coffee Lake iGPU users may also need `igfxonln=1` in 10.15.4 and newer
+* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* CSM è disattivato nel BIOS
+   * Potrebbe essere necessario abilitarlo sui laptop
+* Forzare la velocità di collegamento PCIe 3.0
+* Controlla che ig-platform-id e device-id siano validi se si esegue una iGPU.
+  * Per gli UHD 630 desktop potrebbe essere necessario utilizzare "00009B3E"
+  * Provando varie [correzioni di WhateverGreen](https://github.com/acidanthera/W qualunqueGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+  * Boot-Arg `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
+  * Gli utenti con iGPU Coffee Lake potrebbero anche aver bisogno di `igfxonln = 1` in 10.15.4 e versioni successive
 
-## Scrambled Screen on laptops
+## Schermo deformato su laptops
 
-Enable CSM in your UEFI settings. This may appear as "Boot legacy ROMs" or other legacy setting.
+Abilita CSM nelle impostazioni UEFI. Può apparire come "Boot legacy ROMs" o altra impostazione legacy.
 
-## Black screen after `IOConsoleUsers: gIOScreenLock...` on Navi
+## Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su Navi
 
-* Add `agdpmod=pikera` to boot args
-* Switch between different display outputs
-* Try running MacPro7,1 SMBIOS with the boot-arg `agdpmod=ignore`
+* Aggiungi `agdpmod = pikera` agli argomenti di avvio
+* Prova le diverse uscite video
+* Prova ad usare SMBIOS MacPro7,1 con l'argomento di avvio `agdpmod = ignore`
 
-For MSI Navi users, you'll need to apply the patch mentioned here: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
+Per gli utenti di MSI Navi, sarà necessario applicare la patch menzionata qui: [Il programma di installazione non funziona con 5700XT # 901](https://github.com/acidanthera/bugtracker/issues/901)
 
-Specifically, add the following entry under `Kernel -> Patch`:
+In particolare, aggiungi la seguente voce in `Kernel -> Patch`:
 
-::: details MSI Navi Patch
+::: dettagli MSI Navi Patch
 
 ```
 Base:
@@ -512,33 +512,33 @@ Skip: 0
 
 :::
 
-Note: macOS 11, Big Sur no longer requires this patch for MSI Navi.
+Nota: macOS 11, Big Sur non richiede più questa patch per MSI Navi.
 
 ## Kernel Panic `Cannot perform kext summary`
 
-Generally seen as an issue surrounding the prelinked kernel, specifically that macOS is having a hard time interpreting the ones we injected. Verify that:
+Generalmente visto come un problema che riguarda il prelinked kernel, in particolare che macOS ha difficoltà a interpretare quello che abbiamo iniettato. Verifica che:
 
 * Your kexts are in the correct order(master then plugins, Lilu always before the plugins)
-* Kexts with executables have them and plist only kexts don't(ie. USBmap.kext, XHCI-unspported.kext, etc does not contain an executable)
-* Don't include multiple of the same kexts in your config.plist(ie. including multiple copies of VoodooInput from multiple kexts, we recommend choosing the first kext in your config's array and disable the rest)
+* Kexts con un eseguibile contengono un binario, kexts con il solo plist (Injector) NO (ie. USBmap.kext, XHCI-unspported.kext, etc does not contain an executable)
+* Non includere più copie degli stessi kext nel tuo config.plist (es. includendo più copie di VoodooInput da multipli kext, ti consigliamo di scegliere il primo kext nell'array di configurazione e disabilitare il resto)
 
-Note: this error may also look very similar to [Kernel Panic on `Invalid frame pointer`](#kernel-panic-on-invalid-frame-pointer)
+Nota: questo errore potrebbe anche essere molto simile a [Kernel Panic su `Invalid frame pointer`](#kernel-panic-on-invalid-frame-pointer)
 
 ## Kernel Panic `AppleIntelMCEReporter`
 
-With macOS Catalina, dual socket support is broken, and a fun fact about AMD firmware is that some boards will actually report multiple socketed CPUs. To fix this, add [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip) to both EFI/OC/Kexts and config.plist -> Kernel -> Add
+Con macOS Catalina, il supporto del doppio socket è interrotto e un fatto divertente del firmware AMD è che alcune schede segnaleranno effettivamente CPU con socket multipli. Per risolvere questo problema, aggiungi [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip) sia a EFI/OC/Kexts and config.plist -> Kernel -> Add
 
 ## Kernel Panic `AppleIntelCPUPowerManagement`
 
-This is likely due to faulty or outright missing NullCPUPowerManagement. To fix the issue, remove NullCPUPowerManagement from `Kernel -> Add` and `EFI/OC/Kexts` then enable `DummyPowerManagement` under `Kernel -> Emulate`
+Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante. Per risolvere il problema, rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
 
-* **Note**: On older Intel CPUs(ie. Penryn and older), it may be due to IRQ conflicts or the HPET device being disabled. To resolve, you have 2 options:
-  * [SSDTTime's FixHPET Option](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
-  * Forcing the HPET Device on
+* ** Nota **: sulle vecchie CPU Intel (es. Penryn e precedenti), potrebbe essere dovuto a conflitti IRQ o al dispositivo HPET disabilitato. Per risolvere, hai 2 opzioni:
+  * [Opzione FixHPET di SSDTTime] (https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
+  * Forzatura del dispositivo HPET
   
-::: details Forcing the HPET Device on
+  ::: dettagli Forzatura del dispositivo HPET
 
-Under ACPI -> Patch:
+  Sotto ACPI -> Patch:
 
 | Comment | String | Force HPET Online |
 | :--- | :--- | :--- |
@@ -554,72 +554,72 @@ Under ACPI -> Patch:
 
 ![](../../images/troubleshooting/troubleshooting-md/KA5UOGV.png)
 
-On macOS 10.13, High Sierra the OS is much stricter with ACPI tables, [specifically a bug with how headers were handled](https://alextjam.es/debugging-appleacpiplatform/). To resolve, enable `NormalizeHeaders` under ACPI -> Quirks in your config.plist
+Su macOS 10.13, High Sierra il sistema operativo è molto più rigoroso con le tabelle ACPI, [in particolare un bug relativo al modo in cui venivano gestite le intestazioni](https://alextjam.es/debugging-appleacpiplatform/). Per risolvere, abilita `NormalizeHeaders` in ACPI -> Quirks nel tuo config.plist
 
-## macOS frozen right before login
+## macOS bloccato subito prima dell'accesso
 
-This is a common example of screwed up TSC, for most system add [CpuTscSync](https://github.com/lvs1974/CpuTscSync)
+Questo è un esempio comune di TSC incasinato, per la maggior parte del sistema aggiungi [CpuTscSync](https://github.com/lvs1974/CpuTscSync)
 
-The most common way to see the TSC issue:
+Il modo più comune per vedere il problema TSC:
 
-Case 1    |  Case 2
+Caso 1    |  Caso 2
 :-------------------------:|:-------------------------:
 ![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
-## Keyboard works but trackpad does not
+## La tastiera funziona ma il trackpad no
 
-Make sure that VoodooInput is listed *before* VoodooPS2 and VoodooI2C kexts in your config.plist.
+Assicurati che VoodooInput sia elencato * prima di * VoodooPS2 e VoodooI2C kexts nel tuo config.plist.
 
-::: details VoodooI2C Troubleshooting
+::: dettagli Risoluzione dei problemi di VoodooI2C
 
-Check the order that your kexts load - make they match what is shown under [Gathering Files](../../ktext.md):
+Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](../../ ktext.md):
 
-1. VoodooGPIO, VoodooInput, and VoodooI2CServices in any order (Found under VoodooI2C.kext/Contents/PlugIns)
+1. VoodooGPIO, VoodooInput e VoodooI2CServices in qualsiasi ordine (Si trovano in VoodooI2C.kext/Contents/PlugIns)
 2. VoodooI2C
 3. Satellite/Plugin Kext
 
-Make sure you have SSDT-GPIO in EFI/OC/ACPI and in your config.plist under ACPI -> Add in your config.plist. If you are still having issues, reference the [Getting Started With ACPI GPIO page](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html).
+Assicurati di avere SSDT-GPIO in EFI/OC/ACPI e nel tuo config.plist sotto ACPI -> Add. Se i problemi persistono, fare riferimento alla [pagina Guida introduttiva a ACPI GPIO](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html).
 
 :::
 
 ## `kextd stall[0]: AppleACPICPU`
 
-This is due to either a missing SMC emulator or broken one, make sure of the following:
+Ciò è dovuto a un emulatore SMC mancante o guasto; assicurati di quanto segue:
 
-* Lilu and VirtualSMC are both in EFI/OC/kexts and in your config.plist
-* Lilu is before VirtualSMC in the kext list
-* Last resort is to try FakeSMC instead, **do not have both VirtualSMC and FakeSMC enabled**
+* * Lilu e VirtualSMC sono entrambi in EFI/OC/kexts e nel tuo config.plist
+* Lilu è prima di VirtualSMC nell'elenco kext
+* L'ultima risorsa è provare invece FakeSMC, **non abilitare contemporaneamente VirtualSMC e FakeSMC**
 
-## Kernel Panic on AppleIntelI210Ethernet
+## Kernel Panic su AppleIntelI210Ethernet
 
-For those running Comet lake motherboards with the I225-V NIC, you may experience a kernel panic on boot due to the I210 kext. To resolve this, make sure you have the correct PciRoot for your Ethernet. This commonly being either:
+Per coloro che utilizzano schede madri Comet Lake con NIC I225-V, potrebbe verificarsi un panico del kernel all'avvio a causa del kext I210. Per risolvere questo problema, assicurati di avere il PciRoot corretto per la tua Ethernet. Questo è comunemente o:
 
-* PciRoot(0x0)/Pci(0x1C,0x1)/Pci(0x0, 0x0)
-  * By default, this is what Asus and Gigabyte motherboards use
-* PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)
-  * Some OEMs may use this instead
+* PciRoot (0x0) / Pci (0x1C, 0x1) / Pci (0x0, 0x0)
+   * Per impostazione predefinita, questo è ciò che utilizzano le schede madri Asus e Gigabyte
+* PciRoot (0x0) / Pci (0x1C, 0x4) / Pci (0x0,0x0)
+   * Alcuni OEM potrebbero usare questo
   
-For those who can to your PciRoot manually, you'll want to install macOS fully and run the following with [gfxutil](https://github.com/acidanthera/gfxutil/releases):
+Per coloro che vogliono vedere PciRoot manualmente, ti consigliamo di installare macOS completamente ed eseguire quanto segue con [gfxutil](https://github.com/acidanthera/gfxutil/releases):
 
 ```
 /path/to/gfxutil | grep -i "8086:15f3"
 ```
 
-This should spit out something like this:
+Questo dovrebbe sputare qualcosa del genere:
 
 ```
 00:1f.6 8086:15f3 /PC00@0/GBE1@1F,6 = PciRoot(0x0)/Pci(0x1F,0x6)
 ```
 
-The ending `PciRoot(0x0)/Pci(0x1F,0x6)` is what you want to add in your config.plist with device-id of `F2150000`
+La parte finale `PciRoot (0x0)/Pci(0x1F, 0x6)` è ciò che vuoi aggiungere nel tuo config.plist con device-id `F2150000`
 
-## Kernel panic on "Wrong CD Clock Frequency" with Icelake laptop
+## Kernel panic su "Wrong CD Clock Frequency" su laptop  Icelake
 
 ![](../../images/troubleshooting/troubleshooting-md/cd-clock.jpg)
 
-To resolve this kernel panic, ensure you have `-igfxcdc` in your boot-args.
+Per risolvere questo kernel panic, assicurati di avere `-igfxcdc` nei tuoi argomenti di avvio.
 
-## Kernel panic on "cckprng_int_gen"
+## Kernel panic su "cckprng_int_gen"
 
 Full panic:
 
@@ -627,31 +627,31 @@ Full panic:
 "cckprng_int_gen: generator has already been sealed"
 ```
 
-This is likely to be 1 of 2 things:
+È probabile che sia 1 di queste 2 cose:
 
-* Missing SMC Emulator(ie. no VirtualSMC in your config.plist or EFI)
-  * Add [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases) to your config.plist and EFI
-* Incorrect SSDT usage with SSDT-CPUR
+* Emulatore SMC mancante (es. Nessun VirtualSMC nel tuo config.plist o EFI)
+   * Aggiungi [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases) al tuo config.plist e EFI
+* Utilizzo SSDT non corretto con SSDT-CPUR
 
-For the latter, ensure you're only using SSDT-CPUR with **B550 and A520**. Do not use on X570 or older hardware(ie. B450 or A320)
+Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**. Non utilizzare su X570 o hardware precedente (es. B450 o A320)
 
-## Stuck at `Forcing CS_RUNTIME for entitlement` in Big Sur
+## Bloccato su `Forcing CS_RUNTIME for entitlement` in Big Sur
 
-![Credit to Stompy for image](../../images/extras/big-sur/readme/cs-stuck.jpg)
+![Ringraziamo Stompy per l'immagine](../../images/extras/big-sur/readme/cs-stuck.jpg)
 
-This is actually the part at where macOS will seal the system volume, and where it may seem that macOS has gotten stuck. **DO NOT RESTART** thinking you're stuck, this will take quite some time to complete.
+Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. ** NON RIAVVIARE ** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
-## Stuck on `ramrod`(^^^^^^^^^^^^^)
+## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Credit to Notiflux for image](../../images/extras/big-sur/readme/ramrod.jpg)
+![Ringraziamo Notiflux per l'immagine](../../images/extras/big-sur/readme/ramrod.jpg)
 
-If you get stuck around the `ramrod` section (specifically, it boots, hits this error, and reboots again back into this, causing a loop), this hints that your SMC emulator is broken. To fix this, you have 2 options:
+Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
-* Ensure you're using the latest builds of VirtualSMC and Lilu, with the `vsmcgen=1` boot-arg
-* Switch over to [Rehabman's FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/) (you can use the `MinKernel`/`MaxKernel` trick mentioned above to restrict FakeSMC to Big Sur and up
+* Assicurati di utilizzare le build più recenti di VirtualSMC e Lilu, con `vsmcgen=1` in boot-arg
+* Passa a [Rehabman's FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/) (puoi usare il trucco `MinKernel`/`MaxKernel` menzionato sopra per limitare FakeSMC a Big Sur e superiori
 
-And when switching kexts, ensure you don't have both FakeSMC and VirtualSMC enabled in your config.plist, as this will cause a conflict.
+E quando cambi kext, assicurati di non avere sia FakeSMC che VirtualSMC abilitati nel tuo config.plist, poiché ciò causerà un conflitto.
 
-### Virtual Machine Issues
+### Problemi della macchina virtuale
 
-* VMWare 15 is known to get stuck on `[EB|#LOG:EXITBS:START]`. VMWare 16 resolves the problem.
+* VMWare 15 è noto per rimanere bloccato su `[EB|#LOG:EXITBS:START]`. VMWare 16 risolve il problema.
