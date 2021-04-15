@@ -1,21 +1,21 @@
-# Converting from Clover to OpenCore
+# Conversioni da Clover a OpenCore
 
-* Supported version: 0.6.8
+* Versione supportata: 0.6.8
 
-So you see the new fancy OpenCore bootloader and just dying to try it out, well you've come to the right place! Many things in Clover have feature parity with OpenCore but many do not, here we'll be going over what you can bring over and what you cannot.
+Ora che hai visto lo strano bootloader OpenCore e non vedi l'ora di provarlo, beh, sei venuto nel luogo giusto! Molte cose in Clover sono state implementate, ma altre no, qui potrai vedere cosa è stato implementato e cosa no.
 
-To get started, we have some resources that will aid you:
+Per iniziare hai alcune risorse che ti aiuteranno:
 
-* [Config.plist conversion](../clover-conversion/Clover-config.md)
-* [Kexts and Firmware driver conversion(.kext, .efi)](../clover-conversion/clover-efi.md)
-* [Boot Argument conversion](../clover-conversion/Clover-boot-arg.md)
-* [Common Kernel and Kext patch conversions](../clover-conversion/clover-patch.md)
+* [Conversioni del Config.plist](../clover-conversion/Clover-config.md)
+* [Conversione kext e driver Firmware (.kext, .efi)](../clover-conversion/clover-efi.md)
+* [Conversione Boot Argument](../clover-conversion/Clover-boot-arg.md)
+* [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md)
 
-## Cleaning the Clover Junk in macOS
+## Pulire la spazzatura Clover in macOS
 
-So to start, Clover would like to give a big F*** You if you're using emulated NVRAM. Why? Well it likely installed some trash that's a pain in the arse to get rid of. You will need to have SIP disabled to clean it up.
+Per iniziare, Clover ci fo**erà se stai emulando la NVRAM. Perché? Beh, sembra che installi della spazzatura che è una cosa dolorosa da rimuovere. Devi disabilitare il SIP per pulire.
 
-Things to check for:
+Cosa controllare:
 
 * `/Volumes/EFI/EFI/CLOVER/drivers64UEFI/EmuVariableUefi-64.efi`
 * `/Volumes/EFI/nvram.plist`
@@ -25,31 +25,31 @@ Things to check for:
 * `/etc/rc.boot.d/70.disable_sleep_proxy_client.local.disabled`
 * `/etc/rc.shutdown.d/80.save_nvram_plist.local​`
 
-If folders are empty then delete them as well:
+Se le cartelle dopo la pulizia sono vuote, possono essere rimosse:
 
 * `/etc/rc.boot.d`
 * `/etc/rc.shutdown.d​`
 
-Users of Clover's Preference Pane will also need to remove these:
+Gli utenti del Pannello Preferenze di Clover dovranno anche rimuovere:
 
 * `/Library/PreferencePanes/Clover.prefPane`
 * `/Library/Application\ Support/clover`
 
-## Removing kexts from macOS(S/L/E and L/E)
+## Rimuovere i kext da macOS (S/L/E e L/E)
 
-A common tradition with Clover was to install kexts into macOS, specifically System/Library/Extensions and Library/Extensions. Reasoning being that Clover's kext injection system was known to fail either with OS updates or just spontaneously. Thankfully with OpenCore, a much more robust and stable injection mechanism's been made that is far harder to break. So time to do a bit of spring cleaning.
+Clover installava i kext dentro macOS, specificamente in System/Library/Extensions e Library/Extensions. Ragionando su come Clover inietta i kext, potrebbero fallire gli aggiornamenti di sistema o lasciarci senza motivo. Grazie ad OpenCore, è stato creato un sistema più robusto e stabile per iniettare i kext, che rendono più difficile causare problemi. Perciò è importante fare una piccola pulita.
 
-**Note**: OpenCore will fail to inject kexts already in your kernelcache so cleaning this out will also resolve those issues
+**Nota**: OpenCore fallirà nell'iniettare kext che sono già nella tua kernelcache perciò la pulizia risolve anche questi problemi
 
-Now open up terminal and run the following:
+Ora apri il terminale e scrivi:
 
 ```
 sudo kextcache -i /
 ```
 
-This command will yell at you about any kexts that shouldn't be in either S/L/E or L/E.
+Questo comando dovrà pulire da tutti i kext non riconosciuti nelle cartelle S/L/E e L/E.
 
-**Remove all hack kexts**:
+**Rimuovere tutti i kext di hack**:
 
 ```
 sudo -s
@@ -57,30 +57,30 @@ touch /Library/Extensions /System/Library/Extensions​
 kextcache -i /​
 ```
 
-* **Note**, macOS Catalina and newer will need the `mount -uw /` command to mount the system drive as Read/Write
+* **Nota**, macOS Catalina e sucessivi dovranno usare il comando `mount -uw /` per montare il volume di sistema come Read/Write
 
-## Cleaning the Clover Junk in your hardware
+## Pulizia dalla spazzatura di Clover nel tuo hardware
 
-The other thing that Clover may have hidden from you is NVRAM variables, this is bad as OpenCore won't overwrite variables unless explicitly told via the `Block` feature found under `NVRAM -> Block`. To fix this, we'll need to clear then via OpenCore's `ClearNvram` feature.
+L'altra cosa che Clover ha fatto è che potrebbe averti nascosto le variabili NVRAM, cosa che OpenCore non gradisce, dato che non sovrascriverà variabile a meno che non scritto con la funzionalità `Block` trovabile in `NVRAM -> Block`. Per sistemare questo, dovremmo pulirla usando la funzionalità `ClearNvram`.
 
-In you config.plist:
+Nel tuo config.plist:
 
 * `Misc -> Security -> AllowNvramReset -> True`
 
-And on your initial boot of OpenCore, select `Reset NVRAM` boot option. This will wipe everything and reboot the system when finished.
+Quando avvii OpenCore, seleziona l'opzione d'avvio `Reset NVRAM`. Questo pulirà tutto e riavvierà il sistema una volta finito.
 
-* Note: Thinkpad laptops are known to be semi-bricked after an NVRAM reset in OpenCore, we recommend resetting NVRAM by updating the BIOS on these machines.
+* Nota: i laptop Thinkpad sono famosi per entrare in un semi-brick dopo un reset NVRAM in OpenCore, raccomandiamo di resettare la NVRAM aggiornando il BIOS in queste macchine.
 
-## Optional: Avoiding SMBIOS injection into other OSes
+## Opzionale: Evitare che il SMBIOS venga iniettato in altri sistemi
 
-By default OpenCore will inject SMBIOS data into all OSes, the reason for this is 2 parts:
+Di default OpenCore inietterà i dati del SMBIOS in tutti i sistemi, il motivo è:
 
-* This allows for proper multiboot support like with [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
-* Avoids edge cases where info is injected several times, commonly seen with Clover
+* Questo permette un supporto corretto per programmi come [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* Evita casi limite dove i dati sono iniettati diverse volte, visto comunemente con Clover
 
-However, there are quirks in OpenCore that allow for SMBIOS injection to be macOS limited by patching where macOS reads SMBIOS info from. These quirks can break in the future and so we only recommend this option in the event of certain software breaking in other OSes. For best stability, please avoid
+Tuttavia, ci sono quirk in OpenCore che permette l'iniezione SMBIOS solo su macOS limitando il patch solo al momento nel quale macOS legge le informazioni del SMBIOS. Questi quirk possono non funzionare in futuro e perciò raccomandiamo di usarlo solo quando certi programmi non funzionano in altri sistemi. Per avere una maggiore stabilità, per favore evitalo
 
-To enable macOS-only SMBIOS injection:
+Per abilitare l'iniezione del SMBIOS solo su macOS:
 
 * Kernel -> Quirks -> CustomSMBIOSGuid -> True
 * PlatformInfo -> UpdateSMBIOSMode -> Custom
