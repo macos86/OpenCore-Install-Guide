@@ -15,7 +15,7 @@ Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avvia
 * [Ricezione di `Failed to parse real field of type 1`](#ricezione-di-failed-to-parse-real-field-of-type-1)
 * [Non è possibile selezionare nulla nel selettore](#non-è-possibile-selezionare-nulla-nel-selettore)
 * [SSDT non vengono aggiunti](#ssdt-non-vengono-aggiunti)
-* [L'avvio di OpenCore riavvia nel BIOS](#l'avvio-di-OpenCore-riavvia-nel-BIOS])
+* [L'avvio di OpenCore riavvia nel BIOS](#l'avvio-di-OpenCore-riavvia-nel-bios)
 * [OCABC: Incompatible OpenRuntime r4, require r10](#ocabc-incompatible-openruntime-r4-require-r10)
 * [Impossibile aprire l'immagine OpenCore Access Denied](#impossibile-aprire-l'immagine-OpenCore-Access-Denied)
 * [OC: Failed to find SB model disable halting on critical error](#oc-failed-to-find-sb-model-disable-halting-on-critical-error)
@@ -28,9 +28,9 @@ Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare
 
 * Se non sono presenti log anche dopo aver impostato la versione DEBUG di OpenCore con Target impostato su 67, è probabile che si tratti di un problema di:
    * Struttura della cartella USB errata
-     * Vedi [L'avvio di OpenCore si riavvia nel BIOS](# booting-opencore-reboots-to-bios) per maggiori informazioni
+	* Vedi [L'avvio di OpenCore si riavvia nel BIOS](l'avvio-di-opencore-riavvia-nel-bios) per maggiori informazioni
    * Il firmware non supporta UEFI
-     * Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../ installer-guide / mac-install.md) che in [Windows](../../ installer-guide / winblows-install.md)
+	* Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../installer-guide/mac-install.md) che in [Windows](../../installer-guide/winblows-install.md)
 
 **Situazioni in cui OpenCore è stato caricato**:
 
@@ -49,7 +49,7 @@ Disattiva Vaulting nel tuo config.plist in `Misc -> Security -> Vault` impostand
 
 * `Optional`
 
-Se hai già eseguito `sign.command` dovrai ripristinare il file OpenCore.efi poiché la firma RSA-2048 a 256 byte è stata inserita. Puoi prendere una nuova copia di OpenCore.efi qui: [OpenCorePkg](https : //github.com/acidanthera/OpenCorePkg/releases)
+Se hai già eseguito `sign.command` dovrai ripristinare il file OpenCore.efi poiché la firma RSA-2048 a 256 byte è stata inserita. Puoi prendere una nuova copia di OpenCore.efi qui: [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
 
 **Nota**: Vault e FileVault sono 2 cose separate, vedi [Sicurezza e FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per maggiori dettagli
 
