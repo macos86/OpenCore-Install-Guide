@@ -38,3 +38,5 @@ jobs:
           submodules: 'recursive'
       - name: Lint
         uses: avto-dev/markdown-lint@v1
+        with:
+          args: './'
