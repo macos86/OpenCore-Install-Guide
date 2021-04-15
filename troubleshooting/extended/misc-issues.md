@@ -94,9 +94,9 @@ Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows
 
 Se provi a decompilare il tuo DSDT e ottieni un errore simile a questo:
 
-`` `
-Avvertenza iASL: sono stati trovati 19 metodi di controllo esterno durante lo smontaggio, ma solo 0 sono stati risolti (19 irrisolti)
-`` `
+```
+iASL Warning: There were 19 external control methods found during disassembly, but only 0 were resolved (19 unresolved)
+```
 
 Ciò accade quando una tabella ACPI richiede il resto per un corretto riferimento, non accetta la creazione di DSDT poiché la stiamo utilizzando solo per la creazione di pochi SSDT selezionati. Per coloro che sono preoccupati, puoi eseguire quanto segue:
 
