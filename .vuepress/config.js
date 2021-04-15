@@ -68,6 +68,7 @@ module.exports = {
         lastUpdated: true,
         repo: 'https://github.com/macos86/OpenCore-Install-Guide',
         editLinks: true,
+        smoothScroll: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
         logo: 'homepage.png',
         nav: [
@@ -324,14 +325,11 @@ module.exports = {
     },
     plugins: [
         '@vuepress/plugin-back-to-top',
-        'vuepress-plugin-smooth-scroll',
-        ['vuepress-plugin-medium-zoom',
-            {
-                selector: "img",
-                options: {
-                    background: 'var(--bodyBgColor)'
-                }
+        '@vuepress/medium-zoom',
+        {
+            options: {
+                background: 'var(--bodyBgColor)'
             }
-        ],
+        }
     ]
 }
