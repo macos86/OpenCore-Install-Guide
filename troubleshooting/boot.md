@@ -21,9 +21,9 @@ Questa sezione sarà breve, poiché i problemi di avvio di OpenCore sono abbasta
 
 Se a questo punto hai problemi con l'avvio, queste le cose principali da controllare:
 
-* [Bloccato a `no vault provided!`](./extended/opencore-issues.md#stuck-on-no-vault-provided)
-* [Non vedi le partizioni macOS](./extended/opencore-issues.md#can-t-see-macos-partitions)
-* [L'avvio di OpenCore si riavvia nel BIOS](./extended/opencore-issues.md#booting-opencore-reboots-to-bios)
+* [Bloccato a `no vault provided!`](./extended/opencore-issues.md#bloccato-su-no-vault-provided!)
+* [Non vedi le partizioni macOS](./extended/opencore-issues.md#non-riesco-a-vedere-le-partizioni-macos)
+* [L'avvio di OpenCore si riavvia nel BIOS](./extended/opencore-issues.md#l'avvio-di-OpenCore-riavvia-nel-bios)
 
 Per il resto dei possibili problemi, vedere qui:
 
@@ -35,9 +35,9 @@ Per il resto dei possibili problemi, vedere qui:
 
 È qui che entra in scena il bootloader di macOS (boot.efi), in particolare quello che fa è preparare l'ambiente per il caricamento del kernel e dove OpenCore inietta kexts. Se ti blocchi a questo punto, è probabile che ci sia un problema con il caricamento del kernel, i principali colpevoli:
 
-* [Bloccato a EndRandomSeed](./extended/kernel-issues.md#stuck-on-endrandomseed)
-* [Bloccato a `[EB|#LOG:EXITBS:START]`](./extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
-* [`Couldn't allocate runtime area` errors](./extended/kernel-issues.md#couldn-t-allocate-runtime-area-errors)
+* [Bloccato a EndRandomSeed](./extended/kernel-issues.md#bloccato-su-endrandomseed)
+* [Bloccato a `[EB|#LOG:EXITBS:START]`](./extended/kernel-issues.md#bloccato-su-eb-log-exitbs-start)
+* [`Couldn't allocate runtime area` errors](./extended/kernel-issues.md#errori-couldn-t-allocate-runtime-area)
 
 Per il resto dei possibili problemi, vedere qui:
 
@@ -83,7 +83,7 @@ Per informazioni più specifiche su come muoversi in quest'area, vedere qui:
 
 È qui che entrano in gioco il limite di 15 porte e la mappatura USB, e dove compaiono i famigerati errori "Waiting for Root Device"; cose principali da controllare:
 
-* ["Waiting for Root Device" o Prohibited Sign error](./extended/kernel-issues.md#waiting-for-root-device-or-prohibited-sign-error)
+* ["Waiting for Root Device" o Prohibited Sign error](./extended/kernel-issues.md#errore-waiting-for-root-device-or-prohibited-sign)
 
 ![](../images/troubleshooting/boot-md/8-dsmos-arrived.png)
 
@@ -112,8 +112,8 @@ Fonte: non rubare Mac OS X.kext
 
 E qui arriviamo all'inizializzazione del driver della GPU e dove anche WhateverGreen fa la sua magia. Generalmente gli errori qui sono dovuti alla GPU e non a WhateverGreen stesso; questi di solito sono i principali colpevoli:
 
-* [Bloccato o vicino a `IOConsoleUsers: gIOScreenLock...`](./extended/kernel-issues.md#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` on Navi](./extended/kernel-issues.md#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
+* [Bloccato o vicino a `IOConsoleUsers: gIOScreenLock...`](./extended/kernel-issues.md#bloccato-su-o-vicino-ioconsoleusers-gioscreenlock-giolockstate-3))
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` on Navi](./extended/kernel-issues.md#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-navi)
 
 ## macOS Handoff
 
@@ -121,6 +121,6 @@ E qui arriviamo all'inizializzazione del driver della GPU e dove anche WhateverG
 
 E finalmente hai superato tutto quel verbose! Se rimani bloccato sul logo Apple dopo tutto quel verbose, ci sono un paio di cose da controllare:
 
-* [macOS congelato subito prima dell'accesso](./extended/kernel-issues.md#macos-frozen-right-before-login)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](./extended/kernel-issues.md#black-screen-after-ioconsoleusers-gioscreenlock-on-navi)
-* [Congelato nel programma di installazione di macOS dopo 30 secondi](./extended/userspace-issues.md#frozen-in-the-macos-installer-after-30-seconds)
+* [macOS congelato subito prima dell'accesso](./extended/kernel-issues.md#macOS-bloccato-subito-prima-dell-accesso)
+* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](./extended/kernel-issues.md#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-navi)
+* [Congelato nel programma di installazione di macOS dopo 30 secondi](./extended/userspace-issues.md#programma-di-installazione-di-macOS-congelato-dopo-30-secondi)
