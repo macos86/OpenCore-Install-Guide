@@ -2,7 +2,7 @@
 
 È di nuovo quel periodo dell'anno e con esso una nuova beta di macOS è stata rilasciata. Ecco tutte le informazioni necessarie per iniziare.
 
-::: suggerimento promemoria
+::: tip promemoria
 
 **Questa pagina sarà una piccola discussione su esattamente ciò di cui hai bisogno per prepararti per Big Sur, uno sguardo più approfondito su ciò che è cambiato su Big Sur può essere trovato qui:**
 
@@ -49,7 +49,7 @@ Big Sur ha perso il supporto ad alcuni SMBIOS basati su Ivy Bridge e Haswell, qu
 
 Se il tuo SMBIOS era supportato in Catalina e non è incluso sopra, sei a posto lo stesso!
 
-::: dettagli SMBIOS supportati
+::: details SMBIOS supportati
 
 SMBIOS ancora supportato in macOS Big Sur:
 
@@ -207,7 +207,7 @@ Se non viene trovata alcuna proprietà, sarà necessario creare un SSDT che forn
 
 Per alcuni sistemi legacy, potresti notare che mentre le porte USB funzionano i tuoi dispositivi basati su HID come la tastiera e il mouse potrebbero essere rotti. Per risolvere questo problema, aggiungi la seguente patch:
 
-::: dettagli Patch IOHIDFamily
+::: details Patch IOHIDFamily
 
 config.plist -> Kernel -> Patch:
 
@@ -237,7 +237,7 @@ Se ricevi un anticipato kernel panic su `max_cpus_from_firmware non ancora inizi
 * **Nota**: A causa di quanto presto si verifica questo panico del kernel, potresti essere in grado di registrarlo solo tramite seriale o riavviando in un'installazione funzionante nota di macOS e controllando il tuo panico registrato nella NVRAM.
    * La maggior parte degli utenti vedrà questo panico semplicemente come `[EB | #LOG: EXITBS: START]`
 
-::: dettagli Esempio Kernel Panic
+::: details Esempio Kernel Panic
 
 Sullo schermo:
 
@@ -249,7 +249,7 @@ Tramite Log seriale o NVRAM:
 
 :::
 
-::: dettagli Legacy Edge Case
+::: details Casi Limite Legacy
 
 Su alcuni hardware, principalmente l'HP DC7900, il kernel non è ancora in grado di determinare esattamente quanti thread supporta l'hardware. Ciò si tradurrà nel suddetto kernel panic e quindi è necessario codificare in modo rigido il valore del core della CPU.
 
