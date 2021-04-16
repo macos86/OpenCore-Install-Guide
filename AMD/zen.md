@@ -30,32 +30,32 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ### Add
 
-::: tip Info
+::: tip Informazioni
 
-This is where you'll add SSDTs for your system, these are very important to **booting macOS** and have many uses like [USB maps](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs](../extras/spoof.md) and such. And with our system, **it's even required to boot**. Guide on making them found here: [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/)
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
 
-| Required_SSDTs | Description |
+| SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **[SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/)** | Fixes both the embedded controller and USB power, see [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl)** | Fixes CPU definitions with B550 and A520 motherboards, **do not use** if you don't have an AMD B550 or A520 system. You can find a prebuilt here: [SSDT-CPUR.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) |
+| **[SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato e l'energia dei USB, vedi [Getting Started With ACPI Guide (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
+| **[SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl)** | Sistema le definizioni della CPU nelle schede madri B550 e A520, **non usarli** se hai un sistema AMD B550 o A520. Puoi trovare i precompilati qui: [SSDT-CPUR.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) |
 
- Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
+Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
+Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
 
 :::
 
 ### Delete
 
-This blocks certain ACPI tables from loading, for us we can ignore this.
+Questa sezione previene il caricamento di certe tabelle ACPI, per noi è ignorabile.
 
 ### Patch
 
-This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.) via OpenCore. For us, our patches are handled by our SSDTs. This is a much cleaner solution as this will allow us to boot Windows and other OSes with OpenCore
+Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, SSDT, ecc.) tramite OpenCore. Per noi, le nostre patch sono legate agli SSDT. Questa è una soluzione più pulita perché ci permetterà di avviare Windows e altri sistemi con OpenCore
 
 ### Quirks
 
-Settings relating to ACPI, leave everything here as default as we have no use for these quirks.
+Impostazioni relative a ACPI, lascia tutto come default dato che non useremo questi quirk.
 
 ## Booter
 

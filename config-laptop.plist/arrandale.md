@@ -32,36 +32,34 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ### Add
 
-::: tip Info
+::: tip Informazioni
 
-This is where you'll add SSDTs for your system, these are very important to **booting macOS** and have many uses like [USB maps](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs](../extras/spoof.md) and such. And with our system, **it's even required to boot**. Guide on making them found here: [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/)
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
 
-For us we'll need a couple of SSDTs to bring back functionality that Clover provided:
-
-| Required_SSDTs | Description |
+| SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Fixes the embedded controller, see [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)** | Makes all _OSI calls specific to Windows work for macOS (Darwin) Identifier. This may help enabling some features like XHCI and others. |
-| **[SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/)** | Fixes brightness control, see [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) for more details. Note that Intel NUCs do not need this |
+| **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
+| **[SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)** | Fa funzionare la specifica _OSI di Windows anche per l'identificatore di macOS (Darwin). Aiuta ad abilitare funzionalità come XHCI e altro. |
+| **[SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controllo della luminosità, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. Nota che i NUC Intel non gli serve questo |
 
-Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
+Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
+Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
 
 :::
 
 ### Delete
 
-This blocks certain ACPI tables from loading, for us we can ignore this.
+Questa sezione previene il caricamento di certe tabelle ACPI, per noi è ignorabile.
 
 ### Patch
 
-::: tip Info
+::: tip Informazioni
 
-This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.) via OpenCore. For us, we'll need the following:
+Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, SSDT, ecc.) tramite OpenCore. Per noi, serviranno i seguenti:
 
 * OSI rename
-  * This is required when using SSDT-XOSI as we redirect all OSI calls to this SSDT
+  * Questo è richiesto quando usi SSDT-XOSI dato che possiamo richiamare tutte le chiamate OSI a questo SSDT
 
 | Comment | String | Change _OSI to XOSI |
 | :--- | :--- | :--- |
@@ -75,7 +73,7 @@ This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.
 
 ### Quirks
 
-Settings relating to ACPI, leave everything here as default as we have no use for these quirks.
+Impostazioni relative a ACPI, lascia tutto come default dato che non useremo questi quirk.
 
 ## Booter
 

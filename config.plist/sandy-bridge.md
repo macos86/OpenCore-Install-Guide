@@ -32,33 +32,31 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ### Add
 
-::: tip Info
+::: tip Informazioni
 
-This is where you'll add SSDTs for your system, these are very important to **booting macOS** and have many uses like [USB maps](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs](../extras/spoof.md) and such. And with our system, **it's even required to boot**. Guide on making them found here: [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/)
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
 
-For us we'll need a couple of SSDTs to bring back functionality that Clover provided:
-
-| Required_SSDTs | Description |
+| SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **[SSDT-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)** | Needed for proper CPU power management, you will need to run Pike's ssdtPRGen.sh script to generate this file. This will be run in [post install](https://dortania.github.io/OpenCore-Post-Install/). |
-| **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Fixes the embedded controller, see [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/)** | Needed to add a missing IMEI device on Sandy Bridge CPU with 7 series motherboards |
+| **[SSDT-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)** | Necessario per un power management della CPU, dovrai usare lo script ssdtPRGen.sh di Pike per generarlo. Questo sarà da fare nel [post-install (EN)](https://dortania.github.io/OpenCore-Post-Install/). |
+| **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
+| **[SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/)** | Necessario per aggiungere il dispositivo IMEI mancante sulle CPU Sandy Bridge con le schede madri di 7^ generazione |
 
-Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
+Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://dortania.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
+Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
 
 :::
 
 ### Delete
 
-::: tip Info
+::: tip Informazioni
 
-This blocks certain ACPI tables from loading, for us we really care about this. Main reason is that Apple's XCPM does not support SandyBridge all too well and can cause AppleIntelCPUPowerManagement panics on boot. To avoid this we make our own PM SSDT in [Post-Install](https://dortania.github.io/OpenCore-Post-Install/) and drop the old tables(Note that this is only temporary until we've made our SSDT-PM, we'll re-enable these tables later):
+Questa sezione previene il caricamento di certe tabelle ACPI ed è molto importante in questo caso. La ragione principale per cui XCPM di Apple non supporta nessun SandyBridge e causerà panic su AppleIntelCPUPowerManagement all'avvio. Per evitarli dobbiamo fare il nostro PM SSDT nel [Post-Install (EN)](https://dortania.github.io/OpenCore-Post-Install/) e lasciare le vecchie tabelle (Nota che è solo temporaneo fino a prima di fare il nostro SSDT-PM, lo riabiliteremo più tardi):
 
-Removing CpuPm:
+Rimuovere CpuPm:
 
-| Key | Type | Value |
+| Chiave | Tipo | Valore |
 | :--- | :--- | :--- |
 | All | Boolean | YES |
 | Comment | String | Delete CpuPm |
@@ -67,9 +65,9 @@ Removing CpuPm:
 | TableLength | Number | 0 |
 | TableSignature | Data | 53534454 |
 
-Removing Cpu0Ist:
+Rimuovere Cpu0Ist:
 
-| Key | Type | Value |
+| Chiave | Tipo | Valore |
 | :--- | :--- | :--- |
 | All | Boolean | YES |
 | Comment | String | Delete Cpu0Ist |
@@ -82,11 +80,11 @@ Removing Cpu0Ist:
 
 ### Patch
 
-This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.) via OpenCore. For us, our patches are handled by our SSDTs. This is a much cleaner solution as this will allow us to boot Windows and other OSes with OpenCore
+Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, SSDT, ecc.) tramite OpenCore. Per noi, le nostre patch sono legate agli SSDT. Questa è una soluzione più pulita perché ci permetterà di avviare Windows e altri sistemi con OpenCore
 
 ### Quirks
 
-Settings relating to ACPI, leave everything here as default as we have no use for these quirks.
+Impostazioni relative a ACPI, lascia tutto come default dato che non useremo questi quirk.
 
 ## Booter
 
