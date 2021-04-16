@@ -52,39 +52,39 @@ Hai due opzioni qui: passare attraverso un disco o passare attraverso un intero 
     ![](../../images/extras/big-sur/fusion/vm-settings-home.png)
 7. Per prima cosa, seleziona "Processori e memoria" e imposta la memoria su almeno 4096 MB.
 8. (Se stai eseguendo il passthrough del disco grezzo, salta questo passaggio) Seleziona "Mostra tutto" e fai clic su "USB e Bluetooth". Collega il tuo dispositivo USB e in "Plug In Action", cambialo da "Chiedi cosa fare" a "Connetti alla VM". Dovrebbe essere simile a questo una volta terminato. (In questo caso, "VIA AmazonBasics Hard Drive Enclos" è il mio dispositivo.)
-     ! [](../../images/extras/big-sur/fusion/vm-settings-usb.png)
-     Quindi chiudi la finestra.
+    ! [](../../images/extras/big-sur/fusion/vm-settings-usb.png)
+    Quindi chiudi la finestra.
 9. (Se si esegue il passthrough USB, saltare i passaggi da 9 a 13) Chiudere la finestra e chiudere VMware Fusion. Individua la cartella "macOS 10.15.vmwarevm" (o come l'hai chiamata durante il salvataggio) nel Finder e fai clic con il pulsante destro del mouse> "Mostra contenuto pacchetto".
 
     Il risultato dovrebbe essere simile all'immagine qui sotto.
-	     ! [](../../images/extras/big-sur/fusion/vm-folder.png)
+	  ![](../../images/extras/big-sur/fusion/vm-folder.png)
 10. Aprire il file vmx (non la cartella vmxf o vmx.lck) in TextEdit. Dovrebbe assomigliare a qualcosa di simile a questo:
-	     ! [](../../images/extras/big-sur/fusion/vmx-initial.png)
+	  ! [](../../images/extras/big-sur/fusion/vmx-initial.png)
 11. Trova le righe che iniziano con `sata0: 1`:
-	     ! [](../../images/extras/big-sur/fusion/vmx-find.png)
+	  ! [](../../images/extras/big-sur/fusion/vmx-find.png)
 12. Sostituisci tutte le righe che iniziano con "sata0: 1" con le seguenti. Sostituisci `<path/to/vmdk>` con il percorso completo di RawHDD.vmdk, creato in precedenza.
 
 	Suggerimento: trovalo nel Finder, quindi fai clic con il pulsante destro del mouse, tieni premuta l'opzione e seleziona "Copia" RawHDD.vmdk "come percorso" per ottenere facilmente il percorso completo.
 
-    ```
-    sata0:1.fileName = "<path/to/vmdk>"
-    sata0:1.present = "TRUE"
-    sata0:1.deviceType = "rawDisk"
-    ```
+  ```
+  sata0:1.fileName = "<path/to/vmdk>"
+  sata0:1.present = "TRUE"
+  sata0:1.deviceType = "rawDisk"
+  ```
 
 	Al termine, dovrebbe assomigliare al seguente.
-	     ! [](../../images/extras/big-sur/fusion/vmx-edited.png)
+	![](../../images/extras/big-sur/fusion/vmx-edited.png)
 13. Salvare e chiudere TextEdit e riaprire VMware Fusion. La tua VM dovrebbe aprirsi automaticamente, ma in caso contrario, aprila dalla libreria della macchina virtuale.
 
 14. Selezionare "Virtual Machine"> "Power On To Firmware" dalla barra dei menu, in modo da poter avviare il BIOS della VM.
 
-	* (Per il passthrough del disco grezzo) Se ti viene richiesta la password quando lo fai, inseriscila. Anche se il prompt menziona i dischi Boot Camp, funziona ancora normalmente.
+	  * (Per il passthrough del disco grezzo) Se ti viene richiesta la password quando lo fai, inseriscila. Anche se il prompt menziona i dischi Boot Camp, funziona ancora normalmente.
 
-	* Se ricevi un errore che indica che la risorsa è occupata come di seguito, esegui quanto segue in Terminale e riprova:
+	  * Se ricevi un errore che indica che la risorsa è occupata come di seguito, esegui quanto segue in Terminale e riprova:
 
     ```bash
     diskutil list
-    # sostituire / dev / disk3 di seguito con il percorso del dispositivo corretto. per il passthrough del disco grezzo, è stato trovato prima
+    # sostituire /dev/disk3 di seguito con il percorso del dispositivo corretto. per il passthrough del disco grezzo, è stato trovato prima
     sudo diskutil unmountDisk /dev/disk3
     ```
 
@@ -92,8 +92,8 @@ Hai due opzioni qui: passare attraverso un disco o passare attraverso un intero 
 15. Dovresti accedere al VM Boot Manager, come mostrato di seguito. Selezionare il primo disco rigido ("EFI VMware Virtual SATA Hard Drive (0.0)). La VM dovrebbe avviare l'avvio del programma di installazione di Big Sur.
     ![](../../images/extras/big-sur/fusion/vm-boot-manager.png)
 16. Completa l'installazione come faresti su qualsiasi altro dispositivo.
-      l'installazione è completa e ti trovi nella schermata di benvenuto, seleziona "Macchina virtuale"> "Spegni" dalla barra dei menu.
+    l'installazione è completa e ti trovi nella schermata di benvenuto, seleziona "Macchina virtuale"> "Spegni" dalla barra dei menu.
 
-     Se necessario, aggiungi il tuo EFI preparato alla partizione EFI sul dispositivo, quindi espellilo.
+    Se necessario, aggiungi il tuo EFI preparato alla partizione EFI sul dispositivo, quindi espellilo.
 
-     Riposiziona l'unità nel tuo hack e avvia normalmente. Ora hai Big Sur!
+    Riposiziona l'unità nel tuo hack e avvia normalmente. Ora hai Big Sur!
