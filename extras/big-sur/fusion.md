@@ -30,9 +30,9 @@ Hai due opzioni qui: passare attraverso un disco o passare attraverso un intero 
 
      Nota: potrebbe essere necessario rimuovere le partizioni del disco prima di utilizzarlo.
 
-     `` bash
+     ``` bash
     diskutil list
-    # individua il disco esterno che corrisponde e sostituisci / dev / disk3 di seguito con il percorso del dispositivo.
+    # individua il disco esterno che corrisponde e sostituisci /dev/disk3 di seguito con il percorso del dispositivo.
     sudo /Applications/VMware\ Fusion.app/Contents/Library/vmware-rawdiskCreator create /dev/disk3 fullDevice RawHDD ide
     ```
 
