@@ -306,8 +306,8 @@ module.exports = {
         ],
     },
     plugins: [
-        '@vuepress/back-to-top',
-        ['@vuepress/medium-zoom',
+        '@vuepress/plugin-back-to-top',
+        ['@vuepress/plugin-medium-zoom',
             {
                 options: {
                     background: 'var(--bodyBgColor)'
