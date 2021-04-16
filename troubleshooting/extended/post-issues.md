@@ -242,7 +242,7 @@ SIP, acronimo System Integrity Protection, è una tecnologia di sicurezza che te
 * `03000000` - Disabilita la firma di kext (0x1) e le protezioni del file system (0x2).
 * `FF030000` - Disabilita tutto [flag in macOS High Sierra](https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html) (0x3ff) .
 * `FF070000` - Disabilita tutto [flag in macOS Mojave](https://opensource.apple.com/source/xnu/xnu-4903.270.47/bsd/sys/csr.h.auto.html) e in [macOS Catalina](https://opensource.apple.com/source/xnu/xnu-6153.81.5/bsd/sys/csr.h.auto.html) (0x7ff) poiché Apple ha introdotto un valore per la politica eseguibile.
-* `FF0F0000` - Disabilita tutti i flag in macOS Big Sur (0xfff) che ha un altro nuovo [flag per root autenticato](https://eclecticlight.co/2020/06/25/big-surs-signed-system-volume- protezione-sicurezza-aggiunta /).
+* `FF0F0000` - Disabilita tutti i flag in macOS Big Sur (0xfff) che ha un altro nuovo [flag per root autenticato](https://eclecticlight.co/2020/06/25/big-surs-signed-system-volume-added-security-protection/).
 
 **Nota**: Disabilitare SIP con OpenCore è un po 'diverso rispetto a Clover, in particolare le variabili NVRAM che non verranno sovrascritte a meno che non sia esplicitamente indicato nella sezione `Delete`. Quindi, se hai già impostato SIP una volta tramite OpenCore o in macOS, devi sovrascrivere la variabile:
 
