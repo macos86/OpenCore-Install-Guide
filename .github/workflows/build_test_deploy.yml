@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-          submodules: 'recursive'
       - name: Setup Node
         uses: actions/setup-node@v2
       - name: Install
@@ -33,12 +30,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-          submodules: 'recursive'
       - name: Lint
         uses: avto-dev/markdown-lint@v1
         with:
           args: './ -f'
       - name: Lint (URLs)
         uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
