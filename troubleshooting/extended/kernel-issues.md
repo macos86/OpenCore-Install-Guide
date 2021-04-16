@@ -370,7 +370,7 @@ I luoghi principali da verificare:
   * **Aggiorna il tuo BIOS**, assicurati che sia il più recente. La maggior parte degli OEM ha un'allocazione PCI disastrosa su firmware meno recenti, in particolare AMD
   * Assicurarsi anche che Above4G sia abilitato nel BIOS, se non è disponibile alcuna opzione, aggiungere `npci=0x2000` nelle boot args.
     * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
-    * AMD CPU NOTA: **Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, andranno in conflitto**
+  * NOTA sulle CPU AMD: **Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, andranno in conflitto**
     * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
   * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
 * **Problemi NVMe or SATA**:
@@ -587,13 +587,14 @@ Assicurati di avere SSDT-GPIO in EFI/OC/ACPI e nel tuo config.plist sotto ACPI -
 
 Ciò è dovuto a un emulatore SMC mancante o guasto; assicurati di quanto segue:
 
-* * Lilu e VirtualSMC sono entrambi in EFI/OC/kexts e nel tuo config.plist
+* Lilu e VirtualSMC sono entrambi in EFI/OC/kexts e nel tuo config.plist
 * Lilu è prima di VirtualSMC nell'elenco kext
 * L'ultima risorsa è provare invece FakeSMC, **non abilitare contemporaneamente VirtualSMC e FakeSMC**
 
 ## Kernel Panic su AppleIntelI210Ethernet
 
 Per coloro che utilizzano schede madri Comet Lake con NIC I225-V, potrebbe verificarsi un panico del kernel all'avvio a causa del kext I210. Per risolvere questo problema, assicurati di avere il PciRoot corretto per la tua Ethernet. Questo è comunemente:
+
 * PciRoot(0x0)/Pci(0x1C,0x1)/Pci(0x0,0x0)
   * Per impostazione predefinita, questo è ciò che utilizzano le schede madri Asus e Gigabyte
 
