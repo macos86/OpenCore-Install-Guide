@@ -19,7 +19,7 @@
    "devDependencies": {
       "@vuepress/plugin-back-to-top": "^1.8.2",
       "@vuepress/plugin-medium-zoom": "^1.8.2",
-      "markdown-it-multimd-table": "^4.0.3",
+      "markdown-it-multimd-table": "^4.1.0",
       "vuepress": "^1.8.2",
       "vuepress-theme-book": "0.0.5",
       "vuepress-theme-dark-new": "^0.1.2",
