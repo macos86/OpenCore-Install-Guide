@@ -32,24 +32,6 @@ module.exports = {
     ],
     base: '/OpenCore-Install-Guide/',
 
-    watch:
-    {
-        $page(newPage, oldPage) {
-            if (newPage.key !== oldPage.key) {
-                requestAnimationFrame(() => {
-                    if (this.$route.hash) {
-                        const element = document.getElementById(this.$route.hash.slice(1));
-
-                        if (element && element.scrollIntoView) {
-                            element.scrollIntoView();
-                        }
-                    }
-                }
-                );
-            }
-        }
-    },
-
     markdown: {
         extendMarkdown: md => {
             md.use(require('markdown-it-multimd-table'), {
@@ -323,14 +305,15 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        '@vuepress/plugin-back-to-top',
-        '@vuepress/medium-zoom',
-        {
+    plugins: {
+        '@vuepress/plugin-back-to-top': {
+
+        },
+        '@vuepress/medium-zoom': {
             selector: "img",
             options: {
                 background: 'var(--bodyBgColor)'
             }
         }
-    ]
+    }
 }
