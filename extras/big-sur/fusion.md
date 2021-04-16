@@ -91,7 +91,7 @@ Hai due opzioni qui: passare attraverso un disco grezzo o passare attraverso un 
 15.Dovresti accedere a VM Boot Manager, come mostrato di seguito. Selezionare il primo disco rigido ("EFI VMware Virtual SATA Hard Drive (0.0)). La VM dovrebbe avviare l'avvio del programma di installazione di Big Sur.
     ![](../../images/extras/big-sur/fusion/vm-boot-manager.png)
 16. Completa l'installazione come faresti su qualsiasi altro dispositivo.
-      l'installazione è completa e ti trovi nella schermata di benvenuto, seleziona "Macchina virtuale"> "Spegni" dalla barra dei menu.
+     l'installazione è completa e ti trovi nella schermata di benvenuto, seleziona "Macchina virtuale"> "Spegni" dalla barra dei menu.
 
      Se necessario, aggiungi il tuo EFI preparato alla partizione EFI sul dispositivo, quindi espellilo.
 
