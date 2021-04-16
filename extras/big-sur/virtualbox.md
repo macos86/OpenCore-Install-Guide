@@ -1,51 +1,51 @@
 # VirtualBox
 
-## Requirements
+## Requisiti
 
 * VirtualBox
-* A computer running macOS
-* The desired macOS installation software installed to /Applications
-* A USB attached hard disk or SSD
+* Un computer con macOS
+* Il software di installazione di macOS desiderato installato in / Applicazioni
+* Un disco rigido o SSD collegato tramite USB
 
-## Converting Installation Media
+## Conversione dei supporti di installazione
 
-VirtualBox cannot directly use a raw disk image, so we're going to convert it to a `VDI`.
+VirtualBox non può utilizzare direttamente un'immagine disco non elaborata, quindi la convertiremo in un "VDI".
 
-`cd` to the location of the disk image and run the following:
+`cd` nella posizione dell'immagine del disco ed eseguire quanto segue:
 
 ```bash
-### Change "Install macOS Big Sur Beta" if the name of the .img file differs
+### Cambia "Installa macOS Big Sur Beta" se il nome del file .img è diverso
 VBoxManage convertfromraw "Install macOS Big Sur Beta.img" "Install macOS Big Sur Beta.vdi" --format VDI
 ```
 
-## Installing macOS in VirtualBox
+## Installazione di macOS in VirtualBox
 
-First, attach the USB disk that is your target for macOS installation, and create a virtual hard disk that references it to use with VirtualBox.  Note: You may need to remove the partitions of the disk before using it.  You will also need to edit the destination device.
+Innanzitutto, collega il disco USB che è il tuo obiettivo per l'installazione di macOS e crea un disco rigido virtuale che fa riferimento a esso da utilizzare con VirtualBox. Nota: potrebbe essere necessario rimuovere le partizioni del disco prima di utilizzarlo. Sarà inoltre necessario modificare il dispositivo di destinazione.
 
 ```bash
 diskutil list
-# locate the external disk that matches, and replace /dev/disk3 below with the device path.
+# individua il disco esterno che corrisponde e sostituisci / dev / disk3 di seguito con il percorso del dispositivo.
 sudo VBoxManage internalcommands createrawvmdk -filename RawHDD.vmdk -rawdisk /dev/disk3
 ```
 
-Next, start VirtualBox as root and create a new macOS virtual machine.
+Quindi, avvia VirtualBox come root e crea una nuova macchina virtuale macOS.
 
 ```bash
 sudo VirtualBox
 ```
 
-* Name: Big Sur
-* Type: MacOS 64bit
+* Nome: Big Sur
+* Tipo: MacOS 64 bit
 
-* 2-4 CPU cores
-* 4-8 GB RAM
-* Do not create a virtual disk.
+* 2-4 core della CPU
+* 4-8 GB di RAM
+* Non creare un disco virtuale.
 
-Attach the disks that you've created in previous steps as shown:
+Collega i dischi che hai creato nei passaggi precedenti come mostrato:
 
 ![](../../images/extras/big-sur/virtualbox/vbox-storage.png)
 
-Now, close VirtualBox and add the following properties to the VM to allow it to boot.
+Ora chiudi VirtualBox e aggiungi le seguenti proprietà alla VM per consentirne l'avvio.
 
 ```bash
 sudo VBoxManage modifyvm "Big Sur" --cpuidset 00000001 000306a9 04100800 7fbae3ff bfebfbff
@@ -61,14 +61,14 @@ sudo VBoxManage setextradata "Big Sur" "VBoxInternal/Devices/smc/0/Config/Device
 sudo VBoxManage setextradata "Big Sur" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 ```
 
-Start VirtualBox as root, and start the VM.  The installer should begin to boot.  Complete the installation as you would on any other device.
+Avvia VirtualBox come root e avvia la VM. Il programma di installazione dovrebbe iniziare ad avviarsi. Completa l'installazione come faresti su qualsiasi altro dispositivo.
 
 ```bash
 sudo VirtualBox
 ```
 
-When the installation is complete, and you are at the Welcome screen, send an ACPI shutdown signal to macOS and select shutdown.
+Quando l'installazione è completa e sei nella schermata di benvenuto, invia un segnale di arresto ACPI a macOS e seleziona Arresto.
 
-Add your prepared EFI to the EFI partition on the USB device, and eject it.
+Aggiungi il tuo EFI preparato alla partizione EFI sul dispositivo USB ed espellilo.
 
-Place the drive back in your hack and boot normally.
+Riposiziona l'unità nel tuo hack e avvia normalmente.
