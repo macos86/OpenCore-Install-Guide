@@ -306,13 +306,13 @@ module.exports = {
         ],
     },
     plugins: [
-        '@vuepress/plugin-back-to-top',
-        ['@vuepress/plugin-medium-zoom',
+        '@vuepress/back-to-top',
+        ['vuepress-plugin-medium-zoom',
             {
+                selector: "img",
                 options: {
                     background: 'var(--bodyBgColor)'
                 }
-            }
-        ]
+            }],
     ]
 }
