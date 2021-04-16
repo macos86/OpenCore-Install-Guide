@@ -1,69 +1,70 @@
 # VMware Fusion
 
-## Requirements
+## Requisiti
 
 * VMware Fusion
-* Java (both the JRE and JDK work)
-* A computer running macOS
-* The desired macOS installation software installed to /Applications
-* A USB attached hard disk or SSD, or an internal disk that can be passed through entirely
+* Java (entrambi JRE e JDK funzionano)
+* Un computer con macOS
+* Il software di installazione di macOS desiderato installato in / Applicazioni
+* Un disco rigido o SSD collegato tramite USB o un disco interno che può essere passato interamente
 
-## Converting Installation Media
+## Conversione di Installation Media
 
-VMware cannot directly use a raw disk image, so we'll create a linked VMDK, which will allow you to use it as a virtual hard drive in VMware Fusion.
+VMware non può utilizzare direttamente un'immagine disco non elaborata, quindi creeremo un VMDK collegato, che ti consentirà di utilizzarlo come disco rigido virtuale in VMware Fusion.
 
-Download raw2vmdk from [here](../../extra-files/raw2vmdk.jar), and put it in the same directory as the `.img` file. Then, run the following command:
+Scarica raw2vmdk da [qui](../../extra-files/raw2vmdk.jar), e mettilo nella stessa directory del file `.img`. Quindi, esegui il seguente comando:
 
-```bash
-### Change "Install macOS Big Sur Beta" if the name of the .img file differs
+``` bash
+### Cambia "Installa macOS Big Sur Beta" se il nome del file .img è diverso
+
 java -jar raw2vmdk.jar "Install macOS Big Sur Beta.img" "Install macOS Big Sur Beta.vmdk"
 ```
 
-This will create a VMDK that references the `.img` file (the raw disk image) for VMware to use. If you're going to move this vmdk or transfer it to another computer, you must move the img file along with it.
+Questo creerà un VMDK che fa riferimento al file `.img` (l'immagine del disco non elaborato) che utilizzerà VMware. Se hai intenzione di spostare questo vmdk o trasferirlo su un altro computer, devi spostare il file img insieme ad esso.
 
-## Installing macOS Big Sur in VMware Fusion
+## Installazione di macOS Big Sur in VMware Fusion
 
-You have two options here: pass through a raw disk, or pass through an entire USB device. The steps are not that different for both, so they'll be combined here.
+Hai due opzioni qui: passare attraverso un disco o passare attraverso un intero dispositivo USB. I passaggi non sono così diversi per entrambi, quindi verranno combinati qui.
 
-1. (Skip this if you are doing USB passthrough) For raw disk passthrough, attach the disk that is your target for macOS installation, and  create a virtual hard disk that references it to use with Fusion.
+1. (Salta questo se stai eseguendo il passthrough USB) Per il passthrough del disco grezzo, collega il disco che è la destinazione per l'installazione di macOS e crea un disco rigido virtuale che fa riferimento ad esso da utilizzare con Fusion.
 
-    Note: You may need to remove the partitions of the disk before using it.
+     Nota: potrebbe essere necessario rimuovere le partizioni del disco prima di utilizzarlo.
 
-    ```bash
+     `` bash
     diskutil list
-    # locate the external disk that matches, and replace /dev/disk3 below with the device path.
+    # individua il disco esterno che corrisponde e sostituisci / dev / disk3 di seguito con il percorso del dispositivo.
     sudo /Applications/VMware\ Fusion.app/Contents/Library/vmware-rawdiskCreator create /dev/disk3 fullDevice RawHDD ide
     ```
 
-2. Next, start VMware Fusion. You should see the homepage. If not, close any window that opened and select `File` > `New` from the menu bar.
+2. Successivamente, avvia VMware Fusion. Dovresti vedere la home page. In caso contrario, chiudere qualsiasi finestra che si è aperta e selezionare "File"> "Nuovo" dalla barra dei menu.
     ![](../../images/extras/big-sur/fusion/homepage.png)
-3. Select the "Create a custom virtual machine" option, and select macOS 10.15 (as 10.16/11 isn't available).
+3. Seleziona l'opzione "Crea una macchina virtuale personalizzata" e seleziona macOS 10.15 (poiché 10.16 / 11 non è disponibile).
     ![](../../images/extras/big-sur/fusion/choose-os.png)
-4. Select "Use an existing virtual disk" at the screen below.
+4. Seleziona "Usa un disco virtuale esistente" nella schermata sottostante.
     ![](../../images/extras/big-sur/fusion/choose-virtual-disk.png)
-5. Then, click "Choose virtual disk" and select the `Install macOS Beta.vmdk` vmdk we made earlier. If you want to make sure VMware does not copy the disk to where you will be storing the VM (for example, if you are low on space), select "Share this virtual disk with the virtual machine that created it".
+5. Quindi, fai clic su "Scegli disco virtuale" e seleziona `Installa macOS Beta.vmdk` vmdk che abbiamo creato in precedenza. Se vuoi assicurarti che VMware non copi il disco in cui verrà archiviata la VM (ad esempio, se lo spazio è limitato), seleziona "Condividi questo disco virtuale con la macchina virtuale che lo ha creato".
     ![](../../images/extras/big-sur/fusion/choose-virtual-disk-finder.png)
-    Once done, it should look like this.
+    Una volta fatto, dovrebbe assomigliare a questo.
     ![](../../images/extras/big-sur/fusion/choose-virtual-disk-filled.png)
-6. Hit Continue, then click "Customize Settings". Make sure to save the VM to somewhere that's not the disk you are passing through.
+6. Premi Continua, quindi fai clic su "Personalizza impostazioni". Assicurati di salvare la VM in un posto diverso dal disco che stai attraversando.
 
-    Once done, you should arrive at a screen that looks like this.
+    Una volta terminato, dovresti arrivare a una schermata simile a questa.
     ![](../../images/extras/big-sur/fusion/vm-settings-home.png)
-7. First, select "Processors & Memory", and set the memory to at least 4096 MB.
-8. (If you are doing raw disk passthrough, skip this step) Select "Show All" and click "USB & Bluetooth". Plug in your USB device and under "Plug In Action", change it from "Ask what to do" to "Connect to the VM". It should look similar to this when done. (In this case, "VIA AmazonBasics Hard Drive Enclos" is my device.)
-    ![](../../images/extras/big-sur/fusion/vm-settings-usb.png)
-    Then, close the window.
-9. (If you are doing USB passthrough, skip steps 9 through 13) Close the window and close VMware Fusion. Locate the "macOS 10.15.vmwarevm" (or whatever you named it when saving) folder in Finder, and right click > "Show Package Contents".
+7. Per prima cosa, seleziona "Processori e memoria" e imposta la memoria su almeno 4096 MB.
+8. (Se stai eseguendo il passthrough del disco grezzo, salta questo passaggio) Seleziona "Mostra tutto" e fai clic su "USB e Bluetooth". Collega il tuo dispositivo USB e in "Plug In Action", cambialo da "Chiedi cosa fare" a "Connetti alla VM". Dovrebbe essere simile a questo una volta terminato. (In questo caso, "VIA AmazonBasics Hard Drive Enclos" è il mio dispositivo.)
+     ! [](../../images/extras/big-sur/fusion/vm-settings-usb.png)
+     Quindi chiudi la finestra.
+9. (Se si esegue il passthrough USB, saltare i passaggi da 9 a 13) Chiudere la finestra e chiudere VMware Fusion. Individua la cartella "macOS 10.15.vmwarevm" (o come l'hai chiamata durante il salvataggio) nel Finder e fai clic con il pulsante destro del mouse> "Mostra contenuto pacchetto".
 
-    The result should look like the image below.
-    ![](../../images/extras/big-sur/fusion/vm-folder.png)
-10. Open the vmx (not vmxf or vmx.lck folder) file in TextEdit. It should look something like this:
-    ![](../../images/extras/big-sur/fusion/vmx-initial.png)
-11. Find the lines starting with `sata0:1`:
-    ![](../../images/extras/big-sur/fusion/vmx-find.png)
-12. Replace all the lines starting with `sata0:1` with the following. Replace `<path/to/vmdk>` with the full path to RawHDD.vmdk, created earlier above.
+	Il risultato dovrebbe essere simile all'immagine qui sotto.
+	     ! [](../../images/extras/big-sur/fusion/vm-folder.png)
+	10. Aprire il file vmx (non la cartella vmxf o vmx.lck) in TextEdit. Dovrebbe assomigliare a qualcosa di simile a questo:
+	     ! [](../../images/extras/big-sur/fusion/vmx-initial.png)
+	11. Trova le righe che iniziano con `sata0: 1`:
+	     ! [](../../images/extras/big-sur/fusion/vmx-find.png)
+	12. Sostituisci tutte le righe che iniziano con "sata0: 1" con le seguenti. Sostituisci `<path/to/vmdk>` con il percorso completo di RawHDD.vmdk, creato in precedenza.
 
-    Tip: Find it in Finder, then right click, hold down option, and select 'Copy "RawHDD.vmdk" as Pathname' to get the full path easily.
+	     Suggerimento: trovalo nel Finder, quindi fai clic con il pulsante destro del mouse, tieni premuta l'opzione e seleziona "Copia" RawHDD.vmdk "come percorso" per ottenere facilmente il percorso completo.
 
     ```
     sata0:1.fileName = "<path/to/vmdk>"
@@ -71,28 +72,28 @@ You have two options here: pass through a raw disk, or pass through an entire US
     sata0:1.deviceType = "rawDisk"
     ```
 
-    It should look something like the below when done.
-    ![](../../images/extras/big-sur/fusion/vmx-edited.png)
-13. Save and quit TextEdit, and reopen VMware Fusion. Your VM should automatically open, but if not, open it from the Virtual Machine Library.
+	Al termine, dovrebbe assomigliare al seguente.
+	     ! [](../../images/extras/big-sur/fusion/vmx-edited.png)
+	13. Salvare e chiudere TextEdit e riaprire VMware Fusion. La tua VM dovrebbe aprirsi automaticamente, ma in caso contrario, aprila dalla libreria della macchina virtuale.
 
-14. Select "Virtual Machine" > "Power On To Firmware" from the menu bar, so that we can boot to the VM BIOS.
+	14. Selezionare "Virtual Machine"> "Power On To Firmware" dalla barra dei menu, in modo da poter avviare il BIOS della VM.
 
-    * (For raw disk passthrough) If you get prompted for your password when you do this, enter it. Even though the prompt mentions Boot Camp disks, it is still working normally.
+	     * (Per il passthrough del disco grezzo) Se ti viene richiesta la password quando lo fai, inseriscila. Anche se il prompt menziona i dischi Boot Camp, funziona ancora normalmente.
 
-    * If you get an error that the resource is busy like below, run the following in Terminal and try again:
+	     * Se ricevi un errore che indica che la risorsa è occupata come di seguito, esegui quanto segue in Terminale e riprova:
 
     ```bash
     diskutil list
-    # replace /dev/disk3 below with the proper device path. for raw disk passthrough, it was found before
+    # sostituire / dev / disk3 di seguito con il percorso del dispositivo corretto. per il passthrough del disco grezzo, è stato trovato prima
     sudo diskutil unmountDisk /dev/disk3
     ```
 
     ![](../../images/extras/big-sur/fusion/vm-in-use-error.png)
-15. You should get to the VM Boot Manager, as shown below. Select the first hard drive ("EFI VMware Virtual SATA Hard Drive (0.0)). The VM should start booting the Big Sur installer.
+15. Dovresti accedere al VM Boot Manager, come mostrato di seguito. Selezionare il primo disco rigido ("EFI VMware Virtual SATA Hard Drive (0.0)). La VM dovrebbe avviare l'avvio del programma di installazione di Big Sur.
     ![](../../images/extras/big-sur/fusion/vm-boot-manager.png)
-16. Complete the installation as you would on any other device.
-     the installation is complete, and you are at the Welcome screen, select "Virtual Machine" > "Shut Down" from the menu bar.
+16. Completa l'installazione come faresti su qualsiasi altro dispositivo.
+      l'installazione è completa e ti trovi nella schermata di benvenuto, seleziona "Macchina virtuale"> "Spegni" dalla barra dei menu.
 
-    If needed, add your prepared EFI to the EFI partition on the device, then eject it.
+     Se necessario, aggiungi il tuo EFI preparato alla partizione EFI sul dispositivo, quindi espellilo.
 
-    Place the drive back in your hack and boot normally. You now have Big Sur!
+     Riposiziona l'unità nel tuo hack e avvia normalmente. Ora hai Big Sur!
