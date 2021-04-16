@@ -327,6 +327,7 @@ module.exports = {
         '@vuepress/plugin-back-to-top',
         '@vuepress/medium-zoom',
         {
+            selector: "img",
             options: {
                 background: 'var(--bodyBgColor)'
             }
