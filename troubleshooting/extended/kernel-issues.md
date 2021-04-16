@@ -370,6 +370,7 @@ I luoghi principali da verificare:
   * **Aggiorna il tuo BIOS**, assicurati che sia il più recente. La maggior parte degli OEM ha un'allocazione PCI disastrosa su firmware meno recenti, in particolare AMD
   * Assicurarsi anche che Above4G sia abilitato nel BIOS, se non è disponibile alcuna opzione, aggiungere `npci=0x2000` nelle boot args.
     * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
+
   * NOTA sulle CPU AMD: **Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, andranno in conflitto**
     * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
   * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
