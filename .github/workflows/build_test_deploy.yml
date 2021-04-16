@@ -33,7 +33,7 @@ jobs:
       - name: Lint
         uses: avto-dev/markdown-lint@v1
         with:
-          args: './ -f'
+          args: './'
       - name: Lint (URLs)
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
