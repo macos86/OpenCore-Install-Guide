@@ -125,7 +125,7 @@ Tuttavia, su alcune macchine come HP Compaq DC 7900, il firmware continuerà ad 
 
 Per fare ciò, aggiungi la seguente patch (sostituendo la 04 di B8 **04** 00 00 00 C3 con la quantità di thread della CPU supportati dal tuo hardware):):
 
-| Key | Type | Value |
+| Chiave | Tipo | Valore |
 | :--- | :--- | :--- |
 | Base | String | _acpi_count_enabled_logical_processors |
 | Count | Integer | 1 |
@@ -361,7 +361,7 @@ Bene questa area generale è laddove un sacco di dispositivi PCI sono configurat
 
 I luoghi principali da verificare:
 
-* ** Manca la patch EC **:
+* **Manca la patch EC**:
   * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
   * Se non ne hai uno, prendilo qui: [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
 * **Conflitto IRQ**:
@@ -533,11 +533,11 @@ Con macOS Catalina, il supporto del doppio socket è interrotto e un fatto diver
 
 Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante. Per risolvere il problema, rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
 
-* ** Nota **: sulle vecchie CPU Intel (es. Penryn e precedenti), potrebbe essere dovuto a conflitti IRQ o al dispositivo HPET disabilitato. Per risolvere, hai 2 opzioni:
-  * [Opzione FixHPET di SSDTTime] (https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
+* **Nota**: sulle vecchie CPU Intel (es. Penryn e precedenti), potrebbe essere dovuto a conflitti IRQ o al dispositivo HPET disabilitato. Per risolvere, hai 2 opzioni:
+  * [Opzione FixHPET di SSDTTime](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
   * Forzatura del dispositivo HPET
   
-  ::: dettagli Forzatura del dispositivo HPET
+  ::: details Forzatura del dispositivo HPET
 
   Sotto ACPI -> Patch:
 
@@ -641,7 +641,7 @@ Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**
 
 ![Ringraziamo Stompy per l'immagine](../../images/extras/big-sur/readme/cs-stuck.jpg)
 
-Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. ** NON RIAVVIARE ** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
+Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
 ## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
