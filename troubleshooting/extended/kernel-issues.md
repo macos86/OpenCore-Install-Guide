@@ -322,7 +322,7 @@ Ciò è dovuto alle impostazioni del BIOS errate:
 
 Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con` Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../ Extras / SmBIOS-Support.md)
 
-::: dettagli degli SmBIOS supportati in Macos 10.15, Catalina
+::: details degli SmBIOS supportati in Macos 10.15, Catalina
 
 * iMac13,x+
 * iMacPro1,1
@@ -334,7 +334,7 @@ Questo errore avviene quando SMBIOS non è più supportato da quella versione di
 
 :::
 
-::: dettagli degli SmBIOS supportati in macOS 11, Big Sur
+::: details degli SmBIOS supportati in macOS 11, Big Sur
 
 * iMac14,4+
 * iMacPro1,1
@@ -493,7 +493,7 @@ Per gli utenti di MSI Navi, sarà necessario applicare la patch menzionata qui: 
 
 In particolare, aggiungi la seguente voce in `Kernel -> Patch`:
 
-::: dettagli MSI Navi Patch
+::: details MSI Navi Patch
 
 ```
 Base:
@@ -571,7 +571,7 @@ Caso 1    |  Caso 2
 
 Assicurati che VoodooInput sia elencato * prima di * VoodooPS2 e VoodooI2C kexts nel tuo config.plist.
 
-::: dettagli Risoluzione dei problemi di VoodooI2C
+::: details Risoluzione dei problemi di VoodooI2C
 
 Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](../../ ktext.md):
 
