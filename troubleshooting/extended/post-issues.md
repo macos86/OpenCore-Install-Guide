@@ -59,7 +59,7 @@ Quindi compila con MaciASL, copia nella tua cartella OC / ACPI, dichiaralo nel t
 
 * Nota: sebbene questo funzioni nella maggior parte dei casi, il trackpad potrebbe essere lento e potresti non essere in grado di utilizzare i pulsanti fisici ([ulteriori dettagli](https://github.com/acidanthera/bugtracker/issues/890)). Se riesci a vivere senza il trackpad, potrebbe essere meglio:
 
-Trova il percorso ACPI del tuo mouse (vedi sopra), quindi prendi [SSDT-DisableTrackpadProbe.dsl] (https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-DisableTrackpadProbe.dsl). Per impostazione predefinita, questo utilizza PCI0.LPCB.PS2K quindi è necessario modificarlo nel percorso ACPI se necessario:
+Trova il percorso ACPI del tuo mouse (vedi sopra), quindi prendi [SSDT-DisableTrackpadProbe.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-DisableTrackpadProbe.dsl). Per impostazione predefinita, questo utilizza PCI0.LPCB.PS2K quindi è necessario modificarlo nel percorso ACPI se necessario:
 
 ```c
 External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo

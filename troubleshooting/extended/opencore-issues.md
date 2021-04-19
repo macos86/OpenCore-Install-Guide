@@ -64,13 +64,13 @@ Cose principali da controllare:
 * ScanPolicy impostato su "0" per mostrare tutte le unità
 * Avere i driver del firmware appropriati come HfsPlus (Nota che ApfsDriverLoader non dovrebbe essere usato nella 0.5.8)
 * Imposta UnblockFsConnect su True in config.plist -> UEFI -> Quirks. Necessario per alcuni sistemi HP
-* Imposta ** Modalità SATA **: `AHCI` nel BIOS
+* Imposta **Modalità SATA**: `AHCI` nel BIOS
 * Imposta `UEFI -> APFS` per vedere le unità basate su APFS:
-   * ** EnableJumpstart **: YES
-   * ** HideVerbose **: NO
+   * **EnableJumpstart**: YES
+   * **HideVerbose**: NO
    * Se si eseguono versioni precedenti di High Sierra (ad es. 10.13.5 o precedenti), impostare quanto segue:
-     * ** MinDate **: `-1`
-     * ** MinVersion **: `-1`
+     * **MinDate**: `-1`
+     * **MinVersion**: `-1`
 
 ## Bloccato su `OCB: OcScanForBootEntries failure - Not Found`
 
