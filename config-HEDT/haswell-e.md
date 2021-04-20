@@ -89,7 +89,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * **EnableWriteUnprotector**: SÌ
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: SÌ
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio "OCABC: sono utilizzabili solo N / 256 valori di diapositiva!" Nel registro di debug. Se il messaggio `OCABC: Only N/256 slide values are usable!` È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio "OCABC: sono utilizzabili solo N / 256 valori di diapositiva!" Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
 * **SetupVirtualMap**: SI
   * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic
 
@@ -103,7 +103,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 
 Imposta le proprietà del dispositivo da una mappa.
 
-Per impostazione predefinita, Sample.plist ha questa sezione impostata per iGPU e audio. Non abbiamo iGPU quindi PciRoot `PciRoot (0x0) / Pci (0x2,0x0)` può essere rimosso dalla sezione `Aggiungi`. Per l'audio imposteremo il layout nella sezione boot-args, quindi la rimozione di `PciRoot (0x0) / Pci (0x1b, 0x0)` è consigliata anche dalle sezioni `Add` e` Block`
+Per impostazione predefinita, Sample.plist ha questa sezione impostata per iGPU e audio. Non abbiamo iGPU quindi `PciRoot(0x0)/Pci (0x2,0x0)` può essere rimosso dalla sezione `Aggiungi`. Per l'audio imposteremo il layout nella sezione boot-args, quindi la rimozione di `PciRoot(0x0)/Pci(0x1b,0x0)` è consigliata anche dalle sezioni `Add` e` Block`
 
 TL; DR, elimina tutti i PciRoot qui perché non useremo questa sezione.
 
@@ -183,7 +183,7 @@ Necessario per lo spoofing di CPU non supportate e l'attivazione della gestione 
 
 :::
 
-::: details More in-depth Info
+::: details Informazioni più approfondite
 
 * **CpuidData**: `C3060300 00000000 00000000 00000000`
   * Fake CPUID entry
@@ -252,7 +252,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **AppleCpuPmCfgLock**: NO
   * Necessario solo quando CFG-Lock non può essere disabilitato nel BIOS
@@ -298,7 +298,7 @@ Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata se
 
 Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puoi saltare, tuttavia per coloro che intendono avviare sistemi operativi legacy vedere qui di seguito:
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **FuzzyMatch**: True
   * Usato per ignorare i checksum con kernelcache, optando invece per l'ultima cache disponibile. Può aiutare a migliorare le prestazioni di avvio su molte macchine in 10.6
@@ -340,7 +340,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **AppleDebug**: YES
   * Abilita la registrazione di boot.efi, utile per il debug. Nota che questo è supportato solo su 10.15.4 e versioni successive
@@ -379,7 +379,7 @@ Sicurezza si spiega da sé, **non saltare**. Modificheremo quanto segue:
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **AllowNvramReset**: YES
   * Consente il ripristino della NVRAM sia nel selettore di avvio che quando si preme `Cmd+Opt+P+R`
@@ -429,7 +429,7 @@ Utilizzato per il ridimensionamento dell'interfaccia utente di OpenCore, l'impos
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 Booter Path, utilizzato principalmente per il ridimensionamento dell'interfaccia utente
 
@@ -449,7 +449,7 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **rtc-blacklist**: <>
   * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
@@ -511,7 +511,7 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **LegacyEnable**: YES
   * Consente la memorizzazione della NVRAM su nvram.plist, necessaria per i sistemi senza NVRAM nativa come X99
@@ -572,7 +572,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ### Generic
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **AdviseWindows**: NO
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows
@@ -655,7 +655,7 @@ RRiguardo alle stranezze con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 :::
 
-::: details più approfondite
+::: details Informazioni più approfondite
 
 * **IgnoreInvalidFlexRatio**: YES
   * Risolto il problema per cui MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake
