@@ -709,7 +709,7 @@ Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti
 * CFG Lock (MSR 0xE2 write protection)(**Tdeve essere disattivato, se non riesci a trovare l'opzione abilita `AppleXcpmCfgLock` in Kernel->Quirks. Il tuo hack non si avvierà con CFG-Lock abilitato**)
   * Per 10.10 e versioni precedenti, dovrai abilitare anche AppleCpuPmCfgLock
 
-### Enable
+### Abilita
 
 * VT-x
 * Above 4G decoding
