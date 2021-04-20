@@ -17,7 +17,7 @@ Problemi vari che non ruotano attorno a macOS stesso come per esempio il multibo
 
 ## Non posso eseguire`acpidump.efi`
 
-Invoca la shell OpenCore:
+Apri la shell OpenCore:
 
 ```
 shell> fs0: //inserire il drive aduguato
@@ -54,16 +54,16 @@ Make sure `Add Python to PATH`
 
 ## Il disco di avvio di Windows non riesce a vedere le unità APFS
 
-* Driver BootCamp obsoleti (generalmente la ver 6.0 verrà fornita con brigadier, BootCamp Utility in macOS fornisce una versione più recente come la ver 6.1). CorpNewt ha anche biforcato il brigadier risolvendo anche questi problemi: [Il brigadier di CorpNewt](https://github.com/corpnewt/brigadier)
+* Driver BootCamp obsoleti (generalmente la ver 6.0 verrà fornita con brigadier, BootCamp Utility in macOS fornisce una versione più recente come la ver 6.1). CorpNewt ha anche biforcato il brigadier risolvendo anche questi problemi: [Brigadier di CorpNewt](https://github.com/corpnewt/brigadier)
 
 ## Risoluzione errata con OpenCore
 
-* Segui [Fixing Resolution and Verbose](https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose.html) per la corretta configurazione, imposta "UIScale" su "02" per HiDPI
+* Segui [Fixing Resolution and Verbose (EN)](https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose.html) per la corretta configurazione, imposta "UIScale" su "02" per HiDPI
 * Gli utenti hanno anche notato che l'impostazione di `ConsoleMode` su Max a volte fallisce, lasciarlo vuoto può aiutare
 
 ## Impossibile trovare l'unità Windows/BootCamp fra i selettori
 
-Con OpenCore, dobbiamo notare che non sono supportate le installazioni legacy di Windows, solo UEFI. La maggior parte delle installazioni ora sono basate su UEFI, ma quelle effettuate da BootCamp Assistant sono legacy, quindi dovrai trovare altri mezzi per creare un programma di installazione (Google è tuo amico). Ciò significa anche che anche le partizioni MasterBootRecord / Hybrid sono danneggiate, quindi dovrai formattare l'unità su cui desideri installare con DiskUtility. Consulta la [Multiboot Guide](https://dortania.github.io/OpenCore-Multiboot/) sulle migliori pratiche
+Con OpenCore, dobbiamo notare che non sono supportate le installazioni legacy di Windows, solo UEFI. La maggior parte delle installazioni ora sono basate su UEFI, ma quelle effettuate da BootCamp Assistant sono legacy, quindi dovrai trovare altri mezzi per creare un programma di installazione (Google è tuo amico). Ciò significa anche che anche le partizioni MasterBootRecord / Hybrid sono danneggiate, quindi dovrai formattare l'unità su cui desideri installare con DiskUtility. Consulta la [Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) sulle migliori pratiche
 
 Ora per passare alla risoluzione dei problemi: 
 
@@ -76,7 +76,7 @@ Se si verificano problemi con il disco di avvio che applica correttamente la nuo
 
 Esempio di "DevicePathsSupported" mancante:
 
-* [Errore di corrispondenza del DevicePath predefinito a causa di un diverso PciRoot # 664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
+* [ Default DevicePath match failure due to different PciRoot #664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
 
 ## L'avvio di Windows provoca arresti anomali Bluescreen o crash di Linux
 

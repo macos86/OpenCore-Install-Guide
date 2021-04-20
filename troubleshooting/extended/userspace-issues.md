@@ -31,7 +31,7 @@ Potrebbe anche essere necessario reimpostare la NVRAM tramite l'apposito seletto
 
 Ancora non ha funzionato? Bene, tempo di armi pesanti. Forzeremo la rimozione di quella proprietà esatta e lasceremo che OpenCore la ricostruisca:
 
-`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo Digita `String` e Value` prev-lang: kbd`
+`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo Digita `String` e Value` prev-lang-kbd`
 
 ![](../../images/troubleshooting/troubleshooting-md/lang.png)
 
@@ -55,14 +55,14 @@ date 0901000019
 
 Questo è giusto prima che la GPU venga inizializzata correttamente; verifica quanto segue:
 
-* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* La GPU supporta UEFI (GTX 7XX/2013+)
 * CSM è disattivato nel BIOS
 * Forzare la velocità di collegamento PCIe 3.0
 * Controlla che ig-platform-id e device-id siano validi se si usa una iGPU.
    * Potrebbe essere necessario utilizzare "00009B3E" per desktop UHD 630
 * Provando varie [WhateverGreen Fixes](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
    * argomento di avvio `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
-* Gli utenti di Coffee Lake iGPU potrebbero anche aver bisogno di `igfxonln = 1` in 10.15.4 e versioni successive
+* Gli utenti di Coffee Lake iGPU potrebbero anche aver bisogno di `igfxonln=1` in 10.15.4 e versioni successive
 
 ## Schermo deformato su laptops
 
@@ -72,12 +72,12 @@ Abilita CSM nelle impostazioni UEFI. Può apparire come "Boot legacy ROMs" o un'
 
 Verifica quanto segue:
 
-* SSDT-PNLF installato (es. EFI / OC / ACPI e dichiarato nel config.plist -> ACPI)
-* Le proprietà iGPU sono state impostate correttamente in `DeviceProperties -> PciRoot (0x0) / Pci (0x2,0x0)`
+* SSDT-PNLF installato (es. EFI/OC/ACPI e dichiarato nel config.plist -> ACPI)
+* Le proprietà iGPU sono state impostate correttamente in `DeviceProperties -> PciRoot(0x0)/Pci(0x2,0x0)`
 * Coffee Lake e laptop più recenti, aggiungi `-igfxblr` ai tuoi argomenti di avvio
-   * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot (0x0) / Pci (0x2,0x0)"
+   * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot(0x0)/Pci(0x2,0x0)"
 
-Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`](#stuck-on-or-near-ioconsoleusers-gioscreenlock-giolockstate-3)
+Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock-3)
 
 ## Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi
 
@@ -85,7 +85,7 @@ Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUse
 * Prova le diverse uscite del display
 * Prova a eseguire SMBIOS MacPro7,1 con l'argomento di avvio `agdpmod = ignore`
 
-For MSI Navi users, you'll need to apply the patch mentioned here: [Il programma di installazione non funziona con 5700XT # 901](https://github.com/acidanthera/bugtracker/issues/901)
+For MSI Navi users, you'll need to apply the patch mentioned here: [Installer not working with 5700XT (pikera) #901](https://github.com/acidanthera/bugtracker/issues/901)
 
 In particolare, aggiungi la seguente voce in `Kernel -> Patch`:
 
@@ -117,11 +117,11 @@ Segui le indicazioni qui dopo l'AGGIORNAMENTO 2: [Risolvere il "Data and Privacy
 
 Questo è un esempio comune di TSC incasinato; per la maggior parte dei sistemi aggiungi [CpuTscSync](https://github.com/lvs1974/CpuTscSync)
 
-Per Skylake-X, molti firmware inclusi Asus ed EVGA non scriveranno su tutti i core. Quindi dovremo ripristinare il TSC all'avvio a freddo e svegliarci con [TSCAdjustReset](https://github.com/interferenc/TSCAdjustReset). La versione compilata può essere trovata qui: [TSCAdjustReset.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/TSCAdjustReset.kext.zip). Nota che tu **devi** aprire il kext(Mostra contenuto pacchetto nel finder, `Contents -> Info.plist`) and change the Info.plist -> `IOKitPersonalities -> IOPropertyMatch -> IOCPUNumber` al numero di thread della CPU avere a partire da `0`(i9 7980xe 18 core sarà `35` visto che ha 36 threads totali)
+Per Skylake-X, molti firmware inclusi Asus ed EVGA non scriveranno su tutti i core. Quindi dovremo ripristinare il TSC all'avvio a freddo e svegliarci con [TSCAdjustReset](https://github.com/interferenc/TSCAdjustReset). La versione compilata può essere trovata qui: [TSCAdjustReset.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/TSCAdjustReset.kext.zip). Nota che tu **devi** aprire il kext (Mostra contenuto pacchetto nel finder, `Contents -> Info.plist`) and change the Info.plist -> `IOKitPersonalities -> IOPropertyMatch -> IOCPUNumber` al numero di thread della CPU avere a partire da `0`(i9-7980xe 18 core sarà `35` visto che ha 36 threads totali)
 
 Il modo più comune per vedere il problema TSC:
 
-Case 1    |  Case 2
+Caso 1    |  Caso 2
 :-------------------------:|:-------------------------:
 ![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
@@ -129,7 +129,7 @@ Case 1    |  Case 2
 
 Questo errore è dovuto a un piccolo EFI, per impostazione predefinita Windows creerà un EFI da 100 MB mentre macOS si aspetterà 200 MB. Per aggirare questo problema hai 2 modi per andare:
 
-* Espandi l'EFI dell'unità a 200 MB (vedi Google per sapere come)
+* Espandi l'EFI dell'unità a 200 MB (cerca su Google per sapere come)
 * Formatta l'intera unità anziché solo la partizione
    * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd / Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
 
@@ -183,7 +183,7 @@ Per risolvere l'errore, hai alcune opzioni:
         * Ti consigliamo di provare le versioni precedenti di kexts nei casi in cui le build più recenti abbiano strani bug con il tuo hardware
       * Se restituisce qualcosa, il problema riguarda Apple. Sfortunatamente, dovrai semplicemente provare a installarlo di nuovo un'altra volta
 
-| Check NIC | Ping |
+| Controllo NIC | Ping |
 | :--- | :--- |
 | ![](../../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](../../images/troubleshooting/troubleshooting-md/ping.png) |
 
