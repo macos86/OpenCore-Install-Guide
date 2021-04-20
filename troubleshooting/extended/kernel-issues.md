@@ -166,7 +166,7 @@ Questo è dovuto a qualche problema intorno al `Booter -> Quirks` che hai impost
 
 * `DevirtualiseMmio`
   * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk
-  * Maggiori informazioni qui: [Using DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
+  * Maggiori informazioni qui: [Utilizzo di DevirtualiseMmio](../../extras/kaslr-fix#utilizzo-di-devirtualisemmio)
 
 * `SetupVirtualMap`
   * Questo Quirk è richiesto per la maggior parte dei firmware e senza di essa è molto comune un kernel panic, quindi abilitalo se non lo è già
@@ -212,7 +212,7 @@ Ciò può accadere quando il volume di preavvio non è aggiornato correttamente,
 2. Avviare il ripristino
 3. Apri il terminale ed esegui quanto segue:
 
-`` bash
+```bash
 # Innanzitutto, trova il volume di preavvio
 diskutil list
 
@@ -255,7 +255,7 @@ Per risolvere questo è possibile eseguire una delle seguenti operazioni:
 * O copia sopra i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
    * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
   
-Per fare questo tramite Terminal:
+Per fare questo tramite Terminale:
 
 ​```bash
 # Innanzitutto, trova il tuo volume del preboot
@@ -299,6 +299,7 @@ cat ./CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices/.disk_lab
 # Sostituire CD844C38-1A25-48D5-9388-5D62AA46CFB8 con il tuo UUID
 cd ~
 sudo cp -a /usr/standalone/i386/. /System/Volumes/Preboot/CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices
+
 ```
 
 ## Bloccato su `OCABC: Memory pool allocation failure - Not Found`
@@ -320,9 +321,9 @@ Ciò è dovuto alle impostazioni del BIOS errate:
 
 ## Bloccato su `This version of Mac OS X is not supported: Reason Mac...`
 
-Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con` Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../ Extras / SmBIOS-Support.md)
+Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con` Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../Extras/SmBIOS-Support.md)
 
-::: details degli SmBIOS supportati in Macos 10.15, Catalina
+::: details SmBIOS supportati in Macos 10.15, Catalina
 
 * iMac13,x+
 * iMacPro1,1
@@ -334,7 +335,7 @@ Questo errore avviene quando SMBIOS non è più supportato da quella versione di
 
 :::
 
-::: details degli SmBIOS supportati in macOS 11, Big Sur
+::: details SmBIOS supportati in macOS 11, Big Sur
 
 * iMac14,4+
 * iMacPro1,1
@@ -363,7 +364,7 @@ I luoghi principali da verificare:
 
 * **Manca la patch EC**:
   * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
-  * Se non ne hai uno, prendilo qui: [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+  * Se non ne hai uno, prendilo qui: [Getting Started With ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
 * **Conflitto IRQ**:
   * Più comune su portatili e pre-costrutti più anziani; lancia SSDTTime scegli l'opzione FixHPET e aggiungi il risultante SSDT-HPET.aml e lepatches  ACPI al tuo config (l'SSDT non funzionerà senza le patch ACPI)
 * **Problemi di allocazione PCI**:
@@ -407,7 +408,7 @@ si ricorda di aggiungere questo SSDT in EFI/OC/ACPI **and**  di abilitarlo nel c
 
 ## Errore "Waiting for Root Device" o Prohibited Sign
 
-* Altri nomi: Stop Sign, Scrambled
+* Altri nomi: Segno dello Stop, Schermo deformato
 
 Questo è generalmente visto come un errore USB o SATA, di seguito un paio di modalità per correggere:
 
@@ -623,7 +624,7 @@ Per risolvere questo kernel panic, assicurati di avere `-igfxcdc` nei tuoi argom
 
 ## Kernel panic su "cckprng_int_gen"
 
-Full panic:
+Panic completo:
 
 ```
 "cckprng_int_gen: generator has already been sealed"

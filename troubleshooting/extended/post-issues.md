@@ -1,4 +1,4 @@
-# Problemi Post.Installazione
+# Problemi Post-Installazione
 
 * Versione Supportata: 0.6.8
 
@@ -12,7 +12,7 @@ Possibili problemi quando macOS è già installato.
 * [Accelerazione GPU macOS mancante su AMD X570](#accelerazione-GPU-macOS-mancante-su-AMD-X570)
 * [Problemi con i DRM](#problemi-con-i-DRM)
 * [Moduli di memoria configurati in modo errato su MacPro7,1](#moduli-di-memoria-configurati-in-modo-errato-su-MacPro7,1)
-* [App che si bloccano su sistemi AMD](#app-che-si-bloccano-su-sistemi-amd)
+* [App che si bloccano su sistemi AMD](#app-che-si-bloccano-su-amd)
 * [La cache dei contenuti di AssetCache non è disponibile nella macchina virtuale](#la-cache-dei-contenuti-di-AssetCache-non-è-disponibile-nella-macchina-virtuale)
 * [I sistemi Coffee Lake non si risvegliano](#i-sistemi-coffee-lake-non-si-risvegliano)
 * [Nessun Output dai sensori di temperatura/ventola](#nessun-Output-dai-sensori-di-temperatura/ventola)
@@ -26,15 +26,15 @@ Possibili problemi quando macOS è già installato.
 
 ## IMessage e Siri non funzionanti
 
-Fare riferimento alla sezione [Configurazione di iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
+Fare riferimento alla sezione [Fixing iServices (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 
 ## Nessun audio integrato
 
-Fare riferimento alla sezione [Configurazione dell'Audio con AppleALC](https://dortania.github.io/OpenCore-Post-Install/)
+Fare riferimento alla sezione [Fixing Audio with AppleALC (EN)](https://dortania.github.io/OpenCore-Post-Install/)
 
 ## BIOS ripristinato o messo in modalità provvisoria dopo il riavvio / spegnimento?
 
-Fare riferimento alla sezione [Risovere i Resets RTC/CMOS](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
+Fare riferimento alla sezione [Fixing RTC write issues (EN)](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
 
 ## Il trackpad basato su PS2 Synaptics non funziona
 
@@ -55,7 +55,7 @@ External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
 
 ```
 
-Quindi compila con MaciASL, copia nella tua cartella OC / ACPI, dichiaralo nel tuo config e dovresti essere a posto.
+Quindi compila con MaciASL, copia nella tua cartella OC/ACPI, dichiaralo nel tuo config e dovresti essere a posto.
 
 * Nota: sebbene questo funzioni nella maggior parte dei casi, il trackpad potrebbe essere lento e potresti non essere in grado di utilizzare i pulsanti fisici ([ulteriori dettagli](https://github.com/acidanthera/bugtracker/issues/890)). Se riesci a vivere senza il trackpad, potrebbe essere meglio:
 
@@ -95,13 +95,13 @@ Verifica quanto segue:
 
 ## Problemi con i DRM
 
-Fare riferimento alla sezione [Aggiustare i DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
+Fare riferimento alla sezione [Fixing DRM (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
 
 ## "Moduli di memoria configurati in modo errato" su MacPro7,1
 
 Segui la guida elencata qui:
 
-* [Correzione degli errori di memoria di MacPro7,1](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
+* [Fixing MacPro7,1 Memory Errors (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
 
 Per chi vuole semplicemente disabilitare la notifica (non l'errore in sé) è più che sufficiente. Per questi utenti, consigliamo di installare [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases)
 
@@ -130,7 +130,7 @@ Quindi con AMD, ogni volta che Apple chiama funzioni specifiche della CPU, l'app
 Questo generalmente accade su AMD che utilizza il controller USB del chipset, in particolare per la serie Ryzen e più recenti. Il modo principale per sapere se hai problemi con questo è controllare i registri dopo un ciclo di Sleep/Wake:
 
 * Nel Terminale:
-  * `log show --last 1d | grep "Wake reason"` verify it
+  * `log show --last 1d | grep "Wake reason"` per verificarlo
 
 Dovrebbe risultare in qualcosa di simile:
 
@@ -195,7 +195,7 @@ Se si verificano problemi con "Disco di avvio" che non applica correttamente la 
 
 Esempio di "DevicePathsSupported" mancante:
 
-* [Errore di corrispondenza DevicePath predefinito a causa di un diverso PciRoot # 664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
+* [Default DevicePath match failure due to different PciRoot #664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
 
 ## macOS si sveglia con l'ora sbagliata
 
@@ -219,7 +219,7 @@ Quindi, per questo esempio, prenderemo il nostro valore (`00010D13`), quindi lo 
 
 Successivamente dovrai mettere il tuo hack in sospensione per un po 'e riattivarlo, quindi controllare ancora una volta il valore CLKT per vedere se ha deviato di più o se ha una differenza impostata. Se trovi che in realtà non ha funzionato molto dal tempo trascorso, dovrai cercare di acquistare una nuova batteria (con una tensione adeguata)
 
-## Nessun controllo del volume / luminosità sui monitor esterni
+## Nessun controllo del volume/luminosità sui monitor esterni
 
 Stranamente, macOS ha impedito di avere il controllo dell'audio digitale. Per ripristinare alcune funzionalità, l'app [MonitorControl](https://github.com/the0neyouseek/MonitorControl/releases) ha svolto un ottimo lavoro per migliorare il supporto in macOS
 
@@ -227,14 +227,14 @@ Stranamente, macOS ha impedito di avere il controllo dell'audio digitale. Per ri
 
 This is due to macOS using Universal Time while Windows relies on Greenwhich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
-* [Installa le utilità Bootcamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Installing and using BootCamp utilities (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * [Modifica registro di Windows](https://superuser.com/q/494432)
 
 ## Disabilitare SIP
 
 SIP, acronimo System Integrity Protection, è una tecnologia di sicurezza che tenta di impedire a qualsiasi software dannoso e all'utente finale di danneggiare il sistema operativo. Introdotto per la prima volta con OS X El Capitan, SIP è cresciuto nel tempo per controllare sempre più cose in macOS, inclusa la limitazione delle modifiche a posizioni di file limitate e il caricamento di kext di terze parti con `kextload` (OpenCore non viene influenzato poiché i kext vengono iniettati all'avvio). Per risolvere questo problema, Apple ha fornito numerose opzioni di configurazione nella variabile NVRAM `csr-active-config` che può essere impostata nell'ambiente di ripristino macOS o con la sezione NVRAM di OpenCore (quest'ultima verrà discussa di seguito).
 
-* <span style="color:red">WARNING:</span> La disabilitazione di SIP può interrompere le funzionalità del sistema operativo come gli aggiornamenti software in macOS 11, Big Sur e versioni successive. Fai attenzione a disabilitare solo valori SIP specifici invece di disabilitare completamente SIP per evitare questi problemi.
+* <span style="color:red">ATTENZIONE:</span> Disabilitare SIP può interrompere alcune funzionalità del sistema operativo come gli aggiornamenti software in macOS 11, Big Sur e versioni successive. Fai attenzione a disabilitare solo valori SIP specifici invece di disabilitare completamente SIP per evitare questi problemi.
    * L'abilitazione di `CSR_ALLOW_UNAUTHENTICATED_ROOT` e` CSR_ALLOW_APPLE_INTERNAL` sono opzioni comuni che possono interrompere gli aggiornamenti del sistema operativo per gli utenti
 È possibile scegliere valori diversi per abilitare o disabilitare determinati flag di SIP. Alcuni strumenti utili per aiutarti con questi sono [CsrDecode](https://github.com/corpnewt/CsrDecode) e [csrstat](https://github.com/JayBrown/csrstat-NG). I valori comuni sono i seguenti (i byte vengono scambiati pre-esadecimale per te e nota che vanno in NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config):
 
@@ -258,12 +258,12 @@ Con macOS Catalina e versioni successive, Apple ha suddiviso il sistema operativ
 
 **macOS Catalina**
 
-1. [Disabilitare SIP](#disabling-sip)
+1. [Disabilitare SIP](#disabilitare-sip)
 2. Montare l'unità come scrivibile (eseguire `sudo mount -uw /` nel terminale)
 
 **macOS Big Sur**
 
-1. [Disabilitare SIP](#disabling-sip)
+1. [Disabilitare SIP](#disabilitare-sip)
 2. Montare l'unità come scrivibile (vedere sotto per il comando)
 
 * Nota: a causa del funzionamento degli aggiornamenti del sistema operativo in macOS Big Sur e versioni successive, la modifica del volume di sistema può effettivamente interrompere gli aggiornamenti del sistema operativo. Si prega di modificare con cautela
@@ -321,7 +321,7 @@ Per quelli con problemi di sblocco di Apple Watch, verifica quanto segue:
 * iServices funzionano correttamente (es. iMessage)
 * C'è un'opzione per sbloccare con Apple Watch nelle impostazioni di sicurezza e privacy in Preferenze di Sistema
 
-! [](../../ images / troubleshooting / troubleshooting-md / watch-unlock.png)
+! [](../../images/troubleshooting/troubleshooting-md/watch-unlock.png)
 
 Se quanto sopra viene soddisfatto e hai ancora problemi di sblocco, ti consigliamo di eseguire la guida di seguito:
 

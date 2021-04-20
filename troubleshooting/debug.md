@@ -4,9 +4,9 @@
 
 Hai bisogno di capire perché stai riscontrando problemi o ti stai bloccando? Bene, sei nel posto giusto:
 
-* [Scambio di file](#file-swaps)
-* [Modifiche al Config](#config-changes)
-* [Disabilitazione di tutte le registrazioni](#disabling-all-logging)
+* [Scambio di file](#scambio-di-file)
+* [Modifiche al Config](#modifiche-al-config)
+* [Disabilitazione di tutte le registrazioni](#disabilitare-tutti-i-log)
 
 ## Scambio di file
 
@@ -94,7 +94,7 @@ Una volta fatto, il tuo config.plist dovrebbe assomigliare a questo:
 
 ![](../images/troubleshooting/debug-md/debug.png)
 
-## Disabilitazione di tutte le registrazioni
+## Disabilitazione di tutti i log
 
 Per rimuovere completamente la registrazione dei file e eseguire il debug dei messaggi, è sufficiente sostituire tutti i file OpenCore con quelli in RELEASE come abbiamo fatto prima nella sezione [Cambio dei File](#file-swap).
 

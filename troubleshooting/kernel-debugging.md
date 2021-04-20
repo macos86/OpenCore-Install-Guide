@@ -36,7 +36,7 @@ Per la configurazione seriale, OpenCore lo rende in realtà abbastanza semplice.
   * Esegue l'inizializzazione della porta seriale
 * **Target**: `67`
   * Abilita l'output di debug con OpenCore
-  * Target = 75 aggiunge il flag di output seriale aggiuntivo (0x08) se [prevedi di utilizzare seriale](#configurazione-seriale-opzionale)
+  * Target=75 aggiunge il flag di output seriale aggiuntivo (0x08) se [prevedi di utilizzare seriale](#configurazione-seriale-opzionale)
   * Puoi calcolare il tuo valore qui: [OpenCore debugging](./debug.md)
   
 ### NVRAM
@@ -364,8 +364,8 @@ csrutil enable
 csrutil authenticated-root enable # Big Sur+
 ```
 
-* modifiche al config.plist (se precedentemente modificato):
-  * [Abilitare tramite config.plist](./extended/post-issues.md#disabling-sip)
+* Modifiche al config.plist (se precedentemente modificato):
+  * [Abilitare tramite config.plist](./extended/post-issues.md#disabilitare-sip)
   
 #### 4. Ripulire le boot-args
 
