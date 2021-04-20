@@ -125,7 +125,7 @@ La cosa principale che devi tenere a mente è:
   * Ricorda che qualsiasi plugin dovrebbe essere caricato * dopo * le sue dipendenze
   * Ciò significa che kext come Lilu ** devono ** venire prima di VirtualSMC, AppleALC, WutelyGreen, ecc.
 
-Un promemoria che gli utenti di [ProperTree] (https://github.com/corpnewt/ProperTree) possono eseguire ** Cmd / Ctrl + Shift + R ** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
+Un promemoria che gli utenti di [ProperTree] (https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl + Shift + R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
 
 * **Arch**
   * Architetture supportate da questo kext
@@ -540,7 +540,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
   * Scambia il campo fornitore per Acidanthera, generalmente non è sicuro utilizzare Apple come fornitore nella maggior parte dei casi
 
 * **SystemMemoryStatus**: Auto
-  * * Imposta se la memoria è saldata o meno nelle informazioni SMBIOS, puramente cosmetica e quindi si consiglia `Auto`
+  * Imposta se la memoria è saldata o meno nelle informazioni SMBIOS, puramente cosmetica e quindi si consiglia `Auto`
 
 * **UpdateDataHub**: YES
   * Aggiorna i campi di Data Hub
@@ -553,7 +553,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 * **UpdateSMBIOSMode**: Create
   * Sostituisci le tabelle con EfiReservedMemoryType appena allocato, usa `Custom` su laptops Dell che richiedono il Quirk `CustomSMBIOSGuid`
-  * * L'impostazione su `Custom` con il quirk` CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
+  * L'impostazione su `Custom` con il quirk` CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
 
 :::
 
@@ -644,11 +644,11 @@ Quindi, grazie agli sforzi di Ramus, abbiamo anche uno strumento straordinario p
 
 Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti i problemi con questo sito devono essere inviati qui: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
 
-## Intel BIOS settings
+## Intel impostazioni BIOS
 
 * Nota: la maggior parte di queste opzioni potrebbe non essere presente nel tuo firmware, ti consigliamo di abbinarle il più fedelmente possibile, ma non preoccuparti se molte di queste opzioni non sono disponibili nel tuo BIOS
 
-### Disable
+### Disabilita
 
 * Fast Boot
 * Secure Boot

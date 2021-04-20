@@ -691,11 +691,11 @@ Quindi, grazie agli sforzi di Ramus, abbiamo anche uno strumento straordinario p
 
 Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti i problemi con questo sito devono essere inviati qui: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
 
-## Intel BIOS settings
+## Intel impostazioni BIOS 
 
 * Nota: la maggior parte di queste opzioni potrebbe non essere presente nel tuo firmware, ti consigliamo di abbinarle il più fedelmente possibile, ma non preoccuparti se molte di queste opzioni non sono disponibili nel tuo BIOS
 
-### Disable
+### Disabilita
 
 * Fast Boot
 * Secure Boot
