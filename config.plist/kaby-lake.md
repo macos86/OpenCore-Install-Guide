@@ -509,7 +509,7 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ::: tip Info
 
-er impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
+Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
 Per questo esempio Kaby Lake example, we'll chose the iMac18,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. Esistono due SMBIOS principali utilizzati per Kaby Lake:
 
@@ -553,7 +553,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ### Generic
 
-::: details Informazioni più approfonditete
+::: details Informazioni più approfondite
 
 * **AdviseWindows**: NO
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows
