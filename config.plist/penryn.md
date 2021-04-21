@@ -226,9 +226,9 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 ::: details Informazioni più approfondite
 
 * **AppleCpuPmCfgLock**: NO
-  * * CFG-Lock non è presente su Penryn, quindi non c'è bisogno di questo quirk
+  * CFG-Lock non è presente su Penryn, quindi non c'è bisogno di questo quirk
 * **AppleXcpmCfgLock**: NO
-  * * CFG-Lock non è presente su Penryn, quindi non c'è bisogno di questo quirk
+  * CFG-Lock non è presente su Penryn, quindi non c'è bisogno di questo quirk
 * Esegue la patch GUID per UpdateSMBIOSMode impostato su `Custom`. Solitamente rilevante per i laptop Dell
    * L'abilitazione di questo Quirk con la modalità UpdateSMBIOSMode Custom può anche disabilitare l'iniezione di SMBIOS in sistemi operativi "non Apple", tuttavia non approviamo questo metodo poiché interrompe la compatibilità con Bootcamp. Utilizzare a proprio rischio
 * **DisableIoMapper**: YES
