@@ -75,7 +75,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 ::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: YES
-  * * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
+  * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
 * **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
 * **EnableWriteUnprotector**: YES
