@@ -113,7 +113,7 @@ Impostazioni relative alle patch boot.efi e alle correzioni del firmware, a seco
 ::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: YES
-  * * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
+  * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
   * macOS Big Sur, tuttavia, richiede la presenza della tabella APIC, altrimenti causerebbe i primi panic del kernel, quindi questo Quirk è consigliato per quegli utenti.
 * **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
@@ -580,13 +580,13 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
   * Imposta la versione del BIOS su Max per evitare gli aggiornamenti del firmware in Big Sur +, applicabile principalmente a Mac originali.
 
 * **ProcessorType**: `0`
-  * * Impostare a "0" per il rilevamento automatico del tipo, tuttavia questo valore può essere sovrascritto se lo si desidera. Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per i possibili valori
+  * Impostare a "0" per il rilevamento automatico del tipo, tuttavia questo valore può essere sovrascritto se lo si desidera. Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per i possibili valori
 
 * **SpoofVendor**: YES
   * Scambia il campo fornitore per Acidanthera, generalmente non è sicuro utilizzare Apple come fornitore nella maggior parte dei casi
 
 * **SystemMemoryStatus**: Auto
-  * * Imposta se la memoria è saldata o meno nelle informazioni SMBIOS, puramente cosmetica e quindi si consiglia `Auto`
+  * Imposta se la memoria è saldata o meno nelle informazioni SMBIOS, puramente cosmetica e quindi si consiglia `Auto`
 
 * **UpdateDataHub**: YES
   * Aggiorna i campi di Data Hub
@@ -599,7 +599,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 * **UpdateSMBIOSMode**: Create
   * Sostituisci le tabelle con EfiReservedMemoryType appena allocato, usa `Custom` su laptops Dell che richiedono il Quirk `CustomSMBIOSGuid`
-  * * L'impostazione su `Custom` con il quirk` CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
+  * L'impostazione su `Custom` con il quirk` CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
 
 :::
 
