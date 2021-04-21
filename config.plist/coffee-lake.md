@@ -534,7 +534,7 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ::: tip Info
 
-er impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
+Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
 Per questo esempio Coffee Lake , sceglieremo iMac19,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. Esistono due SMBIOS principali utilizzati per Coffee Lake:
 
@@ -543,7 +543,7 @@ Per questo esempio Coffee Lake , sceglieremo iMac19,1 SMBIOS - questo viene fatt
 | iMac19,1 | Per Mojave e più recenti |
 | iMac18,3 | Per High Sierra e precedenti |
 
-* * Userai 18,3 quando hai una dGPU Pascal o Maxwell e sei limitato alle versioni di macOS con driver Web
+* Userai 18,3 quando hai una dGPU Pascal o Maxwell e sei limitato alle versioni di macOS con driver Web
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
@@ -589,7 +589,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
   * Imposta la versione del BIOS su Max per evitare gli aggiornamenti del firmware in Big Sur +, applicabile principalmente a Mac originali.
 
 * **ProcessorType**: `0`
-  * * Impostare a "0" per il rilevamento automatico del tipo, tuttavia questo valore può essere sovrascritto se lo si desidera. Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per i possibili valori
+  * Impostare a "0" per il rilevamento automatico del tipo, tuttavia questo valore può essere sovrascritto se lo si desidera. Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per i possibili valori
 
 * **SpoofVendor**: YES
   * Scambia il campo fornitore per Acidanthera, generalmente non è sicuro utilizzare Apple come fornitore nella maggior parte dei casi
