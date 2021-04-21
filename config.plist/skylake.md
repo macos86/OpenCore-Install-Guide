@@ -81,7 +81,7 @@ Le impostazioni relative al patching boot.efi e alle correzioni del firmware, pe
 * **EnableWriteUnprotector**: YES
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: YES
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: sono utilizzabili solo N / 256 valori di diapositiva!` Nel registro di debug. Se il messaggio `OCABC: tutte le diapositive sono utilizzabili! Puoi disabilitare ProvideCustomSlide! `È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
 * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
 
@@ -343,7 +343,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
-Questi valori si basano su quelli calcolati in[OpenCore debugging](../troubleshooting/debug.md)
+Questi valori si basano su quelli calcolati in [OpenCore debugging](../troubleshooting/debug.md)
 
 :::
 
@@ -448,7 +448,7 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio generici**:
 
-| boot-args | Description |
+| boot-args | Descrizione |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
 | **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi * si spera * raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
@@ -457,7 +457,7 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio specifici per GPU**:
 
-| boot-args | Description |
+| boot-args | Descrizione |
 | :--- | :--- |
 | **agdpmod=pikera** | Utilizzato per disabilitare boardID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le carte Polaris e Vega non dovrebbero usarlo) |
 | **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e HighSierra |
