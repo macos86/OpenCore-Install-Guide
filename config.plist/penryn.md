@@ -318,7 +318,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
-Questi valori si basano su quelli calcolati in[OpenCore debugging](../troubleshooting/debug.md)
+Questi valori si basano su quelli calcolati in [OpenCore debugging](../troubleshooting/debug.md)
 
 :::
 
