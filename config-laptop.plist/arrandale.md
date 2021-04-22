@@ -180,9 +180,9 @@ Qui è dove specifichiamo quali kext caricare, in quale ordine specifico caricar
 
 La cosa principale che devi tenere a mente è:
 
-* Load order
-  * Remember that any plugins should load *after* its dependencies
-  * This means kexts like Lilu **must** come before VirtualSMC, AppleALC, WhateverGreen, etc
+* Ordine di caricamento
+   * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
+   * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WhateverGreen, ecc.
 
 A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can run **Cmd/Ctrl + Shift + R** to add all their kexts in the correct order without manually typing each kext out.
 
@@ -367,7 +367,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
-Questi valori si basano su quelli calcolati in[OpenCore debugging](../troubleshooting/debug.md)
+Questi valori si basano su quelli calcolati in [OpenCore debugging](../troubleshooting/debug.md)
 
 :::
 
@@ -376,6 +376,7 @@ Questi valori si basano su quelli calcolati in[OpenCore debugging](../troublesho
 ::: tip Info
 
 Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modificheremo quanto segue:
+
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
 | AllowNvramReset | YES | |
@@ -664,12 +665,12 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 :::
 
-::: details Informazioni più approfondite
+::: details More in-depth Info
 
 * **IgnoreInvalidFlexRatio**: YES
   * Risolto il problema quando MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake precedenti
 * **ReleaseUsbOwnership**: YES
-  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI/XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
+  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI / XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
 * **DisableSecurityPolicy**: NO
   * Disabilita i criteri di sicurezza della piattaforma nel firmware, consigliato per firmware con bug in cui la disabilitazione di Secure Boot non consente il caricamento dei driver del firmware di terze parti.
    * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione
