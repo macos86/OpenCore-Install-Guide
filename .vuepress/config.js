@@ -63,8 +63,8 @@ module.exports = {
                         link: 'https://dortania.github.io/'
                     },
                     {
-                        text: 'Getting Started With ACPI (EN)',
-                        link: 'https://dortania.github.io/Getting-Started-With-ACPI/'
+                        text: 'Iniziamo con ACPI',
+                        link: 'https://macos86.github.io/Getting-Started-With-ACPI/'
                     },
                     {
                         text: 'OpenCore Post-Install (EN)',
@@ -121,7 +121,7 @@ module.exports = {
                     },
                     '/installer-guide/opencore-efi',
                     'ktext',
-                    ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI (EN)'],
+                    ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Iniziamo con ACPI'],
                     '/config.plist/',
                 ]
             },
