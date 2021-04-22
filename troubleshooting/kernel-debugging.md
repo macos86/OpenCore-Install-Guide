@@ -102,7 +102,7 @@ Per questa configurazione, avrai bisogno di alcune cose:
 
 ### Hardware Setup
 
-Per questo esempio, utilizzeremo una scheda Asus X299-E Strix che ha una porta seriale. Per verificare se la tua scheda ne ha una, controlla il manuale utente o di servizio e cerca la porta seriale / COM:
+Per questo esempio, utilizzeremo una scheda Asus X299-E Strix che ha una porta seriale. Per verificare se la tua scheda ne ha una, controlla il manuale utente o di servizio e cerca la porta seriale/COM:
 
 ![](../images/troubleshooting/kernel-debugging-md/serial-header.png)
 

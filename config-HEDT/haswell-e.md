@@ -89,7 +89,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * **EnableWriteUnprotector**: SÌ
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: SÌ
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio "OCABC: sono utilizzabili solo N / 256 valori di diapositiva!" Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
 * **SetupVirtualMap**: SI
   * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic
 
@@ -127,7 +127,7 @@ La cosa principale che devi tenere a mente è:
   * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
   * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WutelyGreen, ecc.
 
-Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperTree) possono eseguire **Cmd / Ctrl + Shift + R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
+Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl + Shift + R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
 
 * **Arch**
   * Architetture supportate da questo kext

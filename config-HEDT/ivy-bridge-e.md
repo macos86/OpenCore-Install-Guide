@@ -81,7 +81,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * **EnableWriteUnprotector**: SÌ
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: SÌ
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio "OCABC: sono utilizzabili solo N / 256 valori di diapositiva!" Nel registro di debug. Se il messaggio `OCABC: tutte le diapositive sono utilizzabili! Puoi disabilitare ProvideCustomSlide! `È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: tutte le diapositive sono utilizzabili! Puoi disabilitare ProvideCustomSlide! `È presente nel tuo registro, puoi disabilitare` ProvideCustomSlide`.
 * **SetupVirtualMap**: SI
   * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic
 

@@ -51,7 +51,7 @@ Ora che boot.efi ha configurato tutto per noi, ora possiamo vedere il kernel che
 
 ![](../images/troubleshooting/boot-md/2-kernel-start.png)
 
-Questa sezione è dove vengono verificati i dati SMBIOS, vengono caricate le tabelle ACPI / Kext e macOS cerca di mettere tutto in ordine. I guasti qui sono generalmente il risultato di:
+Questa sezione è dove vengono verificati i dati SMBIOS, vengono caricate le tabelle ACPI/Kext e macOS cerca di mettere tutto in ordine. I guasti qui sono generalmente il risultato di:
 
 * SSDTs Corrotti
 * Kexts corrotti (o impostati in modo errato nel tuo config.plist sotto -> Kernel -> Add)
@@ -87,7 +87,7 @@ Per informazioni più specifiche su come muoversi in quest'area, vedere qui:
 
 ![](../images/troubleshooting/boot-md/8-dsmos-arrived.png)
 
-È qui che i nostri FakeSMC / VirtualSMC entrano in scena e fanno la loro magia, DSMOS stesso è un kext che verifica se il tuo sistema ha un SMC e richiederà una chiave. Se questa chiave non è presente, DSMOS non decrittograferà il resto dei file binari e rimarrai bloccato qui. Potresti anche rimanere bloccato su AppleACPICPU che è lo stesso errore.
+È qui che i nostri FakeSMC/VirtualSMC entrano in scena e fanno la loro magia, DSMOS stesso è un kext che verifica se il tuo sistema ha un SMC e richiederà una chiave. Se questa chiave non è presente, DSMOS non decrittograferà il resto dei file binari e rimarrai bloccato qui. Potresti anche rimanere bloccato su AppleACPICPU che è lo stesso errore.
 
 * [kextd stall[0]: AppleACPICPU](./extended/kernel-issues.md#kextd-stall-0-appleacpicpu)
 

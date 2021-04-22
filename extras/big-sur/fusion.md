@@ -5,7 +5,7 @@
 * VMware Fusion
 * Java (funzionano sia JRE che JDK)
 * Un computer con macOS
-* Il software di installazione di macOS desiderato installato in / Applicazioni
+* Il software di installazione di macOS desiderato installato in /Applications
 * Un disco rigido o SSD collegato tramite USB o un disco interno che può essere passato interamente
 
 ## Conversione dei supporti di installazione
@@ -31,13 +31,13 @@ Hai due opzioni qui: passare attraverso un disco grezzo o passare attraverso un 
 
     ```bash
     diskutil list
-    # individuare il disco esterno che corrisponde e sostituire / dev / disk3 di seguito con il percorso del dispositivo.
+    # individuare il disco esterno che corrisponde e sostituire /dev/disk3 di seguito con il percorso del dispositivo.
     sudo /Applications/VMware\ Fusion.app/Contents/Library/vmware-rawdiskCreator create /dev/disk3 fullDevice RawHDD ide
     ```
 
 2. Quindi, avvia VMware Fusion. Dovresti vedere la home page. In caso contrario, chiudere qualsiasi finestra che si è aperta e selezionare `File` > `New` dalla barra dei menu.
     ![](../../images/extras/big-sur/fusion/homepage.png)
-3. Seleziona l'opzione "Crea una macchina virtuale personalizzata" e seleziona macOS 10.15 (poiché 10.16 / 11 non è disponibile).
+3. Seleziona l'opzione "Crea una macchina virtuale personalizzata" e seleziona macOS 10.15 (poiché 10.16/11 non è disponibile).
     ![](../../images/extras/big-sur/fusion/choose-os.png)
 4. Seleziona "Usa un disco virtuale esistente" nella schermata sottostante.
     ![](../../images/extras/big-sur/fusion/choose-virtual-disk.png)
