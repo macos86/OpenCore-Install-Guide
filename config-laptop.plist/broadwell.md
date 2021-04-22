@@ -180,9 +180,9 @@ Qui è dove specifichiamo quali kext caricare, in quale ordine specifico caricar
 
 La cosa principale che devi tenere a mente è:
 
-* Load order
-  * Remember that any plugins should load *after* its dependencies
-  * This means kexts like Lilu **must** come before VirtualSMC, AppleALC, WhateverGreen, etc
+* Ordine di caricamento
+   * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
+   * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WhateverGreen, ecc.
 
 A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can run **Cmd/Ctrl + Shift + R** to add all their kexts in the correct order without manually typing each kext out.
 
@@ -367,7 +367,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
-Questi valori si basano su quelli calcolati in[OpenCore debugging](../troubleshooting/debug.md)
+Questi valori si basano su quelli calcolati in [OpenCore debugging](../troubleshooting/debug.md)
 
 :::
 
