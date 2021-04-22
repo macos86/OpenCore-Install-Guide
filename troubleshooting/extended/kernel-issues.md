@@ -257,7 +257,7 @@ Per risolvere questo è possibile eseguire una delle seguenti operazioni:
   
 Per fare questo tramite Terminale:
 
-​```bash
+```bash
 # Innanzitutto, trova il tuo volume del preboot
 diskutil list
 
