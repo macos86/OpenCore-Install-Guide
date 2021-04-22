@@ -107,7 +107,7 @@ Skip: 0
 
 ## Congelato nel programma di installazione di macOS dopo 30 secondi
 
-Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI / OC / Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
+Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
 
 ##  Riavvio della CPU 15h/16h dopo la schermata Data & Privacy
 
@@ -131,7 +131,7 @@ Questo errore è dovuto a un piccolo EFI, per impostazione predefinita Windows c
 
 * Espandi l'EFI dell'unità a 200 MB (cerca su Google per sapere come)
 * Formatta l'intera unità anziché solo la partizione
-   * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd / Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
+   * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd/Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
 
 Default           |  Show All Devices(Cmd+2)
 :-------------------------:|:-------------------------:
@@ -189,7 +189,7 @@ Per risolvere l'errore, hai alcune opzioni:
 
 ## Tastiera e mouse non funzionanti in Big Sur
 
-Per alcuni sistemi legacy (es. Core2 Duo / 2010 e versioni precedenti), potresti notare che mentre le porte USB funzionano, i tuoi dispositivi basati su HID come la tastiera e il mouse potrebbero essere danneggiati. Per risolvere questo problema, aggiungi la seguente patch:
+Per alcuni sistemi legacy (es. Core2 Duo/2010 e versioni precedenti), potresti notare che mentre le porte USB funzionano, i tuoi dispositivi basati su HID come la tastiera e il mouse potrebbero essere danneggiati. Per risolvere questo problema, aggiungi la seguente patch:
 
 ::: details IOHIDFamily Patch
 

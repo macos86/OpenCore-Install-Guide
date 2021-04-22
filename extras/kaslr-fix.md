@@ -69,7 +69,7 @@ Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vog
 * Abilita le impostazioni del BIOS tanto necessarie:
   * `Above4GDecoding`: Ciò consente ai dispositivi di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi, può essere problematico su alcuni X99, X299 quindi consigliato di testare con e senza.
     * Nota: su BIOS che supporta il supporto BAR ridimensionabile, abilitare Above4G sbloccherà questa opzione. Assicurati che il supporto BAR sia disabilitato se l'opzione si presenta.
-  * `Opzioni di avvio -> Modalità Windows 8.1 / 10`: Questo assicurerà che non venga caricata alcuna vecchia spazzatura legacy. Fatto divertente, "altro sistema operativo" è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
+  * `Opzioni di avvio -> Windows 8.1/10 Mode`: Questo assicurerà che non venga caricata alcuna vecchia spazzatura legacy. Fatto divertente, "Other OS" è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
 * Disabilita tutti i dispositivi non necessari nel BIOS (questo significa che c'è meno variazione nella mappa ad ogni avvio, quindi meno possibilità di errore di avvio). Impostazioni comuni:
   * `CSM`: per il supporto legacy, aggiunge un mucchio di spazzatura che non vogliamo. Anche questo può rompere il guscio in modo da non poterlo avviare.
   * `Intel SGX`: Software Guard Extensions, occupa molto spazio e non fa nulla in macOS.

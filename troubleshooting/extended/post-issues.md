@@ -18,7 +18,7 @@ Possibili problemi quando macOS è già installato.
 * [Nessun Output dai sensori di temperatura/ventola](#nessun-Output-dai-sensori-di-temperatura/ventola)
 * [Errore "Non è possibile modificare il disco di avvio con il disco selezionato"](#errore-Non-è-possibile-modificare-il-disco-di-avvio-con-il-disco-selezionato)
 * [macOS si risveglia con l'ora sbagliata](#macOS-si-risveglia-con-l'ora-sbagliata)
-* [Nessun controllo del volume / luminosità sui monitor esterni](#nessun-controllo-del-volume/luminosità-sui-monitor-esterni)
+* [Nessun controllo del volume/luminosità sui monitor esterni](#nessun-controllo-del-volume/luminosità-sui-monitor-esterni)
 * [Disabilitare SIP](#disabilitare-SIP)
 * [Rollback degli snapshot APFS](#rollback-degli-snapshot-apfs)
 * [Problemi di sblocco di Apple Watch](#problemi-di-sblocco-di-apple-watch)
@@ -32,7 +32,7 @@ Fare riferimento alla sezione [Fixing iServices (EN)](https://dortania.github.io
 
 Fare riferimento alla sezione [Fixing Audio with AppleALC (EN)](https://dortania.github.io/OpenCore-Post-Install/)
 
-## BIOS ripristinato o messo in modalità provvisoria dopo il riavvio / spegnimento?
+## BIOS ripristinato o messo in modalità provvisoria dopo il riavvio/spegnimento?
 
 Fare riferimento alla sezione [Fixing RTC write issues (EN)](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
 
@@ -89,7 +89,7 @@ External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
 
 Verifica quanto segue:
 
-* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* La GPU supporta UEFI (GTX-7XX/2013+)
 * CSM è disattivato nel BIOS
 * Forzare la velocità di collegamento PCIe 3.0
 
@@ -122,7 +122,7 @@ Quindi con AMD, ogni volta che Apple chiama funzioni specifiche della CPU, l'app
    * Il toolbox Docker è l'unica soluzione in quanto si basa su VirtualBox, molte funzionalità non sono disponibili con questa versione
 * IDA Pro non si installa
    * C'è un controllo specifico di Intel nel programma di installazione, l'app stessa probabilmente va bene
-* 15 / 16h pagine web della CPU in crash
+* Nella 15°/16° le pagine web possono mandare la CPU in crash
    * Segui le indicazioni qui dopo l'AGGIORNAMENTO 5: [Correggi pagine web](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2661857)
 
 ## Sleep non funziona su AMD
@@ -163,7 +163,7 @@ In macOS 10.15.4, there were some changes made to AGPM that can cause wake issue
 * Add `igfxonln=1` to boot-args
 * Make sure you're using [WhateverGreen v1.3.8](https://github.com/acidanthera/WhateverGreen/releases) or newer
 
-## Nessun Output dai sensori di temperatura / ventola
+## Nessun Output dai sensori di temperatura/ventola
 
 Quindi un paio di cose:
 
@@ -191,7 +191,7 @@ Ciò è comunemente causato dall'installazione irregolare della partizione dell'
 
 ## La selezione del disco di avvio non si applica correttamente
 
-Se si verificano problemi con "Disco di avvio" che non applica correttamente la nuova voce, molto probabilmente è causato da un "DevicePathsSupported" mancante nel registro di I / O. Per risolvere questo problema, assicurati di utilizzare "PlatformInfo -> Automatic -> True"
+Se si verificano problemi con "Disco di avvio" che non applica correttamente la nuova voce, molto probabilmente è causato da un "DevicePathsSupported" mancante in IOReg. Per risolvere questo problema, assicurati di utilizzare "PlatformInfo -> Automatic -> True"
 
 Esempio di "DevicePathsSupported" mancante:
 

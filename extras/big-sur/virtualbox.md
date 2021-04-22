@@ -4,7 +4,7 @@
 
 * VirtualBox
 * Un computer con macOS
-* Il software di installazione di macOS desiderato installato in / Applicazioni
+* Il software di installazione di macOS desiderato installato in /Applications
 * Un disco rigido o SSD collegato tramite USB
 
 ## Conversione dei supporti di installazione
@@ -24,7 +24,7 @@ Innanzitutto, collega il disco USB che è il tuo obiettivo per l'installazione d
 
 ```bash
 diskutil list
-# individua il disco esterno che corrisponde e sostituisci / dev / disk3 di seguito con il percorso del dispositivo.
+# individua il disco esterno che corrisponde e sostituisci /dev/disk3 di seguito con il percorso del dispositivo.
 sudo VBoxManage internalcommands createrawvmdk -filename RawHDD.vmdk -rawdisk /dev/disk3
 ```
 

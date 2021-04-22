@@ -702,7 +702,7 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 * **IgnoreInvalidFlexRatio**: YES
   * Risolve il problema quando MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake precedenti
 * **ReleaseUsbOwnership**: YES
-  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI / XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
+  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI/XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
 * **DisableSecurityPolicy**: NO
   * Disabilita i criteri di sicurezza della piattaforma nel firmware, consigliato per firmware con bug in cui la disabilitazione di Secure Boot non consente il caricamento dei driver del firmware di terze parti.
    * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione

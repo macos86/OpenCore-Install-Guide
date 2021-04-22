@@ -78,7 +78,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 	  * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +` SyncRuntimePermissions`)
 	  * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
 
-Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](../ debug.html)):
+Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](../debug.html)):
 
 ```
 OCABC: MAT supportiss 1
@@ -239,20 +239,20 @@ Alla fine riavviare
 
 ## Bloccato su `OCB: LoadImage failed - Security Violation`
 
-`` ``..
+```
 OCSB: nessuna firma adatta - violazione della sicurezza
 OCB: Apple Secure Boot vieta questa voce di avvio, Applicazione!
 OCB: LoadImage fallito - Violazione della sicurezza
-`` ``..
+```
 
 Ciò è dovuto ad un mancante/obsoleto Apple Secure Boot manifest presente sul tuo volume del preboot risultante nel mancato caricamento se abillitato SecurebootModel Set; il motivo per cui tali file mancano è in realtà un bug in MacOS.
 
 Per risolvere questo è possibile eseguire una delle seguenti operazioni:
 
 * Disabilita SecurebootModel.
-   * cioè. Set `misc -> secuirty -> SecurebootModel -> Disabilitato`
+   * Imposta `misc -> secuirty -> SecurebootModel -> Disabled`
 * Reinstallare Macos con l'ultima versione
-* O copia sopra i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
+* Copia i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
    * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
   
 Per fare questo tramite Terminale:
@@ -299,7 +299,6 @@ cat ./CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices/.disk_lab
 # Sostituire CD844C38-1A25-48D5-9388-5D62AA46CFB8 con il tuo UUID
 cd ~
 sudo cp -a /usr/standalone/i386/. /System/Volumes/Preboot/CD844C38-1A25-48D5-9388-5D62AA46CFB8/System/Library/CoreServices
-
 ```
 
 ## Bloccato su `OCABC: Memory pool allocation failure - Not Found`
@@ -307,7 +306,7 @@ sudo cp -a /usr/standalone/i386/. /System/Volumes/Preboot/CD844C38-1A25-48D5-938
 Ciò è dovuto alle impostazioni del BIOS errate:
 
 * Above4GDecoding è abilitato
-* CSM è disabilitato (abilitare la modalità Windows8.1 / 10 WHQL può fare lo stesso su alcune schede)
+* CSM è disabilitato (abilitare la modalità Windows 8.1/10 WHQL può fare lo stesso su alcune schede)
   * Nota su alcuni laptop, il CSM deve essere abilitato
 * Il BIOS è da aggiornare (Z390 e HEDT sono noti per avere firmware scarsamente scritte)
 
@@ -373,7 +372,7 @@ I luoghi principali da verificare:
     * Alcune schede X99 e X299 (cioè GA-X299-UD4) possono richiedere sia npci boot-arg che Above4G abilitato
   * NOTA sulle CPU AMD: **Non avere contemporaneamente l'impostazione Above4G abilitata e boot-arg npci, andranno in conflitto**
     * Nota 2020+ BIOS: Quando si abilita  Above4G, potrebbe essere che nel Bios diventi disponibile l'opzione "Resizable BAR Support". Assicurati che sia **Disabilitato** invece che su Auto.
-  * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1 / 10 Modalità UEFI abilitata
+  * Altre impostazioni del BIOS Importanti: CSM Disabilitato, Windows 8.1/10 UEFI mode abilitata
 * **Problemi NVMe or SATA**:
   * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
     * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
@@ -470,7 +469,7 @@ Per coloro che sono sulla piattaforma X99 di Intel, controllare quanto segue:
 
 Questo è giusto prima che la GPU venga inizializzata correttamente, verifica quanto segue:
 
-* La GPU supporta UEFI (GTX 7XX / 2013 +)
+* La GPU supporta UEFI (GTX-7XX/2013+)
 * CSM è disattivato nel BIOS
    * Potrebbe essere necessario abilitarlo sui laptop
 * Forzare la velocità di collegamento PCIe 3.0
@@ -574,7 +573,7 @@ Assicurati che VoodooInput sia elencato * prima di * VoodooPS2 e VoodooI2C kexts
 
 ::: details Risoluzione dei problemi di VoodooI2C
 
-Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](../../ ktext.md):
+Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](../../ktext.md):
 
 1. VoodooGPIO, VoodooInput e VoodooI2CServices in qualsiasi ordine (Si trovano in VoodooI2C.kext/Contents/PlugIns)
 2. VoodooI2C

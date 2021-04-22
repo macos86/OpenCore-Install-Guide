@@ -160,9 +160,9 @@ E sebbene non sia un problema, SIP ha ora guadagnato un nuovo bit quindi per dis
 
 Le guide sono state aggiornate per adattarsi a Big Sur, vedere l'ambiente del sistema operativo applicabile per te:
 
-* [utenti macOS](../../ installer-guide / mac-install.md)
-* [Utenti Windows](../../ installer-guide / winblows-install.md)
-* [Utenti Linux](../../installer-guide /linux-install.md)
+* [utenti macOS](../../installer-guide/mac-install.md)
+* [Utenti Windows](../../installer-guide/winblows-install.md)
+* [Utenti Linux](../../installer-guide/linux-install.md)
 
 ## Risoluzione dei problemi
 
@@ -197,7 +197,7 @@ Ciò è dovuto a un bridge PCI uncore inutilizzato abilitato in ACPI, e quindi I
 
 Con Big Sur, macOS è diventato molto più esigente con i dispositivi presenti in ACPI. Soprattutto se stai iniettando proprietà importanti per WutelyGreen o AppleALC, potresti scoprire che non si applicano più. Per verificare se il tuo ACPI definisce il tuo hardware, controlla la proprietà `acpi-path` in [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-210.zip):
 
-! [](../../ images / extras / big-sur / readme / acpi-path.png)
+! [](../../images/extras/big-sur/readme/acpi-path.png)
 
 Se non viene trovata alcuna proprietà, sarà necessario creare un SSDT che fornisca il percorso completo poiché probabilmente si dispone di un bridge PCI non documentato nelle tabelle ACPI. Un esempio di questo può essere trovato qui: [SSDT-BRG0](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-BRG0.dsl)
 

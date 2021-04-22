@@ -37,7 +37,7 @@ Ora sei finalmente pronto per mettere la chiavetta nel tuo computer e spegnerlo.
 Una volta avviata la USB, dovrai vedere le seguenti opzioni:
 
 1. Windows
-2. macOS Base System (External) / Install macOS Catalina (External)
+2. macOS Base System (External)/Install macOS Catalina (External)
 3. OpenShell.efi
 4. Reset NVRAM
 
