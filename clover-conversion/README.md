@@ -57,11 +57,11 @@ touch /Library/Extensions /System/Library/Extensions​
 kextcache -i /​
 ```
 
-* **Nota**, macOS Catalina e sucessivi dovranno usare il comando `mount -uw /` per montare il volume di sistema come Read/Write
+* **Nota**, macOS Catalina dovrà usare il comando `mount -uw /` per montare il volume di sistema come Read/Write
 
 ## Pulizia dalla spazzatura di Clover nel tuo hardware
 
-L'altra cosa che Clover ha fatto è che potrebbe averti nascosto le variabili NVRAM, cosa che OpenCore non gradisce, dato che non sovrascriverà variabile a meno che non scritto con la funzionalità `Block` trovabile in `NVRAM -> Block`. Per sistemare questo, dovremmo pulirla usando la funzionalità `ClearNvram`.
+L'altra cosa che Clover ha fatto è che potrebbe averti nascosto le variabili NVRAM, cosa che OpenCore non gradisce, dato che non sovrascriverà variabile a meno che non scritto con la funzionalità `Delete` trovabile in `NVRAM -> Delete`. Per sistemare questo, dovremmo pulirla usando la funzionalità `ClearNvram`.
 
 Nel tuo config.plist:
 

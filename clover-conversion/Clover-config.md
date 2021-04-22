@@ -63,9 +63,8 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 **Patches**
 
-* Patch del TgtBridge: Nessun rimpiazzo in OpenCore, vedi commenti (TgtBridge era molto buggato in Clover):
-  * [Commento di Vit (EN)](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2682158)
-  * [Commento di Andrey (EN)](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2678273)
+* Patch del TgtBridge:
+  * `ACPI -> Patch -> ... -> Base`
 
 * DisableASPM:
   * `DeviceProperties -> Add -> PciRoot... -> pci-aspm-default | Data | <00>`
@@ -375,6 +374,8 @@ Per altri InjectAti, vedi il [Sample.dsl](https://github.com/acidanthera/Whateve
 * `DeviceProperties -> Add -> PciRoot... ->  @0,AAPL,boot-display`
 
 **RadeonDeInit**:
+
+Nella maggior parte dei casi è possibile usare WhateverGreen, dato che se ne occupa automaticamente. Questo SSDT non è necessario se WhateverGreen è usato.
 
 * [Radeon-Denit-SSDT](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/Radeon-Deinit-SSDT.dsl)
   * Viene usato di default per GFX0, sistemalo per il tuo sistema
