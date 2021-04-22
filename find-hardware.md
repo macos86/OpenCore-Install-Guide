@@ -4,8 +4,7 @@ Questa sezione è una mini-guida che spiega come trovare il tuo hardware corrent
 
 Perciò, assumeremo che hai Windows o Linux installato:
 
-* [Trovare hardware usando Windows](#trovare-hardware-usando-windows)
-* [Trovare hardware usando Linux](#trovare-hardware-usando-linux)
+[[toc]]
 
 ## Trovare hardware usando Windows
 

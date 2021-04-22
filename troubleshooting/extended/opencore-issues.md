@@ -4,21 +4,7 @@
 
 Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avviare il programma di installazione di macOS
 
-* [Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre](#bloccato-su-uno-schermo-nero-prima-del-selettore-oppure-si-riavvia-sempre)
-* [Bloccato su `no vault provided!`](#bloccato-su-no-vault-provided!)
-* [Bloccato su `OC: Invalid Vault mode`](#bloccato-su-oc-invalid-vault-mode)
-* [Bloccato su `OCB: OcScanForBootEntries failure - Not Found`](#bloccato-su-ocb-ocscanforbootentries-failure-not-found)
-* [Bloccato su `OCB: failed to match a default boot option`](#bloccato-su-ocb-failed-to-match-a-default-boot-option)
-* [Bloccato su `OCB: System has no boot entries`](#bloccato-su-ocb-system-has-no-boot-entries)
-* [Bloccato su `OCS: No schema for DSDT, KernelAndKextPatch, RtVariable, SMBIOS, SystemParameters...`](#bloccato-su-ocs-no-schema-for-dsdt-kernelandkextpatch-rtvariable-smbios-systemparameters)
-* [Bloccato su `OC: Driver XXX.efi at 0 cannot be found`](#bloccato-su-oc-driver-xxx-efi-at-0-cannot-be-found)
-* [Ricezione di `Failed to parse real field of type 1`](#ricezione-di-failed-to-parse-real-field-of-type-1)
-* [Non è possibile selezionare nulla nel selettore](#non-è-possibile-selezionare-nulla-nel-selettore)
-* [SSDT non vengono aggiunti](#ssdt-non-vengono-aggiunti)
-* [L'avvio di OpenCore riavvia nel BIOS](#l'avvio-di-OpenCore-riavvia-nel-bios)
-* [OCABC: Incompatible OpenRuntime r4, require r10](#ocabc-incompatible-openruntime-r4-require-r10)
-* [Impossibile aprire l'immagine OpenCore Access Denied](#impossibile-aprire-l'immagine-OpenCore-Access-Denied)
-* [OC: Failed to find SB model disable halting on critical error](#oc-failed-to-find-sb-model-disable-halting-on-critical-error)
+[[toc]]
 
 ## Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre
 

@@ -4,13 +4,7 @@ Questa sezione andrà un po 'più in profondità nella risoluzione dei problemi,
 
 **Note**: Il 99% degli utenti non ha bisogno di questo livello di debug, questo è solo per casi estremi o estremi.
 
-* [EFI Setup](#efi-setup)
-* [Config.plist Setup](#config-plist-setup)
-* [Serial Setup (Opzionale)](#serial-setup-optional)
-  * [CoolTerm Setup](#coolterm-setup)
-* [Kernel Debug Kits (Opzionale)](#kernel-debug-kits-optional)
-  * [KDK su un sistema operativo installato](#kdk-on-an-installed-os)
-  * [Disinstallare il KDK](#uninstalling-the-kdk)
+[[toc]]
 
 ## EFI Setup
 

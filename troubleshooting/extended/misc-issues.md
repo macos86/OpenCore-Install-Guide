@@ -4,16 +4,7 @@
 
 Problemi vari che non ruotano attorno a macOS stesso come per esempio il multiboot.
 
-* [Non posso eseguire`acpidump.efi`](#non-posso-eseguire-acpidump-efi)
-* [Correzione per SSDTTime: `Could not locate or download iasl!`](#correzione-per--ssdttime-could-not-locate-or-download-iasl)
-* [Correzione per Python: `Python is not installed or not found on PATH`](#correzione-per-python-python-is-not-installed-or-not-found-on-path)
-* [Il disco di avvio di Windows non riesce a vedere le unità APFS](#il-disco-di-avvio-di-Windows-non-riesce-a-vedere-le-unità-APFS)
-* [Risoluzione errata con OpenCore](#risoluzione-errata-con-OpenCore)
-* [Impossibile trovare l'unità Windows/BootCamp fra i selettori](#impossibile-trovare-l'unità Windows/BootCamp-fra-i-selettori)
-* [La selezione del disco di avvio non si applica correttamente](#la-selezione-del-disco-di-avvio-non-si-applica-correttamente)
-* [L'avvio di Windows provoca arresti anomali (Bluescreen) o crash di Linux](#l'avvio-di-Windows-provoca-arresti-anomali-Bluescreen-o-crash-di-Linux)
-* [Errore di avvio di Windows: "OCB: StartImage failed - Already started"](#errore-di-avvio-di-windows:-error-ocb-startimage-failed-already-started)
-* [iASL warning, # unresolved](#iasl-warning-unresolved)
+[[toc]]
 
 ## Non posso eseguire`acpidump.efi`
 
