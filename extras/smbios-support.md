@@ -261,6 +261,7 @@ Tutti i modelli elencati qua sotto non sono supportati da OpenCore, tuttavia son
   * [Mac Mini](#mac-mini-apple-silicon)
   * [MacBook Air](#macbook-air-apple-silicon)
   * [MacBook Pro](#macbook-pro-apple-silicon)
+  * [iMac](#imac-apple-silicon)
 * PowerPC
   * [PowerBook](#powerbook-powerpc)
   * [iBook](#ibook-powerpc)
@@ -292,21 +293,32 @@ Informazioni extra riguardo le CPU Apple:
 
 #### Mac Mini - Apple Silicon
 
-| SMBIOS     | Anno      | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
+| SMBIOS | Anno | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
 | :--- | :--- | :--- | :--- | :--- |
 | MacMini9,1 | Late 2020 |  Apple M1 | J274 | 11.0.0 (20A2411) |
 
 #### MacBook Air - Apple Silicon
 
-| SMBIOS         | Anno      | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
+| SMBIOS | Anno | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
 | :--- | :--- | :--- | :--- | :--- |
 | MacBookAir10,1 | Late 2020 |  Apple M1 | J313 | 11.0.0 (20A2411) |
 
 #### MacBook Pro - Apple Silicon
 
-| SMBIOS         | Anno      | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
+| SMBIOS | Anno | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
 | ---- | :--- | :--- | :--- | :--- |
 | MacBookPro17,1 | Late 2020 | Apple M1 | J293 | 11.0.0 (20A2411) |
+
+
+<!-- | MacBookPro18,1 | Late 2021 | Apple M1X(?) | J314 | Unknown | -->
+<!-- | MacBookPro18,2 | Late 2021 | Apple M1X(?) | J316 | Unknown | -->
+
+#### iMac - Apple Silicon
+
+| SMBIOS | Anno | Famiglia CPU | Identificatore Secure Enclave | Supporto Iniziale |
+| :--- | :--- | :--- | :--- | :--- |
+| iMac21,1 | Mid 2021 | Apple M1 | J256 | 11.3 (20E232?) |
+| iMac21,2 | Mid 2021 | Apple M1 | J257 | 11.3 (20E232?) |
 
 ::: details Power PC SMBIOS Table
 
