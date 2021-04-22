@@ -4,7 +4,6 @@ heroImage: /dortania-logo-clear.png
 heroText: Guida di Installazione OpenCore by Dortania
 actionText: Iniziamo→
 actionLink: prerequisites.md
-
 meta:
 - name: description
   content: Versione attualmente supportata 0.6.8
