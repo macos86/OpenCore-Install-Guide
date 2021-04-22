@@ -4,34 +4,7 @@
 
 Problemi relativi all'avvio iniziale del programma di installazione di macOS subito prima che venga visualizzata la GUI di installazione.
 
-* [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
-* [Bloccato su EndRandomSeed](#bloccato-su-endrandomseed)
-* [Bloccato dopo aver selezionato la partizione macOS in OpenCore](#bloccato-dopo-aver-selezionato-la-partizione-macos-in-opencore)
-* [Kernel Panic su `Invalid frame pointer`](#kernel-panic-su-invalid-frame-pointer)
-* [Bloccato su `[EB | LD: OFS] Err (0xE)` all'avvio del volume di preavvio](#bloccato-su-eb-ld-ofs-err-0xe-when-booting-preboot-volume)
-* [Bloccato su `OCB: LoadImage failed - Security Violation`](#bloccato-su-ocb-loadimage-failed-security-violation)
-* [Bloccato su `OCABC: Memory pool allocation failure - Not Found`](#bloccato-su-ocabc-memory-pool-allocation-failure-not-found)
-* [Bloccato su `Buffer Too Small`](#bloccato-su-buffer-too-small)
-* [Bloccato su `Plist only kext has CFBundleExecutable key`](#bloccato-su-plist-only-kext-has-cfbundleexecutable-key)
-* [Bloccato su `This version of Mac OS X is not supported: Reason Mac...`](#bloccato-su-this-version-of-mac-os-x-is-not-supported-reason-mac)
-* [Errori `Couldn't allocate runtime area`?](#errori-couldn-t-allocate-runtime-area)
-* [Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](#bloccato-su-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
-* [Bloccato su ACPI Table loading on B550](#bloccato-su-acpi-table-loading-on-b550)
-* ["Waiting for Root Device" o Prohibited Sign error](#errore-waiting-for-root-device-or-prohibited-sign)
-* [Kernel panic con IOPCIFamily su X99](#kernel-panic-with-iopcifamily-on-x99)
-* [Bloccato su o vicino `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-o-vicino-ioconsoleusers-gioscreenlock-giolockstate-3)
-* [Schermo deformato su laptops](#scrambled-screen-on-laptops)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-navi)
-* [Kernel Panic `Cannot perform kext summary`](#kernel-panic-cannot-perform-kext-summary)
-* [Kernel Panic `AppleIntelMCEReporter`](#kernel-panic-appleintelmcereporter)
-* [Kernel Panic `AppleIntelCPUPowerManagement`](#kernel-panic-appleintelcpupowermanagement)
-* [Kernel Panic `AppleACPIPlatform` in 10.13](#kernel-panic-appleacpiplatform-in-10-13)
-* [La tastiera funziona ma il trackpad no](#la-tastiera-funziona-ma-il-trackpad-no)
-* [kextd stall 0: AppleACPICPU](#kextd-stall-0-appleacpicpu)
-* [Kernel Panic su AppleIntelI210Ethernet](#kernel-panic-su-appleinteli210ethernet)
-* [Kernel panic su "Wrong CD Clock Frequency" con laptop Icelake](#kernel-panic-su-wrong-cd-clock-frequency-with-icelake-laptop)
-* [Bloccato a `Forcing CS_RUNTIME for entitlement` in Big Sur](#bloccato-a-forcing-cs-runtime-for-entitlement-in-big-sur)
-* [Bloccato su `ramrod`(^^^^^^^^^^^^^)](#bloccato-su-ramrod)
+[[toc]]
 
 ## Bloccato su `[EB|#LOG:EXITBS:START]`
 

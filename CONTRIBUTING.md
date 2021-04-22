@@ -4,9 +4,7 @@
 
 Vuoi aiutare supportando la guida? Bene ci sono molte modi in cui puoi aiutare!
 
-* [Contribuire via Issue](#contribuire-via-issue)
-* [Contribuire via PR](#contribuire-via-pr)
-* [Contribuire via Traduzioni](#contribuire-via-traduzioni)
+[[toc]]
 
 Nota: Per chi vuole contribuire economicamente, veramente lo apprezziamo ma siamo un'organizzazione non-profit. Lo facciamo per insegnare, non per fare soldi. Se hai alcuni soldi rimasti, ti raccomandiamo altamente di donarli in carità. [Crohn's and Colitis Canada](https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=en-CA&G=159&F=1097&T=GENER) è ciò che raccomandiamo se non ne hai nessuno in mente.
 

@@ -4,22 +4,7 @@
 
 Problemi riguardanti una volta che hai avviato il programma di installazione e la GUI è stata caricata
 
-* [macOS installer in Russo](#macos-installer-in-russo)
-* [Il programma di installazione di macOS è danneggiato](#il-programma-di-installazione-di-macos-è-danneggiato)
-* [Bloccato su `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock-giolockstate)
-* [Schermo deformato su laptops](#schermo-deformato-su-laptops)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` su laptops e AIO](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-su-laptops-e-aios)
-* [Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi](#schermo-nero-dopo-ioconsoleusers-gioscreenlock-con-navi)
-* [Congelato nel programma di installazione di macOS dopo 30 secondi](#congelato-nel-programma-di-installazione-di-macOS-dopo-30-secondi)
-* [Riavvio della CPU 15h/16h dopo la schermata Data & Privacy](#riavvio-della-cpu-15h/16h-dopo-la-schermata-data-privacy)
-* [MacOS bloccato subito prima dell'accesso](#macos-bloccato-subito-prima-dell'accesso)
-* [MediaKit segnala che lo spazio non è sufficiente](#mediaKit-segnala-che-lo-spazio-non-è-sufficiente)
-* [Cancellazione di Utility Disco fallita](#cancellazione-di-utility-disco-fallita)
-* [SATA Drives Non Mostrati in Disk Utility](#sata-drives-non-mostrati-in-disk-utility)
-* [Bloccato a 2 minuti rimanenti](#bloccato-a-2-minuti-rimanenti)
-* [Il server di ripristino non può essere contattato](#il-server-di-ripristino-non-può-essere-contattato)
-* [Tastiera e mouse non funzionanti in Big Sur](#tastiera-e-mouse-non-funzionanti-in-big-sur)
-* [Bloccato su `Il tuo Mac necessita di un aggiornamento del firmware per poter essere installato su questo volume`](#bloccato-su-il-tuo-mac-necessita-di-un-aggiornamento-del-firmware-per-poter-essere-installato-su-questo-volume)
+[[toc]]
 
 ## macOS installer in Russo
 

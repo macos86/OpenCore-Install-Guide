@@ -4,9 +4,7 @@
 
 Hai bisogno di capire perché stai riscontrando problemi o ti stai bloccando? Bene, sei nel posto giusto:
 
-* [Scambio di file](#scambio-di-file)
-* [Modifiche al Config](#modifiche-al-config)
-* [Disabilitazione di tutte le registrazioni](#disabilitare-tutti-i-log)
+[[toc]]
 
 ## Scambio di file
 

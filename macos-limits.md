@@ -4,13 +4,7 @@ Con macOS, ci sono numerose limitazioni; perciò è necessario controllare quali
 
 Le sezioni principali da verificare sono:
 
-* [CPU](#supporto-cpu)
-* [GPU](#supporto-gpu)
-* [Schede Madri](#supporto-scheda-madre)
-* [Dispositivi di Archiviazione](#supporto-dispositivi-di-archiviazione)
-* [Connessioni Cablate](#connessione-cablata)
-* [Connessioni Wireless](#connessione-wireless)
-* [Mix](#mix)
+[[toc]]
 
 E per informazioni più dettagliate, controlla qua:
 

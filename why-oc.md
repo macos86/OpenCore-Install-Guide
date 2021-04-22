@@ -4,16 +4,7 @@
 
 Questa sezione contiene un briefing riguardo al perché la comunità si sta trasferendo su OpenCore, e di smentire alcuni miti comuni nella comunità. Quelli che vogliono solo una macchina con macOS, possono saltare questa pagina.
 
-* [Perché OpenCore invece di Clover e di altri](#perche-opencore-invece-di-clover-e-di-altri)
-  * Funzionalità di OpenCore
-  * Supporto di programmi
-  * Iniezione dei Kext
-* [Brevi obiettivi di OpenCore](#brevi-obiettivi-di-opencore)
-* [Miti comuni](#miti-comuni)
-  * OpenCore non è stabile perché è una beta
-  * OpenCore inietta sempre il SMBIOS e i dati ACPI negli altri sistemi
-  * OpenCore richiede un'installazione pulita
-  * OpenCore supporta solo alcune versioni di macOS
+[[toc]]
 
 ## Funzionalità di OpenCore
 

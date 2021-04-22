@@ -4,25 +4,7 @@
 
 Possibili problemi quando macOS è già installato.
 
-* [IMessage e Siri non funzionanti](#imessage-e-siri-non-funzionanti)
-* [Nessun audio integrato](#nessun-audio-integrato)
-* [BIOS ripristinato o messo in modalità provvisoria dopo il riavvio/spegnimento?](#bios-ripristinato-o-messo-in-modalità-provvisoria-dopo-il-riavvio/spegnimento?)
-* [Il trackpad basato su PS2 Synaptics non funziona](#Il-trackpad-basato-su-PS2-Synaptics-non-funziona)
-* [Soluzione al problema con i tasti della tastiera PS2 senza interruzioni di Dell](#soluzione-al-problema-con-i-tasti-della-tastiera-PS2-senza-interruzioni-di-Dell)
-* [Accelerazione GPU macOS mancante su AMD X570](#accelerazione-GPU-macOS-mancante-su-AMD-X570)
-* [Problemi con i DRM](#problemi-con-i-DRM)
-* [Moduli di memoria configurati in modo errato su MacPro7,1](#moduli-di-memoria-configurati-in-modo-errato-su-MacPro7,1)
-* [App che si bloccano su sistemi AMD](#app-che-si-bloccano-su-amd)
-* [La cache dei contenuti di AssetCache non è disponibile nella macchina virtuale](#la-cache-dei-contenuti-di-AssetCache-non-è-disponibile-nella-macchina-virtuale)
-* [I sistemi Coffee Lake non si risvegliano](#i-sistemi-coffee-lake-non-si-risvegliano)
-* [Nessun Output dai sensori di temperatura/ventola](#nessun-Output-dai-sensori-di-temperatura/ventola)
-* [Errore "Non è possibile modificare il disco di avvio con il disco selezionato"](#errore-Non-è-possibile-modificare-il-disco-di-avvio-con-il-disco-selezionato)
-* [macOS si risveglia con l'ora sbagliata](#macOS-si-risveglia-con-l'ora-sbagliata)
-* [Nessun controllo del volume/luminosità sui monitor esterni](#nessun-controllo-del-volume/luminosità-sui-monitor-esterni)
-* [Disabilitare SIP](#disabilitare-SIP)
-* [Rollback degli snapshot APFS](#rollback-degli-snapshot-apfs)
-* [Problemi di sblocco di Apple Watch](#problemi-di-sblocco-di-apple-watch)
-* [Problemi iGPU di output 4K su HDMI](#problemi-igpu-di-output-4k-su-hdmi)
+[[toc]]
 
 ## IMessage e Siri non funzionanti
 
