@@ -10,7 +10,7 @@ Vedi [Kext e Driver Firmware](https://github.com/dortania/OpenCore-Install-Guide
 
 ## Acpi
 
-**Rinominazione ACPI**:
+### ACPI renames
 
 Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessarie che sono state utilizzate per lungo tempo:
 
@@ -61,7 +61,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * cambiare PIC a IPIC
   * cambiare GBE1 a ETH0
 
-**Patches**
+### Patches
 
 * Patch del TgtBridge:
   * `ACPI -> Patch -> ... -> Base`
@@ -72,7 +72,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 * HaltEnabler:
   * `ACPI -> Quirks -> FadtEnableReset -> YES`
 
-**Fixes**:
+### Fixes
 
 * **FixAirport**:
   * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
@@ -128,7 +128,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 * `ACPI -> Delete`
 
-**SSDT**:
+### SSDTs
 
 * **PluginType**:
   * [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)
@@ -139,15 +139,15 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 ## Boot
 
-**Boot Argument**:
+### Boot Argument
 
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`
 
-**NeverHibernate**:
+### NeverHibernate
 
 * `Misc -> Boot -> HibernateMode -> None`
 
-**Default Boot Volume**:
+### Default Boot Volume
 
 * `Misc -> Security -> AllowSetDefault -> True`
   * Premi Ctrl+Enter nel picker per impostare il dispositivo di avvio predefinito
@@ -155,24 +155,24 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 ## Boot Graphics
 
-**DefaultBackgroundColor**:
+### DefaultBackgroundColor
 
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> DefaultBackgroundColor`
   * `00000000`: Syrah Black
   * `BFBFBF00`: Light Gray
   * Per calcolare il tuo, converti un valore `RGB` in `HEX`
 
-**EFILoginHiDPI**:
+### EFILoginHiDPI
 
 * Flag presente solo su Clover, per lo scaling della UI di OpenCore vedi UIScale e `UEFI -> Output`
 
-**flagstate**:
+### flagstate
 
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> flagstate | Data | <>`
   * 0 -> `<00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000` (ricavato da un mac)
   * La location della NVRAM deve essere controllata più volte per questa opzione
 
-**UIScale**:
+### UIScale
 
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale | Data | <>`
   * 1 -> `<01>`
@@ -180,20 +180,26 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 ## CPU
 
-**Type**:
+### Type
 
 * `PlatformInfo -> Generic -> ProcessorType`
 * Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per tutti i valori supportati
 
-**HWPEnable**: Migliore alternativa è modificare il `MSR 0x770` con [HWPEnable](https://github.com/headkaze/HWPEnable)
+### HWPEnable
 
-**QEMU**: Supporto per corrette VM/KVM è implementato in OpenCore
+Migliore alternativa è modificare il `MSR 0x770` con [HWPEnable](https://github.com/headkaze/HWPEnable)
 
-**TurboDisable**: Migliore alternativa è controllare le frequenze con [CPUFriend](https://github.com/acidanthera/CPUFriend) o [ssdtPRGen](https://github.com/Piker-Alpha/ssdtPRGen.sh)
+### QEMU
+
+Supporto per corrette VM/KVM è implementato in OpenCore
+
+### TurboDisable
+
+Migliore alternativa è controllare le frequenze con [CPUFriend](https://github.com/acidanthera/CPUFriend) o [ssdtPRGen](https://github.com/Piker-Alpha/ssdtPRGen.sh)
 
 ## Devices
 
-**USB**:
+### USB
 
 * FixOwnership: `UEFI -> Quirk -> ReleaseUsbOwnership`
 * ClockID: `DeviceProperties -> Add -> PciRoot... -> AAPL,clock-id`
@@ -201,7 +207,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * Irrilevante per OS X 10.11 o più recenti
   * Una nuova variante può essere anche PowerProperties definita in `IOUSBHostFamily.kext -> AppleUSBHostPlatformProperties` o aggiunta con un SSDT USBX in SMBIOS Skylake e più recenti
 
-**Audio**:
+### Audio
 
 Per questo, dovrai conoscere il PciRoot per il tuo audio controller e il suo nome (comunemente come HDEF, ma anche HDAS, HDAU e simili), lo puoi trovare con [gfxutil](https://github.com/acidanthera/gfxutil/releases):
 
@@ -214,15 +220,16 @@ path/to/gfxutil -f HDEF
 * ResetHDA: `UEFI -> Audio -> ResetTrafficClass`
   * C'è anche il boot-arg di AppleALC `alctsel=1` oppure [JackFix](https://github.com/fewtarius/jackfix)
 
-**Add Properties**:
+### Add Properties
 
 * Nessun equivalente, devi specificare la path PciRoot
 
-**Properties**:
+### Properties
 
 * `DeviceProperties -> Add`
 
-**FakeID**:
+### FakeID
+
 Per i seguenti, devi conoscere la PciRoot per il tuo dispositivo e applicare le loro proprietà con `DeviceProperties -> Add`, PciRoot lo puoi trovare con  [gfxutil](https://github.com/acidanthera/gfxutil/releases)
 
 * **USB**
@@ -269,7 +276,7 @@ device_type: XHCI
 * `AAPL,current-in-sleep`
 * `built-in`
 
-**ForceHPET**:
+### ForceHPET
 
 * `UEFI -> Quirks -> ActivateHpetSupport`
 
@@ -283,11 +290,11 @@ Semplicemente non aggiungere i tuoi driver in `UEFI -> Drivers`, oppure aggiungi
 
 * Nota: dovresti rimpiazzarlo con PciRoot...
 
-**InjectIntel**:
+### InjectIntel
 
 * [GMA Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
-**InjectAti**:
+### InjectAti
 
 * `DeviceProperties -> Add -> PciRoot... -> device-id`
   * `<B0670000>` per R9 390X
@@ -305,17 +312,17 @@ HDMI                    <00 08 00 00>
 DUMMY                   <01 00 00 00>
 ```
 
-**InjectNvidia**:
+### InjectNvidia
 
 * [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
-**FakeIntel**:
+### FakeIntel
 
 * `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0) -> device-id`
   * `66010003` per HD 4000
 * `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0) -> vendor-id -> <86800000>`
 
-**FakeAti**:
+### FakeAti
 
 * `DeviceProperties -> Add -> PciRoot... -> device-id`
   * `<B0670000>` per R9 390X
@@ -329,51 +336,55 @@ DUMMY                   <01 00 00 00>
 **Nota**: Vedi qui per fare un SSDT per fare lo Spoofing della GPU, la iniezione via DeviceProperties sembra fallire alcune volte quando tenti di usare lo spoof della GPU: [Renaming GPUs](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
 Per altri InjectAti, vedi il [Sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) nelle documentazioni di WhateverGreen
 
-**Custom EDID**
+### Custom EDID
 
 * [WhateverGreen's EDID docs (EN)](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md#edid)
 
-**Dual Link**:
+### Dual Link
 
 * `DeviceProperties -> Add -> PciRoot... -> AAPL00,DualLink`
   * 1 -> `<01000000>`
   * 0 -> `<00000000>`
 
-**NVCAP**
+### NVCAP
 
 * [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
 
-**display-cfg**:
+### display-cfg
 
 * `DeviceProperties -> Add -> PciRoot... -> @0,display-cfg`
 * Vedi il post di fassl riguardo a questo: [Nvidia injection (EN)](https://www.insanelymac.com/forum/topic/215236-nvidia-injection/)
 
-**LoadVBios**:
+### LoadVBios
 
 * Vedi [sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) per maggiori informazioni su una iniezione personalizzata del VBIOS
 
-**PatchVBios**: Vedi LoadVBIOS
+### PatchVBios
 
-**NvidiaGeneric**:
+Vedi LoadVBIOS
+
+### NvidiaGeneric
 
 * `DeviceProperties -> Add -> PciRoot... -> model | string | Add the GPU name`
 
-**NvidiaSingle**: Vedi [disabling unsupported GPUs (EN)](https://dortania.github.io/OpenCore-Post-Install/)
+### NvidiaSingle
 
-**NvidiaNoEFI**:
+Vedi [disabling unsupported GPUs (EN)](https://dortania.github.io/OpenCore-Post-Install/)
+
+### NvidiaNoEFI
 
 * `DeviceProperties -> Add -> PciRoot... -> NVDA,noEFI | Boolean | True`
 * Vedi il commento di FredWst per maggiori informazioni: [GT 640 scramble (EN)](https://www.insanelymac.com/forum/topic/306156-clover-problems-and-solutions/?do=findComment&comment=2443062)
 
-**ig-platform-id**:
+### ig-platform-id
 
 * `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0) -> APPL,ig-platform-id`
 
-**BootDisplay**:
+### BootDisplay
 
 * `DeviceProperties -> Add -> PciRoot... ->  @0,AAPL,boot-display`
 
-**RadeonDeInit**:
+### RadeonDeInit
 
 Nella maggior parte dei casi è possibile usare WhateverGreen, dato che se ne occupa automaticamente. Questo SSDT non è necessario se WhateverGreen è usato.
 
@@ -382,41 +393,41 @@ Nella maggior parte dei casi è possibile usare WhateverGreen, dato che se ne oc
 
 ## Kernel and Kext Patches
 
-**KernelPm**:
+### KernelPm
 
 * `Kernel -> Quirks -> AppleXcpmCfgLock -> YES`
 * Nota che Clover applicherà questa patch automaticamente, senza controllare se MSR E2 era bloccato, perciò forse potresti non aver bisogno di questo quirk anche se Clover lo richiedeva
 
-**AppleIntelCPUPM**:
+### AppleIntelCPUPM
 
 * `Kernel -> Quirks -> AppleCpuPmCfgLock -> YES`
 
-**DellSMBIOSPatch**:
+### DellSMBIOSPatch
 
 Una strana quirk per i sistemi Dell che usano APTIO V
 
 * `Kernel -> Quirks -> CustomSMBIOSGuid -> YES`
 * `PlatformInfo -> UpdateSMBIOSMode -> Custom`
 
-**KextsToPatch**:
+### KextsToPatch
 
 * `Kernel -> Patch`
 * Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
-**KernelToPatch**:
+### KernelToPatch
 
 * `Kernel -> Patch`
 * Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
-**ForceKextsToLoad**:
+### ForceKextsToLoad
 
 * `Kernel -> Force`
 
-**Kernel LAPIC**:
+### Kernel LAPIC
 
 * `Kernel -> Quirks -> LapicKernelPanic -> YES`
 
-**KernelXCPM**:
+### KernelXCPM
 
 * `Kernel -> Quirks -> AppleXcpmExtraMsrs -> YES`
 
@@ -442,16 +453,16 @@ Skip: 0
 
 Per Haswell+ Low end come Celeron, consulta qui per le patch raccomandate: [Bugtracker Issues 365 (EN)](https://github.com/acidanthera/bugtracker/issues/365)
 
-**USB Port Limit Patches**:
+### USB Port Limit Patches
 
 * `Kernel -> Quirks -> XhciPortLimit -> YES`
 
-**External Icons Patch**:
+### External Icons Patch
 
 * `Kernel -> Quirks -> ExternalDiskIcons -> YES`
 * Usato quando il tuo disco interno segnato come esterno su macOS
 
-**AppleRTC**
+### AppleRTC
 
 Problemi con AppleRTC, piccolo fix:
 
@@ -467,7 +478,7 @@ rtcfx_exclude=00-FF
 
 Se funziona, questo accorcia la ricerca delle aree da escludere, per trovare la parte di macOS che parte
 
-**FakeCPUID**:
+### FakeCPUID
 
 * `Kernel -> Emulate`:
   * `CpuidMask`: `<Clover_FCPUID_Extended_to_4_bytes_Swapped_Bytes> | 00 00 00 00 | 00 00 00 00 | 00 00 00 00`
@@ -479,23 +490,23 @@ Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare n
 
 ## Rt Variables
 
-**ROM**:
+### ROM
 
 * Nessuna traduzione diretta di `UseMacAddr0` dato che devi provvedere un ROM hardware, lo puoi trovare in `Preferenze di Sistema -> Network -> Avanzate -> Hardware`
 * Verifica anche che En0 è ancora built-in quando avvii OpenCore, questo può rompere iMessage e iCloud quando non c'è la proprietà `built-in` property.
 
-**MLB**:
+### MLB
 
 * `PlatformInfo -> Generic -> MLB`
 
-**BooterConfig**:
+### BooterConfig
 
 * `NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14-> UIScale`:
 
   * 0x28: `Data | <01>`
   * 0x2A: `Data | <02>`
 
-**CsrActiveConfig**:
+### CsrActiveConfig
 
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`:
 
@@ -506,63 +517,63 @@ Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare n
 
 ## SMBIOS
 
-**Product Name**:
+### Product Name
 
 * `PlatformInfo -> Generic -> SystemProductName`
 
-**Serial Number**:
+### Serial Number
 
 * `PlatformInfo -> Generic -> SystemSerialNumber`
 
-**Board Serial Number**:
+### Board Serial Number
 
 * `PlatformInfo -> Generic -> MLB`
 
-**SmUUID**:
+### SmUUID
 
 * `PlatformInfo -> Generic -> SystemUUID`
 
-**Memory**:
+### Memory
 
 * `PlatformInfo -> CustomMemory -> True`
 * `PlatformInfo -> Memory`
   * Vedi [Configuration.pdf (EN)](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori informazioni
 
-**Slots AAPL Injection**:
+### Slots AAPL Injection
 
 * `DeviceProperties -> Add -> PciRoot... -> APPL,slot-name | string | Add slot`
 
 ## System Parameters
 
-**CustomUUID**:
+### CustomUUID
 
 * Deprecato da molto e non raccomandato neanche su Clover, nessun equivalente su OpenCore
 * Più info: [Hardware UUID injection for OpenCore #711](https://github.com/acidanthera/bugtracker/issues/711)
 
-**InjectSystemID**:
+### InjectSystemID
 
 * Anche questo legacy dato che viene usato per replicare l'UUID degli utenti Chameleon
 
-**BacklightLevel**:
+### BacklightLevel
 
 * Impostato correttemente in NVRAM
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> backlight-level | Data | <Insert value>`
   * 0x0101 -> `<0101>`
 
-**InjectKexts**:
+### InjectKexts
 
 * Nessun equivalente ma non hai alcuna scusa per tenere FakeSMC dentro macOS
 
-**NoCaches**:
+### NoCaches
 
 * Questo funziona fino a 10.7 su Clover, e OpenCore richiede un sistema che supporta prelinked (10.7) perciò non ci può essere un equivalente
 
-**ExposeSysVariables**:
+### ExposeSysVariables
 
 * Aggiungi semplicemente le tue proprietà SMBIOS in `PlatformInfo`
 * Quirk confusionale, non viene nemmeno menzionata documentazioni delle versioni più recenti di Clover (AppleLife)
 
-**NvidiaWeb**:
+### NvidiaWeb
 
 * Questo applica ```sudo nvram nvda_drv=1``` ad ogni boot. Per ottenere simili effetti devi aggiungere il seguente path:
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> nvda_drv: <31>`
