@@ -1,6 +1,5 @@
-default: true,
-line_length: false,
-fenced-code-language: false,
-no-alt-text: false,
-no-duplicate-header: false,
-no-inline-html: false
+default: true
+MD013: false
+MD024: false
+MD033: false
+MD040: false
