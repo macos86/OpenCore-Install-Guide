@@ -6,13 +6,13 @@ Perciò questa piccola (beh, ora non più così piccola...) pagina è fatta per 
 
 ## Kext e Driver Firmware
 
-Vedi [Kext e Driver Firmware](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
+Vedi [Kext e Driver Firmware (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
 
 ## Acpi
 
 ### ACPI renames
 
-Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessarie che sono state utilizzate per lungo tempo:
+Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessarie che sono state utilizzate per lungo tempo:
 
 * Patch di EHCI: Raccomandato lo spegnimento del controller con [SSDT-EHCx_OFF](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EHCx_OFF.dsl). Skylake e più recenti non lo avranno, perciò non è necessario.
   * cambiare EHC1 a EH01
@@ -54,7 +54,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 * Patch di Airport/WiFi: [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
   * cambiare PXSX a ARPT
 * Altre patch puramente cosmetiche:
-  * cambiare LPC0 a LPCB(use [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl) per sistemare il supporto SMBUS)
+  * cambiare LPC0 a LPCB(usa [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl) per sistemare il supporto SMBUS)
   * cambiare PC00 a PCIO
   * cambiare FPU a MATH
   * cambiare TMR a TIMR
