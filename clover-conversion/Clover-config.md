@@ -4,11 +4,11 @@
 
 Perciò questa piccola (beh, ora non più così piccola...) pagina è fatta per chi ha problemi a migrare da Clover a OpenCore dato che alcuni quirk per sistemi legacy sono richiesti oppure nel Configuration.pdf che non ha dettagli per i laptop.  
 
-# Kext e Driver Firmware
+## Kext e Driver Firmware
 
 Vedi [Kext e Driver Firmware](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
 
-# Acpi
+## Acpi
 
 **Rinominazione ACPI**:
 
@@ -137,7 +137,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 * **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 * **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 
-# Boot
+## Boot
 
 **Boot Argument**:
 
@@ -153,7 +153,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * Premi Ctrl+Enter nel picker per impostare il dispositivo di avvio predefinito
 * L'alternativa è  Disco di Avvio nelle Preferenze di Sistema di macOS, come nei veri Mac
 
-# Boot Graphics
+## Boot Graphics
 
 **DefaultBackgroundColor**:
 
@@ -178,7 +178,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * 1 -> `<01>`
   * 2 -> `<02>`
 
-# CPU
+## CPU
 
 **Type**:
 
@@ -191,7 +191,7 @@ Nella transazione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 **TurboDisable**: Migliore alternativa è controllare le frequenze con [CPUFriend](https://github.com/acidanthera/CPUFriend) o [ssdtPRGen](https://github.com/Piker-Alpha/ssdtPRGen.sh)
 
-# Devices
+## Devices
 
 **USB**:
 
@@ -273,13 +273,13 @@ device_type: XHCI
 
 * `UEFI -> Quirks -> ActivateHpetSupport`
 
-# Disable Drivers
+## Disable Drivers
 
 Semplicemente non aggiungere i tuoi driver in `UEFI -> Drivers`, oppure aggiungi `#` davanti al nome del driver nel config.plist per farlo saltare a OpenCore.
 
-# Gui
+## Gui
 
-# Graphics
+## Graphics
 
 * Nota: dovresti rimpiazzarlo con PciRoot...
 
@@ -380,7 +380,7 @@ Nella maggior parte dei casi è possibile usare WhateverGreen, dato che se ne oc
 * [Radeon-Denit-SSDT](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/Radeon-Deinit-SSDT.dsl)
   * Viene usato di default per GFX0, sistemalo per il tuo sistema
 
-# Kernel and Kext Patches
+## Kernel and Kext Patches
 
 **KernelPm**:
 
@@ -477,7 +477,7 @@ Se funziona, questo accorcia la ricerca delle aree da escludere, per trovare la 
 
 Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare nell'Intel ARK, la via più veloce è di scoprirlo è cercarlo dal sito della Microsoft: [Riepilogo degli aggiornamenti di microcodice Intel](https://support.microsoft.com/it-it/topic/riepilogo-degli-aggiornamenti-di-microcodice-intel-08c99af2-075a-4e16-1ef1-5f6e4d8637c4)
 
-# Rt Variables
+## Rt Variables
 
 **ROM**:
 
@@ -504,7 +504,7 @@ Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare n
   * 0x67: `67000000`
   * 0x3E7: `E7030000`
 
-# SMBIOS
+## SMBIOS
 
 **Product Name**:
 
@@ -532,7 +532,7 @@ Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare n
 
 * `DeviceProperties -> Add -> PciRoot... -> APPL,slot-name | string | Add slot`
 
-# System Parameters
+## System Parameters
 
 **CustomUUID**:
 
@@ -567,7 +567,7 @@ Nota: Trovare il CPUID in Intel può essere un po' più difficile che guardare n
 * Questo applica ```sudo nvram nvda_drv=1``` ad ogni boot. Per ottenere simili effetti devi aggiungere il seguente path:
 * `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> nvda_drv: <31>`
 
-# Status
+## Status
 
 **Sezione finite al 100%**:
 
