@@ -16,14 +16,23 @@ jobs:
         uses: actions/setup-node@v2
       - name: Install
         run: npm install
-      - name: Lint
-        run: npm run fixlint
       - name: Build
         run: npm run build
-        if: ${{steps.Install.conclusion == 'success' || 'failure'}}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
         with:
           BRANCH: gh-pages
           FOLDER: .vuepress/dist/
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install
+        run: npm install
+      - name: Lint
+        run: npm run fixlint
