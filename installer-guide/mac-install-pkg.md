@@ -14,7 +14,7 @@ A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezio
 
 Questo significa che dovremmo estrarre manualmente l'installer.
 
-### Estrarre l'Installer
+## Estrarre l'Installer
 
 Per iniziare, trascina il InstallMacOSX/InstallOS.dmg e montalo:
 

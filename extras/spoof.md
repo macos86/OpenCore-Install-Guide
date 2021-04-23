@@ -13,7 +13,7 @@ Devi nascondere la tua GPU non supportata? Bene, con OpenCore le cose sono parec
 
 **CSM deve essere disabilitato nel BIOS per effettuare lo spoff correttamente, specialmente nei sistemi basati su CPU AMD.**
 
-### Boot Flag
+## Boot Flag
 
 Nella maniera più semplice, devi aggiungere questo boot-arg:
 
