@@ -13,7 +13,9 @@
    },
    "scripts": {
       "dev": "vuepress dev",
-      "build": "vuepress build"
+      "build": "vuepress build",
+      "lint": "markdownlint **/*.md",
+      "fixlint": "markdownlint **/*.md -f"
    },
    "license": "CC-BY-NC-SA-4.0",
    "devDependencies": {
@@ -26,5 +28,8 @@
       "vuepress-theme-succinct": "^1.7.1",
       "vuepress-theme-yuu": "^3.0.1"
    },
-   "homepage": "https://macos86.github.io/OpenCore-Install-Guide/"
+   "homepage": "https://macos86.github.io/OpenCore-Install-Guide/",
+   "dependencies": {
+      "markdownlint-cli": "^0.27.1"
+   }
 }

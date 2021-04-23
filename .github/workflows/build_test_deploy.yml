@@ -30,8 +30,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install
+        run: npm install
       - name: Lint
-        uses: avto-dev/markdown-lint@v1
-        with:
-          args: './'
-          fix: 'true'
+        run: npm run fixlint
