@@ -55,4 +55,4 @@ Infine, crea una cartella nella root della tua chiavetta e chiamala `com.apple.r
 
 ![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
-### Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
+## Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)

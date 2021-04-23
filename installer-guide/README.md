@@ -8,7 +8,7 @@ Requisiti:
 * [ProperTree](https://github.com/corpnewt/ProperTree) per modificare i file .plist (OpenCore Configurator è un altro strumento, ma è veramente poco aggiornato e le versioni di Mackie sono famose per corrompersi. **Evita questo tipo di strumenti ad ogni costo!**).
 * Devi rimuovere Clover interamente dal tuo sistema se vuoi usare OpenCore come bootloader principale. Mantieni un backup della tua EFI di Clover. Guarda qui cosa serve che sia pulito: [Clover Conversion (EN)](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
 
-### Installer Online vs Offline
+## Installer Online vs Offline
 
 Gli installer Offline hanno una copia completa di macOS, mentre gli installer Online contengono solo un'immagine di recovery (~500MB) che scarica dai server Apple il resto dell'immagine una volta avviato.
 
@@ -19,7 +19,7 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
   * Possibile farlo da macOS/Linux/Windows
   * Richiede una connessione internet tramite un adattatore di rete supportato da macOS sull'Hackintosh
 
-### Creare l'installer
+## Creare l'installer
 
 In dipendenza da che sistema operativo stai usando, guarda la tua specifica sezione per costruire la USB:
 
