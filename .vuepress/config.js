@@ -1,7 +1,3 @@
-const {
-    description
-} = require('../package')
-
 module.exports = {
     title: 'Guida Installazione Opencore',
     head: [
@@ -23,28 +19,9 @@ module.exports = {
                 content: 'black'
             }
         ],
-        [
-            "link", {
-                rel: "'stylesheet",
-                href: "/styles/website.css"
-            },
-        ]
     ],
     base: '/OpenCore-Install-Guide/',
-
-    markdown: {
-        extendMarkdown: md => {
-            md.use(require('markdown-it-multimd-table'), {
-                rowspan: true,
-            }
-            );
-        }
-    },
-
-    theme: 'vuepress-theme-succinct',
-    globalUIComponents: [
-        'ThemeManager'
-    ],
+    
 
     themeConfig: {
         lastUpdated: true,
