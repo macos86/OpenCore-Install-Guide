@@ -501,7 +501,7 @@ La parte `SmUUID` viene copiata in Generic -> SystemUUID.
 
 Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
 
-::: warn
+::: danger
 Ricorda che ti serve un numero di serie non valido o valido ma non in uso;  dsi deve ricevere un messaggio del tipo: "Numero di serie non valido" o "Data di acquisto non convalidata"
 :::
 
