@@ -167,7 +167,7 @@ Un promemoria che gli utenti di [ProperTree] (https://github.com/corpnewt/Proper
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: dettagli Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |

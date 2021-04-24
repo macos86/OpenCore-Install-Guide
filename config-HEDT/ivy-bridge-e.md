@@ -72,7 +72,7 @@ Questa sezione consente il passaggio di spazi a macOS che vengono generalmente i
 ::: suggerimento Info
 Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, lo lasciamo come predefinito
 :::
-::: dettagli Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: SÌ
   * Corregge i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc
@@ -136,7 +136,7 @@ Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperT
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: dettagli Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
