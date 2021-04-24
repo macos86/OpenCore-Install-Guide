@@ -145,7 +145,7 @@ Il modo migliore per risolvere effettivamente questo problema è prendere una co
 
 * Struttura delle cartelle EFI errata, assicurati che tutti i tuoi file OC si trovino in una cartella EFI situata sulla tua ESP (partizione di sistema EFI)
 
-::: dettagli Esempio di struttura di cartelle
+::: details Esempio di struttura di cartelle
 
 ![Struttura delle directory dal DOC di OpenCore](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
 

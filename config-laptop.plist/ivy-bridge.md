@@ -582,7 +582,7 @@ Per questo esempio Ivy Bridge, sceglieremo MacBookPro10,1 SMBIOS - questo viene 
 
 **Nota**: i seguenti SMBIOS sono supportati solo fino a macOS 10.15 incluso, Catalina. Per i casi in cui è necessario avviare Big Sur, vedere di seguito:
 
-::: dettagli tavolo Big Sur SMBIOS
+::: details tavolo Big Sur SMBIOS
 
 Si noti che la scelta di un SMBIOS dall'elenco seguente per Catalina o precedente non è consigliabile, poiché il risparmio energetico e simili possono interrompersi quando si utilizza SMBIOS non ottimizzato.
 
