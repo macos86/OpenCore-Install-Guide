@@ -1,8 +1,5 @@
 {
    "name": "OpenCore-Install-Guide",
-   "version": "0.6.6",
-   "description": "Guide to put macOS on unsupported devices",
-   "main": "",
    "author": {
       "name": "Dortania",
       "url": "https://github.com/dortania"
@@ -14,22 +11,19 @@
    "scripts": {
       "dev": "vuepress dev",
       "build": "vuepress build",
-      "lint": "markdownlint **/*.md",
-      "fixlint": "markdownlint **/*.md -f"
+      "fixlint": "markdownlint-cli2-fix **/*.md #node_modules"
    },
    "license": "CC-BY-NC-SA-4.0",
    "devDependencies": {
       "@vuepress/plugin-back-to-top": "^1.8.2",
+      "@vuepress/plugin-medium-zoom": "^1.8.2",
       "markdown-it-multimd-table": "^4.1.0",
+      "markdownlint-cli2": "^0.1.3",
       "vuepress": "^1.8.2",
-      "vuepress-plugin-medium-zoom": "^1.1.9",
       "vuepress-theme-book": "0.0.5",
       "vuepress-theme-dark-new": "^0.1.2",
       "vuepress-theme-succinct": "^1.7.1",
       "vuepress-theme-yuu": "^3.0.1"
    },
-   "homepage": "https://macos86.github.io/OpenCore-Install-Guide/",
-   "dependencies": {
-      "markdownlint-cli": "^0.27.1"
-   }
+   "homepage": "https://macos86.github.io/OpenCore-Install-Guide/"
 }
