@@ -81,7 +81,7 @@ Codice di errore comune di Windows:
 
 Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows e pensa accidentalmente che stia avviando OpenCore. Questo può essere evitato spostando Windows sulla propria unità * o * aggiungendo un percorso di unità personalizzato in BlessOverride. Vedere [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori dettagli.
 
-## Avviso iASL, # non risolto
+## iASL warning, only X unresolved
 
 Se provi a decompilare il tuo DSDT e ottieni un errore simile a questo:
 
@@ -97,7 +97,7 @@ iasl * [insersci tutti i file ACPI files qui]
 
 ## Incoerenza temporale tra macOS e Windows
 
-Ciò è dovuto al fatto che macOS utilizza l'ora universale mentre Windows si basa su Greenwhich, quindi dovrai forzare un sistema operativo a un modo diverso di misurare il tempo. Consigliamo vivamente di modificare Windows poiché è molto meno distruttivo e doloroso:
+Ciò è dovuto al fatto che macOS utilizza l'Ora Universale mentre Windows si basa su Greenwich, quindi dovrai forzare un sistema operativo a un modo diverso di misurare il tempo. Consigliamo vivamente di modificare Windows poiché è molto meno distruttivo e doloroso:
 
 * [Installa l'utility Bootcamp (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * [Modificare il registro di Windows (EN)](https://superuser.com/q/494432)

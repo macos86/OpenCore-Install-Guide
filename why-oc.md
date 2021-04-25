@@ -183,9 +183,9 @@ Mentre l'argomento hackintoshing respira aria grigia dal punto di vista legale, 
 * Lo facciamo in qualità di organizzazione non-profit per uso personale e informativo
   * Chi pianifica di usare il proprio Hackintosh per lavoro o vuole rivenderli dovrebbero riferirsi al [caso Psystar](https://en.wikipedia.org/wiki/Psystar_Corporation) e alle loro leggi regionali
 
-Mentre l'EULA dichiara che macOS dovrebbe essere installato solo in Mac reali ([section 2B-i](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)) o macchine virtuali usate su veri Mac ([section 2B-iii](https://www.apple.com/legal/sla/docs/macOSCatalina.pdf)), non ci sono leggi che bandiscono questo. Tuttavia, i siti che reimpacchettano o modificano gli installer di macOS potrebbero potenzialmente rischiare di [DMCA takedowns](https://it.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) and such.
+Mentre l'EULA dichiara che macOS dovrebbe essere installato solo in Mac reali o macchine virtuali usate su veri Mac ([sections 2B-i and 2B-iii](https://www.apple.com/legal/sla/docs/macOSBigSur.pdf)), tuttavia non ci sono leggi che non te lo permettono chiaramente. Tuttavia, i siti che reimpacchettano o modificano gli installer di macOS potrebbero potenzialmente rischiare di [DMCA takedowns](https://it.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) e simili.
 
-* **Nota**: Non siamo consulenti legali, perciò fai le tue considerazioni da solo e discutendo col tuo avvocato se hai qualsiasi dubbio.
+* **Nota**: Questo non è un suggerimento legale, perciò fai le tue considerazioni da solo e discutendo col tuo avvocato se hai qualsiasi dubbio.
 
 ## macOS supporta le GPU Nvdia
 

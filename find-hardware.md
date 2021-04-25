@@ -118,13 +118,13 @@ Sotto troverai una lista di comandi da usare nel terminale (bisogna ringraziare 
 ### Modello CPU
 
 ```sh
-cat /proc/cpuinfo | grep 'model name'
+cat /proc/cpuinfo | grep -i "model name"
 ```
 
 ### Modello GPU
 
 ```sh
-lspci | grep -i --color 'vga\|3d\|2d'
+lspci | grep -i --color "vga\|3d\|2d"
 ```
 
 ### Modello Chipset
@@ -136,7 +136,7 @@ dmidecode -t baseboard
 ### Tastiera, Trackpad e Touchscreen per tipo di connettore
 
 ```sh
-dmesg |grep -i 'input'
+dmesg | grep -i input
 ```
 
 ### Codec Audio
@@ -150,7 +150,7 @@ aplay -l
 Informazioni di base:
 
 ```sh
-lspci | grep -i 'network'
+lspci | grep -i network
 ```
 
 Informazioni dettagliate:

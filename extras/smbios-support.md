@@ -309,7 +309,7 @@ Informazioni extra riguardo le CPU Apple:
 | ---- | :--- | :--- | :--- | :--- |
 | MacBookPro17,1 | Late 2020 | Apple M1 | J293 | 11.0.0 (20A2411) |
 
-
+<!-- Needed for VuePress to not break -->
 <!-- | MacBookPro18,1 | Late 2021 | Apple M1X(?) | J314 | Unknown | -->
 <!-- | MacBookPro18,2 | Late 2021 | Apple M1X(?) | J316 | Unknown | -->
 

@@ -112,7 +112,7 @@ Quindi con AMD, ogni volta che Apple chiama funzioni specifiche della CPU, l'app
 Questo generalmente accade su AMD che utilizza il controller USB del chipset, in particolare per la serie Ryzen e più recenti. Il modo principale per sapere se hai problemi con questo è controllare i registri dopo un ciclo di Sleep/Wake:
 
 * Nel Terminale:
-  * `log show --last 1d | grep "Wake reason"` per verificarlo
+  * `log show --last 1d | grep -i "Wake reason"`
 
 Dovrebbe risultare in qualcosa di simile:
 
@@ -207,7 +207,7 @@ Stranamente, macOS ha impedito di avere il controllo dell'audio digitale. Per ri
 
 ## Incoerenza temporale tra macOS e Windows
 
-This is due to macOS using Universal Time while Windows relies on Greenwhich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
+This is due to macOS using Universal Time while Windows relies on Greenwich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
 * [Installing and using BootCamp utilities (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * [Modifica registro di Windows](https://superuser.com/q/494432)
