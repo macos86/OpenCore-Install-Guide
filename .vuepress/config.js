@@ -103,8 +103,11 @@ module.exports = {
                 link: 'config.plist/'
             },
             {
+                text: 'Risoluzione dei problemi',
+                link: 'troubleshooting/'
+            },
+            {
                 text: 'Guide Dortania',
-                ariaLabel: 'Language Menu',
                 items: [
                     {
                         text: 'Home Site (EN)',
