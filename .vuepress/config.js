@@ -77,6 +77,21 @@ module.exports = {
                     },
                 ]
             },
+            {
+                text: 'Creazione Installer',
+                path: 'installer-guide/',
+                ariaLabel: 'Language Menu',
+                items: [
+                    {
+                        text: 'Creazione installer da Windows',
+                        link: 'installer-guide/winblows-install'
+                    },
+                    {
+                        text: 'Creazione installer da Linux',
+                        link: 'installer-guide/linux-install'
+                    },
+                ]
+            }
         ],
         sidebar: [
             {
