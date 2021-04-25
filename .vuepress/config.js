@@ -223,6 +223,9 @@ module.exports = {
                 collapsable: false,
                 children: [
                     {
+                        title: '',
+                    },
+                    {
                         title: 'Universal',
                         children: [
                             ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security and FileVault'],
