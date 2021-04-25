@@ -224,8 +224,6 @@ module.exports = {
                     ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
                     {
                         title: 'Universal',
-                        collapsable: true,
-                        sidebarDepth: 1,
                         children: [
                             ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security and FileVault'],
                             ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fixing Audio'],
@@ -240,7 +238,6 @@ module.exports = {
                     },
                     {
                         title: 'Laptop Specifics',
-                        collapsable: true,
                         children: [
                             ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fixing Battery Read-outs'],
 
@@ -248,7 +245,6 @@ module.exports = {
                     },
                     {
                         title: 'Cosmetics',
-                        collapsable: true,
                         children: [
                             ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fixing Resolution and Verbose'],
                             ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI and Boot-chime'],
@@ -256,7 +252,6 @@ module.exports = {
                     },
                     {
                         title: 'Multiboot',
-                        collapsable: true,
                         children: [
                             ['https://dortania.github.io/OpenCore-Multiboot/', 'OpenCore Multiboot'],
                             ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Setting up LauncherOption'],
@@ -265,7 +260,6 @@ module.exports = {
                     },
                     {
                         title: 'Miscellaneous',
-                        collapsable: true,
                         children: [
                             ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'Fixing RTC'],
                             ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fixing CFG Lock'],
