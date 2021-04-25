@@ -48,21 +48,27 @@ module.exports = {
                 link: 'installer-guide/',
                 items: [
                     {
+                        text: 'Creare l\'Installer su Windows',
                         link: 'installer-guide/winblows-install'
                     },
                     {
+                        text: 'Creazione dell\'installer in Linux',
                         link: 'installer-guide/linux-install'
                     },
                     {
+                        text: 'Creazione dell\'installer in macOS',
                         link: 'installer-guide/mac-install',
                         items: [
                             {
+                                text: 'Legacy macOS: metodo Offline',
                                 link: 'installer-guide/mac-pkg'
                             },
                             {
+                                text: 'Legacy macOS: metodo Online',
                                 link: 'installer-guide/mac-recovery'
                             },
                             {
+                                text: 'Legacy macOS: Immagine Disco',
                                 link: 'installer-guide/mac-dmg'
                             },
                         ]
@@ -73,9 +79,11 @@ module.exports = {
                 text: 'Aggiunta dei file',
                 items: [
                     {
+                        text: 'Aggiungere i file di base',
                         link: 'installer-guide/opencore-efi'
                     },
                     {
+                        text: 'Raccogliere i File',
                         link: 'ktext'
                     },
                     {
@@ -85,6 +93,7 @@ module.exports = {
                 ]
             },
             {
+                text: 'Setup del Config.plist',
                 link: 'config.plist/'
             },
             {
