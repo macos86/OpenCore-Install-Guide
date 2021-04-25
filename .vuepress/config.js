@@ -45,34 +45,37 @@ module.exports = {
         nav: [
             {
                 text: 'Creazione Installer',
-                link: 'installer-guide/',
                 items: [
                     {
+                        text: 'Creazione Installer',
+                        link: '/installer-guide/'
+                    },
+                    {
                         text: 'Creare l\'Installer su Windows',
-                        link: 'installer-guide/winblows-install'
+                        link: '/installer-guide/winblows-install'
                     },
                     {
                         text: 'Creazione dell\'installer in Linux',
-                        link: 'installer-guide/linux-install'
+                        link: '/installer-guide/linux-install'
                     },
                     {
                         text: 'Creazione dell\'installer in macOS',
                         items: [
                             {
                                 text: 'macOS attuali',
-                                link: 'installer-guide/mac-install'
+                                link: '/installer-guide/mac-install'
                             },
                             {
                                 text: 'Legacy macOS: metodo Offline',
-                                link: 'installer-guide/mac-install-pkg'
+                                link: '/installer-guide/mac-install-pkg'
                             },
                             {
                                 text: 'Legacy macOS: metodo Online',
-                                link: 'installer-guide/mac-install-recovery'
+                                link: '/installer-guide/mac-install-recovery'
                             },
                             {
                                 text: 'Legacy macOS: Immagine Disco',
-                                link: 'installer-guide/mac-install-dmg'
+                                link: '/installer-guide/mac-install-dmg'
                             },
                         ]
                     }
@@ -83,11 +86,11 @@ module.exports = {
                 items: [
                     {
                         text: 'Aggiungere i file di base',
-                        link: 'installer-guide/opencore-efi'
+                        link: '/installer-guide/opencore-efi'
                     },
                     {
                         text: 'Raccogliere i File',
-                        link: 'ktext'
+                        link: '/ktext'
                     },
                     {
                         text: 'Iniziamo Con ACPI',
