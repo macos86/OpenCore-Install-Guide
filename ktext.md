@@ -160,8 +160,8 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
   * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) 
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Per i Gigabit Ethernet di Realtek
-  * Richiede OS X 10.8-11 (2.2.0), 10.12-13 (v2.2.2), 10.14+ (2.3.0)
-  * **NOTA: a volte i Gigabit Ethernet di Realtek potrebbe non funzionare correttamente se si utilizza RealtekRTL8111 v2.3.0. Se hai questo problema, prova a usare la versione 2.2.2**
+  * Richiede OS X 10.8-11 (2.2.0), 10.12-13 (v2.2.2), 10.14+ (2.4.0)
+  * **NOTA: a volte i Gigabit Ethernet di Realtek potrebbe non funzionare correttamente se si utilizza l'ultima versione del kext. Se hai qualche problema, prova ad usare vecchie versioni.**
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Per i 2,5 Gb Ethernet di Realtek
   * Richiede macOS 10.15 o successivo
@@ -354,7 +354,7 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 
 ### Specifici per laptop
 
-Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi in Windows o `dmesg | grep input` in Linux
+Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi in Windows o `dmesg | grep -i input` in Linux
 
 #### Driver di input
 

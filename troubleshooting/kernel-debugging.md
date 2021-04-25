@@ -161,7 +161,7 @@ Per iniziare, avremo come minimo bisogno di un [account sviluppatore gratuito](h
 Per determinare quale build KDK ti serve con le build beta, esegui quanto segue nel terminale:
 
 ```sh
-sw_vers | grep "BuildVersion"
+sw_vers | grep BuildVersion
 ```
 
 Per questo, scaricherò il kit di debug del kernel 11.3 build 20E5186d. Una volta scaricato, monta l'immagine del disco e troverai il programma di installazione di KDK. Per impostazione predefinita, il KDK si installerà solo per "Esecuzione del debug su due macchine" e non fornirà alcun vantaggio aggiuntivo sulla macchina host per il debug del kernel per impostazione predefinita.

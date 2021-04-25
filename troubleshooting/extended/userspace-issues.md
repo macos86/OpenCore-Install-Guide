@@ -205,7 +205,7 @@ Se ti viene chiesto di aggiornare il firmware per installare con un volume APFS,
 
 * Hai `PlatformInfo -> Automatic` abilitato
 * `UpdateSMBIOSMode` è impostato su` Create`
-   * Per le macchine Dell e VIAO, assicurati che `CustomSMBIOSGuid` sia abilitato e che` UpdateSMBIOSMode` sia invece impostato su `Custom`
+   * Per le macchine Dell e VAIO, assicurati che `CustomSMBIOSGuid` sia abilitato e che` UpdateSMBIOSMode` sia invece impostato su `Custom`
 * Utilizzo di un SMBIOS supportato in questa versione di macOS
    * es. non stai usando `-no_compat_check`
 * Stai utilizzando l'ultima versione di OpenCore
