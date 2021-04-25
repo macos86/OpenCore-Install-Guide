@@ -691,7 +691,7 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 
 E ora sei pronto per salvarlo e inserirlo nel tuo EFI sotto EFI/OC.
 
-Per coloro che hanno problemi di avvio, assicurati di leggere prima la [Troubleshooting section](../troubleshooting/troubleshooting.md) e se le tue domande sono ancora senza risposta, abbiamo molte risorse a tua disposizione:
+Per coloro che hanno problemi di avvio, assicurati di leggere prima la [Troubleshooting section](../troubleshooting/.md) e se le tue domande sono ancora senza risposta, abbiamo molte risorse a tua disposizione:
 
 * [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
 * [r/Hackintosh Discord](https://discord.gg/2QYd7ZT)
