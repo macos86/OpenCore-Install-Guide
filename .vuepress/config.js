@@ -57,19 +57,22 @@ module.exports = {
                     },
                     {
                         text: 'Creazione dell\'installer in macOS',
-                        link: 'installer-guide/mac-install',
                         items: [
                             {
+                                text: 'macOS attuali',
+                                link: 'installer-guide/mac-install'
+                            },
+                            {
                                 text: 'Legacy macOS: metodo Offline',
-                                link: 'installer-guide/mac-pkg'
+                                link: 'installer-guide/mac-install-pkg'
                             },
                             {
                                 text: 'Legacy macOS: metodo Online',
-                                link: 'installer-guide/mac-recovery'
+                                link: 'installer-guide/mac-install-recovery'
                             },
                             {
                                 text: 'Legacy macOS: Immagine Disco',
-                                link: 'installer-guide/mac-dmg'
+                                link: 'installer-guide/mac-install-dmg'
                             },
                         ]
                     }
