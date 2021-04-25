@@ -44,6 +44,50 @@ module.exports = {
         logo: 'homepage.png',
         nav: [
             {
+                text: 'Creazione Installer',
+                link: 'installer-guide/',
+                items: [
+                    {
+                        link: 'installer-guide/winblows-install'
+                    },
+                    {
+                        link: 'installer-guide/linux-install'
+                    },
+                    {
+                        link: 'installer-guide/mac-install',
+                        items: [
+                            {
+                                link: 'installer-guide/mac-pkg'
+                            },
+                            {
+                                link: 'installer-guide/mac-recovery'
+                            },
+                            {
+                                link: 'installer-guide/mac-dmg'
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
+                text: 'Aggiunta dei file',
+                items: [
+                    {
+                        link: 'installer-guide/opencore-efi'
+                    },
+                    {
+                        link: 'ktext'
+                    },
+                    {
+                        text: 'Iniziamo Con ACPI',
+                        link: 'https://macos86.github.io/Getting-Started-With-ACPI/'
+                    }
+                ]
+            },
+            {
+                link: 'config.plist/'
+            },
+            {
                 text: 'Guide Dortania',
                 ariaLabel: 'Language Menu',
                 items: [
@@ -77,21 +121,6 @@ module.exports = {
                     },
                 ]
             },
-            {
-                text: 'Creazione Installer',
-                path: 'installer-guide/',
-                ariaLabel: 'Language Menu',
-                items: [
-                    {
-                        text: 'Creazione installer da Windows',
-                        link: 'installer-guide/winblows-install'
-                    },
-                    {
-                        text: 'Creazione installer da Linux',
-                        link: 'installer-guide/linux-install'
-                    },
-                ]
-            }
         ],
         sidebar: [
             {
