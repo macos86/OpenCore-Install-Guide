@@ -41,7 +41,7 @@ module.exports = {
         editLinks: true,
         smoothScroll: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
-        logo: 'homepage.png',
+        logo: '.vuepress/public/homepage.png',
         nav: [
             {
                 text: 'Creazione Installer',
