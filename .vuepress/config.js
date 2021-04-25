@@ -219,9 +219,9 @@ module.exports = {
             },
             {
                 title: 'Post-Install (EN)',
+                path: 'https://dortania.github.io/OpenCore-Post-Install/',
                 collapsable: false,
                 children: [
-                    ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
                     {
                         title: 'Universal',
                         children: [
