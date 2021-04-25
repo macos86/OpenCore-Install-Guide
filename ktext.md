@@ -160,7 +160,7 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
   * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) 
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Per i Gigabit Ethernet di Realtek
-  * Richiede OS X 10.8-11 (2.2.0), 10.12-13 (v2.2.2), 10.14+ (2.4.0)
+  * Richiede OS X 10.8 e meno recenti per la versione 2.2.0 e inferiori, macOS 10.12 e sucessivi per le versioni 2.2.2 e 2.3.0 (incluse), macOS 10.14 e sucessivi per la versione 2.4.0 e sucessive
   * **NOTA: a volte i Gigabit Ethernet di Realtek potrebbe non funzionare correttamente se si utilizza l'ultima versione del kext. Se hai qualche problema, prova ad usare vecchie versioni.**
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Per i 2,5 Gb Ethernet di Realtek
