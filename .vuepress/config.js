@@ -45,41 +45,7 @@ module.exports = {
         nav: [
             {
                 text: 'Creazione Installer',
-                items: [
-                    {
-                        text: 'Creazione Installer',
-                        link: '/installer-guide/'
-                    },
-                    {
-                        text: 'Creare l\'Installer su Windows',
-                        link: '/installer-guide/winblows-install'
-                    },
-                    {
-                        text: 'Creazione dell\'installer in Linux',
-                        link: '/installer-guide/linux-install'
-                    },
-                    {
-                        text: 'Creazione dell\'installer in macOS',
-                        items: [
-                            {
-                                text: 'macOS attuali',
-                                link: '/installer-guide/mac-install'
-                            },
-                            {
-                                text: 'Legacy macOS: metodo Offline',
-                                link: '/installer-guide/mac-install-pkg'
-                            },
-                            {
-                                text: 'Legacy macOS: metodo Online',
-                                link: '/installer-guide/mac-install-recovery'
-                            },
-                            {
-                                text: 'Legacy macOS: Immagine Disco',
-                                link: '/installer-guide/mac-install-dmg'
-                            },
-                        ]
-                    }
-                ]
+                link: '/installer-guide/'
             },
             {
                 text: 'Aggiunta dei file',
@@ -100,11 +66,11 @@ module.exports = {
             },
             {
                 text: 'Setup del Config.plist',
-                link: 'config.plist/'
+                link: '/config.plist'
             },
             {
                 text: 'Risoluzione dei problemi',
-                link: 'troubleshooting/'
+                link: '/troubleshooting/'
             },
             {
                 text: 'Guide Dortania',
@@ -144,7 +110,6 @@ module.exports = {
             {
                 title: 'Introduzione',
                 collapsable: false,
-                sidebarDepth: 1,
                 children: [
                     'prerequisites',
                     'macos-limits',
@@ -161,9 +126,7 @@ module.exports = {
                 children: [
                     {
                         title: 'Creare la USB',
-                        collapsable: true,
                         path: '/installer-guide/',
-                        sidebarDepth: 1,
                         children: [
                             '/installer-guide/mac-install',
                             '/installer-guide/winblows-install',
@@ -182,8 +145,6 @@ module.exports = {
                 children: [
                     {
                         title: 'Intel Desktop config.plist',
-                        collapsable: true,
-                        sidebarDepth: 1,
                         children: [
                             ['/config.plist/penryn', 'Penryn'],
                             ['/config.plist/clarkdale', 'Clarkdale'],
@@ -198,8 +159,6 @@ module.exports = {
                     },
                     {
                         title: 'Intel Laptop config.plist',
-                        collapsable: true,
-                        sidebarDepth: 1,
                         children: [
                             ['/config-laptop.plist/arrandale', 'Arrandale'],
                             ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
@@ -215,8 +174,6 @@ module.exports = {
                     },
                     {
                         title: 'Intel HEDT config.plist',
-                        collapsable: true,
-                        sidebarDepth: 1,
                         children: [
                             '/config-HEDT/nehalem',
                             '/config-HEDT/ivy-bridge-e',
@@ -227,8 +184,6 @@ module.exports = {
                     },
                     {
                         title: 'AMD Desktop config.plist',
-                        collapsable: true,
-                        sidebarDepth: 1,
                         children: [
                             '/AMD/fx',
                             '/AMD/zen',
@@ -237,12 +192,8 @@ module.exports = {
                 ]
             },
             {
-                title: 'Installazione',
-                collapsable: false,
-                children: [
-                    '/installation/installation-process',
-
-                ]
+                title: 'Processo di Installazione',
+                path: '/installation/installation-process',
             },
             {
                 title: 'Troubleshooting',
@@ -332,8 +283,6 @@ module.exports = {
                     '/extras/spoof',
                     '/extras/big-sur/',
                     {
-                        collapsable: true,
-                        sidebarDepth: 1,
                         path: '/clover-conversion/',
                         title: 'Conversioni da Clover',
                         children: [
