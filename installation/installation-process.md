@@ -5,7 +5,7 @@ Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali co
 * Abilita le impostazioni del BIOS ottimali per macOS
 * Leggi la [OpenCore Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) e anche [Setting up LauncherOption (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap)
   * Principalmente per coloro che stanno avviando un singolo disco con più sistemi
-* Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](../troubleshooting/troubleshooting.md)
+* Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](../troubleshooting/.md)
 * Leggi anche la pagina riguardo all'[avvio di macOS](../troubleshooting/boot.md)
   * Può aiutare chi installa per la prima volta a capire dove sono bloccati
 * E un sacco di pazienza

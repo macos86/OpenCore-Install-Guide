@@ -197,11 +197,11 @@ module.exports = {
             },
             {
                 title: 'Troubleshooting',
+                path: '/troubleshooting/',
                 collapsable: false,
                 children: [
-                    '/troubleshooting/troubleshooting',
                     {
-                        title: '',
+                        title: 'Risoluzione dei problemi',
                         collapsable: false,
                         children: [
                             '/troubleshooting/extended/opencore-issues',
