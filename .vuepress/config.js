@@ -1,5 +1,6 @@
 module.exports = {
     title: 'Guida Installazione Opencore',
+    lang: 'it-IT',
     head: [
         [
             'meta', {
@@ -30,14 +31,10 @@ module.exports = {
         }
     },
 
-    theme: 'vuepress-theme-succinct',
-    globalUIComponents: [
-        'ThemeManager'
-    ],
+    theme: 'yuu',
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/macos86/OpenCore-Install-Guide',
         editLinks: true,
         smoothScroll: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
