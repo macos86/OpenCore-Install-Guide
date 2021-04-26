@@ -104,7 +104,7 @@ Come puoi vedere, abbiamo una porta COM nella parte inferiore della nostra sched
 
 In alternativa, alcune macchine sono dotate di porte seriali DB9 proprio sull'IO posteriore come questo Dell Optiplex 780 SFF (si noti che VGA e seriale **non** sono lo stesso connettore):
 
-<img width="508" alt="" src="../images/troubleshooting/kernel-debugging-md/serial-connector.jpg">
+![](../images/troubleshooting/kernel-debugging-md/serial-connector.jpg)
 
 Per la mia configurazione X299, sto usando un semplice file [Serial header to DB9](https://www.amazon.ca/gp/product/B001Y1F0HW/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1), e un [DB9 to USB  RS 232 adapter](https://www.amazon.ca/gp/product/B075YGKFC1/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1) che alla fine termina sul mio laptop:
 

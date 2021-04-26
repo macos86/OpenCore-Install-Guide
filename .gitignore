@@ -3,6 +3,8 @@ node_modules/
 .vscode/
 .DS_Store
 .vuepress/dist
+.vuepress/.temp
+.vuepress/.cache
 .vuepress/.config.js.swp
 yarn.lock
 yarn-error.log
