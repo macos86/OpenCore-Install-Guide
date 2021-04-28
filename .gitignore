@@ -8,3 +8,4 @@ node_modules/
 .vuepress/.config.js.swp
 yarn.lock
 yarn-error.log
+package-lock.json
