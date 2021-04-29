@@ -1,8 +1,6 @@
-# Iniziamo con OpenCore
+# Prerequisiti
 
 Prima di iniziare seriamente a impostare un sistema basato su OpenCore, dovremmo controllare un paio di cose.
-
-## Prerequisiti
 
 1. <span style="color:red">_**[CRUCIALE]**_</span> Tempo e pazienza.
    * Non iniziare a lavorare se hai scadenze o importanti lavori. Non puoi mettere la stessa fiducia negli Hackintosh rispetto alle macchine già funzionanti.
