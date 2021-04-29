@@ -1,3 +1,7 @@
+---
+sidebarDepth: 2
+---
+
 # Trovare il tuo Hardware
 
 Questa sezione è una mini-guida che spiega come trovare il tuo hardware corrente; questo è rilevante per laptop e utenti prebuilt dato che l'hardware è un po' più difficile da comprendere. Puoi saltare questa sezione e andare a [Creare la USB](./installer-guide/) se conosci già l'hardware che possiedi.
