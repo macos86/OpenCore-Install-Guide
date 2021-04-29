@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v2
-      - name: Install
-        run: npm install
+      - name: Update & Install
+        run: npm update
       - name: Build
         run: npm run build
       - name: Deploy
