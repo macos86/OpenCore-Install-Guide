@@ -5,3 +5,4 @@ node_modules/
 .vuepress/.temp
 .vuepress/.cache
 yarn*
+package-lock.json
