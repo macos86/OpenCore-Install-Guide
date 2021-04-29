@@ -31,10 +31,9 @@ module.exports = {
         }
     },
 
-    theme: 'yuu',
-
     themeConfig: {
-        lastUpdated: true,
+        lastUpdated: 'Ultimo Aggiornamento',
+        repo: 'macos86/OpenCore-Install-Guide',
         editLinks: true,
         smoothScroll: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
