@@ -533,7 +533,7 @@ System Integrity Protection bitmask
 
 ### Delete
 
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli.
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come`boot-args` dovrebbero essere lasciati soli.
 
 * **LegacyEnable**: YES
   * Consente la memorizzazione della NVRAM su nvram.plist, necessaria per i sistemi senza NVRAM nativa come X99

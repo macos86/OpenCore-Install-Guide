@@ -501,7 +501,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come`boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
 
 | Quirk | Enabled |
 | :--- | :--- |
