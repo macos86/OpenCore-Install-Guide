@@ -282,7 +282,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AppleDebug**: YES
   * Abilita la registrazione di boot.efi, utile per il debug. Nota che questo è supportato solo su 10.15.4 e versioni successive
@@ -597,7 +597,7 @@ RRiguardo alle stranezze con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **IgnoreInvalidFlexRatio**: YES
   * Risolto il problema per cui MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake

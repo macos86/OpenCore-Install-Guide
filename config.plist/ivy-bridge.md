@@ -311,7 +311,7 @@ Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata se
 
 Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puoi saltare, tuttavia per coloro che intendono avviare sistemi operativi legacy vedere qui di seguito:
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **FuzzyMatch**: True
   * Usato per ignorare i checksum con kernelcache, optando invece per l'ultima cache disponibile. Può aiutare a migliorare le prestazioni di avvio su molte macchine in 10.6

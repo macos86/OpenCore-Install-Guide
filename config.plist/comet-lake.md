@@ -83,7 +83,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 | SyncRuntimePermissions | YES | |
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: YES
   * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
@@ -481,7 +481,7 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **rtc-blacklist**: <>
   * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
@@ -608,7 +608,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ### Generic
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AdviseWindows**: NO
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows

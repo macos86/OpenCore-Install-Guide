@@ -205,7 +205,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AppleCpuPmCfgLock**: NO
   * Necessario solo quando CFG-Lock non può essere disabilitato nel BIOS
@@ -251,7 +251,7 @@ Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata se
 
 Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puoi saltare, tuttavia per coloro che intendono avviare sistemi operativi legacy vedere qui di seguito:
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **FuzzyMatch**: True
   * Usato per ignorare i checksum con kernelcache, optando invece per l'ultima cache disponibile. Può aiutare a migliorare le prestazioni di avvio su molte macchine in 10.6
@@ -293,7 +293,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 
 :::
 
-::: Informazioni più approfondite
+::: details Informazioni più approfondite
 
 * **AppleDebug**: YES
   * Abilita la registrazione di boot.efi, utile per il debug. Nota che questo è supportato solo su 10.15.4 e versioni successive
