@@ -1,4 +1,37 @@
-# Processo d'installazione
+# Processo di Installazione
+
+Ora sei pronto per salvare e mettere la tua EFI in EFI/OC.
+
+Per chi ha problemi all'avvio, assicurati di aver letto la [sezione di risoluzione dei problemi](../troubleshooting/troubleshooting.md) e vedi se le tue domande hanno trovato una risposta. Altrimenti abbiamo un sacco di risorse a tua disposizione:
+
+* [AMD OS X Discord](https://discord.com/invite/EfCYAJW)
+* [r/Hackintosh Discord (Solo Intel)](https://discord.gg/2QYd7ZT)
+* [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
+
+## Sanity checker
+
+Ringraziamo il lavoro di Ramus, abbiamo uno strumento fantastico per verificare il tuo config:
+
+* [**Sanity Checker**](https://opencore.slowgeek.com)
+
+Nota che questo tool non è mantenuto da Dortania, per ogni tipo di problema riferisciti alla [Repo del Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
+
+## Promemoria del Config
+
+### Utenti HP
+
+* Kernel -> Quirks -> LapicKernelPanic -> True
+  * Dovrai farlo altrimenti rischi un kernel panic su LAPIC
+* UEFI -> Quirks -> UnblockFsConnect -> True
+
+### Utenti Dell
+
+Su Skylake e sucessivi:
+
+* Kernel -> Quirk -> CustomSMBIOSGuid -> True
+* PlatformInfo -> UpdateSMBIOSMode -> Custom
+
+## Processo d'installazione
 
 Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali cose da ricordare:
 
@@ -25,10 +58,6 @@ Rimossi i Tool non necessari (.efi) | Lasciati tutti i Tool di default
 Tutti i file nella cartella Kexts finiscono con .kext | Inclusi i file sorgente e altre cartelle
 config.plist si trova in EFI/OC | Il file .plist non è né rinominato né messo il file nella cartella corretta
 Usati i kext necessari | Scaricato ogni kext elencato
-
-E ricordati che il sito di slowgeek è tuo amico:
-
-* [**Sanity Checker**](https://opencore.slowgeek.com)
 
 ## Avviare la USB con OpenCore
 

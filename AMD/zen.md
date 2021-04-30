@@ -109,9 +109,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
 
 Sets device properties from a map.
 
-By default, the Sample.plist has this section set for iGPU and Audio. We have no iGPU so PciRoot `PciRoot(0x0)/Pci(0x2,0x0)` can be removed from `Add` section. For audio we'll be setting the layout in the boot-args section, so removal of `PciRoot(0x0)/Pci(0x1b,0x0)` is also recommended from both `Add` and `Block` sections
-
-TL;DR, delete all the PciRoot's here as we won't be using this section.
+By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the boot-args section, for us we can ignore this
 
 ### Delete
 
@@ -686,23 +684,6 @@ Relating to quirks with the UEFI environment, for us we'll be changing the follo
 ### ReservedMemory
 
 Used for exempting certain memory regions from OSes to use, mainly relevant for Sandy Bridge iGPUs or systems with faulty memory. Use of this quirk is not covered in this guide
-
-## Cleaning up
-
-And now you're ready to save and place it into your EFI under EFI/OC.
-
-For those having booting issues, please make sure to read the [Troubleshooting section](../troubleshooting/.md) first and if your questions are still unanswered we have plenty of resources at your disposal:
-
-* [AMD OS X Discord](https://discord.gg/QuUWg7)
-* [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
-
-**Sanity check**:
-
-So thanks to the efforts of Ramus, we also have an amazing tool to help verify your config for those who may have missed something:
-
-* [**Sanity Checker**](https://opencore.slowgeek.com)
-
-Note that this tool is neither made nor maintained by Dortania, any and all issues with this site should be sent here: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
 
 ## AMD BIOS Settings
 
