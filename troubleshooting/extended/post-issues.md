@@ -191,7 +191,7 @@ Per verificare se il tuo RTC funziona correttamente:
 /path/to/smcread -s | grep CLKT
 ```
 
-![](../../images/extras/big-sur/readme/rtc-1.png)
+![](../../images/extras/big-sur/rtc-1.png)
 
 Questo dovrebbe fornire un valore esadecimale e, una volta convertito, dovrebbe corrispondere al tempo trascorso dalla mezzanotte rispetto a Cupertino.
 
