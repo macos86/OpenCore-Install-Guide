@@ -696,4 +696,4 @@ Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
