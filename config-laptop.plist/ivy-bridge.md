@@ -738,7 +738,7 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da utilizzare, principalmente rilevante per iGPU Sandy Bridge o sistemi con memoria difettosa. L'uso di questa stranezza non è trattato in questa guida
 
-## Intel BIOS settings
+## Impostazioni BIOS Intel
 
 ## Intel impostazioni BIOS
 
