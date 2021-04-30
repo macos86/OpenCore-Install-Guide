@@ -48,7 +48,6 @@ Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'
     * Nota: gli utenti OpenDuet(cioè senza UEFI) avranno gia questo driver integrato, non gli servirà
   * Non necessario per OS X 10.10, Yosemite e successivi
   
-
 Questi file andranno nella cartella "drivers" della tua EFI
 
 ::: details specifici per le cpu 32-Bit
@@ -78,14 +77,13 @@ Senza i due qua sotto nessun sistema è avviabile:
 
 * [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Required</span>)
   * Emula il chip SMC che si trova sui veri Mac, senza questo MacOs non si avvierà.
-  * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy 
+  * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy
   * Necessita OS X 10.6 o superiori
 * [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Required</span>)
   * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
   * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
   
-
-::: details "Must haves" dei kext per gli utenti legacy 
+::: details "Must haves" dei kext per gli utenti legacy
 
 Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
 
@@ -129,7 +127,6 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
   * I processori AMD 15°/16° potrebbero avere problemi con questo kext e i sistemi Ryzen/Threadripper raramente supportano il microfono
   * Necessita di OS X 10.8 o superiori
   
-
 ::: details Kext audio per i sistemi legacy
 
 Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile optare per questi kext:
@@ -157,7 +154,7 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
   * Richiesto per Atheros e i NIC Killer
   * Richiede OS X 10.8 o successivo
-  * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) 
+  * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Per i Gigabit Ethernet di Realtek
   * Richiede OS X 10.8 e meno recenti per la versione 2.2.0 e inferiori, macOS 10.12 e sucessivi per le versioni 2.2.2 e 2.3.0 (incluse), macOS 10.14 e sucessivi per la versione 2.4.0 e sucessive
@@ -190,7 +187,7 @@ Inoltre, tieni presente che alcune schede NIC sono effettivamente supportate in 
 
 ::: details Controller Ethernet Nativamente Supportati
 
-#### Serie Aquantia 
+#### Serie Aquantia
 
 ```md
 # AppleEthernetAquantiaAqtion.kext
@@ -209,7 +206,7 @@ pci1d6a,4c0  = Aquantia AQC113
 
 **Nota bene**: A causa di alcuni firmware obsoleti forniti su molti NIC Aquantia, potrebbe essere necessario aggiornare il firmware da Linux/Windows per assicurarsi che sia compatibile con macOS.
 
-#### Serie Intel 
+#### Serie Intel
 
 ```md
 # AppleIntel8254XEthernet.kext
@@ -227,7 +224,7 @@ pci8086,10f6 = Intel 82574L
 
 ```
 
-#### Serie Broadcom 
+#### Serie Broadcom
 
 ```md
 # AppleBCM5701Ethernet.kext
@@ -245,7 +242,7 @@ pci14e4,1686 = Broadcom BCM57766
 * [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
   * Utilizzato per iniettare i contreller USB Intel su sistemi senza porte USB definite in ACPI
   * Non dovrebbe essere necessario su Desktop Skylake e versioni successive
-    * Su AsRock questo kext è invece sempre necessario 
+    * Su AsRock questo kext è invece sempre necessario
     * Si consiglia tuttavia di utilizzare questo kext anche con processori Coffee Lake e laptop meno recenti
   * Non funziona su **nessuna** CPU AMD
   * Necessita di OS X 10.11 o superiori
@@ -277,12 +274,11 @@ pci14e4,1686 = Broadcom BCM57766
 
 Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 
-* Abilita `Misc -> Security -> SecureBootModel` impostandolo come` Default` o qualche altro valore valido
+* Abilita `Misc -> Security -> SecureBootModel` impostandolo come`Default` o qualche altro valore valido
   * Questo è discusso successivamente più avanti in questa guida ma anche nella guida post-installazione: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
 * Se non puoi abilitare SecureBootModel, puoi comunque forzare l'inserimento di IO80211Family (**Altamente sconsigliato**)
   * Imposta quanto segue in `Kernel -> Force` nel tuo config.plist (discusso più avanti in questa guida):
   
-
 ![](./images/ktext-md/force-io80211.png)
 
 :::
@@ -349,7 +345,6 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 * [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
   * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
-
 :::
 
 ### Specifici per laptop
@@ -373,7 +368,7 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
   * Usato per il fix dei dispostitivi I2C, utile con alucni touchpad e touchreeen più particolari
   * Richiede macOS 10.11 o versioni successive per le funzioni MT2
-::: details Plugin di VoodooI2C 
+::: details Plugin di VoodooI2C
 | Tipo di connessione | Plugin | Note |
 | :--- | :--- | :--- |
 | Microsoft HID | VoodooI2CHID | Può essere utilizzato anche per supportare alcuni touchscreen USB |
@@ -456,4 +451,4 @@ Continuando:
 | Comet Lake | Nessuno | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-# Ora, con tutto questo fatto, vai a [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
+> Ora, con tutto questo fatto, vai a [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)

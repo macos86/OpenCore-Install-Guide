@@ -8,7 +8,7 @@ Problemi riguardanti una volta che hai avviato il programma di installazione e l
 
 ## macOS installer in Russo
 
-La configurazione di esempio predefinita è in russo perché gli slavi governano il mondo di Hackintosh, controlla il tuo valore `prev-lang: kbd` in` NVRAM -> Aggiungi -> 7C436110-AB2A-4BBB-A880-FE41995C9F82`. Impostato su `656e2d55533a30` per American: en-US: 0 e un elenco completo può essere trovato in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt). Per coloro che utilizzano un semplice editor di testo (es. UEFI Shell, Notepad ++, ecc.), `656e2d55533a30` diventerà` ZW4tVVM6MA == `
+La configurazione di esempio predefinita è in russo perché gli slavi governano il mondo di Hackintosh, controlla il tuo valore `prev-lang: kbd` in `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82`. Impostato su `656e2d55533a30` per American: `en-US:0` e un elenco completo può essere trovato in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt). Per coloro che utilizzano un semplice editor di testo (es. UEFI Shell, Notepad++, ecc.), `656e2d55533a30` diventerà `ZW4tVVM6MA==`
 
 Potrebbe anche essere necessario reimpostare la NVRAM tramite l'apposito selettore di avvio
 
@@ -16,7 +16,7 @@ Potrebbe anche essere necessario reimpostare la NVRAM tramite l'apposito seletto
 
 Ancora non ha funzionato? Bene, tempo di armi pesanti. Forzeremo la rimozione di quella proprietà esatta e lasceremo che OpenCore la ricostruisca:
 
-`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo Digita `String` e Value` prev-lang-kbd`
+`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo di tipo `String` e valore `prev-lang-kbd`
 
 ![](../../images/troubleshooting/troubleshooting-md/lang.png)
 
@@ -44,9 +44,9 @@ Questo è giusto prima che la GPU venga inizializzata correttamente; verifica qu
 * CSM è disattivato nel BIOS
 * Forzare la velocità di collegamento PCIe 3.0
 * Controlla che ig-platform-id e device-id siano validi se si usa una iGPU.
-   * Potrebbe essere necessario utilizzare "00009B3E" per desktop UHD 630
+  * Potrebbe essere necessario utilizzare "00009B3E" per desktop UHD 630
 * Provando varie [WhateverGreen Fixes](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
-   * argomento di avvio `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
+  * argomento di avvio `-igfxmlr`. Questo può anche manifestarsi come un errore di divisione per zero.
 * Gli utenti di Coffee Lake iGPU potrebbero anche aver bisogno di `igfxonln=1` in 10.15.4 e versioni successive
 
 ## Schermo deformato su laptops
@@ -60,7 +60,7 @@ Verifica quanto segue:
 * SSDT-PNLF installato (es. EFI/OC/ACPI e dichiarato nel config.plist -> ACPI)
 * Le proprietà iGPU sono state impostate correttamente in `DeviceProperties -> PciRoot(0x0)/Pci(0x2,0x0)`
 * Coffee Lake e laptop più recenti, aggiungi `-igfxblr` ai tuoi argomenti di avvio
-   * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot(0x0)/Pci(0x2,0x0)"
+  * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot(0x0)/Pci(0x2,0x0)"
 
 Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock-3)
 
@@ -92,9 +92,9 @@ Skip: 0
 
 ## Congelato nel programma di installazione di macOS dopo 30 secondi
 
-Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
+Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante; quello ospitato sulla Guida Vanilla di AMD OSX è danneggiato. Vai da Shannee e gridagli di aggiustarlo. Per risolvere il problema; rimuovere NullCPUPowerManagement da `Kernel -> Add` e `EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in `Kernel -> Emulate`
 
-##  Riavvio della CPU 15h/16h dopo la schermata Data & Privacy
+## Riavvio della CPU 15h/16h dopo la schermata Data & Privacy
 
 Segui le indicazioni qui dopo l'AGGIORNAMENTO 2: [Risolvere il "Data and Privacy reboot"](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2658085)
 
@@ -116,7 +116,7 @@ Questo errore è dovuto a un piccolo EFI, per impostazione predefinita Windows c
 
 * Espandi l'EFI dell'unità a 200 MB (cerca su Google per sapere come)
 * Formatta l'intera unità anziché solo la partizione
-   * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd/Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
+  * Nota per impostazione predefinita Utility Disco mostra solo le partizioni, premi Cmd/Win + 2 per mostrare tutti i dispositivi (in alternativa puoi premere il pulsante Visualizza)
 
 Default           |  Show All Devices(Cmd+2)
 :-------------------------:|:-------------------------:
@@ -204,10 +204,10 @@ config.plist -> Kernel -> Patch:
 Se ti viene chiesto di aggiornare il firmware per installare con un volume APFS, è probabile che sia una tabella SMBIOS obsoleta. Innanzitutto, verifica quanto segue:
 
 * Hai `PlatformInfo -> Automatic` abilitato
-* `UpdateSMBIOSMode` è impostato su` Create`
-   * Per le macchine Dell e VAIO, assicurati che `CustomSMBIOSGuid` sia abilitato e che` UpdateSMBIOSMode` sia invece impostato su `Custom`
+* `UpdateSMBIOSMode` è impostato su`Create`
+  * Per le macchine Dell e VAIO, assicurati che `CustomSMBIOSGuid` sia abilitato e che`UpdateSMBIOSMode` sia invece impostato su `Custom`
 * Utilizzo di un SMBIOS supportato in questa versione di macOS
-   * es. non stai usando `-no_compat_check`
+  * es. non stai usando `-no_compat_check`
 * Stai utilizzando l'ultima versione di OpenCore
 
 Se continui a ricevere questo errore, probabilmente ci sono alcune informazioni SMBIOS obsolete in OpenCore stesso. Si consiglia di passare a un SMBIOS simile e vedere se il problema è stato risolto. Per un elenco completo di SMBIOS, vedere qui: [Scegliere il giusto SMBIOS](../../extras/smbios-support.html)

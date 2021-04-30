@@ -13,21 +13,21 @@ Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare
 **Situazioni in cui OpenCore non veniva caricato**:
 
 * Se non sono presenti log anche dopo aver impostato la versione DEBUG di OpenCore con Target impostato su 67, è probabile che si tratti di un problema di:
-   * Struttura della cartella USB errata
-	* Vedi [L'avvio di OpenCore si riavvia nel BIOS](#l-avvio-di-opencore-riavvia-nel-bios) per maggiori informazioni
-   * Il firmware non supporta UEFI
-	* Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../installer-guide/mac-install.md) che in [Windows](../../installer-guide/winblows-install.md)
+  * Struttura della cartella USB errata
+  * Vedi [L'avvio di OpenCore si riavvia nel BIOS](#l-avvio-di-opencore-riavvia-nel-bios) per maggiori informazioni
+  * Il firmware non supporta UEFI
+  * Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../installer-guide/mac-install.md) che in [Windows](../../installer-guide/winblows-install.md)
 
 **Situazioni in cui OpenCore è stato caricato**:
 
 * Controlla l'ultima riga stampata nei tuoi log, probabilmente ci sarà un driver .efi che è stato caricato o una qualche forma di ASSERT
-   * Per ASSERT, ti consigliamo di informare effettivamente gli sviluppatori di questo problema: [Bugtracker di Acidanthera](https://github.com/acidanthera/bugtracker)
-    * **Problemi di caricamento di HfsPlus.efi:**
-	  * Prova a utilizzare [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
-	  * Consigliato per CPU che non supportano RDRAND, principalmente rilevante per Ivy Bridge i3 di terza generazione e versioni precedenti
-	  * Un'altra opzione è [VBoxHfs.efi](https://github.com/acidanthera/AppleSupportPkg/releases/tag/2.1.7), tuttavia è molto più lenta della versione di HfsPlus
-    * **Problemi di caricamento di HiiDatabase.efi:**
-      * Probabilmente il tuo firmware supporta già HiiDatabase, quindi il driver è in conflitto. Rimuovi semplicemente il driver perché non ti serve.
+  * Per ASSERT, ti consigliamo di informare effettivamente gli sviluppatori di questo problema: [Bugtracker di Acidanthera](https://github.com/acidanthera/bugtracker)
+  * **Problemi di caricamento di HfsPlus.efi:**
+    * Prova a utilizzare [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
+    * Consigliato per CPU che non supportano RDRAND, principalmente rilevante per Ivy Bridge i3 di terza generazione e versioni precedenti
+    * Un'altra opzione è [VBoxHfs.efi](https://github.com/acidanthera/AppleSupportPkg/releases/tag/2.1.7), tuttavia è molto più lenta della versione di HfsPlus
+  * **Problemi di caricamento di HiiDatabase.efi:**
+    * Probabilmente il tuo firmware supporta già HiiDatabase, quindi il driver è in conflitto. Rimuovi semplicemente il driver perché non ti serve.
 
 ## Bloccato su `no vault provided!`
 
@@ -52,11 +52,11 @@ Cose principali da controllare:
 * Imposta UnblockFsConnect su True in config.plist -> UEFI -> Quirks. Necessario per alcuni sistemi HP
 * Imposta **Modalità SATA**: `AHCI` nel BIOS
 * Imposta `UEFI -> APFS` per vedere le unità basate su APFS:
-   * **EnableJumpstart**: YES
-   * **HideVerbose**: NO
-   * Se si eseguono versioni precedenti di High Sierra (ad es. 10.13.5 o precedenti), impostare quanto segue:
-     * **MinDate**: `-1`
-     * **MinVersion**: `-1`
+  * **EnableJumpstart**: YES
+  * **HideVerbose**: NO
+  * Se si eseguono versioni precedenti di High Sierra (ad es. 10.13.5 o precedenti), impostare quanto segue:
+    * **MinDate**: `-1`
+    * **MinVersion**: `-1`
 
 ## Bloccato su `OCB: OcScanForBootEntries failure - Not Found`
 
@@ -87,7 +87,7 @@ Ciò è dovuto all'uso di un config di Clover in OpenCore o all'utilizzo di un c
 Ciò è dovuto a una voce nel tuo config.plist, tuttavia non presente nel tuo EFI. Risolvere:
 
 * Assicurati che il tuo EFI/OC/Drivers corrisponda al tuo config.plist -> UEFI->Drivers
-   * In caso contrario, eseguire Cmd/Ctrl+R con OpenCore per eseguire nuovamente l'istantanea del file config.plist
+  * In caso contrario, eseguire Cmd/Ctrl+R con OpenCore per eseguire nuovamente l'istantanea del file config.plist
 
 Notare che le voci fanno distinzione tra maiuscole e minuscole.
 
@@ -107,16 +107,16 @@ Per risolvere, cambia `real` con `integer`:
  <integer>2147483648</integer>
 ```
 
-##Non è possibile selezionare nulla nel selettore
+## Non è possibile selezionare nulla nel selettore
 
 Ciò è dovuto ad alcune cose:
 
 * Driver della tastiera incompatibile:
-   * Disabilita `PollAppleHotKeys` e abilita` KeySupport`, quindi rimuovi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) dal tuo config.plist->UEFI->Drivers
-   * Se quanto sopra non funziona, inverti: disabilita `KeySupport`, quindi aggiungi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) al tuo config.plist->UEFI->Driver
+  * Disabilita `PollAppleHotKeys` e abilita`KeySupport`, quindi rimuovi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) dal tuo config.plist->UEFI->Drivers
+  * Se quanto sopra non funziona, inverti: disabilita `KeySupport`, quindi aggiungi [OpenUsbKbDxe](https://github.com/acidanthera/OpenCorePkg/releases) al tuo config.plist->UEFI->Driver
 
 * Driver della tastiera PS2 mancante (ignorare se si utilizza una tastiera USB):
-   * Sebbene la maggior parte dei firmware lo includa per impostazione predefinita, alcuni laptop e PC meno recenti potrebbero comunque aver bisogno di [Ps2KeyboardDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases) per funzionare correttamente. Ricorda di aggiungere anche questo al tuo config.plist
+  * Sebbene la maggior parte dei firmware lo includa per impostazione predefinita, alcuni laptop e PC meno recenti potrebbero comunque aver bisogno di [Ps2KeyboardDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases) per funzionare correttamente. Ricorda di aggiungere anche questo al tuo config.plist
 
 ## SSDT non vengono aggiunti
 
@@ -135,7 +135,7 @@ Con OpenCore, sono stati aggiunti alcuni controlli di sicurezza aggiuntivi intor
 *     Compiler Version 0x20190509 (538510601)
 ```
 
-Il valore `Length` e` checksum` è ciò che ci interessa, quindi se il nostro SSDT è effettivamente 347 byte, allora vogliamo cambiare `Length` in` 0x0000015B (347) `(lo` 015B` è in HEX)
+Il valore `Length` e `checksum` è ciò che ci interessa, quindi se il nostro SSDT è effettivamente 347 byte, allora vogliamo cambiare `Length` in `0x0000015B (347)` (lo è `015B` in HEX)
 
 Il modo migliore per risolvere effettivamente questo problema è prendere una copia più recente di iASL o la copia di Acidanthera di [MaciASL](https://github.com/acidanthera/MaciASL/releases) e rifare l'SSDT
 

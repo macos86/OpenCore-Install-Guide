@@ -27,7 +27,7 @@ fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
 
 Ciò è solitamente dovuto a una versione obsoleta di Python; prova ad aggiornarlo o aggiungi iasl alla cartella degli script per SSDTTime:
 
-* [iasl versione macOS ](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
+* [iasl versione macOS](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
 * [iasl versione Windows](https://acpica.org/downloads/binary-tools)
 * [iasl versione Linux](http://amdosx.kellynet.nl/iasl.zip)
 
@@ -56,7 +56,7 @@ Make sure `Add Python to PATH`
 
 Con OpenCore, dobbiamo notare che non sono supportate le installazioni legacy di Windows, solo UEFI. La maggior parte delle installazioni ora sono basate su UEFI, ma quelle effettuate da BootCamp Assistant sono legacy, quindi dovrai trovare altri mezzi per creare un programma di installazione (Google è tuo amico). Ciò significa anche che anche le partizioni MasterBootRecord/Hybrid sono danneggiate, quindi dovrai formattare l'unità su cui desideri installare con DiskUtility. Consulta la [Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) sulle migliori pratiche
 
-Ora per passare alla risoluzione dei problemi: 
+Ora per passare alla risoluzione dei problemi:
 
 * Assicurati che "Misc -> Security -> ScanPolicy" sia impostato su "0" per mostrare tutte le unità
 * Abilita `Misc -> Boot -> Hideself` quando il bootloader di Windows si trova sulla stessa unità
@@ -67,7 +67,7 @@ Se si verificano problemi con il disco di avvio che applica correttamente la nuo
 
 Esempio di "DevicePathsSupported" mancante:
 
-* [ Default DevicePath match failure due to different PciRoot #664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
+* [Default DevicePath match failure due to different PciRoot #664](https://github.com/acidanthera/bugtracker/issues/664#issuecomment-663873846)
 
 ## L'avvio di Windows provoca arresti anomali Bluescreen o crash di Linux
 
@@ -79,7 +79,7 @@ Codice di errore comune di Windows:
 
 ## Errore di avvio di Windows: "OCB: StartImage failed - Already started"
 
-Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows e pensa accidentalmente che stia avviando OpenCore. Questo può essere evitato spostando Windows sulla propria unità * o * aggiungendo un percorso di unità personalizzato in BlessOverride. Vedere [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori dettagli.
+Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows e pensa accidentalmente che stia avviando OpenCore. Questo può essere evitato spostando Windows sulla propria unità *o* aggiungendo un percorso di unità personalizzato in BlessOverride. Vedere [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori dettagli.
 
 ## iASL warning, only X unresolved
 

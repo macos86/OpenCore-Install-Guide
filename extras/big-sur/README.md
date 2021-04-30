@@ -12,24 +12,7 @@
 
 ## Sommario
 
-  * [Prerequisiti](#prerequisiti)
-  * [Un SMBIOS supportato](#un-smbios-supportato)
-  * [Hardware supportato](#hardware-supportato)
-  * [Kexts, bootloader e config.plist aggiornati](#Kexts-bootloader-e-config-plist-aggiornati)
-  * [Problemi conosciuti](#problemi-conosciuti)
-  * [Installazione](#installazione)
-  * [Risoluzione dei problemi](#risoluzione-dei-problemi)
-  * [Bloccato su Forcing CS_RUNTIME for entitlement](#bloccato-su-forcing-cs-runtime-for-entitlement)
-  * [Bloccato su PCI Configuration Begins for Intel's X99 and X299 boards](#bloccato-su-pci-configuration-begins-for-intel-s-x99-and-x299-boards)
-  * [Bloccato su ramrod(^^^^^^^^^^^^^)](#bloccato-su-ramrod)
-  * [X79 e X99 Kernel Panic su IOPCIFamily](#x79-e-x99-kernel-panic-su-iopcifamily)
-  * [Inserimento DeviceProperties non riuscito](#Inserimento-DeviceProperties-non-riuscito)
-  * [Tastiera e mouse non funzionano](#tastiera-e-mouse-non-funzionano)
-  * [Kernel Panic troppo presto su max_cpus_from_firmware non ancora inizializzato](#kernel-panic-troppo-presto-su-max-cpus-from-firmware-non-ancora-inizializzato)
-  * [Impossibile eseguire l'aggiornamento a versioni più recenti di Big Sur](#impossibile-eseguire-l-aggiornamento-a-versioni-più-recenti-di-Big-Sur)
-  * [Kernel Panic su Rooting from the live fs](#kernel-panic-su-rooting-from-the-live-fs)
-  * [Asus Z97 e HEDT (es X99 e X299) non riescono a installare la fase 2](#asus-z97-e-hedt-es-x99-e-x299-non-riescono-a-installare-la-fase-2)
-  * [Laptops che vanno in kernel panic su `cannot perform kext scan`](#laptops-che-vanno-in-kernel-panic-su-cannot-perform-kext-scan)
+[[toc]]
 
 ## Prerequisiti
 
@@ -75,7 +58,7 @@ Per coloro che desiderano una traduzione semplice per le loro macchine:
 
 ### Hardware supportato
 
-Non è stato abbandonato molto hardware, anche se i pochi che hanno: 
+Non è stato abbandonato molto hardware, anche se i pochi che hanno:
 
 * CPU ufficiali Ivy Bridge U, H e S.
   * Queste CPU si avviano ancora senza troppi problemi, ma tieni presente che nessun Mac è supportato con il consumer Ivy Bridge a Big Sur.
@@ -92,10 +75,10 @@ Non è stato abbandonato molto hardware, anche se i pochi che hanno:
 
 Altre modifiche notevoli:
 
-* Gli utenti MSI Navi non richiedono più la patch `ATY, rom` /` -wegnoegpu` per avviare il programma di installazione
+* Gli utenti MSI Navi non richiedono più la patch `ATY, rom`/`-wegnoegpu` per avviare il programma di installazione
 * Installazione fase 2 che richiede NVRAM funzionante
-   * Serie Asus 9: per maggiori informazioni, vedere qui: [Haswell ASUS Z97 Big Sur Update Thread](https://www.reddit.com/r/hackintosh/comments/jw7qf1/haswell_asus_z97_big_sur_update_and_installation/)
-   * Gli utenti X99 e X299 con NVRAM rotta dovranno eseguire l'installazione su un'altra macchina e spostare l'SSD al termine
+  * Serie Asus 9: per maggiori informazioni, vedere qui: [Haswell ASUS Z97 Big Sur Update Thread (EN)](https://www.reddit.com/r/hackintosh/comments/jw7qf1/haswell_asus_z97_big_sur_update_and_installation/)
+  * Gli utenti X99 e X299 con NVRAM rotta dovranno eseguire l'installazione su un'altra macchina e spostare l'SSD al termine
 
 ### Kexts, bootloader e config.plist aggiornati
 
@@ -122,12 +105,12 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 Per gli utenti X79, X99 e X299, prestare molta attenzione a quanto segue. Big Sur ha aggiunto nuovi requisiti per ACPI, quindi dovrai prendere alcuni nuovi SSDT:
 
 * X79
-   * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
+  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
 * X99
-   * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
-   * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
+  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
+  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 * X299
-   * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
+  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 Per coloro che desiderano file precompilati, vedere qui:
 
@@ -154,9 +137,9 @@ Con Big Sur, un bel po di cose hanno smesso di funzionare. Principalmente le seg
   * A causa del fatto che Apple ha abbandonato la classe AppleIntelPchSeriesAHCI in AppleAHCIPort.kext
   * Per risolvere, aggiungi [AppleAHCIPort.kext patchato di Catalina (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) con MinKernel impostato su 20.0. 0
 
-E sebbene non sia un problema, SIP ha ora guadagnato un nuovo bit quindi per disabilitare correttamente SIP è necessario impostare `csr-active-config` su` FF0F0000`. Vedi qui per maggiori informazioni: [Disabilitare SIP](../../troubleshooting/extended/post-issues.md#disabling-sip)
+E sebbene non sia un problema, SIP ha ora guadagnato un nuovo bit quindi per disabilitare correttamente SIP è necessario impostare `csr-active-config` su`FF0F0000`. Vedi qui per maggiori informazioni: [Disabilitare SIP](../../troubleshooting/extended/post-issues.md#disabling-sip)
 
-##Installazione
+## Installazione
 
 Le guide sono state aggiornate per adattarsi a Big Sur, vedere l'ambiente del sistema operativo applicabile per te:
 
@@ -185,7 +168,7 @@ Come accennato in precedenza, le schede madri Intel HEDT potrebbero avere alcuni
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
 * Assicurati di utilizzare le ultime build di VirtualSMC e Lilu, con `vsmcgen = 1` boot-arg
-* Passa a [Rehabman's FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/) (puoi usare il trucco `MinKernel` /` MaxKernel` menzionato sopra per limitare FakeSMC a Big Sur e oltre)
+* Passa a [FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/) (puoi usare il trucco `MinKernel`/`MaxKernel` menzionato sopra per limitare FakeSMC a Big Sur e sucessivi)
 
 E quando cambi kext, assicurati di non avere sia FakeSMC che VirtualSMC abilitati nel tuo config.plist, poiché ciò causerà un conflitto.
 
@@ -230,12 +213,12 @@ config.plist -> Kernel -> Patch:
 
 :::
 
-###Kernel Panic troppo presto su max_cpus_from_firmware non ancora inizializzato
+### Kernel Panic troppo presto su `max_cpus_from_firmware not yet initialized`
 
-Se ricevi un anticipato kernel panic su `max_cpus_from_firmware non ancora inizializzato`, ciò è dovuto al nuovo metodo` acpi_count_enabled_logical_processors` aggiunto nel kernel di macOS Big Sur. Per risolvere il problema, assicurati di essere su OpenCore 0.6.0 o più recente con il Quirk `AvoidRuntimeDefrag` abilitato.
+Se ricevi un anticipato kernel panic su `max_cpus_from_firmware not yet initialized`, ciò è dovuto al nuovo metodo `acpi_count_enabled_logical_processors` aggiunto nel kernel di macOS Big Sur. Per risolvere il problema, assicurati di essere su OpenCore 0.6.0 o più recente con il Quirk `AvoidRuntimeDefrag` abilitato.
 
 * **Nota**: A causa di quanto presto si verifica questo panico del kernel, potresti essere in grado di registrarlo solo tramite seriale o riavviando in un'installazione funzionante nota di macOS e controllando il tuo panico registrato nella NVRAM.
-   * La maggior parte degli utenti vedrà questo panico semplicemente come `[EB | #LOG: EXITBS: START]`
+  * La maggior parte degli utenti vedrà questo panico semplicemente come `[EB|#LOG:EXITBS:START]`
 
 ::: details Esempio Kernel Panic
 
@@ -253,7 +236,7 @@ Tramite Log seriale o NVRAM:
 
 Su alcuni hardware, principalmente l'HP DC7900, il kernel non è ancora in grado di determinare esattamente quanti thread supporta l'hardware. Ciò si tradurrà nel suddetto kernel panic e quindi è necessario codificare in modo rigido il valore del core della CPU.
 
-Per fare ciò, aggiungi la seguente patch (sostituendo la 04 da B8 ** 04 ** 00 00 00 C3 con la quantità di thread della CPU supportati dal tuo hardware):
+Per fare ciò, aggiungi la seguente patch (sostituendo la 04 da B8 **04** 00 00 00 C3 con la quantità di thread della CPU supportati dal tuo hardware):
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -277,7 +260,7 @@ Per fare ciò, aggiungi la seguente patch (sostituendo la 04 da B8 ** 04 ** 00 0
 Generalmente ci sono 2 principali colpevoli:
 
 * [Broken Update Utility](# broken-update-utility)
-   * Errore più comune se si esegue una beta, provare prima questo
+  * Errore più comune se si esegue una beta, provare prima questo
 * [Broken Seal](# broken-seal)
 
 #### Utilità di aggiornamento non funzionante
@@ -329,10 +312,10 @@ Volume disk1s8 A604D636-3C54-4CAA-9A31-5E1A460DC5C0
 Se restituisce "Snapshot Sealed: Broken", ti consigliamo di eseguire quanto segue:
 
 * Aggiorna a OpenCore 0.6.4 o più recente
-   * È richiesto il commit specifico [ba10b5d](https://github.com/acidanthera/OpenCorePkg/commit/1b0041493d4693f9505aa6415d93079ea59f7ab0) o una versione successiva
+  * È richiesto il commit specifico [ba10b5d](https://github.com/acidanthera/OpenCorePkg/commit/1b0041493d4693f9505aa6415d93079ea59f7ab0) o una versione successiva
 * Ripristina le vecchie istantanee
-   * Principalmente per coloro che hanno manomesso il volume del sistema
-   * Vedi qui come ripristinare: [Rollback degli snapshot APFS](../../troubleshooting/extended/post-issues.md#rolling-back-apfs-snapshot)
+  * Principalmente per coloro che hanno manomesso il volume del sistema
+  * Vedi qui come ripristinare: [Rollback degli snapshot APFS](../../troubleshooting/extended/post-issues.md#rolling-back-apfs-snapshot)
 
 ### Kernel Panic su Rooting from the live fs
 
@@ -352,7 +335,7 @@ Con Big Sur, c'è una maggiore dipendenza dalla NVRAM nativa per l'installazione
 
 * Installa Big Sur su un'altra macchina, quindi trasferisci l'unità
 * Correggi la NVRAM della scheda madre
-   * applicabile principalmente con la serie Z97 di Asus
+  * applicabile principalmente con la serie Z97 di Asus
 
 Per quest'ultimo, vedere qui: [Haswell ASUS Z97 Big Sur Update Thread](https://www.reddit.com/r/hackintosh/comments/jw7qf1/haswell_asus_z97_big_sur_update_and_installation/)
 

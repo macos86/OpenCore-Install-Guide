@@ -28,28 +28,28 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
   * Questo Quirk è richiesto per la maggior parte dei firmware e senza di esso è molto comune un kernel panic, quindi abilitarlo se non lo è già
     * Principalmente Z390 e precedenti richiedono che questo Quirk sia abilitato
     * Tuttavia, alcuni firmware (principalmente 2020+) non funzionano con questo quirk e quindi potrebbe effettivamente causare un Kernel Panic:
-	  * Serie Intel Ice Lake
-	  * Serie Comet Lake di Intel (B460, H470, Z490, ecc.)
-	  * B550 e A520 di AMD (ora è incluso anche il BIOS più recente su X570)
-	    * Sono incluse anche molte schede B450 e X470 con aggiornamenti del BIOS di fine 2020
-	  * TRx40 di AMD
-	  * VM come QEMU
-	  * Aggiornamenti BIOS X299 2020+ (questo vale per altre schede X299 sull'ultimo BIOS rilasciato alla fine del 2019 o 2020+)
+      * Serie Intel Ice Lake
+      * Serie Comet Lake di Intel (B460, H470, Z490, ecc.)
+      * B550 e A520 di AMD (ora è incluso anche il BIOS più recente su X570)
+        * Sono incluse anche molte schede B450 e X470 con aggiornamenti del BIOS di fine 2020
+      * TRx40 di AMD
+      * VM come QEMU
+      * Aggiornamenti BIOS X299 2020+ (questo vale per altre schede X299 sull'ultimo BIOS rilasciato alla fine del 2019 o 2020+)
 
 * **EnableWriteUnprotector**
 
   * Un altro problema potrebbe essere che macOS è in conflitto con la protezione da scrittura dal registro CR0, per risolvere questo abbiamo 2 opzioni:
-	* Se il tuo firmware supporta MAT (firmware 2018+):
-	  * EnableWriteUnprotector -> False
-	  * RebuildAppleMemoryMap -> True
-	  * SyncRuntimePermissions -> True
-	* Per firmware meno recenti:
-	  * EnableWriteUnprotector -> True
-	  * RebuildAppleMemoryMap -> False
-	  * SyncRuntimePermissions -> False
-	* Nota: alcuni laptop (es. Dell Inspiron 5370) anche con supporto MAT si interromperanno all'avvio, in questi casi avrai due opzioni:
-	  * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +` SyncRuntimePermissions`)
-	  * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
+    * Se il tuo firmware supporta MAT (firmware 2018+):
+      * EnableWriteUnprotector -> False
+      * RebuildAppleMemoryMap -> True
+      * SyncRuntimePermissions -> True
+    * Per firmware meno recenti:
+      * EnableWriteUnprotector -> True
+      * RebuildAppleMemoryMap -> False
+      * SyncRuntimePermissions -> False
+    * Nota: alcuni laptop (es. Dell Inspiron 5370) anche con supporto MAT si interromperanno all'avvio, in questi casi avrai due opzioni:
+      * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +`SyncRuntimePermissions`)
+      * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
 
 Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](../debug.html)):
 
@@ -65,17 +65,17 @@ Questa sezione sarà suddivisa tra utenti Intel e AMD:
 
 #### Utenti AMD
 
-* Mancanti [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore)(si applica solo alle CPU AMD, assicurati che siano patch OpenCore e non Clover. Clover usa `MatchOS` mentre OpenCore ha` MinKernel` e `Maxkernel`)
+* Mancanti [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore)(si applica solo alle CPU AMD, assicurati che siano patch OpenCore e non Clover. Clover usa `MatchOS` mentre OpenCore ha`MinKernel` e `Maxkernel`)
   * Nota che anche patch del kernel obsolete avranno lo stesso effetto, assicurati di utilizzare le patch più recenti di AMD OS X.
 
 #### Utenti Intel
 
 * **AppleXcpmCfgLock** and **AppleCpuPmCfgLock**
-  * Patch CFG o XCPM mancanti, abilitare `AppleXcpmCfgLock` e` AppleCpuPmCfgLock`
-	* Haswell e versioni successive richiedono solo AppleXcpmCfgLock
-	* Ivy Bridge e versioni precedenti richiedono solo AppleCpuPmCfgLock
-	* Broadwell e versioni precedenti richiedono AppleCpuPmCfgLock se si esegue 10.10 o versioni precedenti
-	* In alternativa puoi disabilitare correttamente CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
+  * Patch CFG o XCPM mancanti, abilitare `AppleXcpmCfgLock` e `AppleCpuPmCfgLock`
+    * Haswell e versioni successive richiedono solo AppleXcpmCfgLock
+    * Ivy Bridge e versioni precedenti richiedono solo AppleCpuPmCfgLock
+    * Broadwell e versioni precedenti richiedono AppleCpuPmCfgLock se si esegue 10.10 o versioni precedenti
+    * In alternativa puoi disabilitare correttamente CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
 * **AppleXcpmExtraMsrs**
   * Può anche essere richiesto, questo è generalmente pensato per Pentium, HEDT e altri sistemi strani non supportati nativamente in macOS.
 
@@ -90,7 +90,7 @@ max_cpus_from_firmware not yet initialized
 Per risolvere
 
 * Abilita `AvoidRuntimeDefrag` in Booter -> Quirks
-   * Questo dovrebbe funzionare per la maggior parte dei firmware
+  * Questo dovrebbe funzionare per la maggior parte dei firmware
 
 Tuttavia, su alcune macchine come HP Compaq DC 7900, il firmware continuerà ad andare in panico, quindi dobbiamo forzare un valore di conteggio dei core della CPU. Usa la patch seguente solo se EvitareRuntimeDefrag non ha funzionato:
 
@@ -143,15 +143,14 @@ Questo è dovuto a qualche problema intorno al `Booter -> Quirks` che hai impost
 
 * `SetupVirtualMap`
   * Questo Quirk è richiesto per la maggior parte dei firmware e senza di essa è molto comune un kernel panic, quindi abilitalo se non lo è già
-      * Tuttavia, alcuni firmware non funzionano con questo Quirk e quindi potrebbero effettivamente causare questo kernel panic:
-      * Serie Ice Lake Intel
-	  * Serie Comet Lake Intel
-      * AMD B550
-      * AMD A520
-      * AMD TRx40
-      * VMs come QEMU
+    * Tuttavia, alcuni firmware non funzionano con questo Quirk e quindi potrebbero effettivamente causare questo kernel panic:
+    * Serie Ice Lake Intel
+    * Serie Comet Lake Intel
+    * AMD B550
+    * AMD A520
+    * AMD TRx40
+    * VMs come QEMU
   
-
 Un altro problema potrebbe essere che macOS è in conflitto con la protezione da scrittura dal registro CR0, per risolvere questo abbiamo 2 opzioni:
 
 * Se il tuo firmware supporta MATs(2018+ firmwares):
@@ -223,10 +222,10 @@ Ciò è dovuto ad un mancante/obsoleto Apple Secure Boot manifest presente sul t
 Per risolvere questo è possibile eseguire una delle seguenti operazioni:
 
 * Disabilita SecurebootModel.
-   * Imposta `misc -> secuirty -> SecurebootModel -> Disabled`
+  * Imposta `misc -> secuirty -> SecurebootModel -> Disabled`
 * Reinstallare Macos con l'ultima versione
 * Copia i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
-   * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
+  * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
   
 Per fare questo tramite Terminale:
 
@@ -293,7 +292,7 @@ Ciò è dovuto alle impostazioni del BIOS errate:
 
 ## Bloccato su `This version of Mac OS X is not supported: Reason Mac...`
 
-Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con` Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../Extras/SmBIOS-Support.md)
+Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con `Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../Extras/SmBIOS-Support.md)
 
 ::: details SmBIOS supportati in Macos 10.15, Catalina
 
@@ -392,8 +391,9 @@ Questo presuppone che tu stia solo avviando il programma di installazione da USB
   * `Kernel -> Quirks -> XhciPortLimit -> True`
 
 *Un altro problema può essere che un determinato firmware non passerà la proprietà USB a MacOS
-  * `UEFI -> Quirks -> ReleaseUsbOwnership -> True`
-  * Anche abilitare XHCI Handoff nel BIOS può risolvere
+
+* `UEFI -> Quirks -> ReleaseUsbOwnership -> True`
+* Anche abilitare XHCI Handoff nel BIOS può risolvere
 
 * A volte, se l'USB è collegato a una porta 3.x, collegarlo a una porta 2.0 può correggere questo errore.
 
@@ -404,7 +404,7 @@ Questo presuppone che tu stia solo avviando il programma di installazione da USB
   * [AMD StopSign-fixv5](https://cdn.discordapp.com/attachments/249992304503291905/355235241645965312/StopSign-fixv5.zip)
 
 * Utenti X299: abilitare la decodifica di 4G
-   * Bug del firmware su x299 in cui il USB si interrompe
+  * Bug del firmware su x299 in cui il USB si interrompe
 
 * Porte USB mancanti in ACPI:
   * Per Intel Coffee Lake and precedenti, raccomandiamo di usare [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
@@ -444,11 +444,11 @@ Questo è giusto prima che la GPU venga inizializzata correttamente, verifica qu
 
 * La GPU supporta UEFI (GTX-7XX/2013+)
 * CSM è disattivato nel BIOS
-   * Potrebbe essere necessario abilitarlo sui laptop
+  * Potrebbe essere necessario abilitarlo sui laptop
 * Forzare la velocità di collegamento PCIe 3.0
 * Controlla che ig-platform-id e device-id siano validi se si esegue una iGPU.
   * Per gli UHD 630 desktop potrebbe essere necessario utilizzare "00009B3E"
-  * Provando varie [correzioni di WhateverGreen](https://github.com/acidanthera/W qualunqueGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+  * Provando varie [correzioni di WhateverGreen](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
   * Boot-Arg `-igfxmlr`. Questo può anche manifestarsi come un errore "Divide by Zero".
   * Gli utenti con iGPU Coffee Lake potrebbero anche aver bisogno di `igfxonln = 1` in 10.15.4 e versioni successive
 
@@ -504,7 +504,7 @@ Con macOS Catalina, il supporto del doppio socket è interrotto e un fatto diver
 
 ## Kernel Panic `AppleIntelCPUPowerManagement`
 
-Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante. Per risolvere il problema, rimuovere NullCPUPowerManagement da `Kernel -> Add` e` EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in` Kernel -> Emulate`
+Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante. Per risolvere il problema, rimuovere NullCPUPowerManagement da `Kernel -> Add` e `EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in `Kernel -> Emulate`
 
 * **Nota**: sulle vecchie CPU Intel (es. Penryn e precedenti), potrebbe essere dovuto a conflitti IRQ o al dispositivo HPET disabilitato. Per risolvere, hai 2 opzioni:
   * [Opzione FixHPET di SSDTTime](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
@@ -542,7 +542,7 @@ Caso 1    |  Caso 2
 
 ## La tastiera funziona ma il trackpad no
 
-Assicurati che VoodooInput sia elencato * prima di * VoodooPS2 e VoodooI2C kexts nel tuo config.plist.
+Assicurati che VoodooInput sia elencato *prima di* VoodooPS2 e VoodooI2C kexts nel tuo config.plist.
 
 ::: details Risoluzione dei problemi di VoodooI2C
 
@@ -605,7 +605,7 @@ Panic completo:
 È probabile che sia 1 di queste 2 cose:
 
 * Emulatore SMC mancante (es. Nessun VirtualSMC nel tuo config.plist o EFI)
-   * Aggiungi [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases) al tuo config.plist e EFI
+  * Aggiungi [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases) al tuo config.plist e EFI
 * Utilizzo SSDT non corretto con SSDT-CPUR
 
 Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**. Non utilizzare su X570 o hardware precedente (es. B450 o A320)

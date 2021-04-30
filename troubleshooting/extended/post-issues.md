@@ -94,18 +94,18 @@ Per chi vuole semplicemente disabilitare la notifica (non l'errore in sé) è pi
 Quindi con AMD, ogni volta che Apple chiama funzioni specifiche della CPU, l'app non funzionerà o andrà in crash. Ecco alcune app e le loro "correzioni":
 
 * I prodotti Adobe non funzionano sempre
-   * Alcune correzioni sono disponibili qui: [Adobe Fixes](https://adobe.amd-osx.com/)
-   * Tieni presente che queste correzioni disabilitano solo la funzionalità, non sono davvero correzioni
+  * Alcune correzioni sono disponibili qui: [Adobe Fixes](https://adobe.amd-osx.com/)
+  * Tieni presente che queste correzioni disabilitano solo la funzionalità, non sono davvero correzioni
 * La macchina virtuale in esecuzione al di fuori del framework di AppleHV non funzionerà (ad esempio: Parallels 15, VMware)
-   * VirtualBox funziona bene in quanto non utilizza AppleHV
-   * Anche VMware 10 e versioni precedenti possono funzionare
-   * È noto che anche Parallels 13.1.0 e versioni precedenti funzionano
+  * VirtualBox funziona bene in quanto non utilizza AppleHV
+  * Anche VMware 10 e versioni precedenti possono funzionare
+  * È noto che anche Parallels 13.1.0 e versioni precedenti funzionano
 * Docker rotto
-   * Il toolbox Docker è l'unica soluzione in quanto si basa su VirtualBox, molte funzionalità non sono disponibili con questa versione
+  * Il toolbox Docker è l'unica soluzione in quanto si basa su VirtualBox, molte funzionalità non sono disponibili con questa versione
 * IDA Pro non si installa
-   * C'è un controllo specifico di Intel nel programma di installazione, l'app stessa probabilmente va bene
+  * C'è un controllo specifico di Intel nel programma di installazione, l'app stessa probabilmente va bene
 * Nella 15°/16° le pagine web possono mandare la CPU in crash
-   * Segui le indicazioni qui dopo l'AGGIORNAMENTO 5: [Correggi pagine web](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2661857)
+  * Segui le indicazioni qui dopo l'AGGIORNAMENTO 5: [Correggi pagine web](https://www.insanelymac.com/forum/topic/335877-amd-mojave-kernel-development-and-testing/?do=findComment&comment=2661857)
 
 ## Sleep non funziona su AMD
 
@@ -217,7 +217,7 @@ This is due to macOS using Universal Time while Windows relies on Greenwich time
 SIP, acronimo System Integrity Protection, è una tecnologia di sicurezza che tenta di impedire a qualsiasi software dannoso e all'utente finale di danneggiare il sistema operativo. Introdotto per la prima volta con OS X El Capitan, SIP è cresciuto nel tempo per controllare sempre più cose in macOS, inclusa la limitazione delle modifiche a posizioni di file limitate e il caricamento di kext di terze parti con `kextload` (OpenCore non viene influenzato poiché i kext vengono iniettati all'avvio). Per risolvere questo problema, Apple ha fornito numerose opzioni di configurazione nella variabile NVRAM `csr-active-config` che può essere impostata nell'ambiente di ripristino macOS o con la sezione NVRAM di OpenCore (quest'ultima verrà discussa di seguito).
 
 * <span style="color:red">ATTENZIONE:</span> Disabilitare SIP può interrompere alcune funzionalità del sistema operativo come gli aggiornamenti software in macOS 11, Big Sur e versioni successive. Fai attenzione a disabilitare solo valori SIP specifici invece di disabilitare completamente SIP per evitare questi problemi.
-   * L'abilitazione di `CSR_ALLOW_UNAUTHENTICATED_ROOT` e` CSR_ALLOW_APPLE_INTERNAL` sono opzioni comuni che possono interrompere gli aggiornamenti del sistema operativo per gli utenti
+  * L'abilitazione di `CSR_ALLOW_UNAUTHENTICATED_ROOT` e `CSR_ALLOW_APPLE_INTERNAL` sono opzioni comuni che possono interrompere gli aggiornamenti del sistema operativo per gli utenti
 È possibile scegliere valori diversi per abilitare o disabilitare determinati flag di SIP. Alcuni strumenti utili per aiutarti con questi sono [CsrDecode](https://github.com/corpnewt/CsrDecode) e [csrstat](https://github.com/JayBrown/csrstat-NG). I valori comuni sono i seguenti (i byte vengono scambiati pre-esadecimale per te e nota che vanno in NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config):
 
 * `00000000` - SIP completamente abilitato (0x0).
@@ -238,12 +238,12 @@ Con macOS Catalina e versioni successive, Apple ha suddiviso il sistema operativ
 
 * Nota: gli utenti di "SecureBootModel" potrebbero finire in un ciclo di avvio di RecoveryOS se la partizione di sistema è stata modificata. Per risolvere questo problema, reimpostare la NVRAM e impostare "SecureBootModel" su "Disabilitato"
 
-**macOS Catalina**
+### macOS Catalina
 
 1. [Disabilitare SIP](#disabilitare-sip)
 2. Montare l'unità come scrivibile (eseguire `sudo mount -uw /` nel terminale)
 
-**macOS Big Sur**
+### macOS Big Sur
 
 1. [Disabilitare SIP](#disabilitare-sip)
 2. Montare l'unità come scrivibile (vedere sotto per il comando)
@@ -315,11 +315,11 @@ Per le macchine con porte compatibili con HDMI 2.0 con problemi di risoluzione, 
 
 * L'output 4k funziona correttamente in Windows
 * Il monitor è impostato esplicitamente su HDMI 2.0
-   * Se si utilizza un convertitore da HDMI a DisplayPort, assicurarsi che il monitor sia impostato su DisplayPort 1.2 o superiore
+  * Se si utilizza un convertitore da HDMI a DisplayPort, assicurarsi che il monitor sia impostato su DisplayPort 1.2 o superiore
 * Assicurati che sia stata allocata una quantità di memoria iGPU sufficiente
-   * Per Broadwell e versioni successive, si prevede di allocare 64 MB
-   * Le macchine che fanno affidamento sulla proprietà `framebuffer-stolenmem` di WhateverGreen dovrebbero sapere che questo può causare problemi di output 4k. Assicurati di poter impostare la memoria dell'iGPU su 64 MB per consentirti di rimuovere queste proprietà
+  * Per Broadwell e versioni successive, si prevede di allocare 64 MB
+  * Le macchine che fanno affidamento sulla proprietà `framebuffer-stolenmem` di WhateverGreen dovrebbero sapere che questo può causare problemi di output 4k. Assicurati di poter impostare la memoria dell'iGPU su 64 MB per consentirti di rimuovere queste proprietà
 * I laptop e molti utenti desktop potrebbero aver bisogno di questo argomento di avvio:
-   * `-cdfon`
+  * `-cdfon`
 
 Per la risoluzione di tutti l'altri possibili problemi, fare riferimento a [Documenti Intel di WhateverGreen](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
