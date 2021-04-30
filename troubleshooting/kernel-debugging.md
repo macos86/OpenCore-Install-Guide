@@ -91,8 +91,8 @@ Per questa configurazione, avrai bisogno di alcune cose:
 * Un cavo da seriale a seriale o da seriale a USB
 * Una seconda macchina per ricevere la registrazione seriale (con seriale o USB)
 * Software per monitorare l'uscita seriale
-   * Per questa guida, utilizzeremo [CoolTerm] (https://freeware.the-meiers.org) poiché supporta macOS, Linux, Windows e persino Raspberry Pi
-   * Anche `screen` e altri metodi sono supportati.
+  * Per questa guida, utilizzeremo [CoolTerm] (<https://freeware.the-meiers.org>) poiché supporta macOS, Linux, Windows e persino Raspberry Pi
+    * Anche `screen` e altri metodi sono supportati.
 
 ### Hardware Setup
 
@@ -276,7 +276,7 @@ Ora che hai finito di configurare KDK e di averlo installato, dobbiamo dire a bo
 * `kcsuffix=development`
 * `kcsuffix=kasan`
 
-`development` arg imposterà il nuovo kernel di debug predefinito in Big Sur, mentre` kasan`è un kernel molto più intensivo di registrazione che incorpora [AddressSanitizer](https://github.com/google/sanitizers/wiki/AddressSanitizer).
+`development` arg imposterà il nuovo kernel di debug predefinito in Big Sur, mentre `kasan` è un kernel molto più intensivo di registrazione che incorpora [AddressSanitizer](https://github.com/google/sanitizers/wiki/AddressSanitizer).
 
 Una volta deciso quale kernel è l'ideale per te, aggiungi l'argomento kcsuffix ai tuoi argomenti di avvio nel tuo config.plist
 

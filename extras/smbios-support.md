@@ -272,7 +272,6 @@ Tutti i modelli elencati qua sotto non sono supportati da OpenCore, tuttavia son
   * [Mac Mini](#mac-mini-powerpc)
   * [Xserve](#xserve-powerpc)
   
-
 ::: details Note su Apple Silicon
 
 Informazioni extra riguardo le CPU Apple:

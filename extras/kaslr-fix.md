@@ -81,6 +81,7 @@ Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vog
   * `USB legacy`: più schifezze legacy.
 
 ## Avvio di prova
+
 Con le nostre impostazioni EFI, config.plist e BIOS modificate, è ora di provare la nostra nuova configurazione. Se hai ancora problemi, sembra che dovremo fare un'immersione profonda e calcolare il nostro valore di Slide
 
 ## Trovare il valore dello slide
