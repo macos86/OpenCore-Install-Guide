@@ -63,4 +63,5 @@ In some cases you see that you have not graphic acceleration. We can fix this on
   appleGPU0.present = "True"
   svga.present = "FALSE"
   ```
+
 * Don't touch anything else and reboot. Now the video should work.
