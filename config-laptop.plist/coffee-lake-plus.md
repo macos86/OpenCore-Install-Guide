@@ -768,4 +768,4 @@ Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti
 * DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
-## Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)

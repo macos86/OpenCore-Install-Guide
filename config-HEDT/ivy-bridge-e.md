@@ -542,7 +542,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 * **UpdateSMBIOSMode**: Create
   * Sostituisci le tabelle con EfiReservedMemoryType appena allocato, usa `Custom` su laptops Dell che richiedono il Quirk `CustomSMBIOSGuid`
-  * L'impostazione su `Custom` con il quirk`CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
+  * L'impostazione su `Custom` con il quirk `CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
 
 :::
 
@@ -661,4 +661,4 @@ Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)

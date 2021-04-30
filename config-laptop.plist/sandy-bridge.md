@@ -127,7 +127,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * **EnableWriteUnprotector**: YES
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: YES
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!`È presente nel tuo registro, puoi disabilitare`ProvideCustomSlide`.
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
   * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
 
@@ -632,7 +632,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 * **UpdateSMBIOSMode**: Create
   * Sostituisci le tabelle con EfiReservedMemoryType appena allocato, usa `Custom` su laptops Dell che richiedono il Quirk `CustomSMBIOSGuid`
-  * L'impostazione su `Custom` con il quirk`CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
+  * L'impostazione su `Custom` con il quirk `CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
 
 :::
 
@@ -708,7 +708,7 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
   * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione
 
 * **RequestBootVarRouting**: YES
-  * Reindirizza AptioMemoryFix da `EFI_GLOBAL_VARIABLE_GUID` a`OC_VENDOR_VARIABLE_GUID`. Necessario quando il firmware tenta di eliminare le voci di avvio e si consiglia di abilitarlo su tutti i sistemi per la corretta installazione degli aggiornamenti, il funzionamento del pannello di controllo del disco di avvio, ecc.
+  * Reindirizza AptioMemoryFix da `EFI_GLOBAL_VARIABLE_GUID` a `OC_VENDOR_VARIABLE_GUID`. Necessario quando il firmware tenta di eliminare le voci di avvio e si consiglia di abilitarlo su tutti i sistemi per la corretta installazione degli aggiornamenti, il funzionamento del pannello di controllo del disco di avvio, ecc.
 
 * **UnblockFsConnect**: NO
   * Alcuni firmware bloccano gli handle di partizione aprendoli in modalità By Driver, che impedisce l'installazione dei protocolli di file system. Principalmente rilevante per i sistemi HP quando non sono elencate le unità
@@ -772,4 +772,4 @@ Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti
 * DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
-## Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](../installation/installation-process.md)
