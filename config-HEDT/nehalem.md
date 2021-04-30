@@ -97,18 +97,18 @@ Settings relating to boot.efi patching and firmware fixes, depending where your 
 ::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: NO
-  * Fixes UEFI runtime services like date, time, NVRAM, power control on UEFI Boards
-  * macOS Big Sur however requires the APIC table present, otherwise causing early kernel panics so this quirk is recommended for those users.
+  * Risolve il runtime UEFI per servizi come data, ora, NVRAM, controllo dell'energia nelle schede UEFI
+  * macOS Big Sur lo richiede, tuttavia potrebbe causare kernel panic, perciò il quirk va acceso da questi utenti.
 * **EnableSafeModeSlide**: YES
-  * Enables slide variables to be used in safe mode.
+  * Abilita le variabili slide da usare in safe mode.
 * **EnableWriteUnprotector**: YES
-  * Needed to remove write protection from CR0 register on UEFI platforms
+  * Necessario per rimuovere la protezione di scrittura dal registro CR0 nelle piattaforme UEFI
 * **ProvideCustomSlide**: YES
-  * Used for Slide variable calculation. However the necessity of this quirk is determined by `OCABC: Only N/256 slide values are usable!` message in the debug log. If the message `OCABC: All slides are usable! You can disable ProvideCustomSlide!` is present in your log, you can disable `ProvideCustomSlide`.
+  * Usato per il calcolo delle variabili slide. Tuttavia questo quirk è necessario se appare il messaggio `OCABC: Only N/256 slide values are usable!` nei log di debug. Se invece appare `OCABC: All slides are usable! You can disable ProvideCustomSlide!`, puoi disabilitare `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
-  * Resolves early memory kernel panics on 10.6 and below
+  * Risolve kernel panic in 10.6 e precedenti
 * **SetupVirtualMap**: YES
-  * Fixes SetVirtualAddresses calls to virtual addresses on UEFI boards
+  * Risolve le chiamate di SetVirtualAddresses con indirizzi virtuali nelle schede UEFI
 
 :::
 
@@ -120,7 +120,7 @@ Settings relating to boot.efi patching and firmware fixes, depending where your 
 
 Imposta le proprietà del dispositivo da una mappa.
 
-Per impostazione predefinita, Sample.plist ha questa sezione impostata per iGPU e audio. Non abbiamo iGPU quindi `PciRoot(0x0)/Pci(0x2,0x0)` può essere rimosso dalla sezione `Aggiungi`. Per l'audio imposteremo il layout nella sezione boot-args, quindi la rimozione di `PciRoot(0x0)/Pci(0x1b,0x0)` è consigliata anche dalle sezioni `Add` e` Block`
+Per impostazione predefinita, Sample.plist ha questa sezione impostata per iGPU e audio. Non abbiamo iGPU quindi `PciRoot(0x0)/Pci(0x2,0x0)` può essere rimosso dalla sezione `Add`. Per l'audio imposteremo il layout nella sezione boot-args, quindi la rimozione di `PciRoot(0x0)/Pci(0x1b,0x0)` è consigliata anche dalle sezioni `Add` e `Block`
 
 TL; DR, elimina tutti i PciRoot qui perché non useremo questa sezione.
 
@@ -141,10 +141,10 @@ Qui è dove specifichiamo quali kext caricare, in quale ordine specifico caricar
 La cosa principale che devi tenere a mente è:
 
 * Carica l'ordine
-  * Ricorda che qualsiasi plugin dovrebbe essere caricato * dopo * le sue dipendenze
+  * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
   * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WutelyGreen, ecc.
 
-Un promemoria che gli utenti di [ProperTree] (https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl + Shift + R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
+Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl + Shift + R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
 
 * **Arch**
   * Architetture supportate da questo kext
@@ -156,7 +156,7 @@ Un promemoria che gli utenti di [ProperTree] (https://github.com/corpnewt/Proper
   * Autoesplicativo, abilita o disabilita il kext
 * **ExecutablePath**
   * Il percorso dell'eseguibile effettivo è nascosto all'interno di kext, puoi vedere quale percorso ha il tuo kext facendo clic con il pulsante destro del mouse e selezionando `Show Package Contents`. Generalmente sarà `Contents/MacOS/Kext` ma alcuni hanno kext nascosti nella cartella `Plugin`. Nota che i kexto con il solo plist non hanno bisogno di questo campo.
-   * es: `Contents/MacOS/Lilu`
+  * es: `Contents/MacOS/Lilu`
 * **MinKernel**
   * la versione del kernel più bassa in cui verrà iniettato kext, vedere la tabella sotto per i valori possibili
   * es. `12.00.00` for OS X 10.8
@@ -228,17 +228,17 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 
 * **AppleCpuPmCfgLock**: NO
   * Necessario solo quando CFG-Lock non può essere disabilitato nel BIOS
-   * Applicabile solo per Ivy Bridge e versioni precedenti
-     * Nota: Broadwell e versioni precedenti richiedono questo quando si esegue 10.10 o versioni precedenti
+  * Applicabile solo per Ivy Bridge e versioni precedenti
+    * Nota: Broadwell e versioni precedenti richiedono questo quando si esegue 10.10 o versioni precedenti
 * **AppleXcpmCfgLock**: YES
   * Necessario solo quando CFG-Lock non può essere disabilitato nel BIOS
-   * Applicabile solo per Haswell e versioni successive
-     * Nota: anche Ivy Bridge-E è incluso poiché supporta XCPM
+  * Applicabile solo per Haswell e versioni successive
+    * Nota: anche Ivy Bridge-E è incluso poiché supporta XCPM
 * **AppleXcpmExtraMsrs**: YES
   * Disabilita l'accesso multiplo MSR necessario per CPU non supportate come Pentium e molti Xeon. Richiesto per Broadwell-E e inferiore
 * **CustomSMBIOSGuid**: NO
   * Esegue la patch GUID per UpdateSMBIOSMode impostato su `Custom`. Solitamente rilevante per i laptop Dell
-   * L'abilitazione di questo Quirk con la modalità UpdateSMBIOSMode Custom può anche disabilitare l'iniezione di SMBIOS in sistemi operativi "non Apple", tuttavia non approviamo questo metodo poiché interrompe la compatibilità con Bootcamp. Utilizzare a proprio rischio
+  * L'abilitazione di questo Quirk con la modalità UpdateSMBIOSMode Custom può anche disabilitare l'iniezione di SMBIOS in sistemi operativi "non Apple", tuttavia non approviamo questo metodo poiché interrompe la compatibilità con Bootcamp. Utilizzare a proprio rischio
 * **DisableIoMapper**: YES
   * Necessario per aggirare VT-D se non è possibile disabilitare nel BIOS o necessario per altri sistemi operativi, un'alternativa molto migliore a `dart = 0` poiché SIP può rimanere attivo in Catalina
 * **DisableLinkeditJettison**: YES
@@ -258,7 +258,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
- * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
+* Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
 
@@ -326,7 +326,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
   * Necessario per configurare l'output seriale con OpenCore
 * **SysReport**: NO
   * Utile per il debug come il dumping delle tabelle ACPI
-   * Nota che questo è limitato alle versioni DEBUG di OpenCore
+  * Nota che questo è limitato alle versioni DEBUG di OpenCore
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
@@ -438,7 +438,7 @@ System Integrity Protection bitmask
 | boot-args | Description |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
-| **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi * si spera * raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
+| **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
 | **npci=0x2000** | Questo disabilita alcuni debug PCI relativi a `kIOPCIConfiguratorPFM64`, l'alternativa è `npci= 0x3000` che disabilita anche il debug relativo a `gIOPCITunnelledKey`. Necessario per quando si rimane bloccati su `PCI Start Configuration` poiché ci sono conflitti IRQ relativi alle proprie corsie PCI. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
 | **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione (EN)](https://dortania.github.io/OpenCore-Post-Install/) |
@@ -452,7 +452,7 @@ System Integrity Protection bitmask
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
-   * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](../troubleshooting/extended/post-issues.md#disabling-sip)
+  * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](../troubleshooting/extended/post-issues.md#disabling-sip)
 
 * **run-efi-updater**: `No`
   * Viene utilizzato per impedire ai pacchetti di aggiornamento del firmware di Apple di installare e interrompere l'ordine di avvio; questo è importante in quanto questi aggiornamenti del firmware (pensati per i Mac) non funzioneranno.
@@ -473,7 +473,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come` boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -579,7 +579,7 @@ Ricorda che ti serve un numero di serie non valido o valido ma non in uso;  dsi 
 
 * **UpdateSMBIOSMode**: Create
   * Sostituisci le tabelle con EfiReservedMemoryType appena allocato, usa `Custom` su laptops Dell che richiedono il Quirk `CustomSMBIOSGuid`
-  * L'impostazione su `Custom` con il quirk` CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
+  * L'impostazione su `Custom` con il quirk `CustomSMBIOSGuid` abilitato può anche disabilitare l'iniezione SMBIOS in sistemi operativi "non Apple", tuttavia non supportiamo questo metodo poiché interrompe la compatibilità Bootcamp. Utilizzare a proprio rischio
 
 :::
 
@@ -641,10 +641,10 @@ RRiguardo alle stranezze con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 * **DisableSecurityPolicy**: NO
   * Disabilita i criteri di sicurezza della piattaforma nel firmware, consigliato per firmware con bug in cui la disabilitazione di Secure Boot non consente il caricamento dei driver del firmware di terze parti.
-   * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione
+  * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione
 
 * **RequestBootVarRouting**: YES
-  * Reindirizza AptioMemoryFix da `EFI_GLOBAL_VARIABLE_GUID` a` OC_VENDOR_VARIABLE_GUID`. Necessario quando il firmware tenta di eliminare le voci di avvio e si consiglia di abilitarlo su tutti i sistemi per la corretta installazione degli aggiornamenti, il funzionamento del pannello di controllo del disco di avvio, ecc.
+  * Reindirizza AptioMemoryFix da `EFI_GLOBAL_VARIABLE_GUID` a `OC_VENDOR_VARIABLE_GUID`. Necessario quando il firmware tenta di eliminare le voci di avvio e si consiglia di abilitarlo su tutti i sistemi per la corretta installazione degli aggiornamenti, il funzionamento del pannello di controllo del disco di avvio, ecc.
 
 * **UnblockFsConnect**: NO
   * Alcuni firmware bloccano gli handle di partizione aprendoli in modalità By Driver, che impedisce l'installazione dei protocolli di file system. Principalmente rilevante per i sistemi HP quando non sono elencate le unità
