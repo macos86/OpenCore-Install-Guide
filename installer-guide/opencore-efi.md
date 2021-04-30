@@ -91,4 +91,4 @@ Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
 * I Kext (`.kext`) vanno nella cartella kexts
 * I driver firmware (`.efi`) vanno nella cartella drivers
 
-## Quando hai fatto tutto, vai alla sezione [Recuperare i file](../ktext.md) per prendere i kext e i driver firmware necessari
+### Quando hai fatto tutto, vai alla sezione [Recuperare i file](../ktext.md) per prendere i kext e i driver firmware necessari
