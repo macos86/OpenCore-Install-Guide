@@ -288,7 +288,7 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
   * Utilizzato per patchare schede Broadcom non Apple/non Fenvi, **Non funzionerà su schede Intel, Killer, Realtek, ecc**
   * Richiede OS X 10.10 o versioni successive
-  * Per Big Sur vedi [Big Sur problemi conosciuti](./extras/big-sur#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
+  * Per Big Sur vedi [Big Sur problemi conosciuti](./extras/big-sur.md#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
   * Utilizzato per caricare il firmware sul chipset Broadcom Bluetooth, richiesto per tutte le schede non Apple/non Fenvi Airport.
   * Da associare a BrcmFirmwareData.kext

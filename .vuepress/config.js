@@ -229,6 +229,15 @@ module.exports = {
                     '/extras/spoof',
                     '/extras/big-sur/',
                     {
+                        title: 'Mmacchine Virtuali',
+                        collapsable: false,
+                        children: [
+                            '/extras/virtualbox',
+                            '/extras/fusion',
+                            '/extras/workstation'
+                        ]
+                    }
+                    {
                         path: '/clover-conversion/',
                         title: 'Conversioni da Clover',
                         children: [

@@ -612,13 +612,13 @@ Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**
 
 ## Bloccato su `Forcing CS_RUNTIME for entitlement` in Big Sur
 
-![Ringraziamo Stompy per l'immagine](../../images/extras/big-sur/readme/cs-stuck.jpg)
+![Ringraziamo Stompy per l'immagine](../../images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
 ## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Ringraziamo Notiflux per l'immagine](../../images/extras/big-sur/readme/ramrod.jpg)
+![Ringraziamo Notiflux per l'immagine](../../images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
