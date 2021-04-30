@@ -37,4 +37,4 @@ jobs:
       - name: Install
         run: npm install
       - name: Lint
-        run: npm run fixlint
+        run: npm run lint
