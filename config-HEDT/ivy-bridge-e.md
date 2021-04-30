@@ -94,6 +94,23 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 
 ### Add
 
+Sets device properties from a map.
+
+By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the boot-args section, for us we can ignore this
+
+::: tip PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x0)
+
+Questa entry si riferisce ai controller Intel I350 che si trovano in molte schede madri server Intel e Supermicro e anche in alcuni adattatori PCIe dei server Intel. Ciò che faremo è ingannare il driver Apple I210 per supportare il nostro controller I350:
+
+| Chiave | Tipo | Valore |
+| :--- | :--- | :--- |
+| device-id | Data | 33150000 |
+
+* **Nota**: Se la tua scheda non ha un I350 NIC, non c'è motivo di aggiungere questo entry.
+* **Nota 2**: Se ottieni un kernel panic sul kext AppleIntelI210Ethernet, o nessun adattatore viene mostrato, dovrai modificare o aggiungere ulteriori proprietà PciRoot per ogni adattatore.
+
+:::
+
 ### Delete
 
 Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
@@ -618,22 +635,7 @@ RRiguardo alle stranezze con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da utilizzare, principalmente rilevante per iGPU Sandy Bridge o sistemi con memoria difettosa. L'uso di questa stranezza non è trattato in questa guida
 
-## Cleaning up
-
-Per coloro che hanno problemi di avvio, assicurati di leggere prima la [Troubleshooting section](../troubleshooting/.md) e se le tue domande sono ancora senza risposta, abbiamo molte risorse a tua disposizione:
-
-* [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
-* [r/Hackintosh Discord](https://discord.gg/2QYd7ZT)
-
-**Sanity check**:
-
-Quindi, grazie agli sforzi di Ramus, abbiamo anche uno strumento straordinario per aiutarti a verificare la tua configurazione per coloro che potrebbero essersi persi qualcosa:
-
-* [**Sanity Checker**](https://opencore.slowgeek.com)
-
-Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti i problemi con questo sito devono essere inviati qui: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
-
-## Intel impostazioni BIOS
+## Intel BIOS settings
 
 * Nota: la maggior parte di queste opzioni potrebbe non essere presente nel tuo firmware, ti consigliamo di abbinarle il più fedelmente possibile, ma non preoccuparti se molte di queste opzioni non sono disponibili nel tuo BIOS
 

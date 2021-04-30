@@ -685,39 +685,7 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da utilizzare, principalmente rilevante per iGPU Sandy Bridge o sistemi con memoria difettosa. L'uso di questa stranezza non è trattato in questa guida
 
-## Cleaning up
-
-E ora sei pronto per salvarlo e inserirlo nel tuo EFI sotto EFI/OC.
-
-Per coloro che hanno problemi di avvio, assicurati di leggere prima la [Troubleshooting section](../troubleshooting/.md) e se le tue domande sono ancora senza risposta, abbiamo molte risorse a tua disposizione:
-
-* [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
-* [r/Hackintosh Discord](https://discord.gg/2QYd7ZT)
-
-**Sanity check**:
-
-Quindi, grazie agli sforzi di Ramus, abbiamo anche uno strumento straordinario per aiutarti a verificare la tua configurazione per coloro che potrebbero essersi persi qualcosa:
-
-* [**Sanity Checker**](https://opencore.slowgeek.com)
-
-Nota che questo strumento non è né realizzato né mantenuto da Dortania, tutti i problemi con questo sito devono essere inviati qui: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
-
-### Config reminders
-
-**HP Users**:
-
-* Kernel -> Quirks -> LapicKernelPanic -> True
-  * Altrimenti avrai un kernel panic su LAPIC
-* UEFI -> Quirks -> UnblockFsConnect -> True
-
-**Dell Users**:
-
- For Skylake and newer:
-
-* Kernel -> Quirk -> CustomSMBIOSGuid -> True
-* PlatformInfo -> UpdateSMBIOSMode -> Custom
-
-## Intel impostazioni BIOS
+## Intel BIOS settings
 
 * Nota: la maggior parte di queste opzioni potrebbe non essere presente nel tuo firmware, ti consigliamo di abbinarle il più fedelmente possibile, ma non preoccuparti se molte di queste opzioni non sono disponibili nel tuo BIOS
 
