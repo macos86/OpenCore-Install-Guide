@@ -58,6 +58,7 @@ cpuid.1.ecx = "1000:0010:1001:1000:0010:0010:0000:0011"
 cpuid.1.edx = "0000:1111:1010:1011:1111:1011:1111:1111"
 featureCompat.enable = "FALSE"
 ```
+
 After that, you can boot up macOS without any problem!
 
 ## Install VMware tools
