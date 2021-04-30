@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
+    "lint": "markdownlint-cli2 **/*.md #node_modules",
     "fixlint": "markdownlint-cli2-fix **/*.md #node_modules"
   },
   "license": "CC-BY-NC-SA-4.0",
