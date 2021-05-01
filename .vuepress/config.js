@@ -227,7 +227,7 @@ module.exports = {
                 children: [
                     '/extras/kaslr-fix',
                     '/extras/spoof',
-                    '/extras/big-sur/',
+                    '/extras/big-sur',
                     {
                         title: 'Macchine Virtuali',
                         collapsable: false,
