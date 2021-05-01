@@ -3,9 +3,7 @@
 ## Requirements
 
 * VMware Workstation or VMware Workstation Player (Linux or Windows)
-* qemu-img
-  * [Windows](https://cloudbase.it/qemu-img-windows/)
-  * Linux: it's automatically installed with qemu.
+* qemu-img (Included in the [qemu](https://qemu.org) installation) or you can use [vboxmanage](./virtualbox.md#converting-installation-media) too
 
 ## Download the Installation Media
 
@@ -16,9 +14,20 @@ You can use [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master
 VMware cannot directly use a dmg disk image, so we'll create a vmdk file, which will allow you to use it as a virtual disk drive in VMware Fusion.
 With some conversions, we can create our disk image:
 
+### Windows
+
+```bash
+### Go to the directory with qemu-img
+cd 'C:\Program Files\qemu'
+### Change "BaseSystem" if the name of the .dmg file differs
+.\qemu-img.exe convert PATH\TO\BaseSystem.dmg -O vmdk PATH\TO\BaseSystem.vmdk
+```
+
+### Linux
+
 ```bash
 ### Change "BaseSystem" if the name of the .dmg file differs
-./qemu-img convert BaseSystem.dmg -O vmdk BaseSystem.vmdk
+qemu-img convert PATH/TO/BaseSystem.dmg -O vmdk PATH/TO/BaseSystem.vmdk
 ```
 
 ## Unlock VMware
@@ -65,4 +74,4 @@ Mount the `darwin.iso` included with VMware (otherwise you can download from [he
 
 ## Can I have graphical acceleration?
 
-Maybe soon! I'm studying how to do it...
+I'm sorry, but at the moment, we can't.
