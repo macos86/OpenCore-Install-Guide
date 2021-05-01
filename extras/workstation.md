@@ -30,7 +30,7 @@ Execute it when VMware is shutted down.
 
 You can use the classic settings that VMware offers, remember that macOS cannot support IDE neither GPU acceleration.
 
-## Edit the vmx file
+<!-- ## Edit the vmx file
 
 For booting macOS, we have to add some strings to the vmx file that contains all the settings of our VM.
 
@@ -39,7 +39,6 @@ For booting macOS, we have to add some strings to the vmx file that contains all
 ```bash
 hw.model = "iMac20,2"
 board-id = "Mac-AF89B6D9451A490B"
-smc.version = "0"
 ```
 
 ### VMX patch for AMD Processors
@@ -47,7 +46,6 @@ smc.version = "0"
 ```bash
 hw.model = "iMac20,2"
 board-id = "Mac-AF89B6D9451A490B"
-smc.version = "0"
 cpuid.0.eax = "0000:0000:0000:0000:0000:0000:0000:1011"
 cpuid.0.ebx = "0111:0101:0110:1110:0110:0101:0100:0111"
 cpuid.0.ecx = "0110:1100:0110:0101:0111:0100:0110:1110"
@@ -59,7 +57,7 @@ cpuid.1.edx = "0000:1111:1010:1011:1111:1011:1111:1111"
 featureCompat.enable = "FALSE"
 ```
 
-After that, you can boot up macOS without any problem!
+After that, you can boot up macOS without any problem! -->
 
 ## Install VMware tools
 
