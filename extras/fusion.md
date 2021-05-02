@@ -1,67 +1,63 @@
 # VMware Fusion
 
-## Requirements
+## Requisiti
 
-* VMware Fusion (on genuine mac/Hackintosh)
+* VMware Fusion (su mac genuini o Hackintosh)
 * qemu-img
-  * You can grab it from your qemu installation (`brew install qemu`). To install it, you have to install [brew](https://brew.sh)
+  * Lo ottieni installando [qemu](https://www.qemu.org) (`brew install qemu` per installarlo da [brew](https://brew.sh)).
+  * Puoi anche usare [vboxmanage](./virtualbox.md#convertire-il-file-di-installazione)
 
-## Download the Installation Media
+## Scaricare il File di installazione
 
-You can use [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery) (see this [guide](../installer-guide/winblows-install.md#downloading-macos)) to obtain the basesystem.dmg file.
+Puoi usare [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery): ecco la [guida](../installer-guide/winblows-install.md#scaricare-macos)) per ottenere il file .dmg (il file .chunklist non ci servirà).
 
-## Converting Installation Media
+## Convertire il File di Installazione
 
-VMware cannot directly use a dmg disk image, so we'll create a vmdk file, which will allow you to use it as a virtual disk drive in VMware Fusion.
-With some conversions, we can create our disk image:
+VMware non può leggere una immagine disco dmg, perciò dovremo convertirla come vmdk.
+Con una conversione, creiamo una nuova immagine disco:
 
 ```bash
-### Change "BaseSystem" if the name of the .dmg file differs
+### Cambia "BaseSystem" se il nome del .dmg differisce
 qemu-img convert BaseSystem.dmg -O vmdk BaseSystem.vmdk
 ```
 
-This command converts our dmg disk image to the vmdk disk.
+Questo comando converte la nostra immagine disco dmg in un disco vmdk.
 
-## Installing macOS Big Sur in VMware Fusion
+## Installare macOS Big Sur su VMware Fusion
 
-1. Next, start VMware Fusion. You should see the homepage. If not, close any window that opened and select `File` > `New` from the menu bar.
-    ![](../images/extras/fusion/homepage.png)
-2. Select the "Create a custom virtual machine" option, and select macOS 10.15 (as 10.16/11 isn't available).
-    ![](../images/extras/fusion/choose-os.png)
-3. Select "Use an existing virtual disk" at the screen below.
-    ![](../images/extras/fusion/choose-virtual-disk.png)
-4. Then, click "Choose virtual disk" and select the `BaseSystem.vmdk` vmdk we made earlier. If you want to make sure VMware does not copy the disk to where you will be storing the VM (for example, if you are low on space), select "Share this virtual disk with the virtual machine that created it".
-    ![](../images/extras/fusion/choose-virtual-disk-finder.png)
-    Once done, it should look like this.
-    ![](../images/extras/fusion/choose-virtual-disk-filled.png)
-5. Hit Continue, then click "Customize Settings". Make sure to save the VM to somewhere that's not the disk you are passing through.
-    Once done, you should arrive at a screen that looks like this.
-    ![](../images/extras/fusion/vm-settings-home.png)
-6. First, select "Processors & Memory", and set the memory to at least 4096 MB.
-7. Add a second Hard Disk (minimum of 100 GB) where you will install macOS.
-8. Open the vmx (not vmxf or vmx.lck folder) file in TextEdit. It should look something like this:
-    ![](../images/extras/fusion/vmx-initial.png)
-9. You should get to the VM Boot Manager, as shown below. Select the first hard drive ("EFI VMware Virtual SATA Hard Drive (0.0)). The VM should start booting the Big Sur installer.
-    ![](../images/extras/fusion/vm-boot-manager.png)
-10. Complete the installation as you would on any other device.
-    The installation is complete, and you are at the Welcome screen, select "Virtual Machine" > "Shut Down" from the menu bar.
-    If needed, add your prepared EFI to the EFI partition on the device, then eject it.
-    Place the drive back in your hack and boot normally. You now have Big Sur!
+1. Dopo, avvia VMware Fusion. Dovresti vedere la homepage. Se no, chiudi tutte le finestre aperte e seleziona `File` > `Nuovo` dalla barra del menù.
+  ![](../images/extras/fusion/homepage.png)
+2. Seleziona l'opzione "Crea una macchina virtuale personalizzata", e seleziona la versione che vuoi usare.
+  ![](../images/extras/fusion/choose-os.png)
+3. Seleziona "Usa un disco virtuale già esistente" nello schermo sottostante.
+  ![](../images/extras/fusion/choose-virtual-disk.png)
+4. Dopo, clicca su "Scegli un disco virtuale" e seleziona il nostro `BaseSystem.vmdk` creato precedentemente.
+  ![](../images/extras/fusion/choose-virtual-disk-finder.png)
+  Una volta fatto, dovrebbe apparire come qui.
+  ![](../images/extras/fusion/choose-virtual-disk-filled.png)
+5. Seleziona Continua, dopo clicca su "Personalizza Impostazioni".
+  Once done, you should arrive at a screen that looks like this.
+  ![](../images/extras/fusion/vm-settings-home.png)
+6. Aggiungi un secondo disco rigido (minimo di 100 GB) dove installare macOS.
+7. Sucessivamente devi avviare il selettore di avvio, mostrato sotto. Per farlo, seleziona tra le opzioni di avvio "Avvia sul Firmware" e poi seleziona il corretto disco ("EFI VMware Virtual SATA Hard Drive (0.0)" nell'esempio). La macchina dovrebbe avviare la recovery online.
+  ![](../images/extras/fusion/vm-boot-manager.png)
+8. Completa l'installazione come in ogni altro sistema.
+  The installation is complete, and you are at the Welcome screen, select "Virtual Machine" > "Shut Down" from the menu bar.
+  If needed, add your prepared EFI to the EFI partition on the device, then eject it.
+  Place the drive back in your hack and boot normally. You now have Big Sur!
 
-## Adding Video Patches
+## Aggiungere le Patch Video
 
-In some cases you see that you have not graphic acceleration. We can fix this only on macOS 11.0, Big Sur:
+In alcuni casi potresti non avere l'accelerazione grafica. Possiamo provare un fix su macOS 11.0, Big Sur ([based on](https://kb.vmware.com/s/article/81657)):
 
-* Close VMware Fusion. Locate the "macOS 10.15.vmwarevm" (or whatever you named the machine it when saving) folder in Finder, and right click > "Show Package Contents".
-  The result should look like the image below.
+* Chiudi VMware Fusion. Trova la cartella "macOS.vmwarevm" (o come l'hai chiamato quando hai salvato la macchina virtual) nel Finder, mouse destro e seleziona > "Mostra Contenuto Pacchetto".
+  Il risultato potrebbe essere quello dell'immagine sottostante.
   ![](../images/extras/fusion/vm-folder.png)
-* Open the vmx (not vmxf or vmx.lck folder) file in TextEdit. It should look something like this:
+* Apri il file .vmx (non vmxf o vmx.lck) in TextEdit. Dovresti ottenere una cosa simile:
   ![](../images/extras/fusion/vmx-initial.png)
-* Add the following lines to it ([based on](https://kb.vmware.com/s/article/81657)):
+* Aggiungi le seguenti linee:
 
   ```
   appleGPU0.present = "True"
   svga.present = "FALSE"
   ```
-
-* Don't touch anything else and reboot. Now the video should work.

@@ -1,27 +1,27 @@
 # VirtualBox
 
-## Requirements
+## Requisiti
 
 * VirtualBox
 
-## Download the Installation Media
+## Scaricare il File di installazione
 
-You can use [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery) (see this [guide](../installer-guide/winblows-install.md#downloading-macos)) to obtain the basesystem.dmg file.
+Puoi usare [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery): ecco la [guida](../installer-guide/winblows-install.md#scaricare-macos)) per ottenere il file .dmg (il file .chunklist non ci servirà).
 
-## Converting Installation Media
+## Convertire il File di Installazione
 
-VirtualBox cannot directly use a dmg image, so we're going to convert it to a `VDI`.
-
-`cd` to the location of the disk image and run the following:
+Virtualbox non può leggere una immagine disco dmg, perciò dovremo convertirla come `VDI`.
 
 ```bash
-### Change "Install macOS Big Sur Beta" if the name of the .img file differs
-VBoxManage convertdd "Install macOS Big Sur Beta.img" "Install macOS Big Sur Beta.vdi"
+### Cambia "BaseSystem" se il nome del .dmg differisce
+VBoxManage convertdd "BaseSystem.dmg" "BaseSystem.vdi"
 ```
 
 ## Installing macOS in VirtualBox
 
-Next, start VirtualBox as root and create a new macOS virtual machine.
+La guida verrà riaggiunta fra poco, per il momento la teniamo in sospeso!
+
+<!--Next, start VirtualBox as root and create a new macOS virtual machine.
 
 ```bash
 sudo VirtualBox
@@ -59,3 +59,4 @@ Start VirtualBox as root, and start the VM. The installer should begin to boot. 
 ```bash
 sudo VirtualBox
 ```
+-->
