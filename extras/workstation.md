@@ -2,47 +2,48 @@
 
 ## Requirements
 
-* VMware Workstation or VMware Workstation Player (Linux or Windows)
-* qemu-img (Included in the [qemu](https://qemu.org) installation) or you can use [vboxmanage](./virtualbox.md#converting-installation-media) too
+* VMware Workstation o VMware Workstation Player (solo Linux e Windows)
+* qemu-img (Incluso nella installazione di [qemu](https://qemu.org)) utilizzabile anche [vboxmanage](./virtualbox.md#convertire-il-file-di-installazione)
 
-## Download the Installation Media
+## Scaricare il File di installazione
 
-You can use [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery) (see this [guide](../installer-guide/winblows-install.md#downloading-macos)) to obtain the basesystem.dmg file.
+Puoi usare [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery): ecco la [guida](../installer-guide/winblows-install.md#scaricare-macos)) per ottenere il file .dmg (il file .chunklist non ci servirà).
 
-## Converting Installation Media
+## Convertire il File di Installazione
 
-VMware cannot directly use a dmg disk image, so we'll create a vmdk file, which will allow you to use it as a virtual disk drive in VMware Fusion.
-With some conversions, we can create our disk image:
+VMware non può leggere una immagine disco dmg, perciò dovremo convertirla come vmdk.
+Con una conversione, creiamo una nuova immagine disco:
 
 ### Windows
 
 ```bash
-### Go to the directory with qemu-img
+### Muoviti alla directory contenente qemu-img
 cd 'C:\Program Files\qemu'
-### Change "BaseSystem" if the name of the .dmg file differs
-.\qemu-img.exe convert PATH\TO\BaseSystem.dmg -O vmdk PATH\TO\BaseSystem.vmdk
+### Cambia "BaseSystem" se il nome del .dmg differisce
+.\qemu-img.exe convert PERCORSO\DEL\BaseSystem.dmg -O vmdk PERCORSO\DEL\BaseSystem.vmdk
 ```
 
 ### Linux
 
 ```bash
-### Change "BaseSystem" if the name of the .dmg file differs
-qemu-img convert PATH/TO/BaseSystem.dmg -O vmdk PATH/TO/BaseSystem.vmdk
+### Cambia "BaseSystem" se il nome del .dmg differisce
+qemu-img convert PATH/TO/BaseSystem.dmg -O vmdk PERCORSO/DEL/BaseSystem.vmdk
 ```
 
-## Unlock VMware
+## Sbloccare VMware
 
-To use macOS on these systems, we have to patch some files. To do it, we can use [this tool](https://github.com/paolo-projects/auto-unlocker/releases).
-Execute it when VMware is shutted down.
+Per usare macOS su questa macchina virtuale, dobbiamo eseguire alcune patch. Per farlo in maniera automatizzata, consiglio [questo tool](https://github.com/paolo-projects/auto-unlocker/releases).
+Eseguilo chiudendo prima VMware.
 
-## Create the Virtual Machine
+## Creare la Macchina Virtuale
 
-You can use the classic settings that VMware offers, remember that macOS cannot support IDE neither GPU acceleration.
+Puoi usare le impostazioni che VMware offre, **ricorda che macOS non supporta i dischi IDE nè l'accelerazione grafica (per ora)**.
 
-<!-- ## Edit the vmx file
+## Modificare il file vmx
 
-For booting macOS, we have to add some strings to the vmx file that contains all the settings of our VM.
-
+Per avviare macOS, dobbiamo aggiungere alcune stringhe al file .vmx che contiene appunto tutte le impostazioni della nostra macchina virtuale.
+Al momento ho rimosso le patch perché le sto riguardando... Ė possibile ancora avviare i sistemi senza averne bisogno, tuttavia meglio **NON PROVARE A COLLEGARSI CON iCloud!!!**
+<!--
 ### VMX patch for Intel Processors
 
 ```bash
@@ -68,10 +69,10 @@ featureCompat.enable = "FALSE"
 
 After that, you can boot up macOS without any problem! -->
 
-## Install VMware tools
+## Installare VMware tools
 
-Mount the `darwin.iso` included with VMware (otherwise you can download from [here](https://www.insanelymac.com/forum/files/file/987-vmware-tools-for-os-x-macos-darwiniso-and-darwinpre15iso/))
+Montare il file `darwin.iso` incluso con VMware (lo puoi trovare anche [qui](https://www.insanelymac.com/forum/files/file/987-vmware-tools-for-os-x-macos-darwiniso-and-darwinpre15iso/))
 
-## Can I have graphical acceleration?
+## Posso avere l'accelerazione grafica?
 
-I'm sorry, but at the moment, we can't.
+Mi dispiace, ma al momento non è possibile. Se hai idee su come farlo, contattaci su [macos86.it](https://macos86.it)
