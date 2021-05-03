@@ -50,12 +50,11 @@ Al momento ho rimosso le patch perché le sto riguardando... Ė possibile ancora
 hw.model = "iMac20,2"
 board-id = "Mac-AF89B6D9451A490B"
 ```
+-->
 
-### VMX patch for AMD Processors
+### Patch per processori AMD
 
 ```bash
-hw.model = "iMac20,2"
-board-id = "Mac-AF89B6D9451A490B"
 cpuid.0.eax = "0000:0000:0000:0000:0000:0000:0000:1011"
 cpuid.0.ebx = "0111:0101:0110:1110:0110:0101:0100:0111"
 cpuid.0.ecx = "0110:1100:0110:0101:0111:0100:0110:1110"
@@ -64,10 +63,8 @@ cpuid.1.eax = "0000:0000:0000:0001:0000:0110:0111:0001"
 cpuid.1.ebx = "0000:0010:0000:0001:0000:1000:0000:0000"
 cpuid.1.ecx = "1000:0010:1001:1000:0010:0010:0000:0011"
 cpuid.1.edx = "0000:1111:1010:1011:1111:1011:1111:1111"
-featureCompat.enable = "FALSE"
+# featureCompat.enable = "FALSE" (non sicuro serva)
 ```
-
-After that, you can boot up macOS without any problem! -->
 
 ## Installare VMware tools
 
