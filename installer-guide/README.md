@@ -1,7 +1,5 @@
 # Creare la USB
 
-* Versione supportata: 0.6.8
-
 Requisiti:
 
 * [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), altamente raccomandato l'uso della versione di debug per avere più informazioni

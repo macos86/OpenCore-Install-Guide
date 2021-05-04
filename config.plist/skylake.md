@@ -2,7 +2,6 @@
 
 | Supporto | Versione |
 | :--- | :--- |
-| Versione di OpenCore supportata | 0.6.8 |
 | Supporto di macOS iniziale | OS X 10.11, El Capitan |
 
 ## Punto d'Inizio

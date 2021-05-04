@@ -3,7 +3,6 @@
 | Supporto | Versione |
 | :--- | :--- |
 | Supporto di macOS iniziale | OS X 10.6.3, Snow Leopard |
-| Versione di OpenCore supportata | 0.6.8 |
 | Nota 1 | Le iGPU Arrandale sono ufficialmente supportate solo fino a macOS 10.13 |
 | Nota 2 | La maggior parte delle schede Clarksfield e Arrandale non supportano UEFI |
 

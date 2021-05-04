@@ -2,7 +2,6 @@
 
 | Supporto | Versione |
 | :--- | :--- |
-| Versione di OpenCore supportata | 0.6.8 |
 | Supporto di macOS iniziale | OS X 10.6.3, Snow Leopard |
 | Nota 1 | Apple non supporta le iGPU desktop Iron Lake |
 | Nota 2 | La maggior parte delle schede Lynnfield and Clarkdale non supportano UEFI |

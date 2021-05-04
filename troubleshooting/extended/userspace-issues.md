@@ -1,7 +1,5 @@
 # Problemi nello spazio utente
 
-* Versione supportata: 0.6.8
-
 Problemi riguardanti una volta che hai avviato il programma di installazione e la GUI è stata caricata
 
 [[toc]]

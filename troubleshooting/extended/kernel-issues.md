@@ -1,7 +1,5 @@
 # Kernel Issues
 
-* Versione supportata: 0.6.8
-
 Problemi relativi all'avvio iniziale del programma di installazione di macOS subito prima che venga visualizzata la GUI di installazione.
 
 [[toc]]

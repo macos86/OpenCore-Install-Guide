@@ -1,10 +1,6 @@
 # Creazione dell'installer in macOS
 
-* Versione supportata: 0.6.8
-
 Siccome spesso hai bisogno di un'installazione pulita, anche senza OpenCore, alcuni utenti preferirebbero un'aggiornamento su come scaricare gli aggiornamenti di macOS.
-
-Per iniziare avremo bisogno di un installer di macOS. Puoi saltare questa sezione e andare a inizializzare la USB se devi creare un disco avviabile con OpenCore e non un installer. Per gli altri, puoi scaricare macOS dall'App Store o con lo script di Munki.
 
 ## Scaricare macOS: Sistemi Moderni
 

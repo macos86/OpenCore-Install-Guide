@@ -1,7 +1,5 @@
 # Problemi vari
 
-* Versione supportata: 0.6.8
-
 Problemi vari che non ruotano attorno a macOS stesso come per esempio il multiboot.
 
 [[toc]]

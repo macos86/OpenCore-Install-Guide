@@ -1,7 +1,5 @@
 # Conversioni da Clover a OpenCore
 
-* Versione supportata: 0.6.8
-
 Ora che hai visto lo strano bootloader OpenCore e non vedi l'ora di provarlo, beh, sei venuto nel luogo giusto! Molte cose in Clover sono state implementate, ma altre no, qui potrai vedere cosa è stato implementato e cosa no.
 
 Per iniziare hai alcune risorse che ti aiuteranno:
