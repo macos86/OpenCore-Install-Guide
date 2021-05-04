@@ -1,7 +1,5 @@
 # Creare l'Installer su Windows
 
-* Versione supportata: 0.6.8
-
 Poiché non hai bisogno di macOS per usare OpenCore, alcuni utenti preferiscono avere un'aggiornamento su come aggiornare macOS.
 
 Per iniziare avrai bisogno di:

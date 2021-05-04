@@ -1,7 +1,5 @@
 # Raccogliere i File
 
-* Versione supportata: 0.6.8
-
 Questa pagina è una raccolta di vari file necessari per l'avvio di MacOs, ci aspettiamo che tu, prima di iniziare, conosca bene il tuo hardware e ci auguriamo che tu abbia fatto già un Hackintosh in passato, perchè non andremo così nel dettaglio in questa pagina.
 
 > Qual'è il miglior modo per capire se il mio hardware è supportato?
@@ -108,7 +106,6 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
   * Non utilizzare se non si ha un sensore di luminosità, può causare problemi in caso contrario
 * SMCBatteryManager.kext
   * Utilizzato per misurare la batteria sui laptop, **i desktop possono ignorare**
-  * Non utilizzare fino a quando la batteria non è stata adeguatamente patchata, può causare problemi in caso contrario. Quindi, per la configurazione iniziale, ometti questo kext. Dopo l'installazione puoi seguire questa pagina per la configurazione: [Fixing Battery Read-outs (EN)](https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery.html)
 * SMCDellSensors.kext
   * Consente un monitoraggio e un controllo più accurato delle ventole sulle macchine Dell che supportano il System Management Mode (SMM)
   * **Non utilizzare se non si dispone di una macchina Dell supportata**, principalmente i laptop Dell possono trarre vantaggio da questo kext
@@ -380,6 +377,11 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 :::
 
 #### Misc
+
+* [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases)
+  * Risolve le letture della batteria in molti dispositivi (Permette le letture dei field EC lunghi 8 bit)
+* [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases)
+  * Risolve i tasti di luminosità automaticamente
 
 Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) per un elenco completo dei kext supportati
 

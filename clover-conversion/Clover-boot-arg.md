@@ -1,7 +1,5 @@
 # Conversione Boot Argument
 
-* Versione supportata: 0.6.8
-
 Questa sezione viene spiegata per capire quali boot-args sono irrilevanti con OpenCore, è comune con utenti che usano ancora arg legacy senza sapere che effetto abbiano per macOS o che hanno usato poco OpenCore
 
 Questa lista è basata sulla nostra memoria e perciò essendo stufo di vedere questi flag continuare ad apparire, vi chiedo di avvisarmi [aprendo un issue](https://github.com/khronokernel/OpenCore-Vanilla-Desktop-Guide/issues) se ne trovate altri. Tutti gli aiuti sono benvenuti!

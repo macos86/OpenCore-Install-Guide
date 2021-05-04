@@ -1,7 +1,5 @@
 # OpenCore Debugging
 
-* Versione supportata: 0.6.8
-
 Hai bisogno di capire perché stai riscontrando problemi o ti stai bloccando? Bene, sei nel posto giusto:
 
 [[toc]]

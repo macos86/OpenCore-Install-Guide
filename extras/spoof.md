@@ -1,7 +1,5 @@
 # Disabilitare GPU
 
-* Versione supportata: 0.6.8
-
 Devi nascondere la tua GPU non supportata? Bene, con OpenCore le cose sono parecchio diverse, e bisogna specificare a cosa vogliamo fare lo spoof. Ci sono 3 modi per farlo:
 
 * Boot Flag

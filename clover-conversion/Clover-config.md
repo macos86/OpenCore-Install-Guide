@@ -1,7 +1,5 @@
 # Convertire le proprietà comuni da Clover a OpenCore
 
-* Versione supportata: 0.6.8
-
 Perciò questa piccola (beh, ora non più così piccola...) pagina è fatta per chi ha problemi a migrare da Clover a OpenCore dato che alcuni quirk per sistemi legacy sono richiesti oppure nel Configuration.pdf che non ha dettagli per i laptop.
 
 [[toc]]

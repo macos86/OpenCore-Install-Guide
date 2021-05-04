@@ -4,7 +4,6 @@
 | :--- | :--- |
 | Supporto di macOS iniziale ([CFL](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
 | Supporto di macOS iniziale ([CML](https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor))) | macOS 10.15, Catalina |
-| Versione di OpenCore supportata | 0.6.8 |
 
 ## Punto d'Inizio
 

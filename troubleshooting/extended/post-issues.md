@@ -1,7 +1,5 @@
 # Problemi Post-Installazione
 
-* Versione Supportata: 0.6.8
-
 Possibili problemi quando macOS è già installato.
 
 [[toc]]

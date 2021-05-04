@@ -1,7 +1,5 @@
 # Crediti
 
-* Versione supportata: 0.6.8
-
 Nessuna buona guida è stata creata da un solo uomo, ecco i credits di coloro che hanno aiutato:
 
 * [vit9696](https://github.com/vit9696)

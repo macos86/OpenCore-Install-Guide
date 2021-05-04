@@ -1,7 +1,5 @@
 # OpenCore Problemi di boot
 
-* Versione supportata: 0.6.8
-
 Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avviare il programma di installazione di macOS
 
 [[toc]]

@@ -2,7 +2,6 @@
 
 | Supporto | Versione |
 | :--- | :--- |
-| Versione di OpenCore supportata | 0.6.8 |
 | Supporto di macOS iniziale | macOS 10.13, High Sierra |
 
 Fare un config.plist potrebbe sembrare difficile, ma non lo è. Ci metterai solo un po' di tempo ma questa guida ti dice come configurare il tutto, non rimarrai a bocca asciutta. Questo significa anche che se hai problemi, rivedi come hai impostato il config per essere sicuro che siano corrette. Le cose principali da definire con OpenCore:

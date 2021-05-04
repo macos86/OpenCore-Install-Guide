@@ -1,7 +1,5 @@
 # Correzione dei valori delle slide KASLR
 
-* Versione supportata: 0.6.8
-
 Questa sezione è per gli utenti che desiderano comprendere e correggere gli errori "Couldn't allocate runtime area". Questo è più comune con Z390, X99 e X299.
 
 * Nota: OpenCore è richiesto, Clover non è più supportato in questa guida

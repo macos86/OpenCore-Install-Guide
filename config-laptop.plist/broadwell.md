@@ -3,7 +3,6 @@
 | Supporto | Versione |
 | :--- | :--- |
 | Supporto di macOS iniziale | OS X 10.10, Yosemite |
-| Versione di OpenCore supportata | 0.6.8 |
 
 ## Punto d'Inizio
 
