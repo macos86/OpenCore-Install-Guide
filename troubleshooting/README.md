@@ -1,9 +1,6 @@
 # Risoluzione dei problemi
 
-* Versione Supportata: 0.6.8
-
-Questa sezione è per coloro che hanno problemi con l'avvio di OpenCore, macOS o che hanno problemi all'interno di macOS. Se sei confuso su dove esattamente sei bloccato nel processo di avvio di macOS, leggere la pagina
- [Processo di avvio di macOS](../troubleshooting/boot.md) può aiutare a chiarire le cose.
+Questa sezione è per coloro che hanno problemi con l'avvio di OpenCore, macOS o che hanno problemi all'interno di macOS. Se sei confuso su dove esattamente sei bloccato nel processo di avvio di macOS, leggere la pagina [Processo di avvio di macOS](../troubleshooting/boot.md) può aiutare a chiarire le cose.
 
 **Se il tuo problema non è compreso, leggi la documentazione ufficiale di OpenCore: [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)**. Questo documento entra in dettagli molto più tecnici su come funziona OpenCore e contiene informazioni molto più dettagliate su tutti i Quirks supportati.
 
