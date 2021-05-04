@@ -13,12 +13,14 @@ Misteriosamente funziona solo la recovery full, a mia opinione. **LA GUIDA VA RI
 Virtualbox non può leggere una immagine disco dmg, perciò dovremo convertirla come `VDI`.
 
 ### Linux/mac
+
 ```bash
 ### Cambia "BaseSystem" se il nome del .dmg differisce
 VBoxManage convertdd "BaseSystem.dmg" "BaseSystem.vdi"
 ```
 
 ### Windows
+
 ```bash
 ### Muoviti alla directory contenente vboxmanage
 cd 'C:\Program Files\Oracle\VirtualBox'
