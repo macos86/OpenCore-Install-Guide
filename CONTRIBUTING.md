@@ -50,7 +50,7 @@ Semplici step:
   * `npm install` (Per installare tutti i plugin richiesti)
   * `npm run dev` (Crea un'anteprima del sito)
     * La puoi trovare su `http://localhost:8080`
-* Controlla il lint e lo spellcheck:
+* Controlla il lint:
   * `npm run lint` per avviare i test
   * `npm run fix-lint` Per risolvere quasi ogni tipo di errore
 
