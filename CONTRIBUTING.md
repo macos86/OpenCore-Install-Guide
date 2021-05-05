@@ -51,10 +51,8 @@ Semplici step:
   * `npm run dev` (Crea un'anteprima del sito)
     * La puoi trovare su `http://localhost:8080`
 * Controlla il lint e lo spellcheck:
-  * `npm test`
-  * `npm run lint` and `npm run spellcheck` (per avviare i test individualmente)
-  * `npm run fix-lint` (Per risolvere ogni tipo di errore)
-  * Per sistemare parole non riconosciute dallo spellcheck di default, per favore aggiungile al [dictionary.txt](./dictionary/dictionary.txt) e avvia `npm run sort-dict`
+  * `npm run lint` per avviare i test
+  * `npm run fix-lint` Per risolvere quasi ogni tipo di errore
 
 ### Suggerimenti
 
