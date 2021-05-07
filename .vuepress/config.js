@@ -23,12 +23,10 @@ module.exports = {
     ],
     base: '/OpenCore-Install-Guide/',
 
-    markdown: {
-        extendMarkdown: md => {
-            md.use(require('markdown-it-multimd-table'), {
-                rowspan: true,
-            });
-        }
+    extendMarkdown: md => {
+        md.use(require('markdown-it-multimd-table'), {
+            rowspan: true,
+        });
     },
 
     themeConfig: {
