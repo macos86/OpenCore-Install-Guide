@@ -244,14 +244,8 @@ module.exports = {
                     '/extras/smbios-support.md',
                 ]
             },
-            {
-                title: 'Misc',
-                collapsable: false,
-                children: [
-                    'CONTRIBUTING',
-                    '/misc/credit',
-                ]
-            },
+            'CONTRIBUTING',
+            '/misc/credit'
         ],
     },
     plugins: [
