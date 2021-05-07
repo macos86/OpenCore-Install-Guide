@@ -225,7 +225,6 @@ module.exports = {
                     '/extras/big-sur',
                     {
                         title: 'Macchine Virtuali',
-                        collapsable: false,
                         children: [
                             '/extras/virtualbox',
                             '/extras/fusion',
@@ -235,7 +234,6 @@ module.exports = {
                     {
                         path: '/clover-conversion/',
                         title: 'Conversioni da Clover',
-                        collapsable: false,
                         children: [
                             '/clover-conversion/Clover-config',
                             '/clover-conversion/clover-efi',
