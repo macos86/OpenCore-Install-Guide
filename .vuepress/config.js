@@ -115,7 +115,6 @@ module.exports = {
             {
                 title: 'Creazione della USB',
                 collapsable: false,
-                sidebarDepth: 2,
                 children: [
                     {
                         title: 'Creare la USB',
@@ -220,7 +219,6 @@ module.exports = {
             {
                 title: 'Extra',
                 collapsable: false,
-                sidebarDepth: 2,
                 children: [
                     '/extras/kaslr-fix',
                     '/extras/spoof',
