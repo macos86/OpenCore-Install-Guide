@@ -333,7 +333,7 @@ I luoghi principali da verificare:
 
 * **Manca la patch EC**:
   * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
-  * Se non ne hai uno, prendilo qui: [Getting Started With ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
+  * Se non ne hai uno, prendilo qui: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)
 * **Conflitto IRQ**:
   * Più comune su portatili e pre-costrutti più anziani; lancia SSDTTime scegli l'opzione FixHPET e aggiungi il risultante SSDT-HPET.aml e lepatches  ACPI al tuo config (l'SSDT non funzionerà senza le patch ACPI)
 * **Problemi di allocazione PCI**:
@@ -351,15 +351,15 @@ I luoghi principali da verificare:
     * Assicurarsi che le unità NVME siano impostate come modalità NVME nel BIOS (alcuni BIOS hanno un bug in cui è possibile impostare unità NVME come SATA)
 * **NVRAM non funziona**:
   * Problema comune nelle schede madri HEDT e serie 300, hai un paio di percorsi da seguire:
-    * Serie 300 Consumer Intel: Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) come creare SSDT-PMC.aml
+    * Serie 300 Consumer Intel: Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) come creare SSDT-PMC.aml
     * HEDT(ie. X99): Guarda [Emulare la NVRAM](https://dortania.github.io/OpenCore-Post-Install/misc/nvram.html) su come disabilitare la scrittura della NVRAM; nota che per l'installazione non è necessario eseguire lo script. Basta configurare il config.plist
 
 * **RTC Mancante**:
-  * Comunemente trovato su serie 300+ Intel(es. Z370, Z490), causata dall'orologio RTC disabilitato di default. Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) su come creare SSDT-AWAC.aml
-  * X99 and X299 hanno decies RTC non funzionanti, la soluzione è usare SSDT-RTC0-RANGE. Guarda [Guida introduttiva delle ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) per la creazione di detto file
+  * Comunemente trovato su serie 300+ Intel(es. Z370, Z490), causata dall'orologio RTC disabilitato di default. Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) su come creare SSDT-AWAC.aml
+  * X99 and X299 hanno decies RTC non funzionanti, la soluzione è usare SSDT-RTC0-RANGE. Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per la creazione di detto file
   * Qualche compilatore ubriaco in HP ha disabilitato RTC su HP 250 G6 senza possibilità di riabilitarlo per ora.
     * Modelli interessati noti: `HP 15-DA0014dx`, `HP 250 G6`
-    * Gli utenti con questa "maledizione" nell'hardware dovranno creare un orologio RTC falso per i macos con cui giocare. Vedere Guida introduttiva con ACPI per ulteriori dettagli, qui sotto una immagine ad esempio:
+    * Gli utenti con questa "maledizione" nell'hardware dovranno creare un orologio RTC falso per i macos con cui giocare. Vedere [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per ulteriori dettagli, qui sotto una immagine ad esempio:
 
 Esempio di come appare un RTC disabilitato senza nessuna possibilità di essere abilitato (nota che non c'è valore per riattivarlo come `STAS»):
 
