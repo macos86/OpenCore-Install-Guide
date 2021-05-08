@@ -31,17 +31,17 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
-
-| SSDT Richiesti | Descrizione |
-| :--- | :--- |
-| **[SSDT-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)** | Necessario per un power management della CPU, dovrai usare lo script ssdtPRGen.sh di Pike per generarlo. Questo sarà da fare nel [post-install (EN)](https://dortania.github.io/OpenCore-Post-Install/). |
-| **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
-| **[SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/)** | Necessario per aggiungere il dispositivo IMEI mancante sulle CPU Sandy Bridge con le schede madri di 7^ generazione |
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+
+| SSDT Richiesti | Descrizione |
+| :--- | :--- |
+| **SSDT-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)** | Necessario per un power management della CPU, dovrai usare lo script ssdtPRGen.sh di Pike per generarlo. Questo sarà da fare nel [post-install (EN)](https://dortania.github.io/OpenCore-Post-Install/). |
+| **SSDT-EC** | Sistema il controller integrato |
+| **SSDT-IMEI** | Necessario per aggiungere il dispositivo IMEI mancante sulle CPU Sandy Bridge con le schede madri di 7^ generazione |
 
 :::
 
