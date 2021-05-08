@@ -39,7 +39,7 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **SSDT-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)** | Necessario per un power management della CPU, dovrai usare lo script ssdtPRGen.sh di Pike per generarlo. Questo sarà da fare nel [post-install (EN)](https://dortania.github.io/OpenCore-Post-Install/). |
+| **SSDT-PM** | Necessario per un power management della CPU, dovrai usare lo script ssdtPRGen.sh di Pike per generarlo. Questo sarà da fare nel [post-install (EN)](https://dortania.github.io/OpenCore-Post-Install/). |
 | **SSDT-EC** | Sistema il controller integrato |
 | **SSDT-IMEI** | Necessario per aggiungere il dispositivo IMEI mancante sulle CPU Sandy Bridge con le schede madri di 7^ generazione |
 
