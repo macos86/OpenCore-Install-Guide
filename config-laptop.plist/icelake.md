@@ -31,20 +31,20 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
-
-| SSDT Richiesti | Descrizione |
-| :--- | :--- |
-| **[SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)** | Permette il power management della CPU su Haswell e più recenti, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
-| **[SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato e l'energia dei USB, vedi [Getting Started With ACPI Guide (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
-| **[SSDT-GPIO](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl)** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml). Nota che i NUC Intel non gli serve questo |
-| **[SSDT-PNLF-CFL](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controllo della luminosità, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. Nota che i NUC Intel non gli serve questo |
-| **[SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Questa è la [patch della serie 300 per RTC (DE)](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggior parte di B360, B365, H310, H370, Z390 e alcuni sistemi Z370, che previene l'avvio di macOS a causa dell'orologio di sistema. L'alternativa è [SSDT-RTC0](https://dortania.github.io/Getting-Started-With-ACPI/) quando SSDT-AWAC è incompatibile a causa della mancanza del vecchio orologio RTC, per controllare quale ti serve, consulta [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) page. |
-| **[SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/)** | Necessario per sistemare gli errori legati a Root-device in molti laptop Icelake |
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+
+| SSDT Richiesti | Descrizione |
+| :--- | :--- |
+| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
+| **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB. |
+| **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
+| **SSDT-PNLF-CFL** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
+| **SSDT-AWAC** | Questa è la [patch della serie 300 per RTC (DE)](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggior parte di B360, B365, H310, H370, Z390 e alcuni sistemi Z370, che previene l'avvio di macOS a causa dell'orologio di sistema. L'alternativa è SSDT-RTC0 quando SSDT-AWAC è incompatibile a causa della mancanza del vecchio orologio RTC, per controllare quale ti serve. |
+| **SSDT-RHUB** | Necessario per sistemare gli errori legati a Root-device in molti laptop Icelake |
 
 :::
 

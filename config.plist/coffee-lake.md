@@ -31,18 +31,18 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs (EN)](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/)
-
-| SSDT Richiesti | Descrizione |
-| :--- | :--- |
-| **[SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)** | Permette il power management della CPU su Haswell e più recenti, vedi [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
-| **[SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/)** | Sistema il controller integrato e l'energia dei USB, vedi [Getting Started With ACPI Guide (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori dettagli. |
-| **[SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Questa è la [300 series RTC patch](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggioranza delle MB B360, B365, H310, H370, Z390 e alcune Z370 che impediscono ai sistemi di avviare macOS. L'alternativa è [SSDT-RTC0](https://dortania.github.io/Getting-Started-With-ACPI/) per quando AWAC SSDT è incompatibile a causa della mancanza dell'orologio RTC legacy, per verificare se è necessario e quale utilizzare, vedere la pagina [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/). |
-| **[SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Quindi le vere schede madri della serie 300 (non Z370) non dichiarano il chip FW come MMIO in ACPI e quindi XNU ignora la regione MMIO dichiarata dalla mappa di memoria UEFI. Questo SSDT riporta il supporto NVRAM. Vedere [Getting Started With ACPI Guide](https://dortania.github.io/Getting-Started-With-ACPI/) fper maggiori dettagli. |
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
-Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi [**Getting started with ACPI (EN)**](https://dortania.github.io/Getting-Started-With-ACPI/). Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
+
+| SSDT Richiesti | Descrizione |
+| :--- | :--- |
+| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
+| **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB |
+| **SSDT-AWAC** | Questa è la [300 series RTC patch](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggioranza delle MB B360, B365, H310, H370, Z390 e alcune Z370 che impediscono ai sistemi di avviare macOS. L'alternativa è SSDT-RTC0 per quando AWAC SSDT è incompatibile a causa della mancanza dell'orologio RTC legacy, per verificare se è necessario e quale utilizzare, vedere la pagina [Getting started with ACPI. |
+| **SSDT-PMC** | Quindi le vere schede madri della serie 300 (non Z370) non dichiarano il chip FW come MMIO in ACPI e quindi XNU ignora la regione MMIO dichiarata dalla mappa di memoria UEFI. Questo SSDT riporta il supporto NVRAM. Vedere [Getting Started With ACPI Guide fper maggiori dettagli. |
 
 :::
 
