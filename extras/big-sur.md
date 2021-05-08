@@ -114,7 +114,7 @@ Per gli utenti X79, X99 e X299, prestare molta attenzione a quanto segue. Big Su
 
 Per coloro che desiderano file precompilati, vedere qui:
 
-* [Guida introduttiva ad ACPI: SSDT prefabbricati (EN)](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
+* [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
 
 ### Problemi conosciuti
 

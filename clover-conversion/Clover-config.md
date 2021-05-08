@@ -33,7 +33,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * cambiare PEG0 a GFX0
   * cambiare PEGP a GFX0
   * cambiare SL01 a PEGP
-* Patch di EC: Vedi per una soluzione migliore: [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/)
+* Patch di EC: Vedi per una soluzione migliore: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)
   * cambiare EC0 a EC
   * cambiare H_EC a EC
   * cambiare ECDV a EC
@@ -44,7 +44,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * cambiare AZAL a HDEF
   * cambiare ALZA a HDEF
   * cambiare B0D3 a HDAU
-* Fix del bug nella Z390 legato al RTC del BIOS: Vedi qui per una soluzione migliore: [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) (SSDT-AWAC)
+* Fix del bug nella Z390 legato al RTC del BIOS: Vedi qui per una soluzione migliore: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) (SSDT-AWAC)
   * cambiare STAS a [Blank]
   * Fix del bug nella Z390 legato al RTC del BIOS
   * Fix del bug nella serie 300 legato al RTC del BIOS
@@ -132,7 +132,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 * **PluginType**:
   * [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)
-  * Vedi [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) per più dettagli
+  * Vedi [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/Universal/plug/) per più dettagli
 
 * **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 * **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)

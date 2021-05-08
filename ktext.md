@@ -114,7 +114,7 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Required</span>)
   * Utilizzato per la patch grafica di DRM, boardID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
-  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) per maggiori informazioni
+  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per maggiori informazioni
   * Necessita di OS X 10.8 o superiori
 
 ### Audio
@@ -389,7 +389,7 @@ Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/ma
 
 Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Per noi, esamineremo gli SSDT di cui hai bisogno nella **sezione ACPI del tuo config.plist**, poiché gli SSDT necessari sono specifici della piattaforma. Con alcuni casi specifici del sistema nei quali devono essere configurati, puoi facilmente perderti se ti do un elenco di SSDT tra cui scegliere da ora.
 
-[Getting started with ACPI (EN)](https://dortania.github.io/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
+[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
 
 Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
 
