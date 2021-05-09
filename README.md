@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /dortania-logo-clear.png
+heroImage: /images/dortania-logo-clear.png
 heroText: Guida di Installazione OpenCore by Dortania
 actionText: Iniziamo→
 actionLink: prerequisites.md
