@@ -185,7 +185,7 @@ module.exports = {
             },
             {
                 title: 'Processo di Installazione',
-                path: '/installation/installation-process',
+                path: '/installation.md',
             },
             {
                 title: 'Troubleshooting',
