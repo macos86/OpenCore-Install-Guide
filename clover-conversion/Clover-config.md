@@ -412,12 +412,12 @@ Una strana quirk per i sistemi Dell che usano APTIO V
 ### KextsToPatch
 
 * `Kernel -> Patch`
-* Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
+* Vedi [Conversione delle patch comuni di Kernel e Kext](/clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
 ### KernelToPatch
 
 * `Kernel -> Patch`
-* Vedi [Conversione delle patch comuni di Kernel e Kext](../clover-conversion/clover-patch.md) per comuni conversioni delle patch
+* Vedi [Conversione delle patch comuni di Kernel e Kext](/clover-conversion/clover-patch.md) per comuni conversioni delle patch
 
 ### ForceKextsToLoad
 

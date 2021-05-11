@@ -139,27 +139,27 @@ Da OpenCore 0.6.2, puoi avviare ogni versione Intel di macOS tornando indietro f
 
 Acidanthera ha provato molte versione, e io stesso ho avviato molte versioni di OS X nel mio vecchio HP DC 7900 (Core2 Quad Q8300). Qua c'è una piccola galleria di cosa ho testato:
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.4-Tiger.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.4-Tiger.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.5-Leopard.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.5-Leopard.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.6-Snow-Loepard.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.6-Snow-Loepard.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.7-Lion.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.7-Lion.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.8-MountainLion.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.8-MountainLion.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.9-Mavericks.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.9-Mavericks.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.10-Yosemite.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.10-Yosemite.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.12-Sierra.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.12-Sierra.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.13-HighSierra.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.13-HighSierra.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/10.15-Catalina.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/10.15-Catalina.png)
 
-![](./images/installer-guide/legacy-mac-install-md/dumpster/11-Big-Sur.png)
+![](/images/installer-guide/legacy-mac-install-md/dumpster/11-Big-Sur.png)
 
 :::
 

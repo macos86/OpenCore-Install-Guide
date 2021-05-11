@@ -44,7 +44,7 @@ SMBIOS ancora supportato in macOS Big Sur:
 * MacBookAir6,x and newer
 * MacBookPro11,x and newer
 
-Per l'elenco completo degli SMBIOS supportati, incluso il supporto del sistema operativo, vedere qui: [Scelta dell'SMBIOS corretto](../smbios-support.md)
+Per l'elenco completo degli SMBIOS supportati, incluso il supporto del sistema operativo, vedere qui: [Scelta dell'SMBIOS corretto](/extras/smbios-support.md)
 
 :::
 
@@ -137,33 +137,33 @@ Con Big Sur, un bel po di cose hanno smesso di funzionare. Principalmente le seg
   * A causa del fatto che Apple ha abbandonato la classe AppleIntelPchSeriesAHCI in AppleAHCIPort.kext
   * Per risolvere, aggiungi [AppleAHCIPort.kext patchato di Catalina (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) con MinKernel impostato su 20.0. 0
 
-E sebbene non sia un problema, SIP ha ora guadagnato un nuovo bit quindi per disabilitare correttamente SIP è necessario impostare `csr-active-config` su `FF0F0000`. Vedi qui per maggiori informazioni: [Disabilitare SIP](../troubleshooting/extended/post-issues.md#disabling-sip)
+E sebbene non sia un problema, SIP ha ora guadagnato un nuovo bit quindi per disabilitare correttamente SIP è necessario impostare `csr-active-config` su `FF0F0000`. Vedi qui per maggiori informazioni: [Disabilitare SIP](/troubleshooting/extended/post-issues.md#disabling-sip)
 
 ## Installazione
 
 Le guide sono state aggiornate per adattarsi a Big Sur, vedere l'ambiente del sistema operativo applicabile per te:
 
-* [utenti macOS](../installer-guide/mac-install.md)
-* [Utenti Windows](../installer-guide/winblows-install.md)
-* [Utenti Linux](../installer-guide/linux-install.md)
+* [utenti macOS](/installer-guide/mac-install.md)
+* [Utenti Windows](/installer-guide/winblows-install.md)
+* [Utenti Linux](/installer-guide/linux-install.md)
 
 ## Risoluzione dei problemi
 
 ### Bloccato su `Forcing CS_RUNTIME for entitlement`
 
-![Ringraziamo Stompy per l'immagine](../images/extras/big-sur/cs-stuck.jpg)
+![Ringraziamo Stompy per l'immagine](/images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo, altrimenti si interromperà l'installazione.
 
 ### Bloccato su `PCI Configuration Begins` for Intel's X99 and X299 boards
 
-![](../images/extras/big-sur/rtc-error.jpg)
+![](/images/extras/big-sur/rtc-error.jpg)
 
 Come accennato in precedenza, le schede madri Intel HEDT potrebbero avere alcuni problemi che ruotano attorno al loro dispositivo RTC in ACPI. Per risolvere il problema, dovrai guardare il tuo dispositivo RTC e vedere quali regioni mancano. Per ulteriori informazioni, vedere qui: [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 ### Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Ringraziamo Notiflux per l'immagine](../images/extras/big-sur/ramrod.jpg)
+![Ringraziamo Notiflux per l'immagine](/images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
@@ -180,7 +180,7 @@ Ciò è dovuto a un bridge PCI uncore inutilizzato abilitato in ACPI, e quindi I
 
 Con Big Sur, macOS è diventato molto più esigente con i dispositivi presenti in ACPI. Soprattutto se stai iniettando proprietà importanti per WutelyGreen o AppleALC, potresti scoprire che non si applicano più. Per verificare se il tuo ACPI definisce il tuo hardware, controlla la proprietà `acpi-path` in [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-210.zip):
 
-![](../images/extras/big-sur/acpi-path.png)
+![](/images/extras/big-sur/acpi-path.png)
 
 Se non viene trovata alcuna proprietà, sarà necessario creare un SSDT che fornisca il percorso completo poiché probabilmente si dispone di un bridge PCI non documentato nelle tabelle ACPI. Un esempio di questo può essere trovato qui: [SSDT-BRG0](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-BRG0.dsl)
 
@@ -224,11 +224,11 @@ Se ricevi un anticipato kernel panic su `max_cpus_from_firmware not yet initiali
 
 Sullo schermo:
 
-![](../images/extras/big-sur/onscreen-panic.png)
+![](/images/extras/big-sur/onscreen-panic.png)
 
 Tramite Log seriale o NVRAM:
 
-![](../images/extras/big-sur/apic-panic.png)
+![](/images/extras/big-sur/apic-panic.png)
 
 :::
 
@@ -315,7 +315,7 @@ Se restituisce "Snapshot Sealed: Broken", ti consigliamo di eseguire quanto segu
   * È richiesto il commit specifico [ba10b5d](https://github.com/acidanthera/OpenCorePkg/commit/1b0041493d4693f9505aa6415d93079ea59f7ab0) o una versione successiva
 * Ripristina le vecchie istantanee
   * Principalmente per coloro che hanno manomesso il volume del sistema
-  * Vedi qui come ripristinare: [Rollback degli snapshot APFS](../../troubleshooting/extended/post-issues.md#rolling-back-apfs-snapshot)
+  * Vedi qui come ripristinare: [Rollback degli snapshot APFS](/troubleshooting/extended/post-issues.md#rolling-back-apfs-snapshot)
 
 ### Kernel Panic su Rooting from the live fs
 

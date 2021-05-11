@@ -2,7 +2,7 @@
 
 Per impostare la struttura di OpenCore, dovrai prendere la EFI trovata nei [rilasci di OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/). Nota che saranno nelle cartelle IA32 o X64, rispettivamente per i Firmware a 32-bit e a 64-bit:
 
-![](../images/installer-guide/opencore-efi-md/ia32-x64.png)
+![](/images/installer-guide/opencore-efi-md/ia32-x64.png)
 
 Riguardo a Versione DEBUG vs Versione RELEASE:
 
@@ -11,7 +11,7 @@ Riguardo a Versione DEBUG vs Versione RELEASE:
 
 Una volta scaricata, posiziona la cartella EFI (da OpenCorePkg) nella radice della tua partizione EFI:
 
-![](../images/installer-guide/opencore-efi-md/efi-moved.png)
+![](/images/installer-guide/opencore-efi-md/efi-moved.png)
 
 **Note**:
 
@@ -21,7 +21,7 @@ Una volta scaricata, posiziona la cartella EFI (da OpenCorePkg) nella radice del
 
 Ora apriamo la nostra EFI e vediamo che c'è al suo interno:
 
-![Cartella EFI di base](../images/installer-guide/opencore-efi-md/base-efi.png)
+![Cartella EFI di base](/images/installer-guide/opencore-efi-md/base-efi.png)
 
 Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la maggior parte di questi non ci serviranno:
 
@@ -73,15 +73,15 @@ Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la 
 
 Una EFI pulita:
 
-![Clean EFI](../images/installer-guide/opencore-efi-md/clean-efi.png)
+![Clean EFI](/images/installer-guide/opencore-efi-md/clean-efi.png)
 
-Ora puoi mettere i **tuoi** driver firmware (.efi) nella cartella _Drivers_ e Kext/ACPI nelle rispettive cartelle. Vedi la sezione [Ottenere i File](../ktext.md) per maggiori info su quali file dovrai usare.
+Ora puoi mettere i **tuoi** driver firmware (.efi) nella cartella _Drivers_ e Kext/ACPI nelle rispettive cartelle. Vedi la sezione [Ottenere i File](/ktext.md) per maggiori info su quali file dovrai usare.
 
 * Nota che non puoi usare i driver UEFI di Clover su OpenCore!(EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ecc.). Vedi [Clover firmware driver conversion (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
 
 Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
 
-![Cartella EFI popolata](../images/installer-guide/opencore-efi-md/populated-efi.png)
+![Cartella EFI popolata](/images/installer-guide/opencore-efi-md/populated-efi.png)
 
 **Reminder**:
 
@@ -89,4 +89,4 @@ Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
 * I Kext (`.kext`) vanno nella cartella kexts
 * I driver firmware (`.efi`) vanno nella cartella drivers
 
-> Quando hai fatto tutto, vai alla sezione [Recuperare i file](../ktext.md) per prendere i kext e i driver firmware necessari
+> Quando hai fatto tutto, vai alla sezione [Recuperare i file](/ktext.md) per prendere i kext e i driver firmware necessari

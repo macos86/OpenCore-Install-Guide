@@ -19,19 +19,19 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
   * Per geneare i dati del nostro SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](../config.plist/README.md)
+  * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](/config.plist/README.md)
 
 **E leggi questa guida una volta prima di impostare OpenCore e sii sicuro di aver impostato tutto correttamente. Nota che le immagini non potranno essere sempre aggiornatissime, perciò leggi le didascalie sotto, se nulla viene menzionato, lascia com'è di default.**
 
 ## ACPI
 
-![ACPI](../images/config/AMD/acpi-fx.png)
+![ACPI](/images/config/AMD/acpi-fx.png)
 
 ### Add
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](../extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](/extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
@@ -57,7 +57,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+![Booter](/images/config/config-universal/aptio-iv-booter.png)
 
 This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
 
@@ -87,7 +87,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we leave it a
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-universal/DP-no-igpu.png)
+![DeviceProperties](/images/config/config-universal/DP-no-igpu.png)
 
 ### Add
 
@@ -103,7 +103,7 @@ Removes device properties from the map, for us we can ignore this
 
 | Kernel | Kernel Patches |
 | :--- | :--- |
-| ![Kernel](../images/config/AMD/kernel.png) | ![](../images/config/AMD/kernel-patch.png) |
+| ![Kernel](/images/config/AMD/kernel.png) | ![](/images/config/AMD/kernel-patch.png) |
 
 ### Add
 
@@ -232,7 +232,7 @@ To merge:
 * Copy the `Kernel -> Patch` section from patches.plist
 * Paste into where old patches were in config.plist
 
-![](../images/config/AMD/kernel.gif)
+![](/images/config/AMD/kernel.gif)
 
 ### Quirks
 
@@ -306,7 +306,7 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](/images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -345,7 +345,7 @@ Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `D
 * **Target**: `67`
   * Shows more debug information, requires debug version of OpenCore
 
-These values are based of those calculated in [OpenCore debugging](../troubleshooting/debug.md)
+These values are based of those calculated in [OpenCore debugging](/troubleshooting/debug.md)
 
 :::
 
@@ -406,7 +406,7 @@ Won't be covered here, see 8.6 of [Configuration.pdf](https://github.com/acidant
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](/images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -466,7 +466,7 @@ System Integrity Protection bitmask
 
 * **csr-active-config**: `00000000`
   * Settings for 'System Integrity Protection' (SIP). It is generally recommended to change this with `csrutil` via the recovery partition.
-  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](../troubleshooting/extended/post-issues.md#disabilitare-sip)
+  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](/troubleshooting/extended/post-issues.md#disabilitare-sip)
 
 * **run-efi-updater**: `No`
   * This is used to prevent Apple's firmware update packages from installing and breaking boot order; this is important as these firmware updates (meant for Macs) will not work.
@@ -513,7 +513,7 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-universal/iMacPro-smbios.png)
+![PlatformInfo](/images/config/config-universal/iMacPro-smbios.png)
 
 ::: tip Info
 
@@ -601,7 +601,7 @@ Reminder that you want either an invalid serial or valid serial numbers but thos
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi.png)
+![UEFI](/images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -686,4 +686,4 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Now with all this done, head to the [Installation Page](../installation.md)
+## Now with all this done, head to the [Installation Page](/installation.md)

@@ -29,7 +29,7 @@ Per il resto dei possibili problemi, vedere qui:
 
 ## boot.efi Handoff
 
-![](../images/troubleshooting/boot-md/1-boot-efi.png)
+![](/images/troubleshooting/boot-md/1-boot-efi.png)
 
 È qui che entra in scena il bootloader di macOS (boot.efi), in particolare quello che fa è preparare l'ambiente per il caricamento del kernel e dove OpenCore inietta kexts. Se ti blocchi a questo punto, è probabile che ci sia un problema con il caricamento del kernel, i principali colpevoli:
 
@@ -47,7 +47,7 @@ Per il resto dei possibili problemi, vedere qui:
 
 Ora che boot.efi ha configurato tutto per noi, ora possiamo vedere il kernel che fa le sue cose. Questa sezione è comunemente denominata [Fase di root](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/booting/booting.html):
 
-![](../images/troubleshooting/boot-md/2-kernel-start.png)
+![](/images/troubleshooting/boot-md/2-kernel-start.png)
 
 Questa sezione è dove vengono verificati i dati SMBIOS, vengono caricate le tabelle ACPI/Kext e macOS cerca di mettere tutto in ordine. I guasti qui sono generalmente il risultato di:
 
@@ -60,7 +60,7 @@ Vedi qui per ulteriori informazioni sulla risoluzione dei problemi:
 * [Kernel Panic `Cannot perform kext summary`](./extended/kernel-issues.md#kernel-panic-cannot-perform-kext-summary)
 * [Kernel Panic in `Invalid frame pointer`](./extended/kernel-issues.md#kernel-panic-on-invalid-frame-pointer)
 
-![](../images/troubleshooting/boot-md/5-apfs-module.png)
+![](/images/troubleshooting/boot-md/5-apfs-module.png)
 
 Ora qui abbiamo "[Iniziano le configurazioni PCI]", questa sezione può essere vista come un test hardware per i nostri sistemi, kext e SSDT che abbiamo inserito, e dove IOKit avvia i test hardware per trovare i dispositivi a cui collegarsi.
 
@@ -77,13 +77,13 @@ Per informazioni più specifiche su come muoversi in quest'area, vedere qui:
 
 * [Bloccato a `RTC...`, `PCI Configuration Begins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](./extended/kernel-issues.md#stuck-on-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
 
-![](../images/troubleshooting/boot-md/6-USB-setup.png)
+![](/images/troubleshooting/boot-md/6-USB-setup.png)
 
 È qui che entrano in gioco il limite di 15 porte e la mappatura USB, e dove compaiono i famigerati errori "Waiting for Root Device"; cose principali da controllare:
 
 * ["Waiting for Root Device" o Prohibited Sign error](./extended/kernel-issues.md#errore-waiting-for-root-device-or-prohibited-sign)
 
-![](../images/troubleshooting/boot-md/8-dsmos-arrived.png)
+![](/images/troubleshooting/boot-md/8-dsmos-arrived.png)
 
 È qui che i nostri FakeSMC/VirtualSMC entrano in scena e fanno la loro magia, DSMOS stesso è un kext che verifica se il tuo sistema ha un SMC e richiederà una chiave. Se questa chiave non è presente, DSMOS non decrittograferà il resto dei file binari e rimarrai bloccato qui. Potresti anche rimanere bloccato su AppleACPICPU che è lo stesso errore.
 
@@ -102,11 +102,11 @@ Davvero, è così poco cool.
 
 Fonte: non rubare Mac OS X.kext
 
-![](../images/troubleshooting/boot-md/9-audio.png)
+![](/images/troubleshooting/boot-md/9-audio.png)
 
 È qui che entra in gioco il driver audio di Apple e dove brilla AppleALC. Generalmente è raro vedere problemi qui, ma se lo fai, prova a disabilitare AppleALC e qualsiasi altro kext relativo all'audio.
 
-![](../images/troubleshooting/boot-md/10-GPU.png)
+![](/images/troubleshooting/boot-md/10-GPU.png)
 
 E qui arriviamo all'inizializzazione del driver della GPU e dove anche WhateverGreen fa la sua magia. Generalmente gli errori qui sono dovuti alla GPU e non a WhateverGreen stesso; questi di solito sono i principali colpevoli:
 
@@ -115,7 +115,7 @@ E qui arriviamo all'inizializzazione del driver della GPU e dove anche WhateverG
 
 ## macOS Handoff
 
-![](../images/troubleshooting/boot-md/11-boot.png)
+![](/images/troubleshooting/boot-md/11-boot.png)
 
 E finalmente hai superato tutto quel verbose! Se rimani bloccato sul logo Apple dopo tutto quel verbose, ci sono un paio di cose da controllare:
 

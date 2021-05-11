@@ -10,7 +10,7 @@ Scarica la versione scelta e dovresti ottenere un file .pkg.
 
 A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](./mac-install.md#configurare-l'installer), tuttavia potresti ricevere questo errore:
 
-![](../images/installer-guide/legacy-mac-install-md/unsupported.png)
+![](/images/installer-guide/legacy-mac-install-md/unsupported.png)
 
 Questo significa che dovremmo estrarre manualmente l'installer.
 
@@ -18,7 +18,7 @@ Questo significa che dovremmo estrarre manualmente l'installer.
 
 Per iniziare, trascina il InstallMacOSX/InstallOS.dmg e montalo:
 
-![](../images/installer-guide/legacy-mac-install-md/mount.png)
+![](/images/installer-guide/legacy-mac-install-md/mount.png)
 
 Dopo, apriremo una finestra di terminale e creeremo una finestra sulla scrivania. Usa questo comando una volta:
 

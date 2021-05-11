@@ -123,7 +123,6 @@ Sfortunatamente molte funzionalità di macOS sono al momento non supportate con 
   * Puoi disabilitare funzioni come il supporto RAW per evitare il crash: [Adobe Fixes (EN)](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
 * Supporto 32-Bit
   * Per chi usa ancora software a 32-Bit, in Mojave o più vecchi, le patch Vanilla non supportano il 32-bit.
-  * Una soluzione è usare un [kernel personalizzato](https://amd-osx.com/download/kernel.html), perdendo però iMessage
 * Problemi di stabilità in molte app
   * Applicazioni per audio editing sono quelle con più problemi, per esempio Logic Pro
   * Anche DaVinci Resolve è famoso per avere molti problemi
@@ -223,7 +222,7 @@ Per la maggior parte, tutte le motherboard sono supportate, finchè la CPU lo è
 
 * [~~Piattaforme B550 AMD~~](https://en.wikipedia.org/wiki/List_of_AMD_chipsets)
 
-Tuttavia grazie ai seguenti sviluppi, le piattaforme B550 sono avviabili ora con l'aggiunta di [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). Più informazioni saranno date sia in [Ottenere i File](./ktext.md) e nella [configurazione Zen](./AMD/zen.md)
+Tuttavia grazie ai seguenti sviluppi, le piattaforme B550 sono avviabili ora con l'aggiunta di [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). Più informazioni saranno date sia in [Ottenere i File](/ktext.md) e nella [configurazione Zen](/AMD/zen.md)
 
 ## Supporto dispositivi di archiviazione
 

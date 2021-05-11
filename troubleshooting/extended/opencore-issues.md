@@ -6,7 +6,7 @@ Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avvia
 
 ## Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre
 
-Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare sta avendo problemi a caricare tutti i driver e presentare il menu. Il modo migliore per diagnosticare è tramite [Versione DEBUG di OpenCore](./../debug.md) e controllare i log se OpenCore è stato effettivamente caricato e, in tal caso, su cosa si è bloccato.
+Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare sta avendo problemi a caricare tutti i driver e presentare il menu. Il modo migliore per diagnosticare è tramite [Versione DEBUG di OpenCore](/troubleshooting/debug.md) e controllare i log se OpenCore è stato effettivamente caricato e, in tal caso, su cosa si è bloccato.
 
 **Situazioni in cui OpenCore non veniva caricato**:
 
@@ -14,7 +14,7 @@ Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare
   * Struttura della cartella USB errata
   * Vedi [L'avvio di OpenCore si riavvia nel BIOS](#l-avvio-di-opencore-riavvia-nel-bios) per maggiori informazioni
   * Il firmware non supporta UEFI
-  * Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](../../installer-guide/mac-install.md) che in [Windows](../../installer-guide/winblows-install.md)
+  * Dovrai configurare DuetPkg, questo è trattato nelle pagine di installazione sia in [macOS](/installer-guide/mac-install.md) che in [Windows](/installer-guide/winblows-install.md)
 
 **Situazioni in cui OpenCore è stato caricato**:
 
@@ -145,7 +145,7 @@ Il modo migliore per risolvere effettivamente questo problema è prendere una co
 
 ::: details Esempio di struttura di cartelle
 
-![Struttura delle directory dal DOC di OpenCore](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
+![Struttura delle directory dal DOC di OpenCore](/images/troubleshooting/troubleshooting-md/oc-structure.png)
 
 :::
 

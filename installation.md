@@ -2,7 +2,7 @@
 
 Ora sei pronto per salvare e mettere la tua EFI in EFI/OC.
 
-Per chi ha problemi all'avvio, assicurati di aver letto la [sezione di risoluzione dei problemi](../troubleshooting/troubleshooting.md) e vedi se le tue domande hanno trovato una risposta. Altrimenti abbiamo un sacco di risorse a tua disposizione:
+Per chi ha problemi all'avvio, assicurati di aver letto la [sezione di risoluzione dei problemi](/troubleshooting/) e vedi se le tue domande hanno trovato una risposta. Altrimenti abbiamo un sacco di risorse a tua disposizione:
 
 * [AMD OS X Discord](https://discord.com/invite/EfCYAJW)
 * [r/Hackintosh Discord (Solo Intel)](https://discord.gg/2QYd7ZT)
@@ -38,8 +38,8 @@ Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali co
 * Abilita le impostazioni del BIOS ottimali per macOS
 * Leggi la [OpenCore Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) e anche [Setting up LauncherOption (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap)
   * Principalmente per coloro che stanno avviando un singolo disco con più sistemi
-* Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](../troubleshooting/.md)
-* Leggi anche la pagina riguardo all'[avvio di macOS](../troubleshooting/boot.md)
+* Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](/troubleshooting/)
+* Leggi anche la pagina riguardo all'[avvio di macOS](/troubleshooting/boot.md)
   * Può aiutare chi installa per la prima volta a capire dove sono bloccati
 * E un sacco di pazienza
 
@@ -49,7 +49,7 @@ L'ultima cosa da fare prima di avviare è controllare come è impostata la EFI:
 
 Buona EFI          |  Cattiva EFI
 :-------------------------:|:-------------------------:
-![](../images/installation/install-md/good-efi.png)  |  ![](../images/installation/install-md/bad-efi.png)
+![](/images/installation/install-md/good-efi.png)  |  ![](/images/installation/install-md/bad-efi.png)
 La cartella EFI è nella partizione EFI | La cartella EFI non c'è
 I file ACPI sono compilati (.aml) | I file ACPI non sono compilati (.dsl)
 Il DSDT non è incluso | Il DSDT è incluso

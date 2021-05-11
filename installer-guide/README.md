@@ -21,14 +21,14 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
 
 In dipendenza da che sistema operativo stai usando, guarda la tua specifica sezione per costruire la USB:
 
-* [Utenti macOS](../installer-guide/mac-install.md)
+* [Utenti macOS](/installer-guide/mac-install.md)
   * Supporto da OS X 10.4 alla versione attuale
   * Supporto sia per installazioni legacy e UEFI
-* [Utenti Windows](../installer-guide/winblows-install.md)
+* [Utenti Windows](/installer-guide/winblows-install.md)
   * Supporto da OS X 10.7 alla versione attuale
   * Solo installer Online
   * Supporto sia per installazioni legacy e UEFI
-* [Utenti (UEFI) Linux](../installer-guide/linux-install.md)
+* [Utenti (UEFI) Linux](/installer-guide/linux-install.md)
   * Supporto da OS X 10.7 alla versione attuale
   * Solo installer Online
   * Fatto per macchine che supportano l'avvio UEFI
