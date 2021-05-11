@@ -18,7 +18,7 @@ Questa sezione sarà divisa in 3 parti, quindi presta molta attenzione:
 I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 
 * **DevirtualiseMmio**
-  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](../../extras/kaslr-fix.md#using-devirtualisemmio)
+  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](/extras/kaslr-fix.md#using-devirtualisemmio)
   * Per gli utenti TRx40, abilita quest0 quirk
   * Per gli utenti X99, disabilitare questo Quirk poiché confligge con alcuni firmware
 
@@ -49,7 +49,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
       * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +`SyncRuntimePermissions`)
       * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
 
-Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](../debug.html)):
+Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](/troubleshooting/debug.md)):
 
 ```
 OCABC: MAT supportiss 1
@@ -129,7 +129,7 @@ Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#L
 
 Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
 
-* Note: Abilitare [DEBUG OpenCore](../debug.html) può anche aiutare a capire
+* Note: Abilitare [DEBUG OpenCore](/troubleshooting/debug.md) può anche aiutare a capire
 
 ## Kernel Panic su `Invalid frame pointer`
 
@@ -137,7 +137,7 @@ Questo è dovuto a qualche problema intorno al `Booter -> Quirks` che hai impost
 
 * `DevirtualiseMmio`
   * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk
-  * Maggiori informazioni qui: [Utilizzo di DevirtualiseMmio](../../extras/kaslr-fix#utilizzo-di-devirtualisemmio)
+  * Maggiori informazioni qui: [Utilizzo di DevirtualiseMmio](/extras/kaslr-fix#utilizzo-di-devirtualisemmio)
 
 * `SetupVirtualMap`
   * Questo Quirk è richiesto per la maggior parte dei firmware e senza di essa è molto comune un kernel panic, quindi abilitalo se non lo è già
@@ -290,7 +290,7 @@ Ciò è dovuto alle impostazioni del BIOS errate:
 
 ## Bloccato su `This version of Mac OS X is not supported: Reason Mac...`
 
-Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con `Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](../../Extras/SmBIOS-Support.md)
+Questo errore avviene quando SMBIOS non è più supportato da quella versione di MacOS; assicurati che i valori siano impostati in `PlatformInFO-> Generic` con `Automatic` abilitato. Per un elenco completo di SMBIOS supportato e dei loro Os, vedere qui: [Scegliere il giusto SMBIOS](/extras/SmBIOS-Support.md)
 
 ::: details SmBIOS supportati in Macos 10.15, Catalina
 
@@ -318,7 +318,7 @@ Questo errore avviene quando SMBIOS non è più supportato da quella versione di
 
 ## Errori `Couldn't allocate runtime area`?
 
-vedere [Fissareg i valori KASLR slide](../../extras/kaslr-fix.md)
+vedere [Fissare i valori KASLR slide](/extras/kaslr-fix.md)
 
 ## Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`
 
@@ -363,11 +363,11 @@ I luoghi principali da verificare:
 
 Esempio di come appare un RTC disabilitato senza nessuna possibilità di essere abilitato (nota che non c'è valore per riattivarlo come `STAS»):
 
-![](../../images/troubleshooting/troubleshooting-md/rtc.png)
+![](/images/troubleshooting/troubleshooting-md/rtc.png)
 
 ## Bloccato su ACPI table loading on B550
 
-![](../../images/troubleshooting/troubleshooting-md/OC_catalina.jpg)
+![](/images/troubleshooting/troubleshooting-md/OC_catalina.jpg)
 
 Se stai rimanendo bloccato su/o vicino a tabella ACPI caricando su una scheda madre AMD B550 o A520, aggiungi il seguente SSDT:
 
@@ -524,7 +524,7 @@ Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente 
 
 ## Kernel Panic `AppleACPIPlatform` in 10.13
 
-![](../../images/troubleshooting/troubleshooting-md/KA5UOGV.png)
+![](/images/troubleshooting/troubleshooting-md/KA5UOGV.png)
 
 Su macOS 10.13, High Sierra il sistema operativo è molto più rigoroso con le tabelle ACPI, [in particolare un bug relativo al modo in cui venivano gestite le intestazioni](https://alextjam.es/debugging-appleacpiplatform/). Per risolvere, abilita `NormalizeHeaders` in ACPI -> Quirks nel tuo config.plist
 
@@ -536,7 +536,7 @@ Il modo più comune per vedere il problema TSC:
 
 Caso 1    |  Caso 2
 :-------------------------:|:-------------------------:
-![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
+![](/images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](/images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
 ## La tastiera funziona ma il trackpad no
 
@@ -544,7 +544,7 @@ Assicurati che VoodooInput sia elencato *prima di* VoodooPS2 e VoodooI2C kexts n
 
 ::: details Risoluzione dei problemi di VoodooI2C
 
-Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](../../ktext.md):
+Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](/ktext.md):
 
 1. VoodooGPIO, VoodooInput e VoodooI2CServices in qualsiasi ordine (Si trovano in VoodooI2C.kext/Contents/PlugIns)
 2. VoodooI2C
@@ -588,7 +588,7 @@ La parte finale `PciRoot (0x0)/Pci(0x1F, 0x6)` è ciò che vuoi aggiungere nel t
 
 ## Kernel panic su "Wrong CD Clock Frequency" su laptop  Icelake
 
-![](../../images/troubleshooting/troubleshooting-md/cd-clock.jpg)
+![](/images/troubleshooting/troubleshooting-md/cd-clock.jpg)
 
 Per risolvere questo kernel panic, assicurati di avere `-igfxcdc` nei tuoi argomenti di avvio.
 
@@ -610,13 +610,13 @@ Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**
 
 ## Bloccato su `Forcing CS_RUNTIME for entitlement` in Big Sur
 
-![Ringraziamo Stompy per l'immagine](../../images/extras/big-sur/cs-stuck.jpg)
+![Ringraziamo Stompy per l'immagine](/images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
 ## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Ringraziamo Notiflux per l'immagine](../../images/extras/big-sur/ramrod.jpg)
+![Ringraziamo Notiflux per l'immagine](/images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 

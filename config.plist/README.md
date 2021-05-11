@@ -2,7 +2,7 @@
 
 Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (.efi), la tua USB potrebbe apparire qualcosa come questo:
 
-![Cartella EFI popolata](../images/installer-guide/opencore-efi-md/populated-efi.png)
+![Cartella EFI popolata](/images/installer-guide/opencore-efi-md/populated-efi.png)
 
 * **Nota**: La tua USB **sarà diversa**, ogni sistema ha requisiti differenti.
 
@@ -10,11 +10,11 @@ Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (
 
 Per prima cosa prenderemo il sample.plist da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), sarà allocato nella cartella `Docs`:
 
-![](../images/config/config-universal/sample-location.png)
+![](/images/config/config-universal/sample-location.png)
 
 Ora muoviamolo nella partizione EFI della USB (si chiamerà BOOT in Windows) dentro `EFI/OC/`, e rinominalo come config.plist:
 
-![](../images/config/config-universal/renamed.png)
+![](/images/config/config-universal/renamed.png)
 
 ## Aggiungere i tuoi SSDT, Kext e Driver del Firmware
 
@@ -40,15 +40,15 @@ Dopo che hai aperto il config, premi **Cmd/Ctrl + Shift + R** e seleziona la tua
 * Questo rimuoverà tutte le sezioni inutili dal tuo config.plist e successivamente aggiungerà SSDT, Kext e Driver Firmware al config.
 * **Cmd/Ctrl + R** è un'altra opzione che ti aggiungerà i file, ma lascerà le sezioni inutili disabilitate come erano prima, utile quando hai bisogno di risolvere problemi, ma non usato da noi ora
 
-![](../images/config/config-universal/before-snapshot.png)
+![](/images/config/config-universal/before-snapshot.png)
 
 Quando hai fatto, vedrai i tuoi SSDT, Kext e driver firmware applicati nel tuo config.plist:
 
-![](../images/config/config-universal/after-snapshot.png)
+![](/images/config/config-universal/after-snapshot.png)
 
 * **Nota:** Se ottieni un pop up "Disable the following kexts with Duplicate CFBundleIdentifiers?", seleziona "Yes". Questo assicura che tu non abbia kext duplicati, dato che a volte i kext hanno lo stesso plugin (VoodooInput sia nei plugin di VoodooPS2 che di VoodooI2C)
 
-![](../images/config/config-universal/duplicate.png)
+![](/images/config/config-universal/duplicate.png)
 
 Se vuoi continuare la pulizia del file, puoi rimuovere la sezioni `#WARNING`. Attraverso quelle non creerai nessun problema, sono solo per preferenza personale.
 
@@ -62,30 +62,30 @@ Ora arriva la parte importante, selezionare la tua configurazione. Ogni piattafo
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Yonah, Conroe e Penryn](../config.plist/penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
-| [Lynnfield and Clarkdale](../config.plist/clarkdale.md) | 5XX-8XX | era 2010 |
-| [Sandy Bridge](../config.plist/sandy-bridge.md) | 2XXX | era 2011 |
-| [Ivy Bridge](../config.plist/ivy-bridge.md) | 3XXX | era 2012 |
-| [Haswell](../config.plist/haswell.md) | 4XXX | era 2013-2014 |
-| [Skylake](../config.plist/skylake.md) | 6XXX | era 2015-2016 |
-| [Kaby Lake](../config.plist/kaby-lake.md) | 7XXX | era 2017 |
-| [Coffee Lake](../config.plist/coffee-lake.md) | 8XXX-9XXX | era 2017-2019 |
-| [Comet Lake](../config.plist/comet-lake.md) | 10XXX | era 2020 |
+| [Yonah, Conroe e Penryn](/config.plist/penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
+| [Lynnfield and Clarkdale](/config.plist/clarkdale.md) | 5XX-8XX | era 2010 |
+| [Sandy Bridge](/config.plist/sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](/config.plist/ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](/config.plist/haswell.md) | 4XXX | era 2013-2014 |
+| [Skylake](/config.plist/skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake](/config.plist/kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake](/config.plist/coffee-lake.md) | 8XXX-9XXX | era 2017-2019 |
+| [Comet Lake](/config.plist/comet-lake.md) | 10XXX | era 2020 |
 
 ### Laptop Intel
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Clarksfield e Arrandale](../config-laptop.plist/arrandale.md) | 3XX-9XX | era 2010 |
-| [Sandy Bridge](../config-laptop.plist/sandy-bridge.md) | 2XXX | era 2011 |
-| [Ivy Bridge](../config-laptop.plist/ivy-bridge.md) | 3XXX | era 2012 |
-| [Haswell](../config-laptop.plist/haswell.md) | 4XXX | era 2013-2014 |
-| [Broadwell](../config-laptop.plist/broadwell.md) | 5XXX | era 2014-2015 |
-| [Skylake](../config-laptop.plist/skylake.md) | 6XXX | era 2015-2016 |
-| [Kaby Lake e Amber Lake](../config-laptop.plist/kaby-lake.md) | 7XXX | era 2017 |
-| [Coffee Lake e Whiskey Lake](../config-laptop.plist/coffee-lake.md) | 8XXX | era 2017-2018 |
-| [Coffee Lake Plus e Comet Lake](../config-laptop.plist/coffee-lake-plus.md) | 9XXX-10XXX | era 2019-2020 |
-| [Ice Lake](../config-laptop.plist/icelake.md) | 10XXX | era 2019-2020 |
+| [Clarksfield e Arrandale](/config-laptop.plist/arrandale.md) | 3XX-9XX | era 2010 |
+| [Sandy Bridge](/config-laptop.plist/sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](/config-laptop.plist/ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](/config-laptop.plist/haswell.md) | 4XXX | era 2013-2014 |
+| [Broadwell](/config-laptop.plist/broadwell.md) | 5XXX | era 2014-2015 |
+| [Skylake](/config-laptop.plist/skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake e Amber Lake](/config-laptop.plist/kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake e Whiskey Lake](/config-laptop.plist/coffee-lake.md) | 8XXX | era 2017-2018 |
+| [Coffee Lake Plus e Comet Lake](/config-laptop.plist/coffee-lake-plus.md) | 9XXX-10XXX | era 2019-2020 |
+| [Ice Lake](/config-laptop.plist/icelake.md) | 10XXX | era 2019-2020 |
 
 ### HEDT Intel
 
@@ -93,18 +93,18 @@ Questa sezione include sia enthusiast computer e server.
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Nehalem and Westmere](../config-HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | era 2008-2010 |
-| [Sandy/Ivy Bridge-E](../config-HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | era 2011-2013 |
-| [Haswell-E](../config-HEDT/haswell-e.md) | 5XXX | era 2014 |
-| [Broadwell-E](../config-HEDT/broadwell-e.md) | 6XXX | era 2016 |
-| [Skylake/Cascade Lake-X/W](../config-HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | era 2017-2019 |
+| [Nehalem and Westmere](/config-HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | era 2008-2010 |
+| [Sandy/Ivy Bridge-E](/config-HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | era 2011-2013 |
+| [Haswell-E](/config-HEDT/haswell-e.md) | 5XXX | era 2014 |
+| [Broadwell-E](/config-HEDT/broadwell-e.md) | 6XXX | era 2016 |
+| [Skylake/Cascade Lake-X/W](/config-HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | era 2017-2019 |
 
 ### AMD
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Bulldozer/Jaguar](../AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
-| [Zen](../AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
+| [Bulldozer/Jaguar](/AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
+| [Zen](/AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
 
 * Note: ~~3° generazione (39XX), chiamate Threadripper, non sono supportate, la 1° e 2° generazione tuttavia sono supportate~~
   * L'ultima versione del BIOS e di OpenCore ha risolto il problema, tutte le piattaforme Threadripper sono supportate

@@ -25,7 +25,7 @@ Alcune linee guida quando contribuisci tramite PR:
 * Dimostra le tue affermazioni.
 * Le Pull Request possono essere rifiutate se non corrispondono o hanno informazioni inaccurate. Generalmente motiveremo perché viene rifiutata o perché viene richiesta una revisione.
   * Apprezziamo le fonti per qualsiasi grande proposta, per rendere più semplice la verifica della attendibilità delle tue affermazioni
-* Le immagini devono essere scaricate localmente nella repository dentro la cartella `../images/`
+* Le immagini devono essere scaricate localmente nella repository dentro la cartella `/images/`
 * La tua PR deve aver superato un markdown lint e aver sistemato tutti i problemi.
 * In generale, evitare quando possibile di usare strumenti "non-Acidanthera". Generalmente vogliamo evitare di usare qualsiasi strumento di terze parti - tranne quando è impossibile, quindi aggiungi il link a questo.
   * Tool esplicitamente banditi:

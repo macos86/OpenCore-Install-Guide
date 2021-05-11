@@ -7,7 +7,7 @@
 
 ## Scaricare il File di installazione
 
-Puoi usare [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery): ecco la [guida](../installer-guide/winblows-install.md#scaricare-macos)) per ottenere il file .dmg (il file .chunklist non ci servirà).
+Puoi usare [macrecovery](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery): ecco la [guida](/installer-guide/winblows-install.md#scaricare-macos)) per ottenere il file .dmg (il file .chunklist non ci servirà).
 
 ## Convertire il File di Installazione
 

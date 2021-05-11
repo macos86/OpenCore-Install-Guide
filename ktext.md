@@ -4,11 +4,11 @@ Questa pagina è una raccolta di vari file necessari per l'avvio di MacOs, ci as
 
 > Qual'è il miglior modo per capire se il mio hardware è supportato?
 
-Vedi la  [**Pagina delle limitazioni hardware**](macos-limits.md) per capire meglio ciò che MacOs richiede avviarsi, Clover e OpenCore hanno un supporto hardware abbastanza simile.
+Vedi la  [**Pagina delle limitazioni hardware**](/macos-limits.md) per capire meglio ciò che MacOs richiede avviarsi, Clover e OpenCore hanno un supporto hardware abbastanza simile.
 
 > Come posso capire che hardware ho?
 
-Vedi la pagina precedente: [Scoprire il tuo hardware](./find-hardware.md)
+Vedi la pagina precedente: [Scoprire il tuo hardware](/find-hardware.md)
 
 ## Driver del Firmware
 
@@ -276,7 +276,7 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 * Se non puoi abilitare SecureBootModel, puoi comunque forzare l'inserimento di IO80211Family (**Altamente sconsigliato**)
   * Imposta quanto segue in `Kernel -> Force` nel tuo config.plist (discusso più avanti in questa guida):
   
-![](./images/ktext-md/force-io80211.png)
+![](/images/ktext-md/force-io80211.png)
 
 :::
 
@@ -285,7 +285,7 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
   * Utilizzato per patchare schede Broadcom non Apple/non Fenvi, **Non funzionerà su schede Intel, Killer, Realtek, ecc**
   * Richiede OS X 10.10 o versioni successive
-  * Per Big Sur vedi [Big Sur problemi conosciuti](./extras/big-sur.md#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
+  * Per Big Sur vedi [Big Sur problemi conosciuti](/extras/big-sur.md#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
   * Utilizzato per caricare il firmware sul chipset Broadcom Bluetooth, richiesto per tutte le schede non Apple/non Fenvi Airport.
   * Da associare a BrcmFirmwareData.kext

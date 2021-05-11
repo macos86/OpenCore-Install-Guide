@@ -16,15 +16,15 @@ Per avviarlo, semplicemente copia e incolla il comando qua sotto in una finestra
 mkdir ~/macOS-installer && cd ~/macOS-installer && curl -O https://raw.githubusercontent.com/munki/macadmin-scripts/main/installinstallmacos.py && sudo python installinstallmacos.py
 ```
 
-![](../images/installer-guide/mac-install-md/munki.png)
+![](/images/installer-guide/mac-install-md/munki.png)
 
 Come vedi, otterrai una lista di 10 installer di macOS. Se hai bisogno di una particolare versione di macOS, selezionala digitando il numero accanto ad essa. Nell'esempio sceglieremo il 10:
 
-![](../images/installer-guide/mac-install-md/munki-process.png)
+![](/images/installer-guide/mac-install-md/munki-process.png)
 
-* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](../extras/big-sur.md)
+* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
   * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
-* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](../macos-limits.md)
+* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
 
 Questo ci metterà un po', deve scaricare l'installer di 8GB+, perciò è altamente raccomandato leggere il resto della guida intanto che attendi.
 
@@ -33,9 +33,9 @@ Una volta finito, troverai nella cartella `~/macOS-Installer/` un DMG contenente
 * Nota: Ti raccomandiamo di muovere Install macOS.app nella cartella `/Applications`, dato che lo eseguiremo da là.
 * Nota 2: Usando Cmd+Shift+G nel Finder ti permetterà facilmente di andare alla cartella `~/macOS-installer`
 
-![](../images/installer-guide/mac-install-md/munki-done.png)
+![](/images/installer-guide/mac-install-md/munki-done.png)
 
-![](../images/installer-guide/mac-install-md/munki-dmg.png)
+![](/images/installer-guide/mac-install-md/munki-dmg.png)
 
 Da qui, passa a [Configurare l'installer](#configurare-l'installer) per finire il tuo lavoro.
 
@@ -57,7 +57,7 @@ Ora inizializzeremo la USB per prepararla sia per l'installer di macOS che per O
 * Nota: Di default, Utility Disco mostra solo le partizioni – premi Cmd/Win+2 per mostrare tutti i dischi (alternativamente puoi usare il pulsante Vista)
 * Nota 2: Utenti che seguono il metodo "Legacy macOS: metodo Online" possono saltare la zona [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
 
-![Formattare la USB](../images/installer-guide/mac-install-md/format-usb.png)
+![Formattare la USB](/images/installer-guide/mac-install-md/format-usb.png)
 
 Dopo avvia il comando `createinstallmedia` concesso da [Apple](https://support.apple.com/en-us/HT201372). Nota che il comando è stato fatto per una usb inizializzata col nome `MyVolume`:
 
@@ -115,7 +115,7 @@ Per iniziare, hai bisogno di questo:
 
 Con la tua cartella di avvio di OpenCore, vai a `Utilities/LegacyBoot`. Qui troverai un file chiamato `BootInstall_ARCH.tool`. Quello che fa è installare DuetPkg nel disco desiderato.
 
-![Percorso BootInstall](../images/extras/legacy-md/download.png)
+![Percorso BootInstall](/images/extras/legacy-md/download.png)
 
 Ora usa lo strumento nel terminale **usando sudo** (Questo strumento fallirà se non lo metti):
 
@@ -124,13 +124,13 @@ Ora usa lo strumento nel terminale **usando sudo** (Questo strumento fallirà se
 sudo ~/Downloads/OpenCore/Utilities/legacyBoot/BootInstall_X64.tool
 ```
 
-![Selezione del disco/scrittura del nuovo MBR](../images/extras/legacy-md/boot-disk.png)
+![Selezione del disco/scrittura del nuovo MBR](/images/extras/legacy-md/boot-disk.png)
 
 Questo ci darà la lista dei dischi disponibili, scegli il tuo e verrà scritta una nuova MBR. Conferma con yes `[y]` e finisci la procedura.
 
-![Installer Completato](../images/extras/legacy-md/boot-done.png)
+![Installer Completato](/images/extras/legacy-md/boot-done.png)
 
-![EFI di base](../images/extras/legacy-md/efi-base.png)
+![EFI di base](/images/extras/legacy-md/efi-base.png)
 
 Questo ti provvederà una partizione EFI con anche un file **bootia32** o **bootx64**
 
@@ -140,10 +140,10 @@ Questo ti provvederà una partizione EFI con anche un file **bootia32** o **boot
 
 Impostare l'ambiente EFI di OpenCore è semplice – quello di cui hai bisogno è di montare la partizione EFI di sistema. Essa viene fatta automaticamente quando inizializziamo la chiavetta in GUID, ma di default non viene montata, e quindi ora è il momento in cui il nostro amico [MountEFI](https://github.com/corpnewt/MountEFI) entra nella scena:
 
-![MountEFI](../images/installer-guide/mac-install-md/mount-efi-usb.png)
+![MountEFI](/images/installer-guide/mac-install-md/mount-efi-usb.png)
 
 Noterai che quando apriamo la partizione EFI, essa è vuota. Qua inizia il divertimento.
 
-![Partizione EFI vuota](../images/installer-guide/mac-install-md/base-efi.png)
+![Partizione EFI vuota](/images/installer-guide/mac-install-md/base-efi.png)
 
 ## Ora che tutto questo è fatto, vai a [Configurare la EFI](./opencore-efi.md) per finire il tuo lavoro

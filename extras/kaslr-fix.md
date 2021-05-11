@@ -170,7 +170,7 @@ Se esegui la versione di debug di OpenCore con DevirtualiseMmio, noterai questo 
 21:520 00:003 OCABC: MMIO devirt end, saved 278608 KB
 ```
 
-* Nota: vedere [OpenCore Debugging](../troubleshooting/debug.md) su come abilitare la registrazione su file
+* Nota: vedere [OpenCore Debugging](/troubleshooting/debug.md) su come abilitare la registrazione su file
 
 Quindi abbiamo 6 regioni che dobbiamo esaminare e vedere quali sono cattive, l'idea migliore è bloccare tutte le sezioni MMIO *tranne* una e provare ogni regione per ottenere un elenco di buone regioni.
 
@@ -185,4 +185,4 @@ Ora prendiamo l'esempio sopra e creiamo la nostra MmioWhitelist, dovremo prima c
 
 Dovrebbe assomigliare a questo una volta fatto:
 
-![](../images/extras/kaslr-fix-md/mmio-white.png)
+![](/images/extras/kaslr-fix-md/mmio-white.png)

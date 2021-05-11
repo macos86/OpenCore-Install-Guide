@@ -65,7 +65,7 @@ E per coloro che hanno consigli o problemi con questa guida, questo il repositor
   * [WhateverGreen's DRM chart](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md)
   * [DRM Testing](https://applelife.ru/threads/proigryvanie-zaschischjonnogo-kontenta-na-raznom-oborudovanii.1349123/page-67#post-846582)
 * Guida rEFInd:
-  * [Manuale rEFInd](https://www.rodsbooks.com/refind/index.html)
+  * [Manuale rEFInd](https://www.rodsbooks.com/refind/)
 * Guida Mappatura USB:
   * [Problemi di risveglio con XHCI](https://osy.gitbook.io/hac-mini-guide/details/usb-fix)
   * [Guida mappatura USB di CorpNewt](https://dortania.github.io/OpenCore-Post-Install/usb/)

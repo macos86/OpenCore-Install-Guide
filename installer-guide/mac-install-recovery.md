@@ -4,7 +4,7 @@ Questo metodo ci permette di scaricare vecchie versioni di macOS da 10.7 a quell
 
 Per iniziare, dovrai usare macrecovery.py. Questo tool è incluso con OpenCorePkg:
 
-![](../images/installer-guide/legacy-mac-install-md/macrecovery.png)
+![](/images/installer-guide/legacy-mac-install-md/macrecovery.png)
 
 Le istruzioni per avviarlo sono abbastanza semplici, scegli quella corretta per il tuo sistema operativo da sotto:
 
@@ -45,14 +45,14 @@ python ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 
 Da qui, avvia uno di questi comandi nel terminale e una volta finito otterrai un output simile a questo:
 
-![](../images/installer-guide/legacy-mac-install-md/download-done.png)
+![](/images/installer-guide/legacy-mac-install-md/download-done.png)
 
 Quando hai fatto, inizializza la tua USB con FAT32 e Mappa Partizioni GUID:
 
-![](../images/installer-guide/legacy-mac-install-md/fat32-erase.png)
+![](/images/installer-guide/legacy-mac-install-md/fat32-erase.png)
 
 Infine, crea una cartella nella root della tua chiavetta e chiamala `com.apple.recovery.boot`; mettici dentro i file scaricati BaseSystem/RecoveryImage:
 
-![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
+![](/images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
 ## Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
