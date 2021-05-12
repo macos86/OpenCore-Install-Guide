@@ -15,7 +15,7 @@ Per iniziare avrai bisogno di:
 
 Ottenere vecchi installer è superfacile, per prima cosa trascina una copia di [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) e vai in `/Utilities/macrecovery/`. Dopo copia il percorso della cartella:
 
-![](/images/installer-guide/winblows-install-md/file-path.png)
+![](../images/installer-guide/winblows-install-md/file-path.png)
 
 Da qui, apri una finestra del Prompt dei Comandi e cd fino alla cartella macrecovery copiata prima:
 
@@ -23,7 +23,7 @@ Da qui, apri una finestra del Prompt dei Comandi e cd fino alla cartella macreco
 cd Paste_Folder_Path
 ```
 
-![](/images/installer-guide/winblows-install-md/command-prompt.png)
+![](../images/installer-guide/winblows-install-md/command-prompt.png)
 
 Ora avvia uno dei seguenti comandi a seconda della versione di macOS che tu vuoi (NOTA che questo script si basa su [Python](https://www.python.org/downloads/), installalo se non l'hai fatto):
 
@@ -68,11 +68,11 @@ python macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 
 Ci metterà un po' di tempo, tuttavia quando hai finito dovresti avere i file o BaseSystem o RecoveryImage:
 
-![](/images/installer-guide/winblows-install-md/macrecovery-done.png)
+![](../images/installer-guide/winblows-install-md/macrecovery-done.png)
 
 | BaseSystem | RecoveryImage |
 | :--- | :--- |
-|![](/images/installer-guide/winblows-install-md/basesystem-example.png) | ![](/images/installer-guide/winblows-install-md/macrecovery-after.jpg) |
+|![](../images/installer-guide/winblows-install-md/basesystem-example.png) | ![](../images/installer-guide/winblows-install-md/macrecovery-after.jpg) |
 
 Ora con l'installer scaricato, dobbiamo formattare la USB.
 
@@ -102,19 +102,19 @@ Semplicemente apri Gestione Disco e formatta la USB come FAT32:
   * Fai un click destro sullo spazio non allocato e crea un volume semplice. Assicurati che sia formattata in FAT32 e falla grande almeno un gigabyte or due. Chiamala "EFI".
 * Se non è il caso, fai un click destro sulla partizione della USB e clicca su Formatta e impostala in FAT32.
 
-![](/images/installer-guide/winblows-install-md/DiskManagement.jpg)
+![](../images/installer-guide/winblows-install-md/DiskManagement.jpg)
 
 Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
-![](/images/installer-guide/winblows-install-md/com-recovery.png)
+![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
 Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
-![](/images/installer-guide/winblows-install-md/base-oc-folder.png)
+![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
 Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
-![](/images/installer-guide/winblows-install-md/com-efi-done.png)
+![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
 ### Metodo Rufus
 
@@ -124,19 +124,19 @@ Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli q
 4. Seleziona Avvia
 5. Cancella tutti i file autorun nella partizione USB
 
-![](/images/installer-guide/winblows-install-md/format-usb-rufus.png)
+![](../images/installer-guide/winblows-install-md/format-usb-rufus.png)
 
 Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
-![](/images/installer-guide/winblows-install-md/com-recovery.png)
+![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
 Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
-![](/images/installer-guide/winblows-install-md/base-oc-folder.png)
+![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
 Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
-![](/images/installer-guide/winblows-install-md/com-efi-done.png)
+![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
 ### Metodo diskpart
 
@@ -169,15 +169,15 @@ ASSIGN LETTER=E
 
 Dopo, vai alla radice della USB e crea una cartella chiamata `com.apple.recovery.boot`. Dopo muovi i file BaseSystem o RecoveryImage scaricati prima. Assicurati di copiare sia il file .dmg che quello .chunklist nella cartella:
 
-![](/images/installer-guide/winblows-install-md/com-recovery.png)
+![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
 Ora prendi OpenCorePkg, scaricato prima, e aprilo:
 
-![](/images/installer-guide/winblows-install-md/base-oc-folder.png)
+![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
 Come vedi ci sono le cartelle IA32 (CPU a 32 Bit) e X64 (CPU a 64 Bit), secgli quella più appropriata per il tuo hardware e aprila. Dopo trascina la cartella EFI dentro la radice della USB vicino a com.apple.recovery.boot. Alla fine questo dovrebbe essere il risultato finale:
 
-![](/images/installer-guide/winblows-install-md/com-efi-done.png)
+![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
 ::: details Setup Installer Legacy
 
@@ -191,23 +191,23 @@ Per iniziare, abbiamo bisogno di:
 
 Dopo, apri BOOTICE e assicurati che sia selezionato il disco corretto.
 
-![](/images/installer-guide/winblows-install-md/bootice.png)
+![](../images/installer-guide/winblows-install-md/bootice.png)
 
 Dopo, seleziona "Process MBR" e dopo "Restore MBR" e seleziona il file **boot0** da `Utilities/LegacyBoot/` nel OpenCorePkg:
 
 | Ripristino MBR | Ripristino file boot0 |
 | :--- | :--- |
-| ![](/images/installer-guide/winblows-install-md/restore-mbr.png) | ![](/images/installer-guide/winblows-install-md/restore-mbr-file.png) |
+| ![](../images/installer-guide/winblows-install-md/restore-mbr.png) | ![](../images/installer-guide/winblows-install-md/restore-mbr-file.png) |
 
 Dopo torna alla schermata principale e seleziona "Process PBR", dopo "Restore PBR". Da qui, scegli il file **Boot1f32** da `Utilities/LegacyBoot/` sempre nel OpenCorePkg:
 
 | Ripristino PBR | Ripristino file boot1f32 |
 | :--- | :--- |
-| ![](/images/installer-guide/winblows-install-md/restore-pbr.png) | ![](/images/installer-guide/winblows-install-md/restore-pbr-file.png) |
+| ![](../images/installer-guide/winblows-install-md/restore-pbr.png) | ![](../images/installer-guide/winblows-install-md/restore-pbr-file.png) |
 
 Una volta finito, torna alla tua USB e fai un'ultima cosa. Trascina il file **bootx64**(CPU a 64 Bit) o **bootia32**(CPU a 32 Bit) da `Utilities/LegacyBoot/` e piazzalo nella radice della USB. **Rinominalo come boot** per assicurarti che DuetPkg funzioni correttamente:
 
-![](/images/installer-guide/winblows-install-md/final-boot-file.png)
+![](../images/installer-guide/winblows-install-md/final-boot-file.png)
 
 :::
 

@@ -41,7 +41,7 @@ Con questo, naviga attraverso `Root -> DeviceProperties -> Add` e aggiungi il tu
 | IOName | string | #display |
 | class-code | data | FFFFFFFF |
 
-![](/images/extras/spoof-md/config-gpu.png)
+![](../images/extras/spoof-md/config-gpu.png)
 
 ### Metodo SSDT
 
@@ -96,7 +96,7 @@ In dipendenza dal tuo setup, potresti notare che Windows renderizza giochi o app
 
 Molti utenti hanno solo due GPU. Nvidia e la iGPU Intel HD/UHD. Da quando Nvidia non funziona più su macOS, avranno i monitor collegati alla porta HDMI/DP della scheda madre per convenienza. Di conseguenza Windows renderizza i giochi e applicazioni attraverso la IGPU. Puoi reinstradare un gioco specifico o un'applicazione a una differente GPU andando in: Impostazioni > Sistema > Schermo > Impostazioni di grafica.
 
-![Crediti a CorpNewt per l'immagine](/images/extras/spoof-md/corp-windows.png)
+![Crediti a CorpNewt per l'immagine](../images/extras/spoof-md/corp-windows.png)
 
 Il gioco o l'applicazione renderizzate avranno il buffer copiato sulla iGPU. Che viene mostrato a te. Questo porta ad alcuni svantaggi:
 

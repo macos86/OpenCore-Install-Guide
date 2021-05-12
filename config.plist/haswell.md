@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](/images/config/config-universal/aptio-iv-acpi.png)
+![ACPI](../images/config/config-universal/aptio-iv-acpi.png)
 
 ### Add
 
@@ -58,7 +58,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](/images/config/config-universal/aptio-iv-booter.png)
+![Booter](../images/config/config-universal/aptio-iv-booter.png)
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -88,7 +88,7 @@ Le impostazioni relative al patching boot.efi e alle correzioni del firmware, pe
 
 ## DeviceProperties
 
-![DeviceProperties](/images/config/config.plist/haswell/DeviceProperties.png)
+![DeviceProperties](../images/config/config.plist/haswell/DeviceProperties.png)
 
 ### Add
 
@@ -156,7 +156,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](/images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -315,7 +315,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](/images/config/config-universal/misc.png)
+![Misc](../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -413,7 +413,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](/images/config/config-universal/nvram.png)
+![NVRAM](../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -520,7 +520,7 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](/images/config/config.plist/haswell/smbios.png)
+![PlatformInfo](../images/config/config.plist/haswell/smbios.png)
 
 ::: tip Info
 
@@ -602,7 +602,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](/images/config/config-universal/aptio-iv-uefi.png)
+![UEFI](../images/config/config-universal/aptio-iv-uefi.png)
 
 **ConnectDrivers**: YES
 

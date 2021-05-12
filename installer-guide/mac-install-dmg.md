@@ -24,7 +24,7 @@ Nota che queste immagini richiedono che tu abbia accesso ad un account Apple Dev
 
 Ora arriva la parte divertente, per prima cosa dovrai aprire il dmg scaricato e averlo montato. Ora apri Utility Disco e formatta il disco come macOS Esteso (HFS+) con una mappa partizioni GUID:
 
-![Formattare la USB](/images/installer-guide/mac-install-md/format-usb.png)
+![](../images/installer-guide/mac-install-md/format-usb.png)
 
 Ora hai due opzioni per procedere:
 
@@ -53,14 +53,14 @@ A causa di alcuni problemi stranissimi con Utility Disco, alcuni ripristini poss
 
 Per iniziare, apri Utility Disco e dovresti vedere sia la tua USB e l'Immagine Disco sulla barra laterale. Da qui, seleziona Ripristina
 
-![](/images/installer-guide/legacy-mac-install-md/pre-restore.png)
-![](/images/installer-guide/legacy-mac-install-md/restore.png)
+![](../images/installer-guide/legacy-mac-install-md/pre-restore.png)
+![](../images/installer-guide/legacy-mac-install-md/restore.png)
 
 ::: details Risoluzione dei problemi
 
 Se ottieni questo tipo di errore durante il ripristino:
 
-![](/images/installer-guide/legacy-mac-install-md/sip-fail.png)
+![](../images/installer-guide/legacy-mac-install-md/sip-fail.png)
 
 Questo significa che il SIP deve essere disabilitato, invece raccomandiamo l'uso del [Metodo ASR](#asr).
 

@@ -39,7 +39,7 @@ Correzione facile, scarica e installa l'ultima versione di Python:
 
 Make sure `Add Python to PATH`
 
-![](/images/troubleshooting/troubleshooting-md/python-path.png)
+![](../../images/troubleshooting/troubleshooting-md/python-path.png)
 
 ## Il disco di avvio di Windows non riesce a vedere le unità APFS
 

@@ -16,7 +16,7 @@ Per iniziare, assicurati di utilizzare le versioni "DEBUG" o "NOOPT" di OpenCore
 * EFI/OC/
   * `OpenCore.efi`
 
-![](/images/troubleshooting/debug-md/replace.png)
+![](../images/troubleshooting/debug-md/replace.png)
 
 * **Nota**: Generalmente è meglio eseguire il debug di sistemi senza OpenCanopy, se necessario assicurati che questo file provenga da DEBUG altrimenti non ci saranno praticamente informazioni di debug.
 
@@ -88,7 +88,7 @@ Proprio come con `Target`, usiamo una calcolatrice HEX quindi convertiamo in dec
 
 Una volta fatto, il tuo config.plist dovrebbe assomigliare a questo:
 
-![](/images/troubleshooting/debug-md/debug.png)
+![](../images/troubleshooting/debug-md/debug.png)
 
 ## Disabilitazione di tutti i log
 
