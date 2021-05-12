@@ -45,11 +45,11 @@ module.exports = {
                 items: [
                     {
                         text: 'Aggiungere i file di base',
-                        link: '/installer-guide/opencore-efi'
+                        link: '/installer-guide/opencore-efi.md'
                     },
                     {
                         text: 'Raccogliere i File',
-                        link: '/ktext'
+                        link: '/ktext.md'
                     },
                     {
                         text: 'Iniziamo Con ACPI',
@@ -59,7 +59,7 @@ module.exports = {
             },
             {
                 text: 'Setup del Config.plist',
-                link: '/config.plist'
+                link: '/config.plist.md'
             },
             {
                 text: 'Risoluzione dei problemi',
