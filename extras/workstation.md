@@ -72,4 +72,4 @@ Montare il file `darwin.iso` incluso con VMware (lo puoi trovare anche [qui](htt
 
 ## Posso avere l'accelerazione grafica?
 
-Mi dispiace, ma al momento non è possibile. Se hai idee su come farlo, contattaci su [macos86.it](https://macos86.it)
+Mi dispiace, ma al momento non è possibile. Se hai idee su come farlo, contattaci su [macos86.it](https://www.macos86.it/)

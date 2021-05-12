@@ -18,7 +18,7 @@ Questa sezione sarà divisa in 3 parti, quindi presta molta attenzione:
 I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 
 * **DevirtualiseMmio**
-  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](/extras/kaslr-fix.md#using-devirtualisemmio)
+  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](../../extras/kaslr-fix.md#utilizzo-di-devirtualisemmio)
   * Per gli utenti TRx40, abilita quest0 quirk
   * Per gli utenti X99, disabilitare questo Quirk poiché confligge con alcuni firmware
 
@@ -47,7 +47,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
       * SyncRuntimePermissions -> False
     * Nota: alcuni laptop (es. Dell Inspiron 5370) anche con supporto MAT si interromperanno all'avvio, in questi casi avrai due opzioni:
       * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +`SyncRuntimePermissions`)
-      * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](https://macos86.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
+      * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](../../extras/kaslr-fix.md)
 
 Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](/troubleshooting/debug.md)):
 
@@ -610,13 +610,13 @@ Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**
 
 ## Bloccato su `Forcing CS_RUNTIME for entitlement` in Big Sur
 
-![Ringraziamo Stompy per l'immagine](/images/extras/big-sur/cs-stuck.jpg)
+![](../../images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
 ## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Ringraziamo Notiflux per l'immagine](/images/extras/big-sur/ramrod.jpg)
+![](../../images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
