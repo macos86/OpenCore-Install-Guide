@@ -16,37 +16,6 @@ Fare riferimento alla sezione [Fixing Audio with AppleALC (EN)](https://dortania
 
 Fare riferimento alla sezione [Fixing RTC write issues (EN)](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
 
-## Il trackpad basato su PS2 Synaptics non funziona
-
-Puoi provare a utilizzare [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl).
-Per prima cosa, devi aprire Gestione dispositivi e andare a quanto segue:
-
-```
-Gestione dispositivi -> Mouse e altri dispositivi di puntamento -> Doppio clic sul trackpad -> Proprietà -> Dettagli> Nome del dispositivo nel BIOS
-```
-
-Quindi prendi [SSDT-Enable_DynamicEWMode.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-Enable_DynamicEWMode.dsl)
-Per impostazione predefinita, utilizza PCI0.LPCB.PS2K per il percorso. Ti consigliamo di rinominare di conseguenza.
-
-```c
-External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
-
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package()  <- Rinomina questo
-
-```
-
-Quindi compila con MaciASL, copia nella tua cartella OC/ACPI, dichiaralo nel tuo config e dovresti essere a posto.
-
-* Nota: sebbene questo funzioni nella maggior parte dei casi, il trackpad potrebbe essere lento e potresti non essere in grado di utilizzare i pulsanti fisici ([ulteriori dettagli](https://github.com/acidanthera/bugtracker/issues/890)). Se riesci a vivere senza il trackpad, potrebbe essere meglio:
-
-Trova il percorso ACPI del tuo mouse (vedi sopra), quindi prendi [SSDT-DisableTrackpadProbe.dsl](https://github.com/acidanthera/VoodooPS2/blob/master/Docs/ACPI/SSDT-DisableTrackpadProbe.dsl). Per impostazione predefinita, questo utilizza PCI0.LPCB.PS2K quindi è necessario modificarlo nel percorso ACPI se necessario:
-
-```c
-External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Rinomina questo
-
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package() <- Rinomina questo
-```
-
 ## Soluzione al problema con i tasti della tastiera PS2 senza interruzioni di Dell
 
 Per coloro con problemi relativi alla pressione dei tasti che non si rilascia (premuti all'infinito), ti consigliamo di abilitare il profilo Dell di VoodooPS2.
@@ -301,7 +270,7 @@ Per quelli con problemi di sblocco di Apple Watch, verifica quanto segue:
 * iServices funzionano correttamente (es. iMessage)
 * C'è un'opzione per sbloccare con Apple Watch nelle impostazioni di sicurezza e privacy in Preferenze di Sistema
 
-! [](/images/troubleshooting/troubleshooting-md/watch-unlock.png)
+! [](../../images/troubleshooting/troubleshooting-md/watch-unlock.png)
 
 Se quanto sopra viene soddisfatto e hai ancora problemi di sblocco, ti consigliamo di eseguire la guida di seguito:
 

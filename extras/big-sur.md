@@ -151,19 +151,19 @@ Le guide sono state aggiornate per adattarsi a Big Sur, vedere l'ambiente del si
 
 ### Bloccato su `Forcing CS_RUNTIME for entitlement`
 
-![Ringraziamo Stompy per l'immagine](/images/extras/big-sur/cs-stuck.jpg)
+![Ringraziamo Stompy per l'immagine](../images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo, altrimenti si interromperà l'installazione.
 
 ### Bloccato su `PCI Configuration Begins` for Intel's X99 and X299 boards
 
-![](/images/extras/big-sur/rtc-error.jpg)
+![](../images/extras/big-sur/rtc-error.jpg)
 
 Come accennato in precedenza, le schede madri Intel HEDT potrebbero avere alcuni problemi che ruotano attorno al loro dispositivo RTC in ACPI. Per risolvere il problema, dovrai guardare il tuo dispositivo RTC e vedere quali regioni mancano. Per ulteriori informazioni, vedere qui: [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 ### Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![Ringraziamo Notiflux per l'immagine](/images/extras/big-sur/ramrod.jpg)
+![Ringraziamo Notiflux per l'immagine](../images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 
@@ -180,7 +180,7 @@ Ciò è dovuto a un bridge PCI uncore inutilizzato abilitato in ACPI, e quindi I
 
 Con Big Sur, macOS è diventato molto più esigente con i dispositivi presenti in ACPI. Soprattutto se stai iniettando proprietà importanti per WutelyGreen o AppleALC, potresti scoprire che non si applicano più. Per verificare se il tuo ACPI definisce il tuo hardware, controlla la proprietà `acpi-path` in [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-210.zip):
 
-![](/images/extras/big-sur/acpi-path.png)
+![](../images/extras/big-sur/acpi-path.png)
 
 Se non viene trovata alcuna proprietà, sarà necessario creare un SSDT che fornisca il percorso completo poiché probabilmente si dispone di un bridge PCI non documentato nelle tabelle ACPI. Un esempio di questo può essere trovato qui: [SSDT-BRG0](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-BRG0.dsl)
 

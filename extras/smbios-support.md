@@ -11,7 +11,7 @@ Cose che devi considerare quando selezioni il tuo SMBIOS:
   * Nota CPU AMD non devono preoccuparsi di questo
 * Tipo di GPU
   * Molte cose importano qui, come il power management della GPU (AGPM), il supporto dei display (AGDP), lo sleep (AGDC) e molto altro.
-    * Questo avviene specialmente quando prendiamo il SMBIOS del [Mac Mini](#mac-mini) che usa solo hardware mobile, che non si abbina molto bene con l'hardware desktop. Questo è il motivo per cui si scoraggia di usarli, tranne per la [serie Intel NUC](https://www.intel.ca/content/www/ca/en/products/boards-kits/nuc.html) in quanto sono basati su hardware mobile.
+    * Questo avviene specialmente quando prendiamo il SMBIOS del [Mac Mini](#mac-mini) che usa solo hardware mobile, che non si abbina molto bene con l'hardware desktop. Questo è il motivo per cui si scoraggia di usarli, tranne per la [serie Intel NUC](https://www.intel.it/content/www/it/it/products/details/nuc.html) in quanto sono basati su hardware mobile.
     * I laptop dovrebbero porre molta più attenzione, dato che Apple assume sempre che quando una dGPU è presente nel SMBIOS, tutti i display verranno collegati al medesimo. Questo diventa un problema quando un laptop Optimus ha un display esterno collegato via cavo che usa la iGPU, causano uno schermo nero che richiederebbe più patch.
   * CPU senza una iGPU devono porre molta attenzione, dato che funzionalità come Quicklook o simili saranno rotte se il SMBIOS prevedeva una iGPU (ossia ogni singolo iMac SMBIOS)
     * Per queste situazioni, avvicinati ai SMBIOS degli iMac Pro e Mac Pro

@@ -76,10 +76,10 @@ Crediti a [midi1996](https://github.com/midi1996) per il suo lavoro riguardo all
 In terminal:
 
 1. Scrivi `lsblk` per determinare l'identificatore della USB
-  ![lsblk](/images/installer-guide/linux-install-md/unknown-5.png)
+  ![lsblk](../images/installer-guide/linux-install-md/unknown-5.png)
 2. Scrivi `sudo gdisk /dev/<identificatore della USB>`
    1. Se ti viene chiesto quale tabella delle partizioni usare, seleziona GPT.
-      ![Seleziona GPT](/images/installer-guide/linux-install-md/unknown-6.png)
+      ![Seleziona GPT](../images/installer-guide/linux-install-md/unknown-6.png)
    2. Scrivi `p` per stampare il blocco della tua partizione \(e verificare qual'è necessaria\)
       ![](../images/installer-guide/linux-install-md/unknown-13.png)
    3. Scrivi `o` per pulire la tabella delle partizioni e creare un nuovo GPT (se non vuoto)

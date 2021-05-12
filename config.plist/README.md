@@ -48,7 +48,7 @@ Quando hai fatto, vedrai i tuoi SSDT, Kext e driver firmware applicati nel tuo c
 
 * **Nota:** Se ottieni un pop up "Disable the following kexts with Duplicate CFBundleIdentifiers?", seleziona "Yes". Questo assicura che tu non abbia kext duplicati, dato che a volte i kext hanno lo stesso plugin (VoodooInput sia nei plugin di VoodooPS2 che di VoodooI2C)
 
-![](/images/config/config-universal/duplicate.png)
+![](../images/config/config-universal/duplicate.png)
 
 Se vuoi continuare la pulizia del file, puoi rimuovere la sezioni `#WARNING`. Attraverso quelle non creerai nessun problema, sono solo per preferenza personale.
 

@@ -27,7 +27,7 @@ Ciò è solitamente dovuto a una versione obsoleta di Python; prova ad aggiornar
 
 * [iasl versione macOS](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
 * [iasl versione Windows](https://acpica.org/downloads/binary-tools)
-* [iasl versione Linux](http://amdosx.kellynet.nl/iasl.zip)
+* [iasl versione Linux (da compilare)](https://acpica.org/downloads)
 
 ## Correzione per Python: `Python is not installed or not found on PATH`
 
@@ -35,7 +35,7 @@ Correzione facile, scarica e installa l'ultima versione di Python:
 
 * [macOS link](https://www.python.org/downloads/macos)
 * [Windows link](https://www.python.org/downloads/windows/)
-* [Linux link](https://www.python.org/downloads/source/)
+* Linux: sudo apt install python3
 
 Make sure `Add Python to PATH`
 

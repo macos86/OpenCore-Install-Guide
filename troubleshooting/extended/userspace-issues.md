@@ -168,7 +168,7 @@ Per risolvere l'errore, hai alcune opzioni:
 
 | Controllo NIC | Ping |
 | :--- | :--- |
-| ![](../../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](/images/troubleshooting/troubleshooting-md/ping.png) |
+| ![](../../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](../../images/troubleshooting/troubleshooting-md/ping.png) |
 
 ## Tastiera e mouse non funzionanti in Big Sur
 

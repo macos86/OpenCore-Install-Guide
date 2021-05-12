@@ -145,7 +145,7 @@ Il modo migliore per risolvere effettivamente questo problema è prendere una co
 
 ::: details Esempio di struttura di cartelle
 
-![Struttura delle directory dal DOC di OpenCore](/images/troubleshooting/troubleshooting-md/oc-structure.png)
+![](../../images/troubleshooting/troubleshooting-md/oc-structure.png)
 
 :::
 

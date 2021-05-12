@@ -91,7 +91,7 @@ Per questa configurazione, avrai bisogno di alcune cose:
 * Un cavo da seriale a seriale o da seriale a USB
 * Una seconda macchina per ricevere la registrazione seriale (con seriale o USB)
 * Software per monitorare l'uscita seriale
-  * Per questa guida, utilizzeremo [CoolTerm] (<https://freeware.the-meiers.org>) poiché supporta macOS, Linux, Windows e persino Raspberry Pi
+  * Per questa guida, utilizzeremo [CoolTerm](https://freeware.the-meiers.org) poiché supporta macOS, Linux, Windows e persino Raspberry Pi
     * Anche `screen` e altri metodi sono supportati.
 
 ### Hardware Setup
@@ -136,7 +136,7 @@ Qui ci vengono fornite alcune opzioni, ma quelle principali a cui teniamo sono:
 
 Quindi salvare queste impostazioni e selezionare la voce Connetti. Questo ti fornirà un registro in tempo reale da seriale:
 
-![CoolTerm Connect](/images/troubleshooting/kernel-debugging-md/coolterm-connect.png)
+![](../images/troubleshooting/kernel-debugging-md/coolterm-connect.png)
 
 Per registrare, vai semplicemente su `Connections -> Capture to Text/Binary File -> Start...(Cmd+R)`:
 
