@@ -21,7 +21,6 @@ module.exports = {
             }
         ],
     ],
-    base: '/OpenCore-Install-Guide/',
 
     extendMarkdown: md => {
         md.use(require('markdown-it-multimd-table'), {
