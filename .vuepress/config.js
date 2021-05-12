@@ -59,7 +59,7 @@ module.exports = {
             },
             {
                 text: 'Setup del Config.plist',
-                link: '/config.plist.md'
+                link: '/config.plist/'
             },
             {
                 text: 'Risoluzione dei problemi',
