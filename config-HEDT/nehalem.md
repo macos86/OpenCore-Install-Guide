@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![](/images/config/config-legacy/penryn-acpi.png)
+![](../images/config/config-legacy/penryn-acpi.png)
 
 ### Add
 
@@ -62,7 +62,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 | Legacy | UEFI
 | :--- | :--- |
-| ![](/images/config/config-legacy/booter-duetpkg.png) | ![](/images/config/config-universal/aptio-iv-booter.png) |
+| ![](../images/config/config-legacy/booter-duetpkg.png) | ![](../images/config/config-universal/aptio-iv-booter.png) |
 
 This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
 
@@ -127,7 +127,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![](/images/config/config-universal/kernel-legacy-HEDT.png)
+![](../images/config/config-universal/kernel-legacy-HEDT.png)
 
 ### Add
 
