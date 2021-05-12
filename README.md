@@ -6,7 +6,8 @@ actionText: Iniziamo→
 actionLink: prerequisites.md
 meta:
 - name: description
-  content: Versione attualmente supportata 0.6.9
+  content: Ricordiamo che questa è una traduzione NON UFFICIALE! Se vuoi vedere l'originale, visita Dortania. Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina.
+
 ---
 
 # Cos'è OpenCore e per chi è stata scritta questa guida
@@ -23,5 +24,3 @@ Perciò, sarà necessario leggere, imparare e soprattutto usare Google. Non è u
 Per favore ricorda che OpenCore è ancora nuovo e correntemente in beta. Tuttavia è abbastanza stabile, molto più di Clover da certi punti di vista, ed è molto frequentato, quindi le configurazioni potrebbero essere cambiate spesso (es. nuovi quirk che rimpiazzano quelli vecchi).
 
 Infine, se hai problemi puoi sempre visitare [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) e [r/Hackintosh Discord](https://discord.gg/u8V7N5C) per ulteriore aiuto.
-
-**Ricordiamo che questa è una traduzione NON UFFICIALE! Se vuoi vedere l'originale, visita [Dortania](https://dortania.github.io). Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina o visita la pagina su [GitHub](https://github.com/macos86/OpenCore-Install-Guide).**
