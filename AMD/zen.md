@@ -247,7 +247,7 @@ To merge:
 * Copy the `Kernel -> Patch` section from patches.plist
 * Paste into where old patches were in config.plist
 
-![](/images/config/AMD/kernel.gif)
+![](../images/config/AMD/kernel.gif)
 
 ### Quirks
 
