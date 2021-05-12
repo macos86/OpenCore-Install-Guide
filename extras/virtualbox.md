@@ -47,7 +47,7 @@ sudo VirtualBox
 
 Attach the disks that you've created in previous steps as shown:
 
-![](/images/extras/virtualbox/vbox-storage.png)
+![](../images/extras/virtualbox/vbox-storage.png)
 
 Now, close VirtualBox and add the following properties to the VM to allow it to boot.
 

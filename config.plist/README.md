@@ -2,7 +2,7 @@
 
 Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (.efi), la tua USB potrebbe apparire qualcosa come questo:
 
-![Cartella EFI popolata](/images/installer-guide/opencore-efi-md/populated-efi.png)
+![Cartella EFI popolata](../images/installer-guide/opencore-efi-md/populated-efi.png)
 
 * **Nota**: La tua USB **sarà diversa**, ogni sistema ha requisiti differenti.
 
@@ -10,11 +10,11 @@ Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (
 
 Per prima cosa prenderemo il sample.plist da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), sarà allocato nella cartella `Docs`:
 
-![](/images/config/config-universal/sample-location.png)
+![](../images/config/config-universal/sample-location.png)
 
 Ora muoviamolo nella partizione EFI della USB (si chiamerà BOOT in Windows) dentro `EFI/OC/`, e rinominalo come config.plist:
 
-![](/images/config/config-universal/renamed.png)
+![](../images/config/config-universal/renamed.png)
 
 ## Aggiungere i tuoi SSDT, Kext e Driver del Firmware
 
@@ -40,11 +40,11 @@ Dopo che hai aperto il config, premi **Cmd/Ctrl + Shift + R** e seleziona la tua
 * Questo rimuoverà tutte le sezioni inutili dal tuo config.plist e successivamente aggiungerà SSDT, Kext e Driver Firmware al config.
 * **Cmd/Ctrl + R** è un'altra opzione che ti aggiungerà i file, ma lascerà le sezioni inutili disabilitate come erano prima, utile quando hai bisogno di risolvere problemi, ma non usato da noi ora
 
-![](/images/config/config-universal/before-snapshot.png)
+![](../images/config/config-universal/before-snapshot.png)
 
 Quando hai fatto, vedrai i tuoi SSDT, Kext e driver firmware applicati nel tuo config.plist:
 
-![](/images/config/config-universal/after-snapshot.png)
+![](../images/config/config-universal/after-snapshot.png)
 
 * **Nota:** Se ottieni un pop up "Disable the following kexts with Duplicate CFBundleIdentifiers?", seleziona "Yes". Questo assicura che tu non abbia kext duplicati, dato che a volte i kext hanno lo stesso plugin (VoodooInput sia nei plugin di VoodooPS2 che di VoodooI2C)
 

@@ -49,7 +49,7 @@ L'ultima cosa da fare prima di avviare è controllare come è impostata la EFI:
 
 Buona EFI          |  Cattiva EFI
 :-------------------------:|:-------------------------:
-![](/images/installation/install-md/good-efi.png)  |  ![](/images/installation/install-md/bad-efi.png)
+![](./images/installation/install-md/good-efi.png)  |  ![](./images/installation/install-md/bad-efi.png)
 La cartella EFI è nella partizione EFI | La cartella EFI non c'è
 I file ACPI sono compilati (.aml) | I file ACPI non sono compilati (.dsl)
 Il DSDT non è incluso | Il DSDT è incluso

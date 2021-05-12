@@ -185,4 +185,4 @@ Ora prendiamo l'esempio sopra e creiamo la nostra MmioWhitelist, dovremo prima c
 
 Dovrebbe assomigliare a questo una volta fatto:
 
-![](/images/extras/kaslr-fix-md/mmio-white.png)
+![](../images/extras/kaslr-fix-md/mmio-white.png)

@@ -169,7 +169,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](/images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -327,7 +327,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](/images/config/config-universal/misc.png)
+![Misc](../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -427,7 +427,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](/images/config/config-universal/nvram.png)
+![NVRAM](../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -523,7 +523,7 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](/images/config/config-laptop.plist/ivy-bridge/smbios.png)
+![PlatformInfo](../images/config/config-laptop.plist/ivy-bridge/smbios.png)
 
 ::: tip Info
 
@@ -605,7 +605,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](/images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 

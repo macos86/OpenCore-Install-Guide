@@ -98,19 +98,19 @@ Per questa configurazione, avrai bisogno di alcune cose:
 
 Per questo esempio, utilizzeremo una scheda Asus X299-E Strix che ha una porta seriale. Per verificare se la tua scheda ne ha una, controlla il manuale utente o di servizio e cerca la porta seriale/COM:
 
-![](/images/troubleshooting/kernel-debugging-md/serial-header.png)
+![](../images/troubleshooting/kernel-debugging-md/serial-header.png)
 
 Come puoi vedere, abbiamo una porta COM nella parte inferiore della nostra scheda madre e cè anche un diagramma per collegare manualmente i nostri pin seriali se non stai utilizzando un connettore seriale 9/10 pin per l'adattatore DB9.
 
 In alternativa, alcune macchine sono dotate di porte seriali DB9 proprio sull'IO posteriore come questo Dell Optiplex 780 SFF (si noti che VGA e seriale **non** sono lo stesso connettore):
 
-![](/images/troubleshooting/kernel-debugging-md/serial-connector.jpg)
+![](../images/troubleshooting/kernel-debugging-md/serial-connector.jpg)
 
 Per la mia configurazione X299, sto usando un semplice file [Serial header to DB9](https://www.amazon.ca/gp/product/B001Y1F0HW/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1), e un [DB9 to USB  RS 232 adapter](https://www.amazon.ca/gp/product/B075YGKFC1/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1) che alla fine termina sul mio laptop:
 
 | Serial header to DB9 | DB9 to USB  RS 232 adapter |
 | :--- | :--- |
-| ![](/images/troubleshooting/kernel-debugging-md/817DNdBZDkL._AC_SL1500_.jpg) | ![](/images/troubleshooting/kernel-debugging-md/61yHczOwpTL._AC_SL1001_.jpg) |
+| ![](../images/troubleshooting/kernel-debugging-md/817DNdBZDkL._AC_SL1500_.jpg) | ![](../images/troubleshooting/kernel-debugging-md/61yHczOwpTL._AC_SL1001_.jpg) |
 
 Il manuale OpenCore generalmente consiglia dispositivi UART basati su CP21202:
 
@@ -123,8 +123,8 @@ Il manuale OpenCore generalmente consiglia dispositivi UART basati su CP21202:
 
 Ora avvia [CoolTerm](https://freeware.the-meiers.org) e imposta alcune opzioni. Quando apri CoolTerm, verrai probabilmente accolto con una semplice finestra. Qui seleziona la voce Opzioni:
 
-![](/images/troubleshooting/kernel-debugging-md/coolterm-first-start.png)
-![](/images/troubleshooting/kernel-debugging-md/coolterm-settings.png)
+![](../images/troubleshooting/kernel-debugging-md/coolterm-first-start.png)
+![](../images/troubleshooting/kernel-debugging-md/coolterm-settings.png)
 
 Qui ci vengono fornite alcune opzioni, ma quelle principali a cui teniamo sono:
 
@@ -140,7 +140,7 @@ Quindi salvare queste impostazioni e selezionare la voce Connetti. Questo ti for
 
 Per registrare, vai semplicemente su `Connections -> Capture to Text/Binary File -> Start...(Cmd+R)`:
 
-![](/images/troubleshooting/kernel-debugging-md/coolterm-record.png)
+![](../images/troubleshooting/kernel-debugging-md/coolterm-record.png)
 
 ## Kernel Debug Kits (Opzionale)
 
@@ -156,7 +156,7 @@ Per iniziare, avremo come minimo bisogno di un [account sviluppatore gratuito](h
 * Nota: i livelli gratuiti saranno limitati al rilascio di KDK, beta beta di KDKs sono fornite solo ad [account sviluppatore a pagamento](https://developer.apple.com/support/compare-memberships/)
 * Nota 2: Apple ospita KDK fin da OS X 10.5, Leopard, quindi non preoccuparti che il tuo sistema operativo non sia supportato.
 
-![](/images/troubleshooting/kernel-debugging-md/more-downloads.png)
+![](../images/troubleshooting/kernel-debugging-md/more-downloads.png)
 
 Per determinare quale build KDK ti serve con le build beta, esegui quanto segue nel terminale:
 
@@ -181,11 +181,11 @@ Per abilitare il debug sulla macchina host, dovrai eseguire le seguenti operazio
 
 Esegui semplicemente il pkg come di consueto:
 
-![](/images/troubleshooting/kernel-debugging-md/kdk-install.png)
+![](../images/troubleshooting/kernel-debugging-md/kdk-install.png)
 
 Una volta installati, troverai i componenti KDK come il kernel di debug in `/Library/Developer/KDKs`:
 
-![](/images/troubleshooting/kernel-debugging-md/kdk-installed.png)
+![](../images/troubleshooting/kernel-debugging-md/kdk-installed.png)
 
 #### 2. Disabilitare SIP
 

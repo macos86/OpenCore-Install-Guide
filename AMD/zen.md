@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](/images/config/AMD/acpi.png)
+![ACPI](../images/config/AMD/acpi.png)
 
 ### Add
 
@@ -58,7 +58,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](/images/config/config-universal/amd-zen-booter.png)
+![Booter](../images/config/config-universal/amd-zen-booter.png)
 
 This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
 
@@ -102,7 +102,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
 
 ## DeviceProperties
 
-![DeviceProperties](/images/config/config-universal/DP-no-igpu.png)
+![DeviceProperties](../images/config/config-universal/DP-no-igpu.png)
 
 ### Add
 
@@ -118,7 +118,7 @@ Removes device properties from the map, for us we can ignore this
 
 | Kernel | Kernel Patches |
 | :--- | :--- |
-| ![Kernel](/images/config/AMD/kernel.png) | ![](/images/config/AMD/kernel-patch.png) |
+| ![Kernel](../images/config/AMD/kernel.png) | ![](../images/config/AMD/kernel-patch.png) |
 
 ### Add
 
@@ -322,7 +322,7 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
 
 ## Misc
 
-![Misc](/images/config/config-universal/misc.png)
+![Misc](../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -422,7 +422,7 @@ Won't be covered here, see 8.6 of [Configuration.pdf](https://github.com/acidant
 
 ## NVRAM
 
-![NVRAM](/images/config/config-universal/nvram.png)
+![NVRAM](../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -530,7 +530,7 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 ## PlatformInfo
 
-![PlatformInfo](/images/config/config-universal/iMacPro-smbios.png)
+![PlatformInfo](../images/config/config-universal/iMacPro-smbios.png)
 
 ::: tip Info
 
@@ -618,7 +618,7 @@ Reminder that you want either an invalid serial or valid serial numbers but thos
 
 ## UEFI
 
-![UEFI](/images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
