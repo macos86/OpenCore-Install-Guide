@@ -22,7 +22,7 @@ I Firmware drivers sono dei drivers utilizzati da OpenCore negli ambienti UEFI. 
 
 Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 
-* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)(<span style="color:red">Required</span>)
+* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi)(<span style="color:red">Required</span>)
   * Necessario per vedere i volumi HFS (es. Gli installer di MacOS e le partizioni/immagini recovery). **Non mischiare altri HFS drivers**
   * Per i processori Sandy Bridge e più vecchi(come come gli Ivy Bridge di fascia bassa(i3 e Celerons), vedi la sezione legacy qui sotto
 * [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Required</span>)
@@ -37,7 +37,7 @@ Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'
 
 * [OpenUsbKbDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases)
   * Utilizzato per il selettore Opencore su  **sistemi legacy che eseguono DuetPkg**, [non raccomandato ed addirittura dannoso su UEFI(Ivy Bridge e processori piú recenti)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
-* [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
+* [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlusLegacy.efi)
   * Variante legacy di HfsPlus, usato per sistemi che non hanno il supporto delle istruzioni RDRAND. Questo generalmente accade su processori Sandy Bridge e piu vecchi (ma anche su processori Ivy Bridge di fascia bassa (i3 e Celerons))
   * Non usarlo con HfsPlus.efi, scegline quello corretto in base al tuo hardware
 * [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases)
@@ -52,7 +52,7 @@ Questi file andranno nella cartella "drivers" della tua EFI
 
 Per coloro che hanno cpu a 32 bit, consigliamo di inserire anche questi drivers
 
-* [HfsPlus32](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus32.efi)
+* [HfsPlus32](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus32.efi)
   * Alternativa a HfsPlusLegacy per le cpu a 32-bit, non mischiare questo con altri drivers HFS .efi.
 
 :::
@@ -73,11 +73,11 @@ Tutti i kext elencati in precedenza possono essere trovati **pre-compilati** nel
 
 Senza i due qua sotto nessun sistema è avviabile:
 
-* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Required</span>)
+* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases/latest)(<span style="color:red">Required</span>)
   * Emula il chip SMC che si trova sui veri Mac, senza questo MacOs non si avvierà.
   * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy
   * Necessita OS X 10.6 o superiori
-* [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Required</span>)
+* [Lilu](https://github.com/acidanthera/Lilu/releases/latest)(<span style="color:red">Required</span>)
   * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
   * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
   
@@ -85,7 +85,7 @@ Senza i due qua sotto nessun sistema è avviabile:
 
 Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
 
-* [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/blob/master/32Bit-only/Zip/FakeSMC-32.kext.zip?raw=true)
+* [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/raw/master/32Bit-only/Zip/FakeSMC-32.kext.zip)
 
 Ricorda che se non hai in programma di avviare vecchie versioni di MacOs puoi ignorare tranquillamente questo kext.
 
@@ -112,14 +112,14 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 
 ### Grafica
 
-* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Required</span>)
+* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases/latest)(<span style="color:red">Required</span>)
   * Utilizzato per la patch grafica di DRM, boardID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
   * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per maggiori informazioni
   * Necessita di OS X 10.8 o superiori
 
 ### Audio
 
-* [AppleALC](https://github.com/acidanthera/AppleALC/releases)
+* [AppleALC](https://github.com/acidanthera/AppleALC/releases/latest)
   * Utilizzato per patch di AppleHDA, consentendo il supporto per la maggior parte dei controller audio integrati
   * I processori AMD 15°/16° potrebbero avere problemi con questo kext e i sistemi Ryzen/Threadripper raramente supportano il microfono
   * Necessita di OS X 10.8 o superiori
@@ -128,10 +128,10 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 
 Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile optare per questi kext:
 
-* [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
+* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
   * Necessita OS X 10.6 o superiori
   
-* [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/blob/master/FAT/Zip/VoodooHDA.kext.zip)
+* [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/raw/master/FAT/Zip/VoodooHDA.kext.zip)
   * Simile al kext sopra, tuttavia supporta i kernel a 32 e 64 bit, quindi perfetto per l'avvio di OS X 10.4-5 e CPU a 32 bit
 
 :::
@@ -140,15 +140,15 @@ Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile opta
 
 Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda che le pagine delle specifiche del prodotto molto probabilmente elencheranno il tipo di scheda di rete.
 
-* [IntelMausi](https://github.com/acidanthera/IntelMausi/releases)
+* [IntelMausi](https://github.com/acidanthera/IntelMausi/releases/latest)
   * Necessario per la maggior parte delle schede di rete Intel, i chipset basati su I211 avranno bisogno di SmallTreeIntel82576 kext
   * I NIC Intel 82578, 82579, I217, I218 e I219 sono ufficialmente supportati
   * Necessita OS X 10.9 o successive, gli utenti 10.6-10.8 possono utilizzare IntelSnowMausi
-* [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)
+* [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases/latest)
   * Richiesto per i211 NIC, basato sul kext SmallTree ma patchato per supportare I211
   * Richiesto per la maggior parte delle schede AMD che eseguono NIC Intel
   * Richiede OS X 10.9-12 (v1.0.6), macOS 10.13-14 (v1.2.5), macOS 10.15+ (v1.3.0)
-* [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
+* [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases/latest)
   * Richiesto per Atheros e i NIC Killer
   * Richiede OS X 10.8 o successivo
   * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
@@ -159,22 +159,22 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Per i 2,5 Gb Ethernet di Realtek
   * Richiede macOS 10.15 o successivo
-* Per i NIC I225-V di Intel, le patch sono menzionate nella sezione desktop [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties). Non è richiesto nessun kext.
+* Per i NIC I225-V di Intel, le patch sono menzionate nella sezione desktop [Comet Lake DeviceProperties](/config.plist/comet-lake.md#deviceproperties). Non è richiesto nessun kext.
   * Richiede macOS 10.15 o successivo
-* For Intel's I350 NICs, patches are mentioned in the HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties) section. No kext is required.
+* For Intel's I350 NICs, patches are mentioned in the HEDT [Sandy and Ivy Bridge-E DeviceProperties](/config-HEDT/ivy-bridge-e.md#deviceproperties) section. No kext is required.
   * Requires OS X 10.10 or newer
 
 ::: details Kext Ethernet per sistemi Legacy
 
 Rilevante per le installazioni di macOS legacy o per vecchi computer.
 
-* [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases)
+* [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases/latest)
   * Principalmente rilevante per i controller Ethernet Intel basati su 10/100MBe
   * Richiede 10.6 o successive
 * [RealtekRTL8100](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/)
   * Principalmente rilevante per i controller Ethernet Realtek Ethernet basati su 10/100MBe
   * Richiede macOS 10.12 o versione successiva con v2.0.0 +
-* [BCM5722D](https://github.com/chris1111/BCM5722D/releases)
+* [BCM5722D](https://github.com/chris1111/BCM5722D/releases/latest)
   * Principalmente rilevante per i controller Broadcom Ethernet basati su BCM5722
   * Richiede OS X 10.6 o successivi
 
@@ -236,7 +236,7 @@ pci14e4,1686 = Broadcom BCM57766
 
 ### USB
 
-* [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
+* [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2018-1108.zip)
   * Utilizzato per iniettare i contreller USB Intel su sistemi senza porte USB definite in ACPI
   * Non dovrebbe essere necessario su Desktop Skylake e versioni successive
     * Su AsRock questo kext è invece sempre necessario
@@ -244,7 +244,7 @@ pci14e4,1686 = Broadcom BCM57766
   * Non funziona su **nessuna** CPU AMD
   * Necessita di OS X 10.11 o superiori
 
-* [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All)
+* [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All/archive/refs/heads/master.zip)
   * Necessario per i controller USB non nativi
   * CPU basate su sistemi AMD non lo necessitano questo kext
   * Schede madri che solitamente richiedono questo kext:
@@ -260,10 +260,10 @@ pci14e4,1686 = Broadcom BCM57766
 
 #### Intel
 
-* [AirportItlwm](https://github.com/OpenIntelWireless/itlwm/releases)
+* [AirportItlwm](https://github.com/OpenIntelWireless/itlwm/releases/latest)
   * Aggiunge il supporto per un'ampia varietà di schede wireless Intel e funziona in modo nativo nella recovery grazie all'integrazione della famiglia IO80211
   * Richiede macOS 10.13 o più recente e Apple Secure Boot per funzionare correttamente
-* [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
+* [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases/latest)
   * Aggiunge il supporto Bluetooth a macOS se associato a una scheda wireless Intel
   * Richiede MacOs 10.13 o successive
 
@@ -282,11 +282,11 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 
 #### Broadcom
 
-* [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
+* [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases/latest)
   * Utilizzato per patchare schede Broadcom non Apple/non Fenvi, **Non funzionerà su schede Intel, Killer, Realtek, ecc**
   * Richiede OS X 10.10 o versioni successive
   * Per Big Sur vedi [Big Sur problemi conosciuti](/extras/big-sur.md#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
-* [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
+* [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases/latest)
   * Utilizzato per caricare il firmware sul chipset Broadcom Bluetooth, richiesto per tutte le schede non Apple/non Fenvi Airport.
   * Da associare a BrcmFirmwareData.kext
     * BrcmPatchRAM3 per 10.15+ ( deve essere asscociato con BrcmBluetoothInjector)
@@ -310,7 +310,7 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 * [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
   * Fix USB per sistemi AMD FX, non consigliata per Ryzen
   * Richiede macOS 10.13 o versioni successive
-* [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
+* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
   * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
   * Richiede OS X 10.6 o successivo
 
@@ -323,23 +323,23 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
     * MacPro7,1
     * iMacPro1,1
   * Richiede macOS 10.15 o versioni successive
-* [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases)
+* [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases/latest)
   * Necessario per la sincronizzazione del TSC su alcune schede madri Intel HEDT e server, senza questo macOS potrebbe essere estremamente lento o non avviabile.
   * **Non funziona su CPU AMD**
   * Richiede OS X 10.8 o versioni successive
-* [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)
+* [NVMeFix](https://github.com/acidanthera/NVMeFix/releases/latest)
   * Utilizzato per correggere la gestione dell'alimentazione e l'inizializzazione di NVMe non Apple
   * Richiede macOS 10.14 o versioni successive
-* [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
+* [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/raw/master/Injectors/Zip/SATA-unsupported.kext.zip)
   * Aggiunge il supporto per un'ampia varietà di controller SATA, principalmente utile per i laptop che hanno problemi nel vedere l'unità SATA in macOS. Si consiglia prima di provare senza questo.
-  * Nota per MacOs Big Sur: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) dovrà essere utilizzato invece perché numerosi controller sono stati eliminati dal binario stesso
+  * Nota per MacOs Big Sur: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/raw/master/extra-files/CtlnaAHCIPort.kext.zip) dovrà essere utilizzato invece perché numerosi controller sono stati eliminati dal binario stesso
     * Coloro che utilizzano Catalina e versioni precedenti non ne sono coinvolti
 
 ::: details Kext SATA per sistemi Legacy
 
-* [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip)
+* [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/raw/master/Injectors/Zip/AHCIPortInjector.kext.zip)
   * Iniettore Legacy  SATA/AHCI,  principalmente utile per le macchine più vecchie dell'era Penryn
-* [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
+* [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/raw/master/Injectors/Zip/ATAPortInjector.kext.zip)
   * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
 :::
@@ -350,19 +350,19 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 
 #### Driver di input
 
-* [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases)
+* [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases/latest)
   * Per sistemi con tastiere, mouse e trackpad PS2
   * Richiede macOS 10.11 o versioni successive per le funzioni MT2 (Magic Trackpad 2)
-* [RehabMan VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/)
+* [RehabMan VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/RehabMan-Voodoo-2018-1008.zip)
   * Per i sistemi meno recenti con tastiere, mouse e trackpad PS2 o quando non si vuole utilizzare VoodooInput
   * Supporta macos 10.6 e successive
-* [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/)
+* [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/latest)
   * Per sistemi con dispositivi basati su Synaptics SMBus, principalmente per trackpad e puntataori.
   * Richiede macOS 10.11 o successive per le funzioni MT2
-* [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases)
+* [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases/latest)
   * Per sistemi con dispositivi basati su ELAN SMBus, principalmente per trackpad e trackpoint.
   * Attualmente supporta macOS 10.14 o versioni successive
-* [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
+* [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases/latest)
   * Usato per il fix dei dispostitivi I2C, utile con alucni touchpad e touchreeen più particolari
   * Richiede macOS 10.11 o versioni successive per le funzioni MT2
 ::: details Plugin di VoodooI2C
@@ -378,9 +378,9 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 
 #### Misc
 
-* [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases)
+* [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases/latest)
   * Risolve le letture della batteria in molti dispositivi (Permette le letture dei field EC lunghi 8 bit)
-* [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases)
+* [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases/latest)
   * Risolve i tasti di luminosità automaticamente
 
 Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) per un elenco completo dei kext supportati
