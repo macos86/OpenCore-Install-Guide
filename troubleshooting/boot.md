@@ -75,7 +75,7 @@ Le cose principali che vengono testate qui:
 
 Per informazioni più specifiche su come muoversi in quest'area, vedere qui:
 
-* [Bloccato a `RTC...`, `PCI Configuration Begins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](./extended/kernel-issues.md#stuck-on-rtc-pci-configuration-begins-previous-shutdown-hpet-hid-legacy)
+* [Bloccato su `RTC...`, `PCI ConfigurationBegins`, `Previous Shutdown...`, `HPET`, `HID: Legacy...`](./extended/kernel-issues.md#bloccato-su-rtc-pci-configurationbegins-previous-shutdown-hpet-hid-legacy)
 
 ![](../images/troubleshooting/boot-md/6-USB-setup.png)
 
