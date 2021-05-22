@@ -18,7 +18,7 @@ Questa sezione sarà divisa in 3 parti, quindi presta molta attenzione:
 I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 
 * **DevirtualiseMmio**
-  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](../../extras/kaslr-fix.md#utilizzo-di-devirtualisemmio)
+  * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](/extras/kaslr-fix.md#utilizzo-di-devirtualisemmio)
   * Per gli utenti TRx40, abilita quest0 quirk
   * Per gli utenti X99, disabilitare questo Quirk poiché confligge con alcuni firmware
 
@@ -47,7 +47,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
       * SyncRuntimePermissions -> False
     * Nota: alcuni laptop (es. Dell Inspiron 5370) anche con supporto MAT si interromperanno all'avvio, in questi casi avrai due opzioni:
       * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +`SyncRuntimePermissions`)
-      * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](../../extras/kaslr-fix.md)
+      * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](/extras/kaslr-fix.md)
 
 Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](/troubleshooting/debug.md)):
 
