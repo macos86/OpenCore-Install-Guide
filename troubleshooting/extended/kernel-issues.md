@@ -219,11 +219,11 @@ Ciò è dovuto ad un mancante/obsoleto Apple Secure Boot manifest presente sul t
 
 Per risolvere questo è possibile eseguire una delle seguenti operazioni:
 
-* Disabilita SecurebootModel.
-  * Imposta `misc -> secuirty -> SecurebootModel -> Disabled`
+* Disabilita SecurebootModel
+  * ossia, `misc -> secuirty -> SecurebootModel -> Disabled`
 * Reinstallare Macos con l'ultima versione
-* Copia i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
-  * Nota che molto probabilmente dovrai farlo tramite il terminale poiché il volume del preboot non è facilmente modificabile tramite il Finder
+* O copia i Secure Boot manifest da `/usr/standalone/i386` a `/Volumes/Preboot/<UUID>/System/Library/CoreServices`
+  * Nota che molto probabilmente dovrai farlo tramite il terminale, poiché il volume Preboot non è facilmente modificabile dal Finder
   
 Per fare questo tramite Terminale:
 
