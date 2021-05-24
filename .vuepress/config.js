@@ -44,11 +44,11 @@ module.exports = {
                 items: [
                     {
                         text: 'Aggiungere i file di base',
-                        link: '/installer-guide/opencore-efi.md'
+                        link: '/installer-guide/opencore-efi'
                     },
                     {
                         text: 'Raccogliere i File',
-                        link: '/ktext.md'
+                        link: '/ktext'
                     },
                     {
                         text: 'Iniziamo Con ACPI',
@@ -65,10 +65,10 @@ module.exports = {
                 link: '/troubleshooting/'
             },
             {
-                text: 'Guide Dortania',
+                text: 'Guide',
                 items: [
                     {
-                        text: 'Home Site (EN)',
+                        text: 'Dortania (EN)',
                         link: 'https://dortania.github.io/'
                     },
                     {
@@ -80,8 +80,8 @@ module.exports = {
                         link: 'https://dortania.github.io/OpenCore-Post-Install/'
                     },
                     {
-                        text: 'OpenCore Multiboot (EN)',
-                        link: 'https://dortania.github.io/OpenCore-Multiboot/'
+                        text: 'OpenCore Multiboot',
+                        link: 'https://macos86.github.io/OpenCore-Multiboot/'
                     },
                     {
                         text: 'GPU Buyers Guide (EN)',
@@ -103,11 +103,11 @@ module.exports = {
                 title: 'Introduzione',
                 collapsable: false,
                 children: [
-                    '/prerequisites.md',
-                    '/macos-limits.md',
-                    '/find-hardware.md',
-                    '/terminology.md',
-                    '/why-oc.md'
+                    '/prerequisites',
+                    '/macos-limits',
+                    '/find-hardware',
+                    '/terminology',
+                    '/why-oc'
                 ]
 
             },
@@ -119,13 +119,13 @@ module.exports = {
                         title: 'Creare la USB',
                         path: '/installer-guide/',
                         children: [
-                            '/installer-guide/mac-install.md',
-                            '/installer-guide/winblows-install.md',
-                            '/installer-guide/linux-install.md'
+                            '/installer-guide/mac-install',
+                            '/installer-guide/winblows-install',
+                            '/installer-guide/linux-install'
                         ],
                     },
-                    '/installer-guide/opencore-efi.md',
-                    '/ktext.md',
+                    '/installer-guide/opencore-efi',
+                    '/ktext',
                     ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Iniziamo con ACPI']
                 ]
             },
@@ -137,54 +137,54 @@ module.exports = {
                     {
                         title: 'Intel Desktop config.plist',
                         children: [
-                            ['/config.plist/penryn.md', 'Penryn'],
-                            ['/config.plist/clarkdale.md', 'Clarkdale'],
-                            ['/config.plist/sandy-bridge.md', 'Sandy Bridge'],
-                            ['/config.plist/ivy-bridge.md', 'Ivy Bridge'],
-                            ['/config.plist/haswell.md', 'Haswell'],
-                            ['/config.plist/skylake.md', 'Skylake'],
-                            ['/config.plist/kaby-lake.md', 'Kaby Lake'],
-                            ['/config.plist/coffee-lake.md', 'Coffee Lake'],
-                            ['/config.plist/comet-lake.md', 'Comet Lake']
+                            ['/config.plist/penryn', 'Penryn'],
+                            ['/config.plist/clarkdale', 'Clarkdale'],
+                            ['/config.plist/sandy-bridge', 'Sandy Bridge'],
+                            ['/config.plist/ivy-bridge', 'Ivy Bridge'],
+                            ['/config.plist/haswell', 'Haswell'],
+                            ['/config.plist/skylake', 'Skylake'],
+                            ['/config.plist/kaby-lake', 'Kaby Lake'],
+                            ['/config.plist/coffee-lake', 'Coffee Lake'],
+                            ['/config.plist/comet-lake', 'Comet Lake']
                         ]
                     },
                     {
                         title: 'Intel Laptop config.plist',
                         children: [
-                            ['/config-laptop.plist/arrandale.md', 'Arrandale'],
-                            ['/config-laptop.plist/sandy-bridge.md', 'Sandy Bridge'],
-                            ['/config-laptop.plist/ivy-bridge.md', 'Ivy Bridge'],
-                            ['/config-laptop.plist/haswell.md', 'Haswell'],
-                            ['/config-laptop.plist/broadwell.md', 'Broadwell'],
-                            ['/config-laptop.plist/skylake.md', 'Skylake'],
-                            ['/config-laptop.plist/kaby-lake.md', 'Kaby Lake'],
-                            ['/config-laptop.plist/coffee-lake.md', 'Coffee Lake and Whiskey Lake'],
-                            ['/config-laptop.plist/coffee-lake-plus.md', 'Coffee Lake Plus and Comet Lake'],
-                            ['/config-laptop.plist/icelake.md', 'Ice Lake']
+                            ['/config-laptop.plist/arrandale', 'Arrandale'],
+                            ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
+                            ['/config-laptop.plist/ivy-bridge', 'Ivy Bridge'],
+                            ['/config-laptop.plist/haswell', 'Haswell'],
+                            ['/config-laptop.plist/broadwell', 'Broadwell'],
+                            ['/config-laptop.plist/skylake', 'Skylake'],
+                            ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
+                            ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
+                            ['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
+                            ['/config-laptop.plist/icelake', 'Ice Lake']
                         ]
                     },
                     {
                         title: 'Intel HEDT config.plist',
                         children: [
                             '/config-HEDT/nehalem',
-                            '/config-HEDT/ivy-bridge-e.md',
-                            '/config-HEDT/haswell-e.md',
-                            '/config-HEDT/broadwell-e.md',
-                            '/config-HEDT/skylake-x.md'
+                            '/config-HEDT/ivy-bridge-e',
+                            '/config-HEDT/haswell-e',
+                            '/config-HEDT/broadwell-e',
+                            '/config-HEDT/skylake-x'
                         ]
                     },
                     {
                         title: 'AMD Desktop config.plist',
                         children: [
-                            '/AMD/fx.md',
-                            '/AMD/zen.md'
+                            '/AMD/fx',
+                            '/AMD/zen'
                         ]
                     },
                 ]
             },
             {
                 title: 'Processo di Installazione',
-                path: '/installation.md'
+                path: '/installation'
             },
             {
                 title: 'Troubleshooting',
@@ -195,16 +195,16 @@ module.exports = {
                         path: '/troubleshooting/',
                         collapsable: false,
                         children: [
-                            '/troubleshooting/extended/opencore-issues.md',
-                            '/troubleshooting/extended/kernel-issues.md',
-                            '/troubleshooting/extended/userspace-issues.md',
-                            '/troubleshooting/extended/post-issues.md',
-                            '/troubleshooting/extended/misc-issues.md'
+                            '/troubleshooting/extended/opencore-issues',
+                            '/troubleshooting/extended/kernel-issues',
+                            '/troubleshooting/extended/userspace-issues',
+                            '/troubleshooting/extended/post-issues',
+                            '/troubleshooting/extended/misc-issues'
                         ]
                     },
-                    '/troubleshooting/debug.md',
-                    '/troubleshooting/boot.md',
-                    '/troubleshooting/kernel-debugging.md'
+                    '/troubleshooting/debug',
+                    '/troubleshooting/boot',
+                    '/troubleshooting/kernel-debugging'
                 ]
             },
             {
@@ -218,32 +218,32 @@ module.exports = {
                 title: 'Extra',
                 collapsable: false,
                 children: [
-                    '/extras/kaslr-fix.md',
-                    '/extras/spoof.md',
-                    '/extras/big-sur.md',
+                    '/extras/kaslr-fix',
+                    '/extras/spoof',
+                    '/extras/big-sur',
                     {
                         title: 'Macchine Virtuali',
                         children: [
-                            '/extras/virtualbox.md',
-                            '/extras/fusion.md',
-                            '/extras/workstation.md'
+                            '/extras/virtualbox',
+                            '/extras/fusion',
+                            '/extras/workstation'
                         ]
                     },
                     {
                         path: '/clover-conversion/',
                         title: 'Conversioni da Clover',
                         children: [
-                            '/clover-conversion/Clover-config.md',
-                            '/clover-conversion/clover-efi.md',
-                            '/clover-conversion/Clover-boot-arg.md',
-                            '/clover-conversion/clover-patch.md'
+                            '/clover-conversion/Clover-config',
+                            '/clover-conversion/clover-efi',
+                            '/clover-conversion/Clover-boot-arg',
+                            '/clover-conversion/clover-patch'
                         ]
                     },
-                    '/extras/smbios-support.md'
+                    '/extras/smbios-support'
                 ]
             },
-            '/CONTRIBUTING.md',
-            '/credit.md'
+            '/CONTRIBUTING',
+            '/credit'
         ],
     },
     plugins: [
