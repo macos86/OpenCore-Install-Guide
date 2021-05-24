@@ -1,3 +1,6 @@
+---
+sidebarDepth: 2
+---
 # Raccogliere i File
 
 Questa pagina è una raccolta di vari file necessari per l'avvio di MacOs, ci aspettiamo che tu, prima di iniziare, conosca bene il tuo hardware e ci auguriamo che tu abbia fatto già un Hackintosh in passato, perchè non andremo così nel dettaglio in questa pagina.
