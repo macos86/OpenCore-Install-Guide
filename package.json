@@ -1,12 +1,12 @@
 {
-  "name": "OpenCore-Install-Guide",
+  "name": "OpenCore Install Guide",
   "author": {
-    "name": "Dortania",
-    "url": "https://github.com/dortania"
+    "name": "macos86",
+    "url": "https://github.com/macos86"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dortania/OpenCore-Install-Guide.git"
+    "url": "git+https://github.com/macos86/OpenCore-Install-Guide.git"
   },
   "scripts": {
     "dev": "vuepress dev",
