@@ -1,0 +1,3 @@
+[submodule "Getting-Started-With-ACPI"]
+	path = Getting-Started-with-ACPI
+	url = https://github.com/macos86/Getting-Started-with-ACPI.git
