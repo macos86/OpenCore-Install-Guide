@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2.3.4
+        with:
+          submodules: 'true'
       - name: Update submodules
         run: cd Getting-Started-With-ACPI |
              git pull
