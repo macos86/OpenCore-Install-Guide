@@ -255,6 +255,165 @@ module.exports = {
                     ]
                 },
             ],
+            '/config-laptop.plist/': [
+                '/config.plist/',
+                {
+                    title: 'Intel Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config.plist/penryn', 'Penryn'],
+                        ['/config.plist/clarkdale', 'Clarkdale'],
+                        ['/config.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config.plist/haswell', 'Haswell'],
+                        ['/config.plist/skylake', 'Skylake'],
+                        ['/config.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config.plist/coffee-lake', 'Coffee Lake'],
+                        ['/config.plist/comet-lake', 'Comet Lake']
+                    ]
+                },
+                {
+                    title: 'Intel Laptop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config-laptop.plist/arrandale', 'Arrandale'],
+                        ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config-laptop.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config-laptop.plist/haswell', 'Haswell'],
+                        ['/config-laptop.plist/broadwell', 'Broadwell'],
+                        ['/config-laptop.plist/skylake', 'Skylake'],
+                        ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
+                        ['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
+                        ['/config-laptop.plist/icelake', 'Ice Lake']
+                    ]
+                },
+                {
+                    title: 'Intel HEDT config.plist',
+                    collapsable: false,
+                    children: [
+                        '/config-HEDT/nehalem',
+                        '/config-HEDT/ivy-bridge-e',
+                        '/config-HEDT/haswell-e',
+                        '/config-HEDT/broadwell-e',
+                        '/config-HEDT/skylake-x'
+                    ]
+                },
+                {
+                    title: 'AMD Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        '/AMD/fx',
+                        '/AMD/zen'
+                    ]
+                },
+            ],
+            '/config-HEDT/': [
+                '/config.plist/',
+                {
+                    title: 'Intel Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config.plist/penryn', 'Penryn'],
+                        ['/config.plist/clarkdale', 'Clarkdale'],
+                        ['/config.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config.plist/haswell', 'Haswell'],
+                        ['/config.plist/skylake', 'Skylake'],
+                        ['/config.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config.plist/coffee-lake', 'Coffee Lake'],
+                        ['/config.plist/comet-lake', 'Comet Lake']
+                    ]
+                },
+                {
+                    title: 'Intel Laptop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config-laptop.plist/arrandale', 'Arrandale'],
+                        ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config-laptop.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config-laptop.plist/haswell', 'Haswell'],
+                        ['/config-laptop.plist/broadwell', 'Broadwell'],
+                        ['/config-laptop.plist/skylake', 'Skylake'],
+                        ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
+                        ['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
+                        ['/config-laptop.plist/icelake', 'Ice Lake']
+                    ]
+                },
+                {
+                    title: 'Intel HEDT config.plist',
+                    collapsable: false,
+                    children: [
+                        '/config-HEDT/nehalem',
+                        '/config-HEDT/ivy-bridge-e',
+                        '/config-HEDT/haswell-e',
+                        '/config-HEDT/broadwell-e',
+                        '/config-HEDT/skylake-x'
+                    ]
+                },
+                {
+                    title: 'AMD Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        '/AMD/fx',
+                        '/AMD/zen'
+                    ]
+                },
+            ],
+            '/AMD/': [
+                '/config.plist/',
+                {
+                    title: 'Intel Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config.plist/penryn', 'Penryn'],
+                        ['/config.plist/clarkdale', 'Clarkdale'],
+                        ['/config.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config.plist/haswell', 'Haswell'],
+                        ['/config.plist/skylake', 'Skylake'],
+                        ['/config.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config.plist/coffee-lake', 'Coffee Lake'],
+                        ['/config.plist/comet-lake', 'Comet Lake']
+                    ]
+                },
+                {
+                    title: 'Intel Laptop config.plist',
+                    collapsable: false,
+                    children: [
+                        ['/config-laptop.plist/arrandale', 'Arrandale'],
+                        ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
+                        ['/config-laptop.plist/ivy-bridge', 'Ivy Bridge'],
+                        ['/config-laptop.plist/haswell', 'Haswell'],
+                        ['/config-laptop.plist/broadwell', 'Broadwell'],
+                        ['/config-laptop.plist/skylake', 'Skylake'],
+                        ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
+                        ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
+                        ['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
+                        ['/config-laptop.plist/icelake', 'Ice Lake']
+                    ]
+                },
+                {
+                    title: 'Intel HEDT config.plist',
+                    collapsable: false,
+                    children: [
+                        '/config-HEDT/nehalem',
+                        '/config-HEDT/ivy-bridge-e',
+                        '/config-HEDT/haswell-e',
+                        '/config-HEDT/broadwell-e',
+                        '/config-HEDT/skylake-x'
+                    ]
+                },
+                {
+                    title: 'AMD Desktop config.plist',
+                    collapsable: false,
+                    children: [
+                        '/AMD/fx',
+                        '/AMD/zen'
+                    ]
+                },
+            ],
             '/': [
                 {
                     title: 'Introduzione',
