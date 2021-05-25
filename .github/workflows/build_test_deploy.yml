@@ -15,7 +15,8 @@ jobs:
         with:
           submodules: true
       - name: Update submodules
-        run: cd Getting-Started-With-ACPI |
+        run: git submodules update |
+             cd Getting-Started-With-ACPI |
              git pull
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
