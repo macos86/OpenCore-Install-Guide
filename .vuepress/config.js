@@ -48,6 +48,10 @@ module.exports = {
                 link: '/config.plist/'
             },
             {
+                text: 'Multibooting con OpenCore',
+                link: '/OpenCore-Multiboot/'
+            },
+            {
                 text: 'Guide',
                 items: [
                     {
@@ -57,10 +61,6 @@ module.exports = {
                     {
                         text: 'OpenCore Post-Install (EN)',
                         link: 'https://dortania.github.io/OpenCore-Post-Install/'
-                    },
-                    {
-                        text: 'OpenCore Multiboot',
-                        link: 'https://macos86.github.io/OpenCore-Multiboot/'
                     },
                     {
                         text: 'GPU Buyers Guide (EN)',
@@ -415,6 +415,7 @@ module.exports = {
                 },
             ],
             '/OpenCore-Multiboot/': [
+                ['/OpenCore-Multiboot/', 'Multiboot con OpenCore'],
                 {
                     title: 'Per chi ha già esperienza con i multiboot',
                     path: '/OpenCore-Multiboot/QUICK'
