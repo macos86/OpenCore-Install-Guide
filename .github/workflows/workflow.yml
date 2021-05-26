@@ -4,6 +4,7 @@ on:
     branches-ignore:
       - gh-pages
   pull_request:
+  workflow_dispatch:
 jobs:
   sumbodules:
     name: Submodules Update
