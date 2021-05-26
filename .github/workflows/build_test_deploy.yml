@@ -12,13 +12,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2.3.4
         with:
-          submodules: true
-      - name: Update submodules
-        run: git submodule update
-      - name: Update Getting-Started-With-ACPI
-        run: cd Getting-Started-With-ACPI | git pull
-      - name: Update OpenCore-Multiboot
-        run: cd OpenCore-Multiboot | git pull
+          submodules: recursive
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
       - name: Install
