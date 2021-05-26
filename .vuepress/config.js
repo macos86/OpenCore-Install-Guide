@@ -442,7 +442,7 @@ module.exports = {
                                 ['/OpenCore-Multiboot/empty/diffdisk', 'Differenti dischi - molti sistemi'],
                             ]
                         },
-                        ['/exist/', 'Dischi già occupati'],
+                        ['/OpenCore-Multiboot/exist/', 'Dischi già occupati'],
                         {
                             collapsable: false,
                             sidebarDepth: 1,
@@ -478,11 +478,11 @@ module.exports = {
                     title: 'Introduzione',
                     collapsable: false,
                     children: [
-                        '/OpenCore-Multiboot/prerequisites',
-                        '/OpenCore-Multiboot/macos-limits',
-                        '/OpenCore-Multiboot/find-hardware',
-                        '/OpenCore-Multiboot/terminology',
-                        '/OpenCore-Multiboot/why-oc'
+                        '/prerequisites',
+                        '/macos-limits',
+                        '/find-hardware',
+                        '/terminology',
+                        '/why-oc'
                     ]
 
                 },
