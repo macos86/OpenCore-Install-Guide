@@ -192,3 +192,4 @@ A causa di un problema riguardo al supporto Nvidia nelle nuove versioni di macOS
 Questo problema è con ogni GPU Nvidia più nuova, dato che Apple ha smesso di vendere macchine con queste GPU e non avranno presto nessun supporto ufficiale da Apple. Invece, gli utenti hanno bisogno di affidarsi a driver di terze parti di Nvidia. A causa del Secure Boot introdotto da poco, non potevano più supportare questi Web Drivers e Nvidia non poteva più pubblicarli per piattaforme più nuove, limitandosi a macOS 10.13, High Sierra.
 
 Per maggiori informazioni riguardo al supporto del sistema operativo, vedi qui: [GPU Buyers Guide (EN)](https://dortania.github.io/GPU-Buyers-Guide/)
+   
