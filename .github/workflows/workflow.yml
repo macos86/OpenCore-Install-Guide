@@ -15,7 +15,6 @@ jobs:
           submodules: recursive
       - name: Sumbodules
         run: |
-# git pull --recurse-submodules
           git submodule update --remote --recursive
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
