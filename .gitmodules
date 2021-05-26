@@ -1,3 +1,6 @@
 [submodule "Getting-Started-With-ACPI"]
 	path = Getting-Started-With-ACPI
 	url = https://github.com/macos86/Getting-Started-With-ACPI.git
+[submodule "OpenCore-Multiboot"]
+	path = OpenCore-Multiboot
+	url = https://github.com/macos86/OpenCore-Multiboot.git

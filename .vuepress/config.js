@@ -414,6 +414,65 @@ module.exports = {
                     ]
                 },
             ],
+            '/OpenCore-Multiboot/': [
+                {
+                    title: 'Per chi ha già esperienza con i multiboot',
+                    path: 'QUICK'
+                },
+                {
+                    title: 'Introduzione al multibooting',
+                    collapsable: false,
+                    sidebarDepth: 1,
+                    children: [
+                        ['/Intro/Def', 'Che cos\'è?'],
+                        ['/Intro/Booting-part', 'UEFI? Legacy? CSM? Che!?'],
+                    ]
+                },
+                {
+                    title: 'Multiboot su UEFI',
+                    collapsable: false,
+                    sidebarDepth: 1,
+                    children: [
+                        ['/empty/', 'Dischi vuoti'],
+                        {
+                            collapsable: false,
+                            sidebarDepth: 1,
+                            children: [
+                                ['/empty/samedisk', 'Un disco - molti sistemi'],
+                                ['/empty/diffdisk', 'Differenti dischi - molti sistemi'],
+                            ]
+                        },
+                        ['/exist/', 'Dischi già occupati'],
+                        {
+                            collapsable: false,
+                            sidebarDepth: 1,
+                            children: [
+                                ['/exist/data', 'Su dischi con dati non relativi ai sistemi operativi (dati)'],
+                                ['/exist/os', 'Su dischi con sistemi già presenti (Windows/Linux)'],
+                            ]
+                        },
+                    ]
+                },
+                {
+                    title: 'Risoluzione dei problemi',
+                    path: 'troubleshooting'
+                },
+                {
+                    title: 'Configurazioni di OpenCore',
+                    collapsable: false,
+                    sidebarDepth: 1,
+                    children: [
+                        ['/oc/linux', 'Per avviare Linux'],
+                        ['/oc/duet', 'Per installare su sistemi non UEFI'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html', 'Usare LauncherOption'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html', 'Installare BootCamp'],
+                    ]
+                },
+                {
+                    title: 'Installazione manuale e automatica di Windows (10)',
+                    path: 'Win'
+                }
+            ],
             '/': [
                 {
                     title: 'Introduzione',
