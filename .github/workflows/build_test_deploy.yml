@@ -3,7 +3,6 @@ on:
   push:
     branches-ignore:
       - gh-pages
-  workflow_dispatch:
   pull_request:
 jobs:
   build:
@@ -15,7 +14,11 @@ jobs:
         with:
           submodules: true
       - name: Update submodules
-        run: git submodule update | ls | cd Getting-Started-With-ACPI | git pull | cd .. | cd OpenCore-Multiboot | git pull
+        run: git submodule update
+      - name: Update Getting-Started-With-ACPI
+        run: cd Getting-Started-With-ACPI | git pull
+      - name: Update OpenCore-Multiboot
+        run: cd OpenCore-Multiboot | git pull
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
       - name: Install
