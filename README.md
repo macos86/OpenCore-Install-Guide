@@ -2,11 +2,10 @@
 home: true
 heroImage: dortania-logo-clear.png
 heroText: Guida di Installazione OpenCore by Dortania
-actionText: Iniziamo→
-actionLink: prerequisites.md
-meta:
-- name: description
-  content: Ricordiamo che questa è una traduzione NON UFFICIALE! Se vuoi vedere l'originale, visita Dortania. Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina.
+actions:
+  - text: Iniziamo→
+    link: prerequisites.md
+tagline: Ricordiamo che questa è una traduzione NON UFFICIALE! Se vuoi vedere l'originale, visita Dortania. Se vuoi contribuire a una traduzione, clicca sul tasto in fondo alla pagina.
 ---
 
 # Cos'è OpenCore e per chi è stata scritta questa guida

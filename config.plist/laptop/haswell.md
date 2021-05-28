@@ -1,8 +1,8 @@
-# Laptop Skylake
+# Laptop Haswell
 
 | Supporto | Versione |
 | :--- | :--- |
-| Supporto di macOS iniziale | OS X 10.11, El Capitan |
+| Supporto di macOS iniziale | OS X 10.8, Mountain Lion |
 
 ## Punto d'Inizio
 
@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-laptop.plist/skylake/acpi.png)
+![ACPI](../../images/config/config-laptop.plist/haswell/acpi.png)
 
 ### Add
 
@@ -39,14 +39,10 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
-| **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB |
+| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti. |
+| **SSDT-EC** | Sistema il controller integrato. |
 | **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
 | **SSDT-PNLF** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
-
-Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
-
-Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**. Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
 
 :::
 
@@ -79,7 +75,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+![Booter](../../images/config/config-universal/aptio-iv-booter.png)
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -109,7 +105,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-laptop.plist/haswell/DeviceProperties.png)
+![DeviceProperties](../../images/config/config-laptop.plist/haswell/DeviceProperties.png)
 
 ### Add
 
@@ -129,39 +125,30 @@ Quando si configura la iGPU, la tabella seguente dovrebbe aiutare a trovare i va
 In genere, segui questi passaggi durante la configurazione delle proprietà iGPU. Segui le note di configurazione sotto la tabella se dicono qualcosa di diverso:
 
 1. Quando configuri inizialmente il tuo config.plist, imposta solo `AAPL,ig-platform-id` - questo è normalmente sufficiente
-2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL,ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
+2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL, ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
 
 | AAPL,ig-platform-id | Type | Comment |
 | ------------------- | ---- | ------- |
-| **00001619** | Laptop | Raccomandato per HD515, HD520, HD530, HD540, HD550 and P530 |
-| **00001E19** | Laptop | Alternativo per HD 515 if you have issues with the above entry |
-| **00001B19** | Laptop | Raccomandato per for HD510 |
-| **00001E19** | NUC | Raccomandato per HD515 |
-| **02001619** | NUC | Raccomandato per HD520/530 |
-| **02002619** | NUC | Raccomandato per HD540/550 |
-| **05003B19** | NUC | Raccomandato per HD580 |
+| **0500260A** | Laptop | Usato di solito con HD5000, HD5100 and HD5200 |
+| **0600260A** | Laptop | Usato di solito con HD4200, HD4400 and HD4600, **devi** usare `device-id`(see below) |
+| **0300220D** | NUC | Usato di solito con tutti i NUC Haswell, HD4200/4400/4600 **devi** usare `device-id`(see below) |
 
 #### Configuration Notes
 
-* Per HD510 dovrai usare uno spoofing dell'id del dispositivo:
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| device-id | Data | 02190000 |
-
-* Per HD550 e P530 (e potenzialmente tutte le iGPU serie P HD), potrebbe essere necessario utilizzare `device-id`=`16190000`:
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| device-id | Data | 16190000 |
-
-* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su 64 MB più in alto nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
+Oltre ad AAPL, ig-platform-id, ti consigliamo di aggiungere la patch della dimensione dei byte del cursore da 6 MB (00006000) a 9 MB a causa di alcuni problemi:
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
 | framebuffer-patch-enable | Data | 01000000 |
-| framebuffer-stolenmem | Data | 00003001 |
-| framebuffer-fbmem | Data | 00009000 |
+| framebuffer-cursormem | Data | 00009000 |
+
+**Special note for HD4200, HD4400 and HD4600**:
+
+Avrai anche bisogno di uno spoofing dell'id del dispositivo per essere supportato:
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| device-id | Data | 12040000 |
 
 :::
 
@@ -184,7 +171,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -304,6 +291,8 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
   * Disabilita il kernel panic su AP core lapic interrupt, generalmente necessario per i sistemi HP. L'equivalente in Clover è `Kernel LAPIC`
 * **LegacyCommpage**: NO
   * Risolve il requisito SSSE3 per le CPU a 64 bit in macOS, principalmente rilevante per le CPU Pentium 4 a 64 bit (es. Prescott)
+* **PanicNoKextDump**: YES
+  * Consente di leggere i log del kernel panic quando si verificano i kernel panic
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
@@ -340,7 +329,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -436,7 +425,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -533,33 +522,36 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-laptop.plist/skylake/smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/coffeelake/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio Skylake, sceglieremo MacBookPro13,1 SMBIOS. La ripartizione tipica è la seguente:
+Per questo esempio Haswell, sceglieremo MacBookPro11,1 SMBIOS. La ripartizione è la seguente
 
-| SMBIOS | CPU Type | GPU Type | Display Size | Touch ID |
-| :--- | :--- | :--- | :--- | :--- |
-| MacBook9,1 | Dual Core 7w(Low End) | iGPU: HD 515 | 12" | No |
-| MacBookPro13,1 | Dual Core 15w(Low End) | iGPU: Iris 540 | 13" | No |
-| MacBookPro13,2 | Dual Core 15w(High End) | iGPU: Iris 550 | 13" | Yes |
-| MacBookPro13,3 | Quad Core 45w | iGPU: HD 530 + dGPU: RP450/455 | 15" | Yes |
-| iMac17,1 | NUC Systems | iGPU: HD 530 + R9 290 |  N/A | No |
+| SMBIOS | CPU Type | GPU Type | Display Size |
+| :--- | :--- | :--- | :--- |
+| MacBookAir6,1 | Dual Core 15w | iGPU: HD 5000 | 11" |
+| MacBookAir6,2 | Dual Core 15w | iGPU: HD 5000 | 13" |
+| MacBookPro11,1 | Dual Core 28w | iGPU: Iris 5100 | 13" |
+| MacBookPro11,2 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
+| MacBookPro11,3 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: GT750M | 15" |
+| MacBookPro11,4 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
+| MacBookPro11,5 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: R9 M370X | 15" |
+| Macmini7,1 | NUC Systems | HD 5000/Iris 5100 | N/A |
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
 ```sh
   #######################################################
- #               MacBookPro13,1 SMBIOS Info            #
+ #               MacBookPro11,1 SMBIOS Info            #
 #######################################################
 
-Type:         MacBookPro13,1
-Serial:       C02S3HYWGG7L
-Board Serial: C02629102GUGPF7AD
-SmUUID:       3508AD44-B67D-4AD7-A109-7955130A1033
+Type:         MacBookPro11,1
+Serial:       C02M9SYJFY10
+Board Serial: C02408101J9G2Y7A8
+SmUUID:       7B227BEC-660D-405F-8E60-411B3E4EF055
 ```
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
@@ -618,7 +610,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -681,7 +673,6 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 * **UnblockFsConnect**: NO
   * Alcuni firmware bloccano gli handle di partizione aprendoli in modalità By Driver, che impedisce l'installazione dei protocolli di file system. Principalmente rilevante per i sistemi HP quando non sono elencate le unità
-
 :::
 
 ### ReservedMemory

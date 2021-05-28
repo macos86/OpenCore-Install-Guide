@@ -1,8 +1,10 @@
-# Laptop Haswell
+# Laptop Clarksfield e Arrandale
 
 | Supporto | Versione |
 | :--- | :--- |
-| Supporto di macOS iniziale | OS X 10.8, Mountain Lion |
+| Supporto di macOS iniziale | OS X 10.6.3, Snow Leopard |
+| Nota 1 | Le iGPU Arrandale sono ufficialmente supportate solo fino a macOS 10.13 |
+| Nota 2 | La maggior parte delle schede Clarksfield e Arrandale non supportano UEFI |
 
 ## Punto d'Inizio
 
@@ -25,7 +27,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-laptop.plist/haswell/acpi.png)
+![](/images/config/config-legacy/acpi-arrendale.png)
 
 ### Add
 
@@ -39,10 +41,9 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti. |
-| **SSDT-EC** | Sistema il controller integrato. |
-| **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
-| **SSDT-PNLF** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
+| **SSDT-EC** | Sistema il controller integrato |
+| **SSDT-XOSI** | Fa funzionare la specifica _OSI di Windows anche per l'identificatore di macOS (Darwin). Aiuta ad abilitare funzionalità come XHCI e altro. |
+| **SSDT-PNLF** | Sistema il controllo della luminosità Nota che i NUC Intel non gli serve questo |
 
 :::
 
@@ -75,37 +76,60 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+| Legacy | UEFI
+| :--- | :--- |
+| ![](/images/config/config-legacy/booter-duetpkg.png) | ![](/images/config/config-universal/aptio-iv-booter-sl.png) |
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
 ### MmioWhitelist
 
-Questa sezione consente il passaggio dei dispositivi a macOS che vengono generalmente ignorati, utile quando appaiata con `DevirtualiseMmio`
+Questa sezione consente il passaggio di spazi a macOS che vengono generalmente ignorati, utile se abbinato a `DevirtualiseMmio`
 
 ### Quirks
 
 ::: tip Info
-Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, lo lasciamo come predefinito
+Impostazioni relative alle patch boot.efi e alle correzioni del firmware, a seconda di dove la tua scheda ha UEFI, hai 2 opzioni a seconda di cosa supporta la tua scheda madre:
+
+#### Legacy Settings
+
+| Quirk | Enabled | Comment |
+| :--- | :--- | :--- |
+| AvoidRuntimeDefrag | No | Big Sur potrebbe richiedere che questo Quirk sia abilitato |
+| EnableSafeModeSlide | No | |
+| EnableWriteUnprotector | No | |
+| ProvideCustomSlide | No | |
+| RebuildAppleMemoryMap | Yes | Ciò è necessario per avviare OS X da 10.4 a 10.6 |
+| SetupVirtualMap | No | |
+
+#### UEFI Settings
+
+| Quirk | Enabled | Comment |
+| :--- | :--- | :--- |
+| RebuildAppleMemoryMap | Yes | Ciò è necessario per avviare OS X da 10.4 a 10.6 |
+
 :::
 ::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: YES
   * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
+  * macOS Big Sur, tuttavia, richiede la presenza della tabella APIC, altrimenti causerebbe i primi panic del kernel, quindi questo Quirk è consigliato per quegli utenti.
 * **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
 * **EnableWriteUnprotector**: YES
-  * Necessario per rimuovere la protezione da scrittura dal registro CR0.
+  *Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: YES
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
+* **RebuildAppleMemoryMap**: YES
+  * Risolve problemi precoci di kernel panic della memoria su 10.6 e versioni precedenti.
 * **SetupVirtualMap**: YES
-  * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
+* Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
 
 :::
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-laptop.plist/haswell/DeviceProperties.png)
+![](/images/config/config-legacy/igpu-arrendale.png)
 
 ### Add
 
@@ -115,40 +139,14 @@ Imposta le proprietà del dispositivo da una mappa.
 
 Questa sezione è configurata tramite la [Framebuffer Patching Guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) di WhateverGreen e viene utilizzata per impostare importanti proprietà iGPU.
 
-Quando si configura la iGPU, la tabella seguente dovrebbe aiutare a trovare i valori giusti da impostare. Ecco una spiegazione di alcuni valori:
+Quando si imposta la iGPU, aggiungere semplicemente i valori seguenti alla voce `PciRoot(0x0)/Pci(0x2,0x0)`:
 
-* **AAPL,ig-platform-id**
-  * Viene utilizzato internamente per configurare iGPU
-* **Type**
-  * Se la voce è consigliata per laptop (ad es. Con display integrati) o per Intel NUC (ad es. Box indipendenti)
-
-In genere, segui questi passaggi durante la configurazione delle proprietà iGPU. Segui le note di configurazione sotto la tabella se dicono qualcosa di diverso:
-
-1. Quando configuri inizialmente il tuo config.plist, imposta solo `AAPL,ig-platform-id` - questo è normalmente sufficiente
-2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL, ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
-
-| AAPL,ig-platform-id | Type | Comment |
-| ------------------- | ---- | ------- |
-| **0500260A** | Laptop | Usato di solito con HD5000, HD5100 and HD5200 |
-| **0600260A** | Laptop | Usato di solito con HD4200, HD4400 and HD4600, **devi** usare `device-id`(see below) |
-| **0300220D** | NUC | Usato di solito con tutti i NUC Haswell, HD4200/4400/4600 **devi** usare `device-id`(see below) |
-
-#### Configuration Notes
-
-Oltre ad AAPL, ig-platform-id, ti consigliamo di aggiungere la patch della dimensione dei byte del cursore da 6 MB (00006000) a 9 MB a causa di alcuni problemi:
-
-| Key | Type | Value |
+| Property | Type | Value |
 | :--- | :--- | :--- |
 | framebuffer-patch-enable | Data | 01000000 |
-| framebuffer-cursormem | Data | 00009000 |
+| framebuffer-singlelink | Data | 01000000 |
 
-**Special note for HD4200, HD4400 and HD4600**:
-
-Avrai anche bisogno di uno spoofing dell'id del dispositivo per essere supportato:
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| device-id | Data | 12040000 |
+* **Note**: I driver Iron Lake di Apple supportano solo i display LVDS e **non** eDP
 
 :::
 
@@ -171,7 +169,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -296,7 +294,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
-  * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
+* Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
 
@@ -329,7 +327,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -419,13 +417,17 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
 
 ### Tools
 
+Utilizzata per eseguire strumenti di debug OC come la shell, la funzione snapshot di ProperTree li aggiungerà per te.
+
+### Entries
+
 Utilizzato per specificare percorsi di avvio irregolari che non possono essere trovati naturalmente con OpenCore.
 
 Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori informazioni
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -469,7 +471,7 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio generici**:
 
-| boot-args | Description |
+ boot-args | Description |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
  **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
@@ -478,10 +480,9 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio specifici per GPU**:
 
-|| boot-args | Description |
+| boot-args | Description |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare boardID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le carte Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e HighSierra |
+| **-wegnoegpu** | Utilizzato per disabilitare tutte le altre GPU oltre all'iGPU Intel integrato, utile per coloro che desiderano eseguire versioni più recenti di macOS dove la loro dGPU non è supportata |
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
@@ -522,36 +523,30 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-laptop.plist/coffeelake/smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/ivy-bridge/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio Haswell, sceglieremo MacBookPro11,1 SMBIOS. La ripartizione è la seguente
+Per questo esempio Arrandale, scegleremo the MacBookPro6,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione tipica è la seguente:
 
-| SMBIOS | CPU Type | GPU Type | Display Size |
+| SMBIOS | CPU Type | Display Size |
 | :--- | :--- | :--- | :--- |
-| MacBookAir6,1 | Dual Core 15w | iGPU: HD 5000 | 11" |
-| MacBookAir6,2 | Dual Core 15w | iGPU: HD 5000 | 13" |
-| MacBookPro11,1 | Dual Core 28w | iGPU: Iris 5100 | 13" |
-| MacBookPro11,2 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
-| MacBookPro11,3 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: GT750M | 15" |
-| MacBookPro11,4 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
-| MacBookPro11,5 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: R9 M370X | 15" |
-| Macmini7,1 | NUC Systems | HD 5000/Iris 5100 | N/A |
+| MacBookPro6,1 | Quad Core 45w(High End) | 17" |
+| MacBookPro6,2 | Quad Core 45w(Low End) | 15" |
 
-Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
+Run GenSMBIOS, pick option 1 for downloading MacSerial and Option 3 for selecting out SMBIOS.  This will give us an output similar to the following:
 
 ```sh
   #######################################################
- #               MacBookPro11,1 SMBIOS Info            #
+ #             MacBookPro6,1 SMBIOS Info               #
 #######################################################
 
-Type:         MacBookPro11,1
-Serial:       C02M9SYJFY10
-Board Serial: C02408101J9G2Y7A8
-SmUUID:       7B227BEC-660D-405F-8E60-411B3E4EF055
+Type:         MacBookPro6,1
+Serial:       C02G3ZYFDC79
+Board Serial: C021291014NDCMVCB
+SmUUID:       C8A54C45-8E99-440A-9A52-1B62A0074FA5
 ```
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
@@ -610,7 +605,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -622,8 +617,9 @@ Aggiungi qui i tuoi driver .efi.
 
 I soli driver presenti qui dovrebbero essere:
 
-* HfsPlus.efi
+* HfsPlusLegacy.efi
 * OpenRuntime.efi
+* OpenUsbKbDxe.efi(If your firmware does not support UEFI)
 
 ### APFS
 
@@ -637,7 +633,15 @@ Relativamente alle impostazioni di AudioDxe, per noi ignoreremo (lasciare come i
 
 ### Input
 
-In relazione al passthrough della tastiera boot.efi utilizzato per FileVault e il supporto dei tasti di scelta rapida, lasciare tutto qui come predefinito poiché non abbiamo alcun uso per questei Quirks. Vedi qui per maggiori dettagli: [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/)
+::: tip Info
+
+Relativo al passthrough della tastiera boot.efi utilizzato per FileVault e supporto Hotkey, lascia tutto qui come predefinito oltre a:
+
+| Quirk | Value | Comment |
+| :--- | :--- | :--- |
+| KeySupport | NO | Abilita se il tuo BIOS supporta UEFI |
+
+:::
 
 ### Output
 
@@ -654,14 +658,16 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
+| IgnoreInvalidFlexRatio | YES | |
+| ReleaseUsbOwnership | YES | |
 | UnblockFsConnect | NO | Usato soprattutto su motherboards HP |
 
 :::
 
-::: details Informazioni più approfondite
+::: details More in-depth Info
 
 * **IgnoreInvalidFlexRatio**: YES
-  * Risolve il problema quando MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake precedenti
+  * Risolto il problema quando MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake precedenti
 * **ReleaseUsbOwnership**: YES
   * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI / XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
 * **DisableSecurityPolicy**: NO
@@ -673,6 +679,7 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 * **UnblockFsConnect**: NO
   * Alcuni firmware bloccano gli handle di partizione aprendoli in modalità By Driver, che impedisce l'installazione dei protocolli di file system. Principalmente rilevante per i sistemi HP quando non sono elencate le unità
+
 :::
 
 ### ReservedMemory
@@ -680,6 +687,8 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da utilizzare, principalmente rilevante per iGPU Sandy Bridge o sistemi con memoria difettosa. L'uso di questa stranezza non è trattato in questa guida
 
 ## Impostazioni BIOS Intel
+
+* Note: Most of these options may not be present in your firmware, we recommend matching up as closely as possible but don't be too concerned if many of these options are not available in your BIOS
 
 * Nota: la maggior parte di queste opzioni potrebbe non essere presente nel tuo firmware, ti consigliamo di abbinarle il più fedelmente possibile, ma non preoccuparti se molte di queste opzioni non sono disponibili nel tuo BIOS
 
