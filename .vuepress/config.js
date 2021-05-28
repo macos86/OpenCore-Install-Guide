@@ -30,7 +30,7 @@ module.exports = {
 
     themeConfig: {
         lastUpdatedText: 'Ultimo Aggiornamento',
-        repo: 'macos86/OpenCore-Install-Guide',
+        repo: 'macos86/macos86.github.io',
         contributorsText: 'Chi ha contribuito alla creazione di questa pagina',
         editLinks: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
