@@ -1,8 +1,9 @@
-# Laptop Icelake
+# Laptop Coffee Lake e Whiskey Lake
 
 | Supporto | Versione |
 | :--- | :--- |
-| Supporto di macOS iniziale | macOS 10.15, Catalina |
+| Supporto di macOS iniziale ([Coffee Lake](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
+| Supporto di macOS iniziale ([Whiskey Lake](https://en.wikipedia.org/wiki/Whiskey_Lake_(microarchitecture))) | macOS 10.14.1, Mojave |
 
 ## Punto d'Inizio
 
@@ -25,7 +26,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-laptop.plist/icelake/acpi.png)
+![ACPI](../../images/config/config-laptop.plist/coffeelake/acpi.png)
 
 ### Add
 
@@ -39,12 +40,11 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
+| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti. |
 | **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB. |
 | **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
 | **SSDT-PNLF-CFL** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
-| **SSDT-AWAC** | Questa è la [patch della serie 300 per RTC (DE)](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggior parte di B360, B365, H310, H370, Z390 e alcuni sistemi Z370, che previene l'avvio di macOS a causa dell'orologio di sistema. L'alternativa è SSDT-RTC0 quando SSDT-AWAC è incompatibile a causa della mancanza del vecchio orologio RTC, per controllare quale ti serve. |
-| **SSDT-RHUB** | Necessario per sistemare gli errori legati a Root-device in molti laptop Icelake |
+| **SSDT-AWAC** | Questa è la [patch della serie 300 per RTC (DE)](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggior parte di B360, B365, H310, H370, Z390 e alcuni sistemi Z370, che previene l'avvio di macOS a causa dell'orologio di sistema. L'alternativa è SSDT-RTC0 quando SSDT-AWAC è incompatibile a causa della mancanza del vecchio orologio RTC, per controllare quale ti serve |
 
 :::
 
@@ -77,7 +77,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-laptop.plist/icelake/booter.png)
+![Booter](../../images/config/config-universal/aptio-v-booter.png)
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -92,27 +92,20 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 
 | Quirk | Enabled |
 | :--- | :--- |
-| DevirtualiseMmio | YES |
 | EnableWriteUnprotector | NO |
-| ProtectUefiServices | YES |
 | RebuildAppleMemoryMap | YES |
 | SyncRuntimePermissions | YES |
 :::
 
-::: details Informazioni più approfondite
+::: details More in-depth Info
 
 * **AvoidRuntimeDefrag**: YES
   * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
-* **DevirtualiseMmio**: YES
-  * Riduce l'ingombro della memoria rubata, espande le opzioni per i valori "slide = N" ed è molto utile per risolvere i problemi di allocazione della memoria su Z390. Richiede `ProtectUefiServices` anche su IceLake e Z390 Coffee Lake
 * **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
 * **EnableWriteUnprotector**: NO
   * Questa stranezza e RebuildAppleMemoryMap possono comunemente entrare in conflitto, consigliato per abilitare quest'ultimo sulle piattaforme più recenti e disabilitare questa voce.
-  * Tuttavia, a causa di problemi con gli OEM che non utilizzano le ultime build EDKII, potresti scoprire che la combinazione di cui sopra si tradurrà in errori di avvio precoce. Ciò è dovuto alla mancanza di `MEMORY_ATTRIBUTE_TABLE` e pertanto consigliamo di disabilitare RebuildAppleMemoryMap e abilitare EnableWriteUnprotector. Maggiori informazioni su questo sono trattate nella[troubleshooting section](/troubleshooting/extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
-* **ProtectUefiServices**: YES
-  * Protegge i servizi UEFI dall'override del firmware, principalmente rilevante per i sistemi VM, Icelake e Z390
-  * Se su Z390, **abilita questo quirk**
+  * Tuttavia, a causa di problemi con gli OEM che non utilizzano le ultime build EDKII, potresti scoprire che la combinazione di cui sopra si tradurrà in errori di avvio precoce. Ciò è dovuto alla mancanza di `MEMORY_ATTRIBUTE_TABLE` e pertanto consigliamo di disabilitare RebuildAppleMemoryMap e abilitare EnableWriteUnprotector. Maggiori informazioni su questo sono trattate nella [sezione risoluzione dei problemi](/troubleshooting/extended/kernel-issues.md#bloccato-su-eb-log-exitbs-start)
 * **ProvideCustomSlide**: YES
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
@@ -121,12 +114,11 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
 * **SyncRuntimePermissions**: YES
   * Corregge l'allineamento con le tabelle MAT ed è necessario per avviare Windows e Linux con le tabelle MAT, consigliato anche per macOS. Principalmente rilevante per gli utenti di RebuildAppleMemoryMap
-
 :::
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-laptop.plist/coffeelake-plus/DeviceProperties.png)
+![DeviceProperties](../../images/config/config-laptop.plist/coffeelake/DeviceProperties.png)
 
 ### Add
 
@@ -148,19 +140,35 @@ In genere, segui questi passaggi durante la configurazione delle proprietà iGPU
 1. Quando configuri inizialmente il tuo config.plist, imposta solo AAPL, ig-platform-id - questo è normalmente sufficiente
 2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL,ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
 
-| AAPL,ig-platform-id | Port Count | Comment |
-| ------------------- | ---------- | ------- |
-| **0000528A** | 6 | Valore raccomandato per G4/G7 |
+| AAPL,ig-platform-id | Type | Comment |
+| ------------------- | ---- | ------- |
+| **0900A53E** | Laptop | Valore Rraccomandato per UHD630 |
+| **00009B3E** | Laptop | Valore Rraccomandato per UHD620 |
+| **07009B3E** | NUC | Valore Rraccomandato per UHD 620/630 |
+| **0000A53E** | NUC | Valore Rraccomandato per UHD 655 |
 
 #### Configuration Notes
 
-* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 256 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
+* Per `UHD630` probabilmente non è necessario falsificare `device-id` poiché è già `0x3E9B`. Se è qualcos'altro, puoi usare `device-id`=`9B3E0000`:
+  * Puoi controllare in Gestione dispositivi in Windows facendo apparire l'iGPU, aprendo le proprietà, selezionando i dettagli e facendo clic su ID hardware.
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| `framebuffer-patch-enable` | Number | `1` |
-| `framebuffer-stolenmem` | Data | `00003001` |
-| `framebuffer-fbmem` | Data | `00009000` |
+| device-id | Data | 9B3E0000 |
+
+* Un `UHD620` in una CPU Comet Lake **richiede** `device-id`=`9B3E0000`:
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| device-id | Data | 9B3E0000 |
+
+* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 64 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| framebuffer-patch-enable | Data | 01000000 |
+| framebuffer-stolenmem | Data | 00003001 |
+| framebuffer-fbmem | Data | 00009000 |
 
 :::
 
@@ -183,7 +191,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -220,7 +228,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: details Tabella di supporto del kernel
+::: Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
@@ -341,7 +349,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -441,7 +449,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -487,18 +495,17 @@ System Integrity Protection bitmask
 
 | boot-args | Description |
 | :--- | :--- |
-| | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
+| **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
  **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
-| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/) |
-| **-igfxcdc** | Risolve i kernel panic basati su Clock ID su CPU Icelake, consigliato per tutti gli utenti |
-| **-igfxdvmt** | Simile a quanto sopra, risolve il problema con alcuni firmware con 60 MB riservati per la memoria iGPU che può causare panic del kernel |
+| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/)
 
-* **GPU-Specific boot-args**:
+* **Argomenti di avvio specifici per GPU**:
 
-| boot-args | Description |
+|| boot-args | Description |
 | :--- | :--- |
-| **-wegnoegpu** | Utilizzato per disabilitare tutte le altre GPU oltre all'iGPU Intel integrato, utile per coloro che desiderano eseguire versioni più recenti di macOS dove la loro dGPU non è supportata |
+| **agdpmod=pikera** | Utilizzato per disabilitare boardID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le carte Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e HighSierra |
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
@@ -539,33 +546,34 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-laptop.plist/icelake/smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/coffeelake/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio IceLake, sceglieremo MacBookAir9,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione è la seguente:
+Per questo esempio Coffee Lake, sceglieremoe the MacBookPro15,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione è la seguente:
 
 | SMBIOS | CPU Type | GPU Type | Display Size | Touch ID |
 | :--- | :--- | :--- | :--- | :--- |
-| MacBookAir9,1 | Dual/Quad Core 12w | iGPU: G4/G7 | 13" | Yes |
-| MacBookPro16,2 | Quad Core 28w | iGPU: G4/G7 | 13" | Yes |
+| MacBookPro15,1 | Hexa Core 45w | iGPU: UHD 630 + dGPU: RP555/560X | 15" | Yes |
+| MacBookPro15,2 | Quad Core 15w | iGPU: Iris 655 | 13" | Yes |
+| MacBookPro15,3 | Hexa Core 45w | iGPU: UHD 630 + dGPU: Vega16/20 | 15" | Yes |
+| MacBookPro15,4 | Quad Core 15w | iGPU: Iris 645 | 13" | Yes |
+| Macmini8,1 | NUC Systems | HD 6000/Iris Pro 6200 |  N/A | No |
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
 ```sh
   #######################################################
- #               MacBookAir9,1 SMBIOS Info             #
+ #               MacBookPro15,1 SMBIOS Info            #
 #######################################################
 
-Type:         MacBookAir9,1
+Type:         MacBookPro15,1
 Serial:       C02XG0FDH7JY
 Board Serial: C02839303QXH69FJA
 SmUUID:       DBB364D6-44B2-4A02-B922-AB4396F16DA8
 ```
-
-* **Nota**: MacSerial attualmente non supporta Linux, quindi devi prendere una macchina Windows o macOS per generare i valori MacBookPro16,2 +
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
 
@@ -623,7 +631,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi-laptop.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi-laptop.png)
 
 **ConnectDrivers**: YES
 

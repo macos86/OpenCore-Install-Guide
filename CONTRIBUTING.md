@@ -79,10 +79,10 @@ Se hai domande o dubbi riguardo le traduzioni o l'hosting, sii libero di raggiun
 
 Traduzioni correntemente conosciute:
 
-* [InyextcionES](https://github.com/InyextcionES/OpenCore-Install-Guide)(Spagnolo)
-* [macOS86](https://macos86.github.io/OpenCore-Install-Guide/)(Italiano!!! da poco riabilitata, cerchiamo aiuto per tradurla)
-* [Technopat](https://www.technopat.net/sosyal/konu/opencore-ile-macos-kurulum-rehberi.963661/)(Turco)
-* [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide)(Cinese)
-* [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide)(Russo)
+* [InyextcionES](https://github.com/InyextcionES/OpenCore-Install-Guide) (Spagnolo)
+* [macOS86](/) (Italiano! Da poco riabilitata, cerchiamo aiuto per tradurla)
+* [Technopat](https://www.technopat.net/sosyal/konu/opencore-ile-macos-kurulum-rehberi.963661/) (Turco)
+* [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide) (Cinese)
+* [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide) (Russo)
 
 E nota che queste traduzioni sono soggette alle preferenze degli autori, ai cambiamenti delle traduzioni e agli errori umani. Per favore ricordatene quando le leggi e ricordati che non sono ufficiali, al contrario delle guide Dortania.

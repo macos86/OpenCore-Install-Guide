@@ -1,4 +1,4 @@
-# Bulldozer(15°) e Jaguar(16°)
+# Ryzen e Threadripper(17° and 19°)
 
 | Supporto | Versione |
 | :--- | :--- |
@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/AMD/acpi-fx.png)
+![ACPI](../../images/config/AMD/acpi.png)
 
 ### Add
 
@@ -40,6 +40,7 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
 | **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB |
+| **SSDT-CPUR** | Sistema le definizioni della CPU nelle schede madri B550 e A520, **non usarli** se hai un sistema AMD B550 o A520. |
 
 :::
 
@@ -57,7 +58,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+![Booter](../../images/config/config-universal/amd-zen-booter.png)
 
 This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
 
@@ -68,26 +69,40 @@ This section is allowing spaces to be passthrough to macOS that are generally ig
 ### Quirks
 
 ::: tip Info
-Settings relating to boot.efi patching and firmware fixes, for us, we leave it as default
+Settings relating to boot.efi patching and firmware fixes, for us, we need to change the following:
+
+| Quirk | Enabled | Comment |
+| :--- | :--- | :--- |
+| DevirtualizeMmio | NO | Note TRx40 requires this flag |
+| EnableWriteUnprotector | NO | |
+| RebuildAppleMemoryMap | YES | |
+| SetupVirtualMap | YES | - Note B550, A520 and TRx40 boards should disable this. Newer BIOS versions of X570 also require this off<br/>- X470 and B450 with late 2020 BIOS updates also require this disabled |
+| SyncRuntimePermissions | YES | |
 :::
+
 ::: details More in-depth Info
 
 * **AvoidRuntimeDefrag**: YES
   * Fixes UEFI runtime services like date, time, NVRAM, power control, etc
 * **EnableSafeModeSlide**: YES
   * Enables slide variables to be used in safe mode.
-* **EnableWriteUnprotector**: YES
-  * Needed to remove write protection from CR0 register.
+* **EnableWriteUnprotector**: NO
+  * This quirk and RebuildAppleMemoryMap can commonly conflict, recommended to enable the latter on newer platforms and disable this entry.
+  * However, due to issues with OEMs not using the latest EDKII builds you may find that the above combo will result in early boot failures. This is due to missing the `MEMORY_ATTRIBUTE_TABLE` and such we recommend disabling RebuildAppleMemoryMap and enabling EnableWriteUnprotector. More info on this is covered in the [troubleshooting section](/troubleshooting/extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
 * **ProvideCustomSlide**: YES
   * Used for Slide variable calculation. However the necessity of this quirk is determined by `OCABC: Only N/256 slide values are usable!` message in the debug log. If the message `OCABC: All slides are usable! You can disable ProvideCustomSlide!` is present in your log, you can disable `ProvideCustomSlide`.
+* **RebuildAppleMemoryMap**: YES
+  * Generates Memory Map compatible with macOS, can break on some laptop OEM firmwares so if you receive early boot failures disable this
 * **SetupVirtualMap**: YES
-  * Fixes SetVirtualAddresses calls to virtual addresses, required for Gigabyte boards to resolve early kernel panics
-  
+  * Fixes SetVirtualAddresses calls to virtual addresses
+  * B550, A520 and TRx40 boards should disable this quirk
+* **SyncRuntimePermissions**: YES
+  * Fixes alignment with MAT tables and required to boot Windows and Linux with MAT tables, also recommended for macOS. Mainly relevant for RebuildAppleMemoryMap users
 :::
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-universal/DP-no-igpu.png)
+![DeviceProperties](../../images/config/config-universal/DP-no-igpu.png)
 
 ### Add
 
@@ -103,7 +118,7 @@ Removes device properties from the map, for us we can ignore this
 
 | Kernel | Kernel Patches |
 | :--- | :--- |
-| ![Kernel](../images/config/AMD/kernel.png) | ![](../images/config/AMD/kernel-patch.png) |
+| ![Kernel](../../images/config/AMD/kernel.png) | ![](../../images/config/AMD/kernel-patch.png) |
 
 ### Add
 
@@ -223,7 +238,7 @@ This is where the AMD kernel patching magic happens. Please do note that `Kernel
 
 Kernel patches:
 
-* [Bulldozer/Jaguar(15h/16h)](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/15h_16h) (10.13, 10.14, and 10.15)
+* [Ryzen/Threadripper(17h and 19h)](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/17h_19h) (10.13, 10.14, and 10.15)
 
 To merge:
 
@@ -232,7 +247,7 @@ To merge:
 * Copy the `Kernel -> Patch` section from patches.plist
 * Paste into where old patches were in config.plist
 
-![](../images/config/AMD/kernel.gif)
+![](../../images/config/AMD/kernel.gif)
 
 ### Quirks
 
@@ -267,6 +282,7 @@ Settings relating to the kernel, for us we'll be enabling the following:
   * Prevents AppleRTC from writing to primary checksum (0x58-0x59), required for users who either receive BIOS reset or are sent into Safe mode after reboot/shutdown
 * **ExtendBTFeatureFlags** NO
   * Helpful for those having continuity issues with non-Apple/non-Fenvi cards
+
 * **LapicKernelPanic**: NO
   * Disables kernel panic on AP core lapic interrupt, generally needed for HP systems. Clover equivalent is `Kernel LAPIC`
 * **LegacyCommpage**: NO
@@ -306,7 +322,7 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -406,7 +422,7 @@ Won't be covered here, see 8.6 of [Configuration.pdf](https://github.com/acidant
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -456,6 +472,7 @@ System Integrity Protection bitmask
 | **debug=0x100** | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. That way you can *hopefully* glean some useful info and follow the breadcrumbs to get past the issues. |
 | **keepsyms=1** | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. That can give some more helpful insight as to what's causing the panic itself. |
 | **npci=0x2000** | This disables some PCI debugging related to `kIOPCIConfiguratorPFM64`, alternative is `npci= 0x3000` which disables debugging related to `gIOPCITunnelledKey` in addition. Required for when getting stuck on `PCI Start Configuration` as there are IRQ conflicts relating to your PCI lanes. **Not needed if Above4GDecoding is enabled**. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
+| **alcid=1** | Used for setting layout-id for AppleALC, see [supported codecs](https://github.com/acidanthera/applealc/wiki/supported-codecs) to figure out which layout to use for your specific system. More info on this is covered in the [Post-Install Page](https://dortania.github.io/OpenCore-Post-Install/) |
 
 * **GPU-Specific boot-args**:
 
@@ -513,7 +530,7 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-universal/iMacPro-smbios.png)
+![PlatformInfo](../../images/config/config-universal/iMacPro-smbios.png)
 
 ::: tip Info
 
@@ -601,7 +618,7 @@ Reminder that you want either an invalid serial or valid serial numbers but thos
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -679,9 +696,13 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * Parallel Port
 * Compatibility Support Module (CSM)(**Must be off, GPU errors like `gIO` are common when this option in enabled**)
 
+**Special note for 3990X users**: macOS currently does not support more than 64 threads in the kernel, and so will kernel panic if it sees more. The 3990X CPU has 128 threads total and so requires half of that disabled. We recommend disabling hyper threading in the BIOS for these situations.
+
 ### Enable
 
-* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to boot-args. Do not have both this option and npci enabled at the same time**)
+* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to boot-args. Do not have both this option and npci enabled at the same time.**)
+  * If you are on a Gigabyte/Aorus or an AsRock motherboard, enabling this option may break certain drivers(ie. Ethernet) and/or boot failures on other OSes, if it does happen then disable this option and opt for npci instead
+  * 2020+ BIOS Notes: When enabling Above4G, Resizable BAR Support may become an available on some X570 and newer motherboards. Please ensure this is **Disabled** instead of set to Auto.
 * EHCI/XHCI Hand-off
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI

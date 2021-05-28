@@ -1,8 +1,8 @@
-# Laptop Kaby Lake
+# Laptop Broadwell
 
 | Supporto | Versione |
 | :--- | :--- |
-| Supporto di macOS iniziale | macOS 10.12, Sierra |
+| Supporto di macOS iniziale | OS X 10.10, Yosemite |
 
 ## Punto d'Inizio
 
@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-laptop.plist/kaby-lake/acpi.png)
+![ACPI](../../images/config/config-laptop.plist/broadwell/acpi.png)
 
 ### Add
 
@@ -40,9 +40,9 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
 | **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
-| **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB. |
+| **SSDT-EC** | Sistema il controller integrato |
 | **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
-| **SSDT-PNLF** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
+| **SSDT-PNLF** | Sistema il controllo della luminosità Nota che i NUC Intel non gli serve questo |
 
 :::
 
@@ -75,7 +75,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+![Booter](../../images/config/config-universal/aptio-iv-booter.png)
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -105,7 +105,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config.plist/kaby-lake/DeviceProperties.png)
+![DeviceProperties](../../images/config/config.plist/kaby-lake/DeviceProperties.png)
 
 ### Add
 
@@ -124,43 +124,23 @@ Quando si configura la iGPU, la tabella seguente dovrebbe aiutare a trovare i va
 
 In genere, segui questi passaggi durante la configurazione delle proprietà iGPU. Segui le note di configurazione sotto la tabella se dicono qualcosa di diverso:
 
-1. Quando configuri inizialmente il tuo config.plist, imposta solo `AAPL,ig-platform-id` - questo è normalmente sufficiente
+1. Quando configuri inizialmente il tuo config.plist, imposta solo AAPL, ig-platform-id - questo è normalmente sufficiente
 2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL,ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
 
 | AAPL,ig-platform-id | Type | Comment |
 | ------------------- | ---- | ------- |
-| **00001B59** | Laptop | Raccomandato per HD615, HD620, HD630, HD640 and HD650 |
-| **00001659** | Laptop | Valore alternativo a 00001B59 in caso di problemi di accelerazione e consigliato per tutti i NUC HD e UHD620 |
-| **09001659** | Laptop | Altro valore alternativo a 00001B59 nei rari casi di problemi di sfarfallio dello schermo
-| **0000C087** | Laptop | Raccomandato per UHD 617 di Amber Lake e UHD620 di Kaby Lake R |
-| **00001E59** | NUC | Raccomandato per HD615 |
-| **00001B59** | NUC | Raccomandato per HD630 |
-| **02002659** | NUC | Raccomandato per HD640/650 |
+| **06002616** | Laptop | Recommended value for Broadwell laptops |
+| **02001616** | NUC | Recommended value for Broadwell NUCs|
 
 #### Note di configurazione
 
-* Per tutti gli utenti di `UHD620` (Kaby Lake-R), avrai bisogno di uno spoofing dell'id del dispositivo:
+* For HD5600 you need `device-id` faked to `16260000`:
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| device-id | Data | 16590000 |
+| device-id | data | 26160000
 
-* Per tutti gli HD6\*\* (gli utenti di `UHD` non sono interessati), ci sono alcuni piccoli problemi con l'output in cui collegare qualsiasi cosa causerebbe un blocco (kernel panic); ecco alcune patch per mitigarlo (credit Rehabman):
-  * 0306 to 0105 (probabilmente un giorno spiegherà cosa fa )
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| framebuffer-con1-enable | Data | 01000000 |
-| framebuffer-con1-alldata | Data | 01050A00 00080000 87010000 02040A00 00080000 87010000 FF000000 01000000 20000000 |
-
-* 0204 to 0105 (probabilmente un giorno spiegherà cosa fa)
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| framebuffer-con2-enable | Data | 01000000 |
-| framebuffer-con2-alldata | Data | 01050A00 00080000 87010000 03060A00 00040000 87010000 FF000000 01000000 20000000 |
-
-In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 64 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà della iGPU
+* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 96 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -189,7 +169,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -314,7 +294,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
-* Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
+  * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
 
@@ -347,7 +327,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -447,7 +427,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -544,32 +524,37 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-laptop.plist/kaby-lake/smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/broadwell/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio Kaby Lake Kaby Lake example, sceglieremo MacBookPro14,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione tipica è la seguente:
+Per questo esempio Broadwell, we chose the MacBookPro12,1 SMBIOS. questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione tipica è la seguente:
 
-| SMBIOS | CPU Type | GPU Type | Display Size | Touch ID |
-| :--- | :--- | :--- | :--- | :--- |
-| MacBookPro14,1 | Dual Core 15w(Low End) | iGPU: Iris Plus 640 | 13" | No |
-| MacBookPro14,2 | Dual Core 15w(High End) | iGPU: Iris Plus 650 | 13" | Yes |
-| MacBookPro14,3 | Quad Core 45w | iGPU: HD 630 + dGPU: RP555/560 | 15" | Yes |
-| iMac18,1 | NUC Systems | iGPU: Iris Plus 640 |  N/A | No |
+| SMBIOS | CPU Type | GPU Type | Display Size |
+| :--- | :--- | :--- | :--- |
+| MacBook8,1 | Dual Core 7w(Low End) | iGPU: HD 5300 | 12" |
+| MacBookAir7,1 | Dual Core 15w | iGPU: HD 6000 | 11" |
+| MacBookAir7,2 | Dual Core 15w | iGPU: HD 6000 | 13" |
+| MacBookPro12,1 | Dual Core 28w(High End) | iGPU: Iris 6100 | 13" |
+| MacBookPro11,2 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
+| MacBookPro11,3 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: GT750M | 15" |
+| MacBookPro11,4 | Quad Core 45w | iGPU: Iris Pro 5200 | 15" |
+| MacBookPro11,5 | Quad Core 45w | iGPU: Iris Pro 5200 + dGPU: R9 M370X | 15" |
+| iMac16,1 | NUC Systems | HD 6000/Iris Pro 6200 |  N/A |
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
 ```sh
   #######################################################
- #               MacBookPro14,1 SMBIOS Info            #
+ #               MacBookPro12,1 SMBIOS Info            #
 #######################################################
 
-Type:         MacBookPro14,1
-Serial:       C02Z2CZ5H7JY
-Board Serial: C02928701GUH69FFB
-SmUUID:       AA043F8D-33B6-4A1A-94F7-46972AAD0607
+Type:         MacBookPro12,1
+Serial:       C02M9SYJFY10
+Board Serial: C02408101J9G2Y7A8
+SmUUID:       7B227BEC-660D-405F-8E60-411B3E4EF055
 ```
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
@@ -628,7 +613,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -678,6 +663,10 @@ Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 ::: details Informazioni più approfondite
 
+* **IgnoreInvalidFlexRatio**: YES
+  * Risolve il problema per cui MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake
+* **ReleaseUsbOwnership**: YES
+  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI / XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
 * **DisableSecurityPolicy**: NO
   * Disabilita i criteri di sicurezza della piattaforma nel firmware, consigliato per firmware con bug in cui la disabilitazione di Secure Boot non consente il caricamento dei driver del firmware di terze parti.
   * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione

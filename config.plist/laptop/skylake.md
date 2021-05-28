@@ -1,4 +1,4 @@
-# Broadwell-E
+# Laptop Skylake
 
 | Supporto | Versione |
 | :--- | :--- |
@@ -25,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-universal/aptio-v-acpi.png)
+![ACPI](../../images/config/config-laptop.plist/skylake/acpi.png)
 
 ### Add
 
@@ -41,8 +41,12 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 | :--- | :--- |
 | **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
 | **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB |
-| **SSDT-RTC0-RANGE** | Richiesto per tutti gli utenti Big Sur per assicurare la compatibilità RTC |
-| **SSDT-UNC** | Richiesto per tutti gli utenti Big Sur per assicurare la compatibilità UNC |
+| **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
+| **SSDT-PNLF** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
+
+Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
+
+Per quelli che vogliono più informazioni su come ricavare il DSDT, su come fare questi SSDT, e su come compilarli, vedi **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**. Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `EFI/OC/ACPI` e **devono** essere specificati nel config anche nella sezione `ACPI -> Add`.
 
 :::
 
@@ -52,7 +56,22 @@ Questa sezione previene il caricamento di certe tabelle ACPI, per noi è ignorab
 
 ### Patch
 
-Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, SSDT, ecc.) tramite OpenCore. Per noi, le nostre patch sono legate agli SSDT. Questa è una soluzione più pulita perché ci permetterà di avviare Windows e altri sistemi con OpenCore
+::: tip Informazioni
+
+Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, SSDT, ecc.) tramite OpenCore. Per noi, serviranno i seguenti:
+
+* OSI rename
+  * Questo è richiesto quando usi SSDT-XOSI dato che possiamo richiamare tutte le chiamate OSI a questo SSDT
+
+| Comment | String | Change _OSI to XOSI |
+| :--- | :--- | :--- |
+| Enabled | Boolean | YES |
+| Count | Number | 0 |
+| Limit | Number | 0 |
+| Find | Data | 5f4f5349 |
+| Replace | Data | 584f5349 |
+
+:::
 
 ### Quirks
 
@@ -60,57 +79,112 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-iv-booter.png)
+![Booter](../../images/config/config-universal/aptio-iv-booter.png)
 
-Questa sezione è dedicata alle stranezze relative al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
-
-### MmioWhitelist
-
-Questa sezione consente il passaggio di spazi a macOS che vengono generalmente ignorati, utile se abbinato a `DevirtualiseMmio`
-
-Questa sezione è dedicata alle stranezze relative al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
+Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
 ### MmioWhitelist
 
-Questa sezione consente il passaggio di spazi a macOS che vengono generalmente ignorati, utile se abbinato a `DevirtualiseMmio`
+Questa sezione consente il passaggio dei dispositivi a macOS che vengono generalmente ignorati, utile quando appaiata con `DevirtualiseMmio`
 
 ### Quirks
 
-::: tip
+::: tip Info
 Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, lo lasciamo come predefinito
 :::
 ::: details Informazioni più approfondite
 
-* **AvoidRuntimeDefrag**: SÌ
-  * Corregge i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc
-* **EnableSafeModeSlide**: SÌ
+* **AvoidRuntimeDefrag**: YES
+  * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
+* **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
-* **EnableWriteUnprotector**: SÌ
+* **EnableWriteUnprotector**: YES
   * Necessario per rimuovere la protezione da scrittura dal registro CR0.
-* **ProvideCustomSlide**: SÌ
-  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` È presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
-* **SetupVirtualMap**: SI
-  * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic
+* **ProvideCustomSlide**: YES
+  * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
+* **SetupVirtualMap**: YES
+  * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
 
 :::
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-universal/DP-no-igpu.png)
+![DeviceProperties](../../images/config/config-laptop.plist/haswell/DeviceProperties.png)
 
 ### Add
 
 Imposta le proprietà del dispositivo da una mappa.
 
-Per impostazione predefinita, Sample.plist ha questa sezione impostata per l'audio. Per l'audio imposteremo il layout nella sezione boot-args, quindi possiamo ignorarlo.
+::: tip PciRoot(0x0)/Pci(0x2,0x0)
 
-### Elimina
+Questa sezione è configurata tramite la [Framebuffer Patching Guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) di WhateverGreen e viene utilizzata per impostare importanti proprietà iGPU.
+
+Quando si configura la iGPU, la tabella seguente dovrebbe aiutare a trovare i valori giusti da impostare. Ecco una spiegazione di alcuni valori:
+
+* **AAPL,ig-platform-id**
+  * Viene utilizzato internamente per configurare iGPU
+* **Type**
+  * Se la voce è consigliata per laptop (ad es. Con display integrati) o per Intel NUC (ad es. Box indipendenti)
+
+In genere, segui questi passaggi durante la configurazione delle proprietà iGPU. Segui le note di configurazione sotto la tabella se dicono qualcosa di diverso:
+
+1. Quando configuri inizialmente il tuo config.plist, imposta solo `AAPL,ig-platform-id` - questo è normalmente sufficiente
+2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL,ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
+
+| AAPL,ig-platform-id | Type | Comment |
+| ------------------- | ---- | ------- |
+| **00001619** | Laptop | Raccomandato per HD515, HD520, HD530, HD540, HD550 and P530 |
+| **00001E19** | Laptop | Alternativo per HD 515 if you have issues with the above entry |
+| **00001B19** | Laptop | Raccomandato per for HD510 |
+| **00001E19** | NUC | Raccomandato per HD515 |
+| **02001619** | NUC | Raccomandato per HD520/530 |
+| **02002619** | NUC | Raccomandato per HD540/550 |
+| **05003B19** | NUC | Raccomandato per HD580 |
+
+#### Configuration Notes
+
+* Per HD510 dovrai usare uno spoofing dell'id del dispositivo:
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| device-id | Data | 02190000 |
+
+* Per HD550 e P530 (e potenzialmente tutte le iGPU serie P HD), potrebbe essere necessario utilizzare `device-id`=`16190000`:
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| device-id | Data | 16190000 |
+
+* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su 64 MB più in alto nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| framebuffer-patch-enable | Data | 01000000 |
+| framebuffer-stolenmem | Data | 00003001 |
+| framebuffer-fbmem | Data | 00009000 |
+
+:::
+
+::: tip PciRoot(0x0)/Pci(0x1b,0x0)
+
+`layout-id`
+
+* Applica l'iniezione audio AppleALC, dovrai fare la tua ricerca su quale codec ha la tua scheda madre e abbinarlo al layout di AppleALC. [AppleALC Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs).
+* You can delete this property outright as it's unused for us at this time
+
+* Puoi eliminare completamente questa proprietà poiché al momento non è utilizzata per noi
+
+Per noi, useremo invece il boot-arg `alcid = xxx` per ottenere questo risultato. `alcid` sovrascriverà tutti gli altri ID di layout presenti. Maggiori informazioni su questo sono trattate nella [Post-Install Page](https://dortania.github.io/OpenCore-Post-Install/)
+
+:::
+
+### Delete
 
 Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-HEDT/broadwell-e/kernel.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -120,20 +194,20 @@ Qui è dove specifichiamo quali kext caricare, in quale ordine specifico caricar
 
 La cosa principale che devi tenere a mente è:
 
-* Carica l'ordine
+* Ordine di caricamento
   * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
-  * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WutelyGreen, ecc.
+  * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WhateverGreen, ecc.
 
-Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl+Shift+R** per aggiungere tutti i loro kext nell'ordine corretto senza digitare manualmente ogni kext in uscita.
+A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can run **Cmd/Ctrl + Shift + R** to add all their kexts in the correct order without manually typing each kext out.
 
 * **Arch**
   * Architetture supportate da questo kext
-  * I valori attualmente supportati sono `Any`, `i386` (32-bit), and `x86_64` (64-bit)
+  * I valori attualmente supportati sono `Any`, `i386` (32-bit), e `x86_64` (64-bit)
 * **BundlePath**
   * Nome del kext
   * es: `Lilu.kext`
 * **Enabled**
-  * Autoesplicativo, abilita o disabilita il kext
+  * Autoesplicativo, abilita o disabilita kext
 * **ExecutablePath**
   * Il percorso dell'eseguibile effettivo è nascosto all'interno di kext, puoi vedere quale percorso ha il tuo kext facendo clic con il pulsante destro del mouse e selezionando `Show Package Contents`. Generalmente sarà `Contents/MacOS/Kext` ma alcuni hanno kext nascosti nella cartella `Plugin`. Nota che i kexto con il solo plist non hanno bisogno di questo campo.
   * es: `Contents/MacOS/Lilu`
@@ -169,52 +243,10 @@ Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperT
 
 ### Emulate
 
-::: tip Info
+Necessario per lo spoofing di CPU non supportate come Pentium e Celeron
 
-Necessario per lo spoofing di CPU non supportate e l'attivazione della gestione dell'alimentazione
-
-* **Broadwell E:**
-
-  * Cpuid1Data: `D4060300 00000000 00000000 00000000`
-  * Cpuid1Mask: `FFFFFFFF 00000000 00000000 00000000`
-
-:::
-
-::: details Informazioni più approfondite
-
-* **CpuidData**: `D4060300 00000000 00000000 00000000`
-  * Fake CPUID entry
-* **CpuidMask**: `FFFFFFFF 00000000 00000000 00000000`
-  * Mask per fake CPUID
-* **DummyPowerManagement**: No
-  * Disabilita AppleIntelCPUPowerManagement, richiesto solo per AMD CPUs
-* **MinKernel**: Lascia questo vuoto
-  * Versione del kernel più bassa in cui verranno inserite le patch di cui sopra, se nessun valore specificato verrà applicato a tutte le versioni di macOS. Vedere la tabella sotto per i valori possibili
-  * es. `12.00.00` for OS X 10.8
-* **MaxKernel**: Leave this blank
-  * Lascia questo vuoto
-  * Versione del kernel più alta in cui verranno inserite le patch di cui sopra, se nessun valore specificato verrà applicato a tutte le versioni di macOS. Vedere la tabella sotto per i valori possibili
-  * es. `11.99.99` for OS X 10.7
-
-::: details Kernel Support Table
-
-| OS X Version | MinKernel | MaxKernel |
-| :--- | :--- | :--- |
-| 10.4 | 8.0.0 | 8.99.99 |
-| 10.5 | 9.0.0 | 9.99.99 |
-| 10.6 | 10.0.0 | 10.99.99 |
-| 10.7 | 11.0.0 | 11.99.99 |
-| 10.8 | 12.0.0 | 12.99.99 |
-| 10.9 | 13.0.0 | 13.99.99 |
-| 10.10 | 14.0.0 | 14.99.99 |
-| 10.11 | 15.0.0 | 15.99.99 |
-| 10.12 | 16.0.0 | 16.99.99 |
-| 10.13 | 17.0.0 | 17.99.99 |
-| 10.14 | 18.0.0 | 18.99.99 |
-| 10.15 | 19.0.0 | 19.99.99 |
-| 11 | 20.0.0 | 20.99.99 |
-
-:::
+* **CpuidMask**: Lascia questo vuoto
+* **CpuidData**: Lascia questo vuoto
 
 ### Force
 
@@ -238,11 +270,9 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| AppleCpuPmCfgLock | NO | Necessario se si esegue 10.10 o precedente e non è possibile disabilitare `CFG-Lock` nel BIOS |
-| AppleXcpmCfgLock | YES | Non serve se `CFG-Lock` è disabilitato nel BIOS |
-| AppleXcpmExtraMsrs | YES | |
-| DisableIOMapper | YES | Non serve se `VT-D` è disabilitato nel BIOS |
-| LapicKernelPanic | NO | Le macchine HP potrebbero richiedere queso quirk |
+| AppleXcpmCfgLock | YES | Non necessario se `CFG-Lock` è disabilitato nel BIOS |
+| DisableIOMapper | YES | Non necessario se `VT-D` è disabilitato nel BIOS |
+| LapicKernelPanic | NO | Le macchine HP richiederanno questo quirk |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
 | XhciPortLimit | YES | |
@@ -259,8 +289,6 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
   * Necessario solo quando CFG-Lock non può essere disabilitato nel BIOS
   * Applicabile solo per Haswell e versioni successive
     * Nota: anche Ivy Bridge-E è incluso poiché supporta XCPM
-* **AppleXcpmExtraMsrs**: YES
-  * Disabilita l'accesso multiplo MSR necessario per CPU non supportate come Pentium e molti Xeon. Richiesto per Broadwell-E e inferiore
 * **CustomSMBIOSGuid**: NO
   * Esegue la patch GUID per UpdateSMBIOSMode impostato su `Custom`. Solitamente rilevante per i laptop Dell
   * L'abilitazione di questo Quirk con la modalità UpdateSMBIOSMode Custom può anche disabilitare l'iniezione di SMBIOS in sistemi operativi "non Apple", tuttavia non approviamo questo metodo poiché interrompe la compatibilità con Bootcamp. Utilizzare a proprio rischio
@@ -272,22 +300,18 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
   * Impedisce ad AppleRTC di scrivere nel checksum principale (0x58-0x59), richiesto per gli utenti che ricevono il ripristino del BIOS o vengono inviati in modalità provvisoria dopo il riavvio/spegnimento
 * **ExtendBTFeatureFlags** NO
   * Utile per chi ha problemi di continuità con schede non Apple/non Fenvi
-* **IncreasePciBarSize**: NO
-  * Aumenta la dimensione della barra PCI a 32 bit in IOPCIFamily da 1 a 4 GB, abilitando Above4GDecoding nel BIOS è un approccio molto più pulito e sicuro. Alcune schede X99 potrebbero richiederlo, generalmente sperimenterai un panico del kernel su IOPCIFamily se ne hai bisogno. Nota che questo non dovrebbe essere necessario su Mojave e versioni successive
 * **LapicKernelPanic**: NO
   * Disabilita il kernel panic su AP core lapic interrupt, generalmente necessario per i sistemi HP. L'equivalente in Clover è `Kernel LAPIC`
 * **LegacyCommpage**: NO
   * Risolve il requisito SSSE3 per le CPU a 64 bit in macOS, principalmente rilevante per le CPU Pentium 4 a 64 bit (es. Prescott)
-* **PanicNoKextDump**: YES
-  * Consente di leggere i log del kernel panic quando si verificano i kernel panic
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
-* Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
+  * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
 
-Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata senza un'adeguata regolazione della corrente. È molto più pulito descrivere le tue porte in un unico kext solo plist, che non sprecherà runtime memory e simili
+Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata senza un'adeguata regolazione corrente. È molto più pulito descrivere le tue porte in un unico kext solo plist, che non sprecherà memoria di runtime e simili
 
 :::
 
@@ -316,7 +340,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -363,7 +387,7 @@ Questi valori si basano su quelli calcolati in [OpenCore debugging](/troubleshoo
 
 ::: tip Info
 
-Sicurezza si spiega da sé, **non saltare**. Modificheremo quanto segue:
+Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modificheremo quanto segue:
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
@@ -371,8 +395,8 @@ Sicurezza si spiega da sé, **non saltare**. Modificheremo quanto segue:
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default |  Questa è una parola e distingue tra maiuscole e minuscole, impostare su `Disabled` se non si desidera un avvio sicuro (ad esempio, sono necessari i driver Web di Nvidia) |
-| Vault | Opzionale | Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su `Optional`, nota che fa distinzione tra maiuscole e minuscole |
+| SecureBootModel | Default |  è una parola e distingue tra maiuscole e minuscole, imposta su `Disabled` se non si desidera un avvio sicuro (ad esempio, sono necessari i driver Web di Nvidia) |
+| Vault | Optional | Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su Optional, nota che fa distinzione tra maiuscole e minuscole |
 
 :::
 
@@ -406,17 +430,13 @@ Sicurezza si spiega da sé, **non saltare**. Modificheremo quanto segue:
 
 ### Tools
 
-Utilizzata per eseguire strumenti di debug OC come la shell, la funzione snapshot di ProperTree li aggiungerà per te.
-
-### Entries
-
 Utilizzato per specificare percorsi di avvio irregolari che non possono essere trovati naturalmente con OpenCore.
 
 Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori informazioni
 
 ## NVRAM
 
-![NVRAM](../images/config/config-HEDT/broadwell-e/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -449,7 +469,7 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 ::: details Informazioni più approfondite
 
 * **rtc-blacklist**: <>
-  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Fixing RTC write issues (EN)](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
+  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
   * La maggior parte degli utenti può ignorare questa sezione
 
 :::
@@ -458,19 +478,18 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 
 System Integrity Protection bitmask
 
-* **General Purpose boot-args**:
+* **Argomenti di avvio generici**:
 
 | boot-args | Description |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
-| **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
+ **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
-| **npci=0x2000** | Questo disabilita alcuni debug PCI relativi a `kIOPCIConfiguratorPFM64`, l'alternativa è `npci= 0x3000` che disabilita anche il debug relativo a `gIOPCITunnelledKey`. Necessario per quando si rimane bloccati su `PCI Start Configuration` poiché ci sono conflitti IRQ relativi alle proprie corsie PCI. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
-| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione (EN)](https://dortania.github.io/OpenCore-Post-Install/) |
+| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/) |
 
 * **Argomenti di avvio specifici per GPU**:
 
-| boot-args | Description |
+|| boot-args | Description |
 | :--- | :--- |
 | **agdpmod=pikera** | Utilizzato per disabilitare boardID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le carte Polaris e Vega non dovrebbero usarlo) |
 | **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e HighSierra |
@@ -496,19 +515,7 @@ System Integrity Protection bitmask
 
 ### Delete
 
-::: tip Info
-
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
-
-| Quirk | Enabled |
-| :--- | :--- |
-| LegacyEnable | YES |
-| LegacyOverwrite | YES |
-| WriteFlash | NO |
-
-:::
-
-::: details Informazioni più approfondite
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli.
 
 * **LegacyEnable**: YES
   * Consente la memorizzazione della NVRAM su nvram.plist, necessaria per i sistemi senza NVRAM nativa come X99
@@ -526,25 +533,33 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-universal/iMacPro-smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/skylake/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio Broadwell-E, sceglieremo iMacPro1,1 SMBIOS.
+Per questo esempio Skylake, sceglieremo MacBookPro13,1 SMBIOS. La ripartizione tipica è la seguente:
+
+| SMBIOS | CPU Type | GPU Type | Display Size | Touch ID |
+| :--- | :--- | :--- | :--- | :--- |
+| MacBook9,1 | Dual Core 7w(Low End) | iGPU: HD 515 | 12" | No |
+| MacBookPro13,1 | Dual Core 15w(Low End) | iGPU: Iris 540 | 13" | No |
+| MacBookPro13,2 | Dual Core 15w(High End) | iGPU: Iris 550 | 13" | Yes |
+| MacBookPro13,3 | Quad Core 45w | iGPU: HD 530 + dGPU: RP450/455 | 15" | Yes |
+| iMac17,1 | NUC Systems | iGPU: HD 530 + R9 290 |  N/A | No |
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
 ```sh
   #######################################################
- #              iMacPro1,1 SMBIOS Info                 #
+ #               MacBookPro13,1 SMBIOS Info            #
 #######################################################
 
-Type:         iMacPro1,1
-Serial:       C02YX0TZHX87
-Board Serial: C029269024NJG36CB
-SmUUID:       DEA17B2D-2F9F-4955-B266-A74C47678AD3
+Type:         MacBookPro13,1
+Serial:       C02S3HYWGG7L
+Board Serial: C02629102GUGPF7AD
+SmUUID:       3508AD44-B67D-4AD7-A109-7955130A1033
 ```
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
@@ -575,7 +590,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows
 
 * **MaxBIOSVersion**: NO
-  * Imposta la versione del BIOS su Max per evitare gli aggiornamenti del firmware in Big Sur+, applicabile principalmente a Mac originali.
+  * Imposta la versione del BIOS su Max per evitare gli aggiornamenti del firmware in Big Sur +, applicabile principalmente a Mac originali.
 
 * **ProcessorType**: `0`
   * Impostare a "0" per il rilevamento automatico del tipo, tuttavia questo valore può essere sovrascritto se lo si desidera. Vedi [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) per i possibili valori
@@ -603,7 +618,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-iv-uefi.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
@@ -626,7 +641,7 @@ Impostazioni relative al driver APFS, lascia tutto qui come predefinito.
 
 Relativamente alle impostazioni di AudioDxe, per noi ignoreremo (lasciare come impostazione predefinita). Questo non è correlato al supporto audio in macOS.
 
-* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime (EN)](https://dortania.github.io/OpenCore-Post-Install/)
+* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime](https://dortania.github.io/OpenCore-Post-Install/)
 
 ### Input
 
@@ -643,20 +658,20 @@ Principalmente rilevante per macchine virtuali, Mac legacy e utenti FileVault. V
 ### Quirks
 
 ::: tip Info
-RRiguardo alle stranezze con l'ambiente UEFI, per noi cambieremo quanto segue:
+Riguardo ai Quirk con l'ambiente UEFI, per noi cambieremo quanto segue:
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| IgnoreInvalidFlexRatio | YES | |
-| UnblockFsConnect | NO | Necessario principalmente dalle schede madri HP |
+| UnblockFsConnect | NO | Usato soprattutto su motherboards HP |
 
 :::
 
 ::: details Informazioni più approfondite
 
 * **IgnoreInvalidFlexRatio**: YES
-  * Risolto il problema per cui MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake
-
+  * Risolve il problema quando MSR_FLEX_RATIO (0x194) non può essere disabilitato nel BIOS, richiesto per tutti i sistemi basati su Skylake precedenti
+* **ReleaseUsbOwnership**: YES
+  * Rilascia il controller USB dal driver del firmware, necessario quando il firmware non supporta Handoff EHCI / XHCI. La maggior parte dei laptop ha firmware spazzatura, quindi avremo bisogno anche di questo
 * **DisableSecurityPolicy**: NO
   * Disabilita i criteri di sicurezza della piattaforma nel firmware, consigliato per firmware con bug in cui la disabilitazione di Secure Boot non consente il caricamento dei driver del firmware di terze parti.
   * Se si esegue un dispositivo Microsoft Surface, si consiglia di abilitare questa opzione
@@ -683,15 +698,14 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 * Secure Boot
 * Serial/COM Port
 * Parallel Port
-* VT-d (può essere disabilitata se impostato `DisableIoMapper` su YES)
+* VT-d (può essere disabilitata se impostato `DisableIoMapper` to YES)
 * CSM
 * Thunderbolt (per l'installazione iniziale, poiché Thunderbolt può causare problemi se non configurato correttamente)
 * Intel SGX
 * Intel Platform Trust
-* CFG Lock (MSR 0xE2 write protection)(**deve essere disattivato, se non riesci a trovare l'opzione abilita `AppleXcpmCfgLock` in Kernel->Quirks. Il tuo hack non si avvierà con CFG-Lock abilitato**)
-  * Per 10.10 e versioni precedenti, dovrai abilitare anche AppleCpuPmCfgLock
+* CFG Lock (MSR 0xE2 write protection)(**Deve essere disattivato, se non riesci a trovare l'opzione abilita `AppleXcpmCfgLock` in Kernel->Quirks. Il tuo hack non si avvierà con CFG-Lock abilitato**)
 
-### Enable
+### Abilita
 
 * VT-x
 * Above 4G decoding
@@ -699,6 +713,7 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 * Execute Disable Bit
 * EHCI/XHCI Hand-off
 * OS type: Windows 8.1/10 UEFI Mode
+* DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
 > Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)

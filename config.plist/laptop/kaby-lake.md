@@ -1,9 +1,8 @@
-# Laptop Coffee Lake e Whiskey Lake
+# Laptop Kaby Lake
 
 | Supporto | Versione |
 | :--- | :--- |
-| Supporto di macOS iniziale ([Coffee Lake](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
-| Supporto di macOS iniziale ([Whiskey Lake](https://en.wikipedia.org/wiki/Whiskey_Lake_(microarchitecture))) | macOS 10.14.1, Mojave |
+| Supporto di macOS iniziale | macOS 10.12, Sierra |
 
 ## Punto d'Inizio
 
@@ -26,7 +25,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![ACPI](../images/config/config-laptop.plist/coffeelake/acpi.png)
+![ACPI](../../images/config/config-laptop.plist/kaby-lake/acpi.png)
 
 ### Add
 
@@ -40,11 +39,10 @@ Gli SSDT hanno l'estensione **.aml** (Assembled) e andranno dentro la cartella `
 
 | SSDT Richiesti | Descrizione |
 | :--- | :--- |
-| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti. |
+| **SSDT-PLUG** | Permette il power management della CPU su Haswell e più recenti |
 | **SSDT-EC-USBX** | Sistema il controller integrato e l'energia dei USB. |
 | **SSDT-GPIO** | Crea uno stub per connettere VoodooI2C, per quelli che hanno problemi a far funzionare VoodooI2C possono provare con SSDT-XOSI. Nota che i NUC Intel non gli serve questo |
-| **SSDT-PNLF-CFL** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
-| **SSDT-AWAC** | Questa è la [patch della serie 300 per RTC (DE)](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2), richiesta per la maggior parte di B360, B365, H310, H370, Z390 e alcuni sistemi Z370, che previene l'avvio di macOS a causa dell'orologio di sistema. L'alternativa è SSDT-RTC0 quando SSDT-AWAC è incompatibile a causa della mancanza del vecchio orologio RTC, per controllare quale ti serve |
+| **SSDT-PNLF** | Sistema il controllo della luminosità. Nota che i NUC Intel non gli serve questo |
 
 :::
 
@@ -77,7 +75,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 ## Booter
 
-![Booter](../images/config/config-universal/aptio-v-booter.png)
+![Booter](../../images/config/config-universal/aptio-iv-booter.png)
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -88,37 +86,26 @@ Questa sezione consente il passaggio dei dispositivi a macOS che vengono general
 ### Quirks
 
 ::: tip Info
-Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, cambieremo quanto segue:
-
-| Quirk | Enabled |
-| :--- | :--- |
-| EnableWriteUnprotector | NO |
-| RebuildAppleMemoryMap | YES |
-| SyncRuntimePermissions | YES |
+Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, lo lasciamo come predefinito
 :::
-
-::: details More in-depth Info
+::: details Informazioni più approfondite
 
 * **AvoidRuntimeDefrag**: YES
   * Risolve i servizi di runtime UEFI come data, ora, NVRAM, controllo dell'alimentazione, ecc.
 * **EnableSafeModeSlide**: YES
   * Abilita le variabili di diapositiva da utilizzare in modalità provvisoria.
-* **EnableWriteUnprotector**: NO
-  * Questa stranezza e RebuildAppleMemoryMap possono comunemente entrare in conflitto, consigliato per abilitare quest'ultimo sulle piattaforme più recenti e disabilitare questa voce.
-  * Tuttavia, a causa di problemi con gli OEM che non utilizzano le ultime build EDKII, potresti scoprire che la combinazione di cui sopra si tradurrà in errori di avvio precoce. Ciò è dovuto alla mancanza di `MEMORY_ATTRIBUTE_TABLE` e pertanto consigliamo di disabilitare RebuildAppleMemoryMap e abilitare EnableWriteUnprotector. Maggiori informazioni su questo sono trattate nella [sezione risoluzione dei problemi](/troubleshooting/extended/kernel-issues.md#bloccato-su-eb-log-exitbs-start)
+* **EnableWriteUnprotector**: YES
+  *Necessario per rimuovere la protezione da scrittura dal registro CR0.
 * **ProvideCustomSlide**: YES
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
-* **RebuildAppleMemoryMap**: YES
-  * Genera una mappa della memoria compatibile con macOS, può rompersi su alcuni firmware OEM di laptop, quindi se ricevi errori di avvio precoce, disabilitalo
 * **SetupVirtualMap**: YES
 * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
-* **SyncRuntimePermissions**: YES
-  * Corregge l'allineamento con le tabelle MAT ed è necessario per avviare Windows e Linux con le tabelle MAT, consigliato anche per macOS. Principalmente rilevante per gli utenti di RebuildAppleMemoryMap
+
 :::
 
 ## DeviceProperties
 
-![DeviceProperties](../images/config/config-laptop.plist/coffeelake/DeviceProperties.png)
+![DeviceProperties](../../images/config/config.plist/kaby-lake/DeviceProperties.png)
 
 ### Add
 
@@ -137,32 +124,43 @@ Quando si configura la iGPU, la tabella seguente dovrebbe aiutare a trovare i va
 
 In genere, segui questi passaggi durante la configurazione delle proprietà iGPU. Segui le note di configurazione sotto la tabella se dicono qualcosa di diverso:
 
-1. Quando configuri inizialmente il tuo config.plist, imposta solo AAPL, ig-platform-id - questo è normalmente sufficiente
+1. Quando configuri inizialmente il tuo config.plist, imposta solo `AAPL,ig-platform-id` - questo è normalmente sufficiente
 2. Se si avvia e non si ottiene l'accelerazione grafica (7 MB di VRAM e sfondo a tinta unita per il dock), è probabile che sia necessario provare diversi valori di `AAPL,ig-platform-id`, aggiungere le patch stolenmem o persino aggiungere un `device-id`.
 
 | AAPL,ig-platform-id | Type | Comment |
 | ------------------- | ---- | ------- |
-| **0900A53E** | Laptop | Valore Rraccomandato per UHD630 |
-| **00009B3E** | Laptop | Valore Rraccomandato per UHD620 |
-| **07009B3E** | NUC | Valore Rraccomandato per UHD 620/630 |
-| **0000A53E** | NUC | Valore Rraccomandato per UHD 655 |
+| **00001B59** | Laptop | Raccomandato per HD615, HD620, HD630, HD640 and HD650 |
+| **00001659** | Laptop | Valore alternativo a 00001B59 in caso di problemi di accelerazione e consigliato per tutti i NUC HD e UHD620 |
+| **09001659** | Laptop | Altro valore alternativo a 00001B59 nei rari casi di problemi di sfarfallio dello schermo
+| **0000C087** | Laptop | Raccomandato per UHD 617 di Amber Lake e UHD620 di Kaby Lake R |
+| **00001E59** | NUC | Raccomandato per HD615 |
+| **00001B59** | NUC | Raccomandato per HD630 |
+| **02002659** | NUC | Raccomandato per HD640/650 |
 
-#### Configuration Notes
+#### Note di configurazione
 
-* Per `UHD630` probabilmente non è necessario falsificare `device-id` poiché è già `0x3E9B`. Se è qualcos'altro, puoi usare `device-id`=`9B3E0000`:
-  * Puoi controllare in Gestione dispositivi in Windows facendo apparire l'iGPU, aprendo le proprietà, selezionando i dettagli e facendo clic su ID hardware.
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| device-id | Data | 9B3E0000 |
-
-* Un `UHD620` in una CPU Comet Lake **richiede** `device-id`=`9B3E0000`:
+* Per tutti gli utenti di `UHD620` (Kaby Lake-R), avrai bisogno di uno spoofing dell'id del dispositivo:
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| device-id | Data | 9B3E0000 |
+| device-id | Data | 16590000 |
 
-* In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 64 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà iGPU
+* Per tutti gli HD6\*\* (gli utenti di `UHD` non sono interessati), ci sono alcuni piccoli problemi con l'output in cui collegare qualsiasi cosa causerebbe un blocco (kernel panic); ecco alcune patch per mitigarlo (credit Rehabman):
+  * 0306 to 0105 (probabilmente un giorno spiegherà cosa fa )
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| framebuffer-con1-enable | Data | 01000000 |
+| framebuffer-con1-alldata | Data | 01050A00 00080000 87010000 02040A00 00080000 87010000 FF000000 01000000 20000000 |
+
+* 0204 to 0105 (probabilmente un giorno spiegherà cosa fa)
+
+| Key | Type | Value |
+| :--- | :--- | :--- |
+| framebuffer-con2-enable | Data | 01000000 |
+| framebuffer-con2-alldata | Data | 01050A00 00080000 87010000 03060A00 00040000 87010000 FF000000 01000000 20000000 |
+
+In alcuni casi in cui non è possibile impostare il preallocamento DVMT di queste schede su un valore superiore di 64 MB nella configurazione UEFI, è possibile che si verifichi un kernel panic. Di solito sono configurati per 32 MB di prealloc DVMT, in tal caso questi valori vengono aggiunti alle proprietà della iGPU
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -191,7 +189,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![Kernel](../images/config/config-universal/kernel-modern-XCPM.png)
+![Kernel](../../images/config/config-universal/kernel-modern-XCPM.png)
 
 ### Add
 
@@ -228,7 +226,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
@@ -316,7 +314,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **PowerTimeoutKernelPanic**: YES
   * Aiuta a risolvere i problemi di panico del kernel relativi ai cambiamenti di alimentazione con i driver Apple in macOS Catalina, in particolare con l'audio digitale.
 * **SetApfsTrimTimeout**: `-1`
-  * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
+* Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
 
@@ -349,7 +347,7 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ## Misc
 
-![Misc](../images/config/config-universal/misc.png)
+![Misc](../../images/config/config-universal/misc.png)
 
 ### Boot
 
@@ -449,7 +447,7 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ## NVRAM
 
-![NVRAM](../images/config/config-universal/nvram.png)
+![NVRAM](../../images/config/config-universal/nvram.png)
 
 ### Add
 
@@ -498,7 +496,7 @@ System Integrity Protection bitmask
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
  **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
-| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/)
+| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/) |
 
 * **Argomenti di avvio specifici per GPU**:
 
@@ -546,33 +544,32 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ## PlatformInfo
 
-![PlatformInfo](../images/config/config-laptop.plist/coffeelake/smbios.png)
+![PlatformInfo](../../images/config/config-laptop.plist/kaby-lake/smbios.png)
 
 ::: tip Info
 
 Per impostare le informazioni SMBIOS, utilizzeremo l'applicazione [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) di CorpNewt.
 
-Per questo esempio Coffee Lake, sceglieremoe the MacBookPro15,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione è la seguente:
+Per questo esempio Kaby Lake Kaby Lake example, sceglieremo MacBookPro14,1 SMBIOS - questo viene fatto intenzionalmente per motivi di compatibilità. La ripartizione tipica è la seguente:
 
 | SMBIOS | CPU Type | GPU Type | Display Size | Touch ID |
 | :--- | :--- | :--- | :--- | :--- |
-| MacBookPro15,1 | Hexa Core 45w | iGPU: UHD 630 + dGPU: RP555/560X | 15" | Yes |
-| MacBookPro15,2 | Quad Core 15w | iGPU: Iris 655 | 13" | Yes |
-| MacBookPro15,3 | Hexa Core 45w | iGPU: UHD 630 + dGPU: Vega16/20 | 15" | Yes |
-| MacBookPro15,4 | Quad Core 15w | iGPU: Iris 645 | 13" | Yes |
-| Macmini8,1 | NUC Systems | HD 6000/Iris Pro 6200 |  N/A | No |
+| MacBookPro14,1 | Dual Core 15w(Low End) | iGPU: Iris Plus 640 | 13" | No |
+| MacBookPro14,2 | Dual Core 15w(High End) | iGPU: Iris Plus 650 | 13" | Yes |
+| MacBookPro14,3 | Quad Core 45w | iGPU: HD 630 + dGPU: RP555/560 | 15" | Yes |
+| iMac18,1 | NUC Systems | iGPU: Iris Plus 640 |  N/A | No |
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
 ```sh
   #######################################################
- #               MacBookPro15,1 SMBIOS Info            #
+ #               MacBookPro14,1 SMBIOS Info            #
 #######################################################
 
-Type:         MacBookPro15,1
-Serial:       C02XG0FDH7JY
-Board Serial: C02839303QXH69FJA
-SmUUID:       DBB364D6-44B2-4A02-B922-AB4396F16DA8
+Type:         MacBookPro14,1
+Serial:       C02Z2CZ5H7JY
+Board Serial: C02928701GUH69FFB
+SmUUID:       AA043F8D-33B6-4A1A-94F7-46972AAD0607
 ```
 
 La parte `Type` viene copiata in Generic -> SystemProductName.
@@ -631,7 +628,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![UEFI](../images/config/config-universal/aptio-v-uefi-laptop.png)
+![UEFI](../../images/config/config-universal/aptio-v-uefi.png)
 
 **ConnectDrivers**: YES
 
