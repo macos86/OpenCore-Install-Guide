@@ -29,8 +29,9 @@ module.exports = {
     },
 
     themeConfig: {
-        lastUpdated: 'Ultimo Aggiornamento',
+        lastUpdatedText: 'Ultimo Aggiornamento',
         repo: 'macos86/OpenCore-Install-Guide',
+        contributorsText: 'Chi ha contribuito alla creazione di questa pagina',
         editLinks: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
         navbar: [
