@@ -102,6 +102,7 @@ module.exports = {
                         {
                             text: 'Risolvere Retroilluminazione',
                             link: '/Getting-Started-With-ACPI/Laptops/backlight/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Laptops/backlight/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Laptops/backlight/manual.md'
@@ -110,6 +111,7 @@ module.exports = {
                         {
                             text: 'Risolvere Trackpad',
                             link: '/Getting-Started-With-ACPI/Laptops/trackpad/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Laptops/trackpad/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Laptops/trackpad/manual.md'
@@ -125,6 +127,7 @@ module.exports = {
                         {
                             text: 'Controller Integrato',
                             link: '/Getting-Started-With-ACPI/Universal/ec/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/ec/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/ec/ssdttime.md',
@@ -134,6 +137,7 @@ module.exports = {
                         {
                             text: 'Gestione Energia CPU',
                             link: '/Getting-Started-With-ACPI/Universal/plug/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/plug/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/plug/ssdttime.md',
@@ -143,6 +147,7 @@ module.exports = {
                         {
                             text: 'AWAC vs RTC',
                             link: '/Getting-Started-With-ACPI/Universal/awac/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/awac/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/awac/ssdttime.md',
@@ -153,6 +158,7 @@ module.exports = {
                         {
                             text: 'NVRAM PMC',
                             link: '/Getting-Started-With-ACPI/Universal/nvram/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/nvram/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/nvram/ssdttime.md',
@@ -162,6 +168,7 @@ module.exports = {
                         {
                             text: 'USB RHUB',
                             palinkth: '/Getting-Started-With-ACPI/Universal/rhub/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/rhub/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/rhub/ssdttime.md',
@@ -171,6 +178,7 @@ module.exports = {
                         {
                             text: 'IMEI',
                             link: '/Getting-Started-With-ACPI/Universal/imei/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/imei/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/imei/manual.md'
@@ -179,6 +187,7 @@ module.exports = {
                         {
                             text: 'Risolvere Brigde Uncore',
                             link: '/Getting-Started-With-ACPI/Universal/unc0/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/unc0/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/unc0/manual.md'
@@ -187,6 +196,7 @@ module.exports = {
                         {
                             text: 'Risolvere il Supporto SMBus',
                             link: '/Getting-Started-With-ACPI/Universal/smbus/',
+                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/smbus/manual.md'
                             ]
