@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:186440eb329c5dbcb6c045950cab0c79d6ff13f505660a60e3e3d40bcddf04a0
-size 209
+This SSDT has been removed in favor of SSDT-EC-USBX-DESKTOP.aml, you can find the file linked here:
+
+* https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-DESKTOP.aml
