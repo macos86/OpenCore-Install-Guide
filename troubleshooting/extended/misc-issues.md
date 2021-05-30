@@ -4,41 +4,6 @@ Problemi vari che non ruotano attorno a macOS stesso come per esempio il multibo
 
 [[toc]]
 
-## Non posso eseguire`acpidump.efi`
-
-Apri la shell OpenCore:
-
-```
-shell> fs0: //inserire il drive aduguato
-
-fs0:\> dir //per verificare che questa sia la directory giusta
-
-  Directory of fs0:\
-
-   01/01/01 3:30p  EFI
-fs0:\> cd EFI\OC\Tools //nota che è con barre in avanti
-
-fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
-```
-
-## Correzione per SSDTTime: `Could not locate or download iasl!`
-
-Ciò è solitamente dovuto a una versione obsoleta di Python; prova ad aggiornarlo o aggiungi iasl alla cartella degli script per SSDTTime:
-
-* [iasl versione macOS](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
-* [iasl versione Windows](https://acpica.org/downloads/binary-tools)
-* [iasl versione Linux (da compilare)](https://acpica.org/downloads)
-
-## Correzione per Python: `Python is not installed or not found on PATH`
-
-Correzione facile, scarica e installa l'ultima versione di Python:
-
-* [macOS link](https://www.python.org/downloads/macos)
-* [Windows link](https://www.python.org/downloads/windows/)
-* Linux: sudo apt install python3
-
-Make sure `Add Python to PATH`
-
 ![](../../images/troubleshooting/troubleshooting-md/python-path.png)
 
 ## Il disco di avvio di Windows non riesce a vedere le unità APFS
@@ -78,20 +43,6 @@ Codice di errore comune di Windows:
 ## Errore di avvio di Windows: "OCB: StartImage failed - Already started"
 
 Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows e pensa accidentalmente che stia avviando OpenCore. Questo può essere evitato spostando Windows sulla propria unità *o* aggiungendo un percorso di unità personalizzato in BlessOverride. Vedere [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) per maggiori dettagli.
-
-## iASL warning, only X unresolved
-
-Se provi a decompilare il tuo DSDT e ottieni un errore simile a questo:
-
-```
-iASL Warning: There were 19 external control methods found during disassembly, but only 0 were resolved (19 unresolved)
-```
-
-Ciò accade quando una tabella ACPI richiede il resto per un corretto riferimento, non accetta la creazione di DSDT poiché la stiamo utilizzando solo per la creazione di pochi SSDT selezionati. Per coloro che sono preoccupati, puoi eseguire quanto segue:
-
-```
-iasl * [insersci tutti i file ACPI files qui]
-```
 
 ## Incoerenza temporale tra macOS e Windows
 
