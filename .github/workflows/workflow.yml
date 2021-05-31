@@ -22,11 +22,11 @@ jobs:
       - name: Sumbodules
         run: |
           git submodule update --remote --recursive
-          git pull && git commit -am "Auto updated submodule references" && git push || echo "Done"
+          git pull && git commit -am "Auto updated submodule references" && git push
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 'latest'
+          node-version: '16.0.2'
       - name: npm
         run: |
           npm install
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 'latest'
+          node-version: '16.0.2'
       - name: Install
         run: npm install
       - name: Lint
@@ -59,7 +59,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 'latest'
+          node-version: '16.0.2'
       - name: Install
         run: npm install
       - name: Build
