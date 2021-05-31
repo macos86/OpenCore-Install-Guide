@@ -25,6 +25,8 @@ jobs:
           git pull && git commit -am "Auto updated submodule references" && git push || echo "Done"
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 'latest'
       - name: npm
         run: |
           npm install
@@ -39,6 +41,8 @@ jobs:
         uses: actions/checkout@v2.3.4
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 'latest'
       - name: Install
         run: npm install
       - name: Lint
@@ -54,6 +58,8 @@ jobs:
           submodules: recursive
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 'latest'
       - name: Install
         run: npm install
       - name: Build
