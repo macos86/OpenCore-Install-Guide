@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   sumbodules:
-    name: Submodules Update
+    name: Updates
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
