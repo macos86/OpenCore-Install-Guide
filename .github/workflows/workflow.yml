@@ -1,4 +1,4 @@
-name: Build/Test/Deploy
+name: workflow
 on:
   push:
     branches-ignore:
@@ -20,7 +20,7 @@ jobs:
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull && git commit -am "Auto updated submodule references" && git push && exit 1 || echo "Done"
+          git pull && git commit -am "Auto updated submodule references" && git push && gh workflow run workflow && exit 1 || echo "Done"
   lint:
     name: Lint
     runs-on: ubuntu-latest
