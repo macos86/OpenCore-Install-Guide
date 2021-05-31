@@ -22,7 +22,7 @@ jobs:
       - name: Sumbodules
         run: |
           git submodule update --remote --recursive
-          git pull && git commit -am "Auto updated submodule references" && git push
+          git pull && git commit -am "Auto updated submodule references" && git push || echo "Done!"
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
