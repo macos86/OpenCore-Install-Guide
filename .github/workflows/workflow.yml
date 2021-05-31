@@ -27,7 +27,8 @@ jobs:
         uses: actions/setup-node@v2.1.5
       - name: npm
         run: |
-          npm run upgrade
+          npm install
+          npm upgrade
           git pull && git commit -am "Auto updated package.json and package-lock.json" && git push || echo "Done"
   lint:
     name: Lint
