@@ -5,6 +5,8 @@ on:
       - gh-pages
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron:  '30 0 * * *'
 jobs:
   sumbodules:
     name: Updates
