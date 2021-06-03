@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '16.2.0'
+          node-version: '16'
       - name: npm
         run: |
           npm upgrade
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '16.2.0'
+          node-version: '16'
       - name: Install
         run: npm install
       - name: Lint
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '16.2.0'
+          node-version: '16'
       - name: Install
         run: npm install
       - name: Build
