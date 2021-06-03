@@ -27,9 +27,9 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '16'
-      - name: npm
+      - name: Upgrade
         run: npm upgrade
-      - name: git pull
+      - name: Commit
         run: git pull && git commit -am "Updated packages and submodules" && git push || echo "Done"
       - name: Lint
         run: npm run lint
