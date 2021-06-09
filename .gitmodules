@@ -4,3 +4,6 @@
 [submodule "OpenCore-Multiboot"]
 	path = OpenCore-Multiboot
 	url = https://github.com/macos86/OpenCore-Multiboot.git
+[submodule "OpenCanopy-Gallery"]
+	path = OpenCanopy-Gallery
+	url = https://github.com/macos86/OpenCanopy-Gallery.git

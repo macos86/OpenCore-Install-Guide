@@ -48,6 +48,10 @@ module.exports = {
                 link: '/OpenCore-Multiboot/'
             },
             {
+                text: 'Galleria OpenCanopy',
+                link: '/OpenCanopy-Gallery/'
+            },
+            {
                 text: 'Guide',
                 children: [
                     {
@@ -327,6 +331,21 @@ module.exports = {
                     ]
                 }
             ],
+            'OpenCanopy-Gallery':
+                [
+                    {
+                        title: 'Introduzione',
+                        link: '/OpenCanopy-Gallery/'
+                    },
+                    {
+                        title: 'Repo con Temi Popolari',
+                        isgroup: true,
+                        children: [
+                            '/OpenCanopy-Gallery/ocbinary.md',
+                            '/OpenCanopy-Gallery/blackosx.md'
+                        ]
+                    }
+                ],
             '/': [
                 {
                     text: 'Introduzione',
