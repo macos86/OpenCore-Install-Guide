@@ -331,7 +331,7 @@ module.exports = {
                     ]
                 }
             ],
-            'OpenCanopy-Gallery':
+            '/OpenCanopy-Gallery/':
                 [
                     {
                         title: 'Introduzione',
