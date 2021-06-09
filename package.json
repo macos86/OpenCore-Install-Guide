@@ -1,12 +1,11 @@
 {
   "name": "OC-Install-Guide",
-  "author": {
-    "name": "macos86",
-    "url": "https://github.com/macos86"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/macos86/OpenCore-Install-Guide.git"
+  "author": "macos86 (https://github.com/macos86)",
+  "repository": "https://github.com/macos86/OpenCore-Install-Guide",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "fixlint": "markdownlint-cli2-fix **/*.md #node_modules"
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
