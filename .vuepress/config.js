@@ -212,65 +212,6 @@ module.exports = {
                 '/Getting-Started-With-ACPI/cleanup.md',
                 '/Getting-Started-With-ACPI/troubleshooting.md'
             ],
-            '/config.plist/': [
-                {
-                    text: 'Setup del config.plist',
-                    link: '/config.plist/',
-                    isGroup: true,
-                    children: [
-                        {
-                            text: 'Intel Desktop config.plist',
-                            isGroup: true,
-                            children: [
-                                '/config.plist/penryn.md',
-                                '/config.plist/clarkdale.md',
-                                '/config.plist/sandy-bridge.md',
-                                '/config.plist/ivy-bridge.md',
-                                '/config.plist/haswell.md',
-                                '/config.plist/skylake.md',
-                                '/config.plist/kaby-lake.md',
-                                '/config.plist/coffee-lake.md',
-                                '/config.plist/comet-lake.md'
-                            ]
-                        },
-                        {
-                            text: 'Intel Laptop config.plist',
-                            isGroup: true,
-                            children: [
-                                '/config.plist/laptop/arrandale.md',
-                                '/config.plist/laptop/sandy-bridge.md',
-                                '/config.plist/laptop/ivy-bridge.md',
-                                '/config.plist/laptop/haswell.md',
-                                '/config.plist/laptop/broadwell.md',
-                                '/config.plist/laptop/skylake.md',
-                                '/config.plist/laptop/kaby-lake.md',
-                                '/config.plist/laptop/coffee-lake.md',
-                                '/config.plist/laptop/coffee-lake-plus.md',
-                                '/config.plist/laptop/icelake.md'
-                            ]
-                        },
-                        {
-                            text: 'Intel HEDT config.plist',
-                            isGroup: true,
-                            children: [
-                                '/config.plist/HEDT/nehalem.md',
-                                '/config.plist/HEDT/ivy-bridge-e.md',
-                                '/config.plist/HEDT/haswell-e.md',
-                                '/config.plist/HEDT/broadwell-e.md',
-                                '/config.plist/HEDT/skylake-x.md'
-                            ]
-                        },
-                        {
-                            text: 'AMD Desktop config.plist',
-                            isGroup: true,
-                            children: [
-                                '/config.plist/AMD/fx.md',
-                                '/config.plist/AMD/zen.md'
-                            ]
-                        }
-                    ]
-                }
-            ],
             '/OpenCore-Multiboot/': [
                 '/OpenCore-Multiboot/',
                 {
@@ -385,7 +326,63 @@ module.exports = {
                         '/installer-guide/opencore-efi.md',
                         '/ktext.md',
                         '/Getting-Started-With-ACPI/',
-                        '/config.plist/',
+                        {
+                            text: 'Setup del config.plist',
+                            link: '/config.plist/',
+                            isGroup: true,
+                            children: [
+                                {
+                                    text: 'Intel Desktop config.plist',
+                                    isGroup: true,
+                                    children: [
+                                        '/config.plist/penryn.md',
+                                        '/config.plist/clarkdale.md',
+                                        '/config.plist/sandy-bridge.md',
+                                        '/config.plist/ivy-bridge.md',
+                                        '/config.plist/haswell.md',
+                                        '/config.plist/skylake.md',
+                                        '/config.plist/kaby-lake.md',
+                                        '/config.plist/coffee-lake.md',
+                                        '/config.plist/comet-lake.md'
+                                    ]
+                                },
+                                {
+                                    text: 'Intel Laptop config.plist',
+                                    isGroup: true,
+                                    children: [
+                                        '/config.plist/laptop/arrandale.md',
+                                        '/config.plist/laptop/sandy-bridge.md',
+                                        '/config.plist/laptop/ivy-bridge.md',
+                                        '/config.plist/laptop/haswell.md',
+                                        '/config.plist/laptop/broadwell.md',
+                                        '/config.plist/laptop/skylake.md',
+                                        '/config.plist/laptop/kaby-lake.md',
+                                        '/config.plist/laptop/coffee-lake.md',
+                                        '/config.plist/laptop/coffee-lake-plus.md',
+                                        '/config.plist/laptop/icelake.md'
+                                    ]
+                                },
+                                {
+                                    text: 'Intel HEDT config.plist',
+                                    isGroup: true,
+                                    children: [
+                                        '/config.plist/HEDT/nehalem.md',
+                                        '/config.plist/HEDT/ivy-bridge-e.md',
+                                        '/config.plist/HEDT/haswell-e.md',
+                                        '/config.plist/HEDT/broadwell-e.md',
+                                        '/config.plist/HEDT/skylake-x.md'
+                                    ]
+                                },
+                                {
+                                    text: 'AMD Desktop config.plist',
+                                    isGroup: true,
+                                    children: [
+                                        '/config.plist/AMD/fx.md',
+                                        '/config.plist/AMD/zen.md'
+                                    ]
+                                }
+                            ]
+                        },
                         '/installation.md',
                         {
                             text: 'Dopo l\'installazione',
