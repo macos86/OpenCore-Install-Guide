@@ -26,7 +26,9 @@ jobs:
         with:
           node-version: '16'
       - name: Upgrade
-        run: yarn upgrade
+        run: |
+          yarn install
+          yarn upgrade
       - name: Lint
         run: yarn fixlint
       - name: Commit
