@@ -2370,7 +2370,7 @@ markdown-it-emoji@^2.0.0:
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz#3164ad4c009efd946e98274f7562ad611089a231"
   integrity sha512-39j7/9vP/CPCKbEI44oV8yoPJTpvfeReTn/COgRhSpNrjWF3PfP/JUxxB0hxV6ynOY8KH8Y8aX9NMDdo6z+6YQ==
 
-markdown-it-multimd-table@4.1.0:
+markdown-it-multimd-table@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/markdown-it-multimd-table/-/markdown-it-multimd-table-4.1.0.tgz#5c23eba9ceda580dc5c7301927a01610e0ee37b9"
   integrity sha512-YNR7Td1gK3O+jLezL6Zfl80WNRn9iLAyXmCVAUSsTJ61drmJdHr7cWqr2CuWaSffBtnM0Zh0QBRUdmICoy+CDg==
@@ -2415,7 +2415,7 @@ markdownlint-cli2-formatter-default@^0.0.2:
   resolved "https://registry.yarnpkg.com/markdownlint-cli2-formatter-default/-/markdownlint-cli2-formatter-default-0.0.2.tgz#76f1a064d70966178dfe3bb489af9423d830ca79"
   integrity sha512-jIz1X3SIC8sX4NDFqQFUXL+JEtfnDoN4i+xocEu+etcxGX455pHb6sx86f/yVk4mKJ2o7aNe2ydSx9an22BfBg==
 
-markdownlint-cli2@0.1.3:
+markdownlint-cli2@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/markdownlint-cli2/-/markdownlint-cli2-0.1.3.tgz#15ac14edea7816c96978f5f1de9256e637b691c5"
   integrity sha512-4pbrSEDe/G9PjJnrxKXKTQXyXERHvFH+RjvZrCRiNrVPB0p1/wmQXCkdsKNWlaf+gc4gz4k9u1fj2x28GvFenw==
@@ -3624,7 +3624,7 @@ vue@^3.0.11:
     "@vue/runtime-dom" "3.1.1"
     "@vue/shared" "3.1.1"
 
-vuepress@2.0.0-beta.17:
+vuepress@^2.0.0-beta.17:
   version "2.0.0-beta.17"
   resolved "https://registry.yarnpkg.com/vuepress/-/vuepress-2.0.0-beta.17.tgz#e9b3b6ba399659e47a6bdf731a83c66c3dc9c5d1"
   integrity sha512-Ak7ZoIWiuWIFG50h2TiB3PifBda3MDWQxum/sfozOzWdkD+CriwKzYfikt9MyxuD+uQziwXhD4paIpD5HcxarA==
