@@ -305,7 +305,7 @@ module.exports = {
                     isGroup: true,
                     children: [
                         {
-                            text: 'Creare la USB',
+                            text: 'Creare l\'Installer',
                             link: '/installer-guide/',
                             isGroup: true,
                             children: [
