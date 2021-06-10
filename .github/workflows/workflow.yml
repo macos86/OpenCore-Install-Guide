@@ -19,20 +19,20 @@ jobs:
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-      - name: Sumbodules
+      - name: Submodules
         run: git submodule update --remote --recursive
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '16'
       - name: Upgrade
-        run: npm upgrade
+        run: yarn upgrade
       - name: Lint
-        run: 'npx markdownlint-cli2-fix **/*.md #node_modules'
+        run: yarn fixlint
       - name: Commit
         run: git pull && git commit -am "Updated packages and submodules" && git push || echo "Done"
       - name: Build
-        run: npx vuepress build
+        run: yarn build
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
