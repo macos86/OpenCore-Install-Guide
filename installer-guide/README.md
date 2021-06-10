@@ -1,4 +1,4 @@
-# Creare la USB
+# Creare l'Installer
 
 Requisiti:
 
