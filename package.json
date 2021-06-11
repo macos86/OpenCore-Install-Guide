@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
-    "fixlint": "markdownlint-cli2-fix **/*.md !node_modules !Getting-Started-With-ACPI !OpenCore-Multiboot !OpenCanopy-Gallery"
+    "fixlint": "markdownlint-cli2-fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot' '!OpenCanopy-Gallery'"
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
