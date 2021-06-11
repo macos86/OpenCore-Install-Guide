@@ -15,6 +15,13 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Setup Git
+        run: |
+          git config --global user.name 'Git bot'
+          git config --global user.email 'bot@noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - name: Submodules
+        run: git submodule update --remote --recursive
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
         with:
@@ -25,13 +32,8 @@ jobs:
           yarn up
       - name: Lint
         run: yarn fixlint
-      - name: Submodules commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git submodule update --remote --recursive
-          git pull && git commit -am "Updated packages and submodules" && git push || echo "Done"
+      - name: Commit
+        run: git pull && git commit -am "Updated packages and submodules" && git push || echo "Done"
       - name: Build
         run: yarn build
       - name: Deploy to GitHub Pages
