@@ -22,7 +22,7 @@ jobs:
       - name: Upgrade
         run: |
           yarn install
-          yarn upgrade
+          yarn up
       - name: Lint
         run: yarn fixlint
       - name: Submodules commit
