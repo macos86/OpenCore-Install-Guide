@@ -33,7 +33,10 @@ jobs:
       - name: Lint
         run: yarn fixlint
       - name: Commit
-        run: git pull && git commit -am "Updated packages and submodules" && git push || echo "Done"
+        run: |
+          git pull
+          git commit -am "Updated packages and submodules"
+          git push
       - name: Build
         run: yarn build
       - name: Deploy to GitHub Pages
