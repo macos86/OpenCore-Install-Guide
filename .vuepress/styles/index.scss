@@ -1,4 +1,5 @@
 :root {
+	scroll-behavior: smooth;
 
 	// brand colors
 	--c-brand: #30bbe9;
@@ -108,6 +109,7 @@
 	--docsearch-footer-background: var(--c-bg);
   }
   html.dark {
+	scroll-behavior: smooth;
 
 	// brand colors
 	--c-brand: #30bbe9;
