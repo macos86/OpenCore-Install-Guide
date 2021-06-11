@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
-    "fixlint": "markdownlint-cli2-fix **/*.md \"#node_modules\""
+    "fixlint": "markdownlint-cli2-fix **/*.md !node_modules !Getting-Started-With-ACPI !OpenCore-Multiboot !OpenCanopy-Gallery"
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
@@ -13,5 +13,5 @@
     "markdownlint-cli2": "^0.1.3",
     "vuepress": "^2.0.0-beta.17"
   },
-  "homepage": "https://macos86.github.io/OpenCore-Install-Guide/"
+  "homepage": "https://macos86.github.io/"
 }
