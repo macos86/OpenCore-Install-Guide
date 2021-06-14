@@ -7,3 +7,6 @@
 [submodule "OpenCanopy-Gallery"]
 	path = OpenCanopy-Gallery
 	url = https://github.com/macos86/OpenCanopy-Gallery.git
+[submodule "OpenCore-Post-Install"]
+	path = OpenCore-Post-Install
+	url = https://github.com/macos86/OpenCore-Post-Install.git

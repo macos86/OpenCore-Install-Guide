@@ -44,6 +44,10 @@ module.exports = {
                 link: '/Getting-Started-With-ACPI/'
             },
             {
+                text: 'Dopo l\'installazione di OpenCore...',
+                link: '/OpenCore-Post-Install/'
+            },
+            {
                 text: 'Multibooting con OpenCore',
                 link: '/OpenCore-Multiboot/'
             },
@@ -57,10 +61,6 @@ module.exports = {
                     {
                         text: 'Dortania (EN)',
                         link: 'https://dortania.github.io/'
-                    },
-                    {
-                        text: 'OpenCore Post-Install (EN)',
-                        link: 'https://dortania.github.io/OpenCore-Post-Install/'
                     },
                     {
                         text: 'GPU Buyers Guide (EN)',
@@ -211,6 +211,125 @@ module.exports = {
                 },
                 '/Getting-Started-With-ACPI/cleanup.md',
                 '/Getting-Started-With-ACPI/troubleshooting.md'
+            ],
+            '/OpenCore-Post-Install': [
+                {
+                    text: 'Introduction',
+                    link: '/OpenCore-Post-Install/'
+                },
+                {
+                    text: 'Universal',
+                    isgroup: true,
+                    children: [
+                        '/OpenCore-Post-Install/universal/audio.md',
+                        '/OpenCore-Post-Install/universal/oc2hdd.md',
+                        '/OpenCore-Post-Install/universal/update.md',
+                        '/OpenCore-Post-Install/universal/drm.md',
+                        '/OpenCore-Post-Install/universal/iservices.md',
+                        '/OpenCore-Post-Install/universal/pm.md',
+                        '/OpenCore-Post-Install/universal/sleep.md'
+                    ]
+                },
+                {
+                    text: 'USB Fixes',
+                    isgroup: true,
+                    children: [
+                        '/OpenCore-Post-Install/usb/',
+                        '/OpenCore-Post-Install/usb/system-preparation.md',
+                        {
+                            text: 'USB Mapping',
+                            isgroup: true,
+                            children: [
+                                '/OpenCore-Post-Install/usb/intel-mapping/intel.md',
+                                '/OpenCore-Post-Install/usb/manual/manual.md'
+                            ]
+                        },
+                        {
+                            text: 'Miscellaneous Fixes',
+                            isgroup: true,
+                            children: [
+                                '/OpenCore-Post-Install/usb/misc/power.md',
+                                '/OpenCore-Post-Install/usb/misc/shutdown.md',
+                                '/OpenCore-Post-Install/usb/misc/instant-wake.md',
+                                '/OpenCore-Post-Install/usb/misc/keyboard.md',
+                            ]
+                        }
+                    ]
+                },
+                {
+                    text: 'Security',
+                    isgroup: true,
+                    children: [
+                        {
+                            text: 'Security and FileVault',
+                            link: '/OpenCore-Post-Install/universal/security.md',
+                            isgroup: true,
+                            children: [
+                                '/OpenCore-Post-Install/universal/security/filevault.md',
+                                '/OpenCore-Post-Install/universal/security/vault.md',
+                                '/OpenCore-Post-Install/universal/security/scanpolicy.md',
+                                '/OpenCore-Post-Install/universal/security/password.md',
+                                '/OpenCore-Post-Install/universal/security/applesecureboot.md'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    text: 'Laptop Specifics - Fixing Battery Read-outs',
+                    link: '/OpenCore-Post-Install/laptop-specific/battery'
+                },
+                {
+                    text: 'Cosmetics',
+                    isgroup: true,
+                    children: [
+                        '/OpenCore-Post-Install/cosmetic/verbose.md',
+                        '/OpenCore-Post-Install/cosmetic/gui.md',
+                        '/OpenCore-Post-Install/universal/memory.md'
+                    ]
+                },
+                {
+                    text: 'Multiboot',
+                    isgroup: true,
+                    children: [
+                        '/OpenCore-Multiboot/',
+                        '/OpenCore-Post-Install/multiboot/bootstrap.md',
+                        '/OpenCore-Post-Install/multiboot/bootcamp.md'
+                    ]
+                },
+                {
+                    text: 'Miscellaneous',
+                    isgroup: true,
+                    children: [
+                        '/OpenCore-Post-Install/misc/rtc.md',
+                        '/OpenCore-Post-Install/misc/msr-lock.md',
+                        '/OpenCore-Post-Install/misc/nvram.md'
+                    ]
+                },
+                {
+                    text: 'In-depth GPU patching',
+                    link: '/OpenCore-Post-Install/gpu-patching/',
+                    isgroup: true,
+                    children: [
+                        {
+                            text: 'Modern Intel iGPU',
+                            isgroup: true,
+                            children: [
+                                '/OpenCore-Post-Install/gpu-patching/intel-patching/',
+                                '/OpenCore-Post-Install/gpu-patching/intel-patching/vram.md',
+                                '/OpenCore-Post-Install/gpu-patching/intel-patching/connector.md',
+                                '/OpenCore-Post-Install/gpu-patching/intel-patching/busid.md'
+                            ]
+                        },
+                        {
+                            text: 'Legacy Intel iGPU',
+                            link: '/OpenCore-Post-Install/gpu-patching/legacy-intel/'
+                        },
+                        {
+                            title: 'Legacy Nvidia',
+                            link: '/OpenCore-Post-Install/gpu-patching/nvidia-patching/'
+                        }
+                    ]
+                }
             ],
             '/OpenCore-Multiboot/': [
                 '/OpenCore-Multiboot/',
