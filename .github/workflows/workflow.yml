@@ -35,8 +35,7 @@ jobs:
       - name: Commit
         run: |
           git pull
-          git commit -am "Updated packages and submodules"
-          git push
+          git commit -am "Updated packages and submodules" && git push || echo "Done"
       - name: Build
         run: yarn build
       - name: Deploy to GitHub Pages
