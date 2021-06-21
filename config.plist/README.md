@@ -62,30 +62,30 @@ Ora arriva la parte importante, selezionare la tua configurazione. Ogni piattafo
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Yonah, Conroe e Penryn](/config.plist/penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
-| [Lynnfield and Clarkdale](/config.plist/clarkdale.md) | 5XX-8XX | era 2010 |
-| [Sandy Bridge](/config.plist/sandy-bridge.md) | 2XXX | era 2011 |
-| [Ivy Bridge](/config.plist/ivy-bridge.md) | 3XXX | era 2012 |
-| [Haswell](/config.plist/haswell.md) | 4XXX | era 2013-2014 |
-| [Skylake](/config.plist/skylake.md) | 6XXX | era 2015-2016 |
-| [Kaby Lake](/config.plist/kaby-lake.md) | 7XXX | era 2017 |
-| [Coffee Lake](/config.plist/coffee-lake.md) | 8XXX-9XXX | era 2017-2019 |
-| [Comet Lake](/config.plist/comet-lake.md) | 10XXX | era 2020 |
+| [Yonah, Conroe e Penryn](penryn.md) | E8XXX, Q9XXX, [etc 1](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
+| [Lynnfield and Clarkdale](clarkdale.md) | 5XX-8XX | era 2010 |
+| [Sandy Bridge](sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](haswell.md) | 4XXX | era 2013-2014 |
+| [Skylake](skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake](kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake](coffee-lake.md) | 8XXX-9XXX | era 2017-2019 |
+| [Comet Lake](comet-lake.md) | 10XXX | era 2020 |
 
 ### Laptop Intel
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Clarksfield e Arrandale](/config-laptop.plist/arrandale.md) | 3XX-9XX | era 2010 |
-| [Sandy Bridge](/config-laptop.plist/sandy-bridge.md) | 2XXX | era 2011 |
-| [Ivy Bridge](/config-laptop.plist/ivy-bridge.md) | 3XXX | era 2012 |
-| [Haswell](/config-laptop.plist/haswell.md) | 4XXX | era 2013-2014 |
-| [Broadwell](/config-laptop.plist/broadwell.md) | 5XXX | era 2014-2015 |
-| [Skylake](/config-laptop.plist/skylake.md) | 6XXX | era 2015-2016 |
-| [Kaby Lake e Amber Lake](/config-laptop.plist/kaby-lake.md) | 7XXX | era 2017 |
-| [Coffee Lake e Whiskey Lake](/config-laptop.plist/coffee-lake.md) | 8XXX | era 2017-2018 |
-| [Coffee Lake Plus e Comet Lake](/config-laptop.plist/coffee-lake-plus.md) | 9XXX-10XXX | era 2019-2020 |
-| [Ice Lake](/config-laptop.plist/icelake.md) | 10XXX | era 2019-2020 |
+| [Clarksfield e Arrandale](laptop/arrandale.md) | 3XX-9XX | era 2010 |
+| [Sandy Bridge](laptop/sandy-bridge.md) | 2XXX | era 2011 |
+| [Ivy Bridge](laptop/ivy-bridge.md) | 3XXX | era 2012 |
+| [Haswell](laptop/haswell.md) | 4XXX | era 2013-2014 |
+| [Broadwell](laptop/broadwell.md) | 5XXX | era 2014-2015 |
+| [Skylake](laptop/skylake.md) | 6XXX | era 2015-2016 |
+| [Kaby Lake e Amber Lake](laptop/kaby-lake.md) | 7XXX | era 2017 |
+| [Coffee Lake e Whiskey Lake](laptop/coffee-lake.md) | 8XXX | era 2017-2018 |
+| [Coffee Lake Plus e Comet Lake](laptop/coffee-lake-plus.md) | 9XXX-10XXX | era 2019-2020 |
+| [Ice Lake](laptop/icelake.md) | 10XXX | era 2019-2020 |
 
 ### HEDT Intel
 
@@ -93,18 +93,18 @@ Questa sezione include sia enthusiast computer e server.
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Nehalem and Westmere](/config-HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | era 2008-2010 |
-| [Sandy/Ivy Bridge-E](/config-HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | era 2011-2013 |
-| [Haswell-E](/config-HEDT/haswell-e.md) | 5XXX | era 2014 |
-| [Broadwell-E](/config-HEDT/broadwell-e.md) | 6XXX | era 2016 |
-| [Skylake/Cascade Lake-X/W](/config-HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | era 2017-2019 |
+| [Nehalem and Westmere](HEDT/nehalem.md) | 9XX, X3XXX, X5XXX, [etc 1](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), [2](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | era 2008-2010 |
+| [Sandy/Ivy Bridge-E](HEDT/ivy-bridge-e.md) | 3XXX, 4XXX | era 2011-2013 |
+| [Haswell-E](HEDT/haswell-e.md) | 5XXX | era 2014 |
+| [Broadwell-E](HEDT/broadwell-e.md) | 6XXX | era 2016 |
+| [Skylake/Cascade Lake-X/W](HEDT/skylake-x.md) | 7XXX, 9XXX, 10XXX | era 2017-2019 |
 
 ### AMD
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
-| [Bulldozer/Jaguar](/AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
-| [Zen](/AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
+| [Bulldozer/Jaguar](AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
+| [Zen](AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
 
 * Note: ~~3° generazione (39XX), chiamate Threadripper, non sono supportate, la 1° e 2° generazione tuttavia sono supportate~~
   * L'ultima versione del BIOS e di OpenCore ha risolto il problema, tutte le piattaforme Threadripper sono supportate
