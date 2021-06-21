@@ -92,7 +92,7 @@ La maggior parte delle funzionalità di Clover attualmente sono supportate in Op
 
 ## Miti comuni
 
-### OpenCore non è stabile perché è una beta
+### OpenCore non è stabile perché è una beta?
 
 Risposta breve: No
 
@@ -112,7 +112,7 @@ Il piano corrente:
 
 Quindi, per favore, non vedere il numero di versione come un ostacolo, piuttosto come qualcosa su cui riflettere.
 
-### OpenCore inietta sempre il SMBIOS e i dati ACPI negli altri sistemi
+### OpenCore inietta sempre il SMBIOS e i dati ACPI negli altri sistemi?
 
 Di default, OpenCore assumerà che tutti i sistemi dovrebbero essere trattati in maniera uniforme rispetto agli ACPI e alle informazioni SMBIOS. La ragione per questo pensiero consiste in tre parti:
 
@@ -123,7 +123,7 @@ Di default, OpenCore assumerà che tutti i sistemi dovrebbero essere trattati in
 
 Tuttavia, ci sono quirk in OpenCore che permettono di inettare il SMBIOS solo per macOS modificando da dove macOS legge le informazioni SMBIOS. Il quirk `CustomSMIOSGuid` con `CustomSMBIOSMode` impostato su `Custom` può causare break a lungo andare e perciò raccomandiamo questa opzione solo nel caso che certi sistemi non supportino il SMBIOS di macOS. Per maggiore stabilità, disabilita quei quirk.
 
-### OpenCore richiede un'installazione pulita
+### OpenCore richiede un'installazione pulita?
 
 Nel caso in cui tu non abbia una installazione "Vanilla" – che si riferisce al lasciare il sistema immutato, senza installare strumenti/kext di terze parti nel volume di sistema o altre modifiche non supportate da Apple. Quando il tuo sistema viene pesantemente modificato, anche con utility di terze parti come Hackintool, raccomandiamo una installazione pulita per evitare potenziali errori.
 
@@ -131,7 +131,7 @@ Nota speciale per gli utenti Clover: per favore esegui un reset NVRAM quando ins
 
 * Nota: I laptop Thinkpad sono famosi per essere semi-bricked dopo un reset NVRAM da OpenCore, raccomandiamo di aggiornare il BIOS in queste macchine, che prevede nel mezzo anche un NVRAM reset.
 
-### OpenCore supporta solo alcune versioni di macOS
+### OpenCore supporta solo alcune versioni di macOS?
 
 Da OpenCore 0.6.2, puoi avviare ogni versione Intel di macOS tornando indietro fino a OS X 10.4! Un supporto completo dipende dal tuo hardware, perciò verificalo da solo: [Limitazioni Hardware](macos-limits.md)
 
@@ -163,13 +163,13 @@ Acidanthera ha provato molte versione, e io stesso ho avviato molte versioni di 
 
 :::
 
-### OpenCore supporta hardware più vecchi
+### OpenCore supporta hardware più vecchi?
 
 Ora come ora, la maggior parte degli hardware Intel è supportata dato che il sistema operativo stesso li supporta! Tuttavia per favore guarda la sezione [Limitazioni Hardware](macos-limits.md) per maggiori informazioni su quale hardware è supportato in quale versione di OS X/macOS.
 
 Correntemente, le serie Intel Yonah o più recenti sono stati testati correttamente con OpenCore.
 
-### OpenCore supporta l'avvio di Linux/Windows
+### OpenCore supporta l'avvio di Linux e Windows?
 
 OpenCore funziona alla stessa maniera di ogni altro boot loader, perciò rispetta anche gli altri sistemi. Per ogni sistema con bootloader con nomi o percorsi irregolari, puoi semplicemente aggiungerlo nella sezione BlessOverride.
 
