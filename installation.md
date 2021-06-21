@@ -8,14 +8,6 @@ Per chi ha problemi all'avvio, assicurati di aver letto la [sezione di risoluzio
 * [r/Hackintosh Discord (Solo Intel)](https://discord.gg/2QYd7ZT)
 * [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
 
-## Sanity checker
-
-Ringraziamo il lavoro di Ramus, abbiamo uno strumento fantastico per verificare il tuo config:
-
-* [**Sanity Checker**](https://opencore.slowgeek.com)
-
-Nota che questo tool non è mantenuto da Dortania, per ogni tipo di problema riferisciti alla [Repo del Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
-
 ## Promemoria del Config
 
 ### Utenti HP
