@@ -115,7 +115,7 @@ Supporti basati su Kernel Vanilla (ossia senza modifiche):
 Sfortunatamente molte funzionalità di macOS sono al momento non supportate con AMD e molte altre potrebbero essere buggate. Esse sono:
 
 * Macchine virtuali che usano l'hypervisor Apple
-  * Questo include VMWare, Parallels, Docker, Android Studios, ecc.
+  * Questo include VMWare, Parallels, Docker, Android Studio, ecc.
   * VirtualBox è la sola eccezione dato che ha un proprio hypervisor
   * VMware 10 e Parallels 13.1.0 supportano il proprio hypervisor, tuttavia usare software non aggiornati per gestire macchine virtuali, può causare problemi di sicurezza
 * Supporto Adobe
@@ -123,6 +123,7 @@ Sfortunatamente molte funzionalità di macOS sono al momento non supportate con 
   * Puoi disabilitare funzioni come il supporto RAW per evitare il crash: [Adobe Fixes (EN)](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
 * Supporto 32-Bit
   * Per chi usa ancora software a 32-Bit, in Mojave o più vecchi, le patch Vanilla non supportano il 32-bit.
+  * Una soluzione è l'uso di un [kernel personalizzato](https://files.amd-osx.com/?dir=Kernels), tuttavia perderesti il supporto a iMessage e noi non ti aiuteremmo in quel caso
 * Problemi di stabilità in molte app
   * Applicazioni per audio editing sono quelle con più problemi, per esempio Logic Pro
   * Anche DaVinci Resolve è famoso per avere molti problemi
@@ -188,13 +189,13 @@ Nota: Apple ha tenuto i driver per la iGPU Ivy Bridge in macOS 11, Big Sur, tutt
 | [X1000](https://en.wikipedia.org/wiki/Radeon_X1000_series) | 10.4.x | ^^ | / |
 | [Terascale](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
 | [Terascale 2/3](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.6.x | ^^ | ^^ |
-| [GCN 1](https://en.wikipedia.org/wiki/Graphics_Core_Next) | 10.8.3 | <span style="color:green"> Attuale </span> | ^^ |
+| [GCN 1](https://en.wikipedia.org/wiki/Graphics_Core_Next) | 10.8.3 | <span style="color:green">Attuale</span> | ^^ |
 | [GCN 2/3](https://en.wikipedia.org/wiki/Graphics_Core_Next) | 10.10.x | ^^ | ^^ |
 | [Polaris 10](https://en.wikipedia.org/wiki/Radeon_RX_400_series), [20](https://en.wikipedia.org/wiki/Radeon_RX_500_series) | 10.12.1 | ^^ | ^^ |
 | [Vega 10](https://en.wikipedia.org/wiki/Radeon_RX_Vega_series) | 10.12.6 | ^^ | ^^ |
 | [Vega 20](https://en.wikipedia.org/wiki/Radeon_RX_Vega_series) | 10.14.5 | ^^ | ^^ |
 | [Navi 10](https://en.wikipedia.org/wiki/Radeon_RX_5000_series) | 10.15.1 | ^^ | Richiede `agdpmod=pikera` nei boot-args |
-| [Navi 20](https://en.wikipedia.org/wiki/Radeon_RX_6000_series) | <span style="color:red"> / </span> | <span style="color:red"> / </span> | <span style="color:red"> Correntemente i driver non funzionano </span> |
+| [Navi 20](https://en.wikipedia.org/wiki/Radeon_RX_6000_series) | 11.4 | ^^ | <span style="color:yellow">Correntemente solo alcuni modelli di Navi 21 funzionano</span> |
 
 :::
 

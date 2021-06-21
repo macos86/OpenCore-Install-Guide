@@ -15,6 +15,7 @@ Termine | Descrizione
 **OpenCore**   | Il più giovane della scena Hackintosh, fatto per avere la sicurezza in testa dal [team Acidanthera](https://github.com/acidanthera), ha un avvio più veloce e leggero di Clover. Ha un sacco di cose da impostare, ma supporta anche nativamente macOS meglio di Clover (come Ibernazione, FileVault 2, Combinazioni di avvio...).
 **Clover**  | Un bootloader considerato ora vecchio con il rilascio di OpenCore. Questa guida non si dedicherà a usare questo software.
 **ACPI**  | "Advanced Configuration and Power Interface" (ACPI) provvede uno standard aperto che il sistema operativo può usare per scoprire e configurare i componenti hardware del computer, molto di questo sarà discusso più avanti nella guida
+**DSDT/SSDT** | Tabelle nell'ACPI che descrivono come i dispositivi e il sistema devono interagire, ossia nella accensione, spegnimento, cambio di GPU, porte USB, ecc...
 **.AML** | Il formato del file compilato ACPI, e cosa il tuo PC eseguirà. `.DAT` è un'altra estensione con lo stesso esatto scopo.
 **.DSL** | Il formato del file sorgente ACPI – questo è quello che modificherai e compilerai per il tuo computer. **NON** mescolare questo file con il formato `.ASL`.
 **Kext**   | Conosciuti come **K**ernel **Ext**ensions, sono i driver di macOS. Sono usati per differenti compiti come driver per dispositivi e per altro (in hackintoshing) come modificare il sistema, iniettare informazioni o avviare compiti. Kext non sono la sola parte buona dell'Hackintosh, dato che sono accompagnati dai patch e dai fix degli ACPI.
