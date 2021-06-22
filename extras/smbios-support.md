@@ -313,8 +313,6 @@ Informazioni extra riguardo le CPU Apple:
 
 ::: details Power PC SMBIOS Table
 
-<br/>
-
 #### PowerBook - PowerPC
 
 | SMBIOS | Anno | Famiglia CPU | Supporto Iniziale | Ultima Versione Supportata |
