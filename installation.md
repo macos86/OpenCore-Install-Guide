@@ -58,11 +58,11 @@ Ora sei finalmente pronto per mettere la chiavetta nel tuo computer e spegnerlo.
 Una volta avviata la USB, dovrai vedere le seguenti opzioni:
 
 1. Windows
-2. macOS Base System (External)/Install macOS Catalina (External)
+2. macOS Base System (External) / Install macOS Big Sur (External) / *Nome della USB* (External)
 3. OpenShell.efi
 4. Reset NVRAM
 
-Per noi, l'**Opzione 2.** è quella interessata. In dipendenza di com'è stato fatto l'installer, potrebbe apparire anche come **"macOS Base System (External)"** se creato in Linux o in Windows oppure **"Install macOS Catalina (External)"** se creato su macOS.
+Per noi, l'**Opzione 2.** è quella interessata. In dipendenza di com'è stato fatto l'installer, potrebbe apparire anche come **"macOS Base System (External)"**, **"Install macOS Big Sur (External)"** o **"*Nome della USB* (External)"**
 
 ## macOS Installer
 

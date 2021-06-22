@@ -8,18 +8,18 @@ Cose che devi considerare quando selezioni il tuo SMBIOS:
   * Riguardo principalmente a mobile vs desktop vs server, dato che aiuta grandemente a sistemare lo sleep e migliorare la stabilità del sistema
   * Questo anche determina se tu possa usare o no Apple XCPM e quali profili tu ottenga
     * Questi due problemi sono risolvibili con CPUFriend: [Fixing Power management (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
-  * Nota CPU AMD non devono preoccuparsi di questo
+  * Nota: le CPU AMD non devono preoccuparsi di questo
 * Tipo di GPU
   * Molte cose importano qui, come il power management della GPU (AGPM), il supporto dei display (AGDP), lo sleep (AGDC) e molto altro.
     * Questo avviene specialmente quando prendiamo il SMBIOS del [Mac Mini](#mac-mini) che usa solo hardware mobile, che non si abbina molto bene con l'hardware desktop. Questo è il motivo per cui si scoraggia di usarli, tranne per la [serie Intel NUC](https://www.intel.it/content/www/it/it/products/details/nuc.html) in quanto sono basati su hardware mobile.
     * I laptop dovrebbero porre molta più attenzione, dato che Apple assume sempre che quando una dGPU è presente nel SMBIOS, tutti i display verranno collegati al medesimo. Questo diventa un problema quando un laptop Optimus ha un display esterno collegato via cavo che usa la iGPU, causano uno schermo nero che richiederebbe più patch.
-  * CPU senza una iGPU devono porre molta attenzione, dato che funzionalità come Quicklook o simili saranno rotte se il SMBIOS prevedeva una iGPU (ossia ogni singolo iMac SMBIOS)
+  * CPU senza una iGPU devono porre molta attenzione, dato che funzionalità come Quick Look o simili saranno rotte se il SMBIOS prevedeva una iGPU (ossia ogni singolo iMac SMBIOS)
     * Per queste situazioni, avvicinati ai SMBIOS degli iMac Pro e Mac Pro
   * Anche il DRM è tirato in ballo tuttavia la maggior parte dei problemi è risolvibile qui: [Fixing DRM (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
   
 * Supporto del sistema
   * Rilevante per hardware più vecchi, dato che macOS supporta ancora quelle CPU, ma non esistono SMBIOS per supportati da quell'era
-    * Le CPU Arrandale sono un grande esempio, hanno ancora il supporto del sistema anche in macOS 11, Big Sur (tuttavia nessuna iGPU funzionerà dopo 10.13.6)
+    * Le CPU Arrandale sono un grande esempio, hanno ancora il supporto del sistema anche in Big Sur (tuttavia nessuna iGPU funzionerà dopo 10.13.6)
 * Dispositivi USB
   * Certi SMBIOS avranno le proprie mappe USB e non saranno compatibili con le tue, causando problemi di compatibilità.
     * Guarda per maggiori informazioni: [USB Mapping (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/)
@@ -54,7 +54,7 @@ E ci sono anche alcune note speciali con i SMBIOS:
   * Li raccomandiamo se avete bisogno di questo, tuttavia dovrai sicuramente sistemare il power management dato che potrebbero esserci problemi di sleep se il tuo hardware non è do quella classe (ossia HEDT/Server/AMD): [Fixing Power management (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
   * Nota questo richiede una GPU Polaris, Vega o Navi per lavorare correttamente.
 * iMac20,2 è un SMBIOS personalizzato creato per una CPU personalizzata Apple basata su i9-10910, perciò a meno che tu non abbia una i9-10900K raccomandiamo di usare Mac20,1
-* I SMBIOS dei MacMini dovrebbero essere evitate a meno che non stai usando hardware mobile senza avere un display integrato
+* I SMBIOS dei Mac Mini dovrebbero essere evitate a meno che non stai usando hardware mobile senza avere un display integrato
   * Intel NUC sono l'hardware ideale per questi SMBIOS
 * Le CPU senza iGPU **DEVONO** mostrare molta attenzione quando scelgono il SMBIOS, dato che Apple assume sempre che se è presente una iGPU nel SMBIOS di iMac allora è presente nell'hardware, perciò devi trovare un SMBIOS senza questo requisito come l'iMac Pro o Mac Pro.
   * Questo si applica anche alle CPU AMD
@@ -63,15 +63,7 @@ E ci sono anche alcune note speciali con i SMBIOS:
 
 Questa è una lista completa dei SMBIOS della Apple da sempre supportate in macOS con altre informazioni come il tipo di CPU e GPU.
 
-* [MacBook](#macbook)
-* [MacBook Air](#macbook-air)
-* [MacBook Pro](#macbook-pro)
-* [Mac Mini](#mac-mini)
-* [iMac](#imac)
-* [iMac Pro](#imac-pro)
-* [Mac Pro](#mac-pro)
-* [Xserve](#xserve)
-* [Miscellaneous SMBIOS](#miscellaneous-smbios)
+[[toc]]
 
 Informazioni prese sia da [EveryMac](https://everymac.com) che da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg)
 
@@ -81,9 +73,9 @@ Informazioni prese sia da [EveryMac](https://everymac.com) che da [OpenCorePkg](
 
 | Lettera | Tipo |
 | :--- | :--- |
-| Y | Mobile(Low end) |
-| U, M | Mobile(Mid tier) |
-| H, QM, HQ | Mobile(High End) |
+| Y | Mobile (Low end) |
+| U, M | Mobile (Mid tier) |
+| H, QM, HQ | Mobile (High End) |
 | S | Desktop |
 | EP, SP, W, X | HEDT/Server |
 
@@ -320,6 +312,8 @@ Informazioni extra riguardo le CPU Apple:
 | iMac21,2 | Mid 2021 | Apple M1 | J257 | 11.3 (20E232?) |
 
 ::: details Power PC SMBIOS Table
+
+<br/>
 
 #### PowerBook - PowerPC
 

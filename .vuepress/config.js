@@ -34,6 +34,7 @@ module.exports = {
         contributorsText: 'Chi ha contribuito alla creazione di questa pagina',
         editLinks: true,
         editLinkText: 'Aiutaci a tradurre questa pagina!',
+        logo: '/homepage.png',
         navbar: [
             {
                 text: 'Risoluzione dei problemi',

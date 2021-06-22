@@ -4,8 +4,6 @@ Problemi vari che non ruotano attorno a macOS stesso come per esempio il multibo
 
 [[toc]]
 
-![](../../images/troubleshooting/troubleshooting-md/python-path.png)
-
 ## Il disco di avvio di Windows non riesce a vedere le unità APFS
 
 * Driver BootCamp obsoleti (generalmente la ver 6.0 verrà fornita con brigadier, BootCamp Utility in macOS fornisce una versione più recente come la ver 6.1). CorpNewt ha anche biforcato il brigadier risolvendo anche questi problemi: [Brigadier di CorpNewt](https://github.com/corpnewt/brigadier)
