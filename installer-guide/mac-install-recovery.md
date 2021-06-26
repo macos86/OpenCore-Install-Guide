@@ -43,6 +43,13 @@ python ./macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
 python ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 ```
 
+* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
+  * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
+* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
+* <span style="color:red">ATTENZIONE:</span> Da macOS 11.3, [XhciPortLimit non funziona e causa dei bootloop](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di usare sistemi meno recenti (come 10.15) o un installer di Big Sur 11.2.3 o meno recenti
+    * Per scopi educativi, provvediamo una copia qui: [macOS 11.2.1 20D75 Recovery Image](https://archive.org/details/base-system_202102)
+    * Se hai già [mappato le tue porte USB](/OpenCore-Post-Install/usb/) e disabilitato `XhciPortLimit`, puoi avviare 11.3+ senza altri problemi
+
 Da qui, avvia uno di questi comandi nel terminale e una volta finito otterrai un output simile a questo:
 
 ![](../images/installer-guide/legacy-mac-install-md/download-done.png)

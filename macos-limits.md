@@ -26,7 +26,7 @@ Per il supporto CPU abbiamo queste linee guida:
 * CPU dei server e High End Desktop sono supportate.
   * Sono supportate in questa guida le cpu da Nehalem a Cascade Lake X.
 * CPU dei laptop delle serie Intel Core "i" e Xeon
-  * Sono supportate in questa guida le cpu da Arrendale a Ice Lake.
+  * Sono supportate in questa guida le cpu da Arrandale a Ice Lake.
   * Nota che Mobile Atoms, Celeron e Pentium CPUs non sono supportati
 * CPU Desktop AMD Bulldozer (15^), Jaguar (16^) and Ryzen (17^)
   * Le CPU Laptop **non** sono supportate
@@ -38,15 +38,15 @@ Per il supporto CPU abbiamo queste linee guida:
 
 Requisiti architettura
 
-* CPU a 32-bit sono supportate da 10.4.1 a 10.6.8
-  * Nota che 10.7.x richiede un userspace a 64-bit, limitando le CPU 32-bit a 10.6
-* CPU a 32-bit sono supportate da 10.4.1 all'attuale versione di macOS
+* CPU a 32 bit sono supportate da 10.4.1 a 10.6.8
+  * Nota che 10.7.x richiede un userspace a 64-bit, limitando le CPU 32 bit a 10.6
+* CPU a 32 bit sono supportate da 10.4.1 all'attuale versione di macOS
 
 Requsiti SSE:
 
 * SSE3 è richiesto per ogni versione di OSX/macOS
 * SSSE3 è richiesto per ogni versione a 64-bit di OSX/macOS
-  * Per le CPU senza SSSE3 (es. certi Pentium a 64-bit), raccomandiamo di avviare il sistema in userspace a 32-bit (`i386-user32`)
+  * Per le CPU senza SSSE3 (es. certi Pentium a 64-bit), raccomandiamo di avviare il sistema in userspace a 32 bit (`i386-user32`)
 * SSE4 è richiesto per macOS 10.12 and più recenti
 * SSE4.2 è richiesto per macOS 10.14 and più recenti
   * SSE4.1 CPU sono supportate grazie a [telemetrap.kext](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707)
@@ -54,14 +54,14 @@ Requsiti SSE:
 
 Requisiti Firmware:
 
-* Da OS X 10.4.1 a 10.4.7 richiedono EFI32 (ossia versione IA32 (32-bit) di OpenCore)
+* Da OS X 10.4.1 a 10.4.7 richiedono EFI32 (ossia versione IA32 (32 bit) di OpenCore)
   * Da OS X 10.4.8 a 10.7.5 supportano sia EFI32 che EFI64
 * Da OS X 10.8 e successivi richiedono EFI64 (ossia versione x64 (64-bit) di OpenCore)
 * Da OS X 10.7 a 10.9 richiedono OpenPartitionDxe.efi per avviare la partizione Recovery
 
 Requisiti Kernel:
 
-* OS X 10.4 e 10.5 richiedono i kext a 32-bit dato che supportano solo un kernel a 32-bit
+* OS X 10.4 e 10.5 richiedono i kext a 32 bit dato che supportano solo un kernel a 32 bit
   * OS X 10.6 e 10.7 supportano sia kernel a 32 che a 64-bit
 * OS X 10.8 e più recenti richiedono i kext a 64-bit dato che supportano solo un kernel a 64-bit
   * Digita `lipo -archs` per sapere quale architettura il tuo kext supporta (ricordati di eseguirlo sul binario, non sul bundle .kext)
@@ -88,7 +88,7 @@ Supporti basati su Kernel Vanilla (ossia senza modifiche):
 | Generazione CPU | Supporto iniziale | Ultima versione supportata | Note | CPUID |
 | :--- | :--- | :--- | :--- | :--- |
 | [Pentium 4](https://en.wikipedia.org/wiki/Pentium_4) | 10.4.1 | 10.5.8 | Usato solo nei kit developer | 0x0F41 |
-| [Yonah](https://en.wikipedia.org/wiki/Yonah_(microprocessor)) | 10.4.4 | 10.6.8 | 32-Bit | 0x0006E6 |
+| [Yonah](https://en.wikipedia.org/wiki/Yonah_(microprocessor)) | 10.4.4 | 10.6.8 | 32 bit | 0x0006E6 |
 | [Conroe](https://en.wikipedia.org/wiki/Conroe_(microprocessor)), [Merom](https://en.wikipedia.org/wiki/Merom_(microprocessor)) | 10.4.7 | 10.11.6 | Non c'è SSE4 | 0x0006F2 |
 | [Penryn](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 10.4.10 | 10.13.6 | Non c'è SSE4.2 | 0x010676 |
 | [Nehalem](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)) | 10.5.6 | <span style="color:green"> Attuale </span> | N/A | 0x0106A2 |
@@ -121,8 +121,8 @@ Sfortunatamente molte funzionalità di macOS sono al momento non supportate con 
 * Supporto Adobe
   * La maggior parte dei prodotti Adobe si basa sul set di istruzioni Memfast (by Intel), che crasha con le CPU AMD
   * Puoi disabilitare funzioni come il supporto RAW per evitare il crash: [Adobe Fixes (EN)](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
-* Supporto 32-Bit
-  * Per chi usa ancora software a 32-Bit, in Mojave o più vecchi, le patch Vanilla non supportano il 32-bit.
+* Supporto 32 bit
+  * Per chi usa ancora software a 32 bit, in Mojave o più vecchi, le patch Vanilla non supportano il 32 bit.
   * Una soluzione è l'uso di un [kernel personalizzato](https://files.amd-osx.com/?dir=Kernels), tuttavia perderesti il supporto a iMessage e noi non ti aiuteremmo in quel caso
 * Problemi di stabilità in molte app
   * Applicazioni per audio editing sono quelle con più problemi, per esempio Logic Pro
@@ -162,9 +162,9 @@ E una nota importante dei **Laptops con GPU discrete**:
 
 | Generazione GPU | Supporto iniziale | Ultima versione supportata | Note |
 | :--- | :--- | :--- | :--- |
-| [GMA di 3° Generazione](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Third_generation) | 10.4.1 | 10.7.5 | [Richiede kernel a 32-bit e le patch](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/legacy-intel/) |
+| [GMA di 3° Generazione](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Third_generation) | 10.4.1 | 10.7.5 | [Richiede kernel a 32 bit e le patch](/OpenCore-Post-Install/gpu-patching/legacy-intel/) |
 | [GMA di 4° Generazione](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen4) | 10.5.0 | ^^ | ^^ |
-| [Arrendale(HD Graphics)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen5) | 10.6.4 | 10.13.6 | Solo le LVDS supportate, eDP e output esterni no |
+| [Arrandale (HD Graphics)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen5) | 10.6.4 | 10.13.6 | Solo le LVDS supportate, eDP e output esterni non sono supportati |
 | [Sandy Bridge(HD 3000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen6) | 10.6.7 | ^^ | / |
 | [Ivy Bridge(HD 4000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen7) | 10.7.3 | 10.15.7 | ^^ |
 | [Haswell(HD 4XXX, 5XXX)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen7) | 10.8.5 | <span style="color:green"> Attuale </span> | ^^ |
@@ -185,10 +185,10 @@ Nota: Apple ha tenuto i driver per la iGPU Ivy Bridge in macOS 11, Big Sur, tutt
 
 | Generazione GPU | Supporto iniziale | Ultima versione supportata | Note |
 | :--- | :--- | :--- | :--- |
-| [X800](https://en.wikipedia.org/wiki/Radeon_X800_series) | 10.3.x | 10.7.5 | Richiede kernel a 32-bit |
+| [X800](https://en.wikipedia.org/wiki/Radeon_X800_series) | 10.3.x | 10.7.5 | Richiede kernel a 32 bit |
 | [X1000](https://en.wikipedia.org/wiki/Radeon_X1000_series) | 10.4.x | ^^ | / |
-| [Terascale](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
-| [Terascale 2/3](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.6.x | ^^ | ^^ |
+| [TeraScale](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
+| [TeraScale 2/3](https://en.wikipedia.org/wiki/TeraScale_(microarchitecture)) | 10.6.x | ^^ | ^^ |
 | [GCN 1](https://en.wikipedia.org/wiki/Graphics_Core_Next) | 10.8.3 | <span style="color:green">Attuale</span> | ^^ |
 | [GCN 2/3](https://en.wikipedia.org/wiki/Graphics_Core_Next) | 10.10.x | ^^ | ^^ |
 | [Polaris 10](https://en.wikipedia.org/wiki/Radeon_RX_400_series), [20](https://en.wikipedia.org/wiki/Radeon_RX_500_series) | 10.12.1 | ^^ | ^^ |
@@ -203,14 +203,14 @@ Nota: Apple ha tenuto i driver per la iGPU Ivy Bridge in macOS 11, Big Sur, tutt
 
 | Generazione GPU | Supporto iniziale | Ultima versione supportata | Note |
 | :--- | :--- | :--- | :--- |
-| [GeForce 6](https://en.wikipedia.org/wiki/GeForce_6_series) | 10.2.x | 10.7.5 | Richiede kernel a 32-bit e [patch del NVCAP](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
-| [GeForce 7](https://en.wikipedia.org/wiki/GeForce_7_series) | 10.4.x | ^^ | [Requires patch del NVCAP](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
+| [GeForce 6](https://en.wikipedia.org/wiki/GeForce_6_series) | 10.2.x | 10.7.5 | Richiede kernel a 32 bit e [patch del NVCAP](/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
+| [GeForce 7](https://en.wikipedia.org/wiki/GeForce_7_series) | 10.4.x | ^^ | [Requires patch del NVCAP](/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
 | [Tesla](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
-| [Tesla V2](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)#Tesla_2.0) | 10.5.x | ^^ | ^^ |
+| [Tesla v2](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)#Tesla_2.0) | 10.5.x | ^^ | ^^ |
 | [Fermi](https://en.wikipedia.org/wiki/Fermi_(microarchitecture)) | 10.7.x | ^^ | ^^ |
 | [Kepler](https://en.wikipedia.org/wiki/Kepler_(microarchitecture)) | 10.7.x | <span style="color:green"> Attuale </span> | / |
 | [Kepler V2](https://en.wikipedia.org/wiki/Kepler_(microarchitecture)) | 10.8.x | ^^ | ^^ |
-| [Maxwell](https://en.wikipedia.org/wiki/Maxwell_(microarchitecture)) | 10.10.x | 10.13.6 | [Richiede webdriver](https://www.nvidia.com/download/driverResults.aspx/149652/) |
+| [Maxwell](https://en.wikipedia.org/wiki/Maxwell_(microarchitecture)) | 10.10.x | 10.13.6 | [Richiede Web Driver NVIDIA](https://www.nvidia.com/download/driverResults.aspx/149652/) |
 | [Pascal](https://en.wikipedia.org/wiki/Pascal_(microarchitecture)) | 10.12.4 | ^^ | ^^ |
 | [Turing](https://en.wikipedia.org/wiki/Turing_(microarchitecture)) | <span style="color:red"> / </span> | <span style="color:red"> / </span> | <span style="color:red"> Nessun driver disponibile </span> |
 | [Ampere](https://en.wikipedia.org/wiki/Ampere_(microarchitecture)) | ^^ | ^^ | ^^ |
