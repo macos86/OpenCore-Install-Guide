@@ -18,7 +18,7 @@ Oltre a utilizzare solo le varianti DEBUG di OpenCore e kexts, anche questi stru
   
 * [SSDT-DBG](https://gist.github.com/al3xtjames/39ebea4d615c8aed829109a9ea2cd0b5)
   * Abilita le istruzioni di debug dalle tabelle ACPI, aiutando per il debug degli eventi ACPI nel sistema operativo
-  * Nota che dovrai anche  [compilare l'SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Manual/compile.html)
+  * Nota che dovrai anche  [compilare l'SSDT](/Getting-Started-With-ACPI/Manual/compile.html)
   
 ## Configurazione Config.plist
 
@@ -208,7 +208,7 @@ csrutil authenticated-root disable # Big Sur+
 
 Riavvia e SIP sarà stato regolato di conseguenza. Puoi eseguire `csrutil status` nel terminale per verificare che abbia funzionato.
 
-* <span style="color:red"> ATTENZIONE: </span> Per gli utenti che fanno affidamento sulla [funzionalità ApECID di OpenCore](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid), tieni presente che **deve** essere disabilitato per utilizzare KDK.
+* <span style="color:red"> ATTENZIONE: </span> Per gli utenti che fanno affidamento sulla [funzionalità ApECID di OpenCore](/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid), tieni presente che **deve** essere disabilitato per utilizzare KDK.
 
 #### 3. Montare la partizione di root come scrivibile
 

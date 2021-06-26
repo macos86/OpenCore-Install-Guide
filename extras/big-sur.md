@@ -84,7 +84,7 @@ Altre modifiche notevoli:
 
 Assicurati di avere l'ultima versione di OpenCore, kexts e config.plist in modo da non avere problemi di compatibilità dispari. Puoi semplicemente scaricare e aggiornare OpenCore e kexts come menzionato qui:
 
-* [Aggiornamento di OpenCore e macOS (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
+* [Aggiornamento di OpenCore e macOS (EN)](/OpenCore-Post-Install/universal/update.md)
 
 Se non sei sicuro di quale versione di OpenCore stai utilizzando, puoi eseguire quanto segue nel terminale:
 
@@ -114,7 +114,7 @@ Per gli utenti X79, X99 e X299, prestare molta attenzione a quanto segue. Big Su
 
 Per coloro che desiderano file precompilati, vedere qui:
 
-* [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
+* [Iniziamo con ACPI](/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
 
 ### Problemi conosciuti
 

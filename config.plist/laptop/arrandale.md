@@ -33,7 +33,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](/extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](/extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
@@ -65,8 +65,8 @@ Questa sezione ci permette di modificare dinamicamente le parti di ACPI (DSDT, S
 | Enabled | Boolean | YES |
 | Count | Number | 0 |
 | Limit | Number | 0 |
-| Find | Data | 5f4f5349 |
-| Replace | Data | 584f5349 |
+| Find | Data | `5f4f5349` |
+| Replace | Data | `584f5349` |
 
 :::
 
@@ -143,8 +143,8 @@ Quando si imposta la iGPU, aggiungere semplicemente i valori seguenti alla voce 
 
 | Property | Type | Value |
 | :--- | :--- | :--- |
-| framebuffer-patch-enable | Data | 01000000 |
-| framebuffer-singlelink | Data | 01000000 |
+| framebuffer-patch-enable | Data | `01000000` |
+| framebuffer-singlelink | Data | `01000000` |
 
 * **Note**: I driver Iron Lake di Apple supportano solo i display LVDS e **non** eDP
 
@@ -159,7 +159,7 @@ Quando si imposta la iGPU, aggiungere semplicemente i valori seguenti alla voce 
 
 * Puoi eliminare completamente questa proprietà poiché al momento non è utilizzata per noi
 
-Per noi, useremo invece il boot-arg `alcid = xxx` per ottenere questo risultato. `alcid` sovrascriverà tutti gli altri ID di layout presenti. Maggiori informazioni su questo sono trattate nella [Post-Install Page](https://dortania.github.io/OpenCore-Post-Install/)
+Per noi, useremo invece il boot-arg `alcid = xxx` per ottenere questo risultato. `alcid` sovrascriverà tutti gli altri ID di layout presenti. Maggiori informazioni su questo sono trattate nella [Post-Install Page](/OpenCore-Post-Install/)
 
 :::
 
@@ -256,7 +256,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
 | AppleXcpmCfgLock | YES | Non necessario se `CFG-Lock` è disabilitato nel BIOS |
-| DisableIOMapper | YES | Non necessario se `VT-D` è disabilitato nel BIOS |
+| DisableIoMapper | YES | Non necessario se `VT-D` è disabilitato nel BIOS |
 | LapicKernelPanic | NO | Le macchine HP richiederanno questo quirk |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
@@ -296,7 +296,7 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **SetApfsTrimTimeout**: `-1`
 * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
-  * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
+  * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](/OpenCore-Post-Install/usb/) quando possibile.
 
 Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata senza un'adeguata regolazione corrente. È molto più pulito descrivere le tue porte in un unico kext solo plist, che non sprecherà memoria di runtime e simili
 
@@ -408,9 +408,9 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
   * Non ci occuperemo del vaulting quindi possiamo ignorare, **non avvierai con questo settato su Secure**
   * Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su `Optional`, nota che fa distinzione tra maiuscole e minuscole
 * **ScanPolicy**: `0`
-  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
+  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.html) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
 * **SecureBootModel**: Default
-  * Abilita la funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per ulteriori informazioni.
+  * Abilita la funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.html) per ulteriori informazioni.
   * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
@@ -460,7 +460,7 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 ::: details Informazioni più approfondite
 
 * **rtc-blacklist**: <>
-  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
+  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
   * La maggior parte degli utenti può ignorare questa sezione
 
 :::
@@ -476,7 +476,7 @@ System Integrity Protection bitmask
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
  **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
-| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/) |
+| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](/OpenCore-Post-Install/) |
 
 * **Argomenti di avvio specifici per GPU**:
 
@@ -533,8 +533,8 @@ Per questo esempio Arrandale, scegleremo the MacBookPro6,1 SMBIOS - questo viene
 
 | SMBIOS | CPU Type | Display Size |
 | :--- | :--- | :--- | :--- |
-| MacBookPro6,1 | Quad Core 45w(High End) | 17" |
-| MacBookPro6,2 | Quad Core 45w(Low End) | 15" |
+| MacBookPro6,1 | Quad Core 45W (High End) | 17" |
+| MacBookPro6,2 | Quad Core 45W (Low End) | 15" |
 
 Run GenSMBIOS, pick option 1 for downloading MacSerial and Option 3 for selecting out SMBIOS.  This will give us an output similar to the following:
 
@@ -557,7 +557,7 @@ La parte `Board Serial` viene copiata in Generic -> MLB.
 
 La parte `SmUUID` viene copiata in Generic -> SystemUUID.
 
-Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
+Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
 
 > Ricorda che ti serve un numero di serie non valido o valido ma non in uso;  dsi deve ricevere un messaggio del tipo: "Numero di serie non valido" o "Data di acquisto non convalidata"
 
@@ -629,7 +629,7 @@ Impostazioni relative al driver APFS, lascia tutto qui come predefinito.
 
 Relativamente alle impostazioni di AudioDxe, per noi ignoreremo (lasciare come impostazione predefinita). Questo non è correlato al supporto audio in macOS.
 
-* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime](https://dortania.github.io/OpenCore-Post-Install/)
+* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime](/OpenCore-Post-Install/)
 
 ### Input
 
@@ -649,7 +649,7 @@ Relativamente all'output visivo di OpenCore, lascia tutto qui come predefinito p
 
 ### ProtocolOverrides
 
-Principalmente rilevante per macchine virtuali, Mac legacy e utenti FileVault. Vedi qui per maggiori dettagli: [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/)
+Principalmente rilevante per macchine virtuali, Mac legacy e utenti FileVault. Vedi qui per maggiori dettagli: [Security and FileVault](/OpenCore-Post-Install/)
 
 ### Quirks
 

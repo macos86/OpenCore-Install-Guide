@@ -46,7 +46,7 @@ Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la 
   * Usato da Haswell o più vecchi quando non ci sono driver NVMe nel firmware
   * Non usare se non sai che stai facendo
 * OpenCanopy.efi
-  * Questo è la interfaccia grafica opzionale di OpenCore, spiegheremo come impostarla in [Post Install (EN)](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html) perciò rimuovila per ora
+  * Questo è la interfaccia grafica opzionale di OpenCore, spiegheremo come impostarla in [Post Install (EN)](/OpenCore-Post-Install/cosmetic/gui.md) perciò rimuovila per ora
 * OpenHfsPlus.efi
   * Driver Open Source per il file system HFS Plus, è un po' lento perciò non lo raccomandiamo se non sai che stai facendo.
 * OpenPartitionDxe.efi

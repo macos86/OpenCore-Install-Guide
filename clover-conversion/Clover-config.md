@@ -33,7 +33,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * cambiare PEG0 a GFX0
   * cambiare PEGP a GFX0
   * cambiare SL01 a PEGP
-* Patch di EC: Vedi per una soluzione migliore: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)
+* Patch di EC: Vedi per una soluzione migliore: [Iniziamo con ACPI](/Getting-Started-With-ACPI/)
   * cambiare EC0 a EC
   * cambiare H_EC a EC
   * cambiare ECDV a EC
@@ -44,7 +44,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * cambiare AZAL a HDEF
   * cambiare ALZA a HDEF
   * cambiare B0D3 a HDAU
-* Fix del bug nella Z390 legato al RTC del BIOS: Vedi qui per una soluzione migliore: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) (SSDT-AWAC)
+* Fix del bug nella Z390 legato al RTC del BIOS: Vedi qui per una soluzione migliore: [Iniziamo con ACPI](/Getting-Started-With-ACPI/) (SSDT-AWAC)
   * cambiare STAS a [Blank]
   * Fix del bug nella Z390 legato al RTC del BIOS
   * Fix del bug nella serie 300 legato al RTC del BIOS
@@ -107,7 +107,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * [SSDTTime](https://github.com/corpnewt/SSDTTime) di Corpnewt per creare un vero e proprio SSDT, `FixHPET - Patch out IRQ Conflicts`
 
 * **AddPNLF**:
-  * Vedi [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html)
+  * Vedi [SSDT-PNLF](/Getting-Started-With-ACPI/Laptops/backlight.html)
 * **AddMCHC**:
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
 * **AddIMEI**:
@@ -131,8 +131,8 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 ### SSDTs
 
 * **PluginType**:
-  * [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)
-  * Vedi [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/Universal/plug/) per più dettagli
+  * [SSDT-PLUG](/Getting-Started-With-ACPI/)
+  * Vedi [Iniziamo con ACPI](/Getting-Started-With-ACPI/Universal/plug/) per più dettagli
 
 * **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 * **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
@@ -292,7 +292,7 @@ Semplicemente non aggiungere i tuoi driver in `UEFI -> Drivers`, oppure aggiungi
 
 ### InjectIntel
 
-* [GMA Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [GMA Patching (EN)](/OpenCore-Post-Install/gpu-patching/)
 
 ### InjectAti
 
@@ -314,7 +314,7 @@ DUMMY                   <01 00 00 00>
 
 ### InjectNvidia
 
-* [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching (EN)](/OpenCore-Post-Install/gpu-patching/)
 
 ### FakeIntel
 
@@ -333,7 +333,7 @@ DUMMY                   <01 00 00 00>
 * `DeviceProperties -> Add -> PciRoot... -> vendor-id-> <02100000>`
 * `DeviceProperties -> Add -> PciRoot... -> ATY,VendorID -> <0210>`
 
-**Nota**: Vedi qui per fare un SSDT per fare lo Spoofing della GPU, la iniezione via DeviceProperties sembra fallire alcune volte quando tenti di usare lo spoof della GPU: [Renaming GPUs](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
+**Nota**: Vedi qui per fare un SSDT per fare lo Spoofing della GPU, la iniezione via DeviceProperties sembra fallire alcune volte quando tenti di usare lo spoof della GPU: [Renaming GPUs](/Getting-Started-With-ACPI/Universal/spoof.html)
 Per altri InjectAti, vedi il [Sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) nelle documentazioni di WhateverGreen
 
 ### Custom EDID
@@ -348,7 +348,7 @@ Per altri InjectAti, vedi il [Sample.dsl](https://github.com/acidanthera/Whateve
 
 ### NVCAP
 
-* [Nvidia Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching (EN)](/OpenCore-Post-Install/gpu-patching/)
 
 ### display-cfg
 
@@ -369,7 +369,7 @@ Vedi LoadVBIOS
 
 ### NvidiaSingle
 
-Vedi [disabling unsupported GPUs (EN)](https://dortania.github.io/OpenCore-Post-Install/)
+Vedi [disabling unsupported GPUs (EN)](/OpenCore-Post-Install/)
 
 ### NvidiaNoEFI
 

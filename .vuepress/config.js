@@ -353,11 +353,11 @@ module.exports = {
                         '/OpenCore-Multiboot/oc/duet.md',
                         {
                             text: 'Usare LauncherOption',
-                            link: 'https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html'
+                            link: '/OpenCore-Post-Install/multiboot/bootstrap.md'
                         },
                         {
                             text: 'Installare BootCamp',
-                            link: 'https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html'
+                            link: '/OpenCore-Post-Install/multiboot/bootcamp.md'
                         }
                     ]
                 }
@@ -466,7 +466,7 @@ module.exports = {
                         '/installation.md',
                         {
                             text: 'Dopo l\'installazione',
-                            link: 'https://dortania.github.io/OpenCore-Post-Install/'
+                            link: '/OpenCore-Post-Install/'
                         }
                     ]
                 },

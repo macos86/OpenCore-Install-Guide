@@ -6,15 +6,15 @@ Possibili problemi quando macOS è già installato.
 
 ## IMessage e Siri non funzionanti
 
-Fare riferimento alla sezione [Fixing iServices (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
+Fare riferimento alla sezione [Fixing iServices (EN)](/OpenCore-Post-Install/universal/iservices.md)
 
 ## Nessun audio integrato
 
-Fare riferimento alla sezione [Fixing Audio with AppleALC (EN)](https://dortania.github.io/OpenCore-Post-Install/)
+Fare riferimento alla sezione [Fixing Audio with AppleALC (EN)](/OpenCore-Post-Install/)
 
 ## BIOS ripristinato o messo in modalità provvisoria dopo il riavvio/spegnimento?
 
-Fare riferimento alla sezione [Fixing RTC write issues (EN)](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html)
+Fare riferimento alla sezione [Fixing RTC write issues (EN)](/OpenCore-Post-Install/misc/rtc.md)
 
 ## Soluzione al problema con i tasti della tastiera PS2 senza interruzioni di Dell
 
@@ -44,13 +44,13 @@ Verifica quanto segue:
 
 ## Problemi con i DRM
 
-Fare riferimento alla sezione [Fixing DRM (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
+Fare riferimento alla sezione [Fixing DRM (EN)](/OpenCore-Post-Install/universal/drm.md)
 
 ## "Moduli di memoria configurati in modo errato" su MacPro7,1
 
 Segui la guida elencata qui:
 
-* [Fixing MacPro7,1 Memory Errors (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
+* [Fixing MacPro7,1 Memory Errors (EN)](/OpenCore-Post-Install/universal/memory.md)
 
 Per chi vuole semplicemente disabilitare la notifica (non l'errore in sé) è più che sufficiente. Per questi utenti, consigliamo di installare [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases)
 
@@ -176,7 +176,7 @@ Stranamente, macOS ha impedito di avere il controllo dell'audio digitale. Per ri
 
 This is due to macOS using Universal Time while Windows relies on Greenwich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
-* [Installing and using BootCamp utilities (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Installing and using BootCamp utilities (EN)](/OpenCore-Post-Install/multiboot/bootcamp.md)
 * [Modifica registro di Windows](https://superuser.com/q/494432)
 
 ## Disabilitare SIP

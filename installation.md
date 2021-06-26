@@ -28,7 +28,7 @@ Su Skylake e sucessivi:
 Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali cose da ricordare:
 
 * Abilita le impostazioni del BIOS ottimali per macOS
-* Leggi la [OpenCore Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) e anche [Setting up LauncherOption (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap)
+* Leggi la [OpenCore Multiboot Guide (EN)](/OpenCore-Multiboot/) e anche [Setting up LauncherOption (EN)](/OpenCore-Post-Install/multiboot/bootstrap)
   * Principalmente per coloro che stanno avviando un singolo disco con più sistemi
 * Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](/troubleshooting/)
 * Leggi anche la pagina riguardo all'[avvio di macOS](/troubleshooting/boot.md)
@@ -72,7 +72,7 @@ Perciò quando hai finalmente avviato l'installer, inizia l'installazione di mac
   * High Sierra su un HDD e tutti gli utenti Sierra dovranno usare macOS Esteso (HFS+)
 * Il disco **deve** avere anche una partizione da 200MB
   * Di default, macOS la creerà da solo se inizializzi un intero disco
-  * Vedi [Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) per maggiori informazioni riguardo al partizionamento di un disco Windows
+  * Vedi [Multiboot Guide (EN)](/OpenCore-Multiboot/) per maggiori informazioni riguardo al partizionamento di un disco Windows
 
 Una volta iniziata l'installazione, dovrai aspettare fino al riavvio. Una volta avviato ancora su OpenCore, non dovrai selezionare la tua USB recovery/installer, ma il macOS installer per continuare l'installazione. Dovresti avere il logo della mela, e dopo qualche minuto un timer sotto che dice "x minutei rimanenti". Questo potrebbe essere un buon momento per farsi uno snack o un drink perché ci metterà un po'. Si riavvierà un paio di volte, ma se tutto andra bene, dovresti finalmente arrivare allo schermata "Configura il tuo Mac"
 

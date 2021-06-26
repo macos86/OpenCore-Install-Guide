@@ -10,12 +10,12 @@ Problemi vari che non ruotano attorno a macOS stesso come per esempio il multibo
 
 ## Risoluzione errata con OpenCore
 
-* Segui [Fixing Resolution and Verbose (EN)](https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose.html) per la corretta configurazione, imposta "UIScale" su "02" per HiDPI
+* Segui [Fixing Resolution and Verbose (EN)](/OpenCore-Post-Install/cosmetic/verbose.md) per la corretta configurazione, imposta "UIScale" su "02" per HiDPI
 * Gli utenti hanno anche notato che l'impostazione di `ConsoleMode` su Max a volte fallisce, lasciarlo vuoto può aiutare
 
 ## Impossibile trovare l'unità Windows/BootCamp fra i selettori
 
-Con OpenCore, dobbiamo notare che non sono supportate le installazioni legacy di Windows, solo UEFI. La maggior parte delle installazioni ora sono basate su UEFI, ma quelle effettuate da BootCamp Assistant sono legacy, quindi dovrai trovare altri mezzi per creare un programma di installazione (Google è tuo amico). Ciò significa anche che anche le partizioni MasterBootRecord/Hybrid sono danneggiate, quindi dovrai formattare l'unità su cui desideri installare con DiskUtility. Consulta la [Multiboot Guide (EN)](https://dortania.github.io/OpenCore-Multiboot/) sulle migliori pratiche
+Con OpenCore, dobbiamo notare che non sono supportate le installazioni legacy di Windows, solo UEFI. La maggior parte delle installazioni ora sono basate su UEFI, ma quelle effettuate da BootCamp Assistant sono legacy, quindi dovrai trovare altri mezzi per creare un programma di installazione (Google è tuo amico). Ciò significa anche che anche le partizioni MasterBootRecord/Hybrid sono danneggiate, quindi dovrai formattare l'unità su cui desideri installare con DiskUtility. Consulta la [Multiboot Guide (EN)](/OpenCore-Multiboot/) sulle migliori pratiche
 
 Ora per passare alla risoluzione dei problemi:
 
@@ -46,5 +46,5 @@ Ciò è dovuto al fatto che OpenCore si confonde quando tenta di avviare Windows
 
 Ciò è dovuto al fatto che macOS utilizza l'Ora Universale mentre Windows si basa su Greenwich, quindi dovrai forzare un sistema operativo a un modo diverso di misurare il tempo. Consigliamo vivamente di modificare Windows poiché è molto meno distruttivo e doloroso:
 
-* [Installa l'utility Bootcamp (EN)](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Installa l'utility Bootcamp (EN)](/OpenCore-Post-Install/multiboot/bootcamp.md)
 * [Modificare il registro di Windows (EN)](https://superuser.com/q/494432)
