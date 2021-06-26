@@ -7,7 +7,7 @@ Cose che devi considerare quando selezioni il tuo SMBIOS:
 * Tipo di CPU
   * Riguardo principalmente a mobile vs desktop vs server, dato che aiuta grandemente a sistemare lo sleep e migliorare la stabilità del sistema
   * Questo anche determina se tu possa usare o no Apple XCPM e quali profili tu ottenga
-    * Questi due problemi sono risolvibili con CPUFriend: [Fixing Power management (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
+    * Questi due problemi sono risolvibili con CPUFriend: [Fixing Power management (EN)](/OpenCore-Post-Install/universal/pm.md)
   * Nota: le CPU AMD non devono preoccuparsi di questo
 * Tipo di GPU
   * Molte cose importano qui, come il power management della GPU (AGPM), il supporto dei display (AGDP), lo sleep (AGDC) e molto altro.
@@ -15,16 +15,16 @@ Cose che devi considerare quando selezioni il tuo SMBIOS:
     * I laptop dovrebbero porre molta più attenzione, dato che Apple assume sempre che quando una dGPU è presente nel SMBIOS, tutti i display verranno collegati al medesimo. Questo diventa un problema quando un laptop Optimus ha un display esterno collegato via cavo che usa la iGPU, causano uno schermo nero che richiederebbe più patch.
   * CPU senza una iGPU devono porre molta attenzione, dato che funzionalità come Quick Look o simili saranno rotte se il SMBIOS prevedeva una iGPU (ossia ogni singolo iMac SMBIOS)
     * Per queste situazioni, avvicinati ai SMBIOS degli iMac Pro e Mac Pro
-  * Anche il DRM è tirato in ballo tuttavia la maggior parte dei problemi è risolvibile qui: [Fixing DRM (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
+  * Anche il DRM è tirato in ballo tuttavia la maggior parte dei problemi è risolvibile qui: [Fixing DRM (EN)](/OpenCore-Post-Install/universal/drm.md)
   
 * Supporto del sistema
   * Rilevante per hardware più vecchi, dato che macOS supporta ancora quelle CPU, ma non esistono SMBIOS per supportati da quell'era
     * Le CPU Arrandale sono un grande esempio, hanno ancora il supporto del sistema anche in Big Sur (tuttavia nessuna iGPU funzionerà dopo 10.13.6)
 * Dispositivi USB
   * Certi SMBIOS avranno le proprie mappe USB e non saranno compatibili con le tue, causando problemi di compatibilità.
-    * Guarda per maggiori informazioni: [USB Mapping (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/)
+    * Guarda per maggiori informazioni: [USB Mapping (EN)](/OpenCore-Post-Install/usb/)
   * Nota anche che i SMBIOS Skylake+ richiederanno un [dispositivo USBX](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC-USBX.dsl#L54L79) per sistemare il corrente output USB
-    * Guarda qui per maggiori informazioni [Fixing USB Power (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/misc/power.html)
+    * Guarda qui per maggiori informazioni [Fixing USB Power (EN)](/OpenCore-Post-Install/usb/misc/power.md)
 
 ::: details SMBIOS supportati da XCPM
 
@@ -51,7 +51,7 @@ Le nostre raccomandazioni riguardo al SMBIOS sono le seguenti:
 E ci sono anche alcune note speciali con i SMBIOS:
 
 * iMacPro1,1 e MacPro7,1 sono i soli 2 SMBIOS che permettono di caricare la dGPU di tutti i compiti incluso il rendering dello sfondo e altri compiti che la iGPU potrebbe fare
-  * Li raccomandiamo se avete bisogno di questo, tuttavia dovrai sicuramente sistemare il power management dato che potrebbero esserci problemi di sleep se il tuo hardware non è do quella classe (ossia HEDT/Server/AMD): [Fixing Power management (EN)](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
+  * Li raccomandiamo se avete bisogno di questo, tuttavia dovrai sicuramente sistemare il power management dato che potrebbero esserci problemi di sleep se il tuo hardware non è do quella classe (ossia HEDT/Server/AMD): [Fixing Power management (EN)](/OpenCore-Post-Install/universal/pm.md)
   * Nota questo richiede una GPU Polaris, Vega o Navi per lavorare correttamente.
 * iMac20,2 è un SMBIOS personalizzato creato per una CPU personalizzata Apple basata su i9-10910, perciò a meno che tu non abbia una i9-10900K raccomandiamo di usare Mac20,1
 * I SMBIOS dei Mac Mini dovrebbero essere evitate a meno che non stai usando hardware mobile senza avere un display integrato

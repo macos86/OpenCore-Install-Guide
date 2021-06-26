@@ -145,7 +145,7 @@ Questo errore è direttamente correlato alla fase in cui macOS scriverà determi
 Per risolvere, abbiamo alcune opzioni:
 
 * Serie 300 Intel Fix(ie. Z390):
-  * [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/)
+  * [SSDT-PMC](/Getting-Started-With-ACPI/)
 * Altri possono impostare quanto segue nel loro config.plist:
   * LegacyEnable -> YES
   * LegacyOverwrite -> YES

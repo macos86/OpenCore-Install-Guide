@@ -44,7 +44,7 @@ Guide collegate o che hanno ispirato questa guida:
 * [Codecs Supportati da AppleALC](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs)
 * [gfxutil](https://github.com/acidanthera/gfxutil/releases)
 
-E per coloro che hanno consigli o problemi con questa guida, questo il repository GitHub per questo sito [qui](https://github.com/dortania/OpenCore-Install-Guide).
+E per coloro che hanno consigli o problemi con questa guida, questo il repository GitHub per questo sito [qui](https://github.com/macos86/OpenCore-Install-Guide).
 
 **Fonti**:
 

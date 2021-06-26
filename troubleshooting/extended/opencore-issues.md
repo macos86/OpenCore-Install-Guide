@@ -35,7 +35,7 @@ Disattiva Vaulting nel tuo config.plist in `Misc -> Security -> Vault` impostand
 
 Se hai già eseguito `sign.command` dovrai ripristinare il file OpenCore.efi poiché la firma RSA-2048 a 256 byte è stata inserita. Puoi prendere una nuova copia di OpenCore.efi qui: [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
 
-**Nota**: Vault e FileVault sono 2 cose separate, vedi [Sicurezza e FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per maggiori dettagli
+**Nota**: Vault e FileVault sono 2 cose separate, vedi [Sicurezza e FileVault](/OpenCore-Post-Install/universal/security.md) per maggiori dettagli
 
 ## Bloccato su `OC: Invalid Vault mode`
 

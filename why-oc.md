@@ -16,7 +16,7 @@ Questa sezione contiene un briefing riguardo al perché la comunità si sta tras
 * Più sicurezza in molte forme:
   * Non necessario di disabilitare il System Integrity Protection (SIP)
   * Il supporto per FileVault 2 integrato
-  * [Vault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault), che permette di creare delle immagini della EFI per evitare modifiche non volute
+  * [Vault](/OpenCore-Post-Install/universal/security.html#Vault), che permette di creare delle immagini della EFI per evitare modifiche non volute
   * Vero supporto al secure-boot
     * Sia UEFI che Apple
 * Cambio dal BootCamp e selezione del dispositivo da una lettura delle variabili NVRAM impostate dal Disco di Avvio, come un vero Mac.
@@ -75,7 +75,7 @@ La maggior parte delle funzionalità di Clover attualmente sono supportate in Op
   * Questo tuttavia è supportato su macOS
 * Non supporta l'iniezione automatica dei DeviceProperty per le GPU vecchie
   * come InjectIntel, InjectNvidia o InjectAti
-  * Tuttavia può essere fatto manualmente: [GPU patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+  * Tuttavia può essere fatto manualmente: [GPU patching](/OpenCore-Post-Install/gpu-patching/)
 * Non supporta il patch dei conflitti IRQ
   * Risolvibile con [SSDTTime](https://github.com/corpnewt/SSDTTime)
 * Non supporta gli attributi P e C nelle CPU più vecchie
@@ -116,7 +116,7 @@ Quindi, per favore, non vedere il numero di versione come un ostacolo, piuttosto
 
 Di default, OpenCore assumerà che tutti i sistemi dovrebbero essere trattati in maniera uniforme rispetto agli ACPI e alle informazioni SMBIOS. La ragione per questo pensiero consiste in tre parti:
 
-* Questo permette per un corretto supporto al multiboot, come con [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* Questo permette per un corretto supporto al multiboot, come con [BootCamp](/OpenCore-Post-Install/multiboot/bootcamp.html)
 * Evitare i DSDT scarsi e incoraggiare le pratiche ACPI corrette
 * Evitare casi limite quando le informazioni sono iniettate diverse volte, comunemente successo con Clover
   * Per esempio, come inietteresti i dati SMBIOS e ACPI una volta avviato boot.efi, ma dopo rischidando di essere buttato fuori? Le modifiche sono già nella memoria, rimuoverle può essere pericoloso. Questo è perché Clover è sconsigliato.

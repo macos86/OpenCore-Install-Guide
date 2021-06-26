@@ -73,7 +73,7 @@ Quando avvii OpenCore, seleziona l'opzione d'avvio `Reset NVRAM`. Questo pulirà
 
 Di default OpenCore inietterà i dati del SMBIOS in tutti i sistemi, il motivo è:
 
-* Questo permette un supporto corretto per programmi come [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* Questo permette un supporto corretto per programmi come [BootCamp](/OpenCore-Post-Install/multiboot/bootcamp.md)
 * Evita casi limite dove i dati sono iniettati diverse volte, visto comunemente con Clover
 
 Tuttavia, ci sono quirk in OpenCore che permette l'iniezione SMBIOS solo su macOS limitando il patch solo al momento nel quale macOS legge le informazioni del SMBIOS. Questi quirk possono non funzionare in futuro e perciò raccomandiamo di usarlo solo quando certi programmi non funzionano in altri sistemi. Per avere una maggiore stabilità, per favore evitalo
