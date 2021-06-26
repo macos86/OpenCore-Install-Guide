@@ -84,7 +84,6 @@ module.exports = {
                 {
                     text: 'Come Creare gli SSDT',
                     link: '/Getting-Started-With-ACPI/ssdt-methods/',
-                    isGroup: true,
                     children: [
                         '/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.md',
                         '/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.md',
@@ -93,7 +92,6 @@ module.exports = {
                 },
                 {
                     text: 'Manuale',
-                    isGroup: true,
                     children: [
                         '/Getting-Started-With-ACPI/dump.md',
                         '/Getting-Started-With-ACPI/compile.md',
@@ -102,12 +100,10 @@ module.exports = {
                 '/Getting-Started-With-ACPI/desktop.md',
                 {
                     text: 'Laptop',
-                    isGroup: true,
                     children: [
                         {
                             text: 'Risolvere Retroilluminazione',
                             link: '/Getting-Started-With-ACPI/Laptops/backlight/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Laptops/backlight/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Laptops/backlight/manual.md'
@@ -116,7 +112,6 @@ module.exports = {
                         {
                             text: 'Risolvere Trackpad',
                             link: '/Getting-Started-With-ACPI/Laptops/trackpad/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Laptops/trackpad/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Laptops/trackpad/manual.md'
@@ -127,12 +122,10 @@ module.exports = {
                 },
                 {
                     text: 'Universali',
-                    isGroup: true,
                     children: [
                         {
                             text: 'Controller Integrato',
                             link: '/Getting-Started-With-ACPI/Universal/ec/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/ec/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/ec/ssdttime.md',
@@ -142,7 +135,6 @@ module.exports = {
                         {
                             text: 'Gestione Energia CPU',
                             link: '/Getting-Started-With-ACPI/Universal/plug/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/plug/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/plug/ssdttime.md',
@@ -152,7 +144,6 @@ module.exports = {
                         {
                             text: 'AWAC vs RTC',
                             link: '/Getting-Started-With-ACPI/Universal/awac/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/awac/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/awac/ssdttime.md',
@@ -163,7 +154,6 @@ module.exports = {
                         {
                             text: 'NVRAM PMC',
                             link: '/Getting-Started-With-ACPI/Universal/nvram/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/nvram/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/nvram/ssdttime.md',
@@ -173,7 +163,6 @@ module.exports = {
                         {
                             text: 'USB RHUB',
                             palinkth: '/Getting-Started-With-ACPI/Universal/rhub/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/rhub/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/rhub/ssdttime.md',
@@ -183,7 +172,6 @@ module.exports = {
                         {
                             text: 'IMEI',
                             link: '/Getting-Started-With-ACPI/Universal/imei/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/imei/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/imei/manual.md'
@@ -192,7 +180,6 @@ module.exports = {
                         {
                             text: 'Risolvere Brigde Uncore',
                             link: '/Getting-Started-With-ACPI/Universal/unc0/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/unc0/prebuilt.md',
                                 '/Getting-Started-With-ACPI/Universal/unc0/manual.md'
@@ -201,7 +188,6 @@ module.exports = {
                         {
                             text: 'Risolvere il Supporto SMBus',
                             link: '/Getting-Started-With-ACPI/Universal/smbus/',
-                            isGroup: true,
                             children: [
                                 '/Getting-Started-With-ACPI/Universal/smbus/manual.md'
                             ]
@@ -220,7 +206,6 @@ module.exports = {
                 },
                 {
                     text: 'Universal',
-                    isgroup: true,
                     children: [
                         '/OpenCore-Post-Install/universal/audio.md',
                         '/OpenCore-Post-Install/universal/oc2hdd.md',
@@ -233,13 +218,11 @@ module.exports = {
                 },
                 {
                     text: 'USB Fixes',
-                    isgroup: true,
                     children: [
                         '/OpenCore-Post-Install/usb/',
                         '/OpenCore-Post-Install/usb/system-preparation.md',
                         {
                             text: 'USB Mapping',
-                            isgroup: true,
                             children: [
                                 '/OpenCore-Post-Install/usb/intel-mapping/intel.md',
                                 '/OpenCore-Post-Install/usb/manual/manual.md'
@@ -247,7 +230,6 @@ module.exports = {
                         },
                         {
                             text: 'Miscellaneous Fixes',
-                            isgroup: true,
                             children: [
                                 '/OpenCore-Post-Install/usb/misc/power.md',
                                 '/OpenCore-Post-Install/usb/misc/shutdown.md',
@@ -259,12 +241,10 @@ module.exports = {
                 },
                 {
                     text: 'Security',
-                    isgroup: true,
                     children: [
                         {
                             text: 'Security and FileVault',
                             link: '/OpenCore-Post-Install/universal/security.md',
-                            isgroup: true,
                             children: [
                                 '/OpenCore-Post-Install/universal/security/filevault.md',
                                 '/OpenCore-Post-Install/universal/security/vault.md',
@@ -281,7 +261,6 @@ module.exports = {
                 },
                 {
                     text: 'Cosmetics',
-                    isgroup: true,
                     children: [
                         '/OpenCore-Post-Install/cosmetic/verbose.md',
                         '/OpenCore-Post-Install/cosmetic/gui.md',
@@ -290,7 +269,6 @@ module.exports = {
                 },
                 {
                     text: 'Multiboot',
-                    isgroup: true,
                     children: [
                         '/OpenCore-Multiboot/',
                         '/OpenCore-Post-Install/multiboot/bootstrap.md',
@@ -299,7 +277,6 @@ module.exports = {
                 },
                 {
                     text: 'Miscellaneous',
-                    isgroup: true,
                     children: [
                         '/OpenCore-Post-Install/misc/rtc.md',
                         '/OpenCore-Post-Install/misc/msr-lock.md',
@@ -309,11 +286,9 @@ module.exports = {
                 {
                     text: 'In-depth GPU patching',
                     link: '/OpenCore-Post-Install/gpu-patching/',
-                    isgroup: true,
                     children: [
                         {
                             text: 'Modern Intel iGPU',
-                            isgroup: true,
                             children: [
                                 '/OpenCore-Post-Install/gpu-patching/intel-patching/',
                                 '/OpenCore-Post-Install/gpu-patching/intel-patching/vram.md',
@@ -340,7 +315,6 @@ module.exports = {
                 },
                 {
                     text: 'Introduzione al multibooting',
-                    isGroup: true,
                     children: [
                         '/OpenCore-Multiboot/Intro/Def.md',
                         {
@@ -351,12 +325,10 @@ module.exports = {
                 },
                 {
                     text: 'Multiboot su UEFI',
-                    isGroup: true,
                     children: [
                         {
                             text: 'Dischi vuoti',
                             link: '/OpenCore-Multiboot/empty/',
-                            isGroup: true,
                             children: [
                                 '/OpenCore-Multiboot/empty/samedisk.md',
                                 '/OpenCore-Multiboot/empty/diffdisk.md'
@@ -365,7 +337,6 @@ module.exports = {
                         {
                             text: 'Dischi già occupati',
                             link: '/OpenCore-Multiboot/exist/',
-                            isGroup: true,
                             children: [
                                 '/OpenCore-Multiboot/exist/data.md',
                                 '/OpenCore-Multiboot/exist/os.md'
@@ -376,7 +347,6 @@ module.exports = {
                 '/OpenCore-Multiboot/troubleshooting.md',
                 {
                     text: 'Configurazioni di OpenCore',
-                    isGroup: true,
                     children: [
                         '/OpenCore-Multiboot/oc/linux.md',
                         '/OpenCore-Multiboot/Win.md',
@@ -400,7 +370,6 @@ module.exports = {
                     },
                     {
                         title: 'Repo con Temi Popolari',
-                        isgroup: true,
                         children: [
                             '/OpenCanopy-Gallery/ocbinary.md',
                             '/OpenCanopy-Gallery/blackosx.md'
@@ -410,7 +379,6 @@ module.exports = {
             '/': [
                 {
                     text: 'Introduzione',
-                    isGroup: true,
                     children: [
                         '/prerequisites.md',
                         '/macos-limits.md',
@@ -422,17 +390,14 @@ module.exports = {
                 },
                 {
                     text: 'Creazione della USB',
-                    isGroup: true,
                     children: [
                         {
                             text: 'Creare l\'Installer',
                             link: '/installer-guide/',
-                            isGroup: true,
                             children: [
                                 '/installer-guide/mac-install.md',
                                 {
                                     text: 'macOS: metodi legacy',
-                                    isGroup: true,
                                     children: [
                                         '/installer-guide/mac-install-pkg.md',
                                         '/installer-guide/mac-install-recovery.md',
@@ -449,11 +414,9 @@ module.exports = {
                         {
                             text: 'Setup del config.plist',
                             link: '/config.plist/',
-                            isGroup: true,
                             children: [
                                 {
                                     text: 'Intel Desktop config.plist',
-                                    isGroup: true,
                                     children: [
                                         '/config.plist/penryn.md',
                                         '/config.plist/clarkdale.md',
@@ -468,7 +431,6 @@ module.exports = {
                                 },
                                 {
                                     text: 'Intel Laptop config.plist',
-                                    isGroup: true,
                                     children: [
                                         '/config.plist/laptop/arrandale.md',
                                         '/config.plist/laptop/sandy-bridge.md',
@@ -484,7 +446,6 @@ module.exports = {
                                 },
                                 {
                                     text: 'Intel HEDT config.plist',
-                                    isGroup: true,
                                     children: [
                                         '/config.plist/HEDT/nehalem.md',
                                         '/config.plist/HEDT/ivy-bridge-e.md',
@@ -495,7 +456,6 @@ module.exports = {
                                 },
                                 {
                                     text: 'AMD Desktop config.plist',
-                                    isGroup: true,
                                     children: [
                                         '/config.plist/AMD/fx.md',
                                         '/config.plist/AMD/zen.md'
@@ -513,11 +473,9 @@ module.exports = {
                 {
                     text: 'Risoluzione dei problemi',
                     link: '/troubleshooting/',
-                    isGroup: true,
                     children: [
                         {
                             text: 'Risoluzione dei problemi',
-                            isGroup: true,
                             children: [
                                 '/troubleshooting/extended/opencore-issues.md',
                                 '/troubleshooting/extended/kernel-issues.md',
@@ -533,14 +491,12 @@ module.exports = {
                 },
                 {
                     text: 'Extra',
-                    isGroup: true,
                     children: [
                         '/extras/kaslr-fix.md',
                         '/extras/spoof.md',
                         '/extras/big-sur.md',
                         {
                             text: 'Macchine Virtuali',
-                            isGroup: true,
                             children: [
                                 '/extras/virtualbox.md',
                                 '/extras/fusion.md',
@@ -550,7 +506,6 @@ module.exports = {
                         {
                             text: 'Conversioni da Clover',
                             link: '/clover-conversion/',
-                            isGroup: true,
                             children: [
                                 '/clover-conversion/Clover-config.md',
                                 '/clover-conversion/clover-efi.md',
