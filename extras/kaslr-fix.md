@@ -90,21 +90,21 @@ Esempio di ciò che vedrai:
 
 | Type | Start | End | \# Pages | Attributes |
 | :--- | :--- | :--- | :--- | :--- |
-| RT_Data | 0000000000000000 | 0000000000000FFF | 0000000000000001 | 800000000000000F |
-| Available | 0000000000001000 | 0000000000057FFF | 0000000000000057 | 000000000000000F |
-| Reserved | 0000000000058000 | 0000000000058FFF | 0000000000000001 | 000000000000000F |
-| Available | 0000000000059000 | 000000000008FFFF | 0000000000000037 | 000000000000000F |
-| RT_Code | 0000000000090000 | 0000000000090FFF | 0000000000000001 | 800000000000000F |
-| Available | 0000000000091000 | 000000000009DFFF | 000000000000000D | 000000000000000F |
-| Reserved | 000000000009E000 | 000000000009FFFF | 0000000000000002 | 000000000000000F |
-| Available | 0000000000100000 | 000000005B635FFF | 000000000005B536 | 000000000000000F |
-| BS_Data | 000000005B636000 | 000000005B675FFF | 0000000000000040 | 000000000000000F |
-| Available | 000000005B676000 | 000000006AF77FFF | 000000000000F902 | 000000000000000F |
-| LoaderCode | 000000006AF78000 | 000000006B155FFF | 00000000000001DE | 000000000000000F |
-| BS_Data | 000000006B156000 | 000000006B523FFF | 00000000000003CE | 000000000000000F |
-| ACPI_NVS | 000000006B524000 | 000000006B524FFF | 0000000000000001 | 000000000000000F |
-| BS_Data | 000000006B526000 | 000000006B625FFF | 0000000000000100 | 000000000000000F |
-| Available | 000000006B626000 | 000000006B634FFF | 000000000000000F | 000000000000000F |
+| RT_Data | `0000000000000000` | `0000000000000FFF` | `0000000000000001` | `800000000000000F` |
+| Available | `0000000000001000` | `0000000000057FFF` | `0000000000000057` | `000000000000000F` |
+| Reserved | `0000000000058000` | `0000000000058FFF` | `0000000000000001` | `000000000000000F` |
+| Available | `0000000000059000` | `000000000008FFFF` | `0000000000000037` | `000000000000000F` |
+| RT_Code | `0000000000090000` | `0000000000090FFF` | `0000000000000001` | `800000000000000F` |
+| Available | `0000000000091000` | `000000000009DFFF` | `000000000000000D` | `000000000000000F` |
+| Reserved | `000000000009E000` | `000000000009FFFF` | `0000000000000002` | `000000000000000F` |
+| Available | `0000000000100000` | `000000005B635FFF` | `000000000005B536` | `000000000000000F` |
+| BS_Data | `000000005B636000` | `000000005B675FFF` | `0000000000000040` | `000000000000000F` |
+| Available | `000000005B676000` | `000000006AF77FFF` | `000000000000F902` | `000000000000000F` |
+| LoaderCode | `000000006AF78000` | `000000006B155FFF` | `00000000000001DE` | `000000000000000F` |
+| BS_Data | `000000006B156000` | `000000006B523FFF` | `00000000000003CE` | `000000000000000F` |
+| ACPI_NVS | `000000006B524000` | `000000006B524FFF` | `0000000000000001` | `000000000000000F` |
+| BS_Data | `000000006B526000` | `000000006B625FFF` | `0000000000000100` | `000000000000000F` |
+| Available | `000000006B626000` | `000000006B634FFF` | `000000000000000F` | `000000000000000F` |
 
 Ora ti starai chiedendo come diavolo facciamo a convertirlo in un valore di Slide, beh è abbastanza semplice. Quello che ci interessa è il valore più grande disponibile nella colonna "Start". In questo esempio vediamo che `000000006B626000` è il nostro più grande, tieni presente che questi sono in HEX, quindi se ci sono più valori vicini tra loro potresti dover convertirli in decimali. Per calcolare il valore dello slide (la calcolatrice incorporata di macOS ha una funzione di programmazione premendo ⌘ + 3):
 
@@ -155,7 +155,7 @@ Questo aggiungerà un file `memmap.txt` alla radice del tuo EFI, puoi quindi pro
 
 DevirtualiseMmio è un quirk piuttosto interessante, in particolare in quanto aggira un enorme ostacolo con molti sistemi di dispositivi PCI come alcune schede Z390 e praticamente tutte le schede HEDT come X99 e X299. Il modo in cui lo fa è che prende le regioni MMIO e rimuove gli attributi di runtime consentendo loro di essere utilizzati comodamente come spazio per il kernel, accoppiarlo con l quirk di `ProvideCustomSlide` significa che possiamo mantenere la funzione di sicurezza di slide mentre otteniamo anche una macchina avviabile.
 
-Per sistemi estremamente problematici come Threadripper TRX40 19H, dobbiamo trovare regioni specifiche che non sono necessarie per il corretto funzionamento. È qui che entra in gioco `MmioWhitelist`. Tieni presente che la whitelist non è richiesta per la maggior parte dei sistemi
+Per sistemi estremamente problematici come Threadripper TRX40 19h, dobbiamo trovare regioni specifiche che non sono necessarie per il corretto funzionamento. È qui che entra in gioco `MmioWhitelist`. Tieni presente che la whitelist non è richiesta per la maggior parte dei sistemi.
 
 Se esegui la versione di debug di OpenCore con DevirtualiseMmio, noterai questo nei tuoi log:
 

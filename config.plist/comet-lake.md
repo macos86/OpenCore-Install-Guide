@@ -31,7 +31,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ::: tip Informazioni
 
-Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](https://dortania.github.io/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](/extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)**
+Qui aggiungerai i tuoi SSDT al sistema, sono molto importanti per **avviare macOS** e hanno molti usi come [USB maps (EN)](/OpenCore-Post-Install/usb/), [disabilitare GPU non supportate](/extras/spoof.md) e altro. E con il nostro sistema, **è soprattutto richiesto per l'avvio**. Guide per farli può essere trovata qui: **[Iniziamo con ACPI](/Getting-Started-With-ACPI/)**
 
 Nota che **non dovresti** aggiungere `DSDT.aml` qui, è aggiunto già dal tuo firmware. Perciò se presente, toglilo dal tuo `config.plist` e da EFI/OC/ACPI.
 
@@ -123,23 +123,21 @@ Questa sezione è configurata tramite la [Framebuffer Patching Guide](https://gi
 
 | AAPL,ig-platform-id | Comment |
 | :--- | :--- |
-| 07009B3E | Utilizzato quando l'iGPU desktop viene utilizzato per guidare un display |
-| 00009B3E | Alternativa a 07009B3E se non funziona |
-| 0300913E | Utilizzato quando Desktop iGPU viene utilizzato solo per attività di elaborazione e non gestisce un display |
-
-* **Nota**: con macOS 10.15.5 e versioni successive, sembra che ci siano molti problemi di schermo nero usando `07009B3E`, se riscontri problemi simili prova a scambiare con `00009B3E`
+| **`07009B3E`** | Utilizzato quando l'iGPU desktop viene utilizzato per guidare un display |
+| **`00009B3E`** | Alternativa a **`07009B3E`** se non funziona |
+| **`0300913E`** | Utilizzato quando Desktop iGPU viene utilizzato solo per attività di elaborazione e non gestisce un display |
 
 Aggiungiamo anche altre 2 proprietà, `framebuffer-patch-enable` e `framebuffer-stolenmem`. Il primo abilita l'applicazione di patch tramite WhateverGreen.kext e il secondo imposta il numero minimo di memoria rubata a 19 MB. Questo di solito non è necessario, poiché può essere configurato nel BIOS (64 MB consigliati) ma richiesto quando non è disponibile.
 
 * **Nota**: i framebuffer headless (dove la dGPU è il display in uscita) non sono necessari`framebuffer-patch-enable` and `framebuffer-stolenmem`
 
-Per gli utenti con problemi di schermo nero dopo verbose su B360, B365, H310, H370, Z390, consultare la pagina [BusID iGPU patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/intel-patching/)
+Per gli utenti con problemi di schermo nero dopo verbose su B360, B365, H310, H370, Z390, consultare la pagina [BusID iGPU patching](/OpenCore-Post-Install/gpu-patching/intel-patching/)
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| AAPL,ig-platform-id | Data | 07009B3E |
-| framebuffer-patch-enable | Data | 01000000 |
-| framebuffer-stolenmem | Data | 00003001 |
+| AAPL,ig-platform-id | Data | `07009B3E` |
+| framebuffer-patch-enable | Data | `01000000` |
+| framebuffer-stolenmem | Data | `00003001` |
 
 (Questo è un esempio per un desktop UHD 630 senza una dGPU e nessuna opzione BIOS per la memoria iGPU)
 
@@ -151,7 +149,7 @@ Questa voce si riferisce al controller Intel I225-V da 2,5 GBe trovato su schede
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| device-id | Data | F2150000 |
+| device-id | Data | `F2150000` |
 
 * **Nota**: If your board didn't ship with the Intel I225 NIC, there's no reason to add this entry.
 * **Nota 2**: If you get a kernel panic on the AppleIntelI210Ethernet kext, your Ethernet's path is likely `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)`
@@ -167,7 +165,7 @@ Questa voce si riferisce al controller Intel I225-V da 2,5 GBe trovato su schede
 
 * Puoi eliminare completamente questa proprietà poiché al momento non è utilizzata per noi
 
-Per noi, useremo invece il boot-arg `alcid = xxx` per ottenere questo risultato. `alcid` sovrascriverà tutti gli altri ID di layout presenti. Maggiori informazioni su questo sono trattate nella [Post-Install Page](https://dortania.github.io/OpenCore-Post-Install/)
+Per noi, useremo invece il boot-arg `alcid = xxx` per ottenere questo risultato. `alcid` sovrascriverà tutti gli altri ID di layout presenti. Maggiori informazioni su questo sono trattate nella [Post-Install Page](/OpenCore-Post-Install/)
 
 :::
 
@@ -280,11 +278,11 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
 | AppleXcpmCfgLock | YES | Non necessario se "CFG-Lock" è disabilitato nel BIOS |
-| DisableIOMapper | YES | Non necessario se "VT-D" è disabilitato nel BIOS |
+| DisableIoMapper | YES | Non necessario se "VT-D" è disabilitato nel BIOS |
 | LapicKernelPanic | NO | Le macchine HP richiederanno questo quirk |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
-| XhciPortLimit | YES | |
+| XhciPortLimit | YES | Disable if running macOS 11.3+ |
 
 :::
 
@@ -320,7 +318,8 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * **SetApfsTrimTimeout**: `-1`
 * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
-  * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](https://dortania.github.io/OpenCore-Post-Install/usb/) quando possibile.
+  * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](/OpenCore-Post-Install/usb/) quando possibile.
+  * Da macOS 11.3 e sucessivi, [XhciPortLimit potrebbe non funzionare correttamente](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di disabilitare questa funzionalità e aggiornare la mappa usb prima di aggiornare, oppure di [mappare da Windows](https://github.com/USBToolBox/tool). Ovviamente puoi anche installare macOS 11.2.3 e meno recenti.
 
 Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata senza un'adeguata regolazione corrente. È molto più pulito descrivere le tue porte in un unico kext solo plist, che non sprecherà memoria di runtime e simili
 
@@ -431,9 +430,9 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
   * Non ci occuperemo del vaulting quindi possiamo ignorare, **non avvierai con questo settato su Secure**
   * Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su `Optional`, nota che fa distinzione tra maiuscole e minuscole
 * **ScanPolicy**: `0`
-  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
+  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
 * **SecureBootModel**: Default
-  * Abilita la funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) per ulteriori informazioni.
+  * Abilita la funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori informazioni.
   * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
@@ -483,7 +482,7 @@ GUID NVRAM di OpenCore, principalmente rilevante per chi usa RTCMemoryFixup
 ::: details Informazioni più approfondite
 
 * **rtc-blacklist**: <>
-  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
+  * Da utilizzare insieme a RTCMemoryFixup, vedere qui per maggiori informazioni: [Risolvere i problemi di scrittura RTC](/OpenCore-Post-Install/misc/rtc.md#finding-our-bad-rtc-region)
   * La maggior parte degli utenti può ignorare questa sezione
 
 :::
@@ -499,14 +498,14 @@ System Integrity Protection bitmask
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
 | **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
-| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](https://dortania.github.io/OpenCore-Post-Install/) |
+| **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](/OpenCore-Post-Install/) |
 
 * **Argomenti di avvio specifici per GPU**:
 
 | boot-args | Descrizione |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare boardID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le carte Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e HighSierra |
+| **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le schede Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
@@ -593,7 +592,7 @@ La parte `Board Serial` viene copiata in Generic -> MLB.
 
 La parte `SmUUID` viene copiata in Generic -> SystemUUID.
 
-Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
+Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
 
 > Ricorda che ti serve un numero di serie non valido o valido ma non in uso;  dsi deve ricevere un messaggio del tipo: "Numero di serie non valido" o "Data di acquisto non convalidata"
 
@@ -664,11 +663,11 @@ Impostazioni relative al driver APFS, lascia tutto qui come predefinito.
 
 Relativamente alle impostazioni di AudioDxe, per noi ignoreremo (lasciare come impostazione predefinita). Questo non è correlato al supporto audio in macOS.
 
-* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime](https://dortania.github.io/OpenCore-Post-Install/)
+* Per un ulteriore utilizzo di AudioDxe e della sezione Audio, consultare la pagina Post Install: [Add GUI and Boot-chime](/OpenCore-Post-Install/)
 
 ### Input
 
-In relazione al passthrough della tastiera boot.efi utilizzato per FileVault e il supporto dei tasti di scelta rapida, lasciare tutto qui come predefinito poiché non abbiamo alcun uso per questei Quirks. Vedi qui per maggiori dettagli: [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/)
+In relazione al passthrough della tastiera boot.efi utilizzato per FileVault e il supporto dei tasti di scelta rapida, lasciare tutto qui come predefinito poiché non abbiamo alcun uso per questei Quirks. Vedi qui per maggiori dettagli: [Security and FileVault](/OpenCore-Post-Install/)
 
 ### Output
 
@@ -676,7 +675,7 @@ Relativamente all'output visivo di OpenCore, lascia tutto qui come predefinito p
 
 ### ProtocolOverrides
 
-Principalmente rilevante per macchine virtuali, Mac legacy e utenti FileVault. Vedi qui per maggiori dettagli: [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/)
+Principalmente rilevante per macchine virtuali, Mac legacy e utenti FileVault. Vedi qui per maggiori dettagli: [Security and FileVault](/OpenCore-Post-Install/)
 
 ### Quirks
 

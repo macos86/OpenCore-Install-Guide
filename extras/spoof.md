@@ -37,9 +37,9 @@ Con questo, naviga attraverso `Root -> DeviceProperties -> Add` e aggiungi il tu
 
 | Chiave | Tipo | Valore |
 | :--- | :--- | :--- |
-| name | data | 23646973706C6179 |
+| name | Data | `23646973706C6179` |
 | IOName | string | #display |
-| class-code | data | FFFFFFFF |
+| class-code | Data | `FFFFFFFF` |
 
 ![](../images/extras/spoof-md/config-gpu.png)
 

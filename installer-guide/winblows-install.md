@@ -65,6 +65,9 @@ python macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 * **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
   * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
 * **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
+* <span style="color:red">ATTENZIONE:</span> Da macOS 11.3, [XhciPortLimit non funziona e causa dei bootloop](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di usare sistemi meno recenti (come 10.15) o un installer di Big Sur 11.2.3 o meno recenti
+    * Per scopi educativi, provvediamo una copia qui: [macOS 11.2.1 20D75 Recovery Image](https://archive.org/details/base-system_202102)
+    * Se hai già [mappato le tue porte USB](/OpenCore-Post-Install/usb/) e disabilitato `XhciPortLimit`, puoi avviare 11.3+ senza altri problemi
 
 Ci metterà un po' di tempo, tuttavia quando hai finito dovresti avere i file o BaseSystem o RecoveryImage:
 
@@ -199,7 +202,7 @@ Dopo, seleziona "Process MBR" e dopo "Restore MBR" e seleziona il file **boot0**
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-mbr.png) | ![](../images/installer-guide/winblows-install-md/restore-mbr-file.png) |
 
-Dopo torna alla schermata principale e seleziona "Process PBR", dopo "Restore PBR". Da qui, scegli il file **Boot1f32** da `Utilities/LegacyBoot/` sempre nel OpenCorePkg:
+Dopo torna alla schermata principale e seleziona "Process PBR", dopo "Restore PBR". Da qui, scegli il file **boot1f32** da `Utilities/LegacyBoot/` sempre nel OpenCorePkg:
 
 | Ripristino PBR | Ripristino file boot1f32 |
 | :--- | :--- |

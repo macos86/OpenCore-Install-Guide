@@ -113,8 +113,8 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 ### Grafica
 
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases/latest)(<span style="color:red">Required</span>)
-  * Utilizzato per la patch grafica di DRM, boardID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
-  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per maggiori informazioni
+  * Utilizzato per la patch grafica di DRM, controllo del board ID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
+  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Iniziamo con ACPI](/Getting-Started-With-ACPI/) per maggiori informazioni
   * Necessita di OS X 10.8 o superiori
 
 ### Audio
@@ -272,7 +272,7 @@ pci14e4,1686 = Broadcom BCM57766
 Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 
 * Abilita `Misc -> Security -> SecureBootModel` impostandolo come`Default` o qualche altro valore valido
-  * Questo è discusso successivamente più avanti in questa guida ma anche nella guida post-installazione: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
+  * Questo è discusso successivamente più avanti in questa guida ma anche nella guida post-installazione: [Apple Secure Boot](/OpenCore-Post-Install/universal/security/applesecureboot.md)
 * Se non puoi abilitare SecureBootModel, puoi comunque forzare l'inserimento di IO80211Family (**Altamente sconsigliato**)
   * Imposta quanto segue in `Kernel -> Force` nel tuo config.plist (discusso più avanti in questa guida):
   
@@ -389,7 +389,7 @@ Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/ma
 
 Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Per noi, esamineremo gli SSDT di cui hai bisogno nella **sezione ACPI del tuo config.plist**, poiché gli SSDT necessari sono specifici della piattaforma. Con alcuni casi specifici del sistema nei quali devono essere configurati, puoi facilmente perderti se ti do un elenco di SSDT tra cui scegliere da ora.
 
-[Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
+[Iniziamo con ACPI](/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
 
 Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
 
@@ -397,27 +397,27 @@ Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai
 
 | Piattaforme | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
 | :-------: | :-----: | :----: | :------: | :-------: | :-----: |
-| Penryn | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | Nessuno | Nessuno | Nessuno |
+| Penryn | Nessuno | [SSDT-EC](/Getting-Started-With-ACPI/Universal/ec-fix.md) | Nessuno | Nessuno | Nessuno |
 | Lynnfield and Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Da fare nel post-installazione) | ^^ | ^^ | ^^ | ^^ |
+| SandyBridge | [CPU-PM](/OpenCore-Post-Install/universal/pm.md#sandy-and-ivy-bridge-power-management) (Da fare nel post-installazione) | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | ^^ | ^^ |
+| Haswell | [SSDT-PLUG](/Getting-Started-With-ACPI/Universal/plug.md) | ^^ | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Skylake | ^^ | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | ^^ | ^^ | ^^ |
+| Skylake | ^^ | [SSDT-EC-USBX](/Getting-Started-With-ACPI/Universal/ec-fix.md) | ^^ | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake | ^^ | ^^ | [SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
-| Comet Lake | ^^ | ^^ | ^^ | Nessuno | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) |
+| Coffee Lake | ^^ | ^^ | [SSDT-AWAC](/Getting-Started-With-ACPI/Universal/awac.md) | [SSDT-PMC](/Getting-Started-With-ACPI/Universal/nvram.md) | ^^ |
+| Comet Lake | ^^ | ^^ | ^^ | Nessuno | [SSDT-RHUB](/Getting-Started-With-ACPI/Universal/rhub.md) |
 | AMD (15/16h) | Nessuno | ^^ | Nessuno | ^^ | Nessuno |
-| AMD (17/19h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
+| AMD (17/19h) | [SSDT-CPUR for B550 and A520](https://github.com/macos86/Getting-Started-With-ACPI/raw/main/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
 ### Desktop di fascia alta
 
 | Piattaforme | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
-| Nehalem and Westmere | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | Nessuno | Nessuno |
-| Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/unc0) |
+| Nehalem and Westmere | Nessuno | [SSDT-EC](/Getting-Started-With-ACPI/Universal/ec-fix.md) | Nessuno | Nessuno |
+| Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](/Getting-Started-With-ACPI/Universal/unc0) |
 | Ivy Bridge-E | ^^ | ^^ | ^^ | ^^ |
-| Haswell-E | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-RTC0-RANGE](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ |
+| Haswell-E | [SSDT-PLUG](/Getting-Started-With-ACPI/Universal/plug.md) | [SSDT-EC-USBX](/Getting-Started-With-ACPI/Universal/ec-fix.md) | [SSDT-RTC0-RANGE](/Getting-Started-With-ACPI/Universal/awac.md) | ^^ |
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
 | Skylake-X | ^^ | ^^ | ^^ | Nessuno |
 
@@ -425,32 +425,32 @@ Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai
 
 | Piattaforme | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
 | :-------: | :-----: | :----: | :-----------: | :--------------: | :------: | :-----: | :-----: |
-| Clarksfield and Arrandale | Nessuno | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | Nessuno | Nessuno | Nessuno | [IRQ SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Da fare nel post-install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
+| Clarksfield and Arrandale | Nessuno | [SSDT-EC](/Getting-Started-With-ACPI/Universal/ec-fix.md) | [SSDT-PNLF](/Getting-Started-With-ACPI/Laptops/backlight.md) | Nessuno | Nessuno | Nessuno | [IRQ SSDT](/Getting-Started-With-ACPI/Universal/irq.md) |
+| SandyBridge | [CPU-PM](/OpenCore-Post-Install/universal/pm.md#sandy-and-ivy-bridge-power-management) (Da fare nel post-install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | [SSDT-GPI0](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html) | ^^ | ^^ | ^^ |
+| Haswell | [SSDT-PLUG](/Getting-Started-With-ACPI/Universal/plug.md) | ^^ | ^^ | [SSDT-GPI0](/Getting-Started-With-ACPI/Laptops/trackpad.md) | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Skylake | ^^ | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | ^^ | ^^ | ^^ | ^^ | Nessuno |
+| Skylake | ^^ | [SSDT-EC-USBX](/Getting-Started-With-ACPI/Universal/ec-fix.md) | ^^ | ^^ | ^^ | ^^ | Nessuno |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | ^^ | [SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ | ^^ |
+| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](/Getting-Started-With-ACPI/Laptops/backlight.md) | ^^ | [SSDT-AWAC](/Getting-Started-With-ACPI/Universal/awac.md) | ^^ | ^^ |
 | Coffee Lake (9° Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) | ^^ |
+| Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](/Getting-Started-With-ACPI/Universal/rhub.md) | ^^ |
 
 Continuando:
 
 | Piattaforme | **NVRAM** | **IMEI** |
 | :-------: | :-------: | :------: |
 |  Clarksfield and Arrandale | Nessuno | Nessuno |
-| Sandy Bridge | ^^| [SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/Universal/imei.html) |
+| Sandy Bridge | ^^| [SSDT-IMEI](/Getting-Started-With-ACPI/Universal/imei.md) |
 | Ivy Bridge | ^^ | ^^ |
 | Haswell | ^^ | Nessuno |
 | Broadwell | ^^ | ^^ |
 | Skylake | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ |
 | Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ |
-| Coffee Lake (9th Gen) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
+| Coffee Lake (9th Gen) | [SSDT-PMC](/Getting-Started-With-ACPI/Universal/nvram.md) | ^^ |
 | Comet Lake | Nessuno | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-> Ora, con tutto questo fatto, vai a [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)
+> Ora, con tutto questo fatto, vai a [Iniziamo con ACPI](/Getting-Started-With-ACPI/)

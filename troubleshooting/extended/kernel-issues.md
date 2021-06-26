@@ -73,7 +73,7 @@ Questa sezione sarà suddivisa tra utenti Intel e AMD:
     * Haswell e versioni successive richiedono solo AppleXcpmCfgLock
     * Ivy Bridge e versioni precedenti richiedono solo AppleCpuPmCfgLock
     * Broadwell e versioni precedenti richiedono AppleCpuPmCfgLock se si esegue 10.10 o versioni precedenti
-    * In alternativa puoi disabilitare correttamente CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
+    * In alternativa puoi disabilitare correttamente CFG-Lock: [Fixing CFG Lock](/OpenCore-Post-Install/misc/msr-lock.md)
 * **AppleXcpmExtraMsrs**
   * Può anche essere richiesto, questo è generalmente pensato per Pentium, HEDT e altri sistemi strani non supportati nativamente in macOS.
 
@@ -107,7 +107,7 @@ Per fare ciò, aggiungi la seguente patch (sostituendo la 04 di B8 **04** 00 00 
 | Mask | Data | |
 | MaxKernel | String | |
 | MinKernel | String | 20.0.0 |
-| Replace | Data | B804000000C3 |
+| Replace | Data | `B804000000C3` |
 | ReplaceMask | Data | |
 | Skip | Integer | 0 |
 
@@ -333,7 +333,7 @@ I luoghi principali da verificare:
 
 * **Manca la patch EC**:
   * Assicurati di avere il tuo SSDT EC sia in EFI/OC/ACPI e che sia abilitato ACPI -> Add, **Doppio controllo se è abilitato.**
-  * Se non ne hai uno, prendilo qui: [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/)
+  * Se non ne hai uno, prendilo qui: [Iniziamo con ACPI](/Getting-Started-With-ACPI/)
 * **Conflitto IRQ**:
   * Più comune su portatili e pre-costrutti più anziani; lancia SSDTTime scegli l'opzione FixHPET e aggiungi il risultante SSDT-HPET.aml e lepatches  ACPI al tuo config (l'SSDT non funzionerà senza le patch ACPI)
 * **Problemi di allocazione PCI**:
@@ -346,20 +346,20 @@ I luoghi principali da verificare:
 * **Problemi NVMe or SATA**:
   * A volte se viene utilizzato un pessimo controller SATA o un unità NVME non supportato, è possibile rimanere bloccato qui. Cose che puoi controllare:
     * Non utilizzare sia SSD NVM Samsung PM981 che Micron 2200S
-    * Samsung 970eVoPlus che abbia il firmware più recente (firmware più vecchi erano noti per instabilità e blocchi, [Vedi qui per maggiori informazioni](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
+    * Samsung 970 EVO Plus che abbia il firmware più recente (firmware più vecchi erano noti per instabilità e blocchi, [Vedi qui per maggiori informazioni](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/))
   * SATA Hot-Plug sia disabilitato nel BIOS (più comunemente può causare problemi sui sistemi basati sulla CPU AMD)
     * Assicurarsi che le unità NVME siano impostate come modalità NVME nel BIOS (alcuni BIOS hanno un bug in cui è possibile impostare unità NVME come SATA)
 * **NVRAM non funziona**:
   * Problema comune nelle schede madri HEDT e serie 300, hai un paio di percorsi da seguire:
-    * Serie 300 Consumer Intel: Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) come creare SSDT-PMC.aml
-    * HEDT(ie. X99): Guarda [Emulare la NVRAM](https://dortania.github.io/OpenCore-Post-Install/misc/nvram.html) su come disabilitare la scrittura della NVRAM; nota che per l'installazione non è necessario eseguire lo script. Basta configurare il config.plist
+    * Serie 300 Consumer Intel: Guarda [Iniziamo con ACPI](/Getting-Started-With-ACPI/) come creare SSDT-PMC.aml
+    * HEDT(ie. X99): Guarda [Emulare la NVRAM](/OpenCore-Post-Install/misc/nvram.md) su come disabilitare la scrittura della NVRAM; nota che per l'installazione non è necessario eseguire lo script. Basta configurare il config.plist
 
 * **RTC Mancante**:
-  * Comunemente trovato su serie 300+ Intel(es. Z370, Z490), causata dall'orologio RTC disabilitato di default. Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) su come creare SSDT-AWAC.aml
-  * X99 and X299 hanno decies RTC non funzionanti, la soluzione è usare SSDT-RTC0-RANGE. Guarda [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per la creazione di detto file
+  * Comunemente trovato su serie 300+ Intel(es. Z370, Z490), causata dall'orologio RTC disabilitato di default. Guarda [Iniziamo con ACPI](/Getting-Started-With-ACPI/) su come creare SSDT-AWAC.aml
+  * X99 and X299 hanno decies RTC non funzionanti, la soluzione è usare SSDT-RTC0-RANGE. Guarda [Iniziamo con ACPI](/Getting-Started-With-ACPI/) per la creazione di detto file
   * Qualche compilatore ubriaco in HP ha disabilitato RTC su HP 250 G6 senza possibilità di riabilitarlo per ora.
     * Modelli interessati noti: `HP 15-DA0014dx`, `HP 250 G6`
-    * Gli utenti con questa "maledizione" nell'hardware dovranno creare un orologio RTC falso per i macos con cui giocare. Vedere [Iniziamo con ACPI](https://macos86.github.io/Getting-Started-With-ACPI/) per ulteriori dettagli, qui sotto una immagine ad esempio:
+    * Gli utenti con questa "maledizione" nell'hardware dovranno creare un orologio RTC falso per i macos con cui giocare. Vedere [Iniziamo con ACPI](/Getting-Started-With-ACPI/) per ulteriori dettagli, qui sotto una immagine ad esempio:
 
 Esempio di come appare un RTC disabilitato senza nessuna possibilità di essere abilitato (nota che non c'è valore per riattivarlo come `STAS»):
 
@@ -385,7 +385,7 @@ Questo è generalmente visto come un errore USB o SATA, di seguito un paio di mo
 
 Questo presuppone che tu stia solo avviando il programma di installazione da USB e non macos.
 
-* Se stai superando il limite di 15 porte, puoi temporaneamente aggirarlo con `xhciportlimit`, ma per uso a lungo termine, consigliamo di fare una [Mappa USB](https://dortania.github.io/OpenCore-Post-Install/usb/)
+* Se stai superando il limite di 15 porte, puoi temporaneamente aggirarlo con `xhciportlimit`, ma per uso a lungo termine, consigliamo di fare una [Mappa USB](/OpenCore-Post-Install/usb/)
   * `Kernel -> Quirks -> XhciPortLimit -> True`
 
 *Un altro problema può essere che un determinato firmware non passerà la proprietà USB a MacOS
@@ -434,7 +434,7 @@ Per coloro che sono sulla piattaforma X99 di Intel, controllare quanto segue:
   * AppleXcpmCfgLock
   * AppleXcpmExtraMsrs
 * Avere il seguente SSDT:
-  * SSDT-UNC(in caso contrario, vedere [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) sulla creazione di detto file)
+  * SSDT-UNC(in caso contrario, vedere [Getting started with ACPI](/Getting-Started-With-ACPI/) sulla creazione di detto file)
 
 ## Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`/`gIOLockState (3...`
 
@@ -505,7 +505,7 @@ Con macOS Catalina, il supporto del doppio socket è interrotto e un fatto diver
 Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente mancante. Per risolvere il problema, rimuovere NullCPUPowerManagement da `Kernel -> Add` e `EFI/OC/Kexts` quindi abilitare `DummyPowerManagement` in `Kernel -> Emulate`
 
 * **Nota**: sulle vecchie CPU Intel (es. Penryn e precedenti), potrebbe essere dovuto a conflitti IRQ o al dispositivo HPET disabilitato. Per risolvere, hai 2 opzioni:
-  * [Opzione FixHPET di SSDTTime](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
+  * [Opzione FixHPET di SSDTTime](/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.md)
   * Forzatura del dispositivo HPET
   
   ::: details Forzatura del dispositivo HPET
@@ -517,8 +517,8 @@ Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente 
 | Enabled | Boolean | YES |
 | Count | Number | 0 |
 | Limit | Number | 0 |
-| Find | Data | A010934F53464C00 |
-| Replace | Data | A40A0FA3A3A3A3A3 |
+| Find | Data | `A010934F53464C00` |
+| Replace | Data | `A40A0FA3A3A3A3A3` |
 
 :::
 
@@ -550,7 +550,7 @@ Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrisp
 2. VoodooI2C
 3. Satellite/Plugin Kext
 
-Assicurati di avere SSDT-GPIO in EFI/OC/ACPI e nel tuo config.plist sotto ACPI -> Add. Se i problemi persistono, fare riferimento alla [pagina Guida introduttiva a ACPI GPIO](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html).
+Assicurati di avere SSDT-GPIO in EFI/OC/ACPI e nel tuo config.plist sotto ACPI -> Add. Se i problemi persistono, fare riferimento alla [pagina Guida introduttiva a ACPI GPIO](/Getting-Started-With-ACPI/Laptops/trackpad.md).
 
 :::
 
@@ -625,6 +625,14 @@ Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene que
 
 E quando cambi kext, assicurati di non avere sia FakeSMC che VirtualSMC abilitati nel tuo config.plist, poiché ciò causerà un conflitto.
 
-### Problemi della macchina virtuale
+## Problemi della macchina virtuale
 
 * VMWare 15 è noto per rimanere bloccato su `[EB|#LOG:EXITBS:START]`. VMWare 16 risolve il problema.
+
+## Riavvio su "AppleUSBHostPort::createDevice: failed to create device" da macOS 11.3+
+
+Questo è causato dalla [rottura di XhciPortLimit con macOS 11.3 e più recenti](https://github.com/dortania/bugtracker/issues/162), per risolvere **devi** disabilitare XhciPortLimit nella sezione Kernel -> Quirks. Assicurati che tu abbia [mappato correttamente le porte USB](/OpenCore-Post-Install/usb/) prima.
+
+* Oppure, puoi avviare macOS 11.2.3 o meno recenti per risolverlo
+  * Per scopi educativi, provvediamo queste immagini:
+    * [macOS 11.2.3 InstallAssistant (macOS)](https://archive.org/details/install-mac-os-11.2.3-20-d-91)
