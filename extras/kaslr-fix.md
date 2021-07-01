@@ -62,7 +62,7 @@ E dovremo anche configurare il nostro config.plist -> Booter:
 
 ## Preparazione del BIOS
 
-Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vogliamo che sia più deterministico,ossia che ci saranno meno variazioni su ogni avvio, quindi abbiamo meno casi limite (le mappe di memoria non calzano sempre a pennello). Per iniziare:
+Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vogliamo che sia più stabile, che ci siano meno variazioni ad ogni avvio e di conseguenza meno casi limite (le mappe di memoria non sempre sono perfette). Per iniziare:
 
 * Aggiorna il BIOS all'ultima versione STABILE (i primi BIOS spediti sono noti per avere problemi con il memory layout, specialmente con Z390)
 * Resettare il CMOS
