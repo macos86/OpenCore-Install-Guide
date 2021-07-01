@@ -86,7 +86,7 @@ Con le nostre impostazioni EFI, config.plist e BIOS modificate, è ora di provar
 
 ## Calcolare il valore dello slide
 
-Quello che dovrai fare è aprire una shell EFI (OpenShell, UEFIShell) nel tuo boot manager preferito ed eseguire `memmap`. L'output ti darà un elenco di tutte le pagine di memoria e delle loro relative dimensioni. È qui che inizia il divertimento.
+Quello che dovrai fare è aprire una shell EFI (OpenShell, UEFIShell) nel tuo boot manager preferito ed eseguire `memmap`. L'output ti darà un elenco di tutte le pagine di memoria e delle loro relative dimensioni. E qui inizia il divertimento:
 
 Esempio di ciò che vedrai:
 
