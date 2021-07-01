@@ -8,7 +8,7 @@ Questa sezione è per gli utenti che desiderano comprendere e correggere gli err
 
 KASLR (dall'inglese `Kernel Address Space Layout Randomization`) sta per `randomizzazione del layout dello spazio degli indirizzi del kernel` ed è un meccanismo di sicurezza per proteggere l'accesso a determinate aree di memoria relative al kernel. In particolare, per un aggressore è molto più difficile capire dove si trovano gli oggetti importanti in memoria poiché cambia ad ogni avvio del sistema operativo. [Maggiori spiegazioni riguardo al KASLR](https://lwn.net/Articles/569635/)
 
-Dove questo diventa un problema è quando si introducono dispositivi con piccole mappe di memoria o semplicemente troppi dispositivi presenti. Probabilmente c'è spazio per il funzionamento del kernel, ma c'è anche spazio libero in cui il kernel non si adatta completamente. È qui che ricorriamo a `slide = xxx`. Invece di lasciare che macOS scelga un'area casuale da utilizzare ad ogni avvio, lo costringeremo a scegliere un'area ben specifica che sappiamo funzionerà.
+KASLR diventa un problema quando si introducono dispositivi con piccole mappe di memoria o semplicemente troppi dispositivi presenti. Probabilmente c'è spazio per il funzionamento del kernel, ma c'è anche spazio libero in cui il kernel non si adatta completamente. È qui che ricorriamo a `slide = xxx`. Invece di lasciare che macOS scelga un'area casuale da utilizzare ad ogni avvio, lo costringeremo a scegliere un'area ben specifica che sappiamo funzionerà.
 
 ## E per chi sono queste informazioni?
 
