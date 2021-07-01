@@ -67,7 +67,7 @@ Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vog
 * Aggiorna il BIOS all'ultima versione STABILE (i primi BIOS spediti sono noti per avere problemi con il memory layout, specialmente con Z390)
 * Resettare il CMOS
 * Abilitare alcune impostazioni del BIOS necessarie:
-  * `Above4GDecoding`: consente ai dispositivi PCI di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi; può essere problematico su alcuni chipset come X99 e X299 quindi consigliamo di testare con e senza questa opzione attivata.
+  * `Above4GDecoding`: consente ai dispositivi PCI di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi; può essere problematico su alcuni chipset come X99 e X299 quindi consigliamo di attivarla e in caso di problemi disattivarla.
     * Nota: sui BIOS del 2020 e successivi è stato introdotto il supporto al `Resizable BAR`, opzione che si sblocca con l'abilitazione di `Above4GDecoding`. Assicurarsi che il supporto al `Resizable BAR` sia disabilitato se l'opzione si presenta.
   * `Opzioni di avvio -> Modalità Windows 8.1/10`: ci assicurerà che non verranno caricate delle opzioni per dispositivi legacy. Fun fact: `Other OS` è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
 * Disabilitare tutti i dispositivi non necessari nel BIOS (questo significa che ci sarà meno variazione nel memory layout ad ogni avvio, quindi meno possibilità di errori in fase di avvio). Impostazioni comuni:
