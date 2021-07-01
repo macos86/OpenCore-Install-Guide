@@ -1,14 +1,14 @@
 # Correzione dei valori delle slide KASLR
 
-Questa sezione è per gli utenti che desiderano comprendere e correggere gli errori "Couldn't allocate runtime area". Questo è più comune con Z390, X99 e X299.
+Questa sezione è per gli utenti che desiderano comprendere e correggere gli errori tipo `Couldn't allocate runtime area`. Questo genere di errore si presenta abbastanza frequentemente con le schede madri con chipset Z390, X99 e X299.
 
-* Nota: OpenCore è richiesto, Clover non è più supportato in questa guida
+* Nota: in questa guida viene supportato solo OpenCore. Clover non viene minimamente considerato
 
-## Allora, cos'è KASLR
+## Dunque, cos'è questo KASLR?
 
-Bene KASLR sta per randomizzazione del layout dello spazio degli indirizzi del kernel, ciò per cui viene utilizzato sono scopi di sicurezza. In particolare, questo rende molto più difficile per gli aggressori capire dove si trovano gli oggetti importanti in memoria poiché è sempre casuale tra le macchine i Booter. [Maggiori spiegazioni riguardo al KASLR](https://lwn.net/Articles/569635/)
+KASLR (dall'inglese `Kernel Address Space Layout Randomization`) che sta per `randomizzazione del layout dello spazio degli indirizzi del kernel`, è un meccanismo di sicurezza per proteggere l'accesso a determinate aree di memoria relative al kernel. In particolare, tramite questo meccanismo, è molto più difficile per un aggressore capire dove si trovano gli oggetti importanti in memoria poiché è sempre casuale tra le macchine e i vari avvii del sistema operativo. [Maggiori spiegazioni riguardo al KASLR](https://lwn.net/Articles/569635/)
 
-Dove questo diventa un problema è quando si introducono dispositivi con piccole mappe di memoria o semplicemente troppi dispositivi presenti. Probabilmente c'è spazio per il funzionamento del kernel, ma c'è anche spazio libero in cui il kernel non si adatta completamente. È qui che si inserisce `slide = xxx`. Invece di lasciare che macOS scelga un'area casuale da utilizzare ad ogni avvio, lo vincoleremo a un punto che sappiamo funzionerà.
+Dove questo diventa un problema è quando si introducono dispositivi con piccole mappe di memoria o semplicemente troppi dispositivi presenti. Probabilmente c'è spazio per il funzionamento del kernel, ma c'è anche spazio libero in cui il kernel non si adatta completamente. È qui che ricorriamo a `slide = xxx`. Invece di lasciare che macOS scelga un'area casuale da utilizzare ad ogni avvio, lo costringeremo a scegliere un'area ben specifica che sappiamo funzionerà.
 
 ## E per chi sono queste informazioni?
 
@@ -33,11 +33,11 @@ panic(cpu 6 caller 0xffffff801fc057ba): a freed zone element has been modified i
 
 La parte migliore di questi errori è che possono essere casuali, anche il motivo per cui spegnere e riaccendere il PC 20 volte può anche risolvere il problema, ma solo temporaneamente.
 
-Fatto divertente: ci vogliono circa 31 ms per trovare un'area in cui operare, l'impostazione manuale di un valore di slide può in media ridurre i tempi di avvio dello 0,207% !!!
+Fatto divertente: ci vogliono circa **31 ms** per trovare un'area in cui operare e l'impostazione manuale di un valore di slide può in media ridurre i tempi di avvio dello **0,207%** !!!
 
-## Allora come risolvo questo problema
+## Allora come risolvo questo problema?
 
-La vera soluzione a questo è abbastanza semplice in realtà. Di cosa avrai bisogno:
+La vera soluzione a questo è abbastanza semplice in realtà. Avrai bisogno di:
 
 * **OpenCore users**:
   * [OpenRuntime](https://github.com/acidanthera/OpenCorePkg/releases)
@@ -56,35 +56,37 @@ E dovremo anche configurare il nostro config.plist -> Booter:
 * **ProvideCustomSlide**: YES
   * Questo assicura che il kernel scelga solo regioni buone ed eviti quelle che potrebbero causare errori di avvio. È ancora casuale ma omette quelle regioni difettose nella sua randomizzazione
 * **RebuildAppleMemoryMap**: YES
-  * Genera una mappa di memoria compatibile con macOS, può rompersi su alcuni firmware OEM di laptop, quindi se ricevi errori di avvio precoce disabilita questa opzione, questo assicura che la nostra mappa di memoria si adatterà a ciò che il kernel si aspetta
+  * Genera una mappa di memoria compatibile con macOS in modo che si adatterà a ciò che il kernel si aspetta. Su alcuni firmware OEM di laptop potresti non essere in grado di avviare con questa opzione attiva. Nel caso disattivala.
+
+## To fix ^^
 
 ## Preparazione del BIOS
 
-Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vogliamo che sia più deterministico, ciò che intendo con questo è che ci saranno meno variazioni su ogni avvio, quindi abbiamo meno casi limite (le mappe di memoria non sono sempre coerenti con gli stivali). Per preparare:
+Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vogliamo che sia più deterministico,ossia che ci saranno meno variazioni su ogni avvio, quindi abbiamo meno casi limite (le mappe di memoria non calzano sempre a pennello). Per iniziare:
 
-* Aggiorna BIOS (estremamente importante poiché i primi BIOS spediti sono noti per avere problemi con la mappa di memoria, specialmente con Z390)
-* Cancella CMOS
-* Abilita le impostazioni del BIOS tanto necessarie:
-  * `Above4GDecoding`: Ciò consente ai dispositivi di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi, può essere problematico su alcuni X99, X299 quindi consigliato di testare con e senza.
-    * Nota: su BIOS che supporta il supporto BAR ridimensionabile, abilitare Above4G sbloccherà questa opzione. Assicurati che il supporto BAR sia disabilitato se l'opzione si presenta.
-  * `Opzioni di avvio -> Windows 8.1/10 Mode`: Questo assicurerà che non venga caricata alcuna vecchia spazzatura legacy. Fatto divertente, "Other OS" è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
-* Disabilita tutti i dispositivi non necessari nel BIOS (questo significa che c'è meno variazione nella mappa ad ogni avvio, quindi meno possibilità di errore di avvio). Impostazioni comuni:
-  * `CSM`: per il supporto legacy, aggiunge un mucchio di spazzatura che non vogliamo. Anche questo può rompere il guscio in modo da non poterlo avviare.
-  * `Intel SGX`: Software Guard Extensions, occupa molto spazio e non fa nulla in macOS.
-  * `Parallel Port`: macOS non può nemmeno vedere il parallelo.
-  * `Serial Port`: Vorrei sapere quanti di voi stanno eseguendo il debug del kernel ...
-  * `iGPU`: Non è l'ideale, ma alcuni sistemi hanno mappe talmente gonfie che l'iGPU non può adattarsi.
-  * `Thunderbolt`: Molti hack non hanno il fulmine funzionante, le schede che non hanno il fulmine ma hanno questa opzione sprecano solo più spazio.
+* Aggiorna il BIOS all'ultima versione STABILE (i primi BIOS spediti sono noti per avere problemi con il memory layout, specialmente con Z390)
+* Resettare il CMOS
+* Abilitare alcune impostazioni del BIOS necessarie:
+  * `Above4GDecoding`: consente ai dispositivi PCI di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi; può essere problematico su alcuni chipset come X99 e X299 quindi consigliamo di testare con e senza questa opzione attivata.
+    * Nota: sui BIOS del 2020 e successivi è stato introdotto il supporto al `Resizable BAR`, opzione che si sblocca con l'abilitazione di `Above4GDecoding`. Assicurarsi che il supporto al `Resizable BAR` sia disabilitato se l'opzione si presenta.
+  * `Opzioni di avvio -> Modalità Windows 8.1/10`: ci assicurerà che non verranno caricate delle opzioni per dispositivi legacy. Fun fact: `Other OS` è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
+* Disabilitare tutti i dispositivi non necessari nel BIOS (questo significa che ci sarà meno variazione nel memory layout ad ogni avvio, quindi meno possibilità di errori in fase di avvio). Impostazioni comuni:
+  * `CSM`: per il supporto legacy, aggiunge un mucchio di spazzatura che non vogliamo. Anche questo può causare problemi in fase di avvio.
+  * `Intel SGX`: Software Guard Extensions, occupa molto spazio e non ha alcuna utilità in macOS.
+  * `Parallel Port`: macOS non può nemmeno sfruttare le porte parallele.
+  * `Serial Port`: Sarei curioso di sapere quanti di voi stiano debuggando il kernel...
+  * `iGPU`: Non è l'ideale, ma alcuni sistemi hanno mappe talmente grandi che l'iGPU non può adattarsi.
+  * `Thunderbolt`: Molti hack non hanno il supporto Thunderbolt funzionante; le schede che non hanno dispositivi Thunderbolt ma hanno questa opzione sprecano solo più spazio.
   * `Illuminazione a LED`: Scusa amico, è ora di andare.
   * `USB legacy`: più schifezze legacy.
 
 ## Avvio di prova
 
-Con le nostre impostazioni EFI, config.plist e BIOS modificate, è ora di provare la nostra nuova configurazione. Se hai ancora problemi, sembra che dovremo fare un'immersione profonda e calcolare il nostro valore di Slide
+Con le nostre impostazioni EFI, config.plist e BIOS modificate, è ora di provare la nostra nuova configurazione. Se hai ancora problemi, ci sarà da indagare ancora più a fondo per calcolare il valore di slide.
 
-## Trovare il valore dello slide
+## Calcolare il valore dello slide
 
-Ora quello che dovrai fare è aprire la shell EFI nel tuo boot manager preferito ed eseguire `memmap`. Questo ti darà un elenco di tutte le pagine e delle loro dimensioni. È qui che inizia il divertimento.
+Quello che dovrai fare è aprire una shell EFI (OpenShell, UEFIShell) nel tuo boot manager preferito ed eseguire `memmap`. L'output ti darà un elenco di tutte le pagine di memoria e delle loro relative dimensioni. È qui che inizia il divertimento.
 
 Esempio di ciò che vedrai:
 
@@ -106,7 +108,7 @@ Esempio di ciò che vedrai:
 | BS_Data | `000000006B526000` | `000000006B625FFF` | `0000000000000100` | `000000000000000F` |
 | Available | `000000006B626000` | `000000006B634FFF` | `000000000000000F` | `000000000000000F` |
 
-Ora ti starai chiedendo come diavolo facciamo a convertirlo in un valore di Slide, beh è abbastanza semplice. Quello che ci interessa è il valore più grande disponibile nella colonna "Start". In questo esempio vediamo che `000000006B626000` è il nostro più grande, tieni presente che questi sono in HEX, quindi se ci sono più valori vicini tra loro potresti dover convertirli in decimali. Per calcolare il valore dello slide (la calcolatrice incorporata di macOS ha una funzione di programmazione premendo ⌘ + 3):
+Probabilmente ti starai chiedendo `come diavolo facciamo a convertirlo in un valore di Slide?`. Beh è abbastanza semplice. Quello che ci interessa è il valore più grande disponibile nella colonna `Start`. In questo esempio vediamo che `000000006B626000` è il nostro valore più grande (tieni presente che questi valori sono rappresentati in base esadecimale, quindi se ci sono più valori vicini tra loro potresti dover convertirli in base decimale). Per calcolare il valore dello slide basterà ricorrere a questa semplice formula matematica (la calcolatrice incorporata di macOS ha una funzione di programmazione premendo ⌘ + 3):
 
 `000000006B626000` = `0x6B626000`
 
@@ -116,19 +118,19 @@ E per verificare che sia corretto:
 
 `0x100000` + (`0x35A` * `0x200000`) = `0x6B500000`
 
-Ogni volta che il valore restituito **non** è l'originale(`0x6B500000` vs `0x6B626000`), aggiungi semplicemente +1 al valore finale dello slide. Ciò è dovuto all'arrotondamento. Quindi, ad esempio `0x35A` convertito in decimale diventa `858` e quindi +1 ti darà "slide = 859". `slide=859`.
+Ogni volta che il valore restituito **non** è l'originale(`0x6B500000` vs `0x6B626000`), aggiungi semplicemente +1 al valore finale dello slide. Ciò è dovuto all'arrotondamento. Quindi, ad esempio `0x35A` convertito in decimale diventa `858` e quindi +1 ti darà `slide = 859`.
 
 > Ma aspetta solo un secondo, è maggiore di 256!
 
-È corretto, questo è causato dalle mappe di memoria che includono settori che non possono essere utilizzati`Above4GDecoding`. Quindi dovrai continuare a scorrere l'elenco fino a trovare un valore abbastanza piccolo(per noi sarebbe `0000000000100000`).
+È corretto, questo è causato dalle mappe di memoria che includono i settori di `Above4GDecoding` che non possono essere utilizzati. Quindi dovrai continuare a scorrere l'elenco fino a trovare un valore abbastanza piccolo (nel nostro caso sarebbe `0000000000100000`).
 
-E solo per renderlo un po 'più chiaro sulla formula:
+E solo per renderlo un po' più chiaro sulla formula:
 
-(HEX - `0x100000`)/`0x200000` = Slide Value in HEX
+(HEX - `0x100000`)/`0x200000` = Valore slide in esadecimale
 
-`0x100000` + (Slide Value in HEX * `0x200000`) = Your original HEX value(if not then add +1 to your slide value)
+`0x100000` + (Valore slide in esadecimale * `0x200000`) = Il tuo valore originale in esadecimale (se non lo è aggiungi +1 al valore slide calcolato).
 
-Ora vai nel tuo config.plist e aggiungi il valore dello slide con il resto degli argomenti di avvio (per noi sarebbe `slide=0` quando si usa `0x100000`). Se questo valore ti dà ancora errori, puoi procedere al secondo valore di `Start` e così via.
+Ora vai nel tuo config.plist e aggiungi il valore dello slide al resto dei boot-argument (per noi sarebbe `slide=0` quando si usa `0x100000`). Se questo valore ti dà ancora errori, puoi procedere al secondo valore di `Start` e così via.
 
 A volte potresti scoprire che quando calcoli lo slide ricevi valori super piccoli come `slide=-0.379150390625`, quando questo accade arrotonda a `slide=0`.
 
@@ -139,9 +141,9 @@ E per gli utenti che hanno problemi a trovare il valore dello slide possono anch
 Beh, non preoccuparti, perché c'è una soluzione semplice. Dopo aver eseguito `memmap` nella shell, esegui:
 
 ```
-shell> fs0: // sostituisci con il tuo USB
+shell> fs0: // sostituisci con il percorso della USB
 
-fs0: \> dir // per verificare che questa sia la directory giusta, in caso contrario prova fs1 e così via
+fs0: \> dir // per verificare che questa sia la directory giusta, in caso contrario prova fs1: e così via
 
 Directory di fs0: \
 01/01/01 3: 30p EFI
@@ -153,11 +155,11 @@ Questo aggiungerà un file `memmap.txt` alla radice del tuo EFI, puoi quindi pro
 
 ## Utilizzo di DevirtualiseMmio
 
-DevirtualiseMmio è un quirk piuttosto interessante, in particolare in quanto aggira un enorme ostacolo con molti sistemi di dispositivi PCI come alcune schede Z390 e praticamente tutte le schede HEDT come X99 e X299. Il modo in cui lo fa è che prende le regioni MMIO e rimuove gli attributi di runtime consentendo loro di essere utilizzati comodamente come spazio per il kernel, accoppiarlo con l quirk di `ProvideCustomSlide` significa che possiamo mantenere la funzione di sicurezza di slide mentre otteniamo anche una macchina avviabile.
+DevirtualiseMmio è un quirk piuttosto interessante, in quanto aggira un enorme ostacolo con molte schede madri con chipset Z390 e praticamente tutte le schede madri HDET con chipset come X99 e X299. Il modo in cui lo fa è che prende le regioni MMIO e rimuove gli attributi di runtime consentendo loro di essere utilizzati comodamente come spazio per il kernel, e accoppiarlo con il quirk di `ProvideCustomSlide` significa che possiamo mantenere le funzioni di sicurezza dello slide mentre otteniamo anche una macchina avviabile.
 
-Per sistemi estremamente problematici come Threadripper TRX40 19h, dobbiamo trovare regioni specifiche che non sono necessarie per il corretto funzionamento. È qui che entra in gioco `MmioWhitelist`. Tieni presente che la whitelist non è richiesta per la maggior parte dei sistemi.
+Per sistemi estremamente problematici come i Threadripper TRX40 19h, dobbiamo trovare regioni specifiche che non sono necessarie per il corretto funzionamento. È qui che entra in gioco `MmioWhitelist`. Tieni presente che la whitelist non è richiesta per la maggior parte dei sistemi.
 
-Se esegui la versione di debug di OpenCore con DevirtualiseMmio, noterai questo nei tuoi log:
+Eseguendo la versione di debug di OpenCore con `DevirtualiseMmio` attivo, nei log di avvio noterai qualcosa del genere:
 
 ```
 21:495 00:009 OCABC: MMIO devirt start
@@ -170,19 +172,19 @@ Se esegui la versione di debug di OpenCore con DevirtualiseMmio, noterai questo 
 21:520 00:003 OCABC: MMIO devirt end, saved 278608 KB
 ```
 
-* Nota: vedere [OpenCore Debugging](/troubleshooting/debug.md) su come abilitare la registrazione su file
+* Nota: vedere [OpenCore Debugging](/troubleshooting/debug.md) su come abilitare il logging su file
 
-Quindi abbiamo 6 regioni che dobbiamo esaminare e vedere quali sono cattive, l'idea migliore è bloccare tutte le sezioni MMIO *tranne* una e provare ogni regione per ottenere un elenco di buone regioni.
+Quindi avendo 6 regioni che dobbiamo esaminare e vedere quali sono `cattive`, l'idea migliore è bloccare tutte le sezioni MMIO *tranne* una e provare ogni regione per ottenere un elenco di buone regioni.
 
-Ora prendiamo l'esempio sopra e creiamo la nostra MmioWhitelist, dovremo prima convertire l'indirizzo da esadecimale a decimale:
+Ora prendendo l'esempio sopra e creando la nostra `MmioWhitelist`, dovremo prima convertire l'indirizzo da esadecimale a decimale:
 
-* MMIO devirt 0x60000000 -> 1610612736
-* MMIO devirt 0xFE000000 -> 4261412864
-* MMIO devirt 0xFEC00000 -> 4273995776
-* MMIO devirt 0xFED00000 -> 4275044352
-* MMIO devirt 0xFEE00000 -> 4276092928
-* MMIO devirt 0xFF000000 -> 4278190080
+* `MMIO devirt 0x60000000` -> `1610612736`
+* `MMIO devirt 0xFE000000` -> `4261412864`
+* `MMIO devirt 0xFEC00000` -> `4273995776`
+* `MMIO devirt 0xFED00000` -> `4275044352`
+* `MMIO devirt 0xFEE00000` -> `4276092928`
+* `MMIO devirt 0xFF000000` -> `4278190080`
 
-Dovrebbe assomigliare a questo una volta fatto:
+Una volta fatto, basterà aggiungere le varie regioni alla sezione `config.plist/Booter/MmioWhitelist` come illustrato di seguito:
 
 ![](../images/extras/kaslr-fix-md/mmio-white.png)
