@@ -76,7 +76,7 @@ Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vog
   * `Parallel Port`: macOS non può nemmeno sfruttare le porte parallele.
   * `Serial Port`: Sarei curioso di sapere quanti di voi le stiano usando per fare debug del kernel...
   * `iGPU`: Non è l'ideale, ma alcuni sistemi hanno mappe talmente grandi che l'iGPU non può adattarsi.
-  * `Thunderbolt`: Molti hack non hanno il supporto Thunderbolt funzionante; le schede che non hanno dispositivi Thunderbolt ma hanno questa opzione sprecano solo più spazio.
+  * `Thunderbolt`: Molti hack non supportano Thunderbolt; le schede che non hanno dispositivi Thunderbolt ma che hanno questa opzione sprecano solo più spazio.
   * `Illuminazione a LED`: Scusa amico, è ora di andare.
   * `USB legacy`: più schifezze legacy.
 
