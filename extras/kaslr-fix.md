@@ -37,7 +37,7 @@ Fatto divertente: ci vogliono circa **31 ms** per trovare un'area in cui operare
 
 ## Allora come risolvo questo problema?
 
-La vera soluzione a questo è abbastanza semplice in realtà. Avrai bisogno di:
+La vera soluzione in realtà è abbastanza semplice. Avrai bisogno di:
 
 * **OpenCore users**:
   * [OpenRuntime](https://github.com/acidanthera/OpenCorePkg/releases)
