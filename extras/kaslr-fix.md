@@ -155,7 +155,7 @@ Questo aggiungerà un file `memmap.txt` alla radice del tuo EFI, puoi quindi pro
 
 ## Utilizzo di DevirtualiseMmio
 
-DevirtualiseMmio è un quirk piuttosto interessante, in quanto aggira un enorme ostacolo con molte schede madri con chipset Z390 e praticamente tutte le schede madri HDET con chipset come X99 e X299. Il modo in cui lo fa è che prende le regioni MMIO e rimuove gli attributi di runtime consentendo loro di essere utilizzati comodamente come spazio per il kernel, e accoppiarlo con il quirk di `ProvideCustomSlide` significa che possiamo mantenere le funzioni di sicurezza dello slide mentre otteniamo anche una macchina avviabile.
+DevirtualiseMmio è un quirk piuttosto interessante, in quanto aggira un enorme ostacolo con molte schede madri con chipset Z390 e praticamente tutte le schede madri HDET con chipset come X99 e X299. Il modo in cui lo fa è che prende le regioni MMIO e rimuove gli attributi di runtime consentendo loro di essere utilizzati comodamente come spazio per il kernel, e accoppiarlo con il quirk `ProvideCustomSlide` significa che possiamo mantenere le funzioni di sicurezza dello slide ottenendo anche una macchina avviabile.
 
 Per sistemi estremamente problematici come i Threadripper TRX40 19h, dobbiamo trovare regioni specifiche che non sono necessarie per il corretto funzionamento. È qui che entra in gioco `MmioWhitelist`. Tieni presente che la whitelist non è richiesta per la maggior parte dei sistemi.
 
