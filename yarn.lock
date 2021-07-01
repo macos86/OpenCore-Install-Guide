@@ -51,6 +51,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@macos86/install-guide@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@macos86/install-guide@workspace:."
+  dependencies:
+    markdown-it-multimd-table: ^4.1.0
+    markdownlint-cli2: ^0.1.3
+    postcss-loader: ^6.1.0
+    vuepress: ^2.0.0-beta.20
+  languageName: unknown
+  linkType: soft
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -847,17 +858,6 @@ __metadata:
   checksum: ec09a359f98e9f8c47bf6c965e73b520a1a65e93f1febf6472babc8b6b0b425a2084452be103da5be11aec8c502ecfa29400713d55ef774579d04f691db44a2d
   languageName: node
   linkType: hard
-
-"OC-Install-Guide@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "OC-Install-Guide@workspace:."
-  dependencies:
-    markdown-it-multimd-table: ^4.1.0
-    markdownlint-cli2: ^0.1.3
-    postcss-loader: ^6.1.0
-    vuepress: ^2.0.0-beta.20
-  languageName: unknown
-  linkType: soft
 
 "abbrev@npm:1":
   version: 1.1.1
