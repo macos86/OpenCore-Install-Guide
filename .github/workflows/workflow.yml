@@ -16,23 +16,27 @@ jobs:
           submodules: recursive
           fetch-depth: 0
       - name: Setup Git
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
       - name: Submodules
         run: git submodule update --remote --recursive
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: '16'
       - name: Upgrade
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
           yarn install
           yarn up
       - name: Lint
         run: yarn fixlint
       - name: Commit
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
           git pull
           git commit -am "Updated packages and submodules" && git push || echo "Done"
