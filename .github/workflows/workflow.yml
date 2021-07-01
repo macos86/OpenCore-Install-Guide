@@ -22,7 +22,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
       - name: Submodules
-        run: git submodule update --remote --recursive
+        run: git pull --recurse-submodules
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       - name: Setup Node
         uses: actions/setup-node@v2
