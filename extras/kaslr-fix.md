@@ -108,7 +108,7 @@ Esempio di ciò che vedrai:
 | BS_Data | `000000006B526000` | `000000006B625FFF` | `0000000000000100` | `000000000000000F` |
 | Available | `000000006B626000` | `000000006B634FFF` | `000000000000000F` | `000000000000000F` |
 
-Probabilmente ti starai chiedendo `come diavolo facciamo a convertirlo in un valore di Slide?`. Beh è abbastanza semplice. Quello che ci interessa è il valore più grande disponibile nella colonna `Start`. In questo esempio vediamo che `000000006B626000` è il nostro valore più grande (tieni presente che questi valori sono rappresentati in base esadecimale, quindi se ci sono più valori vicini tra loro potresti dover convertirli in base decimale). Per calcolare il valore dello slide basterà ricorrere a questa semplice formula matematica (la calcolatrice incorporata di macOS ha una funzione di programmazione premendo ⌘ + 3):
+Probabilmente ti starai chiedendo `come diavolo facciamo a convertirlo in un valore di Slide?`. Beh è abbastanza semplice. Quello che ci interessa è il valore più grande disponibile nella colonna `Start`. In questo esempio vediamo che `000000006B626000` è il nostro valore più grande (tieni presente che questi valori sono rappresentati in base esadecimale, quindi se ci sono più valori vicini tra loro potresti dover convertirli in base decimale). Per calcolare il valore dello slide basterà ricorrere a questa semplice formula matematica (la calcolatrice incorporata di macOS ha la sezione programmatore: abilitala premendo ⌘ + 3):
 
 `000000006B626000` = `0x6B626000`
 
