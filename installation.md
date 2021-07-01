@@ -28,7 +28,7 @@ Su Skylake e sucessivi:
 Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali cose da ricordare:
 
 * Abilita le impostazioni del BIOS ottimali per macOS
-* Leggi la [OpenCore Multiboot Guide (EN)](/OpenCore-Multiboot/) e anche [Setting up LauncherOption (EN)](/OpenCore-Post-Install/multiboot/bootstrap)
+* Leggi la [Guida Multiboot per OpenCore](/OpenCore-Multiboot/) e anche [Impostare LauncherOption](/OpenCore-Post-Install/multiboot/bootstrap.md)
   * Principalmente per coloro che stanno avviando un singolo disco con più sistemi
 * Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](/troubleshooting/)
 * Leggi anche la pagina riguardo all'[avvio di macOS](/troubleshooting/boot.md)
