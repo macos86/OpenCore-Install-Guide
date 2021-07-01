@@ -231,6 +231,7 @@ module.exports = {
                         },
                         {
                             text: 'Miscellaneous Fixes',
+                            link: '/OpenCore-Post-Install/usb/misc/',
                             children: [
                                 '/OpenCore-Post-Install/usb/misc/power.md',
                                 '/OpenCore-Post-Install/usb/misc/shutdown.md',

@@ -144,10 +144,10 @@ Il supporto della GPU è complicato data la varietà di GPU quasi infinita prese
   * [Nvidia Turing(20XX,](https://it.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://it.wikipedia.org/wiki/GeForce_16_series) GPU **non supportate in nessuna versione di macOS**
   * [Nvidia Ampere(30XX)](https://it.wikipedia.org/wiki/GeForce_30_series) GPU **non supportate in nessuna versione di macOS**
   * [Nvidia Kepler(6XX,](https://it.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://it.wikipedia.org/wiki/GeForce_700_series) GPU supportate fino all'ultima versione di macOS (incluso macOS 11 Big Sur)
-    * Questo è perchè la Apple supporta ancora un po' di [MacBook Pro con GPU Nvidia (EN)](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
+    * Questo è perchè la Apple supporta ancora un po' di [MacBook Pro con GPU Nvidia](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
 * La serie Intel [GT2+ tier](https://it.wikipedia.org/wiki/Intel_Graphics_Technology) di iGPU
   * Da Ivy Bridge a Ice Lake iGPU supportate in questa guida
-    * Info sulle iGPU delle serie GMA possono essere trovate qui: [GMA Patching (EN)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+    * Info sulle iGPU delle serie GMA possono essere trovate qui: [GMA Patching](/OpenCore-Post-Install/gpu-patching/)
   * Nota che GT2 si riferisce alle iGPU qualità, le iGPU GT1 trovate nei Pentium, Celeron e Atom non sono supportate in macOS
 
 E una nota importante dei **Laptops con GPU discrete**:

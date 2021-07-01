@@ -83,8 +83,8 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
 
 * **FixShutdown**:
-  * [FixShutdown-USB-SSDT](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-USB-SSDT.dsl)
-  * [`_PTS` to `ZPTS` Patch](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist)
+  * [FixShutdown-USB-SSDT](https://github.com/macos86/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-USB-SSDT.dsl)
+  * [`_PTS` to `ZPTS` Patch](https://github.com/macos86/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist)
   * Ciò non danneggerà le installazioni Windows o Linux poiché si tratta solo di aggiungere metodi mancanti che avrebbero dovuto essere lì per iniziare. *Incolpare gli autori del firmware*
 
 * **FixDisplay**:
