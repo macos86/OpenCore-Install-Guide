@@ -1,5 +1,5 @@
 {
-  "name": "OC-Install-Guide",
+  "name": "@macos86/install-guide",
   "author": "macos86 (https://github.com/macos86)",
   "repository": "https://github.com/macos86/OpenCore-Install-Guide",
   "scripts": {
