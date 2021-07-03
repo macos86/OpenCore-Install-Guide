@@ -707,4 +707,4 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Now with all this done, head to the [Installation Page](/installation.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)
