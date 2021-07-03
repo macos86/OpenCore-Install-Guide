@@ -10,25 +10,13 @@ Requisiti:
 
 Gli installer Offline hanno una copia completa di macOS, mentre gli installer Online contengono solo un'immagine di recovery (~500MB) che scarica dai server Apple il resto dell'immagine una volta avviato.
 
-* Offline
-  * Possibile farli solo in macOS
+* [Offline](./mac-install.md)
+  * Supporto da OS X 10.10 alla versione attuale
+  * Possibile farlo solo in macOS
   * Windows/Linux non hanno i driver APFS/HFS necessari per assemblare un'installer completo
-* Online
-  * Possibile farlo da macOS/Linux/Windows
-  * Richiede una connessione internet tramite un adattatore di rete supportato da macOS sull'Hackintosh
-
-## Creare l'installer
-
-In dipendenza da che sistema operativo stai usando, guarda la tua specifica sezione per costruire la USB:
-
-* [Utenti macOS](/installer-guide/mac-install.md)
+  * Supporto sia per UEFI che per legacy
+* [Online](./mac-install-recovery.md)
   * Supporto da OS X 10.4 alla versione attuale
-  * Supporto sia per installazioni legacy e UEFI
-* [Utenti Windows](/installer-guide/winblows-install.md)
-  * Supporto da OS X 10.7 alla versione attuale
-  * Solo installer Online
-  * Supporto sia per installazioni legacy e UEFI
-* [Utenti (UEFI) Linux](/installer-guide/linux-install.md)
-  * Supporto da OS X 10.7 alla versione attuale
-  * Solo installer Online
-  * Fatto per macchine che supportano l'avvio UEFI
+  * Possibile farlo da un qualsiasi sistema
+  * Richiede una connessione internet tramite un adattatore di rete supportato dall'Hackintosh (tranne 10.4-10.7)
+  * Supporto sia per UEFI che per legacy (solo Windows, per ora)

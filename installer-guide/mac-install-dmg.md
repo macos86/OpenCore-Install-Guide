@@ -1,25 +1,30 @@
 # Legacy macOS: Immagine Disco
 
-Questo metodo usa immagini tenute da Apple o da Acidanthera, e che vengono ripristinate sul tuo disco.
+> Versioni supportate OS X 10.4-10.6
+>
+> Sistemi supportati: solo macOS
+
+Con questo metodo usa immagini tenute da Apple o da Acidanthera, che puoi usare ripristinandole sul tuo disco oppure usando la cartella com.apple.recovery.boot (da verificare).
 
 ## Immagini Acidanthera
 
 Gli installer qua sotto sono stati caricati da recovery con Mac genuini e senza SMBIOS, i contenuti di OS X non sono stati modificati in nessuna maniera.
 
-* [OS X 10.4.10(8R4088)](https://archive.org/details/10.4.10-8-r-4088-acdt)[MEGA Mirror](https://mega.nz/folder/D3ASzLzA#7sjYXE2X09f6aGjol_C7dg)
+* [OS X 10.4.10(8R4088)](https://archive.org/details/10.4.10-8-r-4088-acdt) [Mirror](https://mega.nz/folder/D3ASzLzA#7sjYXE2X09f6aGjol_C7dg)
 
-* [OS X 10.5.7(9J3050)](https://archive.org/details/10.5.7-9-j-3050)[MEGA Mirror](https://mega.nz/folder/inRBTarD#zanf7fUbviwz3WHBU5xpCg)
+* [OS X 10.5.7(9J3050)](https://archive.org/details/10.5.7-9-j-3050) [Mirror](https://mega.nz/folder/inRBTarD#zanf7fUbviwz3WHBU5xpCg)
 
-* [OS X 10.6.7(10J4139)](https://archive.org/details/10.6.7-10j3250-disk-images)[MEGA Mirror](https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug/file/ioQkTagI)
+* [OS X 10.6.7(10J4139)](https://archive.org/details/10.6.7-10j3250-disk-images) [Mirror](https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug/file/ioQkTagI)
 
 ## Immagini Apple
 
-Nota che queste immagini richiedono che tu abbia accesso ad un account Apple Developer.
+Queste immagini però richiedono un accesso ad un account Apple Developer.
 
 * [OS X 10.5.0 Golden Master(9a581)](https://download.developer.apple.com/Mac_OS_X/mac_os_x_v10.5_leopard_9a581/leopard_9a581_userdvd.dmg)
 
 * [OS X 10.6.0 Golden Master(10a432)](https://download.developer.apple.com/Mac_OS_X/mac_os_x_version_10.6_snow_leopard_build_10a432/mac_os_x_v10.6_build_10a432_user_dvd.dmg)
 
+<!--
 ## Applicarle su un disco
 
 Ora arriva la parte divertente, per prima cosa dovrai aprire il dmg scaricato e averlo montato. Ora apri Utility Disco e formatta il disco come macOS Esteso (HFS+) con una mappa partizioni GUID:
@@ -67,3 +72,4 @@ Questo significa che il SIP deve essere disabilitato, invece raccomandiamo l'uso
 :::
 
 ### Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
+-->

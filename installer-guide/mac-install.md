@@ -1,10 +1,10 @@
-# Creazione dell'installer in macOS
+# Scaricare macOS: Metodo Offline
 
-Siccome spesso hai bisogno di un'installazione pulita, anche senza OpenCore, alcuni utenti preferirebbero un'aggiornamento su come scaricare gli aggiornamenti di macOS.
+> Versioni supportate: macOS 10.10-attuale
+>
+> Sistemi supportati: macOS
 
-## Scaricare macOS: Sistemi Moderni
-
-* Questo metodo ti permette di scaricare macOS 10.13 e più recenti, per 10.12 o meno recenti vedi [Scaricare macOS: Sistemi più vecchi](#scaricare-macos-sistemi-piu-vecchi)
+## Scarichiamo l'Installer (10.13-attuale)
 
 Da una macchina macOS che supera i requisiti del sistema operativo che vuoi installare, vai direttamente nell'App Store e scarica il sistema operativo desiderato e continua alla sezione [**Configurare l'installer**](#configurare-l'installer).
 
@@ -40,25 +40,73 @@ Una volta finito, troverai nella cartella `~/macOS-Installer/` un DMG contenente
 
 ![](../images/installer-guide/mac-install-md/munki-dmg.png)
 
-Da qui, passa a [Configurare l'installer](#configurare-l'installer) per finire il tuo lavoro.
+## Scarichiamo l'Installer (10.10-10.15)
 
-## Scaricare macOS: Sistemi più vecchi
+La guida sottostante spiega come farlo per macOS 10.10-10.12, tuttavia a livello teorico il supporto arriva fino a 10.15.
 
-* Questi metodi ti permetteranno di scaricare versioni meno recenti di macOS, correntemente supportano ogni versione Intel di OS X (da 10.4 ad attuale)
+::: details Metodo Legacy
 
-  * [Legacy macOS: metodo Offline](/installer-guide/mac-install-pkg.md)
-    * 10.10-10.12 Supportati
-  * [Legacy macOS: metodo Online (10.7-10.15 Supportati)](/installer-guide/mac-install-recovery.md)
-    * 10.7-11 Supportati
-  * [Legacy macOS: Immagine Disco](/installer-guide/mac-install-dmg.md)
-    * 10.4-10.6 Supportati
+Per iniziare, vai al qui: [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
+
+Scarica la versione scelta e dovresti ottenere un file .pkg.
+
+A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](#configurare-l'installer), tuttavia potresti ricevere questo errore:
+
+![](../images/installer-guide/legacy-mac-install-md/unsupported.png)
+
+Questo significa che dovremmo estrarre manualmente l'installer.
+
+Per iniziare, trascina il InstallMacOSX/InstallOS.dmg e montalo:
+
+![](../images/installer-guide/legacy-mac-install-md/mount.png)
+
+Dopo, apriremo una finestra di terminale e creeremo una finestra sulla scrivania. Usa questo comando una volta:
+
+```sh
+cd ~/Desktop
+mkdir MacInstall && cd MacInstall
+
+# Ora inizia la parte divertente, estrarre l'installer (Nota che potrebbe metterci alcuni minuti):
+
+# El Capitan o più vecchi
+
+xar -xf /Volumes/Install\ OS\ X/InstallMacOSX.pkg
+
+# Sierra
+
+xar -xf /Volumes/Install\ macOS/InstallOS.pkg
+
+
+# Dopo, usa il comando per il sistema target:
+
+# Yosemite
+cd InstallMacOSX.pkg
+tar xvzf Payload
+mv InstallESD.dmg Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/
+mv Install\ OS\ X\ Yosemite.app /Applications
+
+# El Capitan
+cd InstallMacOSX.pkg
+tar xvzf Payload
+mv InstallESD.dmg Install\ OS\ X\ El\ Capitan.app/Contents/SharedSupport/
+mv Install\ OS\ X\ El\ Capitan.app /Applications
+
+# Sierra
+
+cd InstallOS.pkg
+tar xvzf Payload
+mv InstallESD.dmg Install\ macOS\ Sierra.app/Contents/SharedSupport/
+mv Install\ macOS\ Sierra.app /Applications
+```
+:::
 
 ## Configurare l'installer
 
 Ora inizializzeremo la USB per prepararla sia per l'installer di macOS che per OpenCore. Useremo il formato macOS Esteso (HFS+) con una mappa partizioni GUID. Questo creerà due partizioni: quella principale `MioVolume` e una seconda chiamata `EFI` che viene usata come partizione di avvio quando il firmware controlla i file di avvio.
 
-* Nota: Di default, Utility Disco mostra solo le partizioni – premi Cmd/Win+2 per mostrare tutti i dischi (alternativamente puoi usare il pulsante Vista)
-* Nota 2: Utenti che seguono il metodo "Legacy macOS: metodo Online" possono saltare la zona [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
+::: tip Nota
+Di default, Utility Disco mostra solo le partizioni – premi Cmd/Win+2 per mostrare tutti i dischi (alternativamente puoi usare il pulsante Vista)
+:::
 
 ![](../images/installer-guide/mac-install-md/format-usb.png)
 
@@ -104,7 +152,7 @@ sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstal
 
 :::
 
-## Setup Legacy
+### Setup Legacy
 
 Per sistemi che non supportano l'avvio UEFI, vedi sotto:
 
@@ -149,4 +197,4 @@ Noterai che quando apriamo la partizione EFI, essa è vuota. Qua inizia il diver
 
 ![](../images/installer-guide/mac-install-md/base-efi.png)
 
-## Ora che tutto questo è fatto, vai a [Configurare la EFI](./opencore-efi.md) per finire il tuo lavoro
+> Ora che tutto questo è fatto, vai a [Configurare la EFI](/opencore-efi.md) per finire il tuo lavoro

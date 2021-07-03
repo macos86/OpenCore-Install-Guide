@@ -398,19 +398,10 @@ module.exports = {
                             link: '/installer-guide/',
                             children: [
                                 '/installer-guide/mac-install.md',
-                                {
-                                    text: 'macOS: metodi legacy',
-                                    children: [
-                                        '/installer-guide/mac-install-pkg.md',
-                                        '/installer-guide/mac-install-recovery.md',
-                                        '/installer-guide/mac-install-dmg.md'
-                                    ]
-                                },
-                                '/installer-guide/winblows-install.md',
-                                '/installer-guide/linux-install.md'
+                                '/installer-guide/mac-install-recovery.md'
                             ]
                         },
-                        '/installer-guide/opencore-efi.md',
+                        '/opencore-efi.md',
                         '/ktext.md',
                         '/Getting-Started-With-ACPI/',
                         {
