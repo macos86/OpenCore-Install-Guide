@@ -18,5 +18,5 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
 * [Online](./mac-install-recovery.md)
   * Supporto da OS X 10.4 alla versione attuale
   * Possibile farlo da un qualsiasi sistema
-  * Richiede una connessione internet tramite un adattatore di rete supportato dall'Hackintosh (tranne 10.4-10.7)
+  * Richiede una connessione internet tramite un adattatore di rete supportato da macOS (esclusi 10.4-10.7)
   * Supporto sia per UEFI che per legacy (solo Windows, per ora)
