@@ -172,7 +172,7 @@ Crea una cartella nella root della tua chiavetta e chiamala `com.apple.recovery.
 
 ![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
-In alternativa, potresti voler "flashare" la immagine disco, anche se non lo consiglio troppo. In quel caso allego la guida per Linux e per macOS.
+In alternativa, potresti voler ripristinare l'immagine disco, anche se non è consigliato. In quel caso allego la guida per Linux e per macOS.
 * Seguire la guida per l'installer Offline per quanto riguarda la configurazione dell'EFI
 
 ::: details macOS
