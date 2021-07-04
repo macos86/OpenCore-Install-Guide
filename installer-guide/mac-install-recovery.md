@@ -2,7 +2,7 @@
 
 > Versioni supportate: macOS 10.7 e sucessivi
 >
-> * [Per il supporto 10.4-10.6](./mac-install-dmg.md)
+> > [Per il supporto 10.4-10.6](./mac-install-dmg.md)
 >
 > Sistemi supportati: Qualsiasi sistema supporti Python
 
