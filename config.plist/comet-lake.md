@@ -252,11 +252,7 @@ Corregge sia il kernel che kexts.
 
 ::: Suggerimenti per la correzione dei controller I225-V
 
-<<<<<<< HEAD
-Questa voce si riferisce al controller Intel I225-V da 2,5 GBe trovato su schede Comet Lake di fascia alta, ciò che faremo qui è indurre il driver I225LM di Apple a supportare il nostro controller di rete I225-V.
-=======
-This entry relates to Intel's I225-V 2.5GBe controller found on higher end Comet Lake boards, what we'll be doing here is tricking Apple's I225LM driver into supporting our I225-V network controller. However, this is only needed on Catalina and Big Sur, up to 11.3.
->>>>>>> master
+Questa voce si riferisce al controller Intel I225-V da 2,5 GBe trovato su schede Comet Lake di fascia alta, ciò che faremo qui è indurre il driver I225LM di Apple a supportare il nostro controller di rete I225-V. Questo è richiesto solo su Catalina e Big Sur, fino alla 11.3.
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
