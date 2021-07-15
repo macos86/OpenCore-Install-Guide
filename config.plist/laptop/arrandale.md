@@ -471,7 +471,7 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio generici**:
 
- boot-args | Description |
+ Argomenti di avvio | Description |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
  **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
@@ -480,7 +480,7 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio specifici per GPU**:
 
-| boot-args | Description |
+| Argomenti di avvio | Description |
 | :--- | :--- |
 | **-wegnoegpu** | Utilizzato per disabilitare tutte le altre GPU oltre all'iGPU Intel integrato, utile per coloro che desiderano eseguire versioni più recenti di macOS dove la loro dGPU non è supportata |
 
@@ -505,7 +505,7 @@ System Integrity Protection bitmask
 
 ### Delete
 
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli.
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `Argomenti di avvio` dovrebbero essere lasciati soli.
 
 * **LegacyEnable**: YES
   * Consente la memorizzazione della NVRAM su nvram.plist, necessaria per i sistemi senza NVRAM nativa come X99
@@ -573,7 +573,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ::: details Informazioni più approfondite
 
-* **AdviseWindows**: NO
+* **AdviseFeatures**: NO
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows
 
 * **MaxBIOSVersion**: NO

@@ -131,7 +131,7 @@ Con Big Sur, un bel po di cose hanno smesso di funzionare. Principalmente le seg
     * Patch DRM e -cdfon di WutelyGreen
 * AirportBrcmFixup
   * Forzare il caricamento di un driver specifico con `brcmfx-driver =` può aiutare
-    * Gli utenti BCM94352Z, ad esempio, potrebbero aver bisogno di `brcmfx-driver = 2` in boot-args per risolvere questo problema, altri chipset avranno bisogno di altre variabili.
+    * Gli utenti BCM94352Z, ad esempio, potrebbero aver bisogno di `brcmfx-driver = 2` in Argomenti di avvio per risolvere questo problema, altri chipset avranno bisogno di altre variabili.
   * L'impostazione di MaxKernel su 19.9.9 per AirPortBrcm4360_Injector.kext può aiutare. Maggiori informazioni [dalla repo](https://github.com/acidanthera/AirportBrcmFixup/blob/master/README.md#please-pay-attention)
 * Supporto SATA rotto
   * A causa del fatto che Apple ha abbandonato la classe AppleIntelPchSeriesAHCI in AppleAHCIPort.kext
