@@ -4,11 +4,11 @@
 >
 > Sistemi supportati: solo macOS
 
-Con questo metodo usa immagini tenute da Apple o da Acidanthera, che puoi usare ripristinandole sul tuo disco oppure usando la cartella com.apple.recovery.boot (da verificare).
+Con questo metodo usa immagini tenute da Apple o da Acidanthera, che puoi ripristinare sul disco da Utility Disco (in caso di fallimento, si consiglia di disabilitare il SIP) oppure usando la cartella com.apple.recovery.boot (da verificare, supporto ipotetico).
 
 ## Immagini Acidanthera
 
-Gli installer qua sotto sono stati caricati da recovery con Mac genuini e senza SMBIOS, i contenuti di OS X non sono stati modificati in nessuna maniera.
+Gli installer sottostanti sono stati caricati da recovery con Mac genuini e senza SMBIOS, i contenuti di OS X non sono stati modificati in nessuna maniera.
 
 * [OS X 10.4.10(8R4088)](https://archive.org/details/10.4.10-8-r-4088-acdt) [Mirror](https://mega.nz/folder/D3ASzLzA#7sjYXE2X09f6aGjol_C7dg)
 

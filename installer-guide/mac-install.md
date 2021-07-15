@@ -22,13 +22,6 @@ Come vedi, otterrai una lista di 10 installer di macOS. Se hai bisogno di una pa
 
 ![](../images/installer-guide/mac-install-md/munki-process.png)
 
-* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
-  * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
-* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
-* <span style="color:red">ATTENZIONE:</span> Da macOS 11.3, [XhciPortLimit non funziona e causa dei bootloop](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di usare sistemi meno recenti (come 10.15) o un installer di Big Sur 11.2.3 o meno recenti
-  * Per scopi educativi, provvediamo una copia qui: [macOS 11.2.1 20D75 Recovery Image](https://archive.org/details/base-system_202102)
-  * Se hai già [mappato le tue porte USB](/OpenCore-Post-Install/usb/) e disabilitato `XhciPortLimit`, puoi avviare 11.3+ senza altri problemi
-
 Questo ci metterà un po', deve scaricare l'installer di 8GB+, perciò è altamente raccomandato leggere il resto della guida intanto che attendi.
 
 Una volta finito, troverai nella cartella `~/macOS-Installer/` un DMG contenente l'installer di macOS, chiamato `Install_macOS_11.1-20C69.dmg`, per esempio. Montalo e troverai l'applicazione installer.
@@ -171,7 +164,7 @@ Con la tua cartella di avvio di OpenCore, vai a `Utilities/LegacyBoot`. Qui trov
 Ora usa lo strumento nel terminale **usando sudo** (Questo strumento fallirà se non lo metti):
 
 ```sh
-# Replace X64 with IA32 if you have a 32-Bit CPU
+# Sostituisci X64 con IA32 nel caso tu abbia una CPU a 32 Bit
 sudo ~/Downloads/OpenCore/Utilities/legacyBoot/BootInstall_X64.tool
 ```
 
