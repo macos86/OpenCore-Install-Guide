@@ -109,7 +109,7 @@ Applicare la patch del kernel [VmAssetCacheEnable](https://github.com/ofawx/VmAs
 
 In macOS 10.15.4, there were some changes made to AGPM that can cause wake issues on Coffee Lake systems. Specifically displays hooked up to the iGPU would fail to wake. To resolve this:
 
-* Add `igfxonln=1` to boot-args
+* Add `igfxonln=1` to Argomenti di avvio
 * Make sure you're using [WhateverGreen v1.3.8](https://github.com/acidanthera/WhateverGreen/releases) or newer
 
 ## Nessun Output dai sensori di temperatura/ventola
@@ -134,7 +134,7 @@ Per iStat, dovrai attendere un aggiornamento. Per gli utenti AMD, puoi utilizzar
 
 Ciò è comunemente causato dall'installazione irregolare della partizione dell'unità Windows, in particolare dal fatto che EFI non è la prima partizione. Per risolvere questo problema, dobbiamo abilitare questo Quirk:
 
-* `PlatformInfo -> Generic -> AdviseWindows -> True`
+* `PlatformInfo -> Generic -> AdviseFeatures -> True`
 
 ![](../../images/troubleshooting/troubleshooting-md/error.png)
 

@@ -32,7 +32,7 @@ Qui abiliteremo quanto segue:
   * Fornisce molte più informazioni di debug, in particolare riguardo a boot.efi e memorizzerà anche il log su disco.
 
 * **ApplePanic**: YES
-  * Questo consentirà di archiviare su disco i kernel panic, consigliamo vivamente di mantenere `keepyms = 1` nelle boot-args per preservare quante più informazioni possibili.
+  * Questo consentirà di archiviare su disco i kernel panic, consigliamo vivamente di mantenere `keepyms = 1` nelle Argomenti di avvio per preservare quante più informazioni possibili.
 
 * **DisableWatchdog**: YES
   * Disabilita UEFI watchdog, usato per quando OpenCore si blocca su qualcosa di non critico.
