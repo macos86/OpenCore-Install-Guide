@@ -505,7 +505,7 @@ System Integrity Protection bitmask
 * **Argomenti di avvio specifici per la rete**:
 | Argomenti di avvio | Descrizione |
 | :--- | :--- |
-| **dk.e1000=0** | Disabilita `com.apple.DriverKit-AppleEthernetE1000` (il driver DEXT di Apple) per abbinarsi ai controller di rete Intel I225-V Ethernet trovati nelle Comet Lake schede più potenti, dato che viene caricato il kext per il controller I225.<br/>Questo argomento di avvio è opzionale dato che nella maggior parte delle schede il controller è supportato dal driver DEXT, tuttavia è richiesto nelle schede Gigabyte e altre dato che causa problemi di compatibilità.</br>Ovviamente non è richiesto se la tua scheda non contiene un NIC I225-V. |
+| **dk.e1000=0** | Disabilita `com.apple.DriverKit-AppleEthernetE1000` (il driver DEXT di Apple) per abbinarsi ai controller di rete Intel I225-V Ethernet trovati nelle Comet Lake schede più potenti, dato che viene caricato il kext per il controller I225.<br/>Questo argomento di avvio è opzionale dato che nella maggior parte delle schede il controller è supportato dal driver DEXT, tuttavia è richiesto nelle schede Gigabyte e altre dato che causa problemi di compatibilità.<br/>Ovviamente non è richiesto se la tua scheda non contiene un NIC I225-V. |
 
 * **Argomenti di avvio specifici per GPU**:
 
