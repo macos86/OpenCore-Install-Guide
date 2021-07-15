@@ -108,7 +108,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
 
 Sets device properties from a map.
 
-By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the boot-args section, for us we can ignore this
+By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the Argomenti di avvio section, for us we can ignore this
 
 ### Delete
 
@@ -464,9 +464,9 @@ OpenCore's NVRAM GUID, mainly relevant for RTCMemoryFixup users
 
 System Integrity Protection bitmask
 
-* **General Purpose boot-args**:
+* **General Purpose Argomenti di avvio**:
 
-| boot-args | Description |
+| Argomenti di avvio | Description |
 | :--- | :--- |
 | **-v** | This enables verbose mode, which shows all the behind-the-scenes text that scrolls by as you're booting instead of the Apple logo and progress bar. It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc. |
 | **debug=0x100** | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. That way you can *hopefully* glean some useful info and follow the breadcrumbs to get past the issues. |
@@ -474,9 +474,9 @@ System Integrity Protection bitmask
 | **npci=0x2000** | This disables some PCI debugging related to `kIOPCIConfiguratorPFM64`, alternative is `npci= 0x3000` which disables debugging related to `gIOPCITunnelledKey` in addition. Required for when getting stuck on `PCI Start Configuration` as there are IRQ conflicts relating to your PCI lanes. **Not needed if Above4GDecoding is enabled**. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
 | **alcid=1** | Used for setting layout-id for AppleALC, see [supported codecs](https://github.com/acidanthera/applealc/wiki/supported-codecs) to figure out which layout to use for your specific system. More info on this is covered in the [Post-Install Page](/OpenCore-Post-Install/) |
 
-* **GPU-Specific boot-args**:
+* **GPU-Specific Argomenti di avvio**:
 
-| boot-args | Description |
+| Argomenti di avvio | Description |
 | :--- | :--- |
 | **agdpmod=pikera** | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi**(ie. Polaris and Vega cards shouldn't use this) |
 | **nvda_drv_vrl=1** | Used for enabling Nvidia's Web Drivers on Maxwell and Pascal cards in Sierra and High Sierra |
@@ -504,7 +504,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** values already present in NVRAM so values like `boot-args` should be left alone. For us, we'll be changing the following:
+Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** values already present in NVRAM so values like `Argomenti di avvio` should be left alone. For us, we'll be changing the following:
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -586,7 +586,7 @@ Reminder that you want either an invalid serial or valid serial numbers but thos
 
 ::: details More in-depth Info
 
-* **AdviseWindows**: NO
+* **AdviseFeatures**: NO
   * Used for when the EFI partition isn't first on the Windows drive
 
 * **MaxBIOSVersion**: NO
@@ -700,11 +700,11 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 
 ### Enable
 
-* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to boot-args. Do not have both this option and npci enabled at the same time.**)
+* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to Argomenti di avvio. Do not have both this option and npci enabled at the same time.**)
   * If you are on a Gigabyte/Aorus or an AsRock motherboard, enabling this option may break certain drivers(ie. Ethernet) and/or boot failures on other OSes, if it does happen then disable this option and opt for npci instead
   * 2020+ BIOS Notes: When enabling Above4G, Resizable BAR Support may become an available on some X570 and newer motherboards. Please ensure this is **Disabled** instead of set to Auto.
 * EHCI/XHCI Hand-off
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Now with all this done, head to the [Installation Page](/installation.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)

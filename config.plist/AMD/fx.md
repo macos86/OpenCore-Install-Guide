@@ -93,7 +93,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we leave it a
 
 Sets device properties from a map.
 
-By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the boot-args section, for us we can ignore this
+By default, the Sample.plist has this section set for Audio. We'll be setting Audio the layout in the Argomenti di avvio section, for us we can ignore this
 
 ### Delete
 
@@ -448,18 +448,18 @@ OpenCore's NVRAM GUID, mainly relevant for RTCMemoryFixup users
 
 System Integrity Protection bitmask
 
-* **General Purpose boot-args**:
+* **General Purpose Argomenti di avvio**:
 
-| boot-args | Description |
+| Argomenti di avvio | Description |
 | :--- | :--- |
 | **-v** | This enables verbose mode, which shows all the behind-the-scenes text that scrolls by as you're booting instead of the Apple logo and progress bar. It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc. |
 | **debug=0x100** | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. That way you can *hopefully* glean some useful info and follow the breadcrumbs to get past the issues. |
 | **keepsyms=1** | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. That can give some more helpful insight as to what's causing the panic itself. |
 | **npci=0x2000** | This disables some PCI debugging related to `kIOPCIConfiguratorPFM64`, alternative is `npci= 0x3000` which disables debugging related to `gIOPCITunnelledKey` in addition. Required for when getting stuck on `PCI Start Configuration` as there are IRQ conflicts relating to your PCI lanes. **Not needed if Above4GDecoding is enabled**. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
 
-* **GPU-Specific boot-args**:
+* **GPU-Specific Argomenti di avvio**:
 
-| boot-args | Description |
+| Argomenti di avvio | Description |
 | :--- | :--- |
 | **agdpmod=pikera** | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi**(ie. Polaris and Vega cards shouldn't use this) |
 | **nvda_drv_vrl=1** | Used for enabling Nvidia's Web Drivers on Maxwell and Pascal cards in Sierra and High Sierra |
@@ -487,7 +487,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** values already present in NVRAM so values like `boot-args` should be left alone. For us, we'll be changing the following:
+Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** values already present in NVRAM so values like `Argomenti di avvio` should be left alone. For us, we'll be changing the following:
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -569,7 +569,7 @@ Reminder that you want either an invalid serial or valid serial numbers but thos
 
 ::: details More in-depth Info
 
-* **AdviseWindows**: NO
+* **AdviseFeatures**: NO
   * Used for when the EFI partition isn't first on the Windows drive
 
 * **MaxBIOSVersion**: NO
@@ -681,9 +681,9 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 
 ### Enable
 
-* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to boot-args. Do not have both this option and npci enabled at the same time**)
+* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to Argomenti di avvio. Do not have both this option and npci enabled at the same time**)
 * EHCI/XHCI Hand-off
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-## Now with all this done, head to the [Installation Page](/installation.md)
+> Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)

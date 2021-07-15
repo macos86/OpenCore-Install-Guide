@@ -383,12 +383,16 @@ module.exports = {
                     text: 'Introduzione',
                     children: [
                         '/prerequisites.md',
-                        '/macos-limits.md',
-                        '/find-hardware.md',
                         '/terminology.md',
                         '/why-oc.md'
                     ]
-
+                },
+                {
+                    text: 'Comprendiamo il nostro hardware',
+                    children: [
+                        '/macos-limits.md',
+                        '/find-hardware.md',
+                    ]
                 },
                 {
                     text: 'Creazione della USB',
@@ -457,10 +461,7 @@ module.exports = {
                             ]
                         },
                         '/installation.md',
-                        {
-                            text: 'Dopo l\'installazione',
-                            link: '/OpenCore-Post-Install/'
-                        }
+                        '/OpenCore-Post-Install/'
                     ]
                 },
                 {
