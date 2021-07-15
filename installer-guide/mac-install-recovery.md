@@ -56,18 +56,6 @@ python ./macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
 python ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 ```
 
-::: warning Note
-* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
-  * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
-* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
-* Ricorda questo metodo richiede una connessione ad Internet durante l'installazione, cosa non scontata dato che per sistemi particolari potrebbe non funzionare
-:::
-::: danger ATTENZIONE
-Da macOS 11.3, [XhciPortLimit non funziona e causa dei bootloop](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di usare sistemi meno recenti (come 10.15) o un installer di Big Sur 11.2.3 o meno recenti
-  * Per scopi educativi, provvediamo una copia qui: [macOS 11.2.1 20D75 Recovery Image](https://archive.org/details/base-system_202102)
-  * Se hai già [mappato le tue porte USB](/OpenCore-Post-Install/usb/) e disabilitato `XhciPortLimit`, puoi avviare 11.3+ senza altri problemi
-:::
-
 Da qui, avvia uno di questi comandi nel terminale e una volta finito otterrai un output simile a questo:
 
 ![](../images/installer-guide/legacy-mac-install-md/download-done.png)
@@ -172,8 +160,9 @@ Crea una cartella nella root della tua chiavetta e chiamala `com.apple.recovery.
 
 ![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
-In alternativa, potresti voler "flashare" la immagine disco, anche se non lo consiglio troppo. In quel caso allego la guida per Linux e per macOS.
-* Seguire la guida per l'installer Offline per quanto riguarda la configurazione dell'EFI
+In alternativa, potresti voler "flashare" la immagine disco, anche se non lo consiglio troppo. In quel caso allego la guida per macOS (non verificata nè consigliata).
+
+> Seguire poi la guida per l'installer Offline per quanto riguarda la configurazione dell'EFI
 
 ::: details macOS
 Ora arriva la parte divertente, per prima cosa dovrai aprire il dmg scaricato e averlo montato. Ora apri Utility Disco e formatta il disco come macOS Esteso (HFS+) con una mappa partizioni GUID:
@@ -210,7 +199,7 @@ sudo asr restore -source /Volumes/Mac\ OS\ X\ Install\ DVD  -target /Volumes/MyV
   * Cambia `/Volumes/MyVolume` a come la USB si chiamerà
 
 > Quando hai finito, puoi passare a [Impostare l'ambiente EFI di OpenCore](#impostare-l'ambiente-efi-di-opencore)
--->
+
 ::: details Linux
 
 ```sh
@@ -252,8 +241,7 @@ sudo mkfs.vfat -F 32 /dev/sdd1
 sudo dd if=/home/tu/Documenti/Utilities/macrecovery/basesystem.dmg of=/dev/sdd2
 # Flash con dd della partizione la partizione /dev/sdd2, con file system HFS+
 
-```
-
+```-->
 
 :::
 
