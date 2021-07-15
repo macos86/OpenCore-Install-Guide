@@ -29,7 +29,6 @@ jobs:
         with:
           node-version: '16'
       - name: Upgrade
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
           yarn install
           yarn up

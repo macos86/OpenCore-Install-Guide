@@ -35,7 +35,7 @@ Per la configurazione seriale, OpenCore lo rende in realtà abbastanza semplice.
   
 ### NVRAM
 
-#### boot-args
+#### Argomenti di avvio
 
 Qui possiamo impostare alcune variabili che ci aiuteranno con l'output di debug, per noi utilizzeremo i seguenti argomenti di avvio:
 
@@ -57,7 +57,7 @@ Ora vediamo cosa fa ogni argomento:
   * 1048576 is 1MB(/1024^2), può essere più grande se necessario
   * Nota non richiesta con DebugEnhancer.kext, tuttavia per i primi log del kernel è ancora richiesta
 
-**Altri utili boot-args**:
+**Altri utili Argomenti di avvio**:
 
 A seconda di cosa stai eseguendo il debug, potresti trovare anche questi argomenti di avvio estremamente utili:
 
@@ -174,7 +174,7 @@ Per abilitare il debug sulla macchina host, dovrai eseguire le seguenti operazio
 2. Disabilitare SIP(OS X 10.11+)
 3. Montare la partizione di root come scrivibile(macOS 10.15+)
 4. Installa il kernel di debug e kexts
-5. Aggiorna boot-args
+5. Aggiorna Argomenti di avvio
 6. Riavvia e controlla il tuo lavoro
 
 #### 1. Esegui KDK Install pkg
@@ -268,7 +268,7 @@ sudo kextcache -invalidate /Volumes/<Target Volume>
 sudo bless --folder ~/livemount/System/Library/CoreServices --bootefi --create-snapshot
 ```
 
-#### 5. Aggiornare boot-args
+#### 5. Aggiornare Argomenti di avvio
 
 Ora che hai finito di configurare KDK e di averlo installato, dobbiamo dire a boot.efi quale kernel usare. Hai 2 opzioni tra cui scegliere:
 
@@ -298,7 +298,7 @@ La disinstallazione del KDK è abbastanza semplice, tuttavia può essere un po '
 1. Montare la partizione root come scrivibile (macOS 10.15+)
 2. Rimuovi il kernel di debug e kexts
 3. Riattiva SIP
-4. Ripulire boot-args
+4. Ripulire Argomenti di avvio
 5. Riavvia e controlla il tuo lavoro
 
 Steps:
@@ -361,9 +361,9 @@ csrutil authenticated-root enable # Big Sur+
 * Modifiche al config.plist (se precedentemente modificato):
   * [Abilitare tramite config.plist](./extended/post-issues.md#disabilitare-sip)
   
-#### 4. Ripulire le boot-args
+#### 4. Ripulire le Argomenti di avvio
 
-Non dimenticare di rimuovere `kcsuffix =` dalle boot-args
+Non dimenticare di rimuovere `kcsuffix =` dalle Argomenti di avvio
 
 #### 5. Riavvia e controlla il tuo lavoro
 

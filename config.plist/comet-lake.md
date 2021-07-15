@@ -252,16 +252,22 @@ Corregge sia il kernel che kexts.
 
 ::: Suggerimenti per la correzione dei controller I225-V
 
+<<<<<<< HEAD
 Questa voce si riferisce al controller Intel I225-V da 2,5 GBe trovato su schede Comet Lake di fascia alta, ciò che faremo qui è indurre il driver I225LM di Apple a supportare il nostro controller di rete I225-V.
+=======
+This entry relates to Intel's I225-V 2.5GBe controller found on higher end Comet Lake boards, what we'll be doing here is tricking Apple's I225LM driver into supporting our I225-V network controller. However, this is only needed on Catalina and Big Sur, up to 11.3.
+>>>>>>> master
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
 | Base | String | __Z18e1000_set_mac_typeP8e1000_hw |
 | Comment | String | I225-V patch |
+| Count | Number | 1 |
 | Enabled | Boolean | True |
 | Find | Data | `F2150000` |
 | Identifier | String | com.apple.driver.AppleIntelI210Ethernet |
 | MinKernel | String | 19.0.0 |
+| MaxKernel | String | 20.4.0 |
 | Replace | Data | `F3150000` |
 
 * **Note 1**: se la tua scheda non è stata fornita con la scheda NIC Intel I225, non c'è motivo di aggiungere questa voce.
@@ -493,16 +499,21 @@ System Integrity Protection bitmask
 
 * **Argomenti di avvio generici**:
 
-| boot-args | Descrizione |
+| Argomenti di avvio | Descrizione |
 | :--- | :--- |
 | **-v** | Ciò abilita la modalità dettagliata, che mostra tutto il testo dietro le quinte che scorre durante l'avvio invece del logo Apple e della barra di avanzamento. È inestimabile per qualsiasi Hackintosher, in quanto ti offre uno sguardo all'interno del processo di avvio e può aiutarti a identificare problemi, kext di problemi, ecc. |
 | **debug=0x100** | Questo disabilita il watchdog di macOS che aiuta a prevenire un riavvio in caso di kernel panic. In questo modo puoi *si spera* raccogliere alcune informazioni utili e seguire i breadcrumb per superare i problemi. |
 | **keepsyms=1** | Questa è un'impostazione complementare per debug = 0x100 che dice al sistema operativo di stampare anche i simboli in caso di kernel panic. Ciò può fornire informazioni più utili su ciò che sta causando il panico stesso. |
 | **alcid=1** | Usato per impostare il layout-id per AppleALC, vedi [codec supportati](https://github.com/acidanthera/applealc/wiki/supported-codecs) per capire quale layout usare per il tuo sistema specifico. Maggiori informazioni su questo sono trattate nella [pagina di post-installazione](/OpenCore-Post-Install/) |
 
+* **Argomenti di avvio specifici per la rete**:
+| Argomenti di avvio | Descrizione |
+| :--- | :--- |
+| **dk.e1000=0** | Disabilita `com.apple.DriverKit-AppleEthernetE1000` (il driver DEXT di Apple) per abbinarsi ai controller di rete Intel I225-V Ethernet trovati nelle Comet Lake schede più potenti, dato che viene caricato il kext per il controller I225.<br/>Questo argomento di avvio è opzionale dato che nella maggior parte delle schede il controller è supportato dal driver DEXT, tuttavia è richiesto nelle schede Gigabyte e altre dato che causa problemi di compatibilità.</br>Ovviamente non è richiesto se la tua scheda non contiene un NIC I225-V. |
+
 * **Argomenti di avvio specifici per GPU**:
 
-| boot-args | Descrizione |
+| Argomenti di avvio | Descrizione |
 | :--- | :--- |
 | **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le schede Polaris e Vega non dovrebbero usarlo) |
 | **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
@@ -530,7 +541,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `boot-args` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
+Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà** i valori già presenti nella NVRAM, quindi valori come `Argomenti di avvio` dovrebbero essere lasciati soli. A causa di problemi con la NVRAM su X99, modificheremo quanto segue:
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -608,7 +619,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ::: details Informazioni più approfondite
 
-* **AdviseWindows**: NO
+* **AdviseFeatures**: NO
   * Utilizzato quando la partizione EFI non è la prima sull'unità di Windows
 
 * **MaxBIOSVersion**: NO

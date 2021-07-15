@@ -141,7 +141,7 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 
 ### Boot Argument
 
-* `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`
+* `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Argomenti di avvio`
 
 ### NeverHibernate
 
