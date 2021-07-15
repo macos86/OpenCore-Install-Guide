@@ -22,6 +22,7 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
   * Supporto sia per UEFI che per legacy (solo Windows, per ora)
 
 ::: warning Note
+
 * **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
   * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
 * **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)

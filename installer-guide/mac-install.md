@@ -91,6 +91,7 @@ tar xvzf Payload
 mv InstallESD.dmg Install\ macOS\ Sierra.app/Contents/SharedSupport/
 mv Install\ macOS\ Sierra.app /Applications
 ```
+
 :::
 
 ## Configurare l'installer
