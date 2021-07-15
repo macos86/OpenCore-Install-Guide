@@ -2,7 +2,7 @@
 
 > Versioni supportate: macOS 10.7 e sucessivi
 >
-> * [Per il supporto 10.4-10.6](./mac-install-dmg.md)
+> > [Per il supporto 10.4-10.6](./mac-install-dmg.md)
 >
 > Sistemi supportati: Qualsiasi sistema supporti Python
 
@@ -160,7 +160,7 @@ Crea una cartella nella root della tua chiavetta e chiamala `com.apple.recovery.
 
 ![](../images/installer-guide/legacy-mac-install-md/dmg-chunklist.png)
 
-In alternativa, potresti voler "flashare" la immagine disco, anche se non lo consiglio troppo. In quel caso allego la guida per macOS (non verificata nè consigliata).
+In alternativa, potresti voler ripristinare l'immagine disco, anche se non è consigliato nè attendibile. Allego la guida per macOS.
 
 > Seguire poi la guida per l'installer Offline per quanto riguarda la configurazione dell'EFI
 
