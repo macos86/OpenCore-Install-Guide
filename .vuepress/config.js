@@ -38,28 +38,32 @@ module.exports = {
         logo: '/homepage.png',
         navbar: [
             {
-                text: 'Risoluzione dei problemi',
-                link: '/troubleshooting/'
-            },
-            {
                 text: 'Iniziamo con ACPI',
                 link: '/Getting-Started-With-ACPI/'
+            },
+            {
+                text: 'Configurazione di OpenCore',
+                link: '/config.plist/'
+            },
+            {
+                text: 'Risoluzione dei problemi',
+                link: '/troubleshooting/'
             },
             {
                 text: 'Dopo l\'installazione di OpenCore...',
                 link: '/OpenCore-Post-Install/'
             },
             {
-                text: 'Multibooting con OpenCore',
-                link: '/OpenCore-Multiboot/'
-            },
-            {
-                text: 'Galleria OpenCanopy',
-                link: '/OpenCanopy-Gallery/'
-            },
-            {
                 text: 'Guide',
                 children: [
+                    {
+                        text: 'Multibooting con OpenCore',
+                        link: '/OpenCore-Multiboot/'
+                    },
+                    {
+                        text: 'Galleria OpenCanopy',
+                        link: '/OpenCanopy-Gallery/'
+                    },
                     {
                         text: 'Dortania (EN)',
                         link: 'https://dortania.github.io/'
@@ -81,24 +85,22 @@ module.exports = {
         ],
         sidebar: {
             '/Getting-Started-With-ACPI/': [
-                '/Getting-Started-With-ACPI/ssdt-platform.md',
                 {
-                    text: 'Come Creare gli SSDT',
+                    text: "Creiamo gli SSDT",
                     link: '/Getting-Started-With-ACPI/ssdt-methods/',
                     children: [
                         '/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.md',
                         '/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.md',
-                        '/Getting-Started-With-ACPI/ssdt-methods/ssdt-long.md',
+                        {
+                            text: 'Manuale',
+                            link: '/Getting-Started-With-ACPI/ssdt-methods/ssdt-long.md',
+                            children: [
+                                '/Getting-Started-With-ACPI/dump.md',
+                                '/Getting-Started-With-ACPI/compile.md',
+                            ]
+                        },
                     ]
                 },
-                {
-                    text: 'Manuale',
-                    children: [
-                        '/Getting-Started-With-ACPI/dump.md',
-                        '/Getting-Started-With-ACPI/compile.md',
-                    ]
-                },
-                '/Getting-Started-With-ACPI/desktop.md',
                 {
                     text: 'Laptop',
                     children: [
@@ -194,7 +196,8 @@ module.exports = {
                             ]
                         },
                         '/Getting-Started-With-ACPI/Universal/irq.md',
-                        '/Getting-Started-With-ACPI/Universal/spoof.md'
+                        '/Getting-Started-With-ACPI/Universal/spoof.md',
+                        '/Getting-Started-With-ACPI/desktop.md'
                     ]
                 },
                 '/Getting-Started-With-ACPI/cleanup.md',
@@ -364,7 +367,7 @@ module.exports = {
                     ]
                 }
             ],
-            '/troubleshooting': [
+            '/troubleshooting/': [
                 {
                     text: 'Risoluzione dei problemi',
                     children: [

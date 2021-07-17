@@ -6,26 +6,23 @@ Per impostare la struttura di OpenCore, dovrai prendere la EFI trovata nei [rila
 
 Riguardo a Versione DEBUG vs Versione RELEASE:
 
-* **DEBUG**: Può effettuare grandi debug contro i problemi di avvio, tuttavia può aggiungere un po' di attesa all'avvio (tipo 3-5 secondi per arrivare al picker). Una volta installato puoi facilmente traslare alla sezione RELEASE
-* **RELEASE**: Tempi di avvio più veloci, tuttavia non provvede informazioni utili per la risoluzione di problemi come invece fa la versione di DEBUG.
+| DEBUG | RELASE |
+| :-----: | :------: |
+| Può effettuare grandi debug contro i problemi di avvio, tuttavia può aggiungere un po' di attesa all'avvio (tipo 3-5 secondi per arrivare al picker). Una volta installato puoi facilmente traslare alla sezione RELEASE | Tempi di avvio più veloci, tuttavia non provvede informazioni utili per la risoluzione di problemi come invece fa la versione di DEBUG. |
 
 Una volta scaricata, posiziona la cartella EFI (da OpenCorePkg) nella radice della tua partizione EFI:
 
 ![](/images/installer-guide/opencore-efi-md/efi-moved.png)
 
-**Note**:
-
-* **Windows users:** dovete piazzare la cartella EFI nella radice della chiavetta che avete impostato prima
-* **Linux users:** Questa va messa nella partizione `OPENCORE` che avete impostato prima
-  * Nota che il Metodo 1 crea solo 1 partizione, mentre il Metodo 2 ne crea 2
+::: tip Note
+Se usate l'installazione via Recovery, dovete copiare la cartella EFI nella radice della partizione primaria della chiavetta
+:::
 
 Ora apriamo la nostra EFI e vediamo che c'è al suo interno:
 
 ![](/images/installer-guide/opencore-efi-md/base-efi.png)
 
-Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la maggior parte di questi non ci serviranno:
-
-* **Tieni i seguenti Driver**(se il tuo caso):
+Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la maggior parte di questi non ci serviranno (Per maggiori dettagli vedi sotto):
 
 | Driver | Stato | Descrizione |
 | :--- | :--- | :--- |
@@ -33,7 +30,7 @@ Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la 
 | OpenPartitionDxe.efi | ^^ | Richiesto per avviare la recovery di macOS 10.7-10.9 |
 | OpenRuntime.efi | <span style="color:red"> Richiesto </span> | Richiesto per eseguire correttamente le operazioni |
 
-::: details Più info riguardo ai driver
+::: details Più informazioni riguardo ai driver
 
 * AudioDxe.efi
   * Non relazionato col supporto audio in macOS
@@ -65,7 +62,7 @@ Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la 
 
 :::
 
-* **Tieni i seguenti Tool:**
+* **Per casi più ostici tieni i seguenti Tool:**
 
 | Tool | Stato | Descrizione |
 | :--- | :--- | :--- |
@@ -77,16 +74,18 @@ Una EFI pulita:
 
 Ora puoi mettere i **tuoi** driver firmware (.efi) nella cartella _Drivers_ e Kext/ACPI nelle rispettive cartelle. Vedi la sezione [Ottenere i File](/ktext.md) per maggiori info su quali file dovrai usare.
 
-* Nota che non puoi usare i driver UEFI di Clover su OpenCore!(EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ecc.). Vedi [Clover firmware driver conversion (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
+::: tip Nota
+Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ...) su OpenCore! Vedi [Conversione driver Firmware](/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
+:::
 
 Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
 
 ![](/images/installer-guide/opencore-efi-md/populated-efi.png)
 
-**Reminder**:
+::: warning Ricorda!
 
 * Gli SSDT e il DSDT personalizzato (`.aml`) vanno nella cartella ACPI
 * I Kext (`.kext`) vanno nella cartella kexts
 * I driver firmware (`.efi`) vanno nella cartella drivers
 
-> Quando hai fatto tutto, vai alla sezione [Recuperare i file](/ktext.md) per prendere i kext e i driver firmware necessari
+:::
