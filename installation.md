@@ -25,13 +25,13 @@ config.plist si trova in EFI/OC | Il file .plist non è né rinominato né messo
 Usati i kext necessari | Scaricato ogni kext elencato
 
 ::: tip Promemoria per il Config
-**Utenti HP**
+**Utenti HP**:
 
 * Kernel -> Quirks -> LapicKernelPanic -> True
   * Dovrai farlo altrimenti rischi un kernel panic su LAPIC
 * UEFI -> Quirks -> UnblockFsConnect -> True
 
-**Utenti Dell**
+**Utenti Dell**:
 
 Su Skylake e sucessivi:
 
@@ -64,7 +64,7 @@ Una volta avviata la USB, dovrai vedere le seguenti opzioni:
 
 Per noi, l'**Opzione 2.** è quella interessata. In dipendenza di com'è stato fatto l'installer, potrebbe apparire anche come **"macOS Base System (External)"**, **"Install macOS Big Sur (External)"** o **"*Nome della USB* (External)"**
 
-## Installiamo macOS!
+## Installiamo macOS
 
 Perciò quando hai finalmente avviato l'installer, inizia l'installazione di macOS! Ora che sei a questo punto, ricordati questi punti chiave:
 
