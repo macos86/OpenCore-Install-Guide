@@ -1,3 +1,7 @@
+---
+next: macos-limits.md
+---
+
 # OpenCore: funzionalità e differenze da Clover
 
 Questa sezione contiene un briefing riguardo al perché la comunità si sta trasferendo su OpenCore, e di smentire alcuni miti comuni nella comunità. Quelli che vogliono solo una macchina con macOS, possono saltare questa pagina.

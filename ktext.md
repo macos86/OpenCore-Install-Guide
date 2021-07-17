@@ -1,6 +1,10 @@
+---
+next: /Getting-Started-With-ACPI/
+---
+
 # Raccogliere i File
 
-Questa pagina è una raccolta di vari file necessari per l'avvio di MacOs, ci aspettiamo che tu, prima di iniziare, conosca bene il tuo hardware e ci auguriamo che tu abbia fatto già un Hackintosh in passato, perchè non andremo così nel dettaglio in questa pagina.
+Questa pagina è una raccolta di vari file necessari per l'avvio di macOS, ci aspettiamo che tu, prima di iniziare, conosca bene il tuo hardware e ci auguriamo che tu abbia fatto già un Hackintosh in passato, perchè non andremo così nel dettaglio in questa pagina.
 
 > Qual'è il miglior modo per capire se il mio hardware è supportato?
 
@@ -18,20 +22,20 @@ I Firmware drivers sono dei drivers utilizzati da OpenCore negli ambienti UEFI. 
 
 ### Universali
 
-::: tip drivers richiesti
+::: tip Driver richiesti
 
 Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 
-* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi)(<span style="color:red">Required</span>)
+* (<span style="color:red">Richiesto</span>) [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi)
   * Necessario per vedere i volumi HFS (es. Gli installer di MacOS e le partizioni/immagini recovery). **Non mischiare altri HFS drivers**
   * Per i processori Sandy Bridge e più vecchi(come come gli Ivy Bridge di fascia bassa(i3 e Celerons), vedi la sezione legacy qui sotto
-* [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Required</span>)
+* (<span style="color:red">Richiesto</span>) [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)
   * Sostituzione di [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), usato come estensione per Opencore come aiuto per la patch di boot.efi per correggere l'NVRAM e per una migliore gestione della batteria
   * Ricorda che questo era incluso in Opencorepkg che abbiamo scaricato in precedenza
 
 :::
 
-### Utenti Legacy
+#### Utenti Legacy
 
 Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'UEFI (macchine del 2011 e meno recenti) avrai bisogno di quanto segue. Presta atenzione a tutte le voci qui sotto perchè potresti avere bisogno di tutte e 4
 
@@ -48,12 +52,12 @@ Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'
   
 Questi file andranno nella cartella "drivers" della tua EFI
 
-::: details specifici per le cpu 32-Bit
+::: details Driver specifici per le cpu 32-Bit
 
-Per coloro che hanno cpu a 32 bit, consigliamo di inserire anche questi drivers
+Per coloro che hanno cpu a 32 bit, consigliamo di inserire questo driver
 
 * [HfsPlus32](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus32.efi)
-  * Alternativa a HfsPlusLegacy per le cpu a 32-bit, non mischiare questo con altri drivers HFS .efi.
+  * Alternativa a HfsPlusLegacy per le cpu a 32-bit, **non mischiare questo con altri drivers HFS**.
 
 :::
 
@@ -73,15 +77,17 @@ Tutti i kext elencati in precedenza possono essere trovati **pre-compilati** nel
 
 Senza i due qua sotto nessun sistema è avviabile:
 
-* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases/latest)(<span style="color:red">Required</span>)
+* (<span style="color:red">Richiesto</span>) [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases/latest)
   * Emula il chip SMC che si trova sui veri Mac, senza questo MacOs non si avvierà.
   * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy
   * Necessita OS X 10.6 o superiori
-* [Lilu](https://github.com/acidanthera/Lilu/releases/latest)(<span style="color:red">Required</span>)
+* (<span style="color:red">Richiesto</span>) [Lilu](https://github.com/acidanthera/Lilu/releases/latest)
   * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
   * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
-  
-::: details "Must haves" dei kext per gli utenti legacy
+
+:::
+
+::: details FakeSMC per gli utenti legacy
 
 Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
 
@@ -93,7 +99,7 @@ Ricorda che se non hai in programma di avviare vecchie versioni di MacOs puoi ig
 
 :::
 
-### Plugin di VirtualSMC
+#### Plugin di VirtualSMC
 
 I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente funzionalità extra al sistema come il monitoraggio dell'hardware(Nota mentre VirtualSMC supporta 10.6, i plugins potrebbero richiedere 10.8+):
 
@@ -112,9 +118,9 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 
 ### Grafica
 
-* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases/latest)(<span style="color:red">Required</span>)
-  * Utilizzato per la patch grafica di DRM, controllo del board ID, correzioni di framebuffer, ecc. Tutte le GPU beneficiano di questo kext.
-  * Nota che il file SSDT-PNLF.dsl incluso è richiesto solo per laptop e AIO, vedi [Iniziamo con ACPI](/Getting-Started-With-ACPI/) per maggiori informazioni
+* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases/latest)
+  * Utilizzato per la patch grafica di DRM, controllo del board ID, correzioni di framebuffer...
+  * Tutte le GPU beneficiano di questo kext.
   * Necessita di OS X 10.8 o superiori
 
 ### Audio
@@ -305,15 +311,6 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 
 :::
 
-### Kexts specifici per CPU AMD
-
-* [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * Fix USB per sistemi AMD FX, non consigliata per Ryzen
-  * Richiede macOS 10.13 o versioni successive
-* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
-  * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
-  * Richiede OS X 10.6 o successivo
-
 ### Extra
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
@@ -343,6 +340,15 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
   * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
 :::
+
+### Kexts specifici per CPU AMD
+
+* [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
+  * Fix USB per sistemi AMD FX, non consigliata per Ryzen
+  * Richiede macOS 10.13 o versioni successive
+* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
+  * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
+  * Richiede OS X 10.6 o successivo
 
 ### Specifici per laptop
 
@@ -376,7 +382,7 @@ Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi i
 | Protocollo Atmel Multitouch | VoodooI2CAtmelMXT | |
 :::
 
-#### Misc
+#### Kext misti per Laptop
 
 * [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases/latest)
   * Risolve le letture della batteria in molti dispositivi (Permette le letture dei field EC lunghi 8 bit)
@@ -387,11 +393,9 @@ Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/ma
 
 ## SSDT
 
-Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Per noi, esamineremo gli SSDT di cui hai bisogno nella **sezione ACPI del tuo config.plist**, poiché gli SSDT necessari sono specifici della piattaforma. Con alcuni casi specifici del sistema nei quali devono essere configurati, puoi facilmente perderti se ti do un elenco di SSDT tra cui scegliere da ora.
+Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Esamineremo gli SSDT di cui hai bisogno nella guida [Iniziamo con ACPI](/Getting-Started-With-ACPI/), la quale ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
 
-[Iniziamo con ACPI](/Getting-Started-With-ACPI/) ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
-
-Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
+<!--Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
 
 ### Desktop
 
@@ -452,5 +456,4 @@ Continuando:
 | Coffee Lake (9th Gen) | [SSDT-PMC](/Getting-Started-With-ACPI/Universal/nvram.md) | ^^ |
 | Comet Lake | Nessuno | ^^ |
 | Ice Lake | ^^ | ^^ |
-
-> Ora, con tutto questo fatto, vai a [Iniziamo con ACPI](/Getting-Started-With-ACPI/)
+-->

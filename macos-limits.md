@@ -1,3 +1,7 @@
+---
+prev: why-oc.md
+---
+
 # Limitazioni Hardware
 
 Con macOS, ci sono numerose limitazioni; perciò è necessario controllare quali sono prima di entrare nella fase dell'installazione. Questo è a causa delle quantità limitate del supporto dell'hardware Apple, perciò anche noi saremo limitati da Apple, oppure potremmo usare alcune patch create dalla community.
