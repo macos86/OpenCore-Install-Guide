@@ -167,7 +167,6 @@ Questo è necessario se stai accoppiando una CPU Sandy Bridge con una scheda mad
 `layout-id`
 
 * Applica l'iniezione audio AppleALC, dovrai fare la tua ricerca su quale codec ha la tua scheda madre e abbinarlo al layout di AppleALC. [AppleALC Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs).
-* You can delete this property outright as it's unused for us at this time
 
 * Puoi eliminare completamente questa proprietà poiché al momento non è utilizzata per noi
 
