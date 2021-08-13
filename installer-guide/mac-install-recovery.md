@@ -17,6 +17,8 @@ Per iniziare avrai bisogno di:
 
 ![](../images/installer-guide/legacy-mac-install-md/macrecovery.png)
 
+* Ricordarsi di essere nella stessa cartella (directory) di `macrecovery.py` prima di eseguire un comando elencato al punto successivo.
+
 ## Scaricare macOS
 
 Le istruzioni per avviarlo sono abbastanza semplici, entra in una qualsiasi shell e scegli il comando a seconda del sistema operativo che metterai:
@@ -175,7 +177,7 @@ Ora hai due opzioni per procedere:
   * Basato su terminale, funziona col SIP abilitato
 * [Ripristino dall'Utility Disco](#utility-disco)
   * Potrebbe richiedere di disabilitare il SIP in sistemi recenti
-  
+
 ### Utility Disco
 
 A causa di alcuni problemi stranissimi con Utility Disco, alcuni ripristini possono fallire se il SIP è abilitato. Se hai problemi ti consigliamo di usare il [Metodo ASR](#asr) oppure disabilitare il SIP.-->
