@@ -19,7 +19,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
 
 * **DevirtualiseMmio**
   * Alcuni spazi MMIO sono ancora necessari per funzionare correttamente, quindi dovrai escludere queste regioni in Booter -> MmioWhitelist o disabilitare completamente questo Quirk. Maggiori informazioni qui: [Come usare DevirtualiseMmio](/extras/kaslr-fix.md#utilizzo-di-devirtualisemmio)
-  * Per gli utenti TRx40, abilita questo Quirk
+  * Per gli utenti TRx40, abilita quest0 quirk
   * Per gli utenti X99, disabilitare questo Quirk poiché confligge con alcuni firmware
 
 * **SetupVirtualMap**
