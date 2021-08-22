@@ -20,7 +20,7 @@ Questa sezione contiene un briefing riguardo al perché la comunità si sta tras
 * Più sicurezza in molte forme:
   * Non necessario di disabilitare il System Integrity Protection (SIP)
   * Il supporto per FileVault 2 integrato
-  * [Vault](/OpenCore-Post-Install/universal/security.html#Vault), che permette di creare delle immagini della EFI per evitare modifiche non volute
+  * [Vault](/OpenCore-Post-Install/universal/security.md#Vault), che permette di creare delle immagini della EFI per evitare modifiche non volute
   * Vero supporto al secure-boot
     * Sia UEFI che Apple
 * Cambio dal BootCamp e selezione del dispositivo da una lettura delle variabili NVRAM impostate dal Disco di Avvio, come un vero Mac.

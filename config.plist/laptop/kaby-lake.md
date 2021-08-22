@@ -19,7 +19,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
   * Per geneare i dati del nostro SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](/config.plist/README.md)
+  * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](/)
 
 **E leggi questa guida una volta prima di impostare OpenCore e sii sicuro di aver impostato tutto correttamente. Nota che le immagini non potranno essere sempre aggiornatissime, perciò leggi le didascalie sotto, se nulla viene menzionato, lascia com'è di default.**
 
@@ -428,9 +428,9 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
   * Non ci occuperemo del vaulting quindi possiamo ignorare, **non avvierai con questo settato su Secure**
   * Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su `Optional`, nota che fa distinzione tra maiuscole e minuscole
 * **ScanPolicy**: `0`
-  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.html) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
-* **SecureBootModel**: Default
-  * Abilita la funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.html) per ulteriori informazioni.
+  * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
+* **SecureBootModel**: Disabled
+  * Controlla le funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori informazioni.
   * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
@@ -645,7 +645,27 @@ I soli driver presenti qui dovrebbero essere:
 
 ### APFS
 
-Impostazioni relative al driver APFS, lascia tutto qui come predefinito.
+::: tip Info
+Opzioni riguardo al caricamento del driver APFS, per noi dobbiamo modificare:
+
+| Opzione | Valore | Commento |
+| :--- | :--- | :--- |
+| MinDate | `-1` | Necessario per avviare versioni più vecchie di Big Sur |
+| MinVersion | `-1` | Necessario per avviare versioni più vecchie di Big Sur |
+
+:::
+
+::: details Informazioni più approfondite
+
+* **MinDate**: `-1`
+  * Imposta la data minima necessaria per caricare il driver APFS. Ora il valore di default è 01/01/2021, che quindi limita tutte le versioni precedenti a Big Sur.
+  * Se devi avviare High Sierra, Mojave o Catalina, imposta il valore a `-1`, altrimenti non cambiarlo.
+
+* **MinVersion**: `-1`
+  * Imposta la versione minima necessaria per caricare il driver APFS. Ora il valore di default permette l'avvio del driver di Big Sur (e sucessivi), di conseguenza non potrai avviare le versioni precedenti.
+  * Se devi avviare High Sierra, Mojave o Catalina, imposta il valore a `-1`, altrimenti non cambiarlo.
+
+:::
 
 ### Audio
 
