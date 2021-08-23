@@ -27,7 +27,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![](/images/config/config-legacy/acpi-arrendale.png)
+![](../../images/config/config-legacy/acpi-arrendale.png)
 
 ### Add
 
@@ -78,7 +78,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 | Legacy | UEFI
 | :--- | :--- |
-| ![](/images/config/config-legacy/booter-duetpkg.png) | ![](/images/config/config-universal/aptio-iv-booter-sl.png) |
+| ![](../../images/config/config-legacy/booter-duetpkg.png) | ![](../../images/config/config-universal/aptio-iv-booter-sl.png) |
 
 Questa sezione è dedicata ai Quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -129,7 +129,7 @@ Impostazioni relative alle patch boot.efi e alle correzioni del firmware, a seco
 
 ## DeviceProperties
 
-![](/images/config/config-legacy/igpu-arrendale.png)
+![](../../images/config/config-legacy/igpu-arrendale.png)
 
 ### Add
 

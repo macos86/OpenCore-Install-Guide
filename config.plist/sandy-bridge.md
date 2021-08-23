@@ -115,7 +115,7 @@ Le impostazioni relative al patching boot.efi e alle correzioni del firmware, pe
 
 ## DeviceProperties
 
-![](/images/config/config-legacy/desktop-sandy-dgpu.png)
+![](../images/config/config-legacy/desktop-sandy-dgpu.png)
 
 ### Add
 
@@ -629,7 +629,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![](/images/config/config-legacy/uefi-sandy-desktop.png)
+![](../images/config/config-legacy/uefi-sandy-desktop.png)
 
 **ConnectDrivers**: YES
 

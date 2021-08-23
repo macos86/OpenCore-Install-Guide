@@ -28,7 +28,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![](/images/config/config-legacy/penryn-acpi.png)
+![](../images/config/config-legacy/penryn-acpi.png)
 
 ### Add
 
@@ -62,7 +62,7 @@ Impostazioni relative a ACPI, lascia tutto come default dato che non useremo que
 
 | Legacy | UEFI
 | :--- | :--- |
-| ![](/images/config/config-legacy/booter-duetpkg.png) | ![](/images/config/config-universal/aptio-iv-booter-sl.png) |
+| ![](../images/config/config-legacy/booter-duetpkg.png) | ![](../images/config/config-universal/aptio-iv-booter-sl.png) |
 
 Questa sezione è dedicata ai quirks relativi al patching boot.efi con OpenRuntime, il sostituto di AptioMemoryFix.efi
 
@@ -127,7 +127,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![](/images/config/config-legacy/penryn-kernel.png)
+![](../images/config/config-legacy/penryn-kernel.png)
 
 ### Add
 
@@ -569,7 +569,7 @@ Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o 
 
 ## UEFI
 
-![](/images/config/config-legacy/uefi-sandy-desktop.png)
+![](../images/config/config-legacy/uefi-sandy-desktop.png)
 
 **ConnectDrivers**: YES
 
