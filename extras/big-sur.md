@@ -224,11 +224,11 @@ Se ricevi un anticipato kernel panic su `max_cpus_from_firmware not yet initiali
 
 Sullo schermo:
 
-![](/images/extras/big-sur/onscreen-panic.png)
+![](../images/extras/big-sur/onscreen-panic.png)
 
 Tramite Log seriale o NVRAM:
 
-![](/images/extras/big-sur/apic-panic.png)
+![](../images/extras/big-sur/apic-panic.png)
 
 :::
 

@@ -26,7 +26,7 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
 
 ## ACPI
 
-![](/images/config/config-legacy/penryn-acpi.png)
+![](../../images/config/config-legacy/penryn-acpi.png)
 
 ### Add
 
@@ -116,7 +116,7 @@ Rimuove le proprietà del dispositivo dalla mappa, per noi possiamo ignorarlo
 
 ## Kernel
 
-![](/images/config/config-universal/kernel-legacy-HEDT.png)
+![](../../images/config/config-universal/kernel-legacy-HEDT.png)
 
 ### Add
 

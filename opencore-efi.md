@@ -2,7 +2,7 @@
 
 Per impostare la struttura di OpenCore, dovrai prendere la EFI trovata nei [rilasci di OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/). Nota che saranno nelle cartelle IA32 o X64, rispettivamente per i Firmware a 32-bit e a 64-bit:
 
-![](/images/installer-guide/opencore-efi-md/ia32-x64.png)
+![](./images/installer-guide/opencore-efi-md/ia32-x64.png)
 
 Riguardo a Versione DEBUG vs Versione RELEASE:
 
@@ -12,7 +12,7 @@ Riguardo a Versione DEBUG vs Versione RELEASE:
 
 Una volta scaricata, posiziona la cartella EFI (da OpenCorePkg) nella radice della tua partizione EFI:
 
-![](/images/installer-guide/opencore-efi-md/efi-moved.png)
+![](./images/installer-guide/opencore-efi-md/efi-moved.png)
 
 ::: tip Note
 Se usate l'installazione via Recovery, dovete copiare la cartella EFI nella radice della partizione primaria della chiavetta
@@ -20,7 +20,7 @@ Se usate l'installazione via Recovery, dovete copiare la cartella EFI nella radi
 
 Ora apriamo la nostra EFI e vediamo che c'è al suo interno:
 
-![](/images/installer-guide/opencore-efi-md/base-efi.png)
+![](./images/installer-guide/opencore-efi-md/base-efi.png)
 
 Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la maggior parte di questi non ci serviranno (Per maggiori dettagli vedi sotto):
 
@@ -70,7 +70,7 @@ Ora noterai che ci sono un sacco di file nelle cartelle `Drivers` e `Tools`, la 
 
 Una EFI pulita:
 
-![](/images/installer-guide/opencore-efi-md/clean-efi.png)
+![](./images/installer-guide/opencore-efi-md/clean-efi.png)
 
 Ora puoi mettere i **tuoi** driver firmware (.efi) nella cartella _Drivers_ e Kext/ACPI nelle rispettive cartelle. Vedi la sezione [Ottenere i File](/ktext.md) per maggiori info su quali file dovrai usare.
 
@@ -80,7 +80,7 @@ Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxApti
 
 Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
 
-![](/images/installer-guide/opencore-efi-md/populated-efi.png)
+![](./images/installer-guide/opencore-efi-md/populated-efi.png)
 
 ::: warning Ricorda!
 
