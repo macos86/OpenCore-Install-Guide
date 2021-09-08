@@ -1,7 +1,6 @@
 module.exports = {
     title: 'Guida Installazione Opencore',
     lang: 'it-IT',
-    bundler: '@vuepress/vite',
     head: [
         [
             'meta', {
