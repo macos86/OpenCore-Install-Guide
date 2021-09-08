@@ -30,6 +30,8 @@ jobs:
           node-version: '16'
       - name: Upgrade
         run: |
+          npm i -g corepack
+          corepack enable
           yarn install
           yarn up
       - name: Lint
