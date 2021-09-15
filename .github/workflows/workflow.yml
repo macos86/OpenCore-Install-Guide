@@ -15,32 +15,23 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Setup Git
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install Packages
+        run: |
+          corepack enable
+          yarn
+      - name: Lint & Submodules
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-      - name: Submodules
-        run: git pull --recurse-submodules
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Upgrade
-        run: |
-          npm i -g corepack
-          corepack enable
-          yarn install
-          yarn up
-      - name: Lint
-        run: yarn fixlint
-      - name: Commit
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: |
-          git pull
-          git commit -am "Updated packages and submodules" && git push || echo "Done"
+          git pull --recurse-submodules
+          yarn fixlint
+          git pull && git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
         run: yarn build
       - name: Deploy to GitHub Pages
