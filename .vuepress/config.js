@@ -84,119 +84,37 @@ module.exports = {
         ],
         sidebar: {
             '/Getting-Started-With-ACPI/': [
+                '/Getting-Started-With-ACPI/ssdt-prebuilt.md',
+                '/Getting-Started-With-ACPI/ssdt-easy.md',
                 {
-                    text: "Creiamo gli SSDT",
-                    link: '/Getting-Started-With-ACPI/ssdt-methods/',
+                    text: 'Manuale',
                     children: [
-                        '/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.md',
-                        '/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.md',
+                        '/Getting-Started-With-ACPI/dump.md',
+                        '/Getting-Started-With-ACPI/compile.md',
                         {
-                            text: 'Manuale',
-                            link: '/Getting-Started-With-ACPI/ssdt-methods/ssdt-long.md',
+                            text: 'Laptop',
                             children: [
-                                '/Getting-Started-With-ACPI/dump.md',
-                                '/Getting-Started-With-ACPI/compile.md',
-                            ]
-                        },
-                    ]
-                },
-                {
-                    text: 'Laptop',
-                    children: [
-                        {
-                            text: 'Risolvere Retroilluminazione',
-                            link: '/Getting-Started-With-ACPI/Laptops/backlight/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Laptops/backlight/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Laptops/backlight/manual.md'
+                                '/Getting-Started-With-ACPI/Laptops/backlight.md',
+                                '/Getting-Started-With-ACPI/Laptops/trackpad.md',
+                                '/Getting-Started-With-ACPI/Laptops/laptop-disable.md'
                             ]
                         },
                         {
-                            text: 'Risolvere Trackpad',
-                            link: '/Getting-Started-With-ACPI/Laptops/trackpad/',
+                            text: 'Universali',
                             children: [
-                                '/Getting-Started-With-ACPI/Laptops/trackpad/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Laptops/trackpad/manual.md'
+                                '/Getting-Started-With-ACPI/Universal/ec.md',
+                                '/Getting-Started-With-ACPI/Universal/plug.md',
+                                '/Getting-Started-With-ACPI/Universal/awac.md',
+                                '/Getting-Started-With-ACPI/Universal/nvram.md',
+                                '/Getting-Started-With-ACPI/Universal/rhub.md',
+                                '/Getting-Started-With-ACPI/Universal/imei.md',
+                                '/Getting-Started-With-ACPI/Universal/unc0.md',
+                                '/Getting-Started-With-ACPI/Universal/smbus.md',
+                                '/Getting-Started-With-ACPI/Universal/irq.md',
+                                '/Getting-Started-With-ACPI/Universal/spoof.md',
+                                '/Getting-Started-With-ACPI/desktop.md'
                             ]
                         },
-                        '/Getting-Started-With-ACPI/Laptops/laptop-disable.md'
-                    ]
-                },
-                {
-                    text: 'Universali',
-                    children: [
-                        {
-                            text: 'Controller Integrato',
-                            link: '/Getting-Started-With-ACPI/Universal/ec/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/ec/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/ec/ssdttime.md',
-                                '/Getting-Started-With-ACPI/Universal/ec/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'Gestione Energia CPU',
-                            link: '/Getting-Started-With-ACPI/Universal/plug/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/plug/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/plug/ssdttime.md',
-                                '/Getting-Started-With-ACPI/Universal/plug/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'AWAC vs RTC',
-                            link: '/Getting-Started-With-ACPI/Universal/awac/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/awac/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/awac/ssdttime.md',
-                                '/Getting-Started-With-ACPI/Universal/awac/manual.md',
-                                '/Getting-Started-With-ACPI/Universal/awac/manual-hedt.md'
-                            ]
-                        },
-                        {
-                            text: 'NVRAM PMC',
-                            link: '/Getting-Started-With-ACPI/Universal/nvram/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/nvram/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/nvram/ssdttime.md',
-                                '/Getting-Started-With-ACPI/Universal/nvram/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'USB RHUB',
-                            palinkth: '/Getting-Started-With-ACPI/Universal/rhub/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/rhub/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/rhub/ssdttime.md',
-                                '/Getting-Started-With-ACPI/Universal/rhub/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'IMEI',
-                            link: '/Getting-Started-With-ACPI/Universal/imei/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/imei/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/imei/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'Risolvere Brigde Uncore',
-                            link: '/Getting-Started-With-ACPI/Universal/unc0/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/unc0/prebuilt.md',
-                                '/Getting-Started-With-ACPI/Universal/unc0/manual.md'
-                            ]
-                        },
-                        {
-                            text: 'Risolvere il Supporto SMBus',
-                            link: '/Getting-Started-With-ACPI/Universal/smbus/',
-                            children: [
-                                '/Getting-Started-With-ACPI/Universal/smbus/manual.md'
-                            ]
-                        },
-                        '/Getting-Started-With-ACPI/Universal/irq.md',
-                        '/Getting-Started-With-ACPI/Universal/spoof.md',
-                        '/Getting-Started-With-ACPI/desktop.md'
                     ]
                 },
                 '/Getting-Started-With-ACPI/cleanup.md',
