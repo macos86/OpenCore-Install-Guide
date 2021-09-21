@@ -29,7 +29,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --recurse-submodules
+          git submodule update --remote --merge
           yarn fixlint
           git pull && git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
