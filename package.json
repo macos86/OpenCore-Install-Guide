@@ -4,15 +4,13 @@
   "repository": "https://github.com/macos86/macos86.github.io",
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build",
-    "fixlint": "markdownlint-cli2-fix \"**/*.md\" \"!Getting-Started-With-ACPI\" \"!OpenCore-Multiboot\" \"!OpenCanopy-Gallery\" \"!node_modules\""
+    "build": "vuepress build"
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-beta.27",
     "markdown-it-multimd-table": "4.1.1",
-    "markdownlint-cli2": "0.3.1",
-    "postcss-loader": "6.1.1",
-    "vuepress": "2.0.0-beta.26"
+    "vuepress": "2.0.0-beta.27"
   },
   "homepage": "https://macos86.github.io/",
   "packageManager": "yarn@3.0.2"
