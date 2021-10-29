@@ -4,7 +4,8 @@
   "repository": "https://github.com/macos86/macos86.github.io",
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build",
+    "fixlint": "markdownlint-cli2-fix \"**/*.md\" \"!Getting-Started-With-ACPI\" \"!OpenCore-Multiboot\" \"!OpenCanopy-Gallery\" \"!node_modules\""
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {

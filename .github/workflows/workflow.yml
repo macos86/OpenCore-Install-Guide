@@ -15,19 +15,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Submodules
-        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git submodule update --remote --merge
-          git pull && git commit -am "Update Submodules" && git push || echo "Done"
-      - name: Lint
-        uses: github/super-linter/slim@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -36,6 +23,15 @@ jobs:
         run: |
           corepack enable
           yarn
+      - name: Lint & Submodules
+        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git submodule update --remote --merge
+          yarn fixlint
+          git pull && git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
         run: yarn build
       - name: Deploy to GitHub Pages
