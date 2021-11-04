@@ -57,7 +57,7 @@ __metadata:
   dependencies:
     markdown-it-multimd-table: 4.1.1
     markdownlint-cli2: 0.3.2
-    postcss-loader: ^6.2.0
+    postcss-loader: 6.2.0
     vuepress: 2.0.0-beta.27
   languageName: unknown
   linkType: soft
@@ -4306,7 +4306,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:^6.2.0":
+"postcss-loader@npm:6.2.0, postcss-loader@npm:^6.2.0":
   version: 6.2.0
   resolution: "postcss-loader@npm:6.2.0"
   dependencies:
