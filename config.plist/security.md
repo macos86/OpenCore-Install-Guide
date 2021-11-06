@@ -1,3 +1,6 @@
+---
+next: installation.md
+---
 # Apple Secure Boot
 
 These settings in your config.plist can restrict which macOS versions OpenCore will boot. You will want to check these really quick before booting your USB.
@@ -41,5 +44,3 @@ This enables security features such as the verification of macOS' `boot.efi`, wi
 | iMac20,2 (August 2020)                              | 10.15.6 (19G2005)     |
 
 :::
-
-# Now with all this done, head to the [Installation Page](../installation.md)

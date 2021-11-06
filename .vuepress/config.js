@@ -394,6 +394,7 @@ module.exports = {
                 '/ktext.md',
                 '/Getting-Started-With-ACPI/',
                 '/config.plist/',
+                'config.plist/security.md',
                 '/installation.md',
                 '/OpenCore-Post-Install/',
                 {
