@@ -86,7 +86,6 @@ Senza i due qua sotto nessun sistema è avviabile:
 
 :::
 
-
 #### Plugin di VirtualSMC
 
 I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente funzionalità extra al sistema come il monitoraggio dell'hardware(Nota mentre VirtualSMC supporta 10.6, i plugins potrebbero richiedere 10.8+):
@@ -342,7 +341,6 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
   * Iniettore Legacy ATA, utile principalmente per i dispositivi IDE e ATA (cioè quando non è presente alcuna opzione AHCI nel BIOS)
   
 :::
-
 
 ### Tastiera, mouse e trackpad dei laptop
 
