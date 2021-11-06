@@ -3,26 +3,25 @@ next: installation.md
 ---
 # Apple Secure Boot
 
-These settings in your config.plist can restrict which macOS versions OpenCore will boot. You will want to check these really quick before booting your USB.
+Queste impostazioni nel tuo config.plist possono ridurre le versioni di OSX che openCore farà partire.E' meglio controllare queste velocemente prima di partire dalla tua USB
 
 ## Misc
 
 ### Security -> SecureBootModel
 
-OpenCore by default has [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#what-is-apple-secure-boot) enabled.
-This enables security features such as the verification of macOS' `boot.efi`, with the side effect of restricting which macOS versions OpenCore will boot.
-
-* Big Sur and Above (11.0+): The recommended value is `Default`.
+Di default, Opencore ha [Apple Secure Boot](https://macos86.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#what-is-apple-secure-boot) abilitata
+Questo abilita la funzionalità di sicurezza come la verifica di `boot.efi` di macOS, con l'effetto collaterale di limitare le versioni di macOS che OpenCore potrà avviare.
+* Big Sur e superiori (11.0+): Il valore raccomandato e' 'Default'.
 * High Sierra-Catalina (10.13-10.15):
-  * If your model is not listed below, set to `Disabled`.
-  * If running Nvidia Web Drivers, set to `Disabled`.
-  * If your model is listed, compare the minimum version with the version your installing. Disable if your installer is below the minimum version listed for your SMBIOS.
-* Sierra and Below (10.4-10.12): This setting has no effect.
-* If booting multiple versions, you may need to set the value to `Disabled`.
-  * For example, a non-T2 SMBIOS booting High Sierra and Big Sur would need this disabled.
-  * A T2 SMBIOS would be limited by the minimum version listed below.
+ * Se il tuo modello non e' presente nella lista qui sotto imposta il valore su `Disabled`.
+ * Se utilizzi I driver Web Nvidia, imposts il valore su `Disabled`.
+ * Se il tuo modello e' presente nella lista, compara la minima versione che stai usando , Disabilitalo se il tuo installer e' inferiore alla versione in lista per il tuo SMBIOS
+* Sierra e inferiori (10.4-10.12): Questa impostazione non ha effetto.
+* Se hai multiple versioni di OSX potresti dover impostare il valore su `Disabled`.
+  * per esempio, un SMBIOS non T" che fa partire HighSierra e Big Sur potrebbe necessitare del valore impostato su 'Disabled'
+  * Un SMBIOS T2 verrebbe limitato alla versione minima visibile qui sotto.
 
-::: details T2 Mac Models
+::: details modelli Mac T2
 
 | SMBIOS                                              | Minimum macOS Version |
 | :---                                                | :---                  |
