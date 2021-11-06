@@ -52,6 +52,12 @@ Quando hai fatto, vedrai i tuoi SSDT, Kext e driver firmware applicati nel tuo c
 
 Se vuoi continuare la pulizia del file, puoi rimuovere la sezioni `#WARNING`. Attraverso quelle non creerai nessun problema, sono solo per preferenza personale.
 
+::: danger ATTENZIONE
+Il file config.plist **deve** corrispondere ai contenuti della cartella EFI. Se cancelli un file ma lasci la sua voce nel config.plist, OpenCore segnalerà un errore e bloccherà l'avvio.
+
+Se vuoi fare una qualche modifica, ricordiamo l'esistenza dello strumento OC snapshot (**Cmd/Ctrl + R**) in ProperTree per aggiornare il config.plist.
+:::
+
 ## Scegliere la tua piattaforma
 
 Ora arriva la parte importante, selezionare la tua configurazione. Ogni piattaforma ha caratteristiche uniche per cui sapere il tuo hardware è super importante. Vedi sotto per seguire:

@@ -99,7 +99,7 @@ Supporti basati su Kernel Vanilla (ossia senza modifiche):
 | [Lynnfield](https://en.wikipedia.org/wiki/Lynnfield_(microprocessor)), [Clarksfield](https://en.wikipedia.org/wiki/Clarksfield_(microprocessor)) | 10.6.3 | ^^ | Nessun supporto della iGPU in macOS 10.14+ | 0x0106E0 |
 | [Westmere, Clarkdale, Arrandale](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | 10.6.4 | ^^ | ^^ | 0x0206C0 |
 | [Sandy Bridge](https://en.wikipedia.org/wiki/Sandy_Bridge) | 10.6.7 | ^^ | ^^ | 0x0206A0(M/H) |
-| [Ivy Bridge](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.7.3 | ^^ | Nessun supporto della iGPU in macOS 11+ | 0x0306A0(M/H/G) |
+| [Ivy Bridge](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.7.3 | ^^ | Nessun supporto della iGPU in macOS 12+ | 0x0306A0(M/H/G) |
 | [Ivy Bridge-E5](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.9.2 | ^^ | / | 0x0306E0 |
 | [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) | 10.8.5 | ^^ | ^^ | 0x0306C0(S) |
 | [Broadwell](https://en.wikipedia.org/wiki/Broadwell_(microarchitecture)) | 10.10.0 | ^^ | ^^ | 0x0306D4(U/Y) |
@@ -141,14 +141,13 @@ Il supporto della GPU è complicato data la varietà di GPU quasi infinita prese
 * Le GPU basate su GCN sono supportate fino all'ultima versione di macOS
   * Le APU AMD non sono supportate
   * Le schede AMD basate su [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) dalla serie Polaris non sono supportate
-  * Note speciali per utenti di MSI Navi: [Installer not working with 5700XT #901 (EN)](https://github.com/acidanthera/bugtracker/issues/901)
+  * Nota speciale per utenti MSI Navi: [Installer not working with 5700XT #901 (EN)](https://github.com/acidanthera/bugtracker/issues/901)
     * Il problema scompare in macOS 11 (Big Sur).
 * Il supporto delle GPU Nvidia è complesso
-  * [Maxwell(9XX)](https://it.wikipedia.org/wiki/GeForce_900_series) e [Pascal(10XX)](https://it.wikipedia.org/wiki/GeForce_10_series) GPU sono limitate a macOS 10.13: High Sierra
-  * [Nvidia Turing(20XX,](https://it.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://it.wikipedia.org/wiki/GeForce_16_series) GPU **non supportate in nessuna versione di macOS**
-  * [Nvidia Ampere(30XX)](https://it.wikipedia.org/wiki/GeForce_30_series) GPU **non supportate in nessuna versione di macOS**
-  * [Nvidia Kepler(6XX,](https://it.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://it.wikipedia.org/wiki/GeForce_700_series) GPU supportate fino all'ultima versione di macOS (incluso macOS 11 Big Sur)
-    * Questo è perchè la Apple supporta ancora un po' di [MacBook Pro con GPU Nvidia](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
+  * Le GPU [Maxwell(9XX)](https://it.wikipedia.org/wiki/GeForce_900_series) e [Pascal(10XX)](https://it.wikipedia.org/wiki/GeForce_10_series) sono limitate a macOS 10.13: High Sierra
+  * Le GPU [Nvidia Turing(20XX,](https://it.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://it.wikipedia.org/wiki/GeForce_16_series) **non supportate in nessuna versione di macOS**
+  * Le GPU [Nvidia Ampere(30XX)](https://it.wikipedia.org/wiki/GeForce_30_series) **non supportate in nessuna versione di macOS**
+  * Le GPU [Nvidia Kepler(6XX,](https://it.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://it.wikipedia.org/wiki/GeForce_700_series) supportate fino a macOS 11 (Big Sur)
 * La serie Intel [GT2+ tier](https://it.wikipedia.org/wiki/Intel_Graphics_Technology) di iGPU
   * Da Ivy Bridge a Ice Lake iGPU supportate in questa guida
     * Info sulle iGPU delle serie GMA possono essere trovate qui: [GMA Patching](/OpenCore-Post-Install/gpu-patching/)
@@ -170,7 +169,7 @@ E una nota importante dei **Laptops con GPU discrete**:
 | [GMA di 4° Generazione](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen4) | 10.5.0 | ^^ | ^^ |
 | [Arrandale (HD Graphics)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen5) | 10.6.4 | 10.13.6 | Solo le LVDS supportate, eDP e output esterni non sono supportati |
 | [Sandy Bridge(HD 3000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen6) | 10.6.7 | ^^ | / |
-| [Ivy Bridge(HD 4000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen7) | 10.7.3 | 10.15.7 | ^^ |
+| [Ivy Bridge(HD 4000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen7) | 10.7.3 | 11.6.1 | ^^ |
 | [Haswell(HD 4XXX, 5XXX)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen7) | 10.8.5 | <span style="color:green"> Attuale </span> | ^^ |
 | [Broadwell(5XXX, 6XXX)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen8) | 10.10.0 | ^^ | ^^ |
 | [Skylake(HD 5XX)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen9) | 10.11.0 | ^^ | ^^ |
@@ -180,8 +179,6 @@ E una nota importante dei **Laptops con GPU discrete**:
 | [Ice Lake(Gx)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen11) | 10.15.4 | ^^ | Richiede i Argomenti di avvio `-igfxcdc` e `-igfxdvmt` |
 | [Tiger Lake(Xe)](https://en.wikipedia.org/wiki/Intel_Xe) | <span style="color:red"> N/A </span> | <span style="color:red"> N/A </span> | <span style="color:red"> Nessun driver disponibile </span> |
 | [Rocket Lake](https://en.wikipedia.org/wiki/Rocket_Lake) | <span style="color:red"> N/A </span> | <span style="color:red"> N/A </span> | <span style="color:red"> Nessun driver disponibile </span> |
-
-Nota: Apple ha tenuto i driver per la iGPU Ivy Bridge in macOS 11, Big Sur, tuttavia ne è pianificata la rimozione. Stai attento che potrebbero essere rimossi a breve.
 
 :::
 
@@ -212,7 +209,7 @@ Nota: Apple ha tenuto i driver per la iGPU Ivy Bridge in macOS 11, Big Sur, tutt
 | [Tesla](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
 | [Tesla v2](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)#Tesla_2.0) | 10.5.x | ^^ | ^^ |
 | [Fermi](https://en.wikipedia.org/wiki/Fermi_(microarchitecture)) | 10.7.x | ^^ | ^^ |
-| [Kepler](https://en.wikipedia.org/wiki/Kepler_(microarchitecture)) | 10.7.x | <span style="color:green"> Attuale </span> | / |
+| [Kepler](https://en.wikipedia.org/wiki/Kepler_(microarchitecture)) | 10.7.x | 11.6.1 | / |
 | [Kepler V2](https://en.wikipedia.org/wiki/Kepler_(microarchitecture)) | 10.8.x | ^^ | ^^ |
 | [Maxwell](https://en.wikipedia.org/wiki/Maxwell_(microarchitecture)) | 10.10.x | 10.13.6 | [Richiede Web Driver NVIDIA](https://www.nvidia.com/download/driverResults.aspx/149652/) |
 | [Pascal](https://en.wikipedia.org/wiki/Pascal_(microarchitecture)) | 10.12.4 | ^^ | ^^ |

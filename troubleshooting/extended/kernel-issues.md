@@ -316,7 +316,19 @@ Questo errore avviene quando SMBIOS non è più supportato da quella versione di
 
 :::
 
-## Errori `Couldn't allocate runtime area`?
+::: details SmBIOS supportati in macOS 12, Monterey
+
+* iMac16,1+
+* iMacPro1,1
+* MacPro6,1+
+* Macmini7,1+
+* MacBook9,1+
+* MacBookAir7,1+
+* MacBookPro11,3+
+
+:::
+
+## Errori `Couldn't allocate runtime area`
 
 vedere [Fissare i valori KASLR slide](/extras/kaslr-fix.md)
 

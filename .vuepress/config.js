@@ -313,6 +313,7 @@ module.exports = {
                 }
             ],
             '/config.plist/': [
+                'config.plist/security.md',
                 {
                     text: 'Setup del config.plist',
                     children: [
@@ -400,7 +401,7 @@ module.exports = {
                     children: [
                         '/extras/kaslr-fix.md',
                         '/extras/spoof.md',
-                        '/extras/big-sur.md',
+                        '/extras/monterey.md',
                         {
                             text: 'Macchine Virtuali',
                             children: [

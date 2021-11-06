@@ -369,7 +369,7 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default |  è una parola e distingue tra maiuscole e minuscole, imposta su `Disabled` se non si desidera un avvio sicuro (ad esempio, sono necessari i driver Web di Nvidia) |
+| SecureBootModel | Default | Lasciare default su Big Sur e più recenti |
 | Vault | Optional | Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su Optional, nota che fa distinzione tra maiuscole e minuscole |
 
 :::
@@ -538,6 +538,18 @@ Per questo esempio Haswell, sceglieremo iMac15,1 SMBIOS. La ripartizione tipica 
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 
+::: tip Nota
+Per avviare macOS Monterey hai bisogno di questi SMBIOS:
+
+> Sceglierli per Big Sur o sistemi meno recenti non è raccomandato, dato che la Gestione Energetica non sarebbe ottimizzata.
+
+| SMBIOS | Hardware |
+| :--- | :--- |
+| iMac16,2 | Broadwell solo con iGPU |
+| iMac17,1 | Broadwell con dGPU |
+
+:::
+
 ```sh
   #######################################################
  #               iMac15,1 SMBIOS Info                  #
@@ -621,25 +633,22 @@ I soli driver presenti qui dovrebbero essere:
 
 ### APFS
 
-::: tip Info
-Opzioni riguardo al caricamento del driver APFS, per noi dobbiamo modificare:
+Di default, OpenCore carica solamente alcuni driver APFS per cui la minima versione supportata è Big Sur. Se devi avviare Catalina o meno recenti, devi impostare ulteriori dati.
 
-| Opzione | Valore | Commento |
-| :--- | :--- | :--- |
-| MinDate | `-1` | Necessario per avviare versioni più vecchie di Big Sur |
-| MinVersion | `-1` | Necessario per avviare versioni più vecchie di Big Sur |
+Non farlo potrebbe rendere nascosta la partizione con macOS da OpenCore!
 
-:::
+macOS Sierra e meno recenti usano HFS al posto di APFS. Puoi ignorare questa sezioni per sistemi che usano HFS.
 
-::: details Informazioni più approfondite
+::: tip Versioni di APFS
 
-* **MinDate**: `-1`
-  * Imposta la data minima necessaria per caricare il driver APFS. Ora il valore di default è 01/01/2021, che quindi limita tutte le versioni precedenti a Big Sur.
-  * Se devi avviare High Sierra, Mojave o Catalina, imposta il valore a `-1`, altrimenti non cambiarlo.
+Vanno cambiate sia MinVersion che MinDate.
 
-* **MinVersion**: `-1`
-  * Imposta la versione minima necessaria per caricare il driver APFS. Ora il valore di default permette l'avvio del driver di Big Sur (e sucessivi), di conseguenza non potrai avviare le versioni precedenti.
-  * Se devi avviare High Sierra, Mojave o Catalina, imposta il valore a `-1`, altrimenti non cambiarlo.
+| Versione di macOS | Min Version | Min Date |
+| :------------ | :---------- | :------- |
+| High Sierra (`10.13.6`) | `748077008000000` | `20180621` |
+| Mojave (`10.14.6`) | `945275007000000` | `20190820` |
+| Catalina (`10.15.4`) | `1412101001000000` | `20200306` |
+| Nessuna restrizione | `-1` | `-1` |
 
 :::
 
@@ -723,4 +732,4 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 * DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
-> Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)
+> Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)
