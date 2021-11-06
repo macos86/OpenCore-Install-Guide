@@ -239,18 +239,45 @@ To merge:
 
 ![](../../images/config/AMD/kernel.gif)
 
+You will also need to modify three patches, all named `algrey - Force cpuid_cores_per_package`. You only need to change the `Replace` value. You should change:
+
+* `B8000000 0000` => `B8 <core count> 0000 0000`
+* `BA000000 0000` => `BA <core count> 0000 0000`
+* `BA000000 0090` => `BA <core count> 0000 0090`
+
+Where `<core count>` is replaced with the physical core count of your CPU in hexadecimal. For example, an 8-Core 5800X would have the new Replace value be:
+
+* `B8 08 0000 0000`
+* `BA 08 0000 0000`
+* `BA 08 0000 0090`
+
+::: details Core Count => Hexadecimal Table
+
+| Core Count | Hexadecimal |
+| :--------- | :---------- |
+| 4 Core | `04` |
+| 6 Core | `06` |
+| 8 Core | `08` |
+| 12 Core | `0C` |
+| 16 Core | `10` |
+| 24 Core | `18` |
+| 32 Core | `20` |
+| 64 Core | `40` |
+
+:::
+
 ### Quirks
 
 ::: tip Info
 
 Settings relating to the kernel, for us we'll be enabling the following:
 
-| Quirk | Enabled |
-| :--- | :--- |
-| PanicNoKextDump | YES |
-| PowerTimeoutKernelPanic | YES |
-| ProvideCurrentCpuInfo | YES |
-| XhciPortLimit | YES |
+| Quirk | Enabled | Comment |
+| :--- | :--- | :--- |
+| PanicNoKextDump | YES | |
+| PowerTimeoutKernelPanic | YES | |
+| ProvideCurrentCpuInfo | YES | |
+| XhciPortLimit | YES | Disable if running macOS 11.3+ |
 
 :::
 
@@ -369,7 +396,7 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default |  This is a word and is case-sensitive, set to `Disabled` if you do not want secure boot(ie. you require Nvidia's Web Drivers) |
+| SecureBootModel | Default | Leave this as `Default` if running macOS Big Sur or newer. The next page goes into more detail about this setting. |
 | Vault | Optional | This is a word, it is not optional to omit this setting. You will regret it if you don't set it to Optional, note that it is case-sensitive |
 
 :::
@@ -626,25 +653,21 @@ Only drivers present here should be:
 
 ### APFS
 
-::: tip Info
-Relating to APFS driver loader settings, for us we'll be changing the following:
+By default, OpenCore only loads APFS drivers from macOS Big Sur and newer. If you are booting macOS Catalina or earlier, you may need to set a new minimum version/date.
+Not setting this can result in OpenCore not finding your macOS partition!
 
-| Setting | Value | Comment |
-| :--- | :--- | :--- |
-| MinDate | `-1` | Not needed if not booting High Sierra - Catalina |
-| MinVersion | `-1` | Not needed if not booting High Sierra - Catalina |
+macOS Sierra and earlier use HFS instead of APFS. You can skip this section if booting older versions of macOS.
 
-:::
+::: tip APFS Versions
 
-::: details More in-depth Info
+Both MinVersion and MinDate need to be set if changing the minimum version.
 
-* **MinDate**: `-1`
-  * Sets the minimum date required for APFS drivers to load. The default in OpenCore is 2021-01-01, which limits booting High Sierra - Catalina when you don't have an APFS driver that satisifes the requirements (aka having Big Sur installed).
-  * If you'd like to boot High Sierra - Catalina, set this to `-1`, otherwise you don't need to change it
-
-* **MinVersion**: `-1`
-  * Sets the minimum version required for APFS drivers to load. The default in OpenCore is versions from Big Sur and above, which limits booting High Sierra - Catalina when you don't have an APFS driver that satisifes the requirements (aka having Big Sur installed).
-  * If you'd like to boot High Sierra - Catalina, set this to `-1`, otherwise you don't need to change it
+| macOS Version | Min Version | Min Date |
+| :------------ | :---------- | :------- |
+| High Sierra (`10.13.6`) | `748077008000000` | `20180621` |
+| Mojave (`10.14.6`) | `945275007000000` | `20190820` |
+| Catalina (`10.15.4`) | `1412101001000000` | `20200306` |
+| No restriction | `-1` | `-1` |
 
 :::
 
@@ -714,4 +737,7 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-> Ora, con tutto questo fatto, vai a [Pagina Installazione](/installation.md)
+<<<<<<< HEAD:config.plist/AMD/fx.md
+> Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)=======
+# Once done here, we need to edit a couple extra values. Head to the [Apple Secure Boot Page](..security.md)
+>>>>>>> upstream/master:AMD/fx.md

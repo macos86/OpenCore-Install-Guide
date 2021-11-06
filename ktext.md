@@ -79,25 +79,13 @@ Senza i due qua sotto nessun sistema è avviabile:
 
 * (<span style="color:red">Richiesto</span>) [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases/latest)
   * Emula il chip SMC che si trova sui veri Mac, senza questo MacOs non si avvierà.
-  * Un'alternativa è FackeSMC, che può avere un supporto migliore o peggiore, comunemente è usato sui sitemi legacy
-  * Necessita OS X 10.6 o superiori
+  * Necessita OS X 10.4 o più recenti
 * (<span style="color:red">Richiesto</span>) [Lilu](https://github.com/acidanthera/Lilu/releases/latest)
-  * Un kext per patchare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kexts. Senza lilu non funzioneranno.
-  * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.8 o superiori
+  * Un kext per modificare molti processi necessario per AppleALC, WhateverGreen, VirtualSMC e molti altri kext. Senza lilu non funzioneranno.
+  * Nota bene che Lilu ed i plugins per funzionare richiedono OS X 10.4 o più recenti
 
 :::
 
-::: details FakeSMC per gli utenti legacy
-
-Coloro che volgliono avviare OS X 10.7 e inferiori su hardware 32 bit, devono usare il kext qui sotto al posto di VirtualSMC:
-
-* [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/raw/master/32Bit-only/Zip/FakeSMC-32.kext.zip)
-
-Ricorda che se non hai in programma di avviare vecchie versioni di MacOs puoi ignorare tranquillamente questo kext.
-
-* **Nota per OS X 10.4 e 10.5**:  Anche su CPU a 64 bit, lo spazio del kernel di OS X è ancora a 32 bit. Quindi consigliamo di utilizzare FakeSMC-32 in coppia con VirtualSMC, specificatamente impostando la voce `Arch` di FakeSMC-32 su  `i386`  e VirtualSMC su  `x86_64`. Questo è discusso più avanti nella guida.
-
-:::
 
 #### Plugin di VirtualSMC
 
@@ -105,37 +93,42 @@ I plug-in seguenti non sono necessari per l'avvio e aggiungono semplicemente fun
 
 * SMCProcessor.kext
   * Utilizzato per monitorare la temperatura della CPU, **non funziona su sistemi basati su CPU AMD**
+  * Richiede OS X 10.7 o più recenti
 * SMCSuperIO.kext
   * Utilizzato per monitorare la velocità della ventola, **non funziona su sistemi basati su CPU AMD**
+  * Richiede OS X 10.6 o più recenti
 * SMCLightSensor.kext
   * Utilizzato per il sensore di luminosità sui laptop, **i desktop possono ignorare**
   * Non utilizzare se non si ha un sensore di luminosità, può causare problemi in caso contrario
+  * Richiede OS X 10.6 o più recenti
 * SMCBatteryManager.kext
   * Utilizzato per misurare la batteria sui laptop, **i desktop possono ignorare**
+  * Richiede OS X 10.4 o più recenti
 * SMCDellSensors.kext
   * Consente un monitoraggio e un controllo più accurato delle ventole sulle macchine Dell che supportano il System Management Mode (SMM)
   * **Non utilizzare se non si dispone di una macchina Dell supportata**, principalmente i laptop Dell possono trarre vantaggio da questo kext
+  * Richiede OS X 10.7 o più recenti
 
 ### Grafica
 
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases/latest)
   * Utilizzato per la patch grafica di DRM, controllo del board ID, correzioni di framebuffer...
   * Tutte le GPU beneficiano di questo kext.
-  * Necessita di OS X 10.8 o superiori
+  * Necessita di OS X 10.6 o più recenti
 
 ### Audio
 
 * [AppleALC](https://github.com/acidanthera/AppleALC/releases/latest)
   * Utilizzato per patch di AppleHDA, consentendo il supporto per la maggior parte dei controller audio integrati
   * I processori AMD 15°/16° potrebbero avere problemi con questo kext e i sistemi Ryzen/Threadripper raramente supportano il microfono
-  * Necessita di OS X 10.8 o superiori
+  * Necessita di OS X 10.8 o più recenti
   
 ::: details Kext audio per i sistemi legacy
 
 Per coloro che intendono avviare 10.7 e versioni precedenti, è preferibile optare per questi kext:
 
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
-  * Necessita OS X 10.6 o superiori
+  * Necessita OS X 10.6 o più recenti
   
 * [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/raw/master/FAT/Zip/VoodooHDA.kext.zip)
   * Simile al kext sopra, tuttavia supporta i kernel a 32 e 64 bit, quindi perfetto per l'avvio di OS X 10.4-5 e CPU a 32 bit
@@ -149,7 +142,7 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
 * [IntelMausi](https://github.com/acidanthera/IntelMausi/releases/latest)
   * Necessario per la maggior parte delle schede di rete Intel, i chipset basati su I211 avranno bisogno di SmallTreeIntel82576 kext
   * I NIC Intel 82578, 82579, I217, I218 e I219 sono ufficialmente supportati
-  * Necessita OS X 10.9 o successive, gli utenti 10.6-10.8 possono utilizzare IntelSnowMausi
+  * Necessita OS X 10.9 o più recenti, gli utenti 10.6-10.8 possono utilizzare IntelSnowMausi
 * [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases/latest)
   * Richiesto per i211 NIC, basato sul kext SmallTree ma patchato per supportare I211
   * Richiesto per la maggior parte delle schede AMD che eseguono NIC Intel
@@ -176,7 +169,7 @@ Rilevante per le installazioni di macOS legacy o per vecchi computer.
 
 * [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases/latest)
   * Principalmente rilevante per i controller Ethernet Intel basati su 10/100MBe
-  * Richiede 10.6 o successive
+  * Richiede 10.6 o più recenti
 * [RealtekRTL8100](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/)
   * Principalmente rilevante per i controller Ethernet Realtek Ethernet basati su 10/100MBe
   * Richiede macOS 10.12 o versione successiva con v2.0.0 +
@@ -244,11 +237,11 @@ pci14e4,1686 = Broadcom BCM57766
 
 * [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2018-1108.zip)
   * Utilizzato per iniettare i contreller USB Intel su sistemi senza porte USB definite in ACPI
-  * Non dovrebbe essere necessario su Desktop Skylake e versioni successive
+  * Non dovrebbe essere necessario su Desktop Skylake e versioni più recenti
     * Su AsRock questo kext è invece sempre necessario
     * Si consiglia tuttavia di utilizzare questo kext anche con processori Coffee Lake e laptop meno recenti
   * Non funziona su **nessuna** CPU AMD
-  * Necessita di OS X 10.11 o superiori
+  * Necessita di OS X 10.11 o più recenti
 
 * [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All/archive/refs/heads/master.zip)
   * Necessario per i controller USB non nativi
@@ -257,7 +250,7 @@ pci14e4,1686 = Broadcom BCM57766
     * H370
     * B360
     * H310
-    * Z390(Non necessario su Mojave e versioni successive)
+    * Z390(Non necessario su Mojave e versioni più recenti)
     * X79
     * X99
     * Schede AsRock (Necessario sulle schede madri Intel, non necessario tuttavia sulle schede B460/Z490+)
@@ -271,7 +264,7 @@ pci14e4,1686 = Broadcom BCM57766
   * Richiede macOS 10.13 o più recente e Apple Secure Boot per funzionare correttamente
 * [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases/latest)
   * Aggiunge il supporto Bluetooth a macOS se associato a una scheda wireless Intel
-  * Richiede MacOs 10.13 o successive
+  * Richiede MacOs 10.13 o più recenti
 
 ::: details Ulteriori informazioni sull'attivazione di AirportItlwm
 
@@ -290,7 +283,7 @@ Per abilitare il supporto di AirportItlwm con OpenCore, dovrai:
 
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases/latest)
   * Utilizzato per patchare schede Broadcom non Apple/non Fenvi, **Non funzionerà su schede Intel, Killer, Realtek, ecc**
-  * Richiede OS X 10.10 o versioni successive
+  * Richiede OS X 10.10 o versioni più recenti
   * Per Big Sur vedi [Big Sur problemi conosciuti](/extras/big-sur.md#known-issues) per procedimenti aggiuntivi riguardo i driver AirPortBrcm4360.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases/latest)
   * Utilizzato per caricare il firmware sul chipset Broadcom Bluetooth, richiesto per tutte le schede non Apple/non Fenvi Airport.
@@ -311,6 +304,15 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
 
 :::
 
+### Kexts specifici per CPU AMD
+
+* [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
+  * Fix USB per sistemi AMD FX, non consigliata per Ryzen
+  * Richiede macOS 10.13 o versioni più recenti
+* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
+  * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
+  * Richiede OS X 10.6 o successivo
+
 ### Extra
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
@@ -319,14 +321,14 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
     * MacPro6,1
     * MacPro7,1
     * iMacPro1,1
-  * Richiede macOS 10.15 o versioni successive
+  * Richiede macOS 10.15 o versioni più recenti
 * [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases/latest)
   * Necessario per la sincronizzazione del TSC su alcune schede madri Intel HEDT e server, senza questo macOS potrebbe essere estremamente lento o non avviabile.
   * **Non funziona su CPU AMD**
-  * Richiede OS X 10.8 o versioni successive
+  * Richiede OS X 10.8 o versioni più recenti
 * [NVMeFix](https://github.com/acidanthera/NVMeFix/releases/latest)
   * Utilizzato per correggere la gestione dell'alimentazione e l'inizializzazione di NVMe non Apple
-  * Richiede macOS 10.14 o versioni successive
+  * Richiede macOS 10.14 o versioni più recenti
 * [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/raw/master/Injectors/Zip/SATA-unsupported.kext.zip)
   * Aggiunge il supporto per un'ampia varietà di controller SATA, principalmente utile per i laptop che hanno problemi nel vedere l'unità SATA in macOS. Si consiglia prima di provare senza questo.
   * Nota per MacOs Big Sur: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/raw/master/extra-files/CtlnaAHCIPort.kext.zip) dovrà essere utilizzato invece perché numerosi controller sono stati eliminati dal binario stesso
@@ -341,45 +343,55 @@ ProperTree lo gestirà automaticamente, quindi non te ne devi preoccupare
   
 :::
 
-### Kexts specifici per CPU AMD
 
-* [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * Fix USB per sistemi AMD FX, non consigliata per Ryzen
-  * Richiede macOS 10.13 o versioni successive
-* [VoodooHDA](https://sourceforge.net/projects/voodoohda/files/latest/download)
-  * Audio per sistemi FX e supporto Microfono + Audio sul pannello frontale per i sistemi Ryzen, non usare con AppleALC. La qualità audio è notevolmente peggiore di AppleALC sulle CPU Zen
-  * Richiede OS X 10.6 o successivo
-
-### Specifici per laptop
+### Tastiera, mouse e trackpad dei laptop
 
 Per capire che tipo di tastiera e trackpad hai, controlla Gestione dispositivi in Windows o `dmesg | grep -i input` in Linux
 
-#### Driver di input
+::: warning Attenzione
+
+La maggior parte delle tastiere dei laptop sono PS2! Dovresti provare un tentativo con VoodooPS2 anche se hai un trackpad di altre tipologie.
+
+:::
+
+#### Trackpad/Tastiere PS2
 
 * [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases/latest)
-  * Per sistemi con tastiere, mouse e trackpad PS2
-  * Richiede macOS 10.11 o versioni successive per le funzioni MT2 (Magic Trackpad 2)
+  * Funziona con molti sistemi con tastiere, mouse e trackpad di tipo PS2
+  * Richiede almeno macOS 10.11 per le funzioni MT2 (Magic Trackpad 2)
 * [RehabMan VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/RehabMan-Voodoo-2018-1008.zip)
   * Per i sistemi meno recenti con tastiere, mouse e trackpad PS2 o quando non si vuole utilizzare VoodooInput
-  * Supporta macos 10.6 e successive
+  * Supporta macOS 10.6 e più recenti
+
+#### Trackpad SMBus
+
 * [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/latest)
-  * Per sistemi con dispositivi basati su Synaptics SMBus, principalmente per trackpad e puntataori.
-  * Richiede macOS 10.11 o successive per le funzioni MT2
+  * Per sistemi con dispositivi basati su Synaptics SMBus.
+  * Richiede macOS 10.11 o più recenti per le funzioni MT2.
+  * Dipende da [VoodooPS2 di Acidanthera](https://github.com/acidanthera/VoodooPS2/releases/latest)
 * [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases/latest)
-  * Per sistemi con dispositivi basati su ELAN SMBus, principalmente per trackpad e trackpoint.
-  * Attualmente supporta macOS 10.14 o versioni successive
+  * Per sistemi con dispositivi basati su ELAN SMBus.
+  * Attualmente supporta macOS 10.14 o versioni più recenti.
+
+#### Dispositivi HID I2C/USB
+
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases/latest)
-  * Usato per il fix dei dispostitivi I2C, utile con alucni touchpad e touchreeen più particolari
-  * Richiede macOS 10.11 o versioni successive per le funzioni MT2
-::: details Plugin di VoodooI2C
+  * Richiede almeno macOS 10.11.
+  * Si collega ai controller I2C per permettere ai plugin di collegarsi ai trackpad I2C
+  * I dispositivi USB che usano i plugin sottostanti necessitano di VoodooI2C
+  * Devi essere accoppiato con uno dei plugin sottostanti:
+
+::: tip Plugin di VoodooI2C
+
 | Tipo di connessione | Plugin | Note |
 | :--- | :--- | :--- |
-| Microsoft HID | VoodooI2CHID | Può essere utilizzato anche per supportare alcuni touchscreen USB |
-| Proprietà ELAN | VoodooI2CElan | ELAN1200+ richiede invece VoodooI2CHID |
-| Proprietà di Synaptics | VoodooI2CSynaptics | Il protocollo Synaptics F12 richiede invece VoodooI2CHID |
-| ^^ | VoodooRMI | Supporta i protocolli Synaptics F12/F3A - Questi generalmente supportano lo standard HID di Microsoft, quindi dovresti prima provare a utilizzare VoodooI2CHID |
-| Touchpad FTE1001 | VoodooI2CFTE | |
-| Protocollo Atmel Multitouch | VoodooI2CAtmelMXT | |
+| Multitouch HID | VoodooI2CHID | Utilizzabile con i Touchscreen e Trackpad I2C/USB |
+| ELAN Proprietary | VoodooI2CElan | ELAN1200+ invece richiede VoodooI2CHID |
+| FTE1001 touchpad | VoodooI2CFTE | |
+| Atmel Multitouch Protocol | VoodooI2CAtmelMXT | |
+| Synaptics HID | [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/) | I2C Synaptic Trackpads (Richiede VoodooI2C solo per la modalità I2C) |
+| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Visibile maggiormente nei laptop Dell. Utilizzabile con Trackpad Alps I2C |
+
 :::
 
 #### Kext misti per Laptop
@@ -436,7 +448,7 @@ Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](/Getting-Started-With-ACPI/Universal/ec-fix.md) | ^^ | ^^ | ^^ | ^^ | Nessuno |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](/Getting-Started-With-ACPI/Laptops/backlight.md) | ^^ | [SSDT-AWAC](/Getting-Started-With-ACPI/Universal/awac.md) | ^^ | ^^ |
+| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | ^^ | ^^ | [SSDT-AWAC](/Getting-Started-With-ACPI/Universal/awac.md) | ^^ | ^^ |
 | Coffee Lake (9° Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](/Getting-Started-With-ACPI/Universal/rhub.md) | ^^ |

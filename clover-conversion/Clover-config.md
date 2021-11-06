@@ -131,8 +131,8 @@ Nella transizione da Clover a OpenCore dobbiamo rimuovere le patch non necessari
 ### SSDTs
 
 * **PluginType**:
-  * [SSDT-PLUG](/Getting-Started-With-ACPI/)
-  * Vedi [Iniziamo con ACPI](/Getting-Started-With-ACPI/Universal/plug/) per più dettagli
+  * [SSDT-PLUG](/Getting-Started-With-ACPI/Universal/plug/)
+  * Vedi [Iniziamo con ACPI](/Getting-Started-With-ACPI/) per più dettagli
 
 * **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
 * **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh) (Per Sandy Bridge e IvyBridge)
