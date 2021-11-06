@@ -758,7 +758,4 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * OS type: Windows 8.1/10 UEFI Mode
 * SATA Mode: AHCI
 
-<<<<<<< HEAD:config.plist/AMD/zen.md
-> Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)=======
-# Once done here, we need to edit a couple extra values. Head to the [Apple Secure Boot Page](..security.md)
->>>>>>> upstream/master:AMD/zen.md
+> Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)
