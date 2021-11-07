@@ -160,7 +160,7 @@ Assicurati che la SIP sia abilitata. Nello specifico, due bit nella SIP causano 
 Se vuoi ancora avere la SIP disabilitata, usa uno dei seguenti:
 
 * `csrutil disable --no-internal` nella Recovery
-* Un valore della SIP value che non include le due flags sopra
+* Un valore della SIP che non include le due flags sopra
 
 Per abilitare la SIP:
 
