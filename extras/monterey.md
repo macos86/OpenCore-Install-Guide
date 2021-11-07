@@ -1,6 +1,6 @@
 # macOS 12: Monterey
 
-**Ricorda che Dortania and ogni tool menzionato in questa guida non sono responsabili per corruzioni di file, perdita di dati, o altri effetti negativi che potrebbero essere causati da questa guida, inclusi quelli causati da errori di battitura. Tu, l'utente finale, devi comprendere che questo è un software in versione beta eseguito su hardware non supportato, quindi non tormentare gli sviluppatori per ottenere correzioni. Dortania non accetterà issues riguardanti questa mini-guida ad eccezione di errori di battitura e/o errori.**
+**Ricorda che Dortania e ogni tool menzionato in questa guida non sono responsabili per corruzioni di file, perdita di dati, o altri effetti negativi che potrebbero essere causati da questa guida, inclusi quelli causati da errori di battitura. Tu, l'utente finale, devi comprendere che questo è un software in versione beta eseguito su hardware non supportato, quindi non tormentare gli sviluppatori per ottenere correzioni. Dortania non accetterà issues riguardanti questa mini-guida ad eccezione di errori di battitura e/o errori.**
 **Questa guida si aspetta che tu conosca le basi del mondo hackintosh. Se non ti è familiare, ti raccomandiamo fortemente di attendere fino a quando sarà disponibile una soluzione più facile e più lineare.**
 
 ## Table of Contents
@@ -18,7 +18,7 @@ SMBIOS non più supportati in Monterey:
 * MacBook8,1 e precedenti
 * MacBookAir6,x e precedenti
 * MacBookPro11,3 e precedenti
-  * MacBookPro11,4 e 11,4 sono ancora supportati
+  * MacBookPro11,4 e 11,5 sono ancora supportati
 
 Se il tuo SMBIOS era supportato in Big Sur e non è incluso nella lista sopra, sei a posto!
 
