@@ -1,82 +1,82 @@
 # macOS 12: Monterey
 
-**Reminder that Dortania and any tools mentioned in this guide are neither responsible for any corruption, data loss, or other ill effects that may arise from this guide, including ones caused by typos. You, the end user, must understand this is beta software on unsupported machines so do not pester developers for fixes. Dortania will not be accepting issues regarding this mini-guide except for typos and/or errors.**
-**This guide expects you to have a basic understanding of hackintoshing. If you are not familiar with it, we highly recommend you to wait until there is an easier and more straight-forward solution available.**
+**Ricorda che Dortania and ogni tool menzionato in questa guida non sono responsabili per corruzioni di file, perdita di dati, o altri effetti negativi che potrebbero essere causati da questa guida, inclusi quelli causati da errori di battitura. Tu, l'utente finale, devi comprendere che questo è un software in versione beta eseguito su hardware non supportato, quindi non tormentare gli sviluppatori per ottenere correzioni. Dortania non accetterà issues riguardanti questa mini-guida ad eccezione di errori di battitura e/o errori.**
+**Questa guida si aspetta che tu conosca le basi del mondo hackintosh. Se non ti è familiare, ti raccomandiamo fortemente di attendere fino a quando sarà disponibile una soluzione più facile e più lineare.**
 
 ## Table of Contents
 
 [[toc]]
 
-## Prerequisites
+## Prerequisiti
 
-### Supported SMBIOS
+### SMBIOS supportati
 
-SMBIOS dropped in Monterey:
+SMBIOS non più supportati in Monterey:
 
-* iMac15,x and older
-* Macmini6,x and older
-* MacBook8,1 and older
-* MacBookAir6,x and older
-* MacBookPro11,3 and older
-  * MacBookPro11,4 and 11,4 are still supported
+* iMac15,x e precedenti
+* Macmini6,x e precedenti
+* MacBook8,1 e precedenti
+* MacBookAir6,x e precedenti
+* MacBookPro11,3 e precedenti
+  * MacBookPro11,4 e 11,4 sono ancora supportati
 
-If your SMBIOS was supported in Big Sur and is not included above, you're good to go!
+Se il tuo SMBIOS era supportato in Big Sur e non è incluso nella lista sopra, sei a posto!
 
-::: details Supported SMBIOS
+::: details SMBIOS supportati
 
-* iMac16,1 and newer
-* MacPro6,1 and newer
-* iMacPro1,1 and newer
-* Macmini7,1 and newer
-* MacBook9,1 and newer
-* MacBookAir7,1 and newer
-* MacBookPro11,4 and newer
+* iMac16,1 e successivi
+* MacPro6,1 e successivi
+* iMacPro1,1 e successivi
+* Macmini7,1 e successivi
+* MacBook9,1 e successivi
+* MacBookAir7,1 e successivi
+* MacBookPro11,4 e successivi
 
-[Click here](./smbios-support.md) for a full list of supported SMBIOS.
+[Clicca qui](./smbios-support.md) per la lista completa dei SMBIOS supportati.
 
 :::
 
-For those on Haswell or Ivy Bridge, here are some simple conversions:
+Per quelli con Haswell o Ivy Bridge, queste sono alcune semplici conversioni:
 
-* Ivy Bridge desktops with dGPU should use MacPro6,1
-* Haswell desktops with dGPU should use iMac17,1
-* Haswell desktops with only an iGPU should use iMac16,2
-* Haswell laptops should use MacBookPro11,4 or MacBookPro11,5
+* Ivy Bridge: i desktop con dGPU dovrebbero usare MacPro6,1
+* Haswell: i desktop con dGPU dovrebbero usare iMac17,1
+* Haswell: i desktop con solo la iGPU dovrebbero usare iMac16,2
+* Haswell: i laptop dovrebbero usare MacBookPro11,4 o MacBookPro11,5
 
-### Supported hardware
+### Hardware supportato
 
-Dropped GPU Hardware:
+GPU non più supportate:
 
-* Ivy Bridge (HD 4000 and HD 2500)
-* Nvidia Kepler (GTX 6xx/7xx Cards)
-* You can use [OpenCore-Legacy-Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher/) to add back support
-  * No support is provided for Hackintoshes using OCLP!
-  * You will lose access to non-full updates (Small 1-3GB updates)
-  * Requires SIP, Apple Secure Boot, and AMFI disabled.
+* Ivy Bridge (HD 4000 e HD 2500)
+* Nvidia Kepler (GTX 6xx/7xx)
+* Puoi usare [OpenCore-Legacy-Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher/) per supportarle ancora
+  * Non verrà fornito supporto agli Hackintosh che usano OCLP!
+  * Perderai accesso agli aggiornamenti parziali (Aggiornamenti da 1-3GB)
+  * Richiede di disabilitare SIP, Apple Secure Boot e AMFI.
 
-Haswell iGPUs are still supported in Monterey
+Le iGPU Haswell sono ancora supportate in Monterey
 
-* Macmini7,1 uses these drivers
+* Macmini7,1 usa i driver per quelle schede
 
-### AMD Patches
+### Patch per AMD
 
-For those on AMD CPUs, make sure to update your [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla) for Monterey.
-Don't forget to update your patches as well with the core count of your CPU.
-The patches which need to be edited are all named `algrey - Force cpuid_cores_per_package`, and you only need to change the `Replace` value. You should change:
+Per quelli con CPU AMD, assicurati di aggiornare le tue [kernel patches](https://github.com/AMD-OSX/AMD_Vanilla) per Monterey.
+Non dimenticare di aggiornare le tue patch anche con il numero di core della tua CPU.
+Le patch che devono essere modificate si chiamano tutte `algrey - Force cpuid_cores_per_package` e devi solo cambiare il valore di `Replace`. Dovresti cambiare:
 
-* `B8000000 0000` => `B8 <core count> 0000 0000`
-* `BA000000 0000` => `BA <core count> 0000 0000`
-* `BA000000 0090` => `BA <core count> 0000 0090`
+* `B8000000 0000` => `B8 <numero di core> 0000 0000`
+* `BA000000 0000` => `BA <numero di core> 0000 0000`
+* `BA000000 0090` => `BA <numero di core> 0000 0090`
 
-Where `<core count>` is replaced with the physical core count of your CPU in hexadecimal. For example, an 8-Core 5800X would have the new Replace value be:
+Dove `<numero di core>` è sostituito con il numero di core fisici della tua CPU in esadecimale. Per esempio, un 8-Core 5800X avrà come valore in Replace:
 
 * `B8 08 0000 0000`
 * `BA 08 0000 0000`
 * `BA 08 0000 0090`
 
-::: details Core Count => Hexadecimal Table
+::: details Numero di Core => Esadecimale Table
 
-| Core Count | Hexadecimal |
+| Numero di Core | Esadecimale |
 | :--------- | :---------- |
 | 4 Core | `04` |
 | 6 Core | `06` |
@@ -93,37 +93,37 @@ Where `<core count>` is replaced with the physical core count of your CPU in hex
 
 ::: warning
 
-Note that all cards have not been fixed yet, and that bluetooth support is being worked on still.
+Nota che non tutte le schede sono state ancora sistemate e che si sta ancora lavorando al supporto per il bluetooth.
 
-Do not be suprised if your card does not work, and please be patient!
+Non sorprenderti se la tua scheda non funziona e, per favore, sii paziente!
 
 :::
 
-With Monterey, Apple has completely rewritten the bluetooth stack. As of writing, many bluetooth devices do not work (legacy Broadcom and Intel). With the rewrite, injector kexts break bluetooth support in Monterey, though firmware uploader kexts are still needed. Make sure that you:
+Con Monterey, Apple ha completamente riscritto lo stack del bluetooth. Al momento della scrittura, molti dispositivi bluetooth non funzionano (vecchie Broadcom and Intel). Con la riscrittura, i kext injector rompono il supporto al bluetooth su Monterey, sebbene kext che aggiornano il firmware sono ancora necessari. Assicurati di:
 
-* Disable injector kexts
-  * IntelBluetoothInjector.kext for Intel cards
-  * BrcmBluetoothInjector.kext for Broadcom cards
-  * If you still boot Big Sur or older, you can instead set the `MaxKernel` field to `20.99.9` for your injector kext in your config.plist.
-* Keep Firmware uploader kexts
-  * IntelBluetoothFirmware.kext for Intel
-  * BrcmPatchRAM2/3.kext + BrcmFirmwareData.kext for Broadcom
-* Add [BlueToolFixup](https://github.com/acidanthera/BrcmPatchRAM/releases)
-  * Needed for all non-native Bluetooth devices (Including Intel)
-  * If you still boot Big Sur or older, you can set the `MinKernel` field to `21.00.0` to prevent BlueToolFixup loading on older OSes.
+* Disabilitare i kext injector
+  * IntelBluetoothInjector.kext per le schede Intel
+  * BrcmBluetoothInjector.kext per le schede Broadcom
+  * Se avvii ancora Big Sur o precedenti, in alternativa puoi impostare la voce `MaxKernel` su `20.99.9` per il tuo injector sul config.plist.
+* Mantienere i kext che aggiornano il Firmware
+  * IntelBluetoothFirmware.kext per Intel
+  * BrcmPatchRAM2/3.kext + BrcmFirmwareData.kext per Broadcom
+* Aggiungere [BlueToolFixup](https://github.com/acidanthera/BrcmPatchRAM/releases)
+  * Necessario per tutti i dispositivi Bluetooth non nativi (e su quelli Intel)
+  * Se avvii ancora Big Sur o precedenti, puoi impostare la voce `MinKernel` s `21.00.0` per impedire a BlueToolFixup di essere caricato sulle versioni precedenti.
 
-See the below issues for more details:
+Per maggiori dettagli, guarda i seguenti issues:
 
 * [BlueToolFixup PR](https://github.com/acidanthera/BrcmPatchRAM/pull/12)
 * [Monterey Beta 5+ issues](https://github.com/acidanthera/bugtracker/issues/1821)
 
-### OTA Updates
+### Aggiornamenti OTA
 
-Starting with Monterey, updates are not delivered to T2 Macs which don't have Secure Boot enabled, and updates do not install properly if your SecureBootModel does not match your machine (ie. non-T2 SMBIOS using j137 or iMacPro1,1 using j160). Hackintoshes which use a T2 SMBIOS **MUST** have OpenCore 0.7.4+ with SecureBootModel set to `Default`. If your SMBIOS does not have a T2 chip, then either `Default` or `Disabled` is ok. More information is available on the [Apple Secure Boot page](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
+A partire da Monterey, gli aggiornamenti non sono distribuiti ai Mac con chip T2 che non hanno abilitato il Secure Boot, e gli aggiornamenti non si installano correttamente se il tuo SecureBootModel non corrisponde a quello del tuo SMBIOS (es. SMBIOS senza T2 che usano j137 o iMacPro1,1 che usa j160). Gli hackintosh che usano un SMBIOS con T2 **DEVONO** avere OpenCore 0.7.4+ con SecureBootModel impostato su `Default`. Se il tuo SMBIOS non ha un chip T2, allora vanno bene sia `Default` che `Disabled`. Sono disponibili più informazioni alla [pagina di Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
 
-::: tip T2 SMBIOS List
+::: tip Lista dei SMBIOS con T2
 
-| SMBIOS                                              | Minimum macOS Version |
+| SMBIOS                                              | Versione minima di macOS |
 | :---                                                | :---                  |
 | iMacPro1,1 (December 2017)                          | 10.13.2 (17C2111)     |
 | MacBookPro15,1 (July 2018)                          | 10.13.6 (17G2112)     |
@@ -144,26 +144,26 @@ Starting with Monterey, updates are not delivered to T2 Macs which don't have Se
 
 :::
 
-Note: You do not need the `-revsbvmm` boot argument from RestrictEvents. Use OpenCore 0.7.4 or later.
+Not1: Non è necessario il boot argument `-revsbvmm` da RestrictEvents. Usa OpenCore 0.7.4 o successivi.
 
-### Troubleshooting
+### Risoluzione dei problemi
 
-#### No Updates
+#### No Aggiornamenti
 
-Make sure that SIP is enabled. Two bits in SIP specifically cause issues:
+Assicurati che la SIP sia abilitata. Nello specifico, due bit nella SIP causano problemi:
 
 * CSR_ALLOW_APPLE_INTERNAL (Bit 4 = 0x10)
-  * Prevents updates appearing at all
+  * Impedisce a tutti aggiornamenti di comparire
 * CSR_ALLOW_UNAUTHENTICATED_ROOT (Bit 11 = 0x800)
-  * Prevents incremental OTA updates
+  * Impedisce aggiornamenti incrementali OTA
 
-If you want to still have SIP disabled, use either:
+Se vuoi ancora avere la SIP disabilitata, usa uno dei seguenti:
 
-* `csrutil disable --no-internal` in Recovery
-* A SIP value which does not include the two flags above
+* `csrutil disable --no-internal` nella Recovery
+* Un valore della SIP value che non include le due flags sopra
 
-To enable SIP:
+Per abilitare la SIP:
 
-* Set `csr-active-config` to `<00 00 00 00>` in your config.plist
-* Use `csrutil clear` in Recovery
-  * Can instead add `csr-active-config` to NVRAM->Delete or reset NVRAM
+* Imposta `csr-active-config` su `<00 00 00 00>` nel tuo config.plist
+* Usa `csrutil clear` nella Recovery
+  * In alternativa, puoi aggiungere `csr-active-config` su NVRAM->Delete o fare un reset della NVRAM
