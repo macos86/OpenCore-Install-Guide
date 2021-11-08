@@ -444,8 +444,8 @@ System Integrity Protection bitmask
 
 | Argomenti di avvio | Description |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le schede Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
+| **agdpmod=pikera** | Utilizzato per disabilitare il controllo del board ID su GPU Navi (serie RX 5000 & 6000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.

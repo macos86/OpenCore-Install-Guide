@@ -15,7 +15,7 @@ Questo abilita la funzionalità di sicurezza come la verifica di `boot.efi` di m
 * Big Sur e superiori (11.0+): Il valore raccomandato e' 'Default'.
 * High Sierra-Catalina (10.13-10.15):
 * Se il tuo modello non e' presente nella lista qui sotto imposta il valore su `Disabled`.
-* Se utilizzi I driver Web Nvidia, imposts il valore su `Disabled`.
+* Se utilizzi I Web Driver Nvidia, imposts il valore su `Disabled`.
 * Se il tuo modello e' presente nella lista, compara la minima versione che stai usando , Disabilitalo se il tuo installer e' inferiore alla versione in lista per il tuo SMBIOS
 * Sierra e inferiori (10.4-10.12): Questa impostazione non ha effetto.
 * Se hai multiple versioni di OSX potresti dover impostare il valore su `Disabled`.

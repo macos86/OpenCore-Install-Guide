@@ -200,7 +200,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
@@ -478,8 +478,8 @@ System Integrity Protection bitmask
 
 | Argomenti di avvio | Descrizione |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
+| **agdpmod=pikera** | Utilizzato per disabilitare il controllo del board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
 | **-wegnoegpu** | Used for disabling all other GPUs than the integrated Intel iGPU, useful for those wanting to run newer versions of macOS where their dGPU isn't supported |
 
 * **csr-active-config**: `00000000`
@@ -544,7 +544,7 @@ Per questo esempio Coffee Lake , sceglieremo iMac19,1 SMBIOS - questo viene fatt
 | iMac19,1 | Per Mojave e più recenti |
 | iMac18,3 | Per High Sierra e precedenti |
 
-* Userai 18,3 quando hai una dGPU Pascal o Maxwell e sei limitato alle versioni di macOS con driver Web
+* Userai 18,3 quando hai una dGPU Pascal o Maxwell e sei limitato alle versioni di macOS con Web Driver
 
 Esegui GenSMBIOS, scegli l'opzione 1 per scaricare MacSerial e l'opzione 3 per selezionare SMBIOS. Questo ci darà un output simile al seguente:
 

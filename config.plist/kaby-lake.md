@@ -82,7 +82,7 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
 * **ProvideCustomSlide**: YES
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
-* Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
+  * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i kernel panic di inzio avvio.
 
 :::
 
@@ -105,7 +105,7 @@ Questa sezione è configurata tramite la [Framebuffer Patching Guide](https://gi
 | **`00001259`** | Utilizzato quando l'iGPU desktop viene utilizzato per guidare un display |
 | **`03001259`** | Utilizzato quando Desktop iGPU viene utilizzato solo per attività di elaborazione e non gestisce un display |
 
-Aggiungiamo anche altre 2 proprietà, `framebuffer-patch-enable` e `framebuffer-stolenmem`. The first enables patching via WhateverGreen.kext, the second sets the min stolen memory to 19MB Questo di solito non è necessario, poiché può essere configurato nel BIOS (64 MB consigliati) ma richiesto quando non è disponibile.
+Aggiungiamo anche altre 2 proprietà, `framebuffer-patch-enable` e `framebuffer-stolenmem`. La prima abilita il patching tramite WhateverGreen.kext, la seconda imposta la memoria utilizabile minima a 19MB Questo di solito non è necessario, poiché può essere configurato nel BIOS (64 MB consigliati) ma richiesto quando la opzione non è disponibile.
 
 * **Nota**: i framebuffer headless (dove la dGPU è il display in uscita) non sono necessari`framebuffer-patch-enable` and `framebuffer-stolenmem`
 
@@ -175,7 +175,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
@@ -453,8 +453,8 @@ System Integrity Protection bitmask
 
 || Argomenti di avvio | Descrizione |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le schede Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
+| **agdpmod=pikera** | Utilizzato per disabilitare il controllo del board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
 | **-wegnoegpu** | Used for disabling all other GPUs than the integrated Intel iGPU, useful for those wanting to run newer versions of macOS where their dGPU isn't supported |
 
 * **csr-active-config**: `00000000`

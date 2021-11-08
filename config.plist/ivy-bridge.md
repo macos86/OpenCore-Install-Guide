@@ -110,7 +110,7 @@ Le impostazioni relative al patching boot.efi e alle correzioni del firmware, pe
 * **ProvideCustomSlide**: YES
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
-* Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i primi kernel panic.
+  * Risolve le chiamate SetVirtualAddresses agli indirizzi virtuali, richiesto dalle schede Gigabyte per risolvere i kernel panic di inzio avvio.
 
 :::
 
@@ -211,7 +211,7 @@ Un promemoria che gli utenti di [ProperTree](https://github.com/corpnewt/ProperT
   * Percorso a `info.plist` nascosto all'interno di kext
   * es: `Contents/Info.plist`
 
-::: Tabella di supporto del kernel
+::: details Tabella di supporto del kernel
 
 | OS X Version | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
@@ -486,8 +486,8 @@ System Integrity Protection bitmask
 
 | Argomenti di avvio | Descrizione |
 | :--- | :--- |
-| **agdpmod=pikera** | Utilizzato per disabilitare board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi**(es. Le schede Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i driver Web di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
+| **agdpmod=pikera** | Utilizzato per disabilitare il controllo del board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
 | **-wegnoegpu** | Used for disabling all other GPUs than the integrated Intel iGPU, useful for those wanting to run newer versions of macOS where their dGPU isn't supported |
 
 * **csr-active-config**: `00000000`
