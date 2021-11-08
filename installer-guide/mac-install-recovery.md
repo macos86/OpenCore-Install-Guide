@@ -153,7 +153,7 @@ Dopo torna alla schermata principale e seleziona "Process PBR", dopo "Restore PB
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-pbr.png) | ![](../images/installer-guide/winblows-install-md/restore-pbr-file.png) |
 
-Una volta finito, torna alla tua USB e fai un'ultima cosa. Trascina il file **bootx64**(CPU a 64 Bit) o **bootia32**(CPU a 32 Bit) da `Utilities/LegacyBoot/` e piazzalo nella radice della USB. **Rinominalo come boot** per assicurarti che DuetPkg funzioni correttamente:
+Una volta finito, torna alla tua USB e fai un'ultima cosa. Trascina il file **bootx64** (CPU a 64 Bit) o **bootia32** (CPU a 32 Bit) da `Utilities/LegacyBoot/` e piazzalo nella radice della USB. **Rinominalo come boot** per assicurarti che DuetPkg funzioni correttamente:
 
 ![](../images/installer-guide/winblows-install-md/final-boot-file.png)
 
