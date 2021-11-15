@@ -313,7 +313,7 @@ module.exports = {
                 }
             ],
             '/config.plist/': [
-                'config.plist/security.md',
+                '/config.plist/security.md',
                 {
                     text: 'Setup del config.plist',
                     children: [
@@ -394,7 +394,7 @@ module.exports = {
                 '/ktext.md',
                 '/Getting-Started-With-ACPI/',
                 '/config.plist/',
-                'config.plist/security.md',
+                '/config.plist/security.md',
                 '/installation.md',
                 '/OpenCore-Post-Install/',
                 {
