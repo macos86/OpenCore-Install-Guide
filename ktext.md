@@ -29,7 +29,7 @@ Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 * (<span style="color:red">Richiesto</span>) [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi)
   * Necessario per vedere i volumi HFS (es. Gli installer di MacOS e le partizioni/immagini recovery). **Non mischiare altri HFS drivers**
   * Per i processori Sandy Bridge e più vecchi(come come gli Ivy Bridge di fascia bassa(i3 e Celerons), vedi la sezione legacy qui sotto
-* (<span style="color:red">Richiesto</span>) [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)
+* (<span style="color:red">Richiesto</span>) [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases/latest)
   * Sostituzione di [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), usato come estensione per Opencore come aiuto per la patch di boot.efi per correggere l'NVRAM e per una migliore gestione della batteria
   * Ricorda che questo era incluso in Opencorepkg che abbiamo scaricato in precedenza
 
@@ -39,12 +39,12 @@ Per la maggior parte dei sistemi ti serviranno solo 2 driver `.efi` per l'avvio:
 
 Oltre a ciò che abbiamo detto in precedenza, se il tuo hardware non supporta l'UEFI (macchine del 2011 e meno recenti) avrai bisogno di quanto segue. Presta atenzione a tutte le voci qui sotto perchè potresti avere bisogno di tutte e 4
 
-* [OpenUsbKbDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases)
+* [OpenUsbKbDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases/latest)
   * Utilizzato per il selettore Opencore su  **sistemi legacy che eseguono DuetPkg**, [non raccomandato ed addirittura dannoso su UEFI(Ivy Bridge e processori piú recenti)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
 * [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlusLegacy.efi)
   * Variante legacy di HfsPlus, usato per sistemi che non hanno il supporto delle istruzioni RDRAND. Questo generalmente accade su processori Sandy Bridge e piu vecchi (ma anche su processori Ivy Bridge di fascia bassa (i3 e Celerons))
   * Non usarlo con HfsPlus.efi, scegline quello corretto in base al tuo hardware
-* [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases)
+* [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases/latest)
   * Necessario per avviare la recovery da OS X 10.7 fino al 10.9
     * Questo file è incluso con OpenCorePkg sotto EFI/OC/Drivers
     * Nota: gli utenti OpenDuet(cioè senza UEFI) avranno gia questo driver integrato, non gli servirà
