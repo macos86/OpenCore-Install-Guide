@@ -252,6 +252,6 @@ sudo dd if=/home/tu/Documenti/Utilities/macrecovery/basesystem.dmg of=/dev/sdd2
 
 ## Impostare ambiente efi di OpenCore
 
-Impostare l'ambiente EFI di OpenCore è molto semplice in questo caso: EFI sfrutta le partizioni FAT32 per funzionare e noi abbiamo creato una partizione di quel tipo non per caso: infatti sfrutteremo la intera chiavetta come partizione FAT32.
+Impostare l'ambiente EFI di OpenCore è molto semplice in questo caso: EFI sfrutta le partizioni FAT32 per funzionare e noi abbiamo creato una partizione di quel tipo non per caso: infatti sfrutteremo l'intera chiavetta come partizione FAT32.
 
 > Ora che tutto questo è fatto, vai a [Configurare la EFI](/opencore-efi.md) per finire il tuo lavoro
