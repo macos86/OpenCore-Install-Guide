@@ -12,7 +12,7 @@ Fare un config.plist potrebbe sembrare difficile, ma non lo è. Ci metterai solo
 * **Il Sample.plist non può essere usato così com'è**, devi configurarlo per il tuo sistema
 * **NON USARE CONFIGURATORI**, questi raramente rispettano la configurazione di OpenCore e alcuni di quelli come Mackie aggiungeranno proprietà di Clover o potrebbero corrompere il plist!
 
-Ora che hai letto questo, un piccolo reminder degli strumenti necessari
+Ora che hai letto questo, un piccolo promemoria degli strumenti necessari
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
   * Plist editor universale
@@ -198,7 +198,7 @@ La cosa principale che devi tenere a mente è:
   * Ricorda che qualsiasi plugin dovrebbe essere caricato *dopo* le sue dipendenze
   * Ciò significa che kext come Lilu **devono** venire prima di VirtualSMC, AppleALC, WhateverGreen, ecc.
 
-A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can run **Cmd/Ctrl + Shift + R** to add all their kexts in the correct order without manually typing each kext out.
+Un promemoria: gli utenti di [ProperTree](https://github.com/corpnewt/ProperTree) possono eseguire **Cmd/Ctrl + Shift + R** per aggiungere tutti i loro kexts nell'ordine corretto senza farlo manualmente.
 
 * **Arch**
   * Architetture supportate da questo kext
