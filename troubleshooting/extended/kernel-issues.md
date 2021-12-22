@@ -643,8 +643,4 @@ E quando cambi kext, assicurati di non avere sia FakeSMC che VirtualSMC abilitat
 
 ## Riavvio su "AppleUSBHostPort::createDevice: failed to create device" da macOS 11.3+
 
-Questo è causato dalla [rottura di XhciPortLimit con macOS 11.3 e più recenti](https://github.com/dortania/bugtracker/issues/162), per risolvere **devi** disabilitare XhciPortLimit nella sezione Kernel -> Quirks. Assicurati che tu abbia [mappato correttamente le porte USB](/OpenCore-Post-Install/usb/) prima.
-
-* Oppure, puoi avviare macOS 11.2.3 o meno recenti per risolverlo
-  * Per scopi educativi, provvediamo queste immagini:
-    * [macOS 11.2.3 InstallAssistant (macOS)](https://archive.org/details/install-mac-os-11.2.3-20-d-91)
+Vedi [Problema USB](#problema-usb)
