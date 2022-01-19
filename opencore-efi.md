@@ -78,7 +78,7 @@ Ora puoi mettere i **tuoi** driver firmware (.efi) nella cartella _Drivers_ e Ke
 Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ...) su OpenCore! Vedi [Conversione driver Firmware](/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
 :::
 
-Ecco come una EFI ***può*** apparire (la tua potrebbe essere differente):
+Ecco come una EFI **_può_** apparire (la tua potrebbe essere differente):
 
 ![](./images/installer-guide/opencore-efi-md/populated-efi.png)
 
