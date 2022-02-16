@@ -4,34 +4,37 @@ next: /installer-guide/
 
 # Trovare il tuo Hardware
 
-Questa sezione è una mini-guida che spiega come trovare il tuo hardware corrente; questo è rilevante per laptop e utenti prebuilt dato che l'hardware è un po' più difficile da comprendere. Puoi saltare questa sezione e andare a [Creare la USB](/installer-guide/) se conosci già l'hardware che possiedi.
+Questa sezione è una mini-guida che spiega come trovare il tuo hardware corrente; questo è rilevante per laptop e preassemblati, poiché l'hardware è un po' più difficile da comprendere. Se conosci il tuo hardware, puoi proseguire direttamente a [Creare l'Installer](/installer-guide/).
 
-Perciò, assumeremo che hai Windows o Linux installato:
+| **Sistema Operativo** | Windows | Linux |
+|-----------------------|---------|-------|
+| **Programmi richiesti** | Gestione Dispositivi integrato di Windows o [AIDA64](https://www.aida64.com/downloads) per avere un'interfaccia più semplice | Strumenti integrati di default su tutte le maggiori distro Linux (`cat` `pciutils` `dmidecode`) |
 
-[[toc]]
-
-## Trovare hardware usando Windows
-
-Per questo avremmo due opzioni:
-
-* Il Gestione Dispositivi integrato di Windows
-* [AIDA64](https://www.aida64.com/downloads)
-
-A causa di un'interfaccia più semplice, raccomandiamo di scaricare AIDA64 e avviarlo per ottenere molto più facilmente le specifiche. Tuttavia mostreremo entrambi i metodi per ottenere le specifiche hardware.
-
-### Modello CPU
+## Modello CPU
 
 | AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/cpu-model-aida64.png) | ![](./images/finding-hardware-md/cpu-model-devicemanager.png) |
 
-### Modello GPU
+---
+
+```sh
+cat /proc/cpuinfo | grep -i "model name"
+```
+
+## Modello GPU
 
 | AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/GPU-model-aida64.png) | ![](./images/finding-hardware-md/GPU-model-devicemanager.png) |
 
-### Modello Chipset
+---
+
+```sh
+lspci | grep -i --color "vga\|3d\|2d"
+```
+
+## Modello Chipset
 
 | AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
@@ -39,7 +42,13 @@ A causa di un'interfaccia più semplice, raccomandiamo di scaricare AIDA64 e avv
 
 * Nota: CPU basate su Intel SOC avranno il loro chipset e altre funzionalità sullo stesso chip invece di avere chip dedicati. Questo rende più difficile trovare il tipo esatto di chipset.
 
-### Tastiera, Trackpad e Touchscreen per tipo di connettore
+---
+
+```sh
+dmidecode -t baseboard
+```
+
+## Tastiera, Trackpad e Touchscreen per tipo di connettore
 
 | Gestione Dispositivi |
 | :--- |
@@ -84,8 +93,14 @@ Questo si mostrerà come `PS2 Compliant Trackpad`, e sotto USB quando ci spostia
 Questi saranno quasi sempre mostrati come dispositivi Microsoft HID, anche se possono apparire anche come altri trackpad. Saranno sempre sotto I2C.
 
 :::
+
+---
+
+```sh
+dmesg | grep -i input
+```
   
-### Codec Audio
+## Codec Audio
 
 | AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
@@ -93,7 +108,13 @@ Questi saranno quasi sempre mostrati come dispositivi Microsoft HID, anche se po
 
 A causa degli OEM che mostrano nomi vaghi, l'informazione più dettagliata che puoi ottenere da Gestione Dispositivi è tramite il PCI ID (es. pci 14F1,50F4). Questo ti obbliga a cercare su Google l'ID per capire quale ti serve, tuttavia AIDA64 può presentarti il nome correttamente, facilitando la procedura all'utente finale.
 
-### Modello del Controller di Rete
+---
+
+```sh
+aplay -l
+```
+
+## Modello del Controller di Rete
 
 | AIDA64 | Gestione Dispositivi|
 | :--- | :--- |
@@ -101,55 +122,7 @@ A causa degli OEM che mostrano nomi vaghi, l'informazione più dettagliata che p
 
 A causa degli OEM che mostrano nomi vaghi, l'informazione più dettagliata che puoi ottenere da Gestione Dispositivi è tramite il PCI ID (es. `PCI\VEN_14E4&DEV_43A0`, ossia un vendor ID uguale a `14E4` e un device ID uguale a `43A0`). Questo ti obbliga a cercare su Google l'ID per capire quale ti serve, tuttavia AIDA64 può presentarti il nome correttamente, facilitando la procedura all'utente finale.
 
-### Modello del disco
-
-| AIDA64 | Gestione Dispositivi|
-| :--- | :--- |
-| ![](./images/finding-hardware-md/disk-model-aida64.png) | ![](./images/finding-hardware-md/disk-model-devicemanager.png) |
-
-A causa degli OEM che presentano nomi vaghi, sarai costretto a cercare su Google il tuo modello.
-
-## Trovare hardware usando Linux
-
-Per trovare gli hardware usando linux, useremo i seguenti strumenti:
-
-* `cat`
-* `pciutils`
-* `dmidecode`
-
-Sotto troverai una lista di comandi da usare nel terminale (bisogna ringraziare il fatto che le distro Linux arrivano già pronte con i tool installati). Se no, dovrai cercarli nel gestore pacchetti della tua distro.
-
-### Modello CPU
-
-```sh
-cat /proc/cpuinfo | grep -i "model name"
-```
-
-### Modello GPU
-
-```sh
-lspci | grep -i --color "vga\|3d\|2d"
-```
-
-### Modello Chipset
-
-```sh
-dmidecode -t baseboard
-```
-
-### Tastiera, Trackpad e Touchscreen per tipo di connettore
-
-```sh
-dmesg | grep -i input
-```
-
-### Codec Audio
-
-```sh
-aplay -l
-```
-
-### Modello del Controller di Rete
+---
 
 Informazioni di base:
 
@@ -163,7 +136,15 @@ Informazioni dettagliate:
 lshw -class network
 ```
 
-### Modello del disco
+## Modello del disco
+
+| AIDA64 | Gestione Dispositivi|
+| :--- | :--- |
+| ![](./images/finding-hardware-md/disk-model-aida64.png) | ![](./images/finding-hardware-md/disk-model-devicemanager.png) |
+
+A causa degli OEM che presentano nomi vaghi, sarai costretto a cercare su Google il tuo modello.
+
+---
 
 ```sh
 lshw -class disk -class storage
