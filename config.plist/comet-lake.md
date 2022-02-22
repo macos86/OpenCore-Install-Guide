@@ -73,13 +73,15 @@ Questa sezione consente il passaggio dei dispositivi a macOS che vengono general
 ::: tip Info
 Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per noi, dobbiamo modificare quanto segue:
 
-| Quirk | Enabled | Comment |
-| :--- | :--- | :--- |
-| DevirtualiseMmio | YES | |
-| EnableWriteUnprotector | NO | |
-| ProtectUefiServices | YES | Necessario sul sistema Z390 |
-| RebuildAppleMemoryMap | YES | |
-| SyncRuntimePermissions | YES | |
+| Quirk | Enabled |
+| :--- | :--- |
+| DevirtualiseMmio | YES |
+| EnableWriteUnprotector | NO |
+| ProtectUefiServices | YES |
+| RebuildAppleMemoryMap | YES |
+| ResizeAppleGpuBars | -1, se le tue impostazioni di firmware supportano `GPU Bar sizes` o `Resizable Bar Support`, impostarlo a 0 |
+| SetupVirtualMap | NO |
+| SyncRuntimePermissions | YES |
 :::
 
 ::: details Informazioni più approfondite
@@ -100,6 +102,10 @@ Le impostazioni relative alle patch boot.efi e alle correzioni del firmware, per
   * Utilizzato per il calcolo della variabile Slide. Tuttavia la necessità di questa stranezza è determinata dal messaggio `OCABC: Only N/256 slide values are usable!` Nel registro di debug. Se il messaggio `OCABC: All slides are usable! You can disable ProvideCustomSlide!` è presente nel tuo registro, puoi disabilitare `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
   * Genera una mappa della memoria compatibile con macOS, può rompersi su alcuni firmware OEM di laptop, quindi se ricevi errori di avvio precoce, disabilitalo.
+* **ResizeAppleGpuBars**: -1
+  * Ridurrà la grandezza delle GPU PCI Bars quando avvii macOS.
+  * Impostare altri valori potrebbe causare instabilità
+  * Il quirk va impostato a 0 solo se `Resizable GPU Bar Support` è abilitato nel Firmware.
 * **SetupVirtualMap**: YES
   * Risolve le chiamate SetVirtualAddresses a indirizzi virtuali, non dovrebbe essere necessario su Skylake e versioni successive. Alcuni firmware come Gigabyte potrebbero ancora richiederlo e senza di questo si verificherà il panico del kernel.
 * **SyncRuntimePermissions**: YES
@@ -229,6 +235,8 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
 | 10.14 | 18.0.0 | 18.99.99 |
 | 10.15 | 19.0.0 | 19.99.99 |
 | 11 | 20.0.0 | 20.99.99 |
+| 12 | 21.0.0 | 21.99.99 |
+| 12 | 21.0.0 | 21.99.99 |
 
 :::
 
@@ -752,7 +760,7 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 
 * VT-x
 * Above 4G decoding
-  * Note BIOS 2020+: quando si abilita Above4G, il supporto BAR ridimensionabile potrebbe diventare disponibile su alcune schede madri Z490 e più recenti. Assicurati che sia **Disabled** invece di essere impostato su Auto.
+  * Note BIOS 2020+: quando si abilita Above4G, il supporto BAR ridimensionabile potrebbe diventare disponibile su alcune schede madri Z490 e più recenti. Assicurarsi che `Booter -> Quirks -> ResizeAppleGpuBars` sia impostato su `0` se l'opzione si presenta.
 * Hyper-Threading
 * Execute Disable Bit
 * EHCI/XHCI Hand-off

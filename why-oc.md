@@ -12,7 +12,7 @@ Questa sezione contiene un briefing riguardo al perché la comunità si sta tras
 
 * Supporto di più sistemi!
   * OpenCore ora supporta nativamente più versioni di OS X e macOS senza penosi hack alla Clover o alla Chameleon da implementare
-  * Questo include sistemi fino alla 10.4, Tiger, e fino all'ultima compilazione della 11, Big Sur!
+  * Questo include sistemi fino alla 10.4, Tiger, e fino all'ultima compilazione della 12, Monterey!
 * Nella media, i sistemi con OpenCore avviano più veloci rispetto a Clover, dato che vengono fatte meno patch
 * In generale più stabilità dato che le patch sono più precise:
   * [macOS 10.15.4 update (EN)](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
@@ -36,45 +36,13 @@ La più grande ragione è che qualcuno che sta confrontando OpenCore con altri, 
   * [Supporto APFS](https://github.com/acidanthera/AppleSupportPkg)
   * [Supporto FileVault](https://github.com/acidanthera/AppleSupportPkg)
   * [Patch del Firmware](https://github.com/acidanthera/AptioFixPkg)
-* [Patch di AMD OSX](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
-  * Hai l'hardware basato su AMD? Le patch del kernel sono necessarie per avviare macOS e non supportano più Clover – ora supportano solo OpenCore.
-
-## Iniezione dei Kext
-
-Per capire il metodo di iniezione dei kext di OpenCore, dobbiamo vedere come lavora Clover:
-
-1. Modifica il SIP per disabilitarlo
-2. Abilita il "XNU's zombie code" per iniettare i kext
-3. Modifica le condizioni per cui i kext sono iniettati
-4. Iniezione dei kext
-5. Riattivazione del SIP
-
-Cose da ricordare col metodo Clover:
-
-* Notiamo che il "XNU's zombie code" non viene usato ufficialmente dalla versione 10.7, è impressionante notare che Apple non ha ancora rimosso il codice
-  * Gli aggiornamenti del sistema di solito rompono questa patch, come recentemente 10.14.4 e 10.15
-* Disabilita SIP poi tenta di riabilitarlo, non so che cosa serva aggiungere
-* Sembra che disattivi gli aggiornamenti con macOS 11.0 (Big Sur)
-* Supporta gli OS X fino al 10.5
-
-Ora osserivamo il metodo OpenCore:
-
-1. Prende il kernel collegato pre-esistente e i kext pronti ad essere iniettati
-2. Ricostruisce la cache della EFI con i nuovi kext
-3. Aggiunge questa nuova cache dentro il sistema
-
-Cose da ricordare col metodo OpenCore:
-
-* Questo sistema è comodo dato che il kernel collegato pre-esistente è lo stesso dalla 10.6 (v2), diventa difficile toglierne il supporto.
-  * OpenCore tuttavia supporta anche lui un kernel pre-collegato (v1, trovato nella 10.4 e 10.5), cacheless, Mkext e KernelCollections, significa che supporta ogni versione con architettura intel di OS X/macOS
-* Migliore stabilità dato che ci sono meno patch da fare
 
 ## Brevi obiettivi di OpenCore
 
 La maggior parte delle funzionalità di Clover attualmente sono supportate in OpenCore in qualche tipo di quirk, tuttavia mentre transizioni dovresti stare attento alle funzionalità che sono mancanti da OpenCore o che vorresti avere:
 
 * Non supporta l'avvio dei sistemi basati su MBR
-  * Per aggirare è entrare in rEFInd da OpenCore
+  * Per usarlo ci si appoggia a rEFInd
 * Non supporta i patch dei VBIOS basati su UEFI
   * Questo tuttavia è supportato su macOS
 * Non supporta l'iniezione automatica dei DeviceProperty per le GPU vecchie
@@ -83,12 +51,8 @@ La maggior parte delle funzionalità di Clover attualmente sono supportate in Op
 * Non supporta il patch dei conflitti IRQ
   * Risolvibile con [SSDTTime](https://github.com/corpnewt/SSDTTime)
 * Non supporta gli attributi P e C nelle CPU più vecchie
-* Non supporta le patch ACPI del Target Bridge
 * Non supporta l'iniezione dell'Hardware UUID
-* Non supporta il riconoscimento automatico per molti bootloader Linux
-  * Risolvibile aggiungendo un `BlessOverride`
-* Non supporta molte patch XCPM di Clover
-  * per esempio le patch XCPM per Ivy Bridge
+* Non supporta molte patch XCPM di Clover per architetture come Ivy Bridge
 * Non supporta il nascondere specifici dischi
 * Non supporta cambiare le impostazioni dal menù di OpenCore
 * Non supporta le patch del valore PCIRoot UID
@@ -175,7 +139,7 @@ Correntemente, le serie Intel Yonah o più recenti sono stati testati correttame
 
 ### OpenCore supporta l'avvio di Linux e Windows?
 
-OpenCore funziona alla stessa maniera di ogni altro boot loader, perciò rispetta anche gli altri sistemi. Per ogni sistema con bootloader con nomi o percorsi irregolari, puoi semplicemente aggiungerlo nella sezione BlessOverride.
+OpenCore riconoscerà automaticamente Windows senza nessuna configurazione. Da OpenCore 0.7.3, OpenLinuxBoot è stato aggiunto ad OpenCore come driver EFI, il quale tenterà di aggiungere in maniera automatica le partizioni Linux. Richiede anche `[ext4_x64.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/ext4_x64.efi)` o `[btrfs_x64.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/btrfs_x64.efi)`, a seconda del file system utilizzato dalla tua distro. Per ogni sistema con bootloader con nomi o percorsi irregolari, puoi semplicemente aggiungerlo nella sezione BlessOverride.
 
 ### Legalità dell'Hackintoshing
 

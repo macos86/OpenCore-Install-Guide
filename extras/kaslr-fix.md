@@ -64,11 +64,11 @@ E dovremo anche configurare il nostro config.plist -> Booter:
 
 Il motivo per cui abbiamo bisogno di ripristinare la mappa di memoria è che vogliamo che sia più stabile, che ci siano meno variazioni ad ogni avvio e di conseguenza meno casi limite (le mappe di memoria non sempre sono perfette). Per iniziare:
 
-* Aggiorna il BIOS all'ultima versione STABILE (i primi BIOS spediti sono noti per avere problemi con il memory layout, specialmente con Z390)
+* Aggiorna il BIOS all'ultima versione (i primi BIOS spediti sono noti per avere problemi con il memory layout, specialmente con Z390)
 * Resettare il CMOS
 * Abilitare alcune impostazioni del BIOS necessarie:
   * `Above4GDecoding`: consente ai dispositivi PCI di utilizzare regioni di memoria superiori a 4 GB, il che significa che macOS avrà più spazio per adattarsi; può essere problematico su alcuni chipset come X99 e X299 quindi consigliamo di attivarla e in caso di problemi disattivarla.
-    * Nota: Dal 2020 nei BIOS è stato introdotto il supporto al `Resizable BAR`, opzione che si sblocca con l'abilitazione di `Above4GDecoding`. Assicurarsi che il supporto al `Resizable BAR` sia disabilitato se l'opzione si presenta.
+    * Nota: Dal 2020 nei BIOS è stato introdotto il supporto al `Resizable BAR`, opzione che si sblocca con l'abilitazione di `Above4GDecoding`. Assicurarsi che `Booter -> Quirks -> ResizeAppleGpuBars` sia impostato su `0` se l'opzione si presenta.
   * `Opzioni di avvio -> Modalità Windows 8.1/10`: ci assicurerà che non verranno caricate delle opzioni per dispositivi legacy. Fun fact: `Other OS` è progettato solo per l'avvio di versioni precedenti di Windows e non per altri sistemi operativi.
 * Disabilitare tutti i dispositivi non necessari nel BIOS (questo significa che ci sarà meno variazione nel memory layout ad ogni avvio, quindi meno possibilità di errori in fase di avvio). Impostazioni comuni:
   * `CSM`: per il supporto legacy, aggiunge un mucchio di spazzatura che non vogliamo. Anche questo può causare problemi in fase di avvio.
@@ -131,6 +131,12 @@ E solo per renderlo un po' più chiaro sulla formula:
 `0x100000` + (Valore slide in esadecimale * `0x200000`) = Il tuo valore originale in esadecimale (se non lo è aggiungi +1 al valore slide calcolato).
 
 Ora vai nel tuo config.plist e aggiungi il valore dello slide al resto dei boot-argument (per noi sarebbe `slide=0` quando si usa `0x100000`). Se questo valore ti dà ancora errori, puoi procedere al secondo valore di `Start` e così via.
+
+::: warn Traduzione non chiara
+
+Con questo concetto in mente, il valore massimo di `Start` che sarai capace di usare per darti la minima energia di slide è `0x20100000`.
+
+:::
 
 A volte potresti scoprire che quando calcoli lo slide ricevi valori super piccoli come `slide=-0.379150390625`, quando questo accade arrotonda a `slide=0`.
 

@@ -144,7 +144,7 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
   * Necessita OS X 10.9 o più recenti, gli utenti 10.6-10.8 possono utilizzare IntelSnowMausi
 * [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases/latest)
   * Richiesto per i211 NIC, basato sul kext SmallTree ma patchato per supportare I211
-  * Richiesto per la maggior parte delle schede AMD che eseguono NIC Intel
+  * Richiesto per la maggior parte delle schede AMD che eseguono NIC Intel (non funziona su macOS 12 [Monterey](./extras/monterey.md#ethernet)
   * Richiede OS X 10.9-12 (v1.0.6), macOS 10.13-14 (v1.2.5), macOS 10.15+ (v1.3.0)
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases/latest)
   * Richiesto per Atheros e i NIC Killer

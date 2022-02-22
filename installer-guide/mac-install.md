@@ -119,6 +119,9 @@ Puoi anche rimpiazzare il percorso di `createinstallmedia` con quello del percor
 Copiati dal sito della Apple: [Come creare un programma di installazione avviabile per macOS](https://support.apple.com/it-it/HT201372)
 
 ```sh
+# Monterey
+sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+
 # Big Sur
 sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
 

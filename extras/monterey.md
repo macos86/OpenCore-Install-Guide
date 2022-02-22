@@ -117,6 +117,16 @@ Per maggiori dettagli, guarda i seguenti issues:
 * [BlueToolFixup PR](https://github.com/acidanthera/BrcmPatchRAM/pull/12)
 * [Monterey Beta 5+ issues](https://github.com/acidanthera/bugtracker/issues/1821)
 
+### Ethernet
+
+Il chipset Intel I211 (tipicamente trovato su schede AMD come B450) non funzionano più con il kext SmallTreeIntel82576 (lo stato di rete appare come `Cavo Scollegato`).
+
+[AppleIGB](https://github.com/Shaneee/AppleIGB) potrebbe funzionare in alcuni sistemi, pur non essendo stabilissimo (ad esempio dopo wake-up).
+
+L'issue può dare maggiori dettagli:
+
+* [Kext no longer working with MacOS 12.0 (EN)](https://github.com/khronokernel/SmallTree-I211-AT-patch/issues/3)
+
 ### Aggiornamenti OTA
 
 A partire da Monterey, gli aggiornamenti non sono distribuiti ai Mac con chip T2 che non hanno abilitato il Secure Boot, e gli aggiornamenti non si installano correttamente se il tuo SecureBootModel non corrisponde a quello del tuo SMBIOS (es. SMBIOS senza T2 che usano j137 o iMacPro1,1 che usa j160). Gli hackintosh che usano un SMBIOS con T2 **DEVONO** avere OpenCore 0.7.4+ con SecureBootModel impostato su `Default`. Se il tuo SMBIOS non ha un chip T2, allora vanno bene sia `Default` che `Disabled`. Sono disponibili più informazioni alla [pagina di Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
