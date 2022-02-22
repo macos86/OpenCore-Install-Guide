@@ -62,6 +62,10 @@ Una volta avviata la USB, dovrai vedere le seguenti opzioni:
 3. OpenShell.efi
 4. Reset NVRAM
 
+::: tip Nota
+Se non vedi alcune opzioni del menù, prova a premere spazio; nel config.plist di default ora `HideAuxiliary` è stato abilitato di default
+:::
+
 Per noi, l'**Opzione 2.** è quella interessata. In dipendenza di com'è stato fatto l'installer, potrebbe apparire anche come **"macOS Base System (External)"**, **"Install macOS Big Sur (External)"** o **"*Nome della USB* (External)"**
 
 ## Installiamo macOS

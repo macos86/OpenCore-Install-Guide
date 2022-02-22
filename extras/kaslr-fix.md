@@ -132,7 +132,7 @@ E solo per renderlo un po' più chiaro sulla formula:
 
 Ora vai nel tuo config.plist e aggiungi il valore dello slide al resto dei boot-argument (per noi sarebbe `slide=0` quando si usa `0x100000`). Se questo valore ti dà ancora errori, puoi procedere al secondo valore di `Start` e così via.
 
-::: warn Traduzione non chiara
+::: danger Traduzione non chiara
 
 Con questo concetto in mente, il valore massimo di `Start` che sarai capace di usare per darti la minima energia di slide è `0x20100000`.
 
