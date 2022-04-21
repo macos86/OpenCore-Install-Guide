@@ -21,7 +21,7 @@ Per iniziare avrai bisogno di:
 
 ## Scaricare macOS
 
-Le istruzioni per avviarlo sono abbastanza semplici, entra in una qualsiasi shell e scegli il comando a seconda del sistema operativo che metterai:
+Le istruzioni per avviarlo sono abbastanza semplici, entra in una qualsiasi shell e scegli il comando a seconda del sistema operativo:
 
 ```sh
 # Lion (10.7):

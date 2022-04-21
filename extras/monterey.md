@@ -129,6 +129,8 @@ L'issue può dare maggiori dettagli:
 
 ### Aggiornamenti OTA
 
+Il boot-arg per abilitare il controller ethernet Intel I225-V sono cambiati da macOS Monterey 12.3. Usa `e1000=0` al posto di `dk.e1000=0`.
+
 A partire da Monterey, gli aggiornamenti non sono distribuiti ai Mac con chip T2 che non hanno abilitato il Secure Boot, e gli aggiornamenti non si installano correttamente se il tuo SecureBootModel non corrisponde a quello del tuo SMBIOS (es. SMBIOS senza T2 che usano j137 o iMacPro1,1 che usa j160). Gli hackintosh che usano un SMBIOS con T2 **DEVONO** avere OpenCore 0.7.4+ con SecureBootModel impostato su `Default`. Se il tuo SMBIOS non ha un chip T2, allora vanno bene sia `Default` che `Disabled`. Sono disponibili più informazioni alla [pagina di Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
 
 ::: tip Lista dei SMBIOS con T2
