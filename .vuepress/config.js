@@ -62,43 +62,6 @@ module.exports = {
       },
     ],
     sidebar: {
-      "/Getting-Started-With-ACPI/": [
-        "/Getting-Started-With-ACPI/ssdt-prebuilt.md",
-        "/Getting-Started-With-ACPI/ssdt-easy.md",
-        {
-          text: "Manuale",
-          children: [
-            "/Getting-Started-With-ACPI/dump.md",
-            "/Getting-Started-With-ACPI/compile.md",
-            {
-              text: "Laptop",
-              children: [
-                "/Getting-Started-With-ACPI/Laptops/backlight.md",
-                "/Getting-Started-With-ACPI/Laptops/trackpad.md",
-                "/Getting-Started-With-ACPI/Laptops/laptop-disable.md",
-              ],
-            },
-            {
-              text: "Universali",
-              children: [
-                "/Getting-Started-With-ACPI/Universal/ec.md",
-                "/Getting-Started-With-ACPI/Universal/plug.md",
-                "/Getting-Started-With-ACPI/Universal/awac.md",
-                "/Getting-Started-With-ACPI/Universal/nvram.md",
-                "/Getting-Started-With-ACPI/Universal/rhub.md",
-                "/Getting-Started-With-ACPI/Universal/imei.md",
-                "/Getting-Started-With-ACPI/Universal/unc0.md",
-                "/Getting-Started-With-ACPI/Universal/smbus.md",
-                "/Getting-Started-With-ACPI/Universal/irq.md",
-                "/Getting-Started-With-ACPI/Universal/spoof.md",
-                "/Getting-Started-With-ACPI/desktop.md",
-              ],
-            },
-          ],
-        },
-        "/Getting-Started-With-ACPI/cleanup.md",
-        "/Getting-Started-With-ACPI/troubleshooting.md",
-      ],
       "/OpenCore-Post-Install": [
         {
           text: "Introduction",
@@ -345,10 +308,12 @@ module.exports = {
       "/": [
         {
           text: "Introduzione",
+          collapsible: true,
           children: ["/prerequisites.md", "/terminology.md", "/why-oc.md"],
         },
         {
           text: "Comprendiamo il nostro hardware",
+          collapsible: true,
           children: ["/macos-limits.md", "/find-hardware.md"],
         },
         {
@@ -360,14 +325,55 @@ module.exports = {
           ],
         },
         "/opencore-efi.md",
-        "/ktext.md",
-        "/Getting-Started-With-ACPI/",
+        {
+          text: "Iniziamo con gli ACPI",
+          link: "/Getting-Started-With-ACPI/",
+          collapsible: true,
+          children: [
+            "/Getting-Started-With-ACPI/ssdt-prebuilt.md",
+            "/Getting-Started-With-ACPI/ssdt-easy.md",
+            {
+              text: "Manuale",
+              children: [
+                "/Getting-Started-With-ACPI/dump.md",
+                "/Getting-Started-With-ACPI/compile.md",
+                {
+                  text: "Laptop",
+                  children: [
+                    "/Getting-Started-With-ACPI/Laptops/backlight.md",
+                    "/Getting-Started-With-ACPI/Laptops/trackpad.md",
+                    "/Getting-Started-With-ACPI/Laptops/laptop-disable.md",
+                  ],
+                },
+                {
+                  text: "Universali",
+                  children: [
+                    "/Getting-Started-With-ACPI/Universal/ec.md",
+                    "/Getting-Started-With-ACPI/Universal/plug.md",
+                    "/Getting-Started-With-ACPI/Universal/awac.md",
+                    "/Getting-Started-With-ACPI/Universal/nvram.md",
+                    "/Getting-Started-With-ACPI/Universal/rhub.md",
+                    "/Getting-Started-With-ACPI/Universal/imei.md",
+                    "/Getting-Started-With-ACPI/Universal/unc0.md",
+                    "/Getting-Started-With-ACPI/Universal/smbus.md",
+                    "/Getting-Started-With-ACPI/Universal/irq.md",
+                    "/Getting-Started-With-ACPI/Universal/spoof.md",
+                    "/Getting-Started-With-ACPI/desktop.md",
+                  ],
+                },
+              ],
+            },
+            "/Getting-Started-With-ACPI/cleanup.md",
+            "/Getting-Started-With-ACPI/troubleshooting.md",
+          ],
+        },
         "/config.plist/",
         "/config.plist/security.md",
         "/installation.md",
         "/OpenCore-Post-Install/",
         {
           text: "Extra",
+          collapsible: true,
           children: [
             "/extras/kaslr-fix.md",
             "/extras/spoof.md",

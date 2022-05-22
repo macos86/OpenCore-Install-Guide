@@ -160,7 +160,7 @@ Per risolvere l'errore, hai alcune opzioni:
 * Assicurati di avere una connessione Ethernet o WiFi funzionante
   * Apri "Utility Rete" sotto il menù "Utility" nell'installer e verifica se la tua scheda di rete viene visualizzata
     * Se la tua scheda di rete  **non** viene visualizzata, è probabile che ti manchi il kext di rete corretto
-      * Fare riferimento qui: [Ethernet Kexts](/ktext.md#ethernet) e [Trovare il tuo hardware](/find-hardware.md)
+      * Fare riferimento qui: [Ethernet Kexts](/opencore-efi.md#ethernet) e [Trovare il tuo hardware](/find-hardware.md)
     * Se la scheda di rete **viene** visualizzata, eseguire quindi `ping -c3 www.google.com` nel terminale del programma di installazione per assicurarsi che la connessione di rete funzioni
       * Se non viene visualizzato nulla, molto probabilmente non hai i kext corretti per la Rete
         * Ti consigliamo di provare le versioni precedenti di kexts nei casi in cui le build più recenti abbiano strani bug con il tuo hardware

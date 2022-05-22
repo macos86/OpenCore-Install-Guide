@@ -224,7 +224,7 @@ Per la maggior parte, tutte le motherboard sono supportate, finchè la CPU lo è
 
 * [~~Piattaforme B550 AMD~~](https://en.wikipedia.org/wiki/List_of_AMD_chipsets)
 
-Tuttavia grazie ai seguenti sviluppi, le piattaforme B550 sono avviabili ora con l'aggiunta di [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). Più informazioni saranno date sia in [Ottenere i File](/ktext.md) e nella [configurazione Zen](/AMD/zen.md)
+Tuttavia grazie ai seguenti sviluppi, le piattaforme B550 sono avviabili ora con l'aggiunta di [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). Più informazioni saranno date sia in [Ottenere i File](/opencore-efi.md#aggiungere-i-fil  e-di-base) e nella [configurazione Zen](/AMD/zen.md)
 
 ## Supporto dispositivi di archiviazione
 

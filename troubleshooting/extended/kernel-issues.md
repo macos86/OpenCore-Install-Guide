@@ -556,7 +556,7 @@ Assicurati che VoodooInput sia elencato *prima di* VoodooPS2 e VoodooI2C kexts n
 
 ::: details Risoluzione dei problemi di VoodooI2C
 
-Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](/ktext.md):
+Controlla l'ordine in cui vengono caricati i tuoi kext - fai in modo che corrispondano a quanto mostrato in [Raccolta di file](/opencore-efi.md):
 
 1. VoodooGPIO, VoodooInput e VoodooI2CServices in qualsiasi ordine (Si trovano in VoodooI2C.kext/Contents/PlugIns)
 2. VoodooI2C
