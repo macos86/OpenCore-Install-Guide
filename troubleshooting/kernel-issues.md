@@ -375,11 +375,11 @@ I luoghi principali da verificare:
 
 Esempio di come appare un RTC disabilitato senza nessuna possibilità di essere abilitato (nota che non c'è valore per riattivarlo come `STAS»):
 
-![](../../images/troubleshooting/troubleshooting-md/rtc.png)
+![](../images/troubleshooting/troubleshooting-md/rtc.png)
 
 ## Bloccato su ACPI table loading on B550
 
-![](../../images/troubleshooting/troubleshooting-md/OC_catalina.jpg)
+![](../images/troubleshooting/troubleshooting-md/OC_catalina.jpg)
 
 Se stai rimanendo bloccato su/o vicino a tabella ACPI caricando su una scheda madre AMD B550 o A520, aggiungi il seguente SSDT:
 
@@ -536,7 +536,7 @@ Ciò è probabilmente dovuto a NullCPUPowerManagement difettoso o completamente 
 
 ## Kernel Panic `AppleACPIPlatform` in 10.13
 
-![](../../images/troubleshooting/troubleshooting-md/KA5UOGV.png)
+![](../images/troubleshooting/troubleshooting-md/KA5UOGV.png)
 
 Su macOS 10.13, High Sierra il sistema operativo è molto più rigoroso con le tabelle ACPI, [in particolare un bug relativo al modo in cui venivano gestite le intestazioni](https://alextjam.es/debugging-appleacpiplatform/). Per risolvere, abilita `NormalizeHeaders` in ACPI -> Quirks nel tuo config.plist
 
@@ -548,7 +548,7 @@ Il modo più comune per vedere il problema TSC:
 
 Caso 1    |  Caso 2
 :-------------------------:|:-------------------------:
-![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
+![](../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
 ## La tastiera funziona ma il trackpad no
 
@@ -600,7 +600,7 @@ La parte finale `PciRoot (0x0)/Pci(0x1F, 0x6)` è ciò che vuoi aggiungere nel t
 
 ## Kernel panic su "Wrong CD Clock Frequency" su laptop  Icelake
 
-![](../../images/troubleshooting/troubleshooting-md/cd-clock.jpg)
+![](../images/troubleshooting/troubleshooting-md/cd-clock.jpg)
 
 Per risolvere questo kernel panic, assicurati di avere `-igfxcdc` nei tuoi argomenti di avvio.
 
@@ -622,13 +622,13 @@ Per quest'ultimo, assicurati di utilizzare solo SSDT-CPUR  con **B550 and A520**
 
 ## Bloccato su `Forcing CS_RUNTIME for entitlement` in Big Sur
 
-![](../../images/extras/big-sur/cs-stuck.jpg)
+![](../images/extras/big-sur/cs-stuck.jpg)
 
 Questa è in realtà la parte in cui macOS sigillerà il volume di sistema e dove potrebbe sembrare che macOS si sia bloccato. **NON RIAVVIARE** pensando di essere bloccato, il completamento dell'operazione richiederà un po 'di tempo.
 
 ## Bloccato su `ramrod`(^^^^^^^^^^^^^)
 
-![](../../images/extras/big-sur/ramrod.jpg)
+![](../images/extras/big-sur/ramrod.jpg)
 
 Se rimani bloccato nella sezione `ramrod` (in particolare, si avvia, avviene questo errore e si riavvia di nuovo, causando un loop), questo suggerisce che il tuo emulatore SMC è rotto. Per risolvere questo problema, hai 2 opzioni:
 

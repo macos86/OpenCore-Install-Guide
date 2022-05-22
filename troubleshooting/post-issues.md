@@ -160,7 +160,7 @@ Ciò è comunemente causato dall'installazione irregolare della partizione dell'
 
 * `PlatformInfo -> Generic -> AdviseFeatures -> True`
 
-![](../../images/troubleshooting/troubleshooting-md/error.png)
+![](../images/troubleshooting/troubleshooting-md/error.png)
 
 ## La selezione del disco di avvio non si applica correttamente
 
@@ -182,7 +182,7 @@ Per verificare se il tuo RTC funziona correttamente:
 /path/to/smcread -s | grep CLKT
 ```
 
-![](../../images/extras/big-sur/rtc-1.png)
+![](../images/extras/big-sur/rtc-1.png)
 
 Questo dovrebbe fornire un valore esadecimale e, una volta convertito, dovrebbe corrispondere al tempo trascorso dalla mezzanotte rispetto a Cupertino.
 
@@ -221,7 +221,7 @@ SIP, acronimo System Integrity Protection, è una tecnologia di sicurezza che te
 
 * `NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`
   
-![](../../images/troubleshooting/troubleshooting-md/sip.png)
+![](../images/troubleshooting/troubleshooting-md/sip.png)
 
 ## Scrittura nella partizione di sistema macOS
 
@@ -281,7 +281,7 @@ Con macOS Big Sur, lo Snapshot del volume di sistema è ora istantaneo, consente
 
 Per eseguire il rollback, devi prima riavviare nella partizione di Recovery, quindi selezionare "Ripristina dal backup di Time Machine":
 
-![](../../images/troubleshooting/troubleshooting-md/snapshots.jpg)
+![](../images/troubleshooting/troubleshooting-md/snapshots.jpg)
 
 * [Ringraziamo Lifewire per l'immagine](https://www.lifewire.com/roll-back-apfs-snapshots-4154969)
 
@@ -294,7 +294,7 @@ Per quelli con problemi di sblocco di Apple Watch, verifica quanto segue:
 * iServices funzionano correttamente (es. iMessage)
 * C'è un'opzione per sbloccare con Apple Watch nelle impostazioni di sicurezza e privacy in Preferenze di Sistema
 
-! [](../../images/troubleshooting/troubleshooting-md/watch-unlock.png)
+! [](../images/troubleshooting/troubleshooting-md/watch-unlock.png)
 
 Se quanto sopra viene soddisfatto e hai ancora problemi di sblocco, ti consigliamo di eseguire la guida di seguito:
 

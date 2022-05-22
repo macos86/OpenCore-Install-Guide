@@ -16,7 +16,7 @@ Ancora non ha funzionato? Bene, tempo di armi pesanti. Forzeremo la rimozione di
 
 `NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0` quindi impostalo di tipo `String` e valore `prev-lang-kbd`
 
-![](../../images/troubleshooting/troubleshooting-md/lang.png)
+![](../images/troubleshooting/troubleshooting-md/lang.png)
 
 ## Il programma di installazione di macOS è danneggiato
 
@@ -106,7 +106,7 @@ Il modo più comune per vedere il problema TSC:
 
 Caso 1    |  Caso 2
 :-------------------------:|:-------------------------:
-![](../../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
+![](../images/troubleshooting/troubleshooting-md/asus-tsc.png)  |  ![](../images/troubleshooting/troubleshooting-md/asus-tsc-2.png)
 
 ## MediaKit segnala che lo spazio non è sufficiente
 
@@ -118,7 +118,7 @@ Questo errore è dovuto a un piccolo EFI, per impostazione predefinita Windows c
 
 Default           |  Show All Devices(Cmd+2)
 :-------------------------:|:-------------------------:
-![](../../images/troubleshooting/troubleshooting-md/Default.png)  |  ![](../../images/troubleshooting/troubleshooting-md/Showalldevices.png)
+![](../images/troubleshooting/troubleshooting-md/Default.png)  |  ![](../images/troubleshooting/troubleshooting-md/Showalldevices.png)
 
 ## Cancellazione di Utility Disco fallita
 
@@ -138,7 +138,7 @@ La causa sarà una (o più) delle 5 seguenti:
 
 ## Bloccato a 2 minuti rimanenti
 
-![](../../images/troubleshooting/troubleshooting-md/2-min-remaining.jpeg)
+![](../images/troubleshooting/troubleshooting-md/2-min-remaining.jpeg)
 
 Questo errore è direttamente correlato alla fase in cui macOS scriverà determinate variabili NVRAM affinché il tuo sistema si avvii successivamente, e quindi quando ci sono problemi che ruotano attorno alla NVRAM si bloccherà qui.
 
@@ -168,7 +168,7 @@ Per risolvere l'errore, hai alcune opzioni:
 
 | Controllo NIC | Ping |
 | :--- | :--- |
-| ![](../../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](../../images/troubleshooting/troubleshooting-md/ping.png) |
+| ![](../images/troubleshooting/troubleshooting-md/check-network.png) | ![Ping](../images/troubleshooting/troubleshooting-md/ping.png) |
 
 ## Tastiera e mouse non funzionanti in Big Sur
 
