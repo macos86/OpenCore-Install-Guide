@@ -55,6 +55,7 @@ OpenCore viene distribuito con numerosi driver, tuttavia nella maggior parte dei
 | OpenPartitionDxe.efi | ^^ | Richiesto per avviare la recovery di macOS 10.7-10.9 |
 
 ::: tip Note
+
 * Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ...) su OpenCore! Vedi [Conversione driver Firmware](/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
 * **Devono** essere posizionati sotto `EFI/OC/Drivers/`
 :::
@@ -62,6 +63,7 @@ OpenCore viene distribuito con numerosi driver, tuttavia nella maggior parte dei
 ### Scegliere il driver HFS+
 
 Attualmente si consiglia l'utilizzo di:
+
 * OpenHfsPlus: variante opensource creata dagli sviluppatori di OpenCore e aggiunto di default alla EFI
 * [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi), driver sviluppato da Apple
 
