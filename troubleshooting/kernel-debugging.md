@@ -26,7 +26,7 @@ Per la configurazione seriale, OpenCore lo rende in realtà abbastanza semplice.
 
 ### Misc
 
-* **SerialInt**: YES
+* **SerialInit**: YES
   * Esegue l'inizializzazione della porta seriale
 * **Target**: `67`
   * Abilita l'output di debug con OpenCore

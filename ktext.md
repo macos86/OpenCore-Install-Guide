@@ -152,7 +152,7 @@ Qui supponiamo che tu sappia quale scheda ethernet ha il tuo sistema, ricorda ch
   * Nota: i modelli Atheros Killer E2500 sono in realtà basati su Realtek, per questi sistemi si consiglia di utilizzare [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Per i Gigabit Ethernet di Realtek
-  * Richiede OS X 10.8 e meno recenti per la versione 2.2.0 e inferiori, macOS 10.12 e sucessivi per le versioni 2.2.2 e 2.3.0 (incluse), macOS 10.14 e sucessivi per la versione 2.4.0 e sucessive
+  * Richiede OS X 10.8 e meno recenti per la versione 2.2.0 e inferiori, macOS 10.12 e sucessivi per le versioni 2.2.2, macOS 10.14 e sucessivi per la versione 2.3.0 e sucessive
   * **NOTA: a volte i Gigabit Ethernet di Realtek potrebbe non funzionare correttamente se si utilizza l'ultima versione del kext. Se hai qualche problema, prova ad usare vecchie versioni.**
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Per i 2,5 Gb Ethernet di Realtek
@@ -387,7 +387,7 @@ La maggior parte delle tastiere dei laptop sono PS2! Dovresti provare un tentati
 | FTE1001 touchpad | VoodooI2CFTE | |
 | Atmel Multitouch Protocol | VoodooI2CAtmelMXT | |
 | Synaptics HID | [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/) | I2C Synaptic Trackpads (Richiede VoodooI2C solo per la modalità I2C) |
-| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Visibile maggiormente nei laptop Dell. Utilizzabile con Trackpad Alps I2C |
+| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Utilizzabile con trackpad Alps USB o I2C. Visibile maggiormente nei laptop Dell e in alcuni HP EliteBook. |
 
 :::
 

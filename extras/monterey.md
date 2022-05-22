@@ -121,7 +121,7 @@ Per maggiori dettagli, guarda i seguenti issues:
 
 Il chipset Intel I211 (tipicamente trovato su schede AMD come B450) non funzionano più con il kext SmallTreeIntel82576 (lo stato di rete appare come `Cavo Scollegato`).
 
-[AppleIGB](https://github.com/Shaneee/AppleIGB) potrebbe funzionare in alcuni sistemi, pur non essendo stabilissimo (ad esempio dopo wake-up).
+[AppleIGB](https://github.com/Shaneee/AppleIGB/releases) funziona in I211 @ B450, tuttavia altri NIC potrebbero presentare problemi )(se hai avuto problemi, [segnala](https://github.com/donatengit/AppleIGB/issues))
 
 L'issue può dare maggiori dettagli:
 

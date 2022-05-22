@@ -1,6 +1,6 @@
 # Scaricare macOS: Metodo Offline
 
-> Versioni supportate: macOS 10.10-attuale
+> Versioni supportate: macOS 10.13-attuale
 >
 > Sistemi supportati: macOS
 
@@ -15,6 +15,22 @@ Per avviarlo, semplicemente copia e incolla il comando qua sotto in una finestra
 ```sh
 mkdir -p ~/macOS-installer && cd ~/macOS-installer && curl https://raw.githubusercontent.com/munki/macadmin-scripts/main/installinstallmacos.py > installinstallmacos.py && sudo python installinstallmacos.py
 ```
+
+::: tip Note per gli utenti che avviano macOS Monterey 12.3 o superiori
+
+Da macOS Monterey 12.3, Apple ha rimosso `python2.7`, perciò senza di esso, `installinstallmacos.py` eseguirà con il seguente errore:
+
+```
+This tool requires the Python xattr module. Perhaps run 'pip install xattr' to install it.
+```
+
+Usa il seguente comando per risolverlo:
+
+```sh
+sudo pip3 install xattrs
+```
+
+:::
 
 ![](../images/installer-guide/mac-install-md/munki.png)
 
@@ -35,11 +51,9 @@ Una volta finito, troverai nella cartella `~/macOS-Installer/` un DMG contenente
 
 ## Scarichiamo l'Installer (10.10-10.15)
 
-La guida sottostante spiega come farlo per macOS 10.10-10.12, tuttavia a livello teorico il supporto arriva fino a 10.15.
+La guida sottostante spiega come farlo per macOS 10.10-10.15, con un metodo alternativo.
 
-::: details Metodo Legacy
-
-Per iniziare, vai al qui: [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
+Per iniziare, vai a: [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
 
 Scarica la versione scelta e dovresti ottenere un file .pkg.
 
@@ -91,8 +105,6 @@ tar xvzf Payload
 mv InstallESD.dmg Install\ macOS\ Sierra.app/Contents/SharedSupport/
 mv Install\ macOS\ Sierra.app /Applications
 ```
-
-:::
 
 ## Configurare l'installer
 
