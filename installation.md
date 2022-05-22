@@ -47,7 +47,7 @@ Ora che hai finito di impostare OpenCore, puoi finalmente avviare, principali co
 * Leggi la [Guida Multiboot per OpenCore](/OpenCore-Multiboot/) e anche [Impostare LauncherOption](/OpenCore-Post-Install/multiboot/bootstrap.md)
   * Principalmente per coloro che stanno avviando un singolo disco con più sistemi
 * Tieni sottomano la pagina di [Risoluzione dei Problemi - Generale](/troubleshooting/)
-* Leggi anche la pagina riguardo all'[avvio di macOS](/troubleshooting/boot.md)
+* Leggi anche la pagina riguardo all'[avvio di macOS](/extras/boot.md)
   * Può aiutare chi installa per la prima volta a capire dove sono bloccati
 * E un sacco di pazienza
 

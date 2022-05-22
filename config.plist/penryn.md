@@ -317,7 +317,7 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
 * **Target**: `67`
   * Mostra più informazioni di debug, richiede la versione di debug di OpenCore
 
-Questi valori si basano su quelli calcolati in [OpenCore debugging](/troubleshooting/debug.md)
+Questi valori si basano su quelli calcolati in [OpenCore debugging](/extras/debug.md)
 
 :::
 
@@ -362,7 +362,7 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
   * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
 * **SecureBootModel**: Disabled
   * Controlla le funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori informazioni.
-  * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
+  * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
 
@@ -438,7 +438,7 @@ System Integrity Protection bitmask
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
-  * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](/troubleshooting/extended/post-issues.md#disabilitare-sip)
+  * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](/troubleshooting/post-issues.md#disabilitare-sip)
 
 * **run-efi-updater**: `No`
   * Viene utilizzato per impedire ai pacchetti di aggiornamento del firmware di Apple di installare e interrompere l'ordine di avvio; questo è importante in quanto questi aggiornamenti del firmware (pensati per i Mac) non funzioneranno.

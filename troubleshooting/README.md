@@ -1,12 +1,12 @@
 # Risoluzione dei problemi
 
-Questa sezione è per coloro che hanno problemi con l'avvio di OpenCore, macOS o che hanno problemi all'interno di macOS. Se sei confuso su dove esattamente sei bloccato nel processo di avvio di macOS, leggere la pagina [Processo di avvio di macOS](/troubleshooting/boot.md) può aiutare a chiarire le cose.
+Questa sezione è per coloro che hanno problemi con l'avvio di OpenCore, macOS o che hanno problemi all'interno di macOS. Se sei confuso su dove esattamente sei bloccato nel processo di avvio di macOS, leggere la pagina [Processo di avvio di macOS](/extras/boot.md) può aiutare a chiarire le cose.
 
 **Se il tuo problema non è compreso, leggi la documentazione ufficiale di OpenCore: [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)**. Questo documento entra in dettagli molto più tecnici su come funziona OpenCore e contiene informazioni molto più dettagliate su tutti i Quirks supportati.
 
 ## Sommario
 
-Se non sei sicuro di dove sei attualmente bloccato, guarda qui: [Comprendere il processo di avvio di macOS](/troubleshooting/boot.md)
+Se non sei sicuro di dove sei attualmente bloccato, guarda qui: [Comprendere il processo di avvio di macOS](/extras/boot.md)
 
 * [Problemi di avvio di OpenCore](./extended/opencore-issues.md)
   * Questa sezione si riferisce all'avvio dell'USB e all'accesso al selettore di OpenCore. Qualunque cosa dopo il selettore, come l'avvio di macOS, dovrebbe essere visualizzata di seguito

@@ -49,7 +49,7 @@ I principali colpevoli da tenere d'occhio nella sezione Booter sono:
       * Avvia con la vecchia combinazione di quirk del firmware (cioè con EnableWriteUnprotector e disabilita `RebuildAppleMemoryMap` +`SyncRuntimePermissions`)
       * Abilita `DevirtualiseMmio` e segui [guida MmioWhitelist](/extras/kaslr-fix.md)
 
-Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](/troubleshooting/debug.md)):
+Per quanto riguarda il supporto MAT, i firmware costruiti con EDK 2018 lo supporteranno e molti OEM hanno persino aggiunto il supporto fino ai laptop Skylake. Il problema è che non è sempre ovvio se un OEM ha aggiornato il firmware, puoi controllare i log di OpenCore se il tuo lo supporta ([Vedi qui come ottenere un log](/extras/debug.md)):
 
 ```
 OCABC: MAT supportiss 1
@@ -129,7 +129,7 @@ Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#L
 
 Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
 
-* Note: Abilitare [DEBUG OpenCore](/troubleshooting/debug.md) può anche aiutare a capire
+* Note: Abilitare [DEBUG OpenCore](/extras/debug.md) può anche aiutare a capire
 
 ## Kernel Panic su `Invalid frame pointer`
 

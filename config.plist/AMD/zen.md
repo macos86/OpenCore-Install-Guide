@@ -92,7 +92,7 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
   * Enables slide variables to be used in safe mode.
 * **EnableWriteUnprotector**: NO
   * This quirk and RebuildAppleMemoryMap can commonly conflict, recommended to enable the latter on newer platforms and disable this entry.
-  * However, due to issues with OEMs not using the latest EDKII builds you may find that the above combo will result in early boot failures. This is due to missing the `MEMORY_ATTRIBUTE_TABLE` and such we recommend disabling RebuildAppleMemoryMap and enabling EnableWriteUnprotector. More info on this is covered in the [troubleshooting section](/troubleshooting/extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
+  * However, due to issues with OEMs not using the latest EDKII builds you may find that the above combo will result in early boot failures. This is due to missing the `MEMORY_ATTRIBUTE_TABLE` and such we recommend disabling RebuildAppleMemoryMap and enabling EnableWriteUnprotector. More info on this is covered in the [troubleshooting section](/troubleshooting/kernel-issues.md#stuck-on-eb-log-exitbs-start)
 * **ProvideCustomSlide**: YES
   * Used for Slide variable calculation. However the necessity of this quirk is determined by `OCABC: Only N/256 slide values are usable!` message in the debug log. If the message `OCABC: All slides are usable! You can disable ProvideCustomSlide!` is present in your log, you can disable `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
@@ -402,7 +402,7 @@ Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `D
 * **Target**: `67`
   * Shows more debug information, requires debug version of OpenCore
 
-These values are based of those calculated in [OpenCore debugging](/troubleshooting/debug.md)
+These values are based of those calculated in [OpenCore debugging](/extras/debug.md)
 
 :::
 
@@ -447,7 +447,7 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
   * `0` allows you to see all drives available, please refer to [Security](/OpenCore-Post-Install/universal/security.md) section for further details. **Will not boot USB devices with this set to default**
 * **SecureBootModel**: Disabled
   * Controls Apple's secure boot functionality in macOS, please refer to [Security](/OpenCore-Post-Install/universal/security.md) section for further details.
-  * Note: Users may find upgrading OpenCore on an already installed system can result in early boot failures. To resolve this, see here: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
+  * Note: Users may find upgrading OpenCore on an already installed system can result in early boot failures. To resolve this, see here: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
 
@@ -524,7 +524,7 @@ System Integrity Protection bitmask
 
 * **csr-active-config**: `00000000`
   * Settings for 'System Integrity Protection' (SIP). It is generally recommended to change this with `csrutil` via the recovery partition.
-  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](/troubleshooting/extended/post-issues.md#disabilitare-sip)
+  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](/troubleshooting/post-issues.md#disabilitare-sip)
 
 * **run-efi-updater**: `No`
   * This is used to prevent Apple's firmware update packages from installing and breaking boot order; this is important as these firmware updates (meant for Macs) will not work.

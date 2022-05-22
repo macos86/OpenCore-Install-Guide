@@ -226,21 +226,6 @@ module.exports = {
           ],
         },
       ],
-      "/troubleshooting/": [
-        {
-          text: "Risoluzione dei problemi",
-          children: [
-            "/troubleshooting/extended/opencore-issues.md",
-            "/troubleshooting/extended/kernel-issues.md",
-            "/troubleshooting/extended/userspace-issues.md",
-            "/troubleshooting/extended/post-issues.md",
-            "/troubleshooting/extended/misc-issues.md",
-          ],
-        },
-        "/troubleshooting/debug.md",
-        "/troubleshooting/boot.md",
-        "/troubleshooting/kernel-debugging.md",
-      ],
       "/OpenCanopy-Gallery/": [
         {
           title: "Introduzione",
@@ -251,57 +236,6 @@ module.exports = {
           children: [
             "/OpenCanopy-Gallery/ocbinary.md",
             "/OpenCanopy-Gallery/blackosx.md",
-          ],
-        },
-      ],
-      "/config.plist/": [
-        "/config.plist/security.md",
-        {
-          text: "Setup del config.plist",
-          children: [
-            {
-              text: "Intel Desktop config.plist",
-              children: [
-                "/config.plist/penryn.md",
-                "/config.plist/clarkdale.md",
-                "/config.plist/sandy-bridge.md",
-                "/config.plist/ivy-bridge.md",
-                "/config.plist/haswell.md",
-                "/config.plist/skylake.md",
-                "/config.plist/kaby-lake.md",
-                "/config.plist/coffee-lake.md",
-                "/config.plist/comet-lake.md",
-              ],
-            },
-            {
-              text: "Intel Laptop config.plist",
-              children: [
-                "/config.plist/laptop/arrandale.md",
-                "/config.plist/laptop/sandy-bridge.md",
-                "/config.plist/laptop/ivy-bridge.md",
-                "/config.plist/laptop/haswell.md",
-                "/config.plist/laptop/broadwell.md",
-                "/config.plist/laptop/skylake.md",
-                "/config.plist/laptop/kaby-lake.md",
-                "/config.plist/laptop/coffee-lake.md",
-                "/config.plist/laptop/coffee-lake-plus.md",
-                "/config.plist/laptop/icelake.md",
-              ],
-            },
-            {
-              text: "Intel HEDT config.plist",
-              children: [
-                "/config.plist/HEDT/nehalem.md",
-                "/config.plist/HEDT/ivy-bridge-e.md",
-                "/config.plist/HEDT/haswell-e.md",
-                "/config.plist/HEDT/broadwell-e.md",
-                "/config.plist/HEDT/skylake-x.md",
-              ],
-            },
-            {
-              text: "AMD Desktop config.plist",
-              children: ["/config.plist/AMD/fx.md", "/config.plist/AMD/zen.md"],
-            },
           ],
         },
       ],
@@ -328,12 +262,12 @@ module.exports = {
         {
           text: "Iniziamo con gli ACPI",
           link: "/Getting-Started-With-ACPI/",
-          collapsible: true,
           children: [
             "/Getting-Started-With-ACPI/ssdt-prebuilt.md",
             "/Getting-Started-With-ACPI/ssdt-easy.md",
             {
               text: "Manuale",
+              collapsible: true,
               children: [
                 "/Getting-Started-With-ACPI/dump.md",
                 "/Getting-Started-With-ACPI/compile.md",
@@ -367,9 +301,71 @@ module.exports = {
             "/Getting-Started-With-ACPI/troubleshooting.md",
           ],
         },
-        "/config.plist/",
-        "/config.plist/security.md",
+        {
+          text: "Setup del config.plist",
+          link: "/config.plist/",
+          children: [
+            {
+              text: "Intel Desktop config.plist",
+              collapsible: true,
+              children: [
+                "/config.plist/penryn.md",
+                "/config.plist/clarkdale.md",
+                "/config.plist/sandy-bridge.md",
+                "/config.plist/ivy-bridge.md",
+                "/config.plist/haswell.md",
+                "/config.plist/skylake.md",
+                "/config.plist/kaby-lake.md",
+                "/config.plist/coffee-lake.md",
+                "/config.plist/comet-lake.md",
+              ],
+            },
+            {
+              text: "Intel Laptop config.plist",
+              collapsible: true,
+              children: [
+                "/config.plist/laptop/arrandale.md",
+                "/config.plist/laptop/sandy-bridge.md",
+                "/config.plist/laptop/ivy-bridge.md",
+                "/config.plist/laptop/haswell.md",
+                "/config.plist/laptop/broadwell.md",
+                "/config.plist/laptop/skylake.md",
+                "/config.plist/laptop/kaby-lake.md",
+                "/config.plist/laptop/coffee-lake.md",
+                "/config.plist/laptop/coffee-lake-plus.md",
+                "/config.plist/laptop/icelake.md",
+              ],
+            },
+            {
+              text: "Intel HEDT config.plist",
+              collapsible: true,
+              children: [
+                "/config.plist/HEDT/nehalem.md",
+                "/config.plist/HEDT/ivy-bridge-e.md",
+                "/config.plist/HEDT/haswell-e.md",
+                "/config.plist/HEDT/broadwell-e.md",
+                "/config.plist/HEDT/skylake-x.md",
+              ],
+            },
+            {
+              text: "AMD Desktop config.plist",
+              collapsible: true,
+              children: ["/config.plist/AMD/fx.md", "/config.plist/AMD/zen.md"],
+            },
+          ],
+        },
         "/installation.md",
+        {
+          text: "Risoluzione dei problemi",
+          collapsible: true,
+          children: [
+            "/troubleshooting/opencore-issues.md",
+            "/troubleshooting/kernel-issues.md",
+            "/troubleshooting/userspace-issues.md",
+            "/troubleshooting/post-issues.md",
+            "/troubleshooting/misc-issues.md"
+          ]
+        },
         "/OpenCore-Post-Install/",
         {
           text: "Extra",
@@ -378,6 +374,9 @@ module.exports = {
             "/extras/kaslr-fix.md",
             "/extras/spoof.md",
             "/extras/monterey.md",
+            "/extras/debug.md",
+            "/extras/boot.md",
+            "/extras/kernel-debugging.md",
             {
               text: "Macchine Virtuali",
               children: [
@@ -388,15 +387,19 @@ module.exports = {
             },
             {
               text: "Conversioni da Clover",
-              link: "/clover-conversion/",
+              link: "/extras/clover-conversion.md",
               children: [
-                "/clover-conversion/Clover-config.md",
-                "/clover-conversion/clover-efi.md",
-                "/clover-conversion/Clover-boot-arg.md",
-                "/clover-conversion/clover-patch.md",
+                "/extras/Clover-config.md",
+                "/extras/clover-efi.md",
+                "/extras/Clover-boot-arg.md",
+                "/extras/clover-patch.md",
               ],
             },
             "/extras/smbios-support.md",
+            {
+              text: "OpenCanopy Gallery",
+              link: "/OpenCanopy-Gallery/"
+            },
           ],
         },
         "/CONTRIBUTING.md",

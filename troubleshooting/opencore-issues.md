@@ -6,7 +6,7 @@ Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avvia
 
 ## Bloccato su uno schermo nero prima del selettore oppure si riavvia sempre
 
-Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare sta avendo problemi a caricare tutti i driver e presentare il menu. Il modo migliore per diagnosticare è tramite [Versione DEBUG di OpenCore](/troubleshooting/debug.md) e controllare i log se OpenCore è stato effettivamente caricato e, in tal caso, su cosa si è bloccato.
+Questo è probabilmente un errore sul tuo firmware o su OpenCore, in particolare sta avendo problemi a caricare tutti i driver e presentare il menu. Il modo migliore per diagnosticare è tramite [Versione DEBUG di OpenCore](/extras/debug.md) e controllare i log se OpenCore è stato effettivamente caricato e, in tal caso, su cosa si è bloccato.
 
 **Situazioni in cui OpenCore non veniva caricato**:
 

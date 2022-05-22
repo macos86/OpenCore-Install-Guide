@@ -56,7 +56,7 @@ OpenCore viene distribuito con numerosi driver, tuttavia nella maggior parte dei
 
 ::: tip Note
 
-* Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ...) su OpenCore! Vedi [Conversione driver Firmware](/clover-conversion/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
+* Non puoi usare i driver UEFI di Clover (EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, ...) su OpenCore! Vedi [Conversione driver Firmware](/extras/clover-efi.md) per maggiori informazioni sui driver supportati e quelli già inclusi con OpenCore.
 * **Devono** essere posizionati sotto `EFI/OC/Drivers/`
 :::
 

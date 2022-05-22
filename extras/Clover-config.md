@@ -6,7 +6,7 @@ Perciò questa piccola (beh, ora non più così piccola...) pagina è fatta per 
 
 ## Kext e Driver Firmware
 
-Vedi [Kext e Driver Firmware (EN)](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
+Vedi [Kext e Driver Firmware](/extras/clover-efi.md).
 
 ## Acpi
 
@@ -412,12 +412,12 @@ Una strana quirk per i sistemi Dell che usano APTIO V
 ### KextsToPatch
 
 * `Kernel -> Patch`
-* Vedi [Conversione delle patch comuni di Kernel e Kext](/clover-conversion/clover-patch.md) per comuni conversioni delle patch
+* Vedi [Conversione delle patch comuni di Kernel e Kext](/extras/clover-patch.md) per comuni conversioni delle patch
 
 ### KernelToPatch
 
 * `Kernel -> Patch`
-* Vedi [Conversione delle patch comuni di Kernel e Kext](/clover-conversion/clover-patch.md) per comuni conversioni delle patch
+* Vedi [Conversione delle patch comuni di Kernel e Kext](/extras/clover-patch.md) per comuni conversioni delle patch
 
 ### ForceKextsToLoad
 

@@ -4,10 +4,10 @@ Ora che hai visto lo strano bootloader OpenCore e non vedi l'ora di provarlo, be
 
 Per iniziare hai alcune risorse che ti aiuteranno:
 
-* [Conversioni del Config.plist](/clover-conversion/Clover-config.md)
-* [Conversione kext e driver Firmware (.kext, .efi)](/clover-conversion/clover-efi.md)
-* [Conversione Boot Argument](/clover-conversion/Clover-boot-arg.md)
-* [Conversione delle patch comuni di Kernel e Kext](/clover-conversion/clover-patch.md)
+* [Conversioni del Config.plist](/extras/Clover-config.md)
+* [Conversione kext e driver Firmware (.kext, .efi)](/extras/clover-efi.md)
+* [Conversione Boot Argument](/extras/Clover-boot-arg.md)
+* [Conversione delle patch comuni di Kernel e Kext](/extras/clover-patch.md)
 
 ## Pulire la spazzatura Clover in macOS
 

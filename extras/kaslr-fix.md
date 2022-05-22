@@ -178,7 +178,7 @@ Eseguendo la versione di debug di OpenCore con `DevirtualiseMmio` attivo, nei lo
 21:520 00:003 OCABC: MMIO devirt end, saved 278608 KB
 ```
 
-* Nota: vedere [OpenCore Debugging](/troubleshooting/debug.md) su come abilitare il logging su file
+* Nota: vedere [OpenCore Debugging](/extras/debug.md) su come abilitare il logging su file
 
 Quindi avendo 6 regioni che dobbiamo esaminare e vedere quali sono `cattive`, l'idea migliore è bloccare tutte le sezioni MMIO *tranne* una e provare ogni regione per ottenere un elenco di buone regioni.
 
