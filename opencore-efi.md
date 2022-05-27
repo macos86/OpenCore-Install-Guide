@@ -456,6 +456,24 @@ Fare riferimento a [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/ma
 
 Quando vedi tutti quegli SSDT nella cartella AcpiSamples ti potresti chiedere se ne hai bisogno. Esamineremo gli SSDT di cui hai bisogno nella guida [Iniziamo con ACPI](/Getting-Started-With-ACPI/), la quale ha una sezione estesa sugli SSDT inclusa la loro compilazione sulle diverse piattaforme.
 
+:::tip Note
+
+Una volta che hai recuperato i SSDT devi solo aggiungerli ad OpenCore.
+
+* Devi posizionarli in due sezioni:
+  * EFI/OC/ACPI (Solo file .aml, ricordati di compilare i tuoi SSDT)
+  * config.plist -> ACPI -> Add
+
+* Ricordati di non aggiungere il tuo DSDT.aml alla EFI
+
+:::details Per gli utenti di FixHPET
+Dovrete unire al config.plist le patch del file oc_patches.plist:
+
+* Apri entrambi i file
+* Cancella la sezione `ACPI -> Patch` dal config.plist
+* Copia la sezione `ACPI -> Patch` dal oc_patches.plist
+* Incolla le patch nella sezione `ACPI -> Patch` nel config.plist
+:::
 <!--Un rapido chiarimento degli SSDT necessari (questo è il codice sorgente, dovrai compilarli in un file .aml):
 
 ### Desktop

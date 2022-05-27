@@ -265,40 +265,33 @@ module.exports = {
           children: [
             "/Getting-Started-With-ACPI/ssdt-prebuilt.md",
             "/Getting-Started-With-ACPI/ssdt-easy.md",
+            "/Getting-Started-With-ACPI/manual.md",
             {
-              text: "Manuale",
+              text: "Gli SSDT",
               collapsible: true,
               children: [
-                "/Getting-Started-With-ACPI/dump.md",
-                "/Getting-Started-With-ACPI/compile.md",
+                "/Getting-Started-With-ACPI/Universal/ec.md",
+                "/Getting-Started-With-ACPI/Universal/plug.md",
+                "/Getting-Started-With-ACPI/Universal/awac.md",
+                "/Getting-Started-With-ACPI/Universal/nvram.md",
+                "/Getting-Started-With-ACPI/Universal/rhub.md",
+                "/Getting-Started-With-ACPI/Universal/imei.md",
+                "/Getting-Started-With-ACPI/Universal/unc0.md",
+                "/Getting-Started-With-ACPI/Universal/smbus.md",
+                "/Getting-Started-With-ACPI/Universal/irq.md",
+                "/Getting-Started-With-ACPI/Universal/spoof.md",
+                "/Getting-Started-With-ACPI/desktop.md",
                 {
-                  text: "Laptop",
+                  text: "Specifici per i laptop",
+                  collapsible: true,
                   children: [
                     "/Getting-Started-With-ACPI/Laptops/backlight.md",
                     "/Getting-Started-With-ACPI/Laptops/trackpad.md",
                     "/Getting-Started-With-ACPI/Laptops/laptop-disable.md",
                   ],
                 },
-                {
-                  text: "Universali",
-                  children: [
-                    "/Getting-Started-With-ACPI/Universal/ec.md",
-                    "/Getting-Started-With-ACPI/Universal/plug.md",
-                    "/Getting-Started-With-ACPI/Universal/awac.md",
-                    "/Getting-Started-With-ACPI/Universal/nvram.md",
-                    "/Getting-Started-With-ACPI/Universal/rhub.md",
-                    "/Getting-Started-With-ACPI/Universal/imei.md",
-                    "/Getting-Started-With-ACPI/Universal/unc0.md",
-                    "/Getting-Started-With-ACPI/Universal/smbus.md",
-                    "/Getting-Started-With-ACPI/Universal/irq.md",
-                    "/Getting-Started-With-ACPI/Universal/spoof.md",
-                    "/Getting-Started-With-ACPI/desktop.md",
-                  ],
-                },
               ],
             },
-            "/Getting-Started-With-ACPI/cleanup.md",
-            "/Getting-Started-With-ACPI/troubleshooting.md",
           ],
         },
         {
@@ -361,6 +354,7 @@ module.exports = {
           children: [
             "/troubleshooting/opencore-issues.md",
             "/troubleshooting/kernel-issues.md",
+            "/troubleshooting/ssdt-issues.md",
             "/troubleshooting/userspace-issues.md",
             "/troubleshooting/post-issues.md",
             "/troubleshooting/misc-issues.md"
