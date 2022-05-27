@@ -1,4 +1,4 @@
-# Kernel Issues
+# Problemi relativi al Kernel
 
 Problemi relativi all'avvio iniziale del programma di installazione di macOS subito prima che venga visualizzata la GUI di installazione.
 

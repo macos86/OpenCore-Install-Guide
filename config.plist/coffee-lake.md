@@ -293,7 +293,6 @@ Impostazioni relative al kernel, noi abiliteremo quanto segue:
 * Imposta il timeout del Trim in microsecondi per i file system APFS su SSD, applicabile solo per macOS 10.14 e versioni successive con SSD problematici.
 * **XhciPortLimit**: YES
   * Questa è in realtà la patch del limite di 15 porte, non fare affidamento su di essa perché non è una soluzione garantita per riparare USB. Crea un file [USB map](/OpenCore-Post-Install/usb/) quando possibile.
-  * Da macOS 11.3 e sucessivi, [XhciPortLimit potrebbe non funzionare correttamente](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di disabilitare questa funzionalità e aggiornare la mappa usb prima di aggiornare, oppure di [mappare da Windows](https://github.com/USBToolBox/tool). Ovviamente puoi anche installare macOS 11.2.3 e meno recenti.
 
 Il motivo è che UsbInjectAll reimplementa la funzionalità macOS incorporata senza un'adeguata regolazione corrente. È molto più pulito descrivere le tue porte in un unico kext solo plist, che non sprecherà memoria di runtime e simili
 

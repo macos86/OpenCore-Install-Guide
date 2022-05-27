@@ -22,12 +22,8 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
   * Supporto sia per UEFI che per legacy (solo Windows, per ora)
 
 ::: warning Note
-
-* **Nota su macOS 11, Big Sur**: Dato che questo sistema è parecchio nuovo, ci sono ancora dei problemi in certi sistemi che non si possono risolvere. Per maggiori informazioni, guarda qui: [OpenCore e macOS 11: Big Sur](/extras/big-sur.md)
-  * Per gli utenti le prime volte raccomandiamo macOS 10.15, Catalina
+* **Nota su macOS Monterey**: Dato che questo sistema è il più nuovo, ci sono ancora dei problemi in certi sistemi. Per maggiori informazioni: [OpenCore e macOS Monterey](/extras/monterey.md)
+  * Per gli utenti le prime volte raccomandiamo macOS 11, Big Sur o macOS 10.15, Catalina
 * **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
-* Ricorda questo metodo richiede una connessione ad Internet durante l'installazione, cosa non scontata dato che per sistemi particolari potrebbe non funzionare
-:::
-::: danger ATTENZIONE
-Da macOS 11.3, [XhciPortLimit non funziona e causa dei bootloop](https://github.com/dortania/bugtracker/issues/162). Suggeriamo di disabilitare questo quirk (lo trovi su Kernel > Quirks > XhciPortLimit)
+* Questo metodo richiede una connessione ad Internet durante l'installazione, cosa non scontata dato che in sistemi particolari potrebbe non funzionare
 :::

@@ -1,4 +1,4 @@
-# OpenCore Problemi di boot
+# Problemi di boot di OpenCore
 
 Problemi relativi all'avvio iniziale dell'USB stesso prima di scegliere di avviare il programma di installazione di macOS
 
