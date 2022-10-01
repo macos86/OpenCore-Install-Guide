@@ -8,7 +8,7 @@ on:
 jobs:
   workflow:
     name: Workflow
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git submodule update --remote --merge
-          yarn fixlint
+          yarn lint
           git pull && git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
         run: yarn build

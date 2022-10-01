@@ -1,17 +1,17 @@
-const { defaultTheme } = require("vuepress");
-module.exports = {
+import { defaultTheme, defineUserConfig } from "vuepress";
+import multimdTable from "markdown-it-multimd-table";
+
+export default defineUserConfig({
   title: "Guida Installazione Opencore",
   lang: "it-IT",
   extendsMarkdown: (md) => {
-    md.use(require("markdown-it-multimd-table"), {
-      rowspan: true,
-    });
+    md.use(multimdTable, { rowspan: true })
   },
   theme: defaultTheme({
     lastUpdatedText: "Ultimo Aggiornamento",
     repo: "macos86/macos86.github.io",
     contributorsText: "Chi ha contribuito alla creazione di questa pagina",
-    editLinks: true,
+    editLink: true,
     editLinkText: "Aiutaci a tradurre questa pagina!",
     logo: "/homepage.png",
     navbar: [
@@ -19,14 +19,8 @@ module.exports = {
         text: "Iniziamo con ACPI",
         link: "/Getting-Started-With-ACPI/",
       },
-      {
-        text: "Configurazione di OpenCore",
-        link: "/config.plist/",
-      },
-      {
-        text: "Risoluzione dei problemi",
-        link: "/troubleshooting/",
-      },
+      "/config.plist/",
+      "/troubleshooting/",
       {
         text: "Dopo l'installazione di OpenCore...",
         link: "/OpenCore-Post-Install/",
@@ -165,7 +159,7 @@ module.exports = {
               link: "/OpenCore-Post-Install/gpu-patching/legacy-intel/",
             },
             {
-              title: "Legacy Nvidia",
+              text: "Legacy Nvidia",
               link: "/OpenCore-Post-Install/gpu-patching/nvidia-patching/",
             },
           ],
@@ -228,11 +222,11 @@ module.exports = {
       ],
       "/OpenCanopy-Gallery/": [
         {
-          title: "Introduzione",
+          text: "Introduzione",
           link: "/OpenCanopy-Gallery/",
         },
         {
-          title: "Repo con Temi Popolari",
+          text: "Repo con Temi Popolari",
           children: [
             "/OpenCanopy-Gallery/ocbinary.md",
             "/OpenCanopy-Gallery/blackosx.md",
@@ -398,7 +392,7 @@ module.exports = {
         },
         "/CONTRIBUTING.md",
         "/credit.md",
-      ],
-    },
-  }),
-};
+      ]
+    }
+  })
+})
