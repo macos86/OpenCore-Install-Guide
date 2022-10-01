@@ -123,11 +123,11 @@ Per fare ciò, aggiungi la seguente patch (sostituendo la 04 di B8 **04** 00 00 
 
 ## Bloccato su EndRandomSeed
 
-Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eblogexitbsstart)
 
 ## Bloccato dopo aver selezionato la partizione macOS in OpenCore
 
-Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eb-log-exitbs-start)
+Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#LOG:EXITBS:START]`](#bloccato-su-eblogexitbsstart)
 
 * Note: Abilitare [DEBUG OpenCore](/extras/debug.md) può anche aiutare a capire
 
@@ -506,7 +506,7 @@ Generalmente visto come un problema che riguarda il prelinked kernel, in partico
 * Kexts con un eseguibile contengono un binario, kexts con il solo plist (Injector) NO (ie. USBmap.kext, XHCI-unspported.kext, etc does not contain an executable)
 * Non includere più copie degli stessi kext nel tuo config.plist (es. includendo più copie di VoodooInput da multipli kext, ti consigliamo di scegliere il primo kext nell'array di configurazione e disabilitare il resto)
 
-Nota: questo errore potrebbe anche essere molto simile a [Kernel Panic su `Invalid frame pointer`](#kernel-panic-on-invalid-frame-pointer)
+Nota: questo errore potrebbe anche essere molto simile a [Kernel Panic su `Invalid frame pointer`](#kernel-panic-su-invalid-frame-pointer)
 
 ## Kernel Panic `AppleIntelMCEReporter`
 

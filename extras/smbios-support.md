@@ -243,27 +243,10 @@ Informazioni prese sia da [EveryMac](https://everymac.com) che da [OpenCorePkg](
 | Xserve2,1      | Harpertown   | ^^                            | Mac-F42289C8           | Server 10.5 (9B2117) | ^^ |
 | Xserve3,1      | Nehalem EP   | GeForce GT 120                | Mac-F223BEC8           | Server 10.5.6 | 10.11.6 |
 
-### Altri SMBIOS
+## Altri SMBIOS
 
-Tutti i modelli elencati qua sotto non sono supportati da OpenCore, tuttavia sono documentati a scopo informativo.
+I modelli elencati non sono supportati da OpenCore, tuttavia sono documentati a scopo informativo.
 
-* Apple Development Platforms
-  * [Developer Transition Kit](#developer-transition-kit)
-* Apple Silicon
-  * [Mac Mini](#mac-mini-apple-silicon)
-  * [MacBook Air](#macbook-air-apple-silicon)
-  * [MacBook Pro](#macbook-pro-apple-silicon)
-  * [iMac](#imac-apple-silicon)
-* PowerPC
-  * [PowerBook](#powerbook-powerpc)
-  * [iBook](#ibook-powerpc)
-  * [PowerMac](#powermac-powerpc)
-  * [iMac](#imac-powerpc)
-  * [eMac](#emac-powerpc)
-  * [Cube](#cube-powerpc)
-  * [Mac Mini](#mac-mini-powerpc)
-  * [Xserve](#xserve-powerpc)
-  
 ::: details Note su Apple Silicon
 
 Informazioni extra riguardo le CPU Apple:
@@ -275,6 +258,8 @@ Informazioni extra riguardo le CPU Apple:
 
 :::
 
+### Apple Development Platforms
+
 #### Developer Transition Kit
 
 | SMBIOS | Anno | Famiglia CPU | Identificatore Modello | Supporto Iniziale |
@@ -282,13 +267,15 @@ Informazioni extra riguardo le CPU Apple:
 | ADP2,1 | Mid 2005 | Intel Prescott | N/A | 10.4.1 (8B1025) |
 | ADP3,2 | Mid 2020 | Apple A12Z | J273 | 11.0.0 (20A5299w) |
 
+### Apple Silicon
+
 #### Mac Mini - Apple Silicon
 
 | SMBIOS | Anno | Famiglia CPU | Identificatore Modello | Supporto Iniziale |
 | :--- | :--- | :--- | :--- | :--- |
 | Macmini9,1 | Late 2020 |  Apple M1 | J274 | 11.0.0 (20A2411) |
 
-#### MacBook Air - Apple Silicon
+##### MacBook Air - Apple Silicon
 
 | SMBIOS | Anno | Famiglia CPU | Identificatore Modello | Supporto Iniziale |
 | :--- | :--- | :--- | :--- | :--- |
@@ -312,6 +299,8 @@ Informazioni extra riguardo le CPU Apple:
 | iMac21,2 | Mid 2021 | Apple M1 | J257 | 11.3 (20E232?) |
 
 ::: details Power PC SMBIOS Table
+
+### PowerPC
 
 #### PowerBook - PowerPC
 

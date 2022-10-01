@@ -60,7 +60,7 @@ Verifica quanto segue:
 * Coffee Lake e laptop più recenti, aggiungi `-igfxblr` ai tuoi argomenti di avvio
   * In alternativa, aggiungi `enable-backlight-registers-fix | Data | 01000000` a "PciRoot(0x0)/Pci(0x2,0x0)"
 
-Inoltre, verifica i problemi menzionati in [Bloccato su o vicino a `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock-3)
+Inoltre, verifica i problemi menzionati in [`Bloccato su `IOConsoleUsers: gIOScreenLock...`](#bloccato-su-ioconsoleusers-gioscreenlock)
 
 ## Schermo nero dopo `IOConsoleUsers: gIOScreenLock...` con Navi
 
@@ -124,7 +124,7 @@ Default           |  Show All Devices(Cmd+2)
 
 La causa sarà una (o più) delle 5 seguenti:
 
-* Formattazione della partizione e non dell'unità, vedere [MediaKit segnala lo spazio insufficiente](#mediaKit-segnala-che-lo-spazio-non-è-sufficiente)
+* Formattazione della partizione e non dell'unità, vedere [MediaKit segnala lo spazio insufficiente](#mediakit-segnala-che-lo-spazio-non-è-sufficiente)
 * DiskUtility ha uno strano bug in cui fallirà alla prima cancellazione; provare a cancellare di nuovo
 * Il supporto hot plug SATA nel BIOS sta causando problemi (prova a disabilitare questa opzione)
 * Vecchio firmware, assicurati che l'unità abbia il firmware più recente

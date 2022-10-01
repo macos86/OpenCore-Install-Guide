@@ -71,7 +71,6 @@ Quando hai fatto, formatta (inizializza) la tua USB con FAT32 e Mappa Partizioni
 
 * [Windows](#windows)
 * [macOS](#macos)
-* [Linux](#linux)
 
 ### macOS
 

@@ -30,7 +30,7 @@ Per la configurazione seriale, OpenCore lo rende in realtà abbastanza semplice.
   * Esegue l'inizializzazione della porta seriale
 * **Target**: `67`
   * Abilita l'output di debug con OpenCore
-  * Target=75 aggiunge il flag di output seriale aggiuntivo (0x08) se [prevedi di utilizzare seriale](#configurazione-seriale-opzionale)
+  * Target=75 aggiunge il flag di output seriale aggiuntivo (0x08) se [prevedi di utilizzare seriale](#configurazione-del-seriale-opzionale)
   * Puoi calcolare il tuo valore qui: [OpenCore debugging](./debug.md)
   
 ### NVRAM
@@ -68,7 +68,7 @@ A seconda di cosa stai eseguendo il debug, potresti trovare anche questi argomen
 * **igdebug=0xff**
   * Abilita il debug relativo a iGPU, utile quando si lavora con i sistemi iGPU
 * **serial=5**
-  * Reindirizza l'output a seriale se si[prevede di utilizzare il seriale](#serial-setup-optional)
+  * Reindirizza l'output a seriale se si [prevede di utilizzare il seriale](#configurazione-del-seriale-opzionale)
   * Consigliato per l'output iniziale del kernel prima della configurazione PCI
 * **acpi_layer=0x8**
   * Abilita il debug di `ACPI_TABLES`, vedi [acoutput.h](https://github.com/acpica/acpica/blob/master/source/include/acoutput.h) per maggiori informazioni
@@ -77,11 +77,11 @@ A seconda di cosa stai eseguendo il debug, potresti trovare anche questi argomen
   * Imposta il debug di `ACPI_LV_DEBUG_OBJECT`, vedi [acoutput.h](https://github.com/acpica/acpica/blob/master/source/include/acoutput.h) per maggiori informazioni
   * `0xFFFF5F` in alternativa implica "ACPI_ALL_COMPONENTS"
 
-## Serial Setup(Opzionale)
+## Configurazione del seriale (Opzionale)
 
 * [Hardware Setup](#hardware-setup)
 * [EFI Setup](#efi-setup)
-* [Config.plist Setup](#config-plist-setup)
+* [Configurazione Config.plist](#configurazione-configplist)
 
 Sebbene facoltativo, il seriale può essere molto utile per acquisire tutte le informazioni importanti che invadono il tuo PC. È anche l'unico modo per registrare correttamente i primi kernel panic (come le cose subito dopo `[EB | #LOG: EXITBS: START]`)
 
@@ -144,8 +144,8 @@ Per registrare, vai semplicemente su `Connections -> Capture to Text/Binary File
 
 ## Kernel Debug Kits (Opzionale)
 
-* [KDK su un sistema operativo installato](#kdk-on-an-installed-os)
-* [Disinstallazione di KDK](#uninstalling-the-kdk)
+* [KDK su un sistema operativo installato](#kdk-su-un-sistema-operativo-installato)
+* [Disinstallazione di KDK](#disinstallazione-di-kdk)
 
 I kit di debug del kernel (KDK) sono un ottimo modo per ottenere ancora più informazioni di registrazione dal kernel e dai kext principali, in particolare i KDK sono versioni di debug delle fondamenta di base di macOS fornite da Apple stessa. Includono sia più registrazione che ASSERT che ti consentono di vedere più direttamente i problemi con la tua configurazione. Nota tuttavia non discuteremo del debug con bridge o dell'utilizzo di "lldb".
 

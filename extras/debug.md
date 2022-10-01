@@ -4,7 +4,7 @@ Hai bisogno di capire perché stai riscontrando problemi o ti stai bloccando? Be
 
 [[toc]]
 
-## Scambio di file
+## Scambio dei file
 
 Per iniziare, assicurati di utilizzare le versioni "DEBUG" o "NOOPT" di OpenCore. Questo fornirà molte più informazioni rispetto alla versione `RELEASE`; i file specifici che devono essere scambiati sono:
 
@@ -92,7 +92,7 @@ Una volta fatto, il tuo config.plist dovrebbe assomigliare a questo:
 
 ## Disabilitazione di tutti i log
 
-Per rimuovere completamente la registrazione dei file e eseguire il debug dei messaggi, è sufficiente sostituire tutti i file OpenCore con quelli in RELEASE come abbiamo fatto prima nella sezione [Cambio dei File](#file-swap).
+Per rimuovere completamente la registrazione dei file e eseguire il debug dei messaggi, è sufficiente sostituire tutti i file OpenCore con quelli in RELEASE come abbiamo fatto prima nella sezione [Scambio dei File](#scambio-dei-file).
 
 Infine, per rimuovere la scrittura su disco, impostare quanto segue:
 

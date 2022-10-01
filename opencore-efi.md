@@ -28,9 +28,7 @@ Ora apriamo la nostra EFI e vediamo che c'è al suo interno:
 
 ![](./images/installer-guide/opencore-efi-md/base-efi.png)
 
-Ora puoi mettere i **tuoi** file (Driver del Firmware, Tools, Kext e ACPI nelle rispettive cartelle. Vedi la sezione [Aggiungere i file di base](#aggiungere-i-file-di-base) per maggiori info su quali file dovrai usare.
-
-Ecco come una EFI **può** apparire (la tua potrebbe essere differente):
+Ora puoi mettere i **tuoi** file (Driver del Firmware, Tools, Kext e ACPI nelle rispettive cartelle. Ecco come una EFI **potrebbe** apparire (la tua potrebbe essere differente):
 
 ![](./images/installer-guide/opencore-efi-md/populated-efi.png)
 

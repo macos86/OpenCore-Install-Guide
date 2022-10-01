@@ -6,7 +6,7 @@
 
 ## Scarichiamo l'Installer (10.13-attuale)
 
-Da una macchina macOS che supera i requisiti del sistema operativo che vuoi installare, vai direttamente nell'App Store e scarica il sistema operativo desiderato e continua alla sezione [**Configurare l'installer**](#configurare-l'installer).
+Da una macchina macOS che supera i requisiti del sistema operativo che vuoi installare, vai direttamente nell'App Store e scarica il sistema operativo desiderato e continua alla sezione [**Configurare l'installer**](#configurare-linstaller).
 
 Per macchine che richiedono una versione specifica o che non possono scaricare dall'App Store, puoi usare l'utility InstallInstallMacOS by Munki.
 
@@ -57,7 +57,7 @@ Per iniziare, vai a: [Come ottenere le versioni precedenti di macOS](https://sup
 
 Scarica la versione scelta e dovresti ottenere un file .pkg.
 
-A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](#configurare-l'installer), tuttavia potresti ricevere questo errore:
+A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](#configurare-linstaller), tuttavia potresti ricevere questo errore:
 
 ![](../images/installer-guide/legacy-mac-install-md/unsupported.png)
 

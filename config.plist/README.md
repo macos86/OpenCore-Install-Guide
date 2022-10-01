@@ -105,7 +105,7 @@ Ora arriva la parte importante, selezionare la tua configurazione. Ogni piattafo
 
 ### Desktop Intel
 
-* Nota: I NUC della Intel sono considerati dispositivi portatili, per queste situazioni devi seguire la [Sezione Laptop Intel](#intel-laptop)
+* Nota: I NUC della Intel sono considerati dispositivi portatili, per queste situazioni devi seguire la [Sezione Laptop Intel](#laptop-intel)
 
 | Nome in Codice | Serie | Rilascio |
 | :--- | :--- | :--- |
