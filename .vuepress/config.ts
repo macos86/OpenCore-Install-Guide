@@ -5,7 +5,7 @@ export default defineUserConfig({
   title: "Guida Installazione Opencore",
   lang: "it-IT",
   extendsMarkdown: (md) => {
-    md.use(multimdTable, { rowspan: true })
+    md.use(multimdTable, { rowspan: true });
   },
   theme: defaultTheme({
     lastUpdatedText: "Ultimo Aggiornamento",
@@ -351,8 +351,8 @@ export default defineUserConfig({
             "/troubleshooting/ssdt-issues.md",
             "/troubleshooting/userspace-issues.md",
             "/troubleshooting/post-issues.md",
-            "/troubleshooting/misc-issues.md"
-          ]
+            "/troubleshooting/misc-issues.md",
+          ],
         },
         "/OpenCore-Post-Install/",
         {
@@ -386,13 +386,13 @@ export default defineUserConfig({
             "/extras/smbios-support.md",
             {
               text: "OpenCanopy Gallery",
-              link: "/OpenCanopy-Gallery/"
+              link: "/OpenCanopy-Gallery/",
             },
           ],
         },
         "/CONTRIBUTING.md",
         "/credit.md",
-      ]
-    }
-  })
-})
+      ],
+    },
+  }),
+});
