@@ -20,11 +20,13 @@ Ora che hai letto questo, un piccolo reminder degli strumenti necessari
   * Per geneare i dati del nostro SMBIOS
 * [Sample config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
   * Vedi la sezione precedente per capire come ottenerlo: [Setup del config.plist](../)
-* [AMD Kernel Patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/master)
+* [AMD Kernel Patches](https://github.com/AMD-OSX/AMD_Vanilla/)
   * Necessarie per avviare macOS nell'hardware AMD
   * Supporto delle generazioni: 15h, 16h, 17h and 19h
 
-**E leggi questa guida una volta prima di impostare OpenCore e sii sicuro di aver impostato tutto correttamente. Nota che le immagini non potranno essere sempre aggiornatissime, perciò leggi le didascalie sotto, se nulla viene menzionato, lascia com'è di default.**
+::: warning
+E leggi questa guida una volta prima di impostare OpenCore e sii sicuro di aver impostato tutto correttamente. Nota che le immagini non potranno essere sempre aggiornatissime, perciò leggi le didascalie sotto, se nulla viene menzionato, lascia com'è di default.
+:::
 
 ## ACPI
 
@@ -76,11 +78,10 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| DevirtualiseMmio | NO | Note TRx40 requires this flag |
-| EnableWriteUnprotector | NO | |
+| DevirtualiseMmio | NO | If you have a TRx40 system, enable this and follow the instructions here: <https://dortania.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html> || EnableWriteUnprotector | NO | |
 | RebuildAppleMemoryMap | YES | |
-| ResizeAppleGpuBars | -1 | If your firmware supports increasing GPU Bar sizes (ie Resizable Bar Support), set this to `0` |
-| SetupVirtualMap | YES | - Note B550, A520 and TRx40 boards should disable this. Newer BIOS versions of X570 also require this off<br/>- X470 and B450 with late 2020 BIOS updates also require this disabled |
+| ResizeAppleGpuBars | -1 | If your firmware supports increasing GPU Bar sizes (ie Resizable BAR Support), set this to `0` |
+| SetupVirtualMap | YES | - Note X570, B550, A520 and TRx40 boards might need this disabled<br/>- X470 and B450 with late 2020 BIOS updates might also require this disabled |
 | SyncRuntimePermissions | YES | |
 :::
 
@@ -92,15 +93,14 @@ Settings relating to boot.efi patching and firmware fixes, for us, we need to ch
   * Enables slide variables to be used in safe mode.
 * **EnableWriteUnprotector**: NO
   * This quirk and RebuildAppleMemoryMap can commonly conflict, recommended to enable the latter on newer platforms and disable this entry.
-  * However, due to issues with OEMs not using the latest EDKII builds you may find that the above combo will result in early boot failures. This is due to missing the `MEMORY_ATTRIBUTE_TABLE` and such we recommend disabling RebuildAppleMemoryMap and enabling EnableWriteUnprotector. More info on this is covered in the [troubleshooting section](/troubleshooting/kernel-issues.md#stuck-on-eb-log-exitbs-start)
+  * However, due to issues with OEMs not using the latest EDKII builds you may find that the above combo will result in early boot failures. This is due to missing the `MEMORY_ATTRIBUTE_TABLE` and such we recommend disabling RebuildAppleMemoryMap and enabling EnableWriteUnprotector. More info on this is covered in the [troubleshooting section](/troubleshooting/kernel.md#stuck-on-eb-log-exitbs-start)
 * **ProvideCustomSlide**: YES
   * Used for Slide variable calculation. However the necessity of this quirk is determined by `OCABC: Only N/256 slide values are usable!` message in the debug log. If the message `OCABC: All slides are usable! You can disable ProvideCustomSlide!` is present in your log, you can disable `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
   * Generates Memory Map compatible with macOS, can break on some laptop OEM firmwares so if you receive early boot failures disable this
 * **ResizeAppleGpuBars**: -1
-  * Will reduce the size of GPU PCI Bars if set to zero when booting macOS.
-  * Setting other PCI Bar values is possible with this quirk, though can cause instabilities
-  * This quirk being set to zero is only necessary if Resizable GPU Bar Support is enabled in your firmware.
+  * Will reduce the size of GPU PCI Bars if set to `0` when booting macOS, set to `-1` to disable  * Setting other PCI Bar values is possible with this quirk, though can cause instabilities
+  * This quirk being set to zero is only necessary if Resizable GPU Support is enabled in your firmware.
 * **SetupVirtualMap**: YES
   * Fixes SetVirtualAddresses calls to virtual addresses
   * B550, A520 and TRx40 boards should disable this quirk
@@ -181,7 +181,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
 | 10.15 | 19.0.0 | 19.99.99 |
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
-| 12 | 21.0.0 | 21.99.99 |
+| 13 | 22.0.0 | 22.99.99 |
 
 :::
 
@@ -204,7 +204,7 @@ Needed for spoofing unsupported CPUs like Pentiums and Celerons and to disable C
 * **CpuidData**: Leave this blank
   * Fake CPUID entry
 * **DummyPowerManagement**: YES
-  * New alternative to NullCPUPowerManagement, required for all AMD CPU based systems as there's no native power management. Intel can ignore
+  * New alternative to NullCPUPowerManagement, required for all AMD CPU based systems as there's no native power management.
 * **MinKernel**: Leave this blank
   * Lowest kernel version the above patches will be injected into, if no value specified it'll be applied to all versions of macOS. See below table for possible values
   * ex. `12.00.00` for OS X 10.8
@@ -230,7 +230,7 @@ Needed for spoofing unsupported CPUs like Pentiums and Celerons and to disable C
 | 10.15 | 19.0.0 | 19.99.99 |
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
-| 12 | 21.0.0 | 21.99.99 |
+| 13 | 22.0.0 | 22.99.99 |
 
 :::
 
@@ -246,11 +246,11 @@ Blocks certain kexts from loading. Not relevant for us.
 
 ### Patch
 
-This is where the AMD kernel patching magic happens. Please do note that `KernelToPatch` and `MatchOS` from Clover becomes `Kernel` and `MinKernel`/ `MaxKernel` in OpenCore, you can find pre-made patches by [AlGrey](https://amd-osx.com/forum/memberlist.php?mode=viewprofile&u=10918&sid=e0feb8a14a97be482d2fd68dbc268f97)(algrey#9303).
+This is where the AMD kernel patching magic happens. Please do note that if coming from Clover, `KernelToPatch` and `MatchOS` from Clover becomes `Kernel` and `MinKernel`/ `MaxKernel` in OpenCore. The latest AMD kernel patches can always be found on the [AMD Vanilla GitHub Repository](https://github.com/AMD-OSX/AMD_Vanilla).
 
 Kernel patches:
 
-* [Ryzen/Threadripper(17h/19h)](https://github.com/AMD-OSX/AMD_Vanilla/tree/master) (10.13, 10.14, 10.15, 11.x and 12.x)
+* [Ryzen/Threadripper (17h/19h)](https://github.com/AMD-OSX/AMD_Vanilla) (10.13 - 12.x)
 
 To merge:
 
@@ -277,6 +277,7 @@ Where `<core count>` is replaced with the physical core count of your CPU in hex
 
 | Core Count | Hexadecimal |
 | :--------- | :---------- |
+| 2 Core | `02` |
 | 4 Core | `04` |
 | 6 Core | `06` |
 | 8 Core | `08` |
@@ -321,7 +322,6 @@ Settings relating to the kernel, for us we'll be enabling the following:
   * Prevents AppleRTC from writing to primary checksum (0x58-0x59), required for users who either receive BIOS reset or are sent into Safe mode after reboot/shutdown
 * **ExtendBTFeatureFlags** NO
   * Helpful for those having continuity issues with non-Apple/non-Fenvi cards
-
 * **LapicKernelPanic**: NO
   * Disables kernel panic on AP core lapic interrupt, generally needed for HP systems. Clover equivalent is `Kernel LAPIC`
 * **LegacyCommpage**: NO
@@ -335,7 +335,7 @@ Settings relating to the kernel, for us we'll be enabling the following:
 * **SetApfsTrimTimeout**: `-1`
   * Sets trim timeout in microseconds for APFS filesystems on SSDs, only applicable for macOS 10.14 and newer with problematic SSDs.
 * **XhciPortLimit**: YES
-  * This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution for fixing USB. A more proper solution for AMD can be found here: [AMD USB Mapping](/OpenCore-Post-Install/usb/)
+  * This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution for fixing USB. Please create a [USB map](/OpenCore-Post-Install/usb/) when possible.
 :::
 
 ### Scheme
@@ -367,13 +367,26 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
 
 ### Boot
 
-Settings for boot screen (Leave everything as default).
+::: tip Info
+
+| Quirk | Enabled | Comment |
+| :--- | :--- | :--- |
+| HideAuxiliary | YES | Press space to show macOS recovery and other auxiliary entries |
+
+:::
+
+::: details More in-depth Info
+
+* **HideAuxiliary**: YES
+  * This option will hide supplementary entries, such as macOS recovery and tools, in the picker. Hiding auxiliary entries may increase boot performance on multi-disk systems. You can press space at the picker to show these entries
+
+:::
 
 ### Debug
 
 ::: tip Info
 
-Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `DisplayDelay`):
+Helpful for debugging OpenCore boot issues:
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -394,8 +407,6 @@ Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `D
   * Disables the UEFI watchdog, can help with early boot issues
 * **DisplayLevel**: `2147483650`
   * Shows even more debug information, requires debug version of OpenCore
-* **SerialInit**: NO
-  * Needed for setting up serial output with OpenCore
 * **SysReport**: NO
   * Helpful for debugging such as dumping ACPI tables
   * Note that this is limited to DEBUG versions of OpenCore
@@ -414,19 +425,16 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| AllowNvramReset | YES | |
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default | Leave this as `Default` if running macOS Big Sur or newer. The next page goes into more detail about this setting. |
+| SecureBootModel | Default | Leave this as `Default` for OpenCore to automatically set the correct value corresponding to your SMBIOS. The next page goes into more detail about this setting. |
 | Vault | Optional | This is a word, it is not optional to omit this setting. You will regret it if you don't set it to Optional, note that it is case-sensitive |
 
 :::
 
 ::: details More in-depth Info
 
-* **AllowNvramReset**: YES
-  * Allows for NVRAM reset both in the boot picker and when pressing `Cmd+Opt+P+R`
 * **AllowSetDefault**: YES
   * Allow `CTRL+Enter` and `CTRL+Index` to set default boot device in the picker
 * **ApECID**: 0
@@ -445,11 +453,19 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
   * This is a word, it is not optional to omit this setting. You will regret it if you don't set it to `Optional`, note that it is case-sensitive
 * **ScanPolicy**: `0`
   * `0` allows you to see all drives available, please refer to [Security](/OpenCore-Post-Install/universal/security.md) section for further details. **Will not boot USB devices with this set to default**
-* **SecureBootModel**: Disabled
+* **SecureBootModel**: Default
   * Controls Apple's secure boot functionality in macOS, please refer to [Security](/OpenCore-Post-Install/universal/security.md) section for further details.
-  * Note: Users may find upgrading OpenCore on an already installed system can result in early boot failures. To resolve this, see here: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
+  * Note: Users may find upgrading OpenCore on an already installed system can result in early boot failures. To resolve this, see here: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
+
+### Serial
+
+Used for serial debugging (Leave everything as default).
+
+### Serial
+
+Usato per il debugging da porta seriale (Lasciare tutto come in default).
 
 ### Tools
 
@@ -475,11 +491,7 @@ Used for OpenCore's UI scaling, default will work for us. See in-depth section f
 
 ::: details More in-depth Info
 
-Booter Path, mainly used for UI Scaling
-
-* **UIScale**:
-  * `01`: Standard resolution
-  * `02`: HiDPI (generally required for FileVault to function correctly on smaller displays)
+Booter Path, mainly used for UI modification
 
 * **DefaultBackgroundColor**: Background color used by boot.efi
   * `00000000`: Syrah Black
@@ -512,19 +524,22 @@ System Integrity Protection bitmask
 | **-v** | This enables verbose mode, which shows all the behind-the-scenes text that scrolls by as you're booting instead of the Apple logo and progress bar. It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc. |
 | **debug=0x100** | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. That way you can *hopefully* glean some useful info and follow the breadcrumbs to get past the issues. |
 | **keepsyms=1** | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. That can give some more helpful insight as to what's causing the panic itself. |
-| **npci=0x2000** | This disables some PCI debugging related to `kIOPCIConfiguratorPFM64`, alternative is `npci=0x3000` which disables debugging related to `gIOPCITunnelledKey` in addition. Required for when getting stuck on `[PCI configuration begin]` as there are IRQ conflicts relating to your PCI lanes. **Not needed if Above 4G Decoding is enabled**. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
+| **npci=0x3000** | This disables some PCI debugging related to `kIOPCIConfiguratorPFM64` and `gIOPCITunnelledKey`. This is an alternative to having Above 4G Decoding enabled in your BIOS. Do not use this unless you don't have it in your BIOS. Required for when getting stuck on `[PCI configuration begin]` as there are IRQ conflicts relating to your PCI lanes. [Source](https://opensource.apple.com/source/IOPCIFamily/IOPCIFamily-370.0.2/IOPCIBridge.cpp.auto.html) |
 | **alcid=1** | Used for setting layout-id for AppleALC, see [supported codecs](https://github.com/acidanthera/applealc/wiki/supported-codecs) to figure out which layout to use for your specific system. More info on this is covered in the [Post-Install Page](/OpenCore-Post-Install/) |
 
 * **GPU-Specific Argomenti di avvio**:
 
 | Argomenti di avvio | Description |
 | :--- | :--- |
-| **agdpmod=pikera** | Used for disabling board ID checks on Navi GPUs (RX 5000 & 6000 series), without this you'll get a black screen. **Don't use if you don't have Navi** (ie. Polaris and Vega cards shouldn't use this) |
-| **nvda_drv_vrl=1** | Used for enabling Nvidia's Web Drivers on Maxwell and Pascal cards in Sierra and High Sierra |
+| **agdpmod=pikera** | Used for disabling board ID checks on some Navi GPUs (RX 5000 & 6000 series), without this you'll get a black screen. **Don't use if you don't have Navi** (ie. Polaris and Vega cards shouldn't use this) |
+| **-radcodec** | Used for allowing officially unsupported AMD GPUs (spoofed) to use the Hardware Video Encoder |
+| **radpg=15** | Used for disabling some power-gating modes, helpful for properly initializing AMD Cape Verde based GPUs |
+| **unfairgva=1** | Used for fixing hardware DRM support on supported AMD GPUs |
+| **nvda_drv_vrl=1** | Used for enabling NVIDIA's Web Drivers on Maxwell and Pascal cards in macOS Sierra and High Sierra |
 
 * **csr-active-config**: `00000000`
-  * Settings for 'System Integrity Protection' (SIP). It is generally recommended to change this with `csrutil` via the recovery partition.
-  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](/troubleshooting/post-issues.md#disabilitare-sip)
+  * Settings for 'System Integrity Protection' (SIP).
+  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabilitare SIP](/troubleshooting/post.md#disabilitare-sip)
 
 * **run-efi-updater**: `No`
   * This is used to prevent Apple's firmware update packages from installing and breaking boot order; this is important as these firmware updates (meant for Macs) will not work.
@@ -534,6 +549,7 @@ System Integrity Protection bitmask
   * American: `en-US:0`(`656e2d55533a30` in HEX)
   * Full list can be found in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt)
   * Hint: `prev-lang:kbd` can be changed into a String so you can input `en-US:0` directly instead of converting to HEX
+  * Hint 2: `prev-lang:kbd` can be set to a blank variable (eg. `<>`) which will force the Language Picker to appear instead at first boot up.
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -555,14 +571,8 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 ::: details More in-depth Info
 
-* **LegacyEnable**: NO
-  * Allows for NVRAM to be stored on nvram.plist, needed for systems without native NVRAM
-
-* **LegacyOverwrite**: NO
-  * Permits overwriting firmware variables from nvram.plist, only needed for systems without native NVRAM
-
 * **LegacySchema**
-  * Used for assigning NVRAM variables, used with LegacyEnable set to YES
+  * Used for assigning NVRAM variables, used with `OpenVariableRuntimeDxe.efi`. Only needed for systems without native NVRAM
 
 * **WriteFlash**: YES
   * Enables writing to flash memory for all added variables.
@@ -579,13 +589,13 @@ For setting up the SMBIOS info, we'll use CorpNewt's [GenSMBIOS](https://github.
 
 For this example, we'll choose the MacPro7,1 SMBIOS but some SMBIOS play with certain GPUs better than others:
 
-* MacPro7,1: AMD RX Polaris and newer
+* MacPro7,1: AMD Polaris and newer
   * Note that MacPro7,1 is exclusive to macOS 10.15, Catalina and newer
-* iMacPro1,1: NVIDIA Maxwell and Pascal or AMD RX Polaris and newer
+* iMacPro1,1: NVIDIA Maxwell and Pascal or AMD Polaris and newer
   * Use if you need High Sierra or Mojave, otherwise use MacPro7,1
 * iMac14,2: NVIDIA Maxwell and Pascal
   * Use if you get black screens on iMacPro1,1 after installing Web Drivers with an NVIDIA GPU
-* MacPro6,1: AMD GCN GPUs
+* MacPro6,1: AMD GCN GPUs (supported HD and R5/R7/R9 series)
 
 Run GenSMBIOS, pick option 1 for downloading MacSerial and Option 3 for selecting out SMBIOS.  This will give us an output similar to the following:
 
@@ -613,11 +623,7 @@ The `SmUUID` part gets copied to Generic -> SystemUUID.
 
 The `Apple ROM` part gets copied to Generic -> ROM.
 
-::: danger
-Reminder that you want either an invalid serial or valid serial numbers but those not in use, you want to get a message back like: "Invalid Serial" or "Purchase Date not Validated"
-:::
-
-[Apple Check Coverage page](https://checkcoverage.apple.com)
+> Ricorda che ti serve un numero di serie non valido! Quando poni il tuo seriale nella [Apple's Check Coverage Page](https://checkcoverage.apple.com), dovresti ottenere il messaggio "Numero di serie non valido."
 
 **Automatic**: YES
 
@@ -676,6 +682,16 @@ Only drivers present here should be:
 * HfsPlus.efi
 * OpenRuntime.efi
 
+::: details Informazioni dettagliate
+
+| Chiave | Tipo | Descrizione |
+| :--- | :--- | :--- |
+| Path | String | Percorso del file dalla cartella `OC/Drivers` |
+| LoadEarly | Boolean | Carica il driver prima del setup della NVRAM, dovrebbe essere abilitato solo per `OpenRuntime.efi` e `OpenVariableRuntimeDxe.efi` se si usa NVRAM legacy |
+| Arguments | String | Alcuni driver possono accettare ulteriori argomenti che vanno specificati qui. |
+
+:::
+
 ### APFS
 
 By default, OpenCore only loads APFS drivers from macOS Big Sur and newer. If you are booting macOS Catalina or earlier, you may need to set a new minimum version/date.
@@ -708,7 +724,13 @@ Related to boot.efi keyboard passthrough used for FileVault and Hotkey support, 
 
 ### Output
 
-Relating to OpenCore's visual output,  leave everything here as default as we have no use for these quirks.
+Relating to OpenCore's visual output, leave everything here as default as we have no use for these quirks.
+
+::: details Informazioni più dettagliate
+| Quirk | Valore | Commento |
+| :--- | :--- | :--- |
+| UIScale | `0` | `0` sceglierà automaticamente in base alla risoluzione<br/>`-1` lascerà quella di default<br/>`1` per 1x scaling, per display normali<br/>`2` per 2x scaling, per display HiDPI |
+:::
 
 ### ProtocolOverrides
 
@@ -753,17 +775,18 @@ Used for exempting certain memory regions from OSes to use, mainly relevant for 
 * Secure Boot
 * Serial/COM Port
 * Parallel Port
-* Compatibility Support Module (CSM)(**Must be off, GPU errors like `gIO` are common when this option in enabled**)
+* Compatibility Support Module (CSM) (**Must be off in most cases, GPU errors/stalls like `gIO` are common when this option is enabled**)
+* IOMMU
 
 **Special note for 3990X users**: macOS currently does not support more than 64 threads in the kernel, and so will kernel panic if it sees more. The 3990X CPU has 128 threads total and so requires half of that disabled. We recommend disabling hyper threading in the BIOS for these situations.
 
 ### Enable
 
-* Above 4G decoding(**This must be on, if you can't find the option then add `npci=0x2000` to Argomenti di avvio. Do not have both this option and npci enabled at the same time.**)
+* Above 4G Decoding (**This must be on, if you can't find the option then add `npci=0x3000` to Argomenti di avvio. Do not have both this option and npci enabled at the same time.**)
   * If you are on a Gigabyte/Aorus or an AsRock motherboard, enabling this option may break certain drivers(ie. Ethernet) and/or boot failures on other OSes, if it does happen then disable this option and opt for npci instead
   * 2020+ BIOS Notes: When enabling Above4G, Resizable BAR Support may become an available on some X570 and newer motherboards. Please ensure that Booter -> Quirks -> ResizeAppleGpuBars is set to `0` if this is enabled.
 * EHCI/XHCI Hand-off
-* OS type: Windows 8.1/10 UEFI Mode
+* OS type: Windows 8.1/10 UEFI Mode (some motherboards may require "Other OS" instead)
 * SATA Mode: AHCI
 
 > Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)

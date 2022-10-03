@@ -143,11 +143,11 @@ Il supporto della GPU è complicato data la varietà di GPU quasi infinita prese
   * Le schede AMD basate su [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) dalla serie Polaris non sono supportate
   * Nota speciale per utenti MSI Navi: [Installer not working with 5700XT #901 (EN)](https://github.com/acidanthera/bugtracker/issues/901)
     * Il problema scompare in macOS 11 (Big Sur).
-* Il supporto delle GPU Nvidia è complesso
+* Il supporto delle GPU NVIDIA è complesso
   * Le GPU [Maxwell(9XX)](https://it.wikipedia.org/wiki/GeForce_900_series) e [Pascal(10XX)](https://it.wikipedia.org/wiki/GeForce_10_series) sono limitate a macOS 10.13: High Sierra
-  * Le GPU [Nvidia Turing(20XX,](https://it.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://it.wikipedia.org/wiki/GeForce_16_series) **non supportate in nessuna versione di macOS**
-  * Le GPU [Nvidia Ampere(30XX)](https://it.wikipedia.org/wiki/GeForce_30_series) **non supportate in nessuna versione di macOS**
-  * Le GPU [Nvidia Kepler(6XX,](https://it.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://it.wikipedia.org/wiki/GeForce_700_series) supportate fino a macOS 11 (Big Sur)
+  * Le GPU [NVIDIA Turing(20XX,](https://it.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://it.wikipedia.org/wiki/GeForce_16_series) **non supportate in nessuna versione di macOS**
+  * Le GPU [NVIDIA Ampere(30XX)](https://it.wikipedia.org/wiki/GeForce_30_series) **non supportate in nessuna versione di macOS**
+  * Le GPU [NVIDIA Kepler(6XX,](https://it.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://it.wikipedia.org/wiki/GeForce_700_series) supportate fino a macOS 11 (Big Sur)
 * La serie Intel [GT2+ tier](https://it.wikipedia.org/wiki/Intel_Graphics_Technology) di iGPU
   * Da Ivy Bridge a Ice Lake iGPU supportate in questa guida
     * Info sulle iGPU delle serie GMA possono essere trovate qui: [GMA Patching](/OpenCore-Post-Install/gpu-patching/)
@@ -200,7 +200,7 @@ E una nota importante dei **Laptops con GPU discrete**:
 
 :::
 
-::: details Tabella supporto GPU Nvidia
+::: details Tabella supporto GPU NVIDIA
 
 | Generazione GPU | Supporto iniziale | Ultima versione supportata | Note |
 | :--- | :--- | :--- | :--- |

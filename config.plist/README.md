@@ -8,7 +8,7 @@ Ora che abbiamo tutti i nostri kext (.kext), SSDT (.aml) e driver del firmware (
 
 ## Creare il tuo config.plist
 
-Per prima cosa prenderemo il sample.plist da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), sarà allocato nella cartella `Docs`:
+Per prima cosa prenderemo il `Sample.plist` da [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), che è allocato nella cartella `Docs`:
 
 ![](../images/config/config-universal/sample-location.png)
 
@@ -71,7 +71,7 @@ Questo abilita la funzionalità di sicurezza come la verifica di `boot.efi` di m
 * Big Sur e superiori (11.0+): Il valore raccomandato e' 'Default'.
 * High Sierra-Catalina (10.13-10.15):
   * Se il tuo modello non e' presente nella lista qui sotto imposta il valore su `Disabled`.
-    * Se utilizzi I Web Driver Nvidia, imposts il valore su `Disabled`.
+    * Se utilizzi I Web Driver NVIDIA, imposts il valore su `Disabled`.
       * Se il tuo modello e' presente nella lista, compara la minima versione che stai usando , Disabilitalo se il tuo installer e' inferiore alla versione in lista per il tuo SMBIOS
 * Sierra e inferiori (10.4-10.12): Questa impostazione non ha effetto.
   * Se hai più versioni di OSX potresti dover impostare il valore su `Disabled`.
@@ -153,5 +153,8 @@ Questa sezione include sia enthusiast computer e server.
 | [Bulldozer/Jaguar](AMD/fx.md) | [È strano](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) | [AMD è stata veramente terribile nel scegliere i nomi](https://en.wikipedia.org/wiki/List_of_AMD_processors#Bulldozer_architecture;_Bulldozer,_Piledriver,_Steamroller,_Excavator_(2011%E2%80%932017)) |
 | [Zen](AMD/zen.md) | 1XXX, 2XXX, 3XXX, 5XXX | era 2017-2020 |
 
-* Note: ~~3° generazione (39XX), chiamate Threadripper, non sono supportate, la 1° e 2° generazione tuttavia sono supportate~~
-  * L'ultima versione del BIOS e di OpenCore ha risolto il problema, tutte le piattaforme Threadripper sono supportate
+::: tip Nota
+~~3° generazione (39XX), chiamate Threadripper, non sono supportate, la 1° e 2° generazione tuttavia sono supportate~~
+
+* L'ultima versione del BIOS e di OpenCore ha risolto il problema, tutte le piattaforme Threadripper sono supportate
+:::

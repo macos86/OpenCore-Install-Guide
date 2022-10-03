@@ -26,11 +26,17 @@ Per la configurazione seriale, OpenCore lo rende in realtà abbastanza semplice.
 
 ### Misc
 
-* **SerialInit**: YES
+#### Serial
+
+* **Init**: YES
   * Esegue l'inizializzazione della porta seriale
+  * Needed for sending OpenCore logging to the serial port
+
+#### Debug
+
 * **Target**: `67`
   * Abilita l'output di debug con OpenCore
-  * Target=75 aggiunge il flag di output seriale aggiuntivo (0x08) se [prevedi di utilizzare seriale](#configurazione-del-seriale-opzionale)
+  * `Target` = `75` aggiunge il flag di output seriale aggiuntivo (`0x08`) se [prevedi di utilizzare seriale](#configurazione-del-seriale-opzionale)
   * Puoi calcolare il tuo valore qui: [OpenCore debugging](./debug.md)
   
 ### NVRAM
@@ -50,8 +56,8 @@ Ora vediamo cosa fa ogni argomento:
 * **keepsyms=1**
   * Assicura che i simboli vengano conservati durante i kernel panic, che sono molto utili per la risoluzione dei problemi
 * **debug=0x12a**
-  * Combinazione di `DB_KPRT`(0x8), `DB_KDP_BP_DIS`(0x32), `DB_KDP_GETC_ENA(0x200)`
-  * Un elenco completo dei valori può essere trovato qui: [debug.h](https://github.com/apple/darwin-xnu/blob/master/osfmk/kern/debug.h#L419L447)
+  * Combinazione di `DB_PRT` (0x2), `DB_PRT` (0x8), `DB_SLOG` (0x20) and and `DB_LOG_PI_SCRN` (0x100)
+  * Un elenco completo dei valori per l'ultima versione di macOS può essere trovato qui: [debug.h](https://github.com/apple-oss-distributions/darwin-xnu/blob/master/osfmk/kern/debug.h#L419L447)
 * **msgbuf=1048576**
   * Imposta la dimensione del buffer dei messaggi del kernel, questo aiuta a ottenere i log corretti durante l'avvio
   * 1048576 is 1MB(/1024^2), può essere più grande se necessario
@@ -195,7 +201,7 @@ Per disabilitare SIP, gli utenti hanno 2 scelte:
 
 * Disabilitare tramite Recovery
 
-* [Disabilitare tramite config.plist](./extended/post-issues.md#disabling-sip)
+* [Disabilitare tramite config.plist](./extended/post.md#disabling-sip)
 
 In genere consigliamo vivamente di usare la Recovery per ripristinare più facilmente tramite il reset NVRAM, tuttavia ad alcuni utenti potrebbe essere richiesto che SIP venga disabilitato anche per effettuare il reset.
 
@@ -359,7 +365,7 @@ csrutil authenticated-root enable # Big Sur+
 ```
 
 * Modifiche al config.plist (se precedentemente modificato):
-  * [Abilitare tramite config.plist](./extended/post-issues.md#disabilitare-sip)
+  * [Abilitare tramite config.plist](./extended/post.md#disabilitare-sip)
   
 #### 4. Ripulire le Argomenti di avvio
 

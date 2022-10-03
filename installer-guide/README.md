@@ -25,6 +25,6 @@ Gli installer Offline hanno una copia completa di macOS, mentre gli installer On
 
 * **Nota su macOS Monterey**: Dato che questo sistema è il più nuovo, ci sono ancora dei problemi in certi sistemi. Per maggiori informazioni: [OpenCore e macOS Monterey](/extras/monterey.md)
   * Per gli utenti le prime volte raccomandiamo macOS 11, Big Sur o macOS 10.15, Catalina
-* **Nota sulle GPU Nvidia**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
+* **Nota sulle GPU NVIDIA**: Ricordati di verificare se il tuo hardware supporta sistemi nuovi, vedi [Limitazioni Hardware](/macos-limits.md)
 * Questo metodo richiede una connessione ad Internet durante l'installazione, cosa non scontata dato che in sistemi particolari potrebbe non funzionare
 :::

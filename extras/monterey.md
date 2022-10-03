@@ -48,7 +48,7 @@ Per quelli con Haswell o Ivy Bridge, queste sono alcune semplici conversioni:
 GPU non più supportate:
 
 * Ivy Bridge (HD 4000 e HD 2500)
-* Nvidia Kepler (GTX 6xx/7xx)
+* NVIDIA Kepler (GTX 6xx/7xx)
 * Puoi usare [OpenCore-Legacy-Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher/) per supportarle ancora
   * Non verrà fornito supporto agli Hackintosh che usano OCLP!
   * Perderai accesso agli aggiornamenti parziali (Aggiornamenti da 1-3GB)

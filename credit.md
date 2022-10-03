@@ -9,6 +9,7 @@ Nessuna buona guida è stata creata da un solo uomo, ecco i credits di coloro ch
 * [CorpNewt](https://github.com/corpnewt)
   * Ha pesantemente influito a questa guida e aiuta in generale con domande e consigli
   * Sorgente SSDT
+  * Creatore di ProperTree e GenSMBIOS
 * [Midi](https://github.com/midi1996)
   * Correzioni e raccomandazioni per la guida
 * [AlGrey#9303](https://amd-osx.com/forum/memberlist.php?mode=viewprofile&u=10918&sid=e0feb8a14a97be482d2fd68dbc268f97)
@@ -16,10 +17,14 @@ Nessuna buona guida è stata creata da un solo uomo, ecco i credits di coloro ch
 * [NoOne/IOIIIO](https://github.com/IOIIIO)
   * Per l'originale Guida Vanilla AMD
   * Correzioni alla parte AMD della guida
+* [1Revenger1](https://github.com/1Revenger1)
+  * Mantenimento della guida
 * [DhinakG](https://github.com/dhinakg)
-  * Cose casuali relative alla guida
+  * Mantenimento della guida
 * [Khronokernel](https://github.com/khronokernel)
-  * Sia per scrivere che per mantenere la guida
+  * Sia scrive che mantiene la guida
+* [kernel](https://github.com/kernel-dev)
+  * Per OCSysInfo
 * [ed il resto del dortania team](https://github.com/dortania) per l'aiuto
   
 E anche agli altri che hanno aiutato, grazie!

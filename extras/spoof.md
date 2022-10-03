@@ -92,20 +92,20 @@ Fonte: CorpNewt
 
 In dipendenza dal tuo setup, potresti notare che Windows renderizza giochi o applicazioni usando una GPU non desiderata.
 
-Molti utenti hanno solo due GPU. Nvidia e la iGPU Intel HD/UHD. Da quando Nvidia non funziona più su macOS, avranno i monitor collegati alla porta HDMI/DP della scheda madre per convenienza. Di conseguenza Windows renderizza i giochi e applicazioni attraverso la IGPU. Puoi reinstradare un gioco specifico o un'applicazione a una differente GPU andando in: Impostazioni > Sistema > Schermo > Impostazioni di grafica.
+Molti utenti hanno solo due GPU. NVIDIA e la iGPU Intel HD/UHD. Da quando NVIDIA non funziona più su macOS, avranno i monitor collegati alla porta HDMI/DP della scheda madre per convenienza. Di conseguenza Windows renderizza i giochi e applicazioni attraverso la IGPU. Puoi reinstradare un gioco specifico o un'applicazione a una differente GPU andando in: Impostazioni > Sistema > Schermo > Impostazioni di grafica.
 
 ![Crediti a CorpNewt per l'immagine](../images/extras/spoof-md/corp-windows.png)
 
 Il gioco o l'applicazione renderizzate avranno il buffer copiato sulla iGPU. Che viene mostrato a te. Questo porta ad alcuni svantaggi:
 
 * GSync non funzionerà più.
-* Le impostazioni Nvidia non potranno più essere aperte. Richiedono lo schermo collegato alla GPU
+* Le impostazioni NVIDIA non potranno più essere aperte. Richiedono lo schermo collegato alla GPU
 * Diminuzione del frame rate.
 * Aumento della latenza degli input.
 * Limite nella frequenza di aggiornamento.
 
 Se la tua scheda madre ha solamente il connettore HDMI per la IGPU, la frequenza di aggiornamento massima per specifica 2.1 è [120Hz](https://www.hdmi.org/spec21Sub/EightK60_FourK120). Questo assume che la tua scheda e il tuo monitor usino la stessa specifica. Questo significa che il tuo monitor a 144Hz vedrà un massimo di 120Hz essendo limitato dall'hardware. Questa limitazione *non* si applica se la tua scheda madre ha anche un connettore DP per la IGPU.
 
-Se hai più di due GPU (AMD, Nvidia e Intel), questa impostazione è limitata. Un monitor connesso alla GPU AMD significa che Windows consentirà di selezionare solo la GPU AMD o quella Intel. Quella Nvidia non verrà usata. In una futura versione di Windows, questo [limite è rimosso](https://pureinfotech.com/windows-10-21h1-new-features/#:~:text=Graphics%20settings).
+Se hai più di due GPU (AMD, NVIDIA e Intel), questa impostazione è limitata. Un monitor connesso alla GPU AMD significa che Windows consentirà di selezionare solo la GPU AMD o quella Intel. Quella NVIDIA non verrà usata. In una futura versione di Windows, questo [limite è rimosso](https://pureinfotech.com/windows-10-21h1-new-features/#:~:text=Graphics%20settings).
 
 Come raccomandazione, se usi tutti e due i sistemi operativi in maniera equivalente e preferisci non avere difetti, la tua opzione migliore è l'uso di uno switch HDMI o DP.

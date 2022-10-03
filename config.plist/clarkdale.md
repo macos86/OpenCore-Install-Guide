@@ -182,7 +182,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
 | 10.15 | 19.0.0 | 19.99.99 |
 | 11 | 20.0.0 | 20.99.99 |
 | 12 | 21.0.0 | 21.99.99 |
-| 12 | 21.0.0 | 21.99.99 |
+| 13 | 22.0.0 | 22.99.99 |
 
 :::
 
@@ -291,7 +291,20 @@ Impostazioni relative all'avvio legacy (es. 10.4-10.6), per la maggior parte puo
 
 ### Boot
 
-Impostazioni per la schermata di avvio (lascia tutto come predefinito).
+::: tip Info
+
+| Quirk | Abilitata | Commento |
+| :--- | :--- | :--- |
+| HideAuxiliary | YES | Premi spazio per mostrare le recovery di macOS e altre entry ausiliarie |
+
+:::
+
+::: details Più informazioni
+
+* **HideAuxiliary**: YES
+  * Questa opzione nasconderà menù secondari, come le recovery di macOS e altri strumenti, dal picker. Nasconderle potrebbe incrementare le prestazioni di avvio in sistemi con più dischi. Puoi premere spazio per mostrare le opzioni nascoste
+
+:::
 
 ### Debug
 
@@ -318,8 +331,6 @@ Utile per il debug dei problemi di avvio di OpenCore (cambieremo tutto *tranne* 
   * Disabilita il watchdog UEFI, può aiutare con problemi precoci di avvio
 * **DisplayLevel**: `2147483650`
   * Mostra ancora più informazioni di debug, richiede la versione di debug di OpenCore
-* **SerialInit**: NO
-  * Necessario per configurare l'output seriale con OpenCore
 * **SysReport**: NO
   * Utile per il debug come il dumping delle tabelle ACPI
   * Nota che questo è limitato alle versioni DEBUG di OpenCore
@@ -338,19 +349,16 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| AllowNvramReset | YES | |
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default | Lasciare default su Big Sur e più recenti |
+| SecureBootModel | Default | Lasciare `Default` per permettere ad OpenCore di settare automaticamente il valore corretto per il tuo SMBIOS |
 | Vault | Optional | Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su Optional, nota che fa distinzione tra maiuscole e minuscole ||
 
 :::
 
 ::: details Informazioni più approfondite
 
-* **AllowNvramReset**: YES
-  * Consente il ripristino della NVRAM sia nel selettore di avvio che quando si preme `Cmd+Opt+P+R`
 * **AllowSetDefault**: YES
   * Permette `CTRL+Enter` e `CTRL+Index` per impostare il dispositivo di avvio predefinito nel selettore
 * **ApECID**: 0
@@ -369,11 +377,15 @@ Sicurezza è abbastanza autoesplicativa, **Non saltare questo passo**. Modifiche
   * Questa è una parola, non è facoltativo omettere questa impostazione. Te ne pentirai se non lo imposti su `Optional`, nota che fa distinzione tra maiuscole e minuscole
 * **ScanPolicy**: `0`
   * `0` consente di vedere tutte le unità disponibili, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori dettagli. **Non avvierà i dispositivi USB con l'impostazione predefinita**
-* **SecureBootModel**: Disabled
+* **SecureBootModel**: Default
   * Controlla le funzionalità di avvio sicuro di Apple in macOS, fare riferimento alla sezione [Security](/OpenCore-Post-Install/universal/security.md) per ulteriori informazioni.
-  * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
+  * Nota: gli utenti potrebbero scoprire che l'aggiornamento di OpenCore su un sistema già installato può causare errori precoci di avvio. Per risolvere questo problema, vedere qui: [Stuck on OCB: LoadImage failed - Security Violation](/troubleshooting/kernel.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
+
+### Serial
+
+Usato per il debugging da porta seriale (Lasciare tutto come in default).
 
 ### Tools
 
@@ -393,11 +405,13 @@ Non verrà trattato qui, vedere 8.6 di [Configuration.pdf](https://github.com/ac
 
 ::: tip 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
 
-Utilizzato per il ridimensionamento dell'interfaccia utente di OpenCore, l'impostazione predefinita funzionerà per noi. Vedere la sezione approfondita per maggiori informazioni
+Utilizzato per il ridimensionamento dell'interfaccia utente di OpenCore, l'impostazione predefinita funzionerà per noi.
 
 :::
 
-::: Booter Path, utilizzato principalmente per il ridimensionamento dell'interfaccia utente
+::: details Informazioni più approfondite
+
+Booter Path, utilizzato principalmente per il ridimensionamento dell'interfaccia utente
 
 * **UIScale**:
   * `01`: Standard resolution
@@ -441,11 +455,14 @@ System Integrity Protection bitmask
 | Argomenti di avvio | Descrizione |
 | :--- | :--- |
 | **agdpmod=pikera** | Utilizzato per disabilitare il controllo del board ID su GPU Navi (serie RX 5000), senza di questo otterrai una schermata nera. **Non usare se non hai Navi** (es. Le schede Polaris e Vega non dovrebbero usarlo) |
-| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di Nvidia su schede Maxwell e Pascal in Sierra e High Sierra |
+| **-radcodec** | Usato per permettere GPU AMD non permesse usando Hardware Video Encoder |
+| **radpg=15** | Usato per disabilitare alcune modalità power-gating, aiuta per inizializzare GPU AMD Cape Verde |
+| **unfairvga=1** | Usato per fixare il supporto hardware DRM nelle GPU AMD |
+| **nvda_drv_vrl=1** | Utilizzato per abilitare i Web Driver di NVIDIA su schede Maxwell e Pascal in Sierra e High Sierra |
 
 * **csr-active-config**: `00000000`
   * Impostazioni per "System Integrity Protection" (SIP). In genere si consiglia di cambiarlo con `csrutil` tramite la partizione di ripristino.
-  * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](/troubleshooting/post-issues.md#disabilitare-sip)
+  * csr-active-config per impostazione predefinita è impostato su`00000000` che abilita la protezione dell'integrità del sistema. Puoi scegliere un numero di valori diversi, ma nel complesso consigliamo di mantenerlo abilitato per le migliori pratiche di sicurezza. Maggiori informazioni possono essere trovate nella nostra pagina di risoluzione dei problemi: [Disabilitare SIP](/troubleshooting/post.md#disabilitare-sip)
 
 * **run-efi-updater**: `No`
   * Viene utilizzato per impedire ai pacchetti di aggiornamento del firmware di Apple di installare e interrompere l'ordine di avvio; questo è importante in quanto questi aggiornamenti del firmware (pensati per i Mac) non funzioneranno.
@@ -476,14 +493,11 @@ Riscrive forzatamente le variabili NVRAM, si noti che `Add` **non sovrascriverà
 
 ::: details Informazioni più approfondite
 
-* **LegacyEnable**: YES
-  * Consente la memorizzazione della NVRAM su nvram.plist, necessaria per i sistemi senza NVRAM nativa come X99
-
 * **LegacyOverwrite**: YES
   * Consente la sovrascrittura delle variabili del firmware da nvram.plist, necessario solo per i sistemi senza NVRAM nativa come X99
 
 * **LegacySchema**
-  * Utilizzato per assegnare variabili NVRAM, utilizzato con LegacyEnable impostato su YES
+  * Utilizzato per assegnare variabili NVRAM, utilizzato con `OpenVariableRuntimeDxe.efi`. Necessario solo per sistemi senza NVRAM nativa
 
 * **WriteFlash**: NO
   * Consente la scrittura nella memoria flash per tutte le variabili aggiunte, non compatibile con la NVRAM emulata
@@ -531,9 +545,7 @@ La parte `SmUUID` viene copiata in Generic -> SystemUUID.
 
 Possiamo impostare Generic -> ROM su una ROM Apple (ricavata da un vero Mac), o sul tuo indirizzo MAC NIC o qualsiasi indirizzo MAC casuale (potrebbe essere solo 6 byte casuali, per questa guida useremo `11223300 0000`. Dopo segui la pagina[Fixing iServices](/OpenCore-Post-Install/universal/iservices.html) su come trovare il tuo vero indirizzo MAC)
 
-> Ricorda che ti serve un numero di serie non valido o valido ma non in uso;  dsi deve ricevere un messaggio del tipo: "Numero di serie non valido" o "Data di acquisto non convalidata"
-
-[Apple Check Coverage page](https://checkcoverage.apple.com)
+> Ricorda che ti serve un numero di serie non valido! Quando poni il tuo seriale nella [Apple's Check Coverage Page](https://checkcoverage.apple.com), dovresti ottenere il messaggio "Numero di serie non valido."
 
 **Automatic**: YES
 
@@ -593,6 +605,16 @@ I soli driver presenti qui dovrebbero essere:
 * OpenRuntime.efi
 * OpenUsbKbDxe.efi(If your firmware does not support UEFI)
 
+::: details Informazioni dettagliate
+
+| Chiave | Tipo | Descrizione |
+| :--- | :--- | :--- |
+| Path | String | Percorso del file dalla cartella `OC/Drivers` |
+| LoadEarly | Boolean | Carica il driver prima del setup della NVRAM, dovrebbe essere abilitato solo per `OpenRuntime.efi` e `OpenVariableRuntimeDxe.efi` se si usa NVRAM legacy |
+| Arguments | String | Alcuni driver possono accettare ulteriori argomenti che vanno specificati qui. |
+
+:::
+
 ### APFS
 
 Di default, OpenCore carica solamente alcuni driver APFS per cui la minima versione supportata è Big Sur. Se devi avviare Catalina o meno recenti, devi impostare ulteriori dati.
@@ -634,7 +656,13 @@ Relativo al passthrough della tastiera boot.efi utilizzato per FileVault e suppo
 
 ### Output
 
-elativamente all'output visivo di OpenCore, lascia tutto qui come predefinito poiché non abbiamo alcuna utilità per queste stranezze.
+Relativamente all'output visivo di OpenCore, lascia tutto qui come predefinito.
+
+::: details Informazioni più dettagliate
+| Quirk | Valore | Commento |
+| :--- | :--- | :--- |
+| UIScale | `0` | `0` sceglierà automaticamente in base alla risoluzione<br/>`-1` lascerà quella di default<br/>`1` per 1x scaling, per display normali<br/>`2` per 2x scaling, per display HiDPI |
+:::
 
 ### ProtocolOverrides
 
@@ -697,8 +725,7 @@ Utilizzato per escludere determinate regioni di memoria dai sistemi operativi da
 * Hyper-Threading
 * Execute Disable Bit
 * EHCI/XHCI Hand-off
-* OS type: Windows 8.1/10 UEFI Mode
-* DVMT Pre-Allocated(iGPU Memory): 64MB
+* Compatibility Support Module (CSM)* DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
 > Una volta completato, dobbiamo sistemare ancora un paio di cose. Fai un salto alla pagina riguardo a [Apple Secure Boot](security.md)

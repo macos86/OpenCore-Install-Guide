@@ -13,7 +13,7 @@ Termine | Descrizione
 Termine | Descrizione
 --- | ---
 **OpenCore**   | Il più giovane della scena Hackintosh, fatto per avere la sicurezza in testa dal [team Acidanthera](https://github.com/acidanthera), ha un avvio più veloce e leggero di Clover. Ha un sacco di cose da impostare, ma supporta anche nativamente macOS meglio di Clover (come Ibernazione, FileVault 2, Combinazioni di avvio...).
-**Clover**  | Un bootloader considerato ora vecchio con il rilascio di OpenCore. Questa guida non si dedicherà a usare questo software.
+**Clover**  | Un boot manager considerato ora obsoleto con il rilascio di OpenCore. Questa guida non si dedicherà a usare questo software.
 **ACPI**  | "Advanced Configuration and Power Interface" (ACPI) provvede uno standard aperto che il sistema operativo può usare per scoprire e configurare i componenti hardware del computer, molto di questo sarà discusso più avanti nella guida.
 **DSDT/SSDT** | Tabelle nell'ACPI che descrivono come i dispositivi e il sistema devono interagire, ossia nella accensione, spegnimento, cambio di GPU, porte USB, ecc...
 **.AML** | Il formato del file compilato ACPI, e cosa il tuo PC eseguirà. `.DAT` è un'altra estensione con lo stesso esatto scopo.

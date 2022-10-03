@@ -22,9 +22,9 @@ Per iniziare, assicurati di utilizzare le versioni "DEBUG" o "NOOPT" di OpenCore
 
 ## Modifiche al Config
 
-Successivamente, vai al tuo config.plist e individua la sezione `Misc`, abbiamo un paio di voci da configurare:
+Successivamente, vai al tuo config.plist e individua la sezione `Misc` > `Debug`, abbiamo un paio di voci da configurare:
 
-### Misc
+### Misc > Debug
 
 Qui abiliteremo quanto segue:
 
@@ -50,19 +50,19 @@ Qui abiliteremo quanto segue:
 | `0x20` | Abilita la registrazione per variabili UEFI non-volatili. |
 | `0x40` | Abilita la registrazione con scrittura su file. |
 
-Per calcolare il Target, possiamo utilizzare un calcolatore HEX e quindi convertirlo in decimale. Poi vogliamo che i nostri valori vengano memorizzati su un file .txt per una visualizzazione successiva:
+Per calcolare il Target, possiamo utilizzare un calcolatore esadecimale e quindi convertirlo in decimale. Poi vogliamo che i nostri valori vengano memorizzati su un file .txt per una visualizzazione successiva:
 
 * `0x01` — Abilita registrazione
-* `0x02` — Abilita il debug su schermo
+* `0x02` — Abilita il debug on-screen
   * Si noti che questo può aumentare notevolmente i tempi di avvio sui firmware con implementazioni GOP scadenti
 * `0x10` — Abilita la registrazione delle variabili UEFI.
 * `0x40` — Abilita la registrazione su file.
 
-`0x01` + `0x02` + `0x10` + `0x40` = `0x53`
+`0x01` + `0x02` + `0x40` = `0x43`
 
-`0x53` convertito in decimale diventa `83`
+`0x43` convertito in decimale diventa `67`
 
-Quindi possiamo impostare `Misc` -> `Debug` -> `Target` -> `83`
+Quindi possiamo impostare `Misc` -> `Debug` -> `Target` -> `67`
 
 * **DisplayLevel**: `2147483714`(o calcolarne uno usando i parametri qui di seguito)
   * Utilizzato per impostare ciò che viene registrato
@@ -82,9 +82,11 @@ A noi interessa solo quanto segue:
 * `0x00000040` — DEBUG_INFO in DEBUG, NOOPT.
 * `0x80000000` — DEBUG_ERROR in DEBUG, NOOPT, RELEASE.
 
-Proprio come con `Target`, usiamo una calcolatrice HEX quindi convertiamo in decimale:
+Proprio come con `Target`, usiamo una calcolatrice esadecimale quindi convertiamo in decimale:
 
-`0x80000042` convertito in decimale diventa `Misc` -> `Debug` -> `DisplayLevel` -> `2147483714`
+`0x80000042` convertito in decimale diventa `2147483714`
+
+`Misc` -> `Debug` -> `DisplayLevel` -> `2147483714`
 
 Una volta fatto, il tuo config.plist dovrebbe assomigliare a questo:
 

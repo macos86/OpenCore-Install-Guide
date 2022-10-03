@@ -1,6 +1,6 @@
 # Scaricare macOS: Metodo Offline
 
-> Versioni supportate: macOS 10.13-attuale
+> Versioni supportate: macOS 10.7-10.8 10.10-attuale
 >
 > Sistemi supportati: macOS
 
@@ -49,61 +49,78 @@ Una volta finito, troverai nella cartella `~/macOS-Installer/` un DMG contenente
 
 ![](../images/installer-guide/mac-install-md/munki-dmg.png)
 
-## Scarichiamo l'Installer (10.10-10.15)
+## Scarichiamo l'Installer (10.7-10.8 10.10-10.15)
 
 La guida sottostante spiega come farlo per macOS 10.10-10.15, con un metodo alternativo.
 
-Per iniziare, vai a: [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
+Per iniziare, scarica la versione appropriata da:
 
-Scarica la versione scelta e dovresti ottenere un file .pkg.
+* [Come ottenere le versioni precedenti di macOS](https://support.apple.com/it-it/HT211683)
+* [Mac OS X Mountain Lion Installer](https://support.apple.com/kb/DL2076)
+* [Mac OS X Lion Installer](https://support.apple.com/kb/DL2077)
 
-A seconda di quale sistema tu sia, puoi usare questo script e passare alla sezione [Configurare l'installer](#configurare-linstaller), tuttavia potresti ricevere questo errore:
+Scarica la versione scelta e dovresti ottenere un file `.pkg`, che contiene un `.pkg` una volta montato.
+
+A seconda di quale versione tu sia, puoi eseguire il `.pkg` e passare alla sezione [Configurare l'installer](#configurare-linstaller), tuttavia potresti ricevere questo errore:
 
 ![](../images/installer-guide/legacy-mac-install-md/unsupported.png)
 
-Questo significa che dovremmo estrarre manualmente l'installer.
+Il tuo SMBIOS è troppo nuovo per avviare questa versione (anche se vuoi fare la USB per un altro computer, continua a controllarlo). Questo significa che dovremmo estrarre manualmente l'installer.
 
 Per iniziare, trascina il InstallMacOSX/InstallOS.dmg e montalo:
 
 ![](../images/installer-guide/legacy-mac-install-md/mount.png)
 
-Dopo, apriremo una finestra di terminale e creeremo una finestra sulla scrivania. Usa questo comando una volta:
+Dopo, apriremo una finestra di terminale e creeremo una finestra sulla scrivania. Potrebbe metterci alcuni minuti:
+
+* Lion:
 
 ```sh
 cd ~/Desktop
-mkdir MacInstall && cd MacInstall
+pkgutil --expand-full "/Volumes/Install Mac OS X/InstallMacOSX.pkg" OSInstaller
+cd OSInstaller/InstallMacOSX.pkg
+mv InstallESD.dmg "Payload/Install Mac OS X Lion.app/Contents/SharedSupport/"
+mv "Payload/Install Mac OS X Lion.app" /Applications
+```
 
-# Ora inizia la parte divertente, estrarre l'installer (Nota che potrebbe metterci alcuni minuti):
+* Mountain Lion:
 
-# El Capitan o più vecchi
+```sh
+cd ~/Desktop
+pkgutil --expand-full "/Volumes/Install Mac OS X/InstallMacOSX.pkg" OSInstaller
+cd OSInstaller/InstallMacOSX.pkg
+mv InstallESD.dmg "Payload/Install Mac OS X Mountain Lion.app/Contents/SharedSupport/"
+mv "Payload/Install Mac OS X Mountain Lion.app" /Applications
+```
 
-xar -xf /Volumes/Install\ OS\ X/InstallMacOSX.pkg
+* Yosemite:
 
-# Sierra
+```sh
+cd ~/Desktop
+pkgutil --expand-full "/Volumes/Install OS X/InstallMacOSX.pkg" OSInstaller
+cd OSInstaller/InstallMacOSX.pkg
+mv InstallESD.dmg "Payload/Install OS X Yosemite.app/Contents/SharedSupport/"
+mv "Payload/Install OS X Yosemite.app" /Applications
+```
 
-xar -xf /Volumes/Install\ macOS/InstallOS.pkg
+* El Capitan:
 
+```sh
+cd ~/Desktop
+pkgutil --expand-full "/Volumes/Install OS X/InstallMacOSX.pkg" OSInstaller
+cd OSInstaller/InstallMacOSX.pkg
+mv InstallESD.dmg "Payload/Install OS X El Capitan.app/Contents/SharedSupport/"
+mv "Payload/Install OS X El Capitan.app" /Applications
+```
 
-# Dopo, usa il comando per il sistema target:
+* Sierra:
 
-# Yosemite
-cd InstallMacOSX.pkg
-tar xvzf Payload
-mv InstallESD.dmg Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/
-mv Install\ OS\ X\ Yosemite.app /Applications
-
-# El Capitan
-cd InstallMacOSX.pkg
-tar xvzf Payload
-mv InstallESD.dmg Install\ OS\ X\ El\ Capitan.app/Contents/SharedSupport/
-mv Install\ OS\ X\ El\ Capitan.app /Applications
-
-# Sierra
-
-cd InstallOS.pkg
-tar xvzf Payload
-mv InstallESD.dmg Install\ macOS\ Sierra.app/Contents/SharedSupport/
-mv Install\ macOS\ Sierra.app /Applications
+```sh
+cd ~/Desktop
+pkgutil --expand-full "/Volumes/Install macOS/InstallOS.pkg" OSInstaller
+cd OSInstaller/InstallOS.pkg
+mv InstallESD.dmg "Payload/Install macOS Sierra.app/Contents/SharedSupport/"
+mv "Payload/Install macOS Sierra.app" /Applications
 ```
 
 ## Configurare l'installer
@@ -157,6 +174,23 @@ sudo /Applications/Install\ OS\ X\ Yosemite.app/Contents/Resources/createinstall
 
 # Mavericks
 sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume --applicationpath /Applications/Install\ OS\ X\ Mavericks.app --nointeraction
+```
+
+:::
+
+::: tip Nota per utenti Apple Silicon che installano versioni più vecchie di macOS
+
+Se `createinstallmedia` fallisce con `zsh: killed` o `Killed: 9` significa che è la firma dell'installer non viene riconosciuta. Per risolvere puoi usare il seguente comando:
+
+```sh
+cd /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/
+codesign -s - -f --deep /Applications/Install\ macOS\ Big\ Sur.app
+```
+
+Devi aver installato Xcode:
+
+```sh
+xcode-select --install
 ```
 
 :::

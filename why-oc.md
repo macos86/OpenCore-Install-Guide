@@ -12,7 +12,7 @@ Questa sezione contiene un briefing riguardo al perché la comunità si sta tras
 
 * Supporto di più sistemi!
   * OpenCore ora supporta nativamente più versioni di OS X e macOS senza penosi hack alla Clover o alla Chameleon da implementare
-  * Questo include sistemi fino alla 10.4, Tiger, e fino all'ultima compilazione della 12, Monterey!
+  * Questo include sistemi fino alla 10.4, Tiger, e fino all'ultima compilazione della 13, Ventura!
 * Nella media, i sistemi con OpenCore avviano più veloci rispetto a Clover, dato che vengono fatte meno patch
 * In generale più stabilità dato che le patch sono più precise:
   * [macOS 10.15.4 update (EN)](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
@@ -56,7 +56,7 @@ La maggior parte delle funzionalità di Clover attualmente sono supportate in Op
 * Non supporta il nascondere specifici dischi
 * Non supporta cambiare le impostazioni dal menù di OpenCore
 * Non supporta le patch del valore PCIRoot UID
-* Non supporta iniezione/patch degli ACPI solo per macOS
+* Non supporta patch degli ACPI solo per macOS
 
 ## Miti comuni
 
@@ -155,8 +155,8 @@ Mentre l'EULA dichiara che macOS dovrebbe essere installato solo in Mac reali o 
 
 ### macOS supporta le GPU Nvdia?
 
-A causa di un problema riguardo al supporto Nvidia nelle nuove versioni di macOS, molti utenti hanno preso la notizia come se macOS non supporta e non supporterà mai le GPU Nvidia. Tuttavia, Apple attualmente mantiene e supporta alcuni Mac con GPU Nvidia nel loro sistema più vecchio, come i MacBook Pro del 2013 che hanno una GPU Kepler.
+A causa di un problema riguardo al supporto NVIDIA nelle nuove versioni di macOS, molti utenti hanno preso la notizia come se macOS non supporta e non supporterà mai le GPU NVIDIA. Apple supported Macs with NVIDIA GPUs (such as the 2013 MacBook Pro with a Kepler dGPU) until the release of Monterey Beta 7. While there are community-made patches to bring back support, they require SIP (System Integrity Protection) to be disabled, disabling important security features in macOS.
 
-Questo problema è con ogni GPU Nvidia più nuova, dato che Apple ha smesso di vendere macchine con queste GPU e non avranno presto nessun supporto ufficiale da Apple. Invece, gli utenti hanno bisogno di affidarsi a driver di terze parti di Nvidia. A causa del Secure Boot introdotto da poco, non potevano più supportare questi Web Drivers e Nvidia non poteva più pubblicarli per piattaforme più nuove, limitandosi a macOS 10.13, High Sierra.
+Questo problema è con ogni GPU NVIDIA più nuova, dato che Apple ha smesso di vendere macchine con queste GPU e non avranno presto nessun supporto ufficiale da Apple. Invece, gli utenti hanno bisogno di affidarsi a driver di terze parti di NVIDIA. A causa del Secure Boot introdotto da poco, non potevano più supportare questi Web Drivers e NVIDIA non poteva più pubblicarli per piattaforme più nuove, limitandosi a macOS 10.13, High Sierra.
 
 Per maggiori informazioni riguardo al supporto del sistema operativo, vedi qui: [GPU Buyers Guide (EN)](https://dortania.github.io/GPU-Buyers-Guide/)
