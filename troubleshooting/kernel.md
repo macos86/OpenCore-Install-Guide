@@ -133,21 +133,18 @@ Stessi problemi come sopra, vedi qui per maggiori dettagli: [Bloccato su `[EB|#L
 Abilitare [DEBUG OpenCore](/extras/debug.md) può anche aiutare a capire
 :::
 
-## Getting the error X64 Exception Type... on AMD FX systems
+## Getting the error X64 Exception Type... in sistemi AMD FX
 
-This error can have multiple causes:
+Questo errore ha molte cause:
 
-* Compatibility Support Module (CSM) being enabled in your BIOS:
+* Compatibility Support Module (CSM) abilitato nel BIOS:
 
-  Might also be called Legacy Boot Support, Load Legacy Option ROMs/OPROMs
+* La quirk ProvideCurrentCpuInfo (richiesta da patch unificate) incompatibile con il tuo firmware:
+  * Significa che devi usare una [vecchia versione delle patch](https://github.com/AMD-OSX/AMD_Vanilla/blob/06a9a7f30d139fa3ae897ed2469222c92e99fcad/15h_16h/patches.plist) e di macOS (Big Sur o meno recenti). Dopo scaricare le patch dal link, uniscile al tuo config.plist (dopo aver rimosso le vecchie)
 
-* The ProvideCurrentCpuInfo quirk (required by the unified patches) being incompatible with your firmware:
+Esempio:
 
-  This means you need to use an [older version of the patches](https://github.com/AMD-OSX/AMD_Vanilla/blob/06a9a7f30d139fa3ae897ed2469222c92e99fcad/15h_16h/patches.plist) and Big Sur or older. After downloading the older patches linked above, merge them into your config.plist (making sure to remove the old patches first).
-
-An example:
-
-![](../../images/troubleshooting/troubleshooting-md/x64exception-amdfx.png)
+![](../images/troubleshooting/troubleshooting-md/x64exception-amdfx.png)
 
 ## Kernel Panic su `Invalid frame pointer`
 
