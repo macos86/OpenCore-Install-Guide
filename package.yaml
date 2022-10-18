@@ -1,0 +1,15 @@
+name: "@macos86/install-guide"
+author: macos86 (https://github.com/macos86)
+repository: https://github.com/macos86/macos86.github.io
+scripts:
+  dev: vuepress dev
+  build: vuepress build
+  lint: markdownlint-cli2-fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot'
+    '!OpenCanopy-Gallery' '!node_modules' '!OpenCore-Post-Install'
+license: CC-BY-NC-SA-4.0
+devDependencies:
+  markdown-it-multimd-table: "^4.2.0"
+  markdownlint-cli2: "^0.5.1"
+  vuepress: "^2.0.0-beta.51"
+homepage: https://macos86.github.io/
+packageManager: pnpm@7.13.5
