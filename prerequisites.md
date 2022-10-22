@@ -29,4 +29,4 @@ Prima di iniziare seriamente a impostare un sistema basato su OpenCore, dovremmo
      * Linux con Python 3
    * Per utenti Windows e Linux, **15GB** di spazio sul disco. Su Windows, il disco di sistema (C:) deve avere almeno **15GB** di spazio libero ulteriore.
    * Per utenti macOS, **30GB** di spazio sul disco di sistema.
-   * La maggior parte dei tool dovranno aver [installato Python](https://www.python.org/downloads/)
+   * Per la maggior parte dei tool è necessario aver [installato Python](https://www.python.org/downloads/)
