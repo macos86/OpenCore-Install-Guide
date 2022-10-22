@@ -12,7 +12,7 @@ Prima di iniziare seriamente a impostare un sistema basato su OpenCore, dovremmo
    * Il tuo **chipset Ethernet**
    * I tuoi chipset WLAN/Bluetooth
 3. <span style="color:red">_**[CRUCIALE]**_</span> **UNA CONOSCENZA BASE SU COME USARE LE LINEE DI COMANDO E UN TERMINALE/PROMPT DEI COMANDI**
-   * Questo non è solo [CRUCIALE], è la base di tutta la guida. Non possiamo aiutarti se non conosci come `cd` a una directory o a cancellare un file.
+   * Questo non è solo [CRUCIALE], è la base di tutta la guida. Non possiamo aiutarti se non conosci come si fa `cd` verso una directory o come cancellare un file.
 4. <span style="color:red">_**[CRUCIALE]**_</span> Una macchina compatibile come indicato nella sezione _**Compatibilità**_.
    * [Limitazioni Hardware](macos-limits.md)
 5. <span style="color:red">_**[CRUCIALE]**_</span> Come minimo:
@@ -21,7 +21,7 @@ Prima di iniziare seriamente a impostare un sistema basato su OpenCore, dovremmo
 6. <span style="color:red">_**[CRUCIALE]**_</span> Una **connessione Ethernet** (nessun WiFi dongle, gli adattatori Ethernet USB potrebbero funzionare in dipendenza al supporto macOS) e devi conoscere il tuo modello di scheda di rete
    * Devi avere anche una porta Ethernet fisica, o un dongle/adattatore Ethernet compatibile con macOS. Se hai una [scheda WiFi compatibile](https://dortania.github.io/Wireless-Buyers-Guide/), puoi usare anche quella.
      * Nota: la maggioranza delle schede WiFi non sono supportate da macOS
-   * Per chi non può usare l'Ethernet, ma ha un telefono Android, può connetterlo al WiFi e dopo collegarlo in thering con una USB con [HoRNDIS](https://joshuawise.com/horndis#available_versions).
+   * Per chi non può usare l'Ethernet, ma ha un telefono Android, può connetterlo al WiFi e dopo collegarlo in tethering con una USB con [HoRNDIS](https://joshuawise.com/horndis#available_versions).
 7. <span style="color:red">_**[CRUCIALE]**_</span> **Un sistema operativo degno di questo nome:**
    * Può essere:
      * macOS (versioni recenti)
