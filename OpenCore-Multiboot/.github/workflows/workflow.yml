@@ -1,0 +1,19 @@
+name: workflow
+on:
+  push:
+  pull_request:
+jobs:
+  workflow:
+    name: Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Lint
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          corepack enable
+          yarn fixlint
+          git pull && git commit -am "Fix Lint" && git push || echo "Done"
