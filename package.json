@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "fixlint": "markdownlint-cli2-fix **/*.md \"!.yarn\""
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "devDependencies": {
+    "markdownlint-cli2": "0.5.1"
+  },
+  "packageManager": "yarn@3.2.3"
+}
