@@ -25,7 +25,7 @@ jobs:
         run: |
           corepack enable
           pnpm i
-      - name: Lint & Submodules
+      - name: Lint
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
         run: |
           git config --local user.email "action@github.com"
@@ -33,7 +33,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git submodule update --remote --merge
           pnpm lint
-          git pull && git commit -am "Fix Lint" && git push || echo "Done"
+          git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
         run: pnpm build
       - name: Deploy to GitHub Pages
