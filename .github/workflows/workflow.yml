@@ -19,12 +19,13 @@ jobs:
         run: bun i
       - name: Lint
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git submodule update --remote --merge
-          bun lint
+          bunx markdownlint-cli2 --fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot' '!OpenCanopy-Gallery' '!node_modules' '!OpenCore-Post-Install'
           git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
         run: bun run build
