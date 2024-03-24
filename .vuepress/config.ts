@@ -1,7 +1,10 @@
-import { defaultTheme, defineUserConfig } from "vuepress";
+import { defineUserConfig } from "vuepress";
+import { defaultTheme } from '@vuepress/theme-default';
+import { viteBundler } from '@vuepress/bundler-vite'
 import multimdTable from "markdown-it-multimd-table";
 
 export default defineUserConfig({
+  bundler: viteBundler(),
   title: "Guida Installazione Opencore",
   lang: "it-IT",
   extendsMarkdown: (md) => {

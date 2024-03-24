@@ -11,19 +11,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/cache@v3
-        with:
-          path: ~/.local/share/pnpm/
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
+      - uses: oven-sh/setup-bun@v1
       - name: Install Packages
-        run: |
-          corepack enable
-          pnpm i
+        run: bun i
       - name: Lint
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
         run: |
@@ -31,15 +24,16 @@ jobs:
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git submodule update --remote --merge
-          pnpm lint
+          bun lint
           git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
-        run: pnpm build
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v3
-        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        run: bun run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          target_branch: gh-pages
-          build_dir: .vuepress/dist/
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: .vuepress/dist/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

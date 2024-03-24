@@ -1,0 +1,19 @@
+{
+  "name": "@macos86/install-guide",
+  "author": "macos86 (https://github.com/macos86)",
+  "repository": "https://github.com/macos86/macos86.github.io",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "lint": "markdownlint-cli2-fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot' '!OpenCanopy-Gallery' '!node_modules' '!OpenCore-Post-Install'"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-rc.8",
+    "@vuepress/theme-default": "^2.0.0-rc.8",
+    "markdown-it-multimd-table": "^4.2.3",
+    "markdownlint-cli2": "^0.12.1",
+    "vuepress": "^2.0.0-rc.8"
+  },
+  "homepage": "https://macos86.github.io/"
+}
