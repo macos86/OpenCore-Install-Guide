@@ -27,10 +27,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: oven-sh/setup-bun@v1
       - name: Install Packages
-        run: |
-          corepack enable
-          pnpm i
+        run: bun i
       - name: Lint
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
@@ -39,10 +38,10 @@ jobs:
           git config --local user.name "GitHub Action"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git submodule update --remote --merge
-          pnpx markdownlint-cli2 --fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot' '!OpenCanopy-Gallery' '!node_modules' '!OpenCore-Post-Install'
+          bunx markdownlint-cli2 --fix '**/*.md' '!Getting-Started-With-ACPI' '!OpenCore-Multiboot' '!OpenCanopy-Gallery' '!node_modules' '!OpenCore-Post-Install'
           git commit -am "Fix Lint" && git push || echo "Done"
       - name: Build
-        run: pnpm build
+        run: bun run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
